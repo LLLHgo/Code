@@ -3,8 +3,8 @@ package dataservice.orderdataservice;
 import java.util.Date;
 import java.util.List;
 
+import Enum.UserType;
 import po.OrderPO;
-import po.UserType;
 
 public interface OrderDataService {
 	/**

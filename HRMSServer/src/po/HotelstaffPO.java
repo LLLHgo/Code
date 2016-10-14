@@ -29,5 +29,4 @@ public class HotelstaffPO {
 		this.password = password;
 	}
 	
-	
 }
