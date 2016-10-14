@@ -1,4 +1,6 @@
-package businesslogicservice.loginblservice;
+package businesslogic.loginbl;
+
+import businesslogicservice.loginblservice.LoginBLService;
 
 public class LoginBLService_Stub implements  LoginBLService{
 	String userID;

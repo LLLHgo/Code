@@ -1,4 +1,4 @@
-package po;
+package src.po;
 
 import java.io.File;
 import java.io.Serializable;
@@ -7,6 +7,10 @@ import java.sql.Date;
 import Enum.VIPType;
 
 public class ClientPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//用户编号
 	private String client_id;
 //用户密码
@@ -98,3 +102,5 @@ public class ClientPO implements Serializable{
 			this.creditRecord=record;
 		}
 }
+
+

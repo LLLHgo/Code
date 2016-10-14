@@ -1,10 +1,12 @@
-package businesslogicservice.clientblservice;
+package businesslogic.clientbl;
 import java.io.File;
 import java.sql.Date;
 import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import Enum.VIPType;
+import businesslogicservice.clientblservice.ClientBLService;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.LevelVO;
 import vo.hotelinfoVO.ClientRequirementVO;
@@ -12,26 +14,26 @@ import vo.clientVO.ClientVO;
 import vo.orderVO.OrderVO;
 
 public class ClientBLService_Stub implements ClientBLService {
-	    //用户编号
-		 String client_id;
-		//用户密码
-		 String password;
-		//用户姓名
-		 String client_name;
-		//用户手机号
-		 String client_tel;
-		//用户会员类型
-		 String vip_type;
-		//用户会员等级
-		 int vip_level;
-		//用户生日
-		 String client_birth;
-		//用户所属企业
-		 String client_firm;
-		//用户信用记录
-		 File creditRecord;
+	//用户编号
+	 String client_id;
+//用户密码
+	 String password;
+//用户姓名
+	 String client_name;
+//用户手机号
+	 String client_tel;
+//用户会员类型
+	 VIPType vip_type;
+//用户会员等级
+	 int vip_level;
+//用户生日
+	 Date client_birth;
+//用户所属企业
+	 String client_firm;
+//用户信用记录
+	File creditRecord;
 	public ClientBLService_Stub(String client_id,String password,String client_name,String client_tel,
-			String vip_type,int vip_level,String client_birth,String client_firm,File creditRecord){
+			VIPType vip_type,int vip_level,Date client_birth,String client_firm,File creditRecord){
 					this.client_id=client_id;
 					this.password=password;
 					this.client_name=client_name;
