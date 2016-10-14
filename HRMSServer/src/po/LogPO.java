@@ -1,6 +1,7 @@
 package po;
 
 public class LogPO {
+	// 日志信息
 	private String logInfo;
 	
 	public LogPO(){

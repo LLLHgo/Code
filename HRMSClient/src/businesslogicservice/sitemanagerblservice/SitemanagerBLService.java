@@ -29,7 +29,7 @@ public interface SitemanagerBLService {
      * @param findInfo
      * @return 该客户账户
      */
-	public ClientVO clientAccountFind (String findInfo);
+	public ClientAccountVO clientAccountFind (String findInfo);
 	
 	/**
 	 * 添加网站营销人员
