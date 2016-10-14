@@ -3,11 +3,11 @@ import java.io.File;
 import java.sql.Date;
 import java.util.List;
 
-import po.OrderType;
-import po.ResultMessage;
-import vo.HotelinfoVO;
+import Enum.OrderType;
+import Enum.ResultMessage;
+import vo.hotelinfoVO.HotelinfoVO;
 import vo.LevelVO;
-import vo.OrderRequirementVO;
+import vo.hotelinfoVO.ClientRequirementVO;
 import vo.clientVO.ClientVO;
 import vo.orderVO.OrderVO;
 
@@ -90,7 +90,7 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @param vo
 	 * @return符合关键词的酒店列表
 	 */
-	public List<HotelinfoVO> getSearchHotel(OrderRequirementVO vo){
+	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo){
 		return null; 
 	}
 	/**
@@ -170,4 +170,6 @@ public class ClientBLService_Stub implements ClientBLService {
 	public List<HotelinfoVO> getHistoryList(String clientID){
 		return null;
 	}
+
+	
 }

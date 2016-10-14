@@ -10,6 +10,7 @@ import vo.*;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.orderVO.OrderVO;
+import vo.hotelinfoVO.ClientRequirementVO;
 
 
 public interface ClientBLService {
@@ -43,7 +44,7 @@ public interface ClientBLService {
 	 * @param vo
 	 * @return符合关键词的酒店列表
 	 */
-	public List<HotelinfoVO> getSearchHotel(OrderRequirementVO vo);
+	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo);
 	/**
 	 *得到具体日期的客户订单
 	 * @param clientID
