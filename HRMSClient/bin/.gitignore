@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 /.DS_Store
 /businesslogic/
 /server/
 /fff/
 /Loginbl/
 /businesslogicservice/
+=======
+/client/
+/server/
+>>>>>>> origin/master
