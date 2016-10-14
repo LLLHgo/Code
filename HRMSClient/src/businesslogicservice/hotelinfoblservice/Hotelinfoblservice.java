@@ -7,7 +7,8 @@ import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.StrategyVO;
+import vo.strategyVO.HotelStrategyVO;
+import vo.strategyVO.MarketingStrategyVO;
 
 public interface Hotelinfoblservice {
 	/**
@@ -45,7 +46,8 @@ public interface Hotelinfoblservice {
 	 * 计算打折后的价格
 	 * @return
 	 */
-	public double calculatePrice(List<StrategyVO> list,OrderVO vo,double originalPrice);
+	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
+			List<MarketingStrategyVO> marketingStrategyList,OrderVO vo,double originalPrice);
 	/**
 	 * 请求持久化保存网站管理人员添加的酒店信息
 	 * @param vo
