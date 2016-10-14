@@ -14,7 +14,7 @@ public interface OrderBLService {
 	public boolean saveOrder (OrderVO order);
 	// 取消订单
 	public boolean cancelOrder (String orderId);
-	// 查找订单
+	// 查找具体订单
 	public OrderVO  findSpecificOrderList(String orderID);
 	// 查找某种用户(客户或酒店)的所有订单
 	public List<OrderVO>  findUserOrderList (String userID);
