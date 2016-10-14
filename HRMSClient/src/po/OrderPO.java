@@ -4,27 +4,40 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.OrderType;
+import Enum.VIPType;
 
 public class OrderPO {
+	// 订单号
 	private String orderId;
+	// 客户帐号
 	private String clientId;
+	// 客户名字
 	private String clientName;
+	// 客户手机号
 	private String clientPhone;
+	// 客户vip类型
+	private VIPType vipType;
+	// 订单下达时间
 	private Date orderDate;
+	// 订单类型
 	private OrderType orderType;
+	// 订单中酒店名称
 	private String hotelName;
+	// 订单价格
 	private double price;
+	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
 	
 	public OrderPO(){
 		
 	}
-	public OrderPO(String orderId,String clientId,String clientName,String clientPhone,
+	public OrderPO(String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
 			Date orderDate,OrderType orderType,String hotelName,double price,ArrayList <String> strategies){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
 		this.clientPhone=clientPhone;
+		this.vipType=vipType;
 		this.orderDate=orderDate;
 		this.orderType=orderType;
 		this.hotelName=hotelName;
@@ -85,5 +98,17 @@ public class OrderPO {
 	}
 	public void setStrategies(ArrayList<String> strategies) {
 		this.strategies = strategies;
+	}
+	public VIPType getVipType() {
+		return vipType;
+	}
+	public void setVipType(VIPType vipType) {
+		this.vipType = vipType;
+	}
+	public OrderType getOrderType() {
+		return orderType;
+	}
+	public void setOrderType(OrderType orderType) {
+		this.orderType = orderType;
 	}
 }
