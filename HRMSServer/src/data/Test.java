@@ -1,4 +1,4 @@
-package ui;
+package data;
 
 public class Test {
 
