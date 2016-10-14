@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import Enum.ResultMessage;
 import po.ClientPO;
+import po.LevelPO;
 
 public interface ClientDataService {
 	/**
@@ -38,4 +39,23 @@ public interface ClientDataService {
 	 * @return 修改是否成功
 	 */
 	public ResultMessage modifyPersonalInfo (String clientID,ClientPO po);
+	/**
+	 * 查找客户账户
+	 * @param client_id
+	 * @param password
+	 * @return 客户PO
+	 */
+	public ClientPO checkAccount(String client_id,String password);
+	/**
+	 * 设置所有客户会员等级
+	 * @param po
+	 * @return 是否设置成功
+	 */
+	public boolean setAllLevel(LevelPO po);
+	/**
+	 * 创建新客户
+	 * @param po
+	 * @return 创建是否成功
+	 */
+	public boolean createClient(ClientPO po);
 }

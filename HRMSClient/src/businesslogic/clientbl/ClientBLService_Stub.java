@@ -8,7 +8,7 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogicservice.clientblservice.ClientBLService;
 import vo.hotelinfoVO.HotelinfoVO;
-import vo.LevelVO;
+import vo.levelVO.LevelVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.clientVO.ClientVO;
 import vo.orderVO.OrderVO;
