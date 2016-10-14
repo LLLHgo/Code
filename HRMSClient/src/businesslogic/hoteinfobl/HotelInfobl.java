@@ -1,5 +1,5 @@
 package businesslogic.hoteinfobl;
 
-public class hotelinfobl {
+public class Hotelinfobl {
 
 }
