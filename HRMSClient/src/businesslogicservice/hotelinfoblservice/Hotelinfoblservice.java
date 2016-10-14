@@ -3,6 +3,7 @@ package businesslogicservice.hotelinfoblservice;
 import java.util.List;
 
 import Enum.ResultMessage;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
@@ -47,7 +48,7 @@ public interface Hotelinfoblservice {
 	 * @return
 	 */
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
-			List<MarketingStrategyVO> marketingStrategyList,OrderVO vo,double originalPrice);
+			List<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
 	/**
 	 * 请求持久化保存网站管理人员添加的酒店信息
 	 * @param vo

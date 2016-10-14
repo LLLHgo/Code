@@ -7,6 +7,7 @@ import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
 import businesslogicservice.hotelinfoblservice.Hotelinfoblservice;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
@@ -85,24 +86,33 @@ public class HotelinfoBLService_Stub implements Hotelinfoblservice{
 		return new RoominfoVO(roomtype,"8301",300,RoomState.Usable);
 	}
 
+	
 	@Override
 	public List<RoominfoVO> getRoominfoList(String hotelID) {
-		List<RoominfoVO> list = new ArrayList<RoominfoVO>();
-		list.add(new RoominfoVO("标准双人间","",""));
-		return null;
+		if(hotelID.equals("h00000001")){
+			List<RoominfoVO> list = new ArrayList<RoominfoVO>();
+			list.add(new RoominfoVO("标准双人间","8301",300,RoomState.Unusable));
+			list.add(new RoominfoVO("标准双人间","8302",300,RoomState.Usable));
+			list.add(new RoominfoVO("标准双人间","8303",300,RoomState.Usable));
+			return list;
+		}else{
+			return null;
+		}
 	}
 
 	@Override
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
-			List<MarketingStrategyVO> marketingStrategyList, OrderVO vo, double originalPrice) {
-		// TODO Auto-generated method stub
-		return 0;
+			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
+		return 270;
 	}
 
 	@Override
 	public boolean saveSitemanagerAdd(HotelinfoVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		if(vo.getHotelID().equals("h00000001")){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 }
