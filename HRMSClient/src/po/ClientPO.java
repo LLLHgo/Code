@@ -1,6 +1,8 @@
 package po;
 
-public class ClientPO {
+import java.io.Serializable;
+
+public class ClientPO implements Serializable{
 	//用户编号
 		private String client_id;
 	//用户密码
