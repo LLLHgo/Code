@@ -15,7 +15,6 @@ public class HotelinfoBLService_Stub implements Hotelinfoblservice{
 
 	@Override
 	public HotelinfoVO getBasicinfo(String hotelID) {
-		
 		return null;
 	}
 
