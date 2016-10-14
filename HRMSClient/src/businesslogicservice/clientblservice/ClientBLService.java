@@ -5,7 +5,10 @@ import java.sql.Date;
 import java.util.List;
 
 import po.OrderType;
+import po.ResultMessage;
 import vo.*;
+import vo.clientVO.ClientVO;
+import vo.orderVO.OrderVO;
 
 
 public interface ClientBLService {

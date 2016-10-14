@@ -3,7 +3,7 @@ package businesslogicservice.logblservice;
 import java.util.List;
 
 import po.ResultMessage;
-import vo.LogVO;
+import vo.logVO.LogVO;
 
 public interface LogBLService {
 	// 界面得到日志列表

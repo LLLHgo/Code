@@ -6,7 +6,7 @@ import vo.HotelStrategyVO;
 import vo.HotelinfoVO;
 import vo.HotelstaffBasicinfoVO;
 import vo.HotelstaffVO;
-import vo.ResultMessage;
+import po.ResultMessage;
 import vo.RoominfoVO;
 
 public interface HotelStaffBLservice {

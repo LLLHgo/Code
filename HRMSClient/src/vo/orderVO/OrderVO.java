@@ -1,4 +1,4 @@
-package vo;
+package vo.orderVO;
 
 public class OrderVO {
 

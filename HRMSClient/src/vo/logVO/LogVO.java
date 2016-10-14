@@ -1,4 +1,4 @@
-package vo;
+package vo.logVO;
 
 public class LogVO {
 

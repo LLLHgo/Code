@@ -6,6 +6,8 @@ import java.util.List;
 
 import po.ResultMessage;
 import vo.*;
+import vo.clientVO.ClientVO;
+import vo.orderVO.OrderVO;
 
 public interface MarketingBLService {
     //增加制定策略

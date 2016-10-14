@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import po.OrderType;
 import po.OrderPO;
-import vo.OrderVO;
+import vo.orderVO.OrderVO;
 
 public interface OrderBLService {
 	
