@@ -2,7 +2,8 @@ package po;
 
 import java.util.ArrayList;
 import java.util.Date;
-import po.OrderType;
+
+import Enum.OrderType;
 
 public class OrderPO {
 	private String orderId;

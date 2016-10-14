@@ -3,7 +3,7 @@ package businesslogicservice.marketingBLService;
 import java.sql.Date;
 import java.util.List;
 
-import po.ResultMessage;
+import Enum.ResultMessage;
 import vo.*;
 import vo.clientVO.ClientVO;
 import vo.orderVO.OrderVO;

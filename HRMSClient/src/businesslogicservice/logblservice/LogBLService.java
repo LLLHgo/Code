@@ -2,7 +2,7 @@ package businesslogicservice.logblservice;
 
 import java.util.List;
 
-import po.ResultMessage;
+import Enum.ResultMessage;
 import vo.logVO.LogVO;
 
 public interface LogBLService {

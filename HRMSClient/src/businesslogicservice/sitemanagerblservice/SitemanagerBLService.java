@@ -1,10 +1,10 @@
 package businesslogicservice.sitemanagerblservice;
 
-import po.ResultMessage;
 import vo.clientVO.ClientAccountVO;
 import vo.clientVO.ClientVO;
 import vo.sitemanager.SitemanagerVO;
 import vo.MarketingVO;
+import Enum.ResultMessage;
 import vo.HotelinfoVO;
 import vo.HotelstaffBasicinfoVO;
 

@@ -2,7 +2,8 @@ package businesslogicservice.orderblservice;
 
 import java.util.Date;
 import java.util.List;
-import po.OrderType;
+
+import Enum.OrderType;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
 

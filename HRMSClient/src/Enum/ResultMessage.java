@@ -1,4 +1,4 @@
-package po;
+package Enum;
 
 public enum ResultMessage {
     False,
