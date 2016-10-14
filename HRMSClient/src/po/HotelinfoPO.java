@@ -12,7 +12,6 @@ public class HotelinfoPO {
 	Star star;
 	String remark;
 	String introduction;
-	HotelStaff hotelStaff;
 	
 	public HotelinfoPO(){
 		
