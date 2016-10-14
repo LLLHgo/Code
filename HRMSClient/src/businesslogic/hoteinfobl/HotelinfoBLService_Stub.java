@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enum.ResultMessage;
+import Enum.RoomState;
 import Enum.Star;
 import businesslogicservice.hotelinfoblservice.Hotelinfoblservice;
 import vo.hotelinfoVO.ClientRequirementVO;
@@ -34,36 +35,60 @@ public class HotelinfoBLService_Stub implements Hotelinfoblservice{
 	//酒店ＩＤ
 	private String hotelID;
 	
-	public HotelinfoBLService_Stub(){
-		
+	public HotelinfoBLService_Stub(String name,String address,String area,
+			String tel,ArrayList<String> roomTypeandNum,Star star,ArrayList<String> remark,
+			String introduciton,String hotelID){
+		this.name = name;
+		this.address = address;
+		this.area = area;
+		this.tel = tel;
+		this.roomTypeandNum = roomTypeandNum;
+		this.star = star;
+		this.remark = remark;
+		this.introduction = introduciton;
+		this.hotelID = hotelID;
 	}
 	
 	@Override
 	public HotelinfoVO getBasicinfo(String hotelID) {
-		return null;
+		return new HotelinfoVO(name,address,area,tel,roomTypeandNum,star,remark,
+				introduction,hotelID);
 	}
 
 	@Override
 	public List<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo) {
-
-		return null;
+		//TODO
+		List<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
+		ArrayList<String> roomTypeandNum = new ArrayList<String>();
+		roomTypeandNum.add("标准双人间4");
+		roomTypeandNum.add("大床房4");
+		ArrayList<String> remark = new ArrayList<String>();
+		remark.add("萌萌哒");
+		remark.add("好评！");
+		list.add(new HotelinfoVO("蜜糖酒店","甜甜街10号","萌萌区",
+			"12345678",new ArrayList<String>(),Star.FIVE,new ArrayList<String>(),
+		"我也不知道简介是什么","0001"));
+		return list;
 	}
 
 	@Override
-	public ResultMessage updateBassicinfo(HotelinfoVO VO) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage updateBassicinfo(HotelinfoVO vo) {
+		if(vo.getHotelID()=="h00000001")
+			return ResultMessage.True;
+		else
+			return ResultMessage.False;
 	}
 
 	@Override
 	public RoominfoVO getRoominfo(String hotelID, String roomtype) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO
+		return new RoominfoVO(roomtype,"8301",300,RoomState.Usable);
 	}
 
 	@Override
 	public List<RoominfoVO> getRoominfoList(String hotelID) {
-		// TODO Auto-generated method stub
+		List<RoominfoVO> list = new ArrayList<RoominfoVO>();
+		list.add(new RoominfoVO("标准双人间","",""));
 		return null;
 	}
 

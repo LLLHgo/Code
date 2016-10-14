@@ -4,7 +4,7 @@ import Enum.RoomState;
 
 public class RoominfoVO {
 	String type;
-	String roomNum;
+	String roomID;
 	double price;
 	RoomState roomState;
 	
@@ -12,10 +12,10 @@ public class RoominfoVO {
 		
 	}
 	
-	public RoominfoVO(String type, String roomNum, double price, RoomState roomState) {
+	public RoominfoVO(String type, String roomID, double price, RoomState roomState) {
 		super();
 		this.type = type;
-		this.roomNum = roomNum;
+		this.roomID = roomID;
 		this.price = price;
 		this.roomState = roomState;
 	}
@@ -26,10 +26,10 @@ public class RoominfoVO {
 		this.type = type;
 	}
 	public String getRoomNum() {
-		return roomNum;
+		return roomID;
 	}
 	public void setRoomNum(String roomNum) {
-		this.roomNum = roomNum;
+		this.roomID = roomNum;
 	}
 	public double getPrice() {
 		return price;
