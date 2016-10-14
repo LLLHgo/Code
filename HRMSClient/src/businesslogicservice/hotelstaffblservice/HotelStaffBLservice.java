@@ -1,4 +1,4 @@
-package businesslogicservice;
+package businesslogicservice.hotelstaffblservice;
 
 import java.util.List;
 import vo.HotelOrderVO;
@@ -9,7 +9,7 @@ import vo.HotelstaffVO;
 import vo.ResultMessage;
 import vo.RoominfoVO;
 
-public interface HotelStaffblservice {
+public interface HotelStaffBLservice {
 	
 	public HotelstaffBasicinfoVO getBasicinfo(String hotelID);
 	public ResultMessage setPassword(String password);
