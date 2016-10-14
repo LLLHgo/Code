@@ -1,16 +1,24 @@
 package businesslogicservice.marketingBLService;
 
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.marketingStrategy;
-import vo.*;
-import vo.clientVO.ClientVO;
-import vo.orderVO.OrderVO;
+import javafx.scene.image.Image;
+import vo.hotelinfoVO.HotelinfoVO;
+import vo.levelVO.LevelVO;
 import vo.strategyVO.MarketingStrategyVO;
+import vo.strategyVO.PrivilegeVO;
 
 public class MarketingBLService_Stub implements MarketingBLService {
+	double discount;
+    ArrayList<HotelinfoVO> hotels;
+
+    public MarketingBLService_Stub(double discount){
+       this.discount=discount;
+	}
 
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
@@ -20,59 +28,33 @@ public class MarketingBLService_Stub implements MarketingBLService {
 			return ResultMessage.True;
 	}
 
+
 	@Override
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
-
-		return null;
+        marketingStrategy type=marketingStrategy.CRATEDE;
+        Date startTime=new Date();
+        Date endTime=new Date();
+        HotelinfoVO hotel=new HotelinfoVO();
+        hotels.add(hotel);
+        Image image=new Image(id);
+        String position="North";
+        MarketingStrategyVO vo=new MarketingStrategyVO(type,startTime,endTime,discount,hotels,image,position);
+        List<MarketingStrategyVO> msVO=new ArrayList<MarketingStrategyVO>();
+        msVO.add(vo);
+		return msVO;
 	}
 
 	@Override
 	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		if(vo.getDiscount()>=0.9)
+			return ResultMessage.False;
+		else
+			return ResultMessage.True;
 	}
 
-	@Override
-	public ResultMessage addLevel(LevelVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<LevelVO> findAllLevel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public ResultMessage deleteLevel(LevelVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public ResultMessage addPrivilege(PrivilegeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<PrivilegeVO> findAllPrivilege(String VIPType) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deletePrivilege(PrivilegeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<OrderVO> showAbnormal(Date date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public OrderVO findSpecificAbnormalOrder(String id) {
@@ -130,6 +112,12 @@ public class MarketingBLService_Stub implements MarketingBLService {
 
 	@Override
 	public MarketingVO init(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderVO> showAbnormal(java.sql.Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}

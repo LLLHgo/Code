@@ -1,12 +1,12 @@
 package vo.strategyVO;
 
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.*;
-import vo.*;
+import javafx.scene.image.Image;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.levelVO.LevelVO;
 
 public class MarketingStrategyVO {
 	//网站营销人员制定的策略的种类，有enum：marketingStrategy{DOUBLE11,VIPSPECIAL,CRATEDE;}

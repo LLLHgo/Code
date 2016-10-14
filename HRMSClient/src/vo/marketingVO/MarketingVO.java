@@ -1,4 +1,4 @@
-package vo;
+package vo.marketingVO;
 
 public class MarketingVO {
 
