@@ -52,6 +52,7 @@ public class ClientVO {
 				public int getLevel(){
 					return vip_level;
 				}
+	
 				public String getFirm(){
 					return client_firm;
 				}
