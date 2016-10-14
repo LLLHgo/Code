@@ -1,16 +1,18 @@
-package businesslogicservice;
+package businesslogicservice.marketingBLService;
+
 
 import java.sql.Date;
 import java.util.List;
 
 import po.ResultMessage;
+import vo.*;
 
 public interface MarketingBLService {
     //增加制定策略
 	public ResultMessage addMarketingStrategy(marketingStrategyVO  vo);
 	//
-	public List<StrategyVO> getMarketingStrategy(String id);
-	public ResultMessage deleteStrategy(StrategyVO vo);
+	public List<marketingStrategyVO> getMarketingStrategy(String id);
+	public ResultMessage deleteMarketingStrategy(marketingStrategyVO vo);
 	public ResultMessage addLevel(LevelVO vo);
     public List<LevelVO> findAllLevel();
     public ResultMessage deleteLevel(LevelVO vo);
