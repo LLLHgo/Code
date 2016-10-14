@@ -8,14 +8,15 @@ import po.ResultMessage;
 import vo.*;
 import vo.clientVO.ClientVO;
 import vo.orderVO.OrderVO;
+import vo.strategyVO.MarketingStrategyVO;
 
 public interface MarketingBLService {
     //增加制定策略
-	public ResultMessage addMarketingStrategy(marketingStrategyVO  vo);
+	public ResultMessage addMarketingStrategy(MarketingStrategyVO  vo);
 	//返回网站营销人员策略
-	public List<marketingStrategyVO> getMarketingStrategy(String id);
+	public List<MarketingStrategyVO> getMarketingStrategy(String id);
 	//删除网站营销人员策略
-	public ResultMessage deleteMarketingStrategy(marketingStrategyVO vo);
+	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo);
 	//增加等级信息
 	public ResultMessage addLevel(LevelVO vo);
 	//返回所有等级信息

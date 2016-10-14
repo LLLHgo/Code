@@ -5,23 +5,26 @@ import java.util.List;
 
 import po.ResultMessage;
 import vo.*;
+import vo.clientVO.ClientVO;
+import vo.orderVO.OrderVO;
+import vo.strategyVO.MarketingStrategyVO;
 
 public class MarketingBLService_Stub implements MarketingBLService {
 
 	@Override
-	public ResultMessage addMarketingStrategy(marketingStrategyVO vo) {
+	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<marketingStrategyVO> getMarketingStrategy(String id) {
+	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage deleteMarketingStrategy(marketingStrategyVO vo) {
+	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -127,5 +130,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
