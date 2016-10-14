@@ -1,4 +1,4 @@
-package src.po;
+package po;
 
 import java.io.File;
 import java.io.Serializable;
