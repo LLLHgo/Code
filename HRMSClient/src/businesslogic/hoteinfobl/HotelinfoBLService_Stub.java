@@ -13,6 +13,10 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelinfoBLService_Stub implements Hotelinfoblservice{
 
+	public HotelinfoBLService_Stub(){
+		
+	}
+	
 	@Override
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		return null;
