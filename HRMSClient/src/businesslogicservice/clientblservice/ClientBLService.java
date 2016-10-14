@@ -8,6 +8,7 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import vo.*;
 import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.HotelinfoVO;
 import vo.orderVO.OrderVO;
 
 

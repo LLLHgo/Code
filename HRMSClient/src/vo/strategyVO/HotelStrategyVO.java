@@ -1,4 +1,4 @@
-package vo;
+package vo.strategyVO;
 
 public class HotelStrategyVO {
 

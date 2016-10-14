@@ -6,6 +6,7 @@ import java.util.Date;
 
 import Enum.*;
 import vo.*;
+import vo.hotelinfoVO.HotelinfoVO;
 
 public class MarketingStrategyVO {
     private marketingStrategy type;

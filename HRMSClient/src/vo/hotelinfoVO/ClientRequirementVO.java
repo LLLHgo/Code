@@ -1,4 +1,4 @@
-package vo;
+package vo.hotelinfoVO;
 
 public class ClientRequirementVO {
 

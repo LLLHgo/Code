@@ -2,11 +2,11 @@ package businesslogicservice.sitemanagerblservice;
 
 import vo.clientVO.ClientAccountVO;
 import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.sitemanager.SitemanagerVO;
 import vo.MarketingVO;
 import Enum.ResultMessage;
-import vo.HotelinfoVO;
-import vo.HotelstaffBasicinfoVO;
 
 public interface SitemanagerBLService {
 	// 修改客户账户

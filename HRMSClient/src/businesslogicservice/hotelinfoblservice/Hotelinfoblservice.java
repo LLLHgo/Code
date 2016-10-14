@@ -3,11 +3,11 @@ package businesslogicservice.hotelinfoblservice;
 import java.util.List;
 
 import Enum.ResultMessage;
-import vo.ClientRequirementVO;
-import vo.HotelinfoVO;
-import vo.RoominfoVO;
-import vo.StrategyVO;
+import vo.hotelinfoVO.ClientRequirementVO;
+import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
+import vo.strategyVO.StrategyVO;
 
 public interface Hotelinfoblservice {
 	/**
