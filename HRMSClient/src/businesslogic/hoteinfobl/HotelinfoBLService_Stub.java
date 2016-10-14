@@ -12,7 +12,9 @@ import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelinfoBLService_Stub implements Hotelinfoblservice{
-
+	
+	
+	
 	public HotelinfoBLService_Stub(){
 		
 	}
