@@ -5,35 +5,16 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
-import Enum.VIPType;
 import businesslogicservice.orderblservice.OrderBLService;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
 
 public class OrderBLService_Stub implements OrderBLService{
-	    // 订单号
-	    private String orderId;
-	    // 客户帐号
-	    private String clientId;
-	    // 客户名字
-		private String clientName;
-		// 客户手机号
-		private String clientPhone;
-		// 客户vip类型
-		private VIPType vipType;
-		// 订单下达时间
-		private Date orderDate;
-		// 订单类型
-		private OrderType orderType;
-		// 订单中酒店名称
-		private String hotelName;
-		// 订单价格
-		private double price;
-		// 订单享受的优惠策略
-		private ArrayList <String> strategies;
-	public OrderBLService_Stub(){
-		
-		
+	    
+	OrderVO orderVO;
+	
+	public OrderBLService_Stub(OrderVO orderVO){
+		this.orderVO=orderVO;
 	}
 	/**
 	 * 下订单
@@ -74,7 +55,7 @@ public class OrderBLService_Stub implements OrderBLService{
 	@Override
 	public OrderVO findSpecificOrderList(String orderID) {
 		// TODO Auto-generated method stub
-		return new OrderVO(orderId,clientId,clientName,clientPhone,vipType,orderDate,orderType,hotelName,price,strategies);
+		return orderVO;
 	}
 	/**
 	 * 查找某种用户(客户或酒店)的所有订单
@@ -96,34 +77,61 @@ public class OrderBLService_Stub implements OrderBLService{
 	@Override
 	public List<OrderVO> findSpecificDayClientOrder(String clientId, Date date) {
 		// TODO Auto-generated method stub
-		List<OrderVO> findSpecificDayClientOrderList=new ArrayList<OrderVO>();
-		return findSpecificDayClientOrderList;
+		List<OrderVO> SpecificDayClientOrderList=new ArrayList<OrderVO>();
+		return SpecificDayClientOrderList;
 	}
-
+	/**
+	 * 查找用户客户在某个酒店的所有订单
+	 * @param clientId
+	 * @param hoteIId
+	 * @return 客户在某个酒店的所有订单列表
+	 */
 	@Override
-	public OrderVO findSpecificHotelClientOrder(String clientId, String hoteIId) {
+	public List<OrderVO> findSpecificHotelClientOrder(String clientId, String hoteIId) {
 		// TODO Auto-generated method stub
-		return null;
+		List<OrderVO> SpecificHotelClientOrderList=new ArrayList<OrderVO>();
+		return SpecificHotelClientOrderList;
 	}
-
+	/**
+	 * 查找客户某个种类（正常未执行、正常已执行、取消、异常）的订单
+	 * @param type
+	 * @param clientId
+	 * @return 客户某个种类（正常未执行、正常已执行、取消、异常）的订单列表
+	 */
 	@Override
 	public List<OrderVO> findClientTypeOrder(OrderType type, String clientId) {
 		// TODO Auto-generated method stub
-		return null;
+		List<OrderVO> ClientTypeOrder=new ArrayList<OrderVO>();
+		return  ClientTypeOrder;
 	}
-
+	/**
+	 * 查找酒店的某个具体订单
+	 * @param hotelId
+	 * @param orderId
+	 * @return 酒店的某个具体订单
+	 */
 	@Override
 	public OrderVO findSpecificHotelOrder(String hotelId, String orderId) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderVO;
 	}
-
+	/**
+	 * 查找具体某天的异常订单
+	 * @param date
+	 * @return 具体某天的所有订单列表
+	 */
 	@Override
 	public List<OrderVO> findAbnormalOrderList(Date date) {
 		// TODO Auto-generated method stub
-		return null;
+		List<OrderVO> findAbnormalOrder=new ArrayList<OrderVO>();
+		return  findAbnormalOrder;
 	}
-
+	/**
+	 * 检查时间，判断是否将订单置为异常
+	 * @param order
+	 * @param date
+	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
+	 */
 	@Override
 	public boolean checkTime(OrderPO order, Date date) {
 		// TODO Auto-generated method stub

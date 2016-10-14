@@ -9,7 +9,10 @@ import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
 public interface MarketingBLService {
     //增加制定策略
