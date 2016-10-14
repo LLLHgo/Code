@@ -18,10 +18,12 @@ public class HotelstaffVO {
 		
 	}
 	
-	public HotelstaffVO(String hotelID,String password){
+	public HotelstaffVO(String hotelID,String password,String tel){
 		this.hotelID = hotelID;
 		this.password = password;
+		this.tel=tel;
 	}
+	
 
 	public String getHotelID() {
 		return hotelID;

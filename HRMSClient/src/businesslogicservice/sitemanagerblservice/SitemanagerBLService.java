@@ -1,9 +1,9 @@
 package businesslogicservice.sitemanagerblservice;
 
 import vo.clientVO.ClientAccountVO;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
+import vo.hotelstaffVO.HotelstaffVO;
 import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
 
@@ -70,8 +70,8 @@ public interface SitemanagerBLService {
 	 * @param hotelId
 	 * @return 酒店工作人员账户
 	 */
-	public HotelstaffBasicinfoVO HotelStaffAccountFind(String hotelId);
-	
+	public  HotelstaffVO HotelStaffAccountFind(String hotelId);
+		
 	/**
 	 * 修改酒店工作人员账户
 	 * @param hotelId

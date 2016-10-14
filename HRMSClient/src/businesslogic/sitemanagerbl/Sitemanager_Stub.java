@@ -3,16 +3,16 @@ package businesslogic.sitemanagerbl;
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import vo.clientVO.ClientAccountVO;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
+import vo.hotelstaffVO.HotelstaffVO;
 import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
+import Enum.VIPType;
 
 public class Sitemanager_Stub implements SitemanagerBLService{
-	ClientVO clientVO;
-	public Sitemanager_Stub(ClientVO clientVO){
-		this.clientVO=clientVO;
+	MarketingVO marketingVO;
+	public Sitemanager_Stub(MarketingVO marketingVO){
+		this.marketingVO=marketingVO;
 	}
 	/**
 	 * 修改客户账户
@@ -42,7 +42,7 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	@Override
 	public ClientAccountVO clientAccountFind(String findInfo) {
 		// TODO Auto-generated method stub
-		return new ClientAccountVO();
+		return new ClientAccountVO("C00000009","Kerry","17999982876",VIPType.ENTERPRISEVIP,2,null,"SAP");
 	}
 	/**
 	 * 添加网站营销人员
@@ -52,7 +52,7 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.False;
 	}
 	/**
 	 * 修改网站营销人员账户
@@ -62,7 +62,7 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountUpdate(String marketingId) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.False;
 	}
 	/**
 	 * 删除网站营销人员账户
@@ -72,7 +72,7 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountDelete(String marketingId) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.False;
 	}
 	/**
 	 * 管理界面得到网站营销人员账户信息
@@ -82,7 +82,7 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	@Override
 	public MarketingVO MarketingAccountFind(String findInfo) {
 		// TODO Auto-generated method stub
-		return null;
+		return new MarketingVO("Lily","m123456","M000000011","17719239008");
 	}
 	/**
 	 * 添加酒店
@@ -92,7 +92,7 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountAdd(HotelinfoVO hotelinfo) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.False;
 	}
 	/**
 	 * 管理界面得到酒店工作人员账户信息
@@ -100,9 +100,9 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	 * @return 酒店工作人员账户
 	 */
 	@Override
-	public HotelstaffBasicinfoVO HotelStaffAccountFind(String hotelId) {
+	public HotelstaffVO HotelStaffAccountFind(String hotelId) {
 		// TODO Auto-generated method stub
-		return null;
+		return new HotelstaffVO("H00000010","123456","025-12345678");
 	}
 	/**
 	 * 修改酒店工作人员账户
@@ -112,7 +112,7 @@ public class Sitemanager_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage HotelStaffAccountUpdate(String hotelId) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.False;
 	}
 
 	/**

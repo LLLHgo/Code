@@ -1,19 +1,19 @@
 package po;
 
 public class SitemanagerPO {
-	// 网站
+	// 网站管理人员帐号
 	private String sitemanagerId;
-	//
-	private String sitemanagerPhoneNumber;
-	//
+	// 网站管理人员手机号
+	private String servicePhoneNumber;
+	// 网站管理人员密码
 	private String password;
 
 	public SitemanagerPO(){
 		
 	}
-	public SitemanagerPO(String sitemanagerId,String sitemanagerPhoneNumber,String password){
+	public SitemanagerPO(String sitemanagerId,String servicePhoneNumber,String password){
 		this.sitemanagerId=sitemanagerId;
-		this.sitemanagerPhoneNumber=sitemanagerPhoneNumber;
+		this.servicePhoneNumber=servicePhoneNumber;
 		this.password=password;
 	}
 	public String getSitemanagerId() {
@@ -23,10 +23,10 @@ public class SitemanagerPO {
 		this.sitemanagerId = sitemanagerId;
 	}
 	public String getSitemanagerPhoneNumber() {
-		return sitemanagerPhoneNumber;
+		return servicePhoneNumber;
 	}
 	public void setSitemanagerPhoneNumber(String sitemanagerPhoneNumber) {
-		this.sitemanagerPhoneNumber = sitemanagerPhoneNumber;
+		this.servicePhoneNumber = sitemanagerPhoneNumber;
 	}
 	public String getPassword() {
 		return password;

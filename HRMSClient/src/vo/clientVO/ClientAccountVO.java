@@ -1,5 +1,7 @@
 package vo.clientVO;
 
+import java.util.Date;
+
 import Enum.VIPType;
 
 public class ClientAccountVO {
@@ -14,14 +16,14 @@ public class ClientAccountVO {
 	//用户会员等级
 	private int vip_level;
 	//用户生日
-	private String client_birth;
+	private Date client_birth;
 	//用户所属企业
 	private String client_firm;
 
 	public ClientAccountVO(){
 	}
 	public ClientAccountVO(String client_id,String client_name,String client_tel,
-			VIPType vip_type,int vip_level,String client_birth,String client_firm){
+			VIPType vip_type,int vip_level,Date client_birth,String client_firm){
 		this.client_id=client_id;
 		this.client_name=client_name;
 		this.client_tel=client_tel;
@@ -61,10 +63,10 @@ public class ClientAccountVO {
 	public void setVip_level(int vip_level) {
 		this.vip_level = vip_level;
 	}
-	public String getClient_birth() {
+	public Date getClient_birth() {
 		return client_birth;
 	}
-	public void setClient_birth(String client_birth) {
+	public void setClient_birth(Date client_birth) {
 		this.client_birth = client_birth;
 	}
 	public String getClient_firm() {
