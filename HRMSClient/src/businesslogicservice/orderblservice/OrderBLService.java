@@ -52,7 +52,7 @@ public interface OrderBLService {
 	 * @param hoteIId
 	 * @return 客户在某个酒店的所有订单列表
 	 */
-	public  OrderVO findSpecificHotelClientOrder (String clientId, String hoteIId);
+	public  List<OrderVO> findSpecificHotelClientOrder (String clientId, String hoteIId);
 	/**
 	 * 查找客户某个种类（正常未执行、正常已执行、取消、异常）的订单
 	 * @param type
