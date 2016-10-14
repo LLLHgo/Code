@@ -43,9 +43,9 @@ public interface ClientDataService {
 	 * 查找客户账户
 	 * @param client_id
 	 * @param password
-	 * @return 客户PO
+	 * @return 账户是否存在
 	 */
-	public ClientPO checkAccount(String client_id,String password);
+	public boolean checkAccount(String client_id,String password);
 	/**
 	 * 设置所有客户会员等级
 	 * @param po
