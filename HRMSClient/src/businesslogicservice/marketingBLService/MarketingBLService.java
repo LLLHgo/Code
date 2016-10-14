@@ -7,8 +7,11 @@ import java.util.List;
 import Enum.ResultMessage;
 import vo.*;
 import vo.clientVO.ClientVO;
+import vo.levelVO.LevelVO;
+import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.MarketingStrategyVO;
+import vo.strategyVO.PrivilegeVO;
 
 public interface MarketingBLService {
     //增加制定策略

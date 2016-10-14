@@ -96,20 +96,27 @@ public class OrderBLService_Stub implements OrderBLService{
 	@Override
 	public List<OrderVO> findSpecificDayClientOrder(String clientId, Date date) {
 		// TODO Auto-generated method stub
-		List<OrderVO> findSpecificDayClientOrderList=new ArrayList<OrderVO>();
-		return findSpecificDayClientOrderList;
+		List<OrderVO> SpecificDayClientOrderList=new ArrayList<OrderVO>();
+		return SpecificDayClientOrderList;
 	}
-
+	/**
+	 * 查找用户客户在某个酒店的所有订单
+	 * @param clientId
+	 * @param hoteIId
+	 * @return 客户在某个酒店的所有订单列表
+	 */
 	@Override
 	public OrderVO findSpecificHotelClientOrder(String clientId, String hoteIId) {
 		// TODO Auto-generated method stub
-		return null;
+		List<OrderVO> SpecificHotelClientOrderList=new ArrayList<OrderVO>();
+		return (OrderVO) SpecificHotelClientOrderList;
 	}
 
 	@Override
 	public List<OrderVO> findClientTypeOrder(OrderType type, String clientId) {
 		// TODO Auto-generated method stub
-		return null;
+		List<OrderVO> ClientTypeOrder=new ArrayList<OrderVO>();
+		return (List<OrderVO>) ClientTypeOrder;
 	}
 
 	@Override

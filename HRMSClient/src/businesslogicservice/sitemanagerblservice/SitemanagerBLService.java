@@ -4,8 +4,9 @@ import vo.clientVO.ClientAccountVO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
+import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
-import vo.MarketingVO;
+
 import Enum.ResultMessage;
 
 public interface SitemanagerBLService {
