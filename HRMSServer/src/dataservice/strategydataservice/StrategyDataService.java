@@ -3,6 +3,7 @@ package dataservice.strategydataservice;
 import java.util.List;
 
 import Enum.VIPType;
+import po.MarketingStrategyPO;
 import po.PrivilegePO;
 
 public interface StrategyDataService {
@@ -27,5 +28,5 @@ public interface StrategyDataService {
      */
     public boolean deletePrivilege(PrivilegePO po);
 
-    public boolean addStrategy(StrategyPO po);
+    public boolean addMarketingStrategy(MarketingStrategyPO po);
 }
