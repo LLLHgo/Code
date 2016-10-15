@@ -1,4 +1,4 @@
-package businesslogicservice.marketingBLService;
+package businesslogicservice.marketingblservice;
 
 import java.util.Date;
 import java.util.List;
