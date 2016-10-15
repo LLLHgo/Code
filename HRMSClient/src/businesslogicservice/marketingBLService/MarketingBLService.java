@@ -3,6 +3,7 @@ package businesslogicservice.marketingBLService;
 import java.util.Date;
 import java.util.List;
 import Enum.ResultMessage;
+import Enum.VIPType;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
@@ -26,7 +27,7 @@ public interface MarketingBLService {
     //增加会员福利
     public ResultMessage addPrivilege(PrivilegeVO vo);
     //返回所有会员福利信息
-    public List<PrivilegeVO> findAllPrivilege(String VIPType);
+    public List<PrivilegeVO> findAllPrivilege(VIPType vipType);
     //删除会员福利信息
     public ResultMessage deletePrivilege(PrivilegeVO vo);
     //界面显示当日未执行订单
