@@ -35,6 +35,14 @@ public class MarketingStrategyVO {
     private ArrayList<VIPType> vipKinds;
 
     /**
+     * 空的构造函数
+     *
+     */
+    public MarketingStrategyVO(){
+
+    }
+
+    /**
      * 营销人员制定双十一促销策略
      *
      * @param type  网站营销人员制定的策略的种类，这里为DOUBLE11

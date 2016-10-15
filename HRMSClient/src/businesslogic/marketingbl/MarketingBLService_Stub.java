@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import Enum.ResultMessage;
+import Enum.VIPType;
 import Enum.marketingStrategy;
 import businesslogicservice.marketingBLService.MarketingBLService;
 import javafx.scene.image.Image;
@@ -115,13 +116,6 @@ import vo.strategyVO.PrivilegeVO;
 		}
 
 		@Override
-		public List<PrivilegeVO> findAllPrivilege(String VIPType) {
-			List<PrivilegeVO> privileges=new ArrayList<PrivilegeVO>();
-			privileges.add(new PrivilegeVO());
-			return privileges;
-		}
-
-		@Override
 		public ResultMessage deletePrivilege(PrivilegeVO vo) {
 			if(vo.getDiscount()>0.8)
 				return ResultMessage.FAIL;
@@ -181,6 +175,13 @@ import vo.strategyVO.PrivilegeVO;
 			OrderVO order=new OrderVO();
 			orders.add(order);
 			return orders;
+		}
+
+		@Override
+		public List<PrivilegeVO> findAllPrivilege(VIPType vipType) {
+			List<PrivilegeVO> privileges=new ArrayList<PrivilegeVO>();
+			privileges.add(new PrivilegeVO());
+			return privileges;
 		}
 
 }

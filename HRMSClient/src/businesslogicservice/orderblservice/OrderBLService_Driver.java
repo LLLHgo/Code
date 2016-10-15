@@ -52,7 +52,7 @@ public class OrderBLService_Driver {
 		/*System.out.println(orderVO.getClientId()+" "+orderVO.getClientName()+" "
 		            +orderVO.getHotelName()+" "+orderVO.getPrice()+orderVO.getOrderDate());
 		*/
-		System.out.print("这里有聪明人才能看到的订单号为20160929170503的订单信息");
+		System.out.print("这里是订单号为20160929170503的订单信息");
 				
 		// 查找某种用户(客户或酒店)的所有订单
 		System.out.println("查找Lily的所有订单：");
@@ -63,7 +63,7 @@ public class OrderBLService_Driver {
 		System.out.println(((OrderVO) it).getClientId()+" "+((OrderVO) it).getClientName()+" "
 	           +((OrderVO) it).getHotelName()+" "+((OrderVO) it).getPrice()+((OrderVO) it).getOrderDate());
 		}*/
-		System.out.println("这里有聪明人才能看到的Lily的所有订单");
+		System.out.println("这里是Lily的所有订单");
 		
 		// 查找客户某天的订单
 		System.out.println("查找Alina在2016年10月14日的订单：");
@@ -74,7 +74,7 @@ public class OrderBLService_Driver {
 		System.out.println(((OrderVO) it).getClientId()+" "+((OrderVO) it).getClientName()+" "
 	           +((OrderVO) it).getHotelName()+" "+((OrderVO) it).getPrice()+((OrderVO) it).getOrderDate());
 		}*/
-		System.out.println("这里有聪明人才能看到的Alina在2016年10月14日的订单");
+		System.out.println("这里是Alina在2016年10月14日的订单");
 		
 		// 查找用户客户在某个酒店的所有订单
 		System.out.println("查找Nancy在LLLH酒店的所有订单：");
@@ -85,7 +85,7 @@ public class OrderBLService_Driver {
 		System.out.println(((OrderVO) it).getClientId()+" "+((OrderVO) it).getClientName()+" "
 	           +((OrderVO) it).getHotelName()+" "+((OrderVO) it).getPrice()+((OrderVO) it).getOrderDate());
 		}*/
-		System.out.println("这里有聪明人才能看到的Nancy在LLLH酒店的所有订单");
+		System.out.println("这里是Nancy在LLLH酒店的所有订单");
 		
 		// 查找客户某个种类（正常未执行、正常已执行、取消、异常）的订单
 		System.out.println("查找Nancy的正常未执行订单：");
@@ -96,7 +96,7 @@ public class OrderBLService_Driver {
 		System.out.println(((OrderVO) it).getClientId()+" "+((OrderVO) it).getClientName()+" "
 	           +((OrderVO) it).getHotelName()+" "+((OrderVO) it).getPrice()+((OrderVO) it).getOrderDate());
 		}*/
-		System.out.println("这里有聪明人才能看到的Nancy的正常未执行订单");
+		System.out.println("这里是Nancy的正常未执行订单");
 		
 		//查找酒店的某个具体订单
 		System.out.println("查找LLLH酒店的订单号为20160910090908的订单：");
@@ -105,7 +105,7 @@ public class OrderBLService_Driver {
 		/*System.out.println(orderVO.getClientId()+" "+orderVO.getClientName()+" "
         +orderVO.getHotelName()+" "+orderVO.getPrice()+orderVO.getOrderDate());
         */	
-		System.out.println("这里有聪明人才能看到的LLLH酒店的订单号为20160910090908的订单");
+		System.out.println("这里是LLLH酒店的订单号为20160910090908的订单");
 		
 		//查找具体某天的异常订单
 		System.out.println("查找2016年9月15日的异常订单：");
@@ -116,7 +116,7 @@ public class OrderBLService_Driver {
 		System.out.println(((OrderVO) it).getClientId()+" "+((OrderVO) it).getClientName()+" "
 	           +((OrderVO) it).getHotelName()+" "+((OrderVO) it).getPrice()+((OrderVO) it).getOrderDate());
 		}*/
-		System.out.println("这里有聪明人才能看到的2016年9月15日的异常订单");
+		System.out.println("这里是2016年9月15日的异常订单");
 		
 		//检查时间，判断是否将订单置为异常
 		System.out.println("晚上12点了，判断订单是否要变更为异常状态");
@@ -125,20 +125,6 @@ public class OrderBLService_Driver {
 		if(resultBoolean==true)
 			System.out.print("置为异常");
 		else
-			System.out.print("不变更为异常状态");
-		
-				
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-			
+			System.out.print("不变更为异常状态");		
 	}
 }

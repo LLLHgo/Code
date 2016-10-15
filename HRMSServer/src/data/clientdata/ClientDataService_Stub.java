@@ -52,9 +52,9 @@ public class ClientDataService_Stub implements ClientDataService{
 	 */
 	public ResultMessage modifyPersonalInfo (String clientID,ClientPO po){
 		if(clientID!=null)
-			return ResultMessage.True;
+			return ResultMessage.SUCCESS;
 		else
-			return ResultMessage.False;
+			return ResultMessage.FAIL;
 	}
 	/**
 	 * 查找客户账户

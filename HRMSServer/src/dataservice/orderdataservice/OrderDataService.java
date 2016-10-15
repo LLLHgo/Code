@@ -3,6 +3,7 @@ package dataservice.orderdataservice;
 import java.util.Date;
 import java.util.List;
 
+import Enum.OrderType;
 import Enum.UserType;
 import po.OrderPO;
 
@@ -32,12 +33,12 @@ public interface OrderDataService {
 	 * 查找某用户的具体订单
 	 * @param userType
 	 * @param orderId
-	 * @return
+	 * @return OrderPO
 	 */
-	public OrderPO findSpecificClientOrder(UserType userType, String orderId);
+	public OrderPO findSpecificUserOrder(UserType userType, String orderId);
 	
 	/**
-	 * 查找某客户的所有订单
+	 * 查找某用户的所有订单
 	 * @param userId
 	 * @return
 	 */
@@ -48,7 +49,7 @@ public interface OrderDataService {
 	 * @param clientId
 	 * @return 订单列表
 	 */
-	public List<OrderPO> findClientTypeOrder (String clientId);
+	public List<OrderPO> findClientTypeOrder (OrderType orderType,String clientId);
 	
 	/**
 	 * 查找数据库中某天的异常订单
@@ -62,5 +63,4 @@ public interface OrderDataService {
 	 * @param orderId
 	 */
 	public void checkTime (String orderId);
-	
 }

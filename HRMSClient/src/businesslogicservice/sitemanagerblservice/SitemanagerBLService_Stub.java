@@ -1,8 +1,10 @@
 package businesslogicservice.sitemanagerblservice;
 
+import java.io.File;
+
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
-import vo.clientVO.ClientAccountVO;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.marketingVO.MarketingVO;
@@ -20,7 +22,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 修改客户账户成功或失败的ResultMessage的enum值
 	 */
 	@Override
-	public ResultMessage clientAccountUpdate(ClientAccountVO clientVO) {
+	public ResultMessage clientAccountUpdate(ClientVO clientVO) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -40,9 +42,9 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
      * @return 该客户账户
      */
 	@Override
-	public ClientAccountVO clientAccountFind(String clientId) {
+	public ClientVO clientAccountFind(String clientId) {
 		// TODO Auto-generated method stub
-		return new ClientAccountVO("C00000009","Kerry","17999982876",VIPType.ENTERPRISEVIP,2,null,"SAP","0q00001");
+		return new ClientVO("C00000009","000","Kerry","17999982876",VIPType.ENTERPRISEVIP,2,null,"SAP",new File("C00000009"));
 	}
 	/**
 	 * 添加网站营销人员
@@ -60,7 +62,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 修改网站营销人员账户成功或失败的ResultMessage的enum值
 	 */
 	@Override
-	public ResultMessage MarketingAccountUpdate(String marketingId) {
+	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -100,7 +102,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 修改网站营销人员账户成功或失败的ResultMessage的enum值
 	 */
 	@Override
-	public ResultMessage HotelStaffAccountUpdate(String hotelId) {
+	public ResultMessage HotelStaffAccountUpdate(HotelstaffVO hotelstaffVO) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -111,9 +113,9 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 登录帐号或密码正确（true）或错误（false）的布尔值
 	 */
 	@Override
-	public boolean checkAccount(SitemanagerVO account) {
+	public ResultMessage checkAccount(SitemanagerVO account) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 	
 }
