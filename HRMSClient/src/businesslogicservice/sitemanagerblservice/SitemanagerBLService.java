@@ -1,8 +1,7 @@
 package businesslogicservice.sitemanagerblservice;
 
-import vo.clientVO.ClientAccountVO;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
@@ -15,7 +14,7 @@ public interface SitemanagerBLService {
 	 * @param clientId
 	 * @return 修改客户账户成功或失败的ResultMessage的enum值
 	 */
-	public ResultMessage clientAccountUpdate (ClientAccountVO clientId);
+	public ResultMessage clientAccountUpdate (ClientVO clientVO);
 	
 	/**
 	 * 删除账户
@@ -29,7 +28,7 @@ public interface SitemanagerBLService {
      * @param findInfo
      * @return 该客户账户
      */
-	public ClientAccountVO clientAccountFind (String userId);
+	public ClientVO clientAccountFind (String userId);
 	
 	/**
 	 * 添加网站营销人员

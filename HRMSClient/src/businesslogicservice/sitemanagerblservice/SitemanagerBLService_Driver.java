@@ -1,12 +1,13 @@
 package businesslogicservice.sitemanagerblservice;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.ResultMessage;
 import Enum.Star;
 import Enum.VIPType;
-import vo.clientVO.ClientAccountVO;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.marketingVO.MarketingVO;
@@ -16,7 +17,7 @@ public class SitemanagerBLService_Driver {
 	public void drive(SitemanagerBLService sitemanagerBLService){
 		ResultMessage result;
 		//Date date;
-		ClientAccountVO clientAccountVO = null;
+		ClientVO clientAccountVO = null;
 		MarketingVO marketingAccountVO=null;
 		HotelinfoVO hotelInfoVO=null;
 		HotelstaffVO hotelstaffVO=null;
@@ -24,8 +25,7 @@ public class SitemanagerBLService_Driver {
 		
 		// 修改客户账户
 		System.out.println("修改客户账户:");
-		result=sitemanagerBLService.clientAccountUpdate(new ClientAccountVO("C00000008","Ken","13777879889",
-				VIPType.ORDINARYVIP,2,new Date(),null,"01234"));
+		result=sitemanagerBLService.clientAccountUpdate(new ClientVO("C00000009","000","Kerry","17999982876",VIPType.ENTERPRISEVIP,2,null,"SAP",new File("C00000009")));
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("修改成功");
 		}

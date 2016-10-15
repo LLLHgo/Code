@@ -1,5 +1,7 @@
 package dataservice.logdataservice;
 
+import java.util.List;
+
 import po.LogPO;
 
 public interface LogDataService {
@@ -8,7 +10,7 @@ public interface LogDataService {
 	 * 从数据库中得到所有日志
 	 * @return 日志PO
 	 */
-	public LogPO getLogList();
+	public List<LogPO> getLogList();
 	/**
 	 * 在数据库中增加一条日志记录
 	 * @param logPo
