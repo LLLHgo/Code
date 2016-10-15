@@ -120,9 +120,9 @@ public class ClientBLService_Stub implements ClientBLService {
 	 */
 	public  ResultMessage updateInfo(ClientVO vo){
 		if(vo!=null)
-			return ResultMessage.True;
+			return ResultMessage.SUCCESS;
 		else
-			return ResultMessage.False;
+			return ResultMessage.FAIL;
 	}
 	/**
 	 *撤销订单 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
+import Enum.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
@@ -22,9 +23,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 创建订单成功（true）或是失败（false）的布尔值
 	 */
 	@Override
-	public boolean createOrder(OrderVO orderInfo) {
+	public ResultMessage createOrder(OrderVO orderInfo) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 	
 	/**
@@ -33,9 +34,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 保存订单成功（true）或失败（false）的布尔值
 	 */
 	@Override
-	public boolean saveOrder(OrderVO order) {
+	public ResultMessage saveOrder(OrderVO order) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 	/**
 	 * 取消订单
@@ -43,9 +44,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 置订单于取消状态成功（true）或失败（false）的布尔值
 	 */
 	@Override
-	public boolean cancelOrder(String orderId) {
+	public ResultMessage cancelOrder(String orderId) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 	/**
 	 * 查找具体订单

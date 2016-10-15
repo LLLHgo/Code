@@ -22,7 +22,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage clientAccountUpdate(ClientAccountVO clientId) {
 		// TODO Auto-generated method stub
-		return ResultMessage.False;
+		return ResultMessage.FAIL;
 	}
 	/**
 	 * 删除客户账户
@@ -32,7 +32,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage clientAccountDelete(String clientId) {
 		// TODO Auto-generated method stub
-		return ResultMessage.False;
+		return ResultMessage.FAIL;
 	}
 	/**
      * 管理界面得到客户账户信息
@@ -52,7 +52,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
 		// TODO Auto-generated method stub
-		return ResultMessage.False;
+		return ResultMessage.FAIL;
 	}
 	/**
 	 * 修改网站营销人员账户
@@ -62,7 +62,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountUpdate(String marketingId) {
 		// TODO Auto-generated method stub
-		return ResultMessage.False;
+		return ResultMessage.FAIL;
 	}
 	/**
 	 * 删除网站营销人员账户
@@ -72,7 +72,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountDelete(String marketingId) {
 		// TODO Auto-generated method stub
-		return ResultMessage.False;
+		return ResultMessage.FAIL;
 	}
 	/**
 	 * 管理界面得到网站营销人员账户信息
@@ -92,7 +92,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage MarketingAccountAdd(HotelinfoVO hotelinfo) {
 		// TODO Auto-generated method stub
-		return ResultMessage.False;
+		return ResultMessage.FAIL;
 	}
 	/**
 	 * 管理界面得到酒店工作人员账户信息
@@ -112,7 +112,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage HotelStaffAccountUpdate(String hotelId) {
 		// TODO Auto-generated method stub
-		return ResultMessage.False;
+		return ResultMessage.FAIL;
 	}
 
 	/**

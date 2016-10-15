@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
+import Enum.ResultMessage;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
 
@@ -13,19 +14,19 @@ public interface OrderBLService {
 	 * @param orderInfo
 	 * @return 创建订单成功（true）或是失败（false）的布尔值
 	 */
-	public boolean createOrder (OrderVO orderInfo);
+	public ResultMessage createOrder (OrderVO orderInfo);
 	/**
 	 * 保存订单
 	 * @param order
 	 * @return 保存订单成功（true）或失败（false）的布尔值
 	 */
-	public boolean saveOrder (OrderVO order);
+	public ResultMessage saveOrder (OrderVO order);
 	/**
 	 * 取消订单
 	 * @param orderId
 	 * @return 置订单于取消状态成功（true）或失败（false）的布尔值
 	 */
-	public boolean cancelOrder (String orderId);
+	public ResultMessage cancelOrder (String orderId);
 	/**
 	 * 查找具体订单
 	 * @param orderID

@@ -75,9 +75,9 @@ public class HotelinfoBLService_Stub implements Hotelinfoblservice{
 	@Override
 	public ResultMessage updateBassicinfo(HotelinfoVO vo) {
 		if(vo.getHotelID()=="h00000001")
-			return ResultMessage.True;
+			return ResultMessage.SUCCESS;
 		else
-			return ResultMessage.False;
+			return ResultMessage.FAIL;
 	}
 
 	@Override

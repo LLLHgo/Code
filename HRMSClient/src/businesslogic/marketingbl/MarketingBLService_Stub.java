@@ -25,9 +25,9 @@ import vo.strategyVO.PrivilegeVO;
 		@Override
 		public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
 			if(vo.getType()==marketingStrategy.DOUBLE11)
-			    return ResultMessage.False;
+			    return ResultMessage.FAIL;
 			else
-				return ResultMessage.True;
+				return ResultMessage.SUCCESS;
 		}
 
 
@@ -49,9 +49,9 @@ import vo.strategyVO.PrivilegeVO;
 		@Override
 		public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
 			if(vo.getDiscount()>=0.9)
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 			else
-				return ResultMessage.True;
+				return ResultMessage.SUCCESS;
 		}
 
 		@Override
@@ -63,9 +63,9 @@ import vo.strategyVO.PrivilegeVO;
 		@Override
 		public ResultMessage handleAbnormal(OrderVO vo) {
 			if(vo.getPrice()>=200)
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 			else
-				return ResultMessage.True;
+				return ResultMessage.SUCCESS;
 		}
 
 		@Override
@@ -77,17 +77,17 @@ import vo.strategyVO.PrivilegeVO;
 		@Override
 		public ResultMessage setCredit(String clientID, int recharge) {
 			if(recharge>0)
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 			else
-				return ResultMessage.True;
+				return ResultMessage.SUCCESS;
 		}
 
 		@Override
 		public ResultMessage addLevel(LevelVO vo) {
 		    if(vo.getCreditNeeded()>2000)
-		    	return ResultMessage.False;
+		    	return ResultMessage.FAIL;
 		    else
-		    	return ResultMessage.True;
+		    	return ResultMessage.SUCCESS;
 		}
 
 		@Override
@@ -101,17 +101,17 @@ import vo.strategyVO.PrivilegeVO;
 		@Override
 		public ResultMessage deleteLevel(LevelVO vo) {
 			if(vo.getLevel()>0)
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 		    else
-		    	return ResultMessage.True;
+		    	return ResultMessage.SUCCESS;
 		}
 
 		@Override
 		public ResultMessage addPrivilege(PrivilegeVO vo) {
 			if(vo.getDiscount()>0.8)
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 		    else
-		    	return ResultMessage.True;
+		    	return ResultMessage.SUCCESS;
 		}
 
 		@Override
@@ -124,25 +124,25 @@ import vo.strategyVO.PrivilegeVO;
 		@Override
 		public ResultMessage deletePrivilege(PrivilegeVO vo) {
 			if(vo.getDiscount()>0.8)
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 		    else
-		    	return ResultMessage.True;
+		    	return ResultMessage.SUCCESS;
 		}
 
 		@Override
 		public ResultMessage update(MarketingVO vo) {
 			if(vo.getMarketingID()=="M0001")
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 		    else
-		    	return ResultMessage.True;
+		    	return ResultMessage.SUCCESS;
 		}
 
 		@Override
 		public ResultMessage siteManagerUpdate(MarketingVO vo) {
 			if(vo.getMarketingID()=="M0001")
-				return ResultMessage.False;
+				return ResultMessage.FAIL;
 		    else
-		    	return ResultMessage.True;
+		    	return ResultMessage.SUCCESS;
 		}
 
 		@Override

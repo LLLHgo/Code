@@ -32,7 +32,7 @@ public class LogBLService_Stub implements LogBLService {
 	@Override
 	public ResultMessage addLog(String logInfo) {
 		// TODO Auto-generated method stub
-		return ResultMessage.True;
+		return ResultMessage.SUCCESS;
 	}
 
 }
