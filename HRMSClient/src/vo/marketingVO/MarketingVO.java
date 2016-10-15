@@ -1,13 +1,25 @@
 package vo.marketingVO;
 
 public class MarketingVO {
+	//网站营销人员姓名
     private String name;
+    //网站营销人员登录密码
     private String password;
+    //网站营销人员账号
     private String marketingID;
+    //网站营销人员电话
     private String telephone;
-    public MarketingVO(){
 
+    public MarketingVO(){
     }
+
+    /**
+     * MarketingVO构造函数
+     * @param name
+     * @param password
+     * @param marketingID
+     * @param telephone
+     */
     public MarketingVO(String name,String password,String marketingID,String telephone){
     	this.setName(name);
     	this.setPassword(password);
