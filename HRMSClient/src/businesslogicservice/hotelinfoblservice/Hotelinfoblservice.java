@@ -11,7 +11,7 @@ import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public interface Hotelinfoblservice {
+public interface HotelinfoBLService {
 	/**
 	 * 请求获得hotelID对应的酒店信息
 	 * @param hotelID
