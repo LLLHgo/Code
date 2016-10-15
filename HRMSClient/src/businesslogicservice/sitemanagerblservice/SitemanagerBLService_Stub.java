@@ -20,7 +20,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 修改客户账户成功或失败的ResultMessage的enum值
 	 */
 	@Override
-	public ResultMessage clientAccountUpdate(ClientAccountVO clientId) {
+	public ResultMessage clientAccountUpdate(ClientAccountVO clientVO) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -30,7 +30,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 删除客户成功或失败的ResultMessage的enum值
 	 */
 	@Override
-	public ResultMessage clientAccountDelete(String clientId) {
+	public ResultMessage accountDelete(String userId) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -40,9 +40,9 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
      * @return 该客户账户
      */
 	@Override
-	public ClientAccountVO clientAccountFind(String findInfo) {
+	public ClientAccountVO clientAccountFind(String clientId) {
 		// TODO Auto-generated method stub
-		return new ClientAccountVO("C00000009","Kerry","17999982876",VIPType.ENTERPRISEVIP,2,null,"SAP");
+		return new ClientAccountVO("C00000009","Kerry","17999982876",VIPType.ENTERPRISEVIP,2,null,"SAP","0q00001");
 	}
 	/**
 	 * 添加网站营销人员
@@ -61,16 +61,6 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 */
 	@Override
 	public ResultMessage MarketingAccountUpdate(String marketingId) {
-		// TODO Auto-generated method stub
-		return ResultMessage.FAIL;
-	}
-	/**
-	 * 删除网站营销人员账户
-	 * @param marketingId
-	 * @return 删除网站营销人员账户成功或失败的ResultMessage的enum值
-	 */
-	@Override
-	public ResultMessage MarketingAccountDelete(String marketingId) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -107,7 +97,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	/**
 	 * 修改酒店工作人员账户
 	 * @param hotelId
-	 * @return 删除网站营销人员账户成功或失败的ResultMessage的enum值
+	 * @return 修改网站营销人员账户成功或失败的ResultMessage的enum值
 	 */
 	@Override
 	public ResultMessage HotelStaffAccountUpdate(String hotelId) {

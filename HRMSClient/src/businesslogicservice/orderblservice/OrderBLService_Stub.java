@@ -134,7 +134,7 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
 	@Override
-	public boolean checkTime(OrderPO order, Date date) {
+	public boolean checkTime(OrderVO order, Date date) {
 		// TODO Auto-generated method stub
 		return false;
 	}

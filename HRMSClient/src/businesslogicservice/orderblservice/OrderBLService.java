@@ -83,6 +83,6 @@ public interface OrderBLService {
 	 * @param date
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
-	public boolean checkTime (OrderPO order, Date date);
+	public boolean checkTime (OrderVO order, Date date);
 
 }

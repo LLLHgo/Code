@@ -18,18 +18,18 @@ public interface SitemanagerBLService {
 	public ResultMessage clientAccountUpdate (ClientAccountVO clientId);
 	
 	/**
-	 * 删除客户账户
-	 * @param clientId
-	 * @return 删除客户成功或失败的ResultMessage的enum值
+	 * 删除账户
+	 * @param userId
+	 * @return 删除账户成功或失败的ResultMessage的enum值
 	 */
-	public ResultMessage clientAccountDelete (String clientId);
+	public ResultMessage accountDelete (String userId);
 	
     /**
      * 管理界面得到客户账户信息
      * @param findInfo
      * @return 该客户账户
      */
-	public ClientAccountVO clientAccountFind (String findInfo);
+	public ClientAccountVO clientAccountFind (String userId);
 	
 	/**
 	 * 添加网站营销人员
@@ -43,13 +43,6 @@ public interface SitemanagerBLService {
 	 * @return 修改网站营销人员账户成功或失败的ResultMessage的enum值
 	 */
 	public ResultMessage MarketingAccountUpdate (String marketingId);
-	
-	/**
-	 * 删除网站营销人员账户
-	 * @param marketingId
-	 * @return 删除网站营销人员账户成功或失败的ResultMessage的enum值
-	 */
-	public ResultMessage MarketingAccountDelete (String marketingId);
 	
 	/**
 	 * 管理界面得到网站营销人员账户信息
@@ -75,7 +68,7 @@ public interface SitemanagerBLService {
 	/**
 	 * 修改酒店工作人员账户
 	 * @param hotelId
-	 * @return 删除网站营销人员账户成功或失败的ResultMessage的enum值
+	 * @return 修改网站营销人员账户成功或失败的ResultMessage的enum值
 	 */
 	public ResultMessage HotelStaffAccountUpdate(String hotelId);
 	

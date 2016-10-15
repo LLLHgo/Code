@@ -19,11 +19,13 @@ public class ClientAccountVO {
 	private Date client_birth;
 	//用户所属企业
 	private String client_firm;
+	//用户密码
+	private String client_password;
 
 	public ClientAccountVO(){
 	}
 	public ClientAccountVO(String client_id,String client_name,String client_tel,
-			VIPType vip_type,int vip_level,Date client_birth,String client_firm){
+			VIPType vip_type,int vip_level,Date client_birth,String client_firm,String client_password){
 		this.client_id=client_id;
 		this.client_name=client_name;
 		this.client_tel=client_tel;
@@ -31,6 +33,7 @@ public class ClientAccountVO {
 		this.client_birth=client_birth;
 		this.vip_level=vip_level;
 		this.client_firm=client_firm;
+		this.client_password=client_password;
 	}
 	
 	public String getClient_id() {
@@ -74,5 +77,12 @@ public class ClientAccountVO {
 	}
 	public void setClient_firm(String client_firm) {
 		this.client_firm = client_firm;
+	}
+
+	public String getClient_password() {
+		return client_password;
+	}
+	public void setClient_password(String client_password) {
+		this.client_password = client_password;
 	}
 }
