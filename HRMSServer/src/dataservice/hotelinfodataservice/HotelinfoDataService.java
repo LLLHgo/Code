@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 
-public interface HotelstaffDataService {
+public interface HotelinfoDataService {
 	/**
 	 * 初始化持久化数据库
 	 * @throws RemoteException

@@ -3,6 +3,7 @@ package businesslogicservice.strategyblservice;
 import java.util.ArrayList;
 import java.util.List;
 
+import Enum.VIPType;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
@@ -103,5 +104,11 @@ public class StrategyBLService_Stub implements StrategyBLService{
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

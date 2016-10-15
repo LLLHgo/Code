@@ -9,6 +9,7 @@ import Enum.Star;
 import Enum.VIPType;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
@@ -82,7 +83,7 @@ public class SitemanagerBLService_Driver {
 		// 添加酒店
 		System.out.println("添加酒店:");
 		result=sitemanagerBLService.MarketingAccountAdd(new HotelinfoVO("caesar","Charls road No.1","LVegas","010-00233",
-				new ArrayList<String>(),Star.FIVE,new ArrayList<String>(),"Best in LV","H00000105" ));
+				new ArrayList<RoominfoVO>(),Star.FIVE,new ArrayList<String>(),"Best in LV","H00000105" ));
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("添加酒店成功");
 		}
