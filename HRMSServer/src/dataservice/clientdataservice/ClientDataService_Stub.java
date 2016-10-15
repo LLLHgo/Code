@@ -1,4 +1,4 @@
-package data.clientdata;
+package dataservice.clientdataservice;
 
 import java.io.File;
 import java.rmi.RemoteException;

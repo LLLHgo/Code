@@ -33,16 +33,16 @@ public class ClientBLService_Stub implements ClientBLService {
 	File creditRecord;
 	public ClientBLService_Stub(String client_id,String password,String client_name,String client_tel,
 			VIPType vip_type,int vip_level,Date client_birth,String client_firm,File creditRecord){
-					this.client_id=client_id;
-					this.password=password;
-					this.client_name=client_name;
-					this.client_tel=client_tel;
-					this.vip_type=vip_type;
-					this.client_birth=client_birth;
-					this.vip_level=vip_level;
-					this.client_firm=client_firm;
-					this.creditRecord=creditRecord;
-				}
+		this.client_id=client_id;
+		this.password=password;
+		this.client_name=client_name;
+		this.client_tel=client_tel;
+		this.vip_type=vip_type;
+		this.client_birth=client_birth;
+		this.vip_level=vip_level;
+		this.client_firm=client_firm;
+		this.creditRecord=creditRecord;
+	}
 	/**
 	 *通过客户ID得到客户个人信息 
 	 * @param clientID
