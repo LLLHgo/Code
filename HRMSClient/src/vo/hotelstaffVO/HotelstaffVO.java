@@ -1,7 +1,9 @@
 package vo.hotelstaffVO;
 
 public class HotelstaffVO {
+	//酒店工作人员账号,即酒店账号
 	String hotelID;
+	//就当工作人员密码
 	String password;
 	//酒店工作人员电话，用于网站工作人员与酒店工作人员联系（不同于酒店电话）
 	String tel;

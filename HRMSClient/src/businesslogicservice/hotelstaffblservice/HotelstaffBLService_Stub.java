@@ -3,6 +3,7 @@ package businesslogicservice.hotelstaffblservice;
 import java.util.ArrayList;
 import java.util.List;
 
+import Enum.HotelStrategy;
 import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
@@ -12,7 +13,11 @@ import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.HotelOrderVO;
 import vo.strategyVO.HotelStrategyVO;
-
+/**
+ * 
+ * @author liuyu
+ *
+ */
 public class HotelstaffBLService_Stub implements HotelstaffBLService{
 
 	HotelstaffVO hotelstaffvo ;
@@ -38,43 +43,51 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 		
 	}
 	
+	//得到酒店工作人员基本信息
 	@Override
 	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
 		return new HotelstaffBasicinfoVO(hotelstaffvo.getPassword());
 	}
 
+	//得到密码
 	@Override
 	public ResultMessage setPassword(String password) {
 		return ResultMessage.SUCCESS;
 	}
 
+	//更新酒店促销策略
 	@Override
 	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
 		return ResultMessage.SUCCESS;
 	}
 
+	//查询酒店促销策略
 	@Override
 	public HotelStrategyVO gethotelStrategy(String hotelID) {
 		//TODO
 		return new HotelStrategyVO();
 	}
 
+	//查询酒店信息
 	@Override
 	public HotelinfoVO gethotelinfoVO(HotelinfoVO vo) {
 		return hotelinfovo;
 	}
 
+	//查询房间信息
 	@Override
 	public RoominfoVO getroominfo(String roomID) {
 		RoominfoVO roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
 		return roominfovo;
 	}
 
+	//更新房间信息
 	@Override
 	public ResultMessage updateroominfo(HotelinfoVO vo) {
 		return ResultMessage.SUCCESS;
 	}
 
+	//得到某酒店的订单列表
 	@Override
 	public List<HotelOrderVO> gethotelOrderList(String hotelID) {
 		//TODO
@@ -82,11 +95,13 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 		return list;
 	}
 
+	//更新订单状态
 	@Override
 	public ResultMessage updateOrderState(String orderID, int state) {
 		return ResultMessage.SUCCESS;
 	}
 
+	//保存网站管理人员的更新
 	@Override
 	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
 		return true;
@@ -100,6 +115,11 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	@Override
 	public boolean checkAccount(String hotelID, String password) {
 		return true;
+	}
+
+	@Override
+	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategy hotelStrategy) {
+		return ResultMessage.SUCCESS;
 	}
 	
 }

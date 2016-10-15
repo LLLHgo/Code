@@ -3,9 +3,13 @@ package vo.hotelinfoVO;
 import Enum.RoomState;
 
 public class RoominfoVO {
+	//房间类型
 	String type;
+	//房间号
 	String roomID;
+	//入住1晚的原始价格
 	double price;
+	//房间状态，分为：可使用，不可使用
 	RoomState roomState;
 	
 	public RoominfoVO(){
