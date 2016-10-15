@@ -1,6 +1,4 @@
-package businesslogic.loginbl;
-
-import businesslogicservice.loginblservice.LoginBLService;
+package businesslogicservice.loginblservice;
 
 public class LoginBLService_Stub implements  LoginBLService{
 	String userID;
@@ -16,6 +14,7 @@ public class LoginBLService_Stub implements  LoginBLService{
 	 * @return 登陆成功与否
 	 */
 		public boolean login(String user_id,String password) {
-		return true;
+		if(user_id!=null)return true;
+		else return false;
 	}
 }

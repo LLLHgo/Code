@@ -1,4 +1,4 @@
-package businesslogic.clientbl;
+package businesslogicservice.clientblservice;
 import java.io.File;
 import java.sql.Date;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
-import businesslogicservice.clientblservice.ClientBLService;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.hotelinfoVO.ClientRequirementVO;
