@@ -87,7 +87,7 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param VIPType
      * @return 返回福利信息列表
      */
-    public List<PrivilegeVO> findAllPrivilege(String VIPType) {
+    public List<PrivilegeVO> findAllPrivilege(VIPType type) {
 		List<PrivilegeVO> list=new ArrayList<PrivilegeVO>();
 		PrivilegeVO vo=new PrivilegeVO();
         list.add(vo);
@@ -104,11 +104,5 @@ public class StrategyBLService_Stub implements StrategyBLService{
 			return true;
 		else
 			return false;
-	}
-
-	@Override
-	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

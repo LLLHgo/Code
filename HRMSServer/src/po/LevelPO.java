@@ -1,9 +1,19 @@
 package po;
 
 public class LevelPO {
-	private int level;
+	//等级层次
+    private int level;
+    //等级名称
     private String name;
+    //从上一等级上升到此等级所需的信用值
     private int creditNeeded;
+
+    /**
+     * LevelVO的构造函数
+     * @param level
+     * @param name
+     * @param creditNeeded
+     */
     public LevelPO(int level,String name,int creditNeeded){
     	this.setLevel(level);
     	this.setName(name);

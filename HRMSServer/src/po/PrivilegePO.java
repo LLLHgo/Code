@@ -6,9 +6,13 @@ import Enum.PrivilegeWay;
 import Enum.VIPType;
 
 public class PrivilegePO {
+	//会员种类，包括ORDINARYVIP,ENTERPRISEVIP
     private VIPType type;
+    //活动折扣
     private double discount;
+    //福利方式，包括日常折扣DAILY，生日特惠BIRTHDAY，企业福利ENTERPRISE
     private PrivilegeWay privilegeWay;
+    //参与企业福利的企业
     private List<String> enterprises;
 
     public PrivilegePO(){
