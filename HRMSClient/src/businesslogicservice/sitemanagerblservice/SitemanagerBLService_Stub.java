@@ -60,7 +60,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 修改网站营销人员账户成功或失败的ResultMessage的enum值
 	 */
 	@Override
-	public ResultMessage MarketingAccountUpdate(String marketingId) {
+	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -100,7 +100,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 修改网站营销人员账户成功或失败的ResultMessage的enum值
 	 */
 	@Override
-	public ResultMessage HotelStaffAccountUpdate(String hotelId) {
+	public ResultMessage HotelStaffAccountUpdate(HotelstaffVO hotelstaffVO) {
 		// TODO Auto-generated method stub
 		return ResultMessage.FAIL;
 	}
@@ -111,9 +111,9 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	 * @return 登录帐号或密码正确（true）或错误（false）的布尔值
 	 */
 	@Override
-	public boolean checkAccount(SitemanagerVO account) {
+	public ResultMessage checkAccount(SitemanagerVO account) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 	
 }
