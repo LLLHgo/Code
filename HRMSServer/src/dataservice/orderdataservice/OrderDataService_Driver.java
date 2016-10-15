@@ -44,7 +44,7 @@ public class OrderDataService_Driver {
 		
 		// 查找某用户的具体订单
 		System.out.println("查找某用户的具体订单");
-		orderPO=orderDataService.findSpecificClientOrder(UserType.CLIENT,"20160823131207");
+		orderPO=orderDataService.findSpecificUserOrder(UserType.CLIENT,"20160823131207");
 		System.out.println("显示该订单");
 		System.out.println(orderPO.getClientId()+" "+orderPO.getHotelName()+" "+orderPO.getPrice());
 		System.out.println("这里是该订单的详细信息");

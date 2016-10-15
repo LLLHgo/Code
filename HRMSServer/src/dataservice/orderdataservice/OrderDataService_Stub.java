@@ -55,7 +55,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return
 	 */
 	@Override
-	public OrderPO findSpecificClientOrder(UserType userType, String orderId) {
+	public OrderPO findSpecificUserOrder(UserType userType, String orderId) {
 		// TODO Auto-generated method stub
 		return orderPO;
 	}

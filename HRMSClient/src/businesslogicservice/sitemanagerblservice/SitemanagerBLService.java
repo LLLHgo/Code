@@ -28,7 +28,7 @@ public interface SitemanagerBLService {
      * @param findInfo
      * @return 该客户账户
      */
-	public ClientVO clientAccountFind (String userId);
+	public ClientVO clientAccountFind (String findInfo);
 	
 	/**
 	 * 添加网站营销人员

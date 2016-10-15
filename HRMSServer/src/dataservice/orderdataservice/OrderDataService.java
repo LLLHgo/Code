@@ -33,9 +33,9 @@ public interface OrderDataService {
 	 * 查找某用户的具体订单
 	 * @param userType
 	 * @param orderId
-	 * @return
+	 * @return OrderPO
 	 */
-	public OrderPO findSpecificClientOrder(UserType userType, String orderId);
+	public OrderPO findSpecificUserOrder(UserType userType, String orderId);
 	
 	/**
 	 * 查找某用户的所有订单

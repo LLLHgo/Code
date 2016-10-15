@@ -48,7 +48,7 @@ public interface OrderBLService {
 	 */
 	public  List<OrderVO> findSpecificDayClientOrder(String clientId, Date date);
 	/**
-	 * 查找用户客户在某个酒店的所有订单
+	 * 查找客户在某个酒店的所有订单
 	 * @param clientId
 	 * @param hoteIId
 	 * @return 客户在某个酒店的所有订单列表
