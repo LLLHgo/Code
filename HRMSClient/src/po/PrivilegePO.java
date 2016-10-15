@@ -1,17 +1,17 @@
-package vo.strategyVO;
+package po;
 
 import java.util.List;
 
 import Enum.PrivilegeWay;
 import Enum.VIPType;
 
-public class PrivilegeVO {
+public class PrivilegePO {
     private VIPType type;
     private double discount;
     private PrivilegeWay privilegeWay;
     private List<String> enterprises;
 
-    public PrivilegeVO(){
+    public PrivilegePO(){
 
     }
 
@@ -21,7 +21,7 @@ public class PrivilegeVO {
      * @param discount
      * @param privilegeWay
      */
-    public PrivilegeVO(VIPType type,double discount,PrivilegeWay privilegeWay){
+    public PrivilegePO(VIPType type,double discount,PrivilegeWay privilegeWay){
     	this.setType(type);
     	this.setDiscount(discount);
     	this.setPrivilegeWay(privilegeWay);
@@ -33,7 +33,7 @@ public class PrivilegeVO {
      * @param privilegeWay
      * @param enterprises
      */
-    public PrivilegeVO(VIPType type,double discount,PrivilegeWay privilegeWay,List<String> enterprises){
+    public PrivilegePO(VIPType type,double discount,PrivilegeWay privilegeWay,List<String> enterprises){
     	this.setType(type);
     	this.setDiscount(discount);
     	this.setPrivilegeWay(privilegeWay);
@@ -72,3 +72,4 @@ public class PrivilegeVO {
 		this.enterprises = enterprises;
 	}
 }
+
