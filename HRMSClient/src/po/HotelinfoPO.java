@@ -13,8 +13,8 @@ public class HotelinfoPO {
 	private String area;
 	//酒店电话
 	private String tel;
-	//酒店所包含的房间类型和数量 arraylist里面每一个元素的表示形式，如“标准双人间2”表示有2个可用的标准双人间
-	private ArrayList<String> roomTypeandNum;
+	//酒店所包含的房间
+	private ArrayList<RoominfoPO> roominfoList;
 	//酒店星级 ，ONE，TOW...SEVEN表示一星级到七星级
 	private Star star;
 	//酒店评价
@@ -29,13 +29,13 @@ public class HotelinfoPO {
 	}
 	
 	public HotelinfoPO(String name,String address,String area,
-			String tel,ArrayList<String> roomTypeandNum,Star star,ArrayList<String> remark,
+			String tel,ArrayList<RoominfoPO> roominfoList,Star star,ArrayList<String> remark,
 			String introduciton,String hotelID){
 		this.name = name;
 		this.address = address;
 		this.area = area;
 		this.tel = tel;
-		this.roomTypeandNum = roomTypeandNum;
+		this.roominfoList = roominfoList;
 		this.star = star;
 		this.remark = remark;
 		this.introduction = introduciton;
@@ -74,12 +74,13 @@ public class HotelinfoPO {
 		this.tel = tel;
 	}
 
-	public ArrayList<String> getRoomTypeandNum() {
-		return roomTypeandNum;
+
+	public ArrayList<RoominfoPO> getRoominfoList() {
+		return roominfoList;
 	}
 
-	public void setRoomTypeandNum(ArrayList<String> roomTypeandNum) {
-		this.roomTypeandNum = roomTypeandNum;
+	public void setRoominfoList(ArrayList<RoominfoPO> roominfoList) {
+		this.roominfoList = roominfoList;
 	}
 
 	public Star getStar() {
@@ -113,6 +114,4 @@ public class HotelinfoPO {
 	public void setHotelID(String hotelID) {
 		this.hotelID = hotelID;
 	}
-	
-	 
 }
