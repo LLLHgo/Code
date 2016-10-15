@@ -1,4 +1,4 @@
-package businesslogic.logbl;
+package businesslogicservice.logblservice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import Enum.ResultMessage;
 import businesslogicservice.logblservice.LogBLService;
 import vo.logVO.LogVO;
 
-public class Log_Stub implements LogBLService {
+public class LogBLService_Stub implements LogBLService {
 	String logInfo;
 	
-	public Log_Stub(String logInfo){
+	public LogBLService_Stub(String logInfo){
 		this.logInfo=logInfo;
 	}
 	/**

@@ -1,4 +1,4 @@
-package businesslogic.sitemanagerbl;
+package businesslogicservice.sitemanagerblservice;
 
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
@@ -9,9 +9,9 @@ import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
 import Enum.VIPType;
 
-public class Sitemanager_Stub implements SitemanagerBLService{
+public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	MarketingVO marketingVO;
-	public Sitemanager_Stub(MarketingVO marketingVO){
+	public SitemanagerBLService_Stub(MarketingVO marketingVO){
 		this.marketingVO=marketingVO;
 	}
 	/**

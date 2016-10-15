@@ -1,4 +1,4 @@
-package businesslogic.orderbl;
+package businesslogicservice.orderblservice;
 
 import java.util.ArrayList;
 import java.util.Date;
