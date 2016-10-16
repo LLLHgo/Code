@@ -22,7 +22,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param clientID
 	 * @return信用记录文件
 	 */
-	public File findCreditRecord(String clientID){
+	public File findCreditRecord(String clientID)throws RemoteException{
 		return new File(clientID);
 	}
 	/**
@@ -31,7 +31,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param recharge
 	 * @return 修改是否成功
 	 */
-	public boolean setCredit(String clientID,int recharge){
+	public boolean setCredit(String clientID,int recharge)throws RemoteException{
 		if(recharge==0)
 			return false;
 		else
@@ -42,7 +42,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param clientID
 	 * @return 客户PO
 	 */
-	public ClientPO  findPersonalInfo (String clientID){
+	public ClientPO  findPersonalInfo (String clientID)throws RemoteException{
 		return new ClientPO();
 	}
 	/**
@@ -51,7 +51,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (String clientID,ClientPO po){
+	public ResultMessage modifyPersonalInfo (String clientID,ClientPO po)throws RemoteException{
 		if(clientID!=null)
 			return ResultMessage.SUCCESS;
 		else
@@ -63,7 +63,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param password
 	 * @return 账户是否存在
 	 */
-	public boolean checkAccount(String client_id,String password){
+	public boolean checkAccount(String client_id,String password)throws RemoteException{
 		if(client_id!=null)
 			return true;
 		else
@@ -74,7 +74,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 是否设置成功
 	 */
-	public boolean setAllLevel(LevelPO po){
+	public boolean setAllLevel(LevelPO po)throws RemoteException{
 		if(po!=null)
 			return true;
 		else 
@@ -85,7 +85,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 创建是否成功
 	 */
-	public boolean createClient(ClientPO po){
+	public boolean createClient(ClientPO po)throws RemoteException{
 		if(po!=null)
 			return true;
 		else 
