@@ -15,7 +15,7 @@ public interface HotelstaffBLService {
 	/**
 	 * 获得酒店工作人员信息
 	 * @param hotelID
-	 * @return 获得酒店工作人员信息列表
+	 * @return 获得酒店工作人员信息
 	 */
 	public HotelstaffBasicinfoVO getBasicinfo(String hotelID);
 	/**
@@ -33,7 +33,7 @@ public interface HotelstaffBLService {
 	/**
 	 * 获得酒店促销策略信息
 	 * @param hotelID
-	 * @return 酒店促销策略信息列表
+	 * @return 酒店促销策略信息
 	 */
 	public HotelStrategyVO gethotelStrategy(String hotelID);
 	/**
@@ -46,7 +46,7 @@ public interface HotelstaffBLService {
 	/**
 	 * 获得酒店基本信息
 	 * @param vo
-	 * @return 酒店信息列表
+	 * @return 酒店信息
 	 */
 	public HotelinfoVO gethotelinfoVO(HotelinfoVO vo);
 	/**
