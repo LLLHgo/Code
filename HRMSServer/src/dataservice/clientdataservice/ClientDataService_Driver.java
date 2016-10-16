@@ -1,6 +1,7 @@
 package dataservice.clientdataservice;
 
 import java.io.File;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import Enum.OrderType;
@@ -11,7 +12,7 @@ import po.LevelPO;
 
 
 public class ClientDataService_Driver {
-	public void drive(ClientDataService clientDataService){
+	public void drive(ClientDataService clientDataService) throws RemoteException{
 		ClientPO po=new ClientPO();
 		//测试创建新客户
 		boolean cc=clientDataService.createClient(po);
