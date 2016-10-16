@@ -267,4 +267,14 @@ public class MarketingBLService_Stub implements MarketingBLService {
 		privileges.add(new PrivilegeVO());
 		return privileges;
 	}
+
+    /**
+     * 根据marketingID返回给网站管理人员网站营销人员的信息
+     * @param marketingID
+     * @return
+     */
+	public MarketingVO returnSitemanagerAccount(String marketingID) {
+		MarketingVO vo=new MarketingVO("网站营销人员","password","M0001001","15077685563");
+		return vo;
+	}
 }

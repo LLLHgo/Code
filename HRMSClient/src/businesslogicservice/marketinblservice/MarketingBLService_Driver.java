@@ -98,5 +98,10 @@ public class MarketingBLService_Driver {
     	//获得网站营销人员信息
     	MarketingVO mvo=marketingBLService.init("M0001");
     	if(mvo!=null)System.out.println("得到网站营销人员信息成功");
+
+    	//返回网站营销人员的个人信息
+    	MarketingVO MVO=marketingBLService.returnSitemanagerAccount("M00010001");
+    	if(MVO!=null){System.out.println("已成功返回网站营销人员的个人信息");
+    	}
     }
 }

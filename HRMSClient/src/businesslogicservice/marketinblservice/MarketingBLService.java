@@ -153,4 +153,11 @@ public interface MarketingBLService {
      * @return 返回网站营销人员个人信息
      */
     public MarketingVO init(String id);
+
+    /**
+     * 根据marketingID返回给网站管理人员网站营销人员的信息
+     * @param marketingID
+     * @return
+     */
+    public MarketingVO returnSitemanagerAccount(String marketingID);
 }
