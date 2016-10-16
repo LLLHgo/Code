@@ -1,5 +1,6 @@
 package dataservice.orderdataservice;
 
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +10,7 @@ import Enum.UserType;
 import po.OrderPO;
 
 public class OrderDataService_Driver {
-	public void driver( OrderDataService orderDataService){
+	public void driver( OrderDataService orderDataService) throws RemoteException{
 		boolean result;
 		OrderPO orderPO = null;
 		List<OrderPO> orderPOList=null;

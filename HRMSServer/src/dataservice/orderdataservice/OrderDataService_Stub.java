@@ -1,5 +1,6 @@
 package dataservice.orderdataservice;
 
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return  添加成功（true）或失败（false）的布尔值
 	 */
 	@Override
-	public boolean add(OrderPO order) {
+	public boolean add(OrderPO order) throws RemoteException{
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -32,7 +33,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return 添加成功（true）或失败（false）的布尔值
 	 */
 	@Override
-	public boolean save(OrderPO order) {
+	public boolean save(OrderPO order) throws RemoteException{
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -43,7 +44,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return 置为取消状态成功（true）或失败（false）的布尔值
 	 */
 	@Override
-	public boolean cancel(String orderId) {
+	public boolean cancel(String orderId)throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -55,7 +56,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return
 	 */
 	@Override
-	public OrderPO findSpecificUserOrder(UserType userType, String orderId) {
+	public OrderPO findSpecificUserOrder(UserType userType, String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
 		return orderPO;
 	}
@@ -66,7 +67,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return
 	 */
 	@Override
-	public List<OrderPO> findUserOrderList(String userId) {
+	public List<OrderPO> findUserOrderList(String userId)throws RemoteException {
 		// TODO Auto-generated method stub
 		return orderPOList;
 	}
@@ -77,7 +78,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return 订单列表
 	 */
 	@Override
-	public List<OrderPO> findClientTypeOrder(OrderType orderType,String clientId) {
+	public List<OrderPO> findClientTypeOrder(OrderType orderType,String clientId) throws RemoteException{
 		// TODO Auto-generated method stub
 		return orderPOList;
 	}
@@ -88,7 +89,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return 异常订单列表
 	 */
 	@Override
-	public List<OrderPO> findAbnormalOrderList(Date date) {
+	public List<OrderPO> findAbnormalOrderList(Date date)throws RemoteException {
 		// TODO Auto-generated method stub
 		return orderPOList;
 	}
@@ -98,7 +99,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param orderId
 	 */
 	@Override
-	public void checkTime(String orderId) {
+	public void checkTime(String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
 		
 	}

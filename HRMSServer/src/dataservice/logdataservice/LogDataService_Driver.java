@@ -1,12 +1,13 @@
 package dataservice.logdataservice;
 
+import java.rmi.RemoteException;
 import java.util.Iterator;
 import java.util.List;
 
 import po.LogPO;
 
 public class LogDataService_Driver {
-	public void driver(LogDataService logDataService){
+	public void driver(LogDataService logDataService)throws RemoteException{
 		LogPO logPO = null;
 		List<LogPO> logPOList = null; 
 		Iterator<LogPO> it;
