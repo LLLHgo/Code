@@ -35,7 +35,7 @@ public class HotelinfoBLService_Driver{
 		String hotelID;
 		//客户输入的酒店ID或商圈
 		ClientRequirementVO clientRequirementVO = new ClientRequirementVO("","栖霞区");
-		
+
 		//查找酒店基本信息
 		System.out.println("查找ID为H00000000的酒店信息...");
 		HotelinfoVO hotelinfoVO = hotelinfoBLService.getBasicinfo("H00000000");
@@ -50,27 +50,27 @@ public class HotelinfoBLService_Driver{
 		hotelID = hotelinfoVO.getHotelID();
 		System.out.println("查找成功");
 		//System.out.println("名称： "+name);
-		
+
 		//查找酒店信息列表
 		System.out.println("查找客户需要的酒店信息列表...");
 		List<HotelinfoVO> hotellist = hotelinfoBLService.getBasicinfoList(clientRequirementVO);
-		System.out.println("查找成功");
-		
+		if(hotellist.size()>0)System.out.println("查找成功");
+
 		//查找某酒店某类型的房间信息
 		System.out.println("查找ID为H00000000的酒店，类型为四人间的酒店房间信息...");
 		RoominfoVO roominfoVO  = hotelinfoBLService.getRoominfo("H00000000", "四人间");
-		System.out.println("查找成功");
-		
+		if(roominfoVO!=null)System.out.println("查找成功");
+
 		//查找某酒店的所有房间信息
 		System.out.println("查找ID为H00000000的酒店的所有房间信息...");
 		List<RoominfoVO> roominfolist = hotelinfoBLService.getRoominfoList("H00000000");
-		System.out.println("查找成功");
-		
+		if(roominfolist.size()>0)System.out.println("查找成功");
+
 		//更新酒店基本信息
 		System.out.println("更新酒店基本信息...");
 		ResultMessage resultMessage = hotelinfoBLService.updateBassicinfo(new HotelinfoVO());
-		System.out.println("更新成功");
-		
+		if(resultMessage==ResultMessage.SUCCESS)System.out.println("更新成功");
+
 		//保存网站工作人员对酒店信息的修改
 		System.out.println("更新酒店工作人员的修改...");
 		boolean result = hotelinfoBLService.saveSitemanagerAdd(new HotelinfoVO());
@@ -83,7 +83,7 @@ public class HotelinfoBLService_Driver{
 		double price = hotelinfoBLService.calculatePrice(new ArrayList<HotelStrategyVO>(), new ArrayList<MarketingStrategyVO>(),
 				new ClientVO(), 666.6);
 		System.out.println("使用策略后的价格为： "+price);
-		
+
 	}
 
 }

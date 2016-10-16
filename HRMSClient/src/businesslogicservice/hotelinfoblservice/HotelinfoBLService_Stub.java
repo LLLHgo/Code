@@ -6,7 +6,6 @@ import java.util.List;
 import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
-import po.HotelinfoPO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -15,13 +14,13 @@ import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelinfoBLService_Stub implements HotelinfoBLService{
-	
+
 	HotelinfoVO hotelinfovo;
 	RoominfoVO roominfovo;
-	
+
 	public HotelinfoBLService_Stub(){
 		roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
-		
+
 		ArrayList<RoominfoVO> roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfovo);
 		ArrayList<String> remark = new ArrayList<String>();
@@ -33,43 +32,71 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 			roominfoList,Star.SEVEN,remark,introduction,hotelID);
 
 	}
-	
-	@Override
+
+	/**
+	 * 请求获得hotelID对应的酒店信息
+	 * @param hotelID
+	 * @return 酒店信息
+	 */
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		return hotelinfovo;
 	}
 
-	@Override
+	/**
+	 * 获得符合客户条件的酒店列表信息
+	 * @param vo
+	 * @return 酒店信息列表
+	 */
 	public List<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo) {
 		ArrayList<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
 		list.add(hotelinfovo);
 		return list;
 	}
 
-	@Override
+	/**
+	 * 持久化保存酒店信息
+	 * @param VO
+	 * @return 保存成功或失败
+	 */
 	public ResultMessage updateBassicinfo(HotelinfoVO vo) {
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
+	/**
+	 * 获得某酒店某类型的房间信息
+	 * @param hotelID
+	 * @param roomtype
+	 * @return 房间信息
+	 */
 	public RoominfoVO getRoominfo(String hotelID, String roomtype) {
 		return roominfovo;
 	}
 
-	@Override
+	/**
+	 * 获得酒店的房间信息列表
+	 * @param hotelID
+	 * @return 房间信息列表
+	 */
 	public List<RoominfoVO> getRoominfoList(String hotelID) {
 		ArrayList<RoominfoVO> list = new ArrayList<RoominfoVO>();
 		list.add(roominfovo);
 		return list;
 	}
 
-	@Override
+	/**
+	 * 计算打折后的价格
+	 * @return 最终价格
+	 */
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
 			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
 		return 666;
 	}
 
-	@Override
+	/**
+	 * 请求持久化保存网站管理人员添加的酒店信息
+	 * @param vo
+	 * @return 保存是否成功
+	 */
 	public boolean saveSitemanagerAdd(HotelinfoVO vo) {
 		return true;
 	}
