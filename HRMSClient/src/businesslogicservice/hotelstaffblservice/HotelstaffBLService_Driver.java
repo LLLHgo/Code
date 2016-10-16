@@ -7,6 +7,7 @@ import vo.strategyVO.HotelStrategyVO;
 public class HotelstaffBLService_Driver {
 
 	public void drive(HotelstaffBLService hotelstaffBLService){
+		//登录时检测账号密码
 		hotelstaffBLService.checkAccount("H00000000", "000000");
 		hotelstaffBLService.getBasicinfo("H00000000");
 		hotelstaffBLService.gethotelinfoVO(new HotelinfoVO());

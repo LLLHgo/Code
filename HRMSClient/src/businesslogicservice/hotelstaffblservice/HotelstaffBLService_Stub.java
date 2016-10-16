@@ -3,7 +3,6 @@ package businesslogicservice.hotelstaffblservice;
 import java.util.ArrayList;
 import java.util.List;
 
-import Enum.HotelStrategy;
 import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
@@ -19,7 +18,7 @@ import vo.strategyVO.HotelStrategyVO;
  *
  */
 public class HotelstaffBLService_Stub implements HotelstaffBLService{
-    //
+
 	HotelstaffVO hotelstaffvo ;
 	HotelOrderVO hotelordervo;
 	RoominfoVO roominfovo;
@@ -27,9 +26,7 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 
 	public HotelstaffBLService_Stub(){
 		hotelstaffvo = new HotelstaffVO("H00000000","000000","025-12345678");
-
 		roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
-
 		ArrayList<RoominfoVO> roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfovo);
 		ArrayList<String> remark = new ArrayList<String>();
@@ -42,84 +39,124 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 
 
 	}
-
-	//得到酒店工作人员基本信息
-	@Override
+	/**
+	 * 获得酒店工作人员信息
+	 * @param hotelID
+	 * @return 获得酒店工作人员信息列表
+	 */
 	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
 		return new HotelstaffBasicinfoVO(hotelstaffvo.getPassword());
 	}
 
-	//得到密码
-	@Override
+	/**
+	 * 将新密码持久化保存
+	 * @param password
+	 * @return 是否将新密码持久化保存
+	 */
 	public ResultMessage setPassword(String password) {
 		return ResultMessage.SUCCESS;
 	}
 
-	//更新酒店促销策略
-	@Override
+	/**
+	 * 将酒店促销策略持久化保存
+	 * @param vo
+	 * @return 是否将酒店促销策略持久化保存
+	 */
 	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
 		return ResultMessage.SUCCESS;
 	}
 
-	//查询酒店促销策略
-	@Override
+	/**
+	 * 获得酒店促销策略信息
+	 * @param hotelID
+	 * @return 酒店促销策略信息列表
+	 */
 	public HotelStrategyVO gethotelStrategy(String hotelID) {
-		//TODO
 		return new HotelStrategyVO();
 	}
 
-	//查询酒店信息
-	@Override
+	/**
+	 * 获得酒店基本信息
+	 * @param vo
+	 * @return 酒店信息列表
+	 */
 	public HotelinfoVO gethotelinfoVO(HotelinfoVO vo) {
 		return hotelinfovo;
 	}
 
-	//查询房间信息
-	@Override
+	/**
+	 * 获得房间信息
+	 * @param roomID
+	 * @return 房间信息
+	 */
 	public RoominfoVO getroominfo(String roomID) {
 		RoominfoVO roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
 		return roominfovo;
 	}
-
-	//更新房间信息
-	@Override
+	/**
+	 * 将房间信息持久化保存
+	 * @param vo
+	 * @return 是否将房间信息持久化保存
+	 */
 	public ResultMessage updateroominfo(HotelinfoVO vo) {
 		return ResultMessage.SUCCESS;
 	}
 
-	//得到某酒店的订单列表
-	@Override
+	/**
+	 * 获得酒店订单列表
+	 * @param hotelID
+	 * @return 酒店订单列表
+	 */
 	public List<HotelOrderVO> gethotelOrderList(String hotelID) {
 		//TODO
 		ArrayList<HotelOrderVO> list = new ArrayList<HotelOrderVO>();
 		return list;
 	}
 
-	//更新订单状态
-	@Override
+	/**
+	 * 将订单状态持久化保存
+	 * @param orderID
+	 * @param state
+	 * @return 是否将订单状态持久化保存
+	 */
 	public ResultMessage updateOrderState(String orderID, int state) {
 		return ResultMessage.SUCCESS;
 	}
 
-	//保存网站管理人员的更新
-	@Override
+	/**
+	 * (网站管理人员请求)将酒店工作人员信息的修改持久化保存
+	 * @param vo
+	 * @return 是否将酒店工作人员信息的修改持久化保存
+	 */
 	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
 		return true;
 	}
 
-	@Override
+	/**
+	 *  (网站管理人员)请求返回酒店工作人员信息
+	 * @param hotelID
+	 * @return 酒店工作人员信息
+	 */
 	public HotelstaffVO returnSitemanagerAccount(String hotelID) {
 		return hotelstaffvo;
 	}
 
-	@Override
+	/**
+	 * 登录时检测账号密码
+	 * @param hotelID
+	 * @param password
+	 * @return 账号密码是否匹配
+	 */
 	public boolean checkAccount(String hotelID, String password) {
 		return true;
 	}
 
-
-
-	@Override
+	/**
+	 * 删除酒店策略
+	 * @param hotelID
+	 * @param StrategyID
+	 * @return 是否删除酒店策略
+	 */
 	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
