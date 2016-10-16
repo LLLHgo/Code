@@ -9,6 +9,7 @@ import po.ClientPO;
 import po.LevelPO;
 
 public class ClientDataService_Stub implements ClientDataService{
+
 	/**
 	 * 初始化持久化数据库
 	 * @throws RemoteException
@@ -90,4 +91,5 @@ public class ClientDataService_Stub implements ClientDataService{
 		else 
 			return false;
 	}
+
 }
