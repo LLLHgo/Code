@@ -2,38 +2,54 @@ package dataservice.hotelstaffdataservice;
 
 import java.rmi.RemoteException;
 
-import dataservice.hotelinfodataservice.HotelinfoDataService;
-import po.HotelinfoPO;
 import po.HotelstaffPO;
-import po.RoominfoPO;
 
 public class HotelstaffDataService_Stub implements HotelstaffDataService{
 
 	HotelstaffPO hotelstaffPO;
-	
-	@Override
+
+	/**
+	 * 初始化持久化数据库
+	 * @throws RemoteException
+	 */
 	public void init() throws RemoteException {
 		hotelstaffPO = new HotelstaffPO("H00000000","000000");
 	}
 
-	@Override
+	/**
+	 *返回酒店工作人员信息
+	 * @param hotelStaffID
+	 * @return
+	 */
 	public HotelstaffPO findBasicInfo(String hotelStaffID) {
 		return hotelstaffPO;
 	}
 
-	@Override
+	/**
+	 * 更新密码
+	 * @param po
+	 * @throws RemoteException
+	 */
 	public void updatePassword(HotelstaffPO po) throws RemoteException {
 		System.out.println("已向数据库更新密码");
 	}
 
-	@Override
+	/**
+	 * 检查酒店工作人员账户密码
+	 * @param po
+	 * @return
+	 * @throws RemoteException
+	 */
 	public boolean checkAccount(HotelstaffPO po) throws RemoteException {
 		return true;
 	}
 
-	@Override
+	/**
+	 * 结束持久化数据库的使用
+	 * @throws RemoteException
+	 */
 	public void finish() throws RemoteException {
-		
+
 	}
-	
+
 }

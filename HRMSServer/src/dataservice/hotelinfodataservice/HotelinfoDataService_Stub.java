@@ -2,6 +2,7 @@ package dataservice.hotelinfodataservice;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import Enum.RoomState;
 import Enum.Star;
@@ -13,11 +14,14 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 
 	RoominfoPO roominfoPO;
 	HotelinfoPO hotelinfoPO;
-	
-	@Override
+
+	/**
+	 * 初始化持久化数据库
+	 * @throws RemoteException
+	 */
 	public void init() throws RemoteException {
 		roominfoPO = new RoominfoPO("四人间","413-3",666.6,RoomState.Usable);
-		
+
 		ArrayList<RoominfoPO> roominfoList = new ArrayList<RoominfoPO>();
 		roominfoList.add(roominfoPO);
 		ArrayList<String> remark = new ArrayList<String>();
@@ -29,34 +33,61 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 			roominfoList,Star.SEVEN,remark,introduction,hotelID);
 	}
 
-	@Override
-	public RoominfoPO getRoominfoList(String hotelID) throws RemoteException {
-		return roominfoPO;
+	/**
+	 * 获得房间信息列表
+	 * @param hotelID
+	 * @return
+	 * @throws RemoteException
+	 */
+	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
+		List<RoominfoPO> list=new ArrayList<RoominfoPO>();
+		list.add(new RoominfoPO());
+		return list;
 	}
 
-	@Override
+	/**
+	 * 获得房间信息
+	 * @param hotelID
+	 * @return
+	 * @throws RemoteException
+	 */
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
 		return hotelinfoPO;
 	}
 
-	@Override
+	/**
+	 * 更新酒店信息
+	 * @param po
+	 * @throws RemoteException
+	 */
 	public void updatehotelinfo(HotelinfoPO po) throws RemoteException {
-		
+
 	}
 
-	@Override
+	/**
+	 * 更新房间信息
+	 * @param po
+	 * @throws RemoteException
+	 */
 	public void updateroominfo(RoominfoPO po) throws RemoteException {
-		
+
 	}
 
-	@Override
+	/**
+	 * 删除持久化数据
+	 * @param po
+	 * @throws RemoteException
+	 */
 	public void delete(RoominfoPO po) throws RemoteException {
-		
+
 	}
 
-	@Override
+	/**
+	 * 结束持久化数据库的使用
+	 * @throws RemoteException
+	 */
 	public void finish() throws RemoteException {
-		
+
 	}
 
 }

@@ -1,6 +1,7 @@
 package dataservice.hotelinfodataservice;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 import po.HotelinfoPO;
 import po.RoominfoPO;
@@ -17,7 +18,7 @@ public interface HotelinfoDataService {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public RoominfoPO getRoominfoList(String hotelID) throws RemoteException;
+	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException;
 	/**
 	 * 获得房间信息
 	 * @param hotelID
