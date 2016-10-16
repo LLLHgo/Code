@@ -14,22 +14,22 @@ import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.HotelOrderVO;
 import vo.strategyVO.HotelStrategyVO;
 /**
- * 
+ *
  * @author liuyu
  *
  */
 public class HotelstaffBLService_Stub implements HotelstaffBLService{
-
+    //
 	HotelstaffVO hotelstaffvo ;
 	HotelOrderVO hotelordervo;
 	RoominfoVO roominfovo;
 	HotelinfoVO hotelinfovo;
-	
+
 	public HotelstaffBLService_Stub(){
 		hotelstaffvo = new HotelstaffVO("H00000000","000000","025-12345678");
-		
+
 		roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
-		
+
 		ArrayList<RoominfoVO> roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfovo);
 		ArrayList<String> remark = new ArrayList<String>();
@@ -39,10 +39,10 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 		String hotelID = "H00000000";
 		hotelinfovo = new HotelinfoVO("LLLH酒店","仙林大道163号","栖霞区商圈","025-12345678",
 			roominfoList,Star.SEVEN,remark,introduction,hotelID);
-		
-		
+
+
 	}
-	
+
 	//得到酒店工作人员基本信息
 	@Override
 	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
@@ -117,9 +117,12 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 		return true;
 	}
 
+
+
 	@Override
-	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategy hotelStrategy) {
+	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
+		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
-	
+
 }
