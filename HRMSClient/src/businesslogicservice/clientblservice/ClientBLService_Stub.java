@@ -1,6 +1,7 @@
 package businesslogicservice.clientblservice;
 import java.io.File;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import Enum.OrderType;
@@ -92,7 +93,8 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @return符合关键词的酒店列表
 	 */
 	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo){
-		return null; 
+		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
+		return hotel; 
 	}
 	/**
 	 *得到具体日期的客户订单
@@ -101,7 +103,8 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @return 该日期的客户订单
 	 */
 	public List<OrderVO> getSearchDateOrder(String clientID,Date date){
-		return null;
+		List<OrderVO> order=new ArrayList<OrderVO>();
+		return order; 
 	}
 	/**
 	 *得到具体酒店的客户订单 
@@ -110,7 +113,8 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @return 该酒店的客户订单
 	 */
 	public List<OrderVO> getSearchHotelOrder( String clientID,String hotelID){
-		return null;
+		List<OrderVO> order=new ArrayList<OrderVO>();
+		return order;
 	}
 	/**
 	 *修改客户基本信息 
@@ -141,7 +145,8 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @return 所有订单列表
 	 */
 	public List<OrderVO> getAllOrderList(String clientID,OrderType order_type){
-		return null;
+		List<OrderVO> order=new ArrayList<OrderVO>();
+		return order;
 	}
 	/**
 	 *得到客户某一类型的订单 
@@ -150,7 +155,8 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @return 类型订单列表
 	 */
 	public List<OrderVO> getOrderList(String clientID,OrderType order_type){
-		return null;
+		List<OrderVO> order=new ArrayList<OrderVO>();
+		return order;
 	}
 	/**
 	 *得到客户的信用记录 
@@ -169,7 +175,8 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @return 历史预订酒店列表
 	 */
 	public List<HotelinfoVO> getHistoryList(String clientID){
-		return null;
+		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
+		return hotel;
 	}
 
 	

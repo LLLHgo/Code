@@ -2,7 +2,7 @@ package businesslogicservice.hotelstaffblservice;
 
 import java.util.List;
 
-import Enum.HotelStrategy;
+
 import Enum.ResultMessage;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
@@ -42,7 +42,7 @@ public interface HotelstaffBLService {
 	 * @param StrategyID
 	 * @return 
 	 */
-	public ResultMessage deletehotelStrategy(String hotelID , HotelStrategy hotelStrategy);
+	public ResultMessage deletehotelStrategy(String hotelID , HotelStrategyVO hotelStrategy);
 	/**
 	 * 获得酒店基本信息
 	 * @param vo
