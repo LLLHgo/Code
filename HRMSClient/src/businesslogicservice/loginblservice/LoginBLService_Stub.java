@@ -1,5 +1,8 @@
 package businesslogicservice.loginblservice;
 
+import Enum.ResultMessage;
+import vo.clientVO.ClientVO;
+
 public class LoginBLService_Stub implements  LoginBLService{
 	String userID;
 	String password;
@@ -16,5 +19,12 @@ public class LoginBLService_Stub implements  LoginBLService{
 		public boolean login(String user_id,String password) {
 		if(user_id!=null)return true;
 		else return false;
+	}
+	
+	/**
+	 * 注册新用户
+	 */
+	public ResultMessage addclient(ClientVO vo) {
+		return ResultMessage.SUCCESS;
 	}
 }
