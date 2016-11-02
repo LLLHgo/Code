@@ -1,78 +1,72 @@
-package businesslogic.orderbl;
+package presentation.order.controller;
 
 import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.orderbl.Orderbl;
 import businesslogicservice.orderblservice.OrderBLService;
+import presentation.order.view.ProcessOrderViewControllerService;
 import vo.orderVO.OrderVO;
 
-public class Orderbl implements OrderBLService{
+public class ProcessOrderViewController implements ProcessOrderViewControllerService{
+	
+	private OrderBLService orderBLService;
+	
+	public ProcessOrderViewController(){
+		orderBLService=new Orderbl();
+		
+	}
 
-	@Override
+	
 	public ResultMessage createOrder(OrderVO orderInfo) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderBLService.createOrder(new OrderVO());
 	}
 
-	@Override
 	public ResultMessage saveOrder(OrderVO order) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public ResultMessage cancelOrder(String orderId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public OrderVO findSpecificOrderList(String orderID) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<OrderVO> findUserOrderList(String userID) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<OrderVO> findSpecificDayClientOrder(String clientId, Date date) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<OrderVO> findSpecificHotelClientOrder(String clientId, String hoteIId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<OrderVO> findClientTypeOrder(OrderType type, String clientId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public OrderVO findSpecificHotelOrder(String hotelId, String orderId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<OrderVO> findAbnormalOrderList(Date date) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean checkTime(OrderVO order, Date date) {
-		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean addLog(String logInfo) {
 		return false;
 	}
 
