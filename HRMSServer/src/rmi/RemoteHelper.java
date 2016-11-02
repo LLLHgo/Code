@@ -1,6 +1,7 @@
 package rmi;
 
 import java.net.MalformedURLException;
+import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -23,22 +24,21 @@ import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
 
 public class RemoteHelper {
-	static final int port = 6600;
-	static final String host = "rmi://127.0.0.1:"+port+"/";
+	static final String host = "rmi://localhost:8888/";
 	
 	public static void main(String[] args){
 		try {
-			LocateRegistry.createRegistry(port);
+			LocateRegistry.createRegistry(8888);
 			
 			ClientDataService client = new ClientData();
-			Naming.rebind(host+"ClientService", client);
+			Naming.bind(host+"ClientService", client);
 			
+			HotelstaffDataService hotelstaff = new HotelStaffData();
+			Naming.rebind(host+"HotelstaffService", hotelstaff);
+
 			HotelinfoDataService hotelinfo = new HotelinfoData();
 			Naming.rebind(host+"HotelinfoService", hotelinfo);
 		
-			HotelstaffDataService hotelstaff = new HotelStaffData();
-			Naming.rebind(host+"HotelstaffService", hotelstaff);
-			
 			LogDataService log = new LogData();
 			Naming.rebind(host+"LogService", log);
 			
@@ -59,7 +59,9 @@ public class RemoteHelper {
 			e.printStackTrace();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
-		}
+		} catch (AlreadyBoundException e) {
+			e.printStackTrace();
+		} 
 		
 	}
 }

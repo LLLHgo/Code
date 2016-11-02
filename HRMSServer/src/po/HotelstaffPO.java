@@ -3,6 +3,8 @@ package po;
 public class HotelstaffPO {
 	String hotelID;
 	String password;
+	//酒店工作人员电话，用于网站工作人员与酒店工作人员联系（不同于酒店电话）
+	String tel;
 	
 	public HotelstaffPO(){
 		
@@ -13,6 +15,14 @@ public class HotelstaffPO {
 		this.password = password;
 	}
 
+	public String getTel() {
+		return tel;
+	}
+	
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	
 	public String getHotelID() {
 		return hotelID;
 	}

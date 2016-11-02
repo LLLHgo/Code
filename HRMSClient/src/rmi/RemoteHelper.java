@@ -18,7 +18,7 @@ public class RemoteHelper {
 
 	
 	public static void main(String[] args) {
-		String host = "rmi://127.0.0.1/";
+		String host = "rmi://localhost：8888/";
 		try {
 			ClientDataService clientService = (ClientDataService) Naming.lookup(host+"ClientService");
 			HotelstaffDataService hotelstaffService = (HotelstaffDataService) Naming.lookup(host+"HotelstaffService");
@@ -29,7 +29,7 @@ public class RemoteHelper {
 			SitemanagerDataService siteManagerService = (SitemanagerDataService) Naming.lookup(host+"SitemanagerService");
 			StrategyDataService strategyService = (StrategyDataService) Naming.lookup(host+"StrategyService");
 			//TODO
-			//clientService.checkAccount(client_id, password)
+			System.out.println("Client is running...");
 			
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
