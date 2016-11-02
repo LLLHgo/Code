@@ -1,6 +1,4 @@
-/rmi/
-/datahelper/
-/datahelperservice/
+/data/
 /dataservice/
 /po/
-/data/
+/rmi/
