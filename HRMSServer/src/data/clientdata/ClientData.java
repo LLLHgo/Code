@@ -15,50 +15,42 @@ public class ClientData extends UnicastRemoteObject implements ClientDataService
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
+	
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public File findCreditRecord(String clientID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean setCredit(String clientID, int recharge) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public ClientPO findPersonalInfo(String clientID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public ResultMessage modifyPersonalInfo(String clientID, ClientPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean checkAccount(String client_id, String password) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean setAllLevel(LevelPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean createClient(ClientPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;

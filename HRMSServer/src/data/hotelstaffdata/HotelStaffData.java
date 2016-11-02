@@ -13,31 +13,31 @@ public class HotelStaffData extends UnicastRemoteObject implements HotelstaffDat
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	public void init() throws RemoteException {
 
 		// TODO Auto-generated method stub
 	}
 
-	@Override
+
 	public HotelstaffPO findBasicInfo(String hotelStaffID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public boolean updatePassword(HotelstaffPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public boolean checkAccount(HotelstaffPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public void finish() throws RemoteException {
 		// TODO Auto-generated method stub
 		

@@ -13,13 +13,13 @@ public class SiteManagerData extends UnicastRemoteObject implements SitemanagerD
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	public SitemanagerPO getAccount() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public boolean SitemanagerAccountUpdate(SitemanagerPO sitemanagerPO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;

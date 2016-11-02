@@ -21,7 +21,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param order
 	 * @return  添加成功（true）或失败（false）的布尔值
 	 */
-	@Override
+	
 	public boolean add(OrderPO order) throws RemoteException{
 		// TODO Auto-generated method stub
 		return false;
@@ -32,7 +32,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param order
 	 * @return 添加成功（true）或失败（false）的布尔值
 	 */
-	@Override
+
 	public boolean save(OrderPO order) throws RemoteException{
 		// TODO Auto-generated method stub
 		return false;
@@ -43,7 +43,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param orderId
 	 * @return 置为取消状态成功（true）或失败（false）的布尔值
 	 */
-	@Override
+	
 	public boolean cancel(String orderId)throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
@@ -55,7 +55,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param orderId
 	 * @return
 	 */
-	@Override
+	
 	public OrderPO findSpecificUserOrder(UserType userType, String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
 		return orderPO;
@@ -66,7 +66,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param userId
 	 * @return
 	 */
-	@Override
+	
 	public List<OrderPO> findUserOrderList(String userId)throws RemoteException {
 		// TODO Auto-generated method stub
 		return orderPOList;
@@ -77,7 +77,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param clientId
 	 * @return 订单列表
 	 */
-	@Override
+	
 	public List<OrderPO> findClientTypeOrder(OrderType orderType,String clientId) throws RemoteException{
 		// TODO Auto-generated method stub
 		return orderPOList;
@@ -88,7 +88,6 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param date
 	 * @return 异常订单列表
 	 */
-	@Override
 	public List<OrderPO> findAbnormalOrderList(Date date)throws RemoteException {
 		// TODO Auto-generated method stub
 		return orderPOList;
@@ -98,7 +97,6 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * 根据时间，在数据库中将超时订单置为异常状态
 	 * @param orderId
 	 */
-	@Override
 	public void checkTime(String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
 		

@@ -17,49 +17,49 @@ public class StrategyData extends UnicastRemoteObject implements StrategyDataSer
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	public boolean addPrivilege(PrivilegePO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public List<PrivilegePO> findAllPrivilege(VIPType type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public boolean deletePrivilege(PrivilegePO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public boolean addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public List<MarketingStrategyPO> getMarketingStrategy(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public boolean deleteMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public List<HotelStrategyPO> getHotelStrategy(String hotelID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public boolean updateHotelStrategy(HotelStrategyPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;

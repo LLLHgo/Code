@@ -14,13 +14,13 @@ public class LogData extends UnicastRemoteObject implements LogDataService{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+
 	public List<LogPO> getLogList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public boolean addLog(LogPO logPo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
