@@ -27,14 +27,14 @@ public class OrderControllerTest {
 			fail("can not create a order");
 		}
 	}
-	@Test
+	/*@Test
 	public void testsaveOrder(){
 		result=bl.saveOrder(DataTool.getOrders().get(0));
 		if(result == ResultMessage.FAIL)
 		{
 			fail("can not create a order");
 		}
-	}
+	}*/
 	
 
 }
