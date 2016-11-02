@@ -15,8 +15,8 @@ public class HotelStaffData extends UnicastRemoteObject implements HotelstaffDat
 
 	@Override
 	public void init() throws RemoteException {
+
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

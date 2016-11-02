@@ -31,7 +31,7 @@ public class RemoteHelper {
 			LocateRegistry.createRegistry(8888);
 			
 			ClientDataService client = new ClientData();
-			Naming.bind(host+"ClientService", client);
+			Naming.rebind(host+"ClientService", client);
 			
 			HotelstaffDataService hotelstaff = new HotelStaffData();
 			Naming.rebind(host+"HotelstaffService", hotelstaff);
@@ -58,8 +58,6 @@ public class RemoteHelper {
 		} catch (RemoteException  e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (AlreadyBoundException e) {
 			e.printStackTrace();
 		} 
 		
