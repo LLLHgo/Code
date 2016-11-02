@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-/dataservice/
->>>>>>> origin/master
-/po/
-/dataservice/
-/data/
-/emi/
 /rmi/
+/datahelper/
+/datahelperservice/

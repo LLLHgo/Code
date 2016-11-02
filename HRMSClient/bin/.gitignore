@@ -1,8 +1,8 @@
+/dataservice/
+/rmi/
+/Enum/
+/businesslogic/
 /businesslogicservice/
-<<<<<<< HEAD
 /po/
 /vo/
-/rmi/
-/dataservice/
-=======
->>>>>>> origin/master
+/presentation/
