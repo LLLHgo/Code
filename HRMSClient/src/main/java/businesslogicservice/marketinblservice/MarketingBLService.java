@@ -3,42 +3,13 @@ package businesslogicservice.marketinblservice;
 import java.util.Date;
 import java.util.List;
 import Enum.ResultMessage;
-import Enum.VIPType;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public interface MarketingBLService {
-    /**
-     * 增加网站营销人员制定的促销信息
-     * @param vo
-     * @return 是否增加网站营销人员制定的促销信息成功
-     */
-	public ResultMessage addMarketingStrategy(MarketingStrategyVO  vo);
 
-	/**
-	 * 返回网站营销人员制定的促销信息列表
-	 * @param id
-	 * @return 是否返回网站营销人员制定的促销信息列表成功
-	 */
-
-	public List<MarketingStrategyVO> getMarketingStrategy(String id);
-
-	/**
-	 * 删除网站营销人员策略
-	 * @param vo
-	 * @return 是否删除成功
-	 */
-    public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo);
-
-    /**
-     * 增加等级信息
-     * @param vo
-     * @return 是否增加等级信息
-     */
 	public ResultMessage addLevel(LevelVO vo);
 
 	/**
@@ -59,27 +30,7 @@ public interface MarketingBLService {
      * @param vo
      * @return 是否增加会员福利成功
      */
-    public ResultMessage addPrivilege(PrivilegeVO vo);
 
-    /**
-     * 返回所有会员福利信息
-     * @param vipType
-     * @return 返回所有会员福利信息列表
-     */
-    public List<PrivilegeVO> findAllPrivilege(VIPType vipType);
-
-    /**
-     * 删除会员福利信息
-     * @param vo
-     * @return 是否删除会员福利信息成功
-     */
-    public ResultMessage deletePrivilege(PrivilegeVO vo);
-
-    /**
-     * 界面显示当日未执行订单列表
-     * @param date
-     * @return 返回显示当日未执行订单列表
-     */
     public List<OrderVO> showAbnormal(Date date);
 
     /**

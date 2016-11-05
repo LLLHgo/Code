@@ -26,50 +26,6 @@ public class MarketingBLService_Stub implements MarketingBLService {
        this.discount=discount;
 	}
 
-    /**
-     * 增加网站营销人员制定的促销信息
-     * @param vo
-     * @return 是否增加网站营销人员制定的促销信息成功
-     */
-	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
-		if(vo.getType()==marketingStrategy.DOUBLE11)
-		    return ResultMessage.FAIL;
-		else
-			return ResultMessage.SUCCESS;
-	}
-
-
-	/**
-	 * 返回网站营销人员制定的促销信息列表
-	 * @param id
-	 * @return 是否返回网站营销人员制定的促销信息列表成功
-	 */
-	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
-		String name="M2016110501";
-        marketingStrategy type=marketingStrategy.CRATEDE;
-        Date startTime=new Date();
-        Date endTime=new Date();
-        HotelinfoVO hotel=new HotelinfoVO();
-        hotels.add(hotel);
-        Image image=new Image(id);
-        String position="North";
-        MarketingStrategyVO vo=new MarketingStrategyVO(name,type,startTime,endTime,discount,hotels,image,position);
-        List<MarketingStrategyVO> msVO=new ArrayList<MarketingStrategyVO>();
-        msVO.add(vo);
-		return msVO;
-	}
-
-	/**
-	 * 删除网站营销人员策略
-	 * @param vo
-	 * @return 是否删除成功
-	 */
-	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
-		if(vo.getDiscount()>=0.9)
-			return ResultMessage.FAIL;
-		else
-			return ResultMessage.SUCCESS;
-	}
 
     /**
      * 界面返回特定订单信息
@@ -151,29 +107,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
 	    	return ResultMessage.SUCCESS;
 	}
 
-    /**
-     * 增加会员福利
-     * @param vo
-     * @return 是否增加会员福利成功
-     */
-	public ResultMessage addPrivilege(PrivilegeVO vo) {
-		if(vo.getDiscount()>0.8)
-			return ResultMessage.FAIL;
-	    else
-	    	return ResultMessage.SUCCESS;
-	}
 
-    /**
-     * 删除会员福利信息
-     * @param vo
-     * @return 是否删除会员福利信息成功
-     */
-	public ResultMessage deletePrivilege(PrivilegeVO vo) {
-		if(vo.getDiscount()>0.8)
-			return ResultMessage.FAIL;
-	    else
-	    	return ResultMessage.SUCCESS;
-	}
 
     /**
      * 修改网站营销人员信息
@@ -256,17 +190,6 @@ public class MarketingBLService_Stub implements MarketingBLService {
 		OrderVO order=new OrderVO();
 		orders.add(order);
 		return orders;
-	}
-
-    /**
-     * 返回所有会员福利信息
-     * @param vipType
-     * @return 返回所有会员福利信息列表
-     */
-	public List<PrivilegeVO> findAllPrivilege(VIPType vipType) {
-		List<PrivilegeVO> privileges=new ArrayList<PrivilegeVO>();
-		privileges.add(new PrivilegeVO());
-		return privileges;
 	}
 
     /**

@@ -45,7 +45,11 @@ public class MockStrategy {
     public boolean addMarketingStrategy(MarketingStrategyVO vo) {
 		return true;
 	}
-
+    /**
+     * 获得网站营销人员的策略列表
+     * @param id
+     * @return 返回网站营销人员的策略列表
+     */
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
 		List<MarketingStrategyVO> list=new ArrayList<MarketingStrategyVO>();
 		list.add(ms1);
@@ -53,12 +57,20 @@ public class MockStrategy {
 		return list;
 	}
 
-
+    /**
+     * 删除策略
+     * @param vo
+     * @return 是否删除成功
+     */
 	public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
 		return true;
 	}
 
-
+    /**
+     * 获得酒店策略列表
+     * @param hotelID
+     * @return 酒店策略列表
+     */
 	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
 		List<HotelStrategyVO> list=new ArrayList<HotelStrategyVO>();
 		list.add(hs1);
@@ -66,16 +78,28 @@ public class MockStrategy {
 		return list;
 	}
 
-
+    /**
+     * 更新酒店策略
+     * @param vo
+     * @return 是否更新成功
+     */
 	public boolean updateHotelStrategy(HotelStrategyVO vo) {
 		return true;
 	}
-
+    /**
+     * 增加福利信息
+     * @param vo
+     * @return 是否增加成功
+     */
 	public boolean addPrivilege(PrivilegeVO vo) {
 		return true;
 	}
 
-
+    /**
+     * 查找福利信息
+     * @param type
+     * @return 福利信息列表
+     */
 	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
 		List<PrivilegeVO> list=new ArrayList<PrivilegeVO>();
 		list.add(pv1);
@@ -83,7 +107,11 @@ public class MockStrategy {
 		return list;
 	}
 
-
+    /**
+     * 删除福利信息
+     * @param vo
+     * @return 是否删除成功
+     */
 	public boolean delete(PrivilegeVO vo) {
 		return true;
 	}

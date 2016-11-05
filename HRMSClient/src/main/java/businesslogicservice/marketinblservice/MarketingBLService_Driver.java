@@ -4,28 +4,13 @@ import java.util.Date;
 import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
-import Enum.VIPType;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public class MarketingBLService_Driver {
     public void drive(MarketingBLService marketingBLService){
-    	//创建MarketingStrategyVO
-    	MarketingStrategyVO vo=new MarketingStrategyVO();
-    	ResultMessage result=marketingBLService.addMarketingStrategy(vo);
-    	if(result==ResultMessage.FAIL)System.out.println("创建MarketingStrategyVO失败");
-
-    	//返回MarketingStrategyVO列表
-    	List<MarketingStrategyVO> list=marketingBLService.getMarketingStrategy("M0001");
-    	if(list.size()==0)System.out.println("List为空");
-
-    	//删除MarketingStrategyVO
-    	ResultMessage deleteResult=marketingBLService.deleteMarketingStrategy(vo);
-    	if(deleteResult==ResultMessage.FAIL)System.out.println("删除MarketingStrategyVO失败");
 
     	//建立LevelVO
     	LevelVO Lvo=new LevelVO(1,"银牌",200);
@@ -40,18 +25,6 @@ public class MarketingBLService_Driver {
     	ResultMessage deleteLevelResult=marketingBLService.deleteLevel(Lvo);
     	if(deleteLevelResult==ResultMessage.SUCCESS)System.out.println("删除等级信息成功");
 
-    	//增加策略
-    	PrivilegeVO Pvo=new PrivilegeVO();
-    	ResultMessage addPrivilegeResult=marketingBLService.addPrivilege(Pvo);
-    	if(addPrivilegeResult==ResultMessage.FAIL)System.out.print("增加策略失败");
-
-    	//返回privilegeVOList
-    	List<PrivilegeVO> privilegeList=marketingBLService.findAllPrivilege(VIPType.ORDINARYVIP);
-    	if(privilegeList.size()>0)System.out.println("返回privilegeVOList成功");
-
-    	//删除Privilege
-    	ResultMessage deletePrivilegeResult=marketingBLService.deletePrivilege(Pvo);
-    	if(deletePrivilegeResult==ResultMessage.FAIL)System.out.println("删除Privilege失败");
 
     	//返回当日未执行订单列表
     	Date date=new Date();
