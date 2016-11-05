@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class ProcessSiteManagerViewController {
+public class ProcessSiteManagerViewControllerTest {
 
 	@Test
 	public void test() {
