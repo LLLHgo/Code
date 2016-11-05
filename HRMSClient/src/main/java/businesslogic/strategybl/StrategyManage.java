@@ -2,6 +2,7 @@ package businesslogic.strategybl;
 
 import java.util.List;
 
+import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import vo.strategyVO.HotelStrategyVO;
@@ -11,9 +12,9 @@ import vo.strategyVO.PrivilegeVO;
 public class StrategyManage implements StrategyBLService{
 
 	@Override
-	public boolean addMarketingStrategy(MarketingStrategyVO vo) {
+	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -23,9 +24,9 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
+	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -41,15 +42,15 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public boolean updateHotelStrategy(String hotelID, HotelStrategyVO vo) {
+	public ResultMessage updateHotelStrategy(String hotelID, HotelStrategyVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public boolean addPrivilege(PrivilegeVO vo) {
+	public ResultMessage addPrivilege(PrivilegeVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -59,9 +60,9 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public boolean delete(PrivilegeVO vo) {
+	public ResultMessage delete(PrivilegeVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 
 }

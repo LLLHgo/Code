@@ -70,13 +70,8 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 
 	@Override
 	public ResultMessage updatehotelStrategy(String hotelID, HotelStrategyVO vo) {
-		boolean result =  strategy.updateHotelStrategy(hotelID,vo);
-		if(result == true){
-			return ResultMessage.SUCCESS;
-		}
-		else{
-			return ResultMessage.FAIL;
-		}
+		return  strategy.updateHotelStrategy(hotelID,vo);
+
 	}
 
 	@Override

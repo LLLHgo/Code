@@ -1,4 +1,4 @@
-package businesslogicservice.strategyblservice;
+package presentation.strategy.view;
 
 import java.util.List;
 
@@ -8,7 +8,8 @@ import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
-public interface StrategyBLService {
+public interface ProcessStrategyViewControllerService {
+
 	/**
 	 * 增加网站营销人员所制定的策略
 	 * @param vo
@@ -29,12 +30,7 @@ public interface StrategyBLService {
      * @return 返回是否删除成功
      */
     public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo);
-    /**
-     * 删除酒店工作人员制定的促销策略
-     * @param vo
-     * @return 返回是否删除成功
-     */
-    public boolean deletehotelStrategy(HotelStrategyVO vo);
+
     /**
      * 根据酒店ID返回该酒店的促销策略
      * @param hotelID
@@ -69,5 +65,4 @@ public interface StrategyBLService {
      * @return 返回是否删除成功
      */
     public ResultMessage delete(PrivilegeVO vo);
-
 }

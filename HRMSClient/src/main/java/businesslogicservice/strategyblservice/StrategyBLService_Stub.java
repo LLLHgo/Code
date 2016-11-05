@@ -3,6 +3,7 @@ package businesslogicservice.strategyblservice;
 import java.util.ArrayList;
 import java.util.List;
 
+import Enum.ResultMessage;
 import Enum.VIPType;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -15,11 +16,11 @@ public class StrategyBLService_Stub implements StrategyBLService{
 	 * @param vo
 	 * @return 返回是否增加成功
 	 */
-    public boolean  addMarketingStrategy(MarketingStrategyVO vo) {
+    public ResultMessage  addMarketingStrategy(MarketingStrategyVO vo) {
 		if(vo!=null)
-			return true;
+			return ResultMessage.SUCCESS;
 		else
-			return false;
+			return ResultMessage.FAIL;
 	}
 
     /**
@@ -39,11 +40,11 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param vo
      * @return 返回是否删除成功
      */
-    public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
+    public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
     	if(vo!=null)
-			return true;
+    		return ResultMessage.SUCCESS;
 		else
-			return false;
+			return ResultMessage.FAIL;
 	}
 
     /**
@@ -63,11 +64,11 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param vo
      * @return 返回是否更新成功
      */
-    public boolean updateHotelStrategy(String hotelID,HotelStrategyVO vo) {
+    public ResultMessage updateHotelStrategy(String hotelID,HotelStrategyVO vo) {
     	if(vo!=null)
-			return true;
+    		return ResultMessage.SUCCESS;
 		else
-			return false;
+			return ResultMessage.FAIL;
 	}
 
     /**
@@ -75,11 +76,11 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param vo
      * @return 返回是否增加成功
      */
-    public  boolean addPrivilege(PrivilegeVO vo) {
+    public  ResultMessage addPrivilege(PrivilegeVO vo) {
     	if(vo!=null)
-			return true;
+    		return ResultMessage.SUCCESS;
 		else
-			return false;
+			return ResultMessage.FAIL;
 	}
 
     /**
@@ -99,11 +100,11 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param vo
      * @return 返回是否删除成功
      */
-    public boolean delete(PrivilegeVO vo) {
+    public ResultMessage delete(PrivilegeVO vo) {
     	if(vo!=null)
-			return true;
+    		return ResultMessage.SUCCESS;
 		else
-			return false;
+			return ResultMessage.FAIL;
 	}
 
 	@Override
