@@ -1,7 +1,6 @@
 package datatool;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import Enum.OrderType;
 import Enum.VIPType;
@@ -15,8 +14,6 @@ public class OrderDataTool {
 	// findUserTypeOrder(NORMALNONEXEC,C00000002):list1
 	// findSpecificHotelOrder("H00000001","20161016092301"):orderVO4
 	// findAbnormalOrderList("2016-10-17"):list3
-
-
 
 	static ArrayList<String> strategy;
 
