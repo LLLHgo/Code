@@ -89,14 +89,6 @@ public class HotelinfoBLService_Driver{
 		HotelinfoVO HVO=hotelinfoBLService.gethotelinfoVO("H00000000");
 		if(HVO!=null)System.out.println("获得酒店基本信息成功！");
 
-		//酒店订单列表
-		List<HotelOrderVO> Hlist=hotelinfoBLService.gethotelOrderList("H00000000");
-		if(Hlist.size()>0)System.out.println("获得酒店订单列表成功！");
-
-		//获得酒店促销策略
-		HotelStrategyVO HSvo=hotelinfoBLService.gethotelStrategy("H00000000");
-		if(HSvo!=null)System.out.println("获得酒店促销策略成功！");
-
 		//获得房间信息
 		RoominfoVO Rvo=hotelinfoBLService.getroominfo("H00000000","413-2");
 		if(Rvo!=null)System.out.println("获得房间信息成功！");

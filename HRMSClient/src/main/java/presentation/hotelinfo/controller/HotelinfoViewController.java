@@ -5,6 +5,7 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.hoteinfobl.HotelinfoManage;
+import businesslogic.orderbl.OrderManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
@@ -14,6 +15,7 @@ import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.HotelOrderVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
@@ -108,13 +110,13 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 	}
 
 	@Override
-	public List<HotelOrderVO> gethotelOrderList(String hotelID) {
-		return order.gethotelOrderList(hotelID);
+	public List<OrderVO> gethotelOrderList(String hotelID) {
+		return order.findUserOrderList(hotelID);
 	}
 
 	@Override
-	public ResultMessage updateOrderState(String orderID, OrderType orderType) {
-		return order.updateOrderState(orderID, orderType);
+	public ResultMessage updateOrderState(OrderVO vo) {
+		return order.saveOrder(vo);
 	}
 
 }

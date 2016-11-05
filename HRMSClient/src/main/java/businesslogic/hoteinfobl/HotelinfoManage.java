@@ -58,23 +58,6 @@ public class HotelinfoManage implements HotelinfoBLService{
 		return false;
 	}
 
-	@Override
-	public ResultMessage updatehotelStrategy(String hotelID, HotelStrategyVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public HotelStrategyVO gethotelStrategy(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public HotelinfoVO gethotelinfoVO(String hotelID) {
@@ -93,18 +76,4 @@ public class HotelinfoManage implements HotelinfoBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public List<HotelOrderVO> gethotelOrderList(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage updateOrderState(String orderID, OrderType orderType) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }

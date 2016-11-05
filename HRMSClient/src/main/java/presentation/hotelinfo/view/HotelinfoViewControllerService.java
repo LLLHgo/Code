@@ -9,6 +9,7 @@ import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.HotelOrderVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
@@ -99,12 +100,12 @@ public interface HotelinfoViewControllerService {
 	 * @param hotelID
 	 * @return 酒店订单列表
 	 */
-	public List<HotelOrderVO> gethotelOrderList(String hotelID);
+	public List<OrderVO> gethotelOrderList(String hotelID);
 	/**
 	 * 将订单状态持久化保存
-	 * @param orderID
+	 * @param OrderVO
 	 * @param state
 	 * @return 是否将订单状态持久化保存
 	 */
-	public ResultMessage updateOrderState(String orderID,OrderType orderType);
+	public ResultMessage updateOrderState(OrderVO vo);
 }

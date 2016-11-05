@@ -56,26 +56,7 @@ public interface HotelinfoBLService {
 	 * @return 保存是否成功
 	 */
 	public boolean saveSitemanagerAdd(HotelinfoVO vo);
-	
-	/**
-	 * 将酒店促销策略持久化保存
-	 * @param vo
-	 * @return 是否将酒店促销策略持久化保存
-	 */
-	public ResultMessage updatehotelStrategy(String hotelID,HotelStrategyVO vo);
-	/**
-	 * 获得酒店促销策略信息
-	 * @param hotelID
-	 * @return 酒店促销策略信息
-	 */
-	public HotelStrategyVO gethotelStrategy(String hotelID);
-	/**
-	 * 删除酒店策略
-	 * @param hotelID
-	 * @param StrategyID
-	 * @return 是否删除酒店策略
-	 */
-	public ResultMessage deletehotelStrategy(String hotelID , HotelStrategyVO hotelStrategy);
+
 	/**
 	 * 获得酒店基本信息
 	 * @param vo
@@ -94,17 +75,5 @@ public interface HotelinfoBLService {
 	 * @return 是否将房间信息持久化保存
 	 */
 	public ResultMessage updateroominfo(HotelinfoVO vo);
-	/**
-	 * 获得酒店订单列表
-	 * @param hotelID
-	 * @return 酒店订单列表
-	 */
-	public List<HotelOrderVO> gethotelOrderList(String hotelID);
-	/**
-	 * 将订单状态持久化保存
-	 * @param orderID
-	 * @param state
-	 * @return 是否将订单状态持久化保存
-	 */
-	public ResultMessage updateOrderState(String orderID,OrderType orderType);
+
 }
