@@ -1,19 +1,20 @@
 package datatool;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import po.LogPO;
+import vo.logVO.LogVO;
 
 public class LogDataTool {
      //List<LogPO> getLogList():logList
 
-	static LogPO logPO1=new LogPO("2016-08-10 09:21:22 H00000010 修改密码");
-	static LogPO logPO2=new LogPO("2016-08-10 09:20:11 C00000002 下订单20160810092001");
+	static LogVO logVO1=new LogVO("2016-08-10 09:21:22 H00000010 修改密码");
+	static LogVO logVO2=new LogVO("2016-08-10 09:20:11 C00000002 下订单20160810092001");
 	
-	static ArrayList<LogPO> logList=new ArrayList<LogPO>();
+	public static List<LogVO> logList=new ArrayList<LogVO>();
 	static{
-		logList.add(logPO1);
-		logList.add(logPO2);
+		logList.add(logVO1);
+		logList.add(logVO2);
 	}		
 	
 }

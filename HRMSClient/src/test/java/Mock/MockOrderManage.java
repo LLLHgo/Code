@@ -10,8 +10,9 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import vo.orderVO.OrderVO;
+import datatool.OrderDataTool;
 
-public class MockOrder {
+public class MockOrderManage {
 	// 订单号
    private String orderId;
    // 客户帐号
@@ -39,18 +40,14 @@ public class MockOrder {
 	// orderVO
 	public OrderVO orderVO;
 	
-	public OrderVO orderVO1;
+	OrderDataTool orderDatatool=new OrderDataTool();
 	
-	public OrderVO orderVO2;
-	
-	public ArrayList<OrderVO> list;
-	
-	
-	public MockOrder(OrderVO orderVO){
+	// 构造函数1
+	public MockOrderManage(OrderVO orderVO){
 		this.orderVO=orderVO;
 	}
-	
-	public MockOrder(String str){
+	// 构造函数2
+	public MockOrderManage(String str){
 		if(str.length()==16)
 			this.orderId=str;
 		else if(str.charAt(0)=='C')
@@ -60,10 +57,12 @@ public class MockOrder {
 		else
 			this.logInfo=str;
 	}
-	public MockOrder(){
+	// 构造函数3
+	public MockOrderManage(){
 		
 	}
-	public MockOrder(String str,Date orderDate){
+	// 构造函数4
+	public MockOrderManage(String str,Date orderDate){
 		if(str.charAt(0)=='C'){
 			this.clientId=str;
 			this.orderDate=orderDate;
@@ -105,7 +104,7 @@ public class MockOrder {
 	 * @return 具体订单
 	 */
 	public OrderVO  findSpecificOrderList(String orderID){
-		return orderVO1;
+		return OrderDataTool.orderVO1;
 	}
 	/**
 	 * 查找某种用户(客户或酒店)的所有订单
@@ -113,8 +112,65 @@ public class MockOrder {
 	 * @return 某种用户(客户或酒店)的所有订单列表
 	 */
 	public List<OrderVO>  findUserOrderList (String userID){
-		return list;
-	
+		return OrderDataTool.list1;
 	}
+	
+	/**
+	 * 查找客户某天的订单
+	 * @param clientId
+	 * @param date
+	 * @return 客户某天的订单列表
+	 */
+	public  List<OrderVO> findSpecificDayClientOrder(String clientId, Date date){
+		return OrderDataTool.list2;
+	}
+	/**
+	 * 查找客户在某个酒店的所有订单
+	 * @param clientId
+	 * @param hoteIId
+	 * @return 客户在某个酒店的所有订单列表
+	 */
+	public  List<OrderVO> findSpecificHotelClientOrder (String clientId, String hoteIId){
+		return OrderDataTool.list1;
+	}
+	/**
+	 * 查找客户某个种类（正常未执行、正常已执行、取消、异常）的订单
+	 * @param type
+	 * @param clientId
+	 * @return 客户某个种类（正常未执行、正常已执行、取消、异常）的订单列表
+	 */
+	public  List<OrderVO> findClientTypeOrder (OrderType type,String clientId){
+		return OrderDataTool.list1;
+	}
+	
+	/**
+	 * 查找酒店的某个具体订单
+	 * @param hotelId
+	 * @param orderId
+	 * @return 酒店的某个具体订单
+	 */
+	public OrderVO findSpecificHotelOrder (String hotelId, String orderId){
+		return OrderDataTool.orderVO4;
+	}
+	
+	/**
+	 * 查找具体某天的异常订单
+	 * @param date
+	 * @return 具体某天的所有订单列表
+	 */
+	public List<OrderVO> findAbnormalOrderList (Date date){
+		return OrderDataTool.list3;
+	}
+
+	/**
+	 * 检查时间，判断是否将订单置为异常
+	 * @param order
+	 * @param date
+	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
+	 */
+	public boolean checkTime (OrderVO order, Date date){
+		return true;
+	}
+
 }
 	

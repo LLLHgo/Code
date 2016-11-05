@@ -10,12 +10,15 @@ public class OrderDataTool {
 	// findSpecificOrderList(20161015085702):orderVO1
 	// findUserOrderList(C00000002):list1
 	// findSpecificDayClientOrder(C00000002,2016-10-15):list2
-	// findSpecificHotelClientOrder(C00000010,H00000002):orderVO4
+	// findSpecificHotelClientOrder(C00000010,H00000002):list1
 	// findUserTypeOrder(NORMALNONEXEC,C00000002):list1
 	// findSpecificHotelOrder("H00000001","20161016092301"):orderVO4
 	// findAbnormalOrderList("2016-10-17"):list3
 
-	static ArrayList<String> strategy;
+	public static ArrayList<String> strategy;
+	public static ArrayList<OrderVO> list1;
+	public static ArrayList<OrderVO> list2;
+	public static ArrayList<OrderVO> list3;
 
 	static{
 		String strategy1="M2016091501";
@@ -48,16 +51,16 @@ public class OrderDataTool {
 
 
 	static {
-		ArrayList<OrderVO> list1=new ArrayList<OrderVO>();
+		list1=new ArrayList<OrderVO>();
 		list1.add(orderVO1);
 		list1.add(orderVO2);
 		list1.add(orderVO3);
 
-		ArrayList<OrderVO> list2=new ArrayList<OrderVO>();
+		list2=new ArrayList<OrderVO>();
 		list2.add(orderVO1);
 		list2.add(orderVO2);
 
-		ArrayList<OrderVO> list3=new ArrayList<OrderVO>();
+		list3=new ArrayList<OrderVO>();
 		list3.add(orderVO1);
 		list3.add(orderVO2);
 	}

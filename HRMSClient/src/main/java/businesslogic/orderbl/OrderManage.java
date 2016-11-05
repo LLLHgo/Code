@@ -8,7 +8,7 @@ import Enum.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import vo.orderVO.OrderVO;
 
-public class Orderbl implements OrderBLService{
+public class OrderManage implements OrderBLService{
 
 	@Override
 	public ResultMessage createOrder(OrderVO orderInfo) {
