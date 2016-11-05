@@ -45,14 +45,14 @@ public class ClientBLService_Stub implements ClientBLService {
 		this.creditRecord=creditRecord;
 	}
 	/**
-	 *通过客户ID得到客户个人信息 
+	 *通过客户ID得到客户个人信息
 	 * @param clientID
 	 * @return 客户的个人信息
 	 */
 	public ClientVO getclient (String clientID){
 		return new ClientVO();
 	}
-	
+
 	/**
 	 *增加新客户
 	 * @param vo
@@ -65,7 +65,7 @@ public class ClientBLService_Stub implements ClientBLService {
 			return true;
 	}
 	/**
-	 *设置（修改）某一客户信用值 
+	 *设置（修改）某一客户信用值
 	 * @param clientID
 	 * @param recharge
 	 * @return 修改信用值成功与否
@@ -94,7 +94,7 @@ public class ClientBLService_Stub implements ClientBLService {
 	 */
 	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo){
 		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
-		return hotel; 
+		return hotel;
 	}
 	/**
 	 *得到具体日期的客户订单
@@ -104,10 +104,10 @@ public class ClientBLService_Stub implements ClientBLService {
 	 */
 	public List<OrderVO> getSearchDateOrder(String clientID,Date date){
 		List<OrderVO> order=new ArrayList<OrderVO>();
-		return order; 
+		return order;
 	}
 	/**
-	 *得到具体酒店的客户订单 
+	 *得到具体酒店的客户订单
 	 * @param clientID
 	 * @param hotelID
 	 * @return 该酒店的客户订单
@@ -117,7 +117,7 @@ public class ClientBLService_Stub implements ClientBLService {
 		return order;
 	}
 	/**
-	 *修改客户基本信息 
+	 *修改客户基本信息
 	 * @param vo
 	 * @return 修改个人信息成功与否提示信息
 	 */
@@ -128,7 +128,18 @@ public class ClientBLService_Stub implements ClientBLService {
 			return ResultMessage.FAIL;
 	}
 	/**
-	 *撤销订单 
+	 *创建订单
+	 * @param orderID
+	 * @return 创建成功与否
+	 */
+	public boolean createOrder(OrderVO vo){
+		if(vo!=null)
+			return true;
+		else
+			return false;
+	}
+	/**
+	 *撤销订单
 	 * @param orderID
 	 * @return 撤销成功与否
 	 */
@@ -139,7 +150,7 @@ public class ClientBLService_Stub implements ClientBLService {
 			return false;
 	}
 	/**
-	 *得到客户的所有订单 
+	 *得到客户的所有订单
 	 * @param clientID
 	 * @param order_type
 	 * @return 所有订单列表
@@ -149,7 +160,7 @@ public class ClientBLService_Stub implements ClientBLService {
 		return order;
 	}
 	/**
-	 *得到客户某一类型的订单 
+	 *得到客户某一类型的订单
 	 * @param clientID
 	 * @param order_type
 	 * @return 类型订单列表
@@ -159,18 +170,18 @@ public class ClientBLService_Stub implements ClientBLService {
 		return order;
 	}
 	/**
-	 *得到客户的信用记录 
+	 *得到客户的信用记录
 	 * @param clientID
 	 * @return 信用记录
 	 */
 	public File getCreditRecord(String clientID){
 		if(clientID!=null)
 			return new File(clientID);
-		else 
+		else
 			return null;
 	}
 	/**
-	 *得到客户的历史预订酒店列表 
+	 *得到客户的历史预订酒店列表
 	 * @param clientID
 	 * @return 历史预订酒店列表
 	 */
@@ -178,6 +189,11 @@ public class ClientBLService_Stub implements ClientBLService {
 		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
 		return hotel;
 	}
+	@Override
+	public boolean Order(OrderVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-	
+
 }
