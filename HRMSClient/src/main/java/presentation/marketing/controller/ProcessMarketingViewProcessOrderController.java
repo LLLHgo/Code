@@ -1,0 +1,7 @@
+package presentation.marketing.controller;
+
+import presentation.marketing.view.ProcessMarketingViewProcessOrderControllerService;
+
+public class ProcessMarketingViewProcessOrderController implements ProcessMarketingViewProcessOrderControllerService{
+
+}

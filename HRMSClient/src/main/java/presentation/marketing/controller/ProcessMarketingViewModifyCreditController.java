@@ -1,0 +1,7 @@
+package presentation.marketing.controller;
+
+import presentation.marketing.view.ProcessMarketingViewModifyCreditControllerService;
+
+public class ProcessMarketingViewModifyCreditController implements ProcessMarketingViewModifyCreditControllerService{
+
+}
