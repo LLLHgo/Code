@@ -45,6 +45,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
 	 * @return 是否返回网站营销人员制定的促销信息列表成功
 	 */
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
+		String name="M2016110501";
         marketingStrategy type=marketingStrategy.CRATEDE;
         Date startTime=new Date();
         Date endTime=new Date();
@@ -52,7 +53,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
         hotels.add(hotel);
         Image image=new Image(id);
         String position="North";
-        MarketingStrategyVO vo=new MarketingStrategyVO(type,startTime,endTime,discount,hotels,image,position);
+        MarketingStrategyVO vo=new MarketingStrategyVO(name,type,startTime,endTime,discount,hotels,image,position);
         List<MarketingStrategyVO> msVO=new ArrayList<MarketingStrategyVO>();
         msVO.add(vo);
 		return msVO;

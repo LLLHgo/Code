@@ -8,7 +8,10 @@ import javafx.scene.image.Image;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 
+
 public class MarketingStrategyVO {
+	//活动名称
+	private String name;
 	//网站营销人员制定的策略的种类，有enum：marketingStrategy{DOUBLE11,VIPSPECIAL,CRATEDE;}
     private marketingStrategy type;
     //活动开始时间
@@ -53,8 +56,9 @@ public class MarketingStrategyVO {
      * @param poster 活动海报
      * @param position 活动海报显示在客户界面的位置
      */
-    public MarketingStrategyVO(marketingStrategy type,Date startTime,Date endTime,double discount,ArrayList<HotelinfoVO> hotels,
+    public MarketingStrategyVO(String name,marketingStrategy type,Date startTime,Date endTime,double discount,ArrayList<HotelinfoVO> hotels,
     		Image poster,String position){
+    	this.name=name;
     	this.type=type;
     	this.startTime=startTime;
     	this.endTime=endTime;
@@ -75,8 +79,9 @@ public class MarketingStrategyVO {
      * @param businessArea
      * @param position
      */
-    public MarketingStrategyVO(marketingStrategy type,Date startTime,Date endTime,double discount,Image poster,
+    public MarketingStrategyVO(String name,marketingStrategy type,Date startTime,Date endTime,double discount,Image poster,
     		ArrayList<String> businessArea,String position){
+    	this.name=name;
     	this.type=type;
     	this.startTime=startTime;
     	this.endTime=endTime;
@@ -101,9 +106,10 @@ public class MarketingStrategyVO {
      * @param levels
      * @param vipKinds
      */
-    public MarketingStrategyVO(marketingStrategy type,Date startTime,Date endTime,double discount,ArrayList<HotelinfoVO> hotels,
+    public MarketingStrategyVO(String name,marketingStrategy type,Date startTime,Date endTime,double discount,ArrayList<HotelinfoVO> hotels,
     		ArrayList<String> businessArea,Image poster,String position,int minSum,int minRooms,LevelVO levels,
     		ArrayList<VIPType> vipKinds){
+    	this.name=name;
     	this.type=type;
     	this.startTime=startTime;
     	this.endTime=endTime;
@@ -188,6 +194,14 @@ public class MarketingStrategyVO {
 	}
 	public void setVipKinds(ArrayList<VIPType> vipKinds) {
 		this.vipKinds = vipKinds;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 

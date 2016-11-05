@@ -6,6 +6,8 @@ import Enum.PrivilegeWay;
 import Enum.VIPType;
 
 public class PrivilegePO {
+	//福利名称
+	private String name;
 	//会员种类，包括ORDINARYVIP,ENTERPRISEVIP
     private VIPType type;
     //活动折扣
@@ -25,7 +27,8 @@ public class PrivilegePO {
      * @param discount
      * @param privilegeWay
      */
-    public PrivilegePO(VIPType type,double discount,PrivilegeWay privilegeWay){
+    public PrivilegePO(String name,VIPType type,double discount,PrivilegeWay privilegeWay){
+    	this.name=name;
     	this.setType(type);
     	this.setDiscount(discount);
     	this.setPrivilegeWay(privilegeWay);
@@ -37,7 +40,8 @@ public class PrivilegePO {
      * @param privilegeWay
      * @param enterprises
      */
-    public PrivilegePO(VIPType type,double discount,PrivilegeWay privilegeWay,List<String> enterprises){
+    public PrivilegePO(String name,VIPType type,double discount,PrivilegeWay privilegeWay,List<String> enterprises){
+    	this.name=name;
     	this.setType(type);
     	this.setDiscount(discount);
     	this.setPrivilegeWay(privilegeWay);
@@ -74,6 +78,14 @@ public class PrivilegePO {
 
 	public void setEnterprises(List<String> enterprises) {
 		this.enterprises = enterprises;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }
 
