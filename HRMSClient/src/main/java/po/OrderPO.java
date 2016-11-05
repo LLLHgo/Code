@@ -7,22 +7,24 @@ import Enum.OrderType;
 import Enum.VIPType;
 
 public class OrderPO {
-	// 订单号
-	private String orderId;
-	// 客户帐号
-	private String clientId;
-	// 客户名字
+	 // 订单号
+   private String orderId;
+   // 客户帐号
+   private String clientId;
+   // 客户名字
 	private String clientName;
 	// 客户手机号
 	private String clientPhone;
 	// 客户vip类型
 	private VIPType vipType;
 	// 订单下达时间
-	private Date orderDate;
+	private String orderDate;
 	// 订单类型
 	private OrderType orderType;
 	// 订单中酒店名称
 	private String hotelName;
+	// hotelId
+	private String hotelId;
 	// 订单价格
 	private double price;
 	// 订单享受的优惠策略
@@ -31,8 +33,8 @@ public class OrderPO {
 	public OrderPO(){
 		
 	}
-	public OrderPO(String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
-			Date orderDate,OrderType orderType,String hotelName,double price,ArrayList <String> strategies){
+	public OrderPO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
+			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
@@ -41,15 +43,16 @@ public class OrderPO {
 		this.orderDate=orderDate;
 		this.orderType=orderType;
 		this.hotelName=hotelName;
+		this.hotelId=hotelId;
 		this.price=price;
 		this.strategies=strategies;
-	}
-	
+		}
+			
 	public String getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+				this.orderId = orderId;
 	}
 	public String getClientId() {
 		return clientId;
@@ -69,11 +72,11 @@ public class OrderPO {
 	public void setClientPhone(String clientPhone) {
 		this.clientPhone = clientPhone;
 	}
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setOrderDate(String orderDate) {
+    	this.orderDate = orderDate;
 	}
 	public OrderType getOrderStatus() {
 		return orderType;
@@ -86,6 +89,12 @@ public class OrderPO {
 	}
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
+	}
+	public String getHotelId() {
+		return hotelId;
+	}
+	public void setHotelId(String hotelId) {
+		this.hotelId = hotelId;
 	}
 	public double getPrice() {
 		return price;

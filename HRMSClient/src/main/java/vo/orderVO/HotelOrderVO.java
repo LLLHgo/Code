@@ -19,7 +19,7 @@ public class HotelOrderVO {
 	// 客户vip类型
 	private VIPType vipType;
 	// 订单下达时间
-	private Date orderDate;
+	private String orderDate;
 	// 订单类型
 	private OrderType orderType;
 	// 订单中酒店名称
@@ -34,7 +34,7 @@ public class HotelOrderVO {
 	}
 
 	public HotelOrderVO(String orderId, String clientId, String clientName, String clientPhone, VIPType vipType,
-			Date orderDate, OrderType orderType, String hotelName, double price, ArrayList<String> strategies) {
+			String orderDate, OrderType orderType, String hotelName, double price, ArrayList<String> strategies) {
 		super();
 		this.orderId = orderId;
 		this.clientId = clientId;
@@ -88,11 +88,11 @@ public class HotelOrderVO {
 		this.vipType = vipType;
 	}
 
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Before;
+
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
@@ -30,12 +32,19 @@ public class MockOrder {
 	private double price;
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
-	// orderVO
-	private OrderVO orderVO;
 	// 酒店帐号
 	private String hotelId;
 	// 日志
 	private String logInfo;
+	// orderVO
+	public OrderVO orderVO;
+	
+	public OrderVO orderVO1;
+	
+	public OrderVO orderVO2;
+	
+	public ArrayList<OrderVO> list;
+	
 	
 	public MockOrder(OrderVO orderVO){
 		this.orderVO=orderVO;
@@ -64,31 +73,7 @@ public class MockOrder {
 			this.orderDate=orderDate;
 		}
 	}
-	
-	public MockOrder(String str1,String str2){
-		if(str1.charAt(0)=='C'&&str2.charAt(0)=='H'){
-			this.clientId=str1;
-			this.hotelId=str2;
-		}
-		else if(str1.charAt(0)=='H'&&str2.length()==16){
-			this.hotelId=str1;
-			this.orderId=str2;
-		}
-	}
-	
-	public MockOrder(OrderType orderType,String id){
-		this.orderType=orderType;
-		if(id.charAt(0)=='C'){
-			this.clientId=id;
-		}
-		else if(id.charAt(0)=='H'){
-			this.hotelId=id;
-		}
-	}
-	
-	public MockOrder(Date orderDate){
-		this.orderDate=orderDate;
-	}
+
 	
 	/**
 	 * 下订单
@@ -120,6 +105,16 @@ public class MockOrder {
 	 * @return 具体订单
 	 */
 	public OrderVO  findSpecificOrderList(String orderID){
-		return orderVO;
+		return orderVO1;
+	}
+	/**
+	 * 查找某种用户(客户或酒店)的所有订单
+	 * @param userID
+	 * @return 某种用户(客户或酒店)的所有订单列表
+	 */
+	public List<OrderVO>  findUserOrderList (String userID){
+		return list;
+	
 	}
 }
+	
