@@ -50,7 +50,7 @@ public class ProcessOrderViewController implements ProcessOrderViewControllerSer
 		return null;
 	}
 
-	public List<OrderVO> findClientTypeOrder(OrderType type, String clientId) {
+	public List<OrderVO> findUserTypeOrder(OrderType type, String userId) {
 		return null;
 	}
 
@@ -62,7 +62,7 @@ public class ProcessOrderViewController implements ProcessOrderViewControllerSer
 		return null;
 	}
 
-	public boolean checkTime(OrderVO order, Date date) {
+	public boolean checkTime(String orderId, Date date) {
 		return false;
 	}
 

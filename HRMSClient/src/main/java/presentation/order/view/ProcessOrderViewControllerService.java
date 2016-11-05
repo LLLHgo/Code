@@ -54,12 +54,12 @@ public interface ProcessOrderViewControllerService {
 	 */
 	public  List<OrderVO> findSpecificHotelClientOrder (String clientId, String hoteIId);
 	/**
-	 * 查找客户某个种类（正常未执行、正常已执行、取消、异常）的订单
+	 * 查找用户的某个种类（正常未执行、正常已执行、取消、异常）的订单
 	 * @param type
 	 * @param clientId
-	 * @return 客户某个种类（正常未执行、正常已执行、取消、异常）的订单列表
+	 * @return 客户用户的某个种类（正常未执行、正常已执行、取消、异常）的订单列表
 	 */
-	public  List<OrderVO> findClientTypeOrder (OrderType type,String clientId);
+	public  List<OrderVO> findUserTypeOrder (OrderType type,String userId);
 	
 	/**
 	 * 查找酒店的某个具体订单
@@ -82,7 +82,7 @@ public interface ProcessOrderViewControllerService {
 	 * @param date
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
-	public boolean checkTime (OrderVO order, Date date);
+	public boolean checkTime (String orderId, Date date);
 	
 	/**
 	 * 添加日志
