@@ -7,13 +7,15 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
+import datatool.ClientDataTool;
+import datatool.OrderDataTool;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
 
-public class MockClient {
+public class MockClientManage {
 	//用户编号
 		 String client_id;
 	//用户密码
@@ -33,27 +35,35 @@ public class MockClient {
 	//用户信用记录
 		File creditRecord;
 
-		public MockClient(){
+		ClientVO clientVO;
+		public MockClientManage(){
 		}
-		public MockClient(String id,String password){
+		public MockClientManage(String id,String password){
 			this.client_id=id;
 			this.password=password;
 		}
-		public MockClient(String name){
+		public MockClientManage(String name){
 			this.client_name=name;
+		}
+		public MockClientManage(ClientVO clientVO){
+			this.clientVO=clientVO;
 		}
 		@SuppressWarnings("deprecation")
 		Date day=new Date(1996,2,29);
 		File file=new File("c.txt");
 		ClientVO client=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
 				 VIPType.ORDINARYVIP,2,day,"",file);
+
 		/**
 		 *通过客户ID得到客户个人信息
 		 * @param clientID
 		 * @return 客户的个人信息
 		 */
 		public ClientVO getclient (String clientID){
-			return client;
+			if(clientVO!=null)
+			return clientVO;
+			else
+				return client;
 		}
 
 		/**
@@ -92,35 +102,6 @@ public class MockClient {
 				return false;
 		}
 		/**
-		 * 通过完整正确的酒店关键词得到相关酒店列表
-		 * @param vo
-		 * @return符合关键词的酒店列表
-		 */
-		public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo){
-			List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
-			return hotel;
-		}
-		/**
-		 *得到具体日期的客户订单
-		 * @param clientID
-		 * @param date
-		 * @return 该日期的客户订单
-		 */
-		public List<OrderVO> getSearchDateOrder(String clientID,Date date){
-			List<OrderVO> order=new ArrayList<OrderVO>();
-			return order;
-		}
-		/**
-		 *得到具体酒店的客户订单
-		 * @param clientID
-		 * @param hotelID
-		 * @return 该酒店的客户订单
-		 */
-		public List<OrderVO> getSearchHotelOrder( String clientID,String hotelID){
-			List<OrderVO> order=new ArrayList<OrderVO>();
-			return order;
-		}
-		/**
 		 *修改客户基本信息
 		 * @param vo
 		 * @return 修改个人信息成功与否提示信息
@@ -130,17 +111,6 @@ public class MockClient {
 				return ResultMessage.SUCCESS;
 			else
 				return ResultMessage.FAIL;
-		}
-		/**
-		 *创建订单
-		 * @param orderID
-		 * @return 创建成功与否
-		 */
-		public boolean createOrder(OrderVO vo){
-			if(vo!=null)
-				return true;
-			else
-				return false;
 		}
 		/**
 		 *撤销订单
@@ -154,26 +124,6 @@ public class MockClient {
 				return false;
 		}
 		/**
-		 *得到客户的所有订单
-		 * @param clientID
-		 * @param order_type
-		 * @return 所有订单列表
-		 */
-		public List<OrderVO> getAllOrderList(String clientID,OrderType order_type){
-			List<OrderVO> order=new ArrayList<OrderVO>();
-			return order;
-		}
-		/**
-		 *得到客户某一类型的订单
-		 * @param clientID
-		 * @param order_type
-		 * @return 类型订单列表
-		 */
-		public List<OrderVO> getOrderList(String clientID,OrderType order_type){
-			List<OrderVO> order=new ArrayList<OrderVO>();
-			return order;
-		}
-		/**
 		 *得到客户的信用记录
 		 * @param clientID
 		 * @return 信用记录
@@ -183,15 +133,6 @@ public class MockClient {
 				return new File(clientID);
 			else
 				return null;
-		}
-		/**
-		 *得到客户的历史预订酒店列表
-		 * @param clientID
-		 * @return 历史预订酒店列表
-		 */
-		public List<HotelinfoVO> getHistoryList(String clientID){
-			List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
-			return hotel;
 		}
 
 }
