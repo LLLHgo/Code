@@ -22,22 +22,7 @@ public class HotelstaffBLService_Driver {
 		HotelstaffBasicinfoVO Hvo=hotelstaffBLService.getBasicinfo("H00000000");
 		if(Hvo!=null)System.out.println("获得酒店工作人员信息成功！");
 
-		//获得酒店基本信息
-		HotelinfoVO HVO=hotelstaffBLService.gethotelinfoVO("H00000000");
-		if(HVO!=null)System.out.println("获得酒店基本信息成功！");
-
-		//酒店订单列表
-		List<HotelOrderVO> Hlist=hotelstaffBLService.gethotelOrderList("H00000000");
-		if(Hlist.size()>0)System.out.println("获得酒店订单列表成功！");
-
-		//获得酒店促销策略
-		HotelStrategyVO HSvo=hotelstaffBLService.gethotelStrategy("H00000000");
-		if(HSvo!=null)System.out.println("获得酒店促销策略成功！");
-
-		//获得房间信息
-		RoominfoVO Rvo=hotelstaffBLService.getroominfo("H00000000","413-2");
-		if(Rvo!=null)System.out.println("获得房间信息成功！");
-
+		
 		//返回酒店工作人员信息
 		HotelstaffVO HSTvo=hotelstaffBLService.returnSitemanagerAccount("H00000000");
 		if(HSTvo!=null)System.out.println("获得酒店工作人员信息成功！");
@@ -49,18 +34,5 @@ public class HotelstaffBLService_Driver {
 		//设置密码
 		ResultMessage setPasswordResult=hotelstaffBLService.setPassword("H00000000","000000");
 		if(setPasswordResult==ResultMessage.SUCCESS)System.out.println("修改密码成功");
-
-		//将酒店促销策略持久化保存
-		ResultMessage updatehotelStrategyResult=hotelstaffBLService.updatehotelStrategy("H00000000",new HotelStrategyVO());
-		if(updatehotelStrategyResult==ResultMessage.SUCCESS)System.out.println("酒店促销策略持久化保存成功");
-
-
-		//设置OrderState
-		ResultMessage updateOrderState=hotelstaffBLService.updateOrderState("H00000000", OrderType.NORMALNONEXEC);
-		if(updateOrderState==ResultMessage.SUCCESS)System.out.println("设置OrderState");
-
-		//更新房间信息
-		ResultMessage updateroominfoResult=hotelstaffBLService.updateroominfo(new HotelinfoVO());
-		if(updateroominfoResult==ResultMessage.SUCCESS)System.out.println("更新房间信息成功");
 	}
 }

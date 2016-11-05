@@ -57,111 +57,34 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	public ResultMessage setPassword(String hotelD,String password) {
 		return ResultMessage.SUCCESS;
 	}
-
-	/**
-	 * 将酒店促销策略持久化保存
-	 * @param vo
-	 * @return 是否将酒店促销策略持久化保存
-	 */
-	public ResultMessage updatehotelStrategy(String hotelID,HotelStrategyVO vo) {
-		return ResultMessage.SUCCESS;
-	}
-
-	/**
-	 * 获得酒店促销策略信息
-	 * @param hotelID
-	 * @return 酒店促销策略信息
-	 */
-	public HotelStrategyVO gethotelStrategy(String hotelID) {
-		return new HotelStrategyVO();
-	}
-
-	/**
-	 * 获得酒店基本信息
-	 * @param vo
-	 * @return 酒店信息
-	 */
-	public HotelinfoVO gethotelinfoVO(String hotelID) {
-		return hotelinfovo;
-	}
-
-	/**
-	 * 获得房间信息
-	 * @param roomID
-	 * @return 房间信息
-	 */
-	public RoominfoVO getroominfo(String hotelID,String roomID) {
-		RoominfoVO roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
-		return roominfovo;
-	}
-	/**
-	 * 将房间信息持久化保存
-	 * @param vo
-	 * @return 是否将房间信息持久化保存
-	 */
-	public ResultMessage updateroominfo(HotelinfoVO vo) {
-		return ResultMessage.SUCCESS;
-	}
-
-	/**
-	 * 获得酒店订单列表
-	 * @param hotelID
-	 * @return 酒店订单列表
-	 */
-	public List<HotelOrderVO> gethotelOrderList(String hotelID) {
-		//TODO
-		ArrayList<HotelOrderVO> list = new ArrayList<HotelOrderVO>();
-		return list;
-	}
-
-	/**
-	 * 将订单状态持久化保存
-	 * @param orderID
-	 * @param state
-	 * @return 是否将订单状态持久化保存
-	 */
-	public ResultMessage updateOrderState(String orderID, OrderType orderType) {
-		return ResultMessage.SUCCESS;
-	}
-
+	
 	/**
 	 * (网站管理人员请求)将酒店工作人员信息的修改持久化保存
 	 * @param vo
 	 * @return 是否将酒店工作人员信息的修改持久化保存
 	 */
+	@Override
 	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
 		return true;
 	}
-
+	
 	/**
 	 *  (网站管理人员)请求返回酒店工作人员信息
 	 * @param hotelID
 	 * @return 酒店工作人员信息
 	 */
+	@Override
 	public HotelstaffVO returnSitemanagerAccount(String hotelID) {
 		return hotelstaffvo;
 	}
-
 	/**
 	 * 登录时检测账号密码
 	 * @param hotelID
 	 * @param password
 	 * @return 账号密码是否匹配
 	 */
+	@Override
 	public boolean checkAccount(String hotelID, String password) {
 		return true;
 	}
-
-	/**
-	 * 删除酒店策略
-	 * @param hotelID
-	 * @param StrategyID
-	 * @return 是否删除酒店策略
-	 */
-	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
-		return ResultMessage.SUCCESS;
-	}
-
-
-
 }

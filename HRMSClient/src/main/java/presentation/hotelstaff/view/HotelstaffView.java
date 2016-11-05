@@ -1,5 +1,5 @@
 package presentation.hotelstaff.view;
 
-public class HotelstaffViewController {
+public class HotelstaffView {
 	
 }

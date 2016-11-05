@@ -1,4 +1,4 @@
-package businesslogicservice.hotelinfoblservice;
+package presentation.hotelinfo.view;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import vo.orderVO.HotelOrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public interface HotelinfoBLService {
+public interface HotelinfoViewControllerService {
 	/**
 	 * 请求获得hotelID对应的酒店信息
 	 * @param hotelID

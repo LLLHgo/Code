@@ -1,17 +1,10 @@
-package businesslogicservice.hotelstaffblservice;
+package presentation.hotelstaff.view;
 
-import java.util.List;
-
-import Enum.OrderType;
 import Enum.ResultMessage;
-import vo.hotelinfoVO.HotelinfoVO;
-import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
-import vo.orderVO.HotelOrderVO;
-import vo.strategyVO.HotelStrategyVO;
 
-public interface HotelstaffBLService {
+public interface HotelstaffViewControllerService {
 	/**
 	 * 获得酒店工作人员信息
 	 * @param hotelID

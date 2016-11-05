@@ -9,6 +9,7 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
+import vo.orderVO.HotelOrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
@@ -83,7 +84,22 @@ public class HotelinfoBLService_Driver{
 		double price = hotelinfoBLService.calculatePrice(new ArrayList<HotelStrategyVO>(), new ArrayList<MarketingStrategyVO>(),
 				new ClientVO(), 666.6);
 		System.out.println("使用策略后的价格为： "+price);
+		
+		//获得酒店基本信息
+		HotelinfoVO HVO=hotelinfoBLService.gethotelinfoVO("H00000000");
+		if(HVO!=null)System.out.println("获得酒店基本信息成功！");
 
+		//酒店订单列表
+		List<HotelOrderVO> Hlist=hotelinfoBLService.gethotelOrderList("H00000000");
+		if(Hlist.size()>0)System.out.println("获得酒店订单列表成功！");
+
+		//获得酒店促销策略
+		HotelStrategyVO HSvo=hotelinfoBLService.gethotelStrategy("H00000000");
+		if(HSvo!=null)System.out.println("获得酒店促销策略成功！");
+
+		//获得房间信息
+		RoominfoVO Rvo=hotelinfoBLService.getroominfo("H00000000","413-2");
+		if(Rvo!=null)System.out.println("获得房间信息成功！");
 	}
 
 }
