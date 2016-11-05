@@ -97,7 +97,7 @@ public class MockHotelinfoManage {
 
 
 	public HotelStrategyVO gethotelStrategy(String hotelID) {
-	
+		
 		return null;
 	}
 

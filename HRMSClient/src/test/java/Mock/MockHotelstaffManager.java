@@ -14,9 +14,7 @@ public class MockHotelstaffManager {
 		else if(vo.getHotelID().equals("H00000003")){
 			return true;
 		}
-		else{
-			return false;
-		}
+		return false;
 	}
 
 	
