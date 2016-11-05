@@ -68,7 +68,7 @@ public interface HotelinfoViewControllerService {
 	 * @param hotelID
 	 * @return 酒店促销策略信息
 	 */
-	public HotelStrategyVO gethotelStrategy(String hotelID);
+	public List<HotelStrategyVO> gethotelStrategy(String hotelID);
 	/**
 	 * 删除酒店策略
 	 * @param hotelID

@@ -63,7 +63,7 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param vo
      * @return 返回是否更新成功
      */
-    public boolean updateHotelStrategy(HotelStrategyVO vo) {
+    public boolean updateHotelStrategy(String hotelID,HotelStrategyVO vo) {
     	if(vo!=null)
 			return true;
 		else
@@ -105,4 +105,13 @@ public class StrategyBLService_Stub implements StrategyBLService{
 		else
 			return false;
 	}
+
+	@Override
+	public boolean deletehotelStrategy(HotelStrategyVO vo) {
+		if(vo!=null)
+			return true;
+		else
+			return false;
+	}
+
 }

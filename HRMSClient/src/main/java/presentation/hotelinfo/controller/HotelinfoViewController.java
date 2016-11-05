@@ -6,6 +6,8 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
+import businesslogicservice.orderblservice.OrderBLService;
+import businesslogicservice.strategyblservice.StrategyBLService;
 import presentation.hotelinfo.view.HotelinfoViewControllerService;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
@@ -18,9 +20,13 @@ import vo.strategyVO.MarketingStrategyVO;
 public class HotelinfoViewController implements HotelinfoViewControllerService{
 
 	HotelinfoBLService hotelinfo;
+	StrategyBLService strategy;
+	OrderBLService order;
 	
 	public HotelinfoViewController(){
 		hotelinfo = new HotelinfoManage();
+		strategy = new StrategyManage();
+		order = new OrderManage();
 	}
 	
 	@Override
@@ -61,17 +67,29 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 
 	@Override
 	public ResultMessage updatehotelStrategy(String hotelID, HotelStrategyVO vo) {
-		return hotelinfo.updatehotelStrategy(hotelID, vo);
+		boolean result =  strategy.updateHotelStrategy(hotelID,vo);
+		if(result == true){
+			return ResultMessage.SUCCESS;
+		}
+		else{
+			return ResultMessage.FAIL;
+		}
 	}
 
 	@Override
-	public HotelStrategyVO gethotelStrategy(String hotelID) {
-		return hotelinfo.gethotelStrategy(hotelID);
+	public List<HotelStrategyVO> gethotelStrategy(String hotelID) {
+		return strategy.getHotelStrategy(hotelID);
 	}
 
 	@Override
 	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
-		return hotelinfo.deletehotelStrategy(hotelID, hotelStrategy);
+		boolean result = strategy.deletehotelStrategy(hotelStrategy);
+		if(result == true){
+			return ResultMessage.SUCCESS;
+		}
+		else{
+			return ResultMessage.FAIL;
+		}
 	}
 
 	@Override
@@ -91,12 +109,12 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 
 	@Override
 	public List<HotelOrderVO> gethotelOrderList(String hotelID) {
-		return hotelinfo.gethotelOrderList(hotelID);
+		return order.gethotelOrderList(hotelID);
 	}
 
 	@Override
 	public ResultMessage updateOrderState(String orderID, OrderType orderType) {
-		return hotelinfo.updateOrderState(orderID, orderType);
+		return order.updateOrderState(orderID, orderType);
 	}
 
 }

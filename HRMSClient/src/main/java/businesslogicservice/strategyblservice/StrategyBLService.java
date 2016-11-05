@@ -28,7 +28,12 @@ public interface StrategyBLService {
      * @return 返回是否删除成功
      */
     public boolean deleteMarketingStrategy(MarketingStrategyVO vo);
-
+    /**
+     * 删除酒店工作人员制定的促销策略
+     * @param vo
+     * @return 返回是否删除成功
+     */
+    public boolean deletehotelStrategy(HotelStrategyVO vo);
     /**
      * 根据酒店ID返回该酒店的促销策略
      * @param hotelID
@@ -41,7 +46,7 @@ public interface StrategyBLService {
      * @param vo
      * @return 返回是否更新成功
      */
-    public boolean updateHotelStrategy(HotelStrategyVO vo);
+    public boolean updateHotelStrategy(String hotelID,HotelStrategyVO vo);
 
     /**
      * 增加会员福利信息
