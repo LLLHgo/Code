@@ -6,6 +6,7 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.orderbl.OrderManage;
+import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
@@ -24,13 +25,13 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 	HotelinfoBLService hotelinfo;
 	StrategyBLService strategy;
 	OrderBLService order;
-	
+
 	public HotelinfoViewController(){
 		hotelinfo = new HotelinfoManage();
 		strategy = new StrategyManage();
 		order = new OrderManage();
 	}
-	
+
 	@Override
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		return hotelinfo.getBasicinfo(hotelID);
