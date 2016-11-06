@@ -17,6 +17,8 @@ import Mock.MockClientManage;
 import Mock.MockHotelinfoManage;
 import Mock.MockOrderManage;
 import businesslogic.clientbl.Client;
+import datatool.HotelinfoDataTool;
+import datatool.OrderDataTool;
 import presentation.client.controller.ProcessClientViewController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
@@ -109,10 +111,20 @@ public class ProcessClientViewControllerTest {
 	 * @param vo
 	 * @return符合关键词的酒店列表
 	 */
-	//@Test
-	public List<HotelinfoVO> getSearchHotelTest(ClientRequirementVO vo){
+	@Test
+	public void getSearchHotelTest(){
+		ClientRequirementVO vo=new ClientRequirementVO();
 		MockHotelinfoManage mh=new MockHotelinfoManage();
-		return mh.getBasicinfoList(vo);
+		HotelinfoVO hvo1=HotelinfoDataTool.hotelinfoVO1;
+		HotelinfoVO hvo2=HotelinfoDataTool.hotelinfoVO2;
+		HotelinfoVO hvo3=HotelinfoDataTool.hotelinfoVO3;
+		List<HotelinfoVO> list=mh.getBasicinfoList(vo);
+		HotelinfoVO hvo=list.get(0);
+		assertEquals(hvo1.name,hvo.name);
+		hvo=list.get(1);
+		assertEquals(hvo2.name,hvo.name);
+		hvo=list.get(2);
+		assertEquals(hvo3.name,hvo.name);
 	}
 	/**
 	 *得到具体日期的客户订单
@@ -120,10 +132,17 @@ public class ProcessClientViewControllerTest {
 	 * @param date
 	 * @return 该日期的客户订单
 	 */
-	//@Test
-	public List<OrderVO> getSearchDateOrderTest(String clientID,Date date){
+	@Test
+	public void getSearchDateOrderTest(){
+		String clientID="C00000002";
+		Date date=new Date(2016,10,15);
 		MockOrderManage mo=new MockOrderManage(clientID,date);
-		return mo.findSpecificDayClientOrder(clientID,date);
+		List<OrderVO> list=mo.findSpecificDayClientOrder(clientID, date);
+		OrderVO vo=list.get(0);
+		assertEquals("20161015085702",vo.orderId);
+		vo=list.get(1);
+		assertEquals("20161015095706",vo.orderId);
+
 	}
 	/**
 	 *得到具体酒店的客户订单
@@ -141,30 +160,37 @@ public class ProcessClientViewControllerTest {
 	 * @param vo
 	 * @return 修改个人信息成功与否提示信息
 	 */
-	//@Test
-	public  ResultMessage updateInfoTest(ClientVO vo){
-		MockClientManage mc=new MockClientManage(vo);
-		return mc.updateInfo(vo);
+	@Test
+	public  void updateInfoTest(){
+		MockClientManage mc=new MockClientManage();
+		ClientVO vo=mc.getclient("C00000001");
+		assertEquals(ResultMessage.SUCCESS,mc.updateInfo(vo));
+		vo=mc.getclient("C00000002");
+		assertEquals(ResultMessage.SUCCESS,mc.updateInfo(vo));
+	    assertEquals(ResultMessage.FAIL,mc.updateInfo(null));
 	}
 	/**
 	 *创建订单
 	 * @param orderID
 	 * @return 创建成功与否
 	 */
-	//@Test
-	public ResultMessage createOrder(OrderVO vo){
+	@Test
+	public void createOrder(){
+		OrderVO vo=OrderDataTool.orderVO1;
 		MockOrderManage mo=new MockOrderManage(vo);
-		return mo.createOrder(vo);
+		assertEquals(ResultMessage.SUCCESS,mo.createOrder(vo));
 	}
 	/**
 	 *撤销订单
 	 * @param orderID
 	 * @return 撤销成功与否
 	 */
-	//@Test
-	public void repealOrder(String orderID){
+	@Test
+	public void repealOrder(){
 		MockOrderManage mo=new MockOrderManage();
-		ResultMessage r= mo.cancelOrder(orderID);
+		assertEquals(ResultMessage.SUCCESS,mo.cancelOrder("20161015085702"));
+		assertEquals(ResultMessage.SUCCESS,mo.cancelOrder("20161015095706"));
+		assertEquals(ResultMessage.SUCCESS,mo.cancelOrder("20161017090702"));
 	}
 	/**
 	 *得到客户的所有订单
@@ -172,10 +198,14 @@ public class ProcessClientViewControllerTest {
 	 * @param order_type
 	 * @return 所有订单列表
 	 */
-	//@Test
-	public List<OrderVO> getAllOrderList(String clientID,OrderType order_type){
-		List<OrderVO> order=new ArrayList<OrderVO>();
-		return order;
+	@Test
+	public void getAllOrderList(){
+		MockOrderManage mo=new MockOrderManage();
+		List<OrderVO> order=mo.findUserOrderList("C00000001");
+		assertEquals("20161015085702",order.get(0).orderId);
+		assertEquals("20161015095706",order.get(1).orderId);
+		assertEquals("20161017090702",order.get(2).orderId);
+
 	}
 	/**
 	 *得到客户某一类型的订单
@@ -183,32 +213,46 @@ public class ProcessClientViewControllerTest {
 	 * @param order_type
 	 * @return 类型订单列表
 	 */
-	//@Test
-	public List<OrderVO> getOrderList(String clientID,OrderType order_type){
-		List<OrderVO> order=new ArrayList<OrderVO>();
-		return order;
+	@Test
+	public void getOrderList(){
+		MockOrderManage mo=new MockOrderManage();
+		List<OrderVO> order=mo.findClientTypeOrder(OrderType.ABNORMAL,"C00000001");
+		assertEquals("20161015085702",order.get(0).orderId);
+		assertEquals("20161015095706",order.get(1).orderId);
+		assertEquals("20161017090702",order.get(2).orderId);
 	}
 	/**
 	 *得到客户的信用记录
 	 * @param clientID
 	 * @return 信用记录
 	 */
-	//@Test
-	public File getCreditRecord(String clientID){
-		if(clientID!=null)
-			return new File(clientID);
-		else
-			return null;
+	@Test
+	public void getCreditRecord(){
+		MockClientManage mc=new MockClientManage();
+		File file=new File("credit");
+		assertEquals(file,mc.getCreditRecord("C00000001"));
+		assertEquals(file,mc.getCreditRecord("C00000002"));
+		assertEquals(null,mc.getCreditRecord(null));
 	}
 	/**
 	 *得到客户的历史预订酒店列表
 	 * @param clientID
 	 * @return 历史预订酒店列表
 	 */
-	//@Test
-	public List<HotelinfoVO> getHistoryList(String clientID){
-		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
-		return hotel;
+	@Test
+	public void getHistoryList(){
+		ClientRequirementVO vo=new ClientRequirementVO();
+		MockHotelinfoManage mh=new MockHotelinfoManage();
+		HotelinfoVO hvo1=HotelinfoDataTool.hotelinfoVO1;
+		HotelinfoVO hvo2=HotelinfoDataTool.hotelinfoVO2;
+		HotelinfoVO hvo3=HotelinfoDataTool.hotelinfoVO3;
+		List<HotelinfoVO> list=mh.getBasicinfoList(vo);
+		HotelinfoVO hvo=list.get(0);
+		assertEquals(hvo1.name,hvo.name);
+		hvo=list.get(1);
+		assertEquals(hvo2.name,hvo.name);
+		hvo=list.get(2);
+		assertEquals(hvo3.name,hvo.name);
 	}
 
 

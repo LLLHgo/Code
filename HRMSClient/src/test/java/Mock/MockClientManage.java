@@ -157,8 +157,9 @@ public class MockClientManage {
 		 * @return 信用记录
 		 */
 		public File getCreditRecord(String clientID){
+			File file=new File("credit");
 			if(clientID!=null)
-				return new File(clientID);
+				return file;
 			else
 				return null;
 		}
