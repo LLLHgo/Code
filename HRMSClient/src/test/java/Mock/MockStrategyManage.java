@@ -5,6 +5,7 @@ import java.util.List;
 
 import Enum.VIPType;
 import datatool.MarketingStrategyDataTool;
+import datatool.PrivilegeDataTool;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
@@ -43,7 +44,8 @@ public class MockStrategyManage {
 		this.hs2=v2;
 	}
 */
-    public boolean addMarketingStrategy(MarketingStrategyVO vo) {
+
+	public boolean addMarketingStrategy(MarketingStrategyVO vo) {
 		return true;
 	}
     /**
@@ -67,6 +69,7 @@ public class MockStrategyManage {
      * @return 是否删除成功
      */
 	public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
+
 		return true;
 	}
 
@@ -96,7 +99,10 @@ public class MockStrategyManage {
      * @return 是否增加成功
      */
 	public boolean addPrivilege(PrivilegeVO vo) {
-		return true;
+		if(vo!=null)
+		    return true;
+		else
+			return false;
 	}
 
     /**
@@ -106,8 +112,10 @@ public class MockStrategyManage {
      */
 	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
 		List<PrivilegeVO> list=new ArrayList<PrivilegeVO>();
-		list.add(pv1);
-		list.add(pv2);
+		if(type==VIPType.ORDINARYVIP)
+		    list.add(PrivilegeDataTool.p1);
+		else if(type==VIPType.ENTERPRISEVIP)
+		    list.add(PrivilegeDataTool.p2);
 		return list;
 	}
 
@@ -116,8 +124,11 @@ public class MockStrategyManage {
      * @param vo
      * @return 是否删除成功
      */
-	public boolean delete(PrivilegeVO vo) {
-		return true;
+	public boolean deletePrivilege(PrivilegeVO vo) {
+		if(vo!=null)
+		    return true;
+		else
+			return false;
 	}
 
 }

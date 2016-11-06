@@ -9,26 +9,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Enum.ResultMessage;
+import Enum.VIPType;
 import Mock.*;
 import datatool.ClientDataTool;
 import datatool.LevelDataTool;
 import datatool.MarketingStrategyDataTool;
 import datatool.OrderDataTool;
+import datatool.PrivilegeDataTool;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.MarketingStrategyVO;
+import vo.strategyVO.PrivilegeVO;
 
 public class ProcessMarketingViewControllerTest {
 	private MockStrategyManage sm;
 	private MockClientManage cm;
 	private MockOrderManage om;
+	private MockLogManage lm;
 	private ResultMessage re;
 	private Date date;
 
 	@Before
 	public void setup(){
-		MarketingStrategyVO v1=MarketingStrategyDataTool.V1;
 		sm=new MockStrategyManage();
 		cm=new MockClientManage();
 		om=new MockOrderManage();
@@ -57,20 +60,27 @@ public class ProcessMarketingViewControllerTest {
 	@Test
 	public void testfindSpecificAbnormalOrder(){
 		OrderVO vo=OrderDataTool.orderVO7;
-		//assertEquals(vo.getClientId(),om.findSpecificOrderList("20161017092601").getClientId());
+		assertEquals(vo.getClientId(),om.findSpecificOrderList("20161017092601").getClientId());
 	}
+
+	@Test
 	public  void testsaveAbnormalOrder(){
 		OrderVO vo=OrderDataTool.orderVO5;
-		//assertEquals(vo.getClientId(),om.)
+		assertEquals(vo.getClientId(),om.saveOrder(vo));
 	}
+
+	@Test
 	public void testaddMarketingStrategy(){
 		MarketingStrategyVO ms=MarketingStrategyDataTool.V3;
 		assertEquals(true,sm.addMarketingStrategy(ms));
 	}
+	@Test
 	public void testdeleteMarketingStrategy(){
 		MarketingStrategyVO ms=MarketingStrategyDataTool.V3;
 		assertEquals(true,sm.deleteMarketingStrategy(ms));
 	}
+
+	@Test
 	public void testgetMarketingStrategy(){
 		MarketingStrategyVO ms1=MarketingStrategyDataTool.V1;
 		MarketingStrategyVO ms2=MarketingStrategyDataTool.V2;
@@ -78,5 +88,29 @@ public class ProcessMarketingViewControllerTest {
 		assertEquals(true,sm.getMarketingStrategy("M000001").contains(ms1));
 		assertEquals(true,sm.getMarketingStrategy("M000001").contains(ms2));
 		assertEquals(true,sm.getMarketingStrategy("M000001").contains(ms3));
+	}
+
+	@Test
+	public void testaddPrivilege(){
+		PrivilegeVO ms=PrivilegeDataTool.p1;
+		assertEquals(true,sm.addPrivilege(ms));
+	}
+	@Test
+	public void testdeletePrivilege(){
+		PrivilegeVO ms=PrivilegeDataTool.p1;
+		assertEquals(true,sm.deletePrivilege(ms));
+	}
+
+	@Test
+	public void testgetPrivilege(){
+		PrivilegeVO ms1=PrivilegeDataTool.p1;
+		PrivilegeVO ms2=PrivilegeDataTool.p2;
+		assertEquals(true,sm.findAllPrivilege(VIPType.ORDINARYVIP).contains(ms1));
+		assertEquals(true,sm.findAllPrivilege(VIPType.ENTERPRISEVIP).contains(ms2));
+	}
+	@Test
+	public void testaddLog(){
+		String log="2016-08-10 09:21:22 M0000001 修改异常订单状态";
+		assertEquals(re.SUCCESS,lm.addLog(log));
 	}
 }
