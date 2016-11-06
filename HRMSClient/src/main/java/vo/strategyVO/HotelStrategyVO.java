@@ -14,9 +14,9 @@ public class HotelStrategyVO {
 	//酒店工作人员制定的策略的种类，有enum：hotelStrategy{BIRTHDAY,COMPANY,SPECIALDAY,OVERTHREEROOMS;}
     private HotelStrategy type;
     //活动开始时间
-    private Date startTime;
+    private String startTime;
     //活动结束时间
-    private Date endTime;
+    private String endTime;
     //会员类型
     private VIPType viptype;
     //活动折扣
@@ -48,7 +48,7 @@ public class HotelStrategyVO {
      * @param poster
      * @param position
      */
-    public HotelStrategyVO(String hotelID,HotelStrategy type,VIPType viptype,Date startTime,Date endTime,double discount,
+    public HotelStrategyVO(String hotelID,HotelStrategy type,VIPType viptype,String startTime,String endTime,double discount,
     		Image poster,String position){
     	this.hotelID=hotelID;
     	this.type=type;
@@ -70,7 +70,7 @@ public class HotelStrategyVO {
      * @param poster
      * @param position
      */
-    public HotelStrategyVO(String hotelID,HotelStrategy type,Date startTime,Date endTime,double discount,
+    public HotelStrategyVO(String hotelID,HotelStrategy type,String startTime,String endTime,double discount,
     		Image poster,String position){
     	this.hotelID=hotelID;
     	this.type=type;
@@ -92,7 +92,7 @@ public class HotelStrategyVO {
      * @param position
      * @param minRooms
      */
-    public HotelStrategyVO(String hotelID,HotelStrategy type,Date startTime,Date endTime,double discount,
+    public HotelStrategyVO(String hotelID,HotelStrategy type,String startTime,String endTime,double discount,
     		Image poster,String position,int minRooms){
     	this.hotelID=hotelID;
     	this.type=type;
@@ -104,7 +104,7 @@ public class HotelStrategyVO {
     	this.minRooms = minRooms;
     }
     
-    public HotelStrategyVO(String hotelID,HotelStrategy type,ArrayList<VIPType> vipKinds,Date startTime,Date endTime,double discount,
+    public HotelStrategyVO(String hotelID,HotelStrategy type,ArrayList<VIPType> vipKinds,String startTime,String endTime,double discount,
     		Image poster,String position,int minRooms,int minSum){
     	this.hotelID=hotelID;
     	this.type=type;

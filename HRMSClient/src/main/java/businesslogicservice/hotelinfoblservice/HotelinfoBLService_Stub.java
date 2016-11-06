@@ -12,7 +12,7 @@ import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
-import vo.orderVO.HotelOrderVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
@@ -148,26 +148,26 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		return ResultMessage.SUCCESS;
 	}
 
-	/**
-	 * 获得酒店订单列表
-	 * @param hotelID
-	 * @return 酒店订单列表
-	 */
-	public List<HotelOrderVO> gethotelOrderList(String hotelID) {
-		//TODO
-		ArrayList<HotelOrderVO> list = new ArrayList<HotelOrderVO>();
-		return list;
-	}
+//	/**
+//	 * 获得酒店订单列表
+//	 * @param hotelID
+//	 * @return 酒店订单列表
+//	 */
+//	public List<OrderVO> gethotelOrderList(String hotelID) {
+//		//TODO
+//		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
+//		return list;
+//	}
 
-	/**
-	 * 将订单状态持久化保存
-	 * @param orderID
-	 * @param state
-	 * @return 是否将订单状态持久化保存
-	 */
-	public ResultMessage updateOrderState(String orderID, OrderType orderType) {
-		return ResultMessage.SUCCESS;
-	}
+//	/**
+//	 * 将订单状态持久化保存
+//	 * @param orderID
+//	 * @param state
+//	 * @return 是否将订单状态持久化保存
+//	 */
+//	public ResultMessage updateOrderState(String orderID, OrderType orderType) {
+//		return ResultMessage.SUCCESS;
+//	}
 
 	/**
 	 * (网站管理人员请求)将酒店工作人员信息的修改持久化保存
@@ -179,13 +179,13 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	}
 
 
-	/**
-	 * 删除酒店策略
-	 * @param hotelID
-	 * @param StrategyID
-	 * @return 是否删除酒店策略
-	 */
-	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
-		return ResultMessage.SUCCESS;
-	}
+//	/**
+//	 * 删除酒店策略
+//	 * @param hotelID
+//	 * @param StrategyID
+//	 * @return 是否删除酒店策略
+//	 */
+//	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
+//		return ResultMessage.SUCCESS;
+//	}
 }

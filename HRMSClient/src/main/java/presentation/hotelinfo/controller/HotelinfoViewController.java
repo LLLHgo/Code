@@ -4,6 +4,9 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import Mock.MockHotelinfoManage;
+import Mock.MockOrderManage;
+import Mock.MockStrategyManage;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
@@ -22,14 +25,20 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelinfoViewController implements HotelinfoViewControllerService{
 
-	HotelinfoBLService hotelinfo;
-	StrategyBLService strategy;
-	OrderBLService order;
-
+//	HotelinfoBLService hotelinfo;
+//	StrategyBLService strategy;
+//	OrderBLService order;
+	MockHotelinfoManage hotelinfo;
+	MockStrategyManage strategy;
+	MockOrderManage order;
+	
 	public HotelinfoViewController(){
-		hotelinfo = new HotelinfoManage();
-		strategy = new StrategyManage();
-		order = new OrderManage();
+//		hotelinfo = new HotelinfoManage();
+//		strategy = new StrategyManage();
+//		order = new OrderManage();
+		hotelinfo = new MockHotelinfoManage();
+		strategy = new MockStrategyManage();
+		order = new MockOrderManage();
 	}
 
 	@Override

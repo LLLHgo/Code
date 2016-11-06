@@ -29,13 +29,13 @@ public class HotelinfoVO {
 	}
 
 	public HotelinfoVO(String name,String address,String area,
-			String tel,ArrayList<RoominfoVO> roominfoList,Star star,ArrayList<String> remark,
+			String tel,ArrayList<RoominfoVO> arrayList,Star star,ArrayList<String> remark,
 			String introduciton,String hotelID){
 		this.name = name;
 		this.address = address;
 		this.area = area;
 		this.tel = tel;
-		this.roominfoList = roominfoList;
+		this.roominfoList = arrayList;
 		this.star = star;
 		this.remark = remark;
 		this.introduction = introduciton;

@@ -8,7 +8,7 @@ import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
-import vo.orderVO.HotelOrderVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 
 public class HotelstaffBLService_Driver {
