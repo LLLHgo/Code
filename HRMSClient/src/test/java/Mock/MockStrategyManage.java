@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enum.VIPType;
+import datatool.HotelStrategyDataTool;
 import datatool.MarketingStrategyDataTool;
 import datatool.PrivilegeDataTool;
 import vo.strategyVO.HotelStrategyVO;
@@ -11,39 +12,10 @@ import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
 public class MockStrategyManage {
-	//网站营销人员制定的策略1
-	private MarketingStrategyVO ms1;
-	//网站营销人员制定的策略2
-	private MarketingStrategyVO ms2;
-	//酒店工作人员制定的策略1
-	private HotelStrategyVO hs1;
-	//酒店工作人员制定的策略2
-	private HotelStrategyVO hs2;
-    //福利1
-	private PrivilegeVO pv1;
-	//福利2
-	private PrivilegeVO pv2;
 
 	public MockStrategyManage(){
-
-	}
- /*   public MockStrategyManage(MarketingStrategyVO vo){
-		this.ms1=vo;
 	}
 
-    public MockStrategyManage(MarketingStrategyVO v1,MarketingStrategyVO v2){
-		this.ms1=v1;
-		this.ms2=v2;
-	}
-    public MockStrategyManage(HotelStrategyVO vo){
-		this.hs1=vo;
-	}
-
-    public MockStrategyManage(HotelStrategyVO v1,HotelStrategyVO v2){
-		this.hs1=v1;
-		this.hs2=v2;
-	}
-*/
    /**
     * 增加网站营销人员指定的额促销策略
     * @param vo
@@ -81,8 +53,14 @@ public class MockStrategyManage {
      */
 	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
 		List<HotelStrategyVO> list=new ArrayList<HotelStrategyVO>();
-		list.add(hs2);
-		list.add(hs2);
+		if(hotelID=="H00000001")
+			list.add( HotelStrategyDataTool.V1);
+		else if(hotelID=="H00000031")
+			list.add( HotelStrategyDataTool.V2);
+		else if(hotelID=="H00000003")
+			list.add(HotelStrategyDataTool.V3);
+		else if(hotelID=="H00000093")
+			list.add(HotelStrategyDataTool.V4);
 		return list;
 	}
 
@@ -92,7 +70,11 @@ public class MockStrategyManage {
      * @return 是否更新成功
      */
 	public boolean updateHotelStrategy(HotelStrategyVO vo) {
-		return true;
+		if(vo!=null)
+		    return true;
+		else
+			return false;
+
 	}
     /**
      * 增加福利信息
