@@ -43,9 +43,9 @@ public class ProcessClientViewController implements ProcessClientViewControllerS
 	 */
 	public ResultMessage saveSitemanagerDelete(String clientId){
 		if(clientId!= null)
-			return ResultMessage.FAIL;
-		else
 			return ResultMessage.SUCCESS;
+		else
+			return ResultMessage.FAIL;
 	}
 	/**
 	 *设置（修改）某一客户信用值

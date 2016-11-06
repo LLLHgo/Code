@@ -72,6 +72,18 @@ public class ProcessClientViewControllerTest {
 		assertEquals(ResultMessage.SUCCESS,mc.createClient(vo));
 	}
 	/**
+	 *删除客户
+	 * @param vo
+	 * @return 删除用户成功与否
+	 */
+	@Test
+	public void saveSitemanagerDeleteTest(){
+		MockClientManage mc=new MockClientManage();
+		assertEquals(ResultMessage.SUCCESS,mc.saveSitemanagerDelete("C00000001"));
+		assertEquals(ResultMessage.SUCCESS,mc.saveSitemanagerDelete("C00000002"));
+		assertEquals(ResultMessage.SUCCESS,mc.saveSitemanagerDelete("C00000003"));
+	}
+	/**
 	 *设置（修改）某一客户信用值
 	 * @param clientID
 	 * @param recharge

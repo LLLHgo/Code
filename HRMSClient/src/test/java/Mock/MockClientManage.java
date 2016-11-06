@@ -95,6 +95,17 @@ public class MockClientManage {
 				return ResultMessage.FAIL;
 		}
 		/**
+		 *删除客户
+		 * @param vo
+		 * @return 删除用户成功与否
+		 */
+		public ResultMessage saveSitemanagerDelete(String clientId){
+			if(clientId!= null)
+				return ResultMessage.SUCCESS;
+			else
+				return ResultMessage.FAIL;
+		}
+		/**
 		 *设置（修改）某一客户信用值
 		 * @param clientID
 		 * @param recharge
