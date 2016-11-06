@@ -11,29 +11,29 @@ public class MockSitemanagerManage {
 	private String servicePhoneNumber;
 	// 网站管理人员密码
 	private String password;
-	
+
 	public MockSitemanagerManage(){
-		
+
 	}
-	
+
 	SitemanagerDataTool sitemanagerDataTool=new SitemanagerDataTool();
-	
+
 	public SitemanagerVO sitemanagerAcountShow(){
 		return SitemanagerDataTool.sitemanagerVO;
 	}
-	
+
 	public boolean checkAccount (SitemanagerVO accountVO){
-		
+
 		if(accountVO.getSitemanagerId()==SitemanagerDataTool.sitemanagerVO.getSitemanagerId()&&
 				(accountVO.getPassword()==SitemanagerDataTool.sitemanagerVO.getPassword())&&
-				(accountVO.getSitemanagerPhoneNumber()==SitemanagerDataTool.sitemanagerVO.getPassword()))
+				(accountVO.getSitemanagerPhoneNumber()==SitemanagerDataTool.sitemanagerVO.getSitemanagerPhoneNumber()))
 			return true;
-		else 
+		else
 			return false;
 	}
 
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO){
-		
-		return ResultMessage.SUCCESS;	
+
+		return ResultMessage.SUCCESS;
 	}
 }

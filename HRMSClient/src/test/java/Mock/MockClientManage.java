@@ -9,11 +9,13 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import datatool.ClientDataTool;
 import datatool.OrderDataTool;
+import datatool.SitemanagerDataTool;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
+import vo.sitemanager.SitemanagerVO;
 
 public class MockClientManage {
 	//用户编号
@@ -67,7 +69,14 @@ public class MockClientManage {
 		File file=new File("c.txt");
 		ClientVO client=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
 				 VIPType.ORDINARYVIP,2,day,"",file);
+		public boolean checkAccount (ClientVO accountVO){
 
+			if(accountVO.client_id==ClientDataTool.clientVO1.client_id&&
+					accountVO.password==ClientDataTool.clientVO1.password)
+				return true;
+			else
+				return false;
+		}
 		/**
 		 *通过客户ID得到客户个人信息
 		 * @param clientID
