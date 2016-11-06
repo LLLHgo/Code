@@ -3,7 +3,6 @@ package datatool;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import Enum.VIPType;
 import Enum.marketingStrategy;
@@ -40,8 +39,4 @@ public class MarketingStrategyDataTool {
     		begin2,end2,0.8,image,blist,"North");
     public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CRATEDE,
     		begin1,end1,0.85,hlist,blist,image,"North",678,2,lvo,viplist);
-    static List<MarketingStrategyVO> list;
-    static {
-    	list=new ArrayList<MarketingStrategyVO>();
-    }
 }

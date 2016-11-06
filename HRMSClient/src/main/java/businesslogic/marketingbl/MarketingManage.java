@@ -27,51 +27,51 @@ public class MarketingManage implements MarketingBLService{
 		return null;
 	}
 
-	@Override
+	//@Override
 	public List<OrderVO> showAbnormal(Date date) {
 		return null;
 	}
 
-	@Override
+//	@Override
 	public OrderVO findSpecificAbnormalOrder(String id) {
 		return null;
 	}
 
-	@Override
+////	@Override
 	public ResultMessage handleAbnormal(OrderVO vo) {
 		return null;
 	}
 
-	@Override
+//	@Override
 	public ClientVO getClient(String clientID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+//	@Override
 	public ResultMessage setCredit(String clientID, int recharge) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+//	@Override
 	public ResultMessage update(MarketingVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+//	@Override
 	public ResultMessage siteManagerUpdate(MarketingVO vo) {
 		return null;
 	}
 
-	@Override
+//	@Override
 	public boolean saveSitemanagerAdd(MarketingVO vo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+//	@Override
 	public boolean saveSitemanagerDelete(MarketingVO vo) {
 		// TODO Auto-generated method stub
 		return false;
@@ -89,8 +89,32 @@ public class MarketingManage implements MarketingBLService{
 		return null;
 	}
 
-	@Override
+	//@Override
 	public MarketingVO returnSitemanagerAccount(String marketingID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage MarketingAccountDelete(MarketingVO marketing) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MarketingVO MarketingAccountFind(String marketingID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

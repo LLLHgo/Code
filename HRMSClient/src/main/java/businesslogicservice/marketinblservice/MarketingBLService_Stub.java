@@ -26,52 +26,6 @@ public class MarketingBLService_Stub implements MarketingBLService {
        this.discount=discount;
 	}
 
-
-    /**
-     * 界面返回特定订单信息
-     * @param id
-     * @return 返回特定订单信息
-     */
-	public OrderVO findSpecificAbnormalOrder(String id) {
-		OrderVO vo=new OrderVO();
-		return vo;
-	}
-
-    /**
-     * 处理异常订单状态
-     * @param vo
-     * @return 返回是否处理异常订单状态
-     */
-	public ResultMessage handleAbnormal(OrderVO vo) {
-		if(vo.getPrice()>=200)
-			return ResultMessage.FAIL;
-		else
-			return ResultMessage.SUCCESS;
-	}
-
-    /**
-     * 界面返回客户信息
-     * @param clientID
-     * @return 返回客户信息
-     */
-	public ClientVO getClient(String clientID) {
-        ClientVO vo=new ClientVO();
-        return vo;
-	}
-
-    /**
-     * 设置客户信用值
-     * @param clientID
-     * @param recharge
-     * @return 返回是否设置客户信用值成功
-     */
-	public ResultMessage setCredit(String clientID, int recharge) {
-		if(recharge>0)
-			return ResultMessage.FAIL;
-		else
-			return ResultMessage.SUCCESS;
-	}
-
     /**
      * 增加等级信息
      * @param vo
@@ -115,7 +69,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @return 返回是否修改网站营销人员信息成功
      */
 	public ResultMessage update(MarketingVO vo) {
-		if(vo.getMarketingID()=="M0001")
+		if(vo.getMarketingID()=="M0000001")
 			return ResultMessage.FAIL;
 	    else
 	    	return ResultMessage.SUCCESS;
@@ -126,7 +80,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @param vo
      * @return 返回是否网站管理人员修改营销人员信息成功
      */
-	public ResultMessage siteManagerUpdate(MarketingVO vo) {
+	public ResultMessage MarketingAccountUpdate(MarketingVO vo) {
 		if(vo.getMarketingID()=="M0001")
 			return ResultMessage.FAIL;
 	    else
@@ -138,11 +92,11 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @param vo
      * @return 返回是否网站管理人员增加营销人员信息成功
      */
-	public boolean saveSitemanagerAdd(MarketingVO vo) {
-		if(vo.getMarketingID()=="M0001")
-			return true;
+	public ResultMessage MarketingAccountAdd(MarketingVO vo) {
+		if(vo.getMarketingID()=="M0000001")
+			return ResultMessage.SUCCESS;
 	    else
-	    	return false;
+	    	return ResultMessage.FAIL;
 	}
 
     /**
@@ -151,7 +105,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @return 返回是否网站管理人员删除营销人员信息成功
      */
 	public boolean saveSitemanagerDelete(MarketingVO vo) {
-		if(vo.getMarketingID()=="M0001")
+		if(vo.getMarketingID()=="M0000001")
 			return true;
 	    else
 	    	return false;
@@ -176,7 +130,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @return 返回网站营销人员个人信息
      */
 	public MarketingVO init(String id) {
-		MarketingVO vo=new MarketingVO("营销人员一号","1029384756","M0002","13380009000");
+		MarketingVO vo=new MarketingVO("营销人员一号","1029384756","M0000002","13380009000");
 		return vo;
 	}
 
@@ -197,8 +151,15 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @param marketingID
      * @return
      */
-	public MarketingVO returnSitemanagerAccount(String marketingID) {
-		MarketingVO vo=new MarketingVO("网站营销人员","password","M0001001","15077685563");
+	public MarketingVO MarketingAccountFind(String marketingID) {
+		MarketingVO vo=new MarketingVO("网站营销人员","password","M0000001","15077685563");
 		return vo;
 	}
+
+	@Override
+	public ResultMessage MarketingAccountDelete(MarketingVO marketing) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

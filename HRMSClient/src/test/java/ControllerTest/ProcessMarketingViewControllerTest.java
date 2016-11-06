@@ -27,7 +27,6 @@ public class ProcessMarketingViewControllerTest {
 	private MockClientManage cm;
 	private MockOrderManage om;
 	private MockLogManage lm;
-	private ResultMessage re;
 	private Date date;
 
 	@Before
@@ -111,6 +110,6 @@ public class ProcessMarketingViewControllerTest {
 	@Test
 	public void testaddLog(){
 		String log="2016-08-10 09:21:22 M0000001 修改异常订单状态";
-		assertEquals(re.SUCCESS,lm.addLog(log));
+		assertEquals(ResultMessage.SUCCESS,lm.addLog(log));
 	}
 }

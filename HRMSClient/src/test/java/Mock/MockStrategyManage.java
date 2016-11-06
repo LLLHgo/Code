@@ -55,11 +55,9 @@ public class MockStrategyManage {
      */
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
 		List<MarketingStrategyVO> list=new ArrayList<MarketingStrategyVO>();
-		if(id.charAt(0)=='M'){
 		    list.add(MarketingStrategyDataTool.V1);
 		    list.add(MarketingStrategyDataTool.V2);
 		    list.add(MarketingStrategyDataTool.V3);
-		}
 		return list;
 	}
 
@@ -69,8 +67,10 @@ public class MockStrategyManage {
      * @return 是否删除成功
      */
 	public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
-
-		return true;
+        if(vo!=null)
+		    return true;
+        else
+        	return false;
 	}
 
     /**
