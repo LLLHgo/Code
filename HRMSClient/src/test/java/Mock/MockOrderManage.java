@@ -10,6 +10,7 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import vo.orderVO.OrderVO;
+import datatool.LogDataTool;
 import datatool.OrderDataTool;
 
 public class MockOrderManage {
@@ -41,6 +42,7 @@ public class MockOrderManage {
 	public OrderVO orderVO;
 	
 	OrderDataTool orderDatatool=new OrderDataTool();
+	LogDataTool logDataToll=new LogDataTool();
 	
 	// 构造函数1
 	public MockOrderManage(OrderVO orderVO){
@@ -171,6 +173,7 @@ public class MockOrderManage {
 	public boolean checkTime (OrderVO order, Date date){
 		return true;
 	}
+	
 
 }
 	

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import Enum.ResultMessage;
@@ -24,23 +25,43 @@ import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
 
 public class ProcessSiteManagerViewControllerTest {
-	MockSitemanagerManage ms=new MockSitemanagerManage();
-	MockClientManage mc=new MockClientManage();
-	MockHotelinfoManage mh=new MockHotelinfoManage();
-	MockHotelstaffManager mhs=new MockHotelstaffManager();
-	//MockMarketingManage mm=new MockMarketingManage();
-	MockLogManage ml=new MockLogManage();
-	LogDataTool logDataTool=new LogDataTool();
-    ClientDataTool clientDataTool=new ClientDataTool();
-	ResultMessage result;
+	MockSitemanagerManage ms;
+	MockClientManage mc;
+	MockHotelinfoManage mh;
+	MockHotelstaffManager mhs;
+	MockLogManage ml;
+	LogDataTool logDataTool;
+	ClientDataTool clientDataTool;
+	SitemanagerDataTool sitemanagerDataTool;
+	String findinfo;
 	boolean resultB;
+	SitemanagerVO accountVO;
+	ResultMessage result;
+	String logInfo;
+	
+	@Before
+	public void setUp(){
+	    ms=new MockSitemanagerManage();
+		mc=new MockClientManage();
+		mh=new MockHotelinfoManage();
+		mhs=new MockHotelstaffManager();
+		//MockMarketingManage mm=new MockMarketingManage();
+		ml=new MockLogManage();
+		logDataTool=new LogDataTool();
+	    clientDataTool=new ClientDataTool();
+	    sitemanagerDataTool=new SitemanagerDataTool();
+		findinfo="";
+		accountVO=SitemanagerDataTool.sitemanagerVO;
+		result=ResultMessage.SUCCESS;
+		logInfo="";
+		
+	}
 
 	@Test
 	public void clientAccountUpdate() {
 		// TODO Auto-generated method stub
 		ClientVO clientVO=ClientDataTool.clientVO1;
-		result=mc.updateInfo(clientVO);
-		assertEquals(ResultMessage.SUCCESS,result);
+		assertEquals(ResultMessage.SUCCESS,mc.updateInfo(clientVO));
 	}
 
 	//@Test
@@ -51,10 +72,10 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 
 	@Test
-	public void clientAccountFind(String findInfo) {
+	public void clientAccountFind() {
 		// TODO Auto-generated method stub
 	    ClientVO clientVOExpected=ClientDataTool.clientVO1;
-	    ClientVO clientVOReal=mc.getclient(findInfo);
+	    ClientVO clientVOReal=mc.getclient(findinfo);
 	    assertEquals(clientVOExpected.getBirth(),clientVOReal.getBirth());
 	    assertEquals(clientVOExpected.getCreditRecord(),clientVOReal.getCreditRecord());
 	    assertEquals(clientVOExpected.getFirm(),clientVOReal.getFirm());
@@ -122,7 +143,7 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 
 	@Test
-	public void sitemanagerAccountUpdate(SitemanagerVO accountVO) {
+	public void sitemanagerAccountUpdate() {
 		// TODO Auto-generated method stub
 		result=ms.sitemanagerAccountUpdate(accountVO);
 		assertEquals(ResultMessage.SUCCESS,result);
@@ -133,7 +154,7 @@ public class ProcessSiteManagerViewControllerTest {
 		// TODO Auto-generated method stub
 		SitemanagerVO sitemanagerVOReal=SitemanagerDataTool.sitemanagerVO;
 		resultB=ms.checkAccount(sitemanagerVOReal);
-		assertEquals(true,resultB);
+		assertEquals(false,resultB);
 	}
 
 	@Test
@@ -150,7 +171,7 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 
 	@Test
-	public void addLog(String logInfo) {
+	public void addLog() {
 		// TODO Auto-generated method stub
 		result=ml.addLog(logInfo);
 		assertEquals(ResultMessage.SUCCESS,result);

@@ -10,6 +10,7 @@ import vo.logVO.LogVO;
 public class MockLogManage {
 	
 	LogVO logVO=new LogVO();
+	ResultMessage result;
 	
 	public MockLogManage(){
 		
