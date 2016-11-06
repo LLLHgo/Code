@@ -14,6 +14,8 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import Mock.MockClientManage;
+import Mock.MockHotelinfoManage;
+import Mock.MockOrderManage;
 import businesslogic.clientbl.Client;
 import presentation.client.controller.ProcessClientViewController;
 import vo.clientVO.ClientVO;
@@ -46,9 +48,12 @@ public class ProcessClientViewControllerTest {
 	 * @return 客户的个人信息
 	 */
 	@Test
-	public ClientVO getclient (String clientID){
-		MockClientManage mc=new MockClientManage(clientID);
-		return mc.getclient(clientID);
+	public void getclientTest (){
+		MockClientManage mc=new MockClientManage();
+		assertEquals("ErgouWang",mc.getclient("C00000001").client_name);
+		assertEquals("",mc.getclient("C00000001").client_firm);
+		assertEquals("Fake",mc.getclient("C00000002").client_firm);
+		assertEquals("13747474743",mc.getclient("C00000003").client_tel);
 	}
 
 	/**
@@ -57,9 +62,14 @@ public class ProcessClientViewControllerTest {
 	 * @return 增加新用户成功与否
 	 */
 	@Test
-	public boolean createClient(ClientVO vo){
-		MockClientManage mc=new MockClientManage(vo);
-		return mc.createClient(vo);
+	public void  createClientTest(){
+		MockClientManage mc=new MockClientManage();
+		ClientVO vo=mc.getclient("C00000001");
+		assertEquals(ResultMessage.SUCCESS,mc.createClient(vo));
+		vo=mc.getclient("C00000002");
+		assertEquals(ResultMessage.SUCCESS,mc.createClient(vo));
+		vo=mc.getclient("C00000003");
+		assertEquals(ResultMessage.SUCCESS,mc.createClient(vo));
 	}
 	/**
 	 *设置（修改）某一客户信用值
@@ -87,10 +97,10 @@ public class ProcessClientViewControllerTest {
 	 * @param vo
 	 * @return符合关键词的酒店列表
 	 */
-	@Test
-	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo){
-		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
-		return hotel;
+	//@Test
+	public List<HotelinfoVO> getSearchHotelTest(ClientRequirementVO vo){
+		MockHotelinfoManage mh=new MockHotelinfoManage();
+		return mh.getBasicinfoList(vo);
 	}
 	/**
 	 *得到具体日期的客户订单
@@ -98,10 +108,10 @@ public class ProcessClientViewControllerTest {
 	 * @param date
 	 * @return 该日期的客户订单
 	 */
-	@Test
-	public List<OrderVO> getSearchDateOrder(String clientID,Date date){
-		List<OrderVO> order=new ArrayList<OrderVO>();
-		return order;
+	//@Test
+	public List<OrderVO> getSearchDateOrderTest(String clientID,Date date){
+		MockOrderManage mo=new MockOrderManage(clientID,date);
+		return mo.findSpecificDayClientOrder(clientID,date);
 	}
 	/**
 	 *得到具体酒店的客户订单
@@ -109,46 +119,40 @@ public class ProcessClientViewControllerTest {
 	 * @param hotelID
 	 * @return 该酒店的客户订单
 	 */
-	@Test
-	public List<OrderVO> getSearchHotelOrder( String clientID,String hotelID){
-		List<OrderVO> order=new ArrayList<OrderVO>();
-		return order;
+	//@Test
+	public List<OrderVO> getSearchHotelOrderTest( String clientID,String hotelID){
+		MockOrderManage mo=new MockOrderManage(clientID);
+		return mo.findSpecificHotelClientOrder(clientID,hotelID);
 	}
 	/**
 	 *修改客户基本信息
 	 * @param vo
 	 * @return 修改个人信息成功与否提示信息
 	 */
-	@Test
-	public  ResultMessage updateInfo(ClientVO vo){
-		if(vo!=null)
-			return ResultMessage.SUCCESS;
-		else
-			return ResultMessage.FAIL;
+	//@Test
+	public  ResultMessage updateInfoTest(ClientVO vo){
+		MockClientManage mc=new MockClientManage(vo);
+		return mc.updateInfo(vo);
 	}
 	/**
 	 *创建订单
 	 * @param orderID
 	 * @return 创建成功与否
 	 */
-	@Test
-	public boolean createOrder(OrderVO vo){
-		if(vo!=null)
-			return true;
-		else
-			return false;
+	//@Test
+	public ResultMessage createOrder(OrderVO vo){
+		MockOrderManage mo=new MockOrderManage(vo);
+		return mo.createOrder(vo);
 	}
 	/**
 	 *撤销订单
 	 * @param orderID
 	 * @return 撤销成功与否
 	 */
-	@Test
-	public boolean repealOrder(String orderID){
-		if(orderID!=null)
-			return true;
-		else
-			return false;
+	//@Test
+	public void repealOrder(String orderID){
+		MockOrderManage mo=new MockOrderManage();
+		ResultMessage r= mo.cancelOrder(orderID);
 	}
 	/**
 	 *得到客户的所有订单
@@ -156,7 +160,7 @@ public class ProcessClientViewControllerTest {
 	 * @param order_type
 	 * @return 所有订单列表
 	 */
-	@Test
+	//@Test
 	public List<OrderVO> getAllOrderList(String clientID,OrderType order_type){
 		List<OrderVO> order=new ArrayList<OrderVO>();
 		return order;
@@ -167,7 +171,7 @@ public class ProcessClientViewControllerTest {
 	 * @param order_type
 	 * @return 类型订单列表
 	 */
-	@Test
+	//@Test
 	public List<OrderVO> getOrderList(String clientID,OrderType order_type){
 		List<OrderVO> order=new ArrayList<OrderVO>();
 		return order;
@@ -177,7 +181,7 @@ public class ProcessClientViewControllerTest {
 	 * @param clientID
 	 * @return 信用记录
 	 */
-	@Test
+	//@Test
 	public File getCreditRecord(String clientID){
 		if(clientID!=null)
 			return new File(clientID);
@@ -189,7 +193,7 @@ public class ProcessClientViewControllerTest {
 	 * @param clientID
 	 * @return 历史预订酒店列表
 	 */
-	@Test
+	//@Test
 	public List<HotelinfoVO> getHistoryList(String clientID){
 		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
 		return hotel;

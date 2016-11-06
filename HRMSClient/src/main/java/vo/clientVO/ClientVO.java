@@ -4,26 +4,27 @@ import java.io.File;
 import java.sql.Date;
 
 import Enum.VIPType;
+import businesslogic.clientbl.Client;
 
 public class ClientVO {
 		//用户编号
-			private String client_id;
+			public String client_id;
 		//用户密码
-			private String password;
+			public String password;
 		//用户姓名
-			private String client_name;
+			public String client_name;
 		//用户手机号
-			private String client_tel;
+			public String client_tel;
 		//用户会员类型
-			private VIPType vip_type;
+			public VIPType vip_type;
 		//用户会员等级
-			private int vip_level;
+			public int vip_level;
 		//用户生日
-			private Date client_birth;
+			public Date client_birth;
 		//用户所属企业
-			private String client_firm;
+			public String client_firm;
 		//用户信用记录
-			private File creditRecord;
+			public File creditRecord;
 			public ClientVO(){
 			}
 
@@ -39,6 +40,17 @@ public class ClientVO {
 				this.client_firm=client_firm;
 				this.creditRecord=creditRecord;
 			}
+				/*public ClientVO(Client c){
+					this.client_id=c.client_id;
+					this.password=c.password;
+					this.client_name=c.client_name;
+					this.client_tel=c.client_tel;
+					this.vip_type=c.vip_type;
+					this.client_birth=c.client_birth;
+					this.vip_level=c.vip_level;
+					this.client_firm=c.client_firm;
+					this.creditRecord=c.creditRecord;
+				}*/
 				public String getID(){
 					return client_id;
 				}
@@ -60,7 +72,7 @@ public class ClientVO {
 				public int getLevel(){
 					return vip_level;
 				}
-	
+
 				public String getFirm(){
 					return client_firm;
 				}
@@ -88,7 +100,7 @@ public class ClientVO {
 				public void setLevel(int level){
 					this.vip_level=level;
 				}
-	
+
 				public void setFirm(String firm){
 					this.client_firm=firm;
 				}

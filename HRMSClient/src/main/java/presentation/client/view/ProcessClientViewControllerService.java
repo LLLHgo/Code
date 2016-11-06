@@ -24,13 +24,19 @@ public interface ProcessClientViewControllerService {
 	 * @param vo
 	 * @return 增加新用户成功与否
 	 */
-	public boolean createClient(ClientVO vo);
+	public ResultMessage createClient(ClientVO vo);
 	/**
 	 *设置（修改）某一客户信用值
 	 * @param clientID
 	 * @param recharge
 	 * @return 修改信用值成功与否
 	 */
+	/**
+	 *删除客户
+	 * @param vo
+	 * @return 删除用户成功与否
+	 */
+	public ResultMessage saveSitemanagerDelete(String clientId);
 	public boolean setCredit(String clientID,int recharge);
 	/**
 	 * 根据新的会员等级制度修改所有客户的会员等级

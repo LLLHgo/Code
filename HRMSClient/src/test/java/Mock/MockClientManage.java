@@ -34,16 +34,30 @@ public class MockClientManage {
 		 String client_firm;
 	//用户信用记录
 		File creditRecord;
-
 		ClientVO clientVO;
+		ClientVO clientVO1=ClientDataTool.clientVO1;
+		ClientVO clientVO2=ClientDataTool.clientVO2;
+		ClientVO clientVO3=ClientDataTool.clientVO3;
 		public MockClientManage(){
 		}
 		public MockClientManage(String id,String password){
 			this.client_id=id;
 			this.password=password;
+			if(id==clientVO1.client_id)
+				this.clientVO=clientVO1;
+			else if(id==clientVO2.client_id)
+				this.clientVO=clientVO2;
+			else
+				this.clientVO=clientVO3;
 		}
 		public MockClientManage(String name){
 			this.client_name=name;
+			if(name==clientVO1.client_name)
+				this.clientVO=clientVO1;
+			else if(name==clientVO2.client_name)
+				this.clientVO=clientVO2;
+			else
+				this.clientVO=clientVO3;
 		}
 		public MockClientManage(ClientVO clientVO){
 			this.clientVO=clientVO;
@@ -60,10 +74,13 @@ public class MockClientManage {
 		 * @return 客户的个人信息
 		 */
 		public ClientVO getclient (String clientID){
-			if(clientVO!=null)
-			return clientVO;
+			if(clientID==clientVO1.client_id)
+				this.clientVO=clientVO1;
+			else if(clientID==clientVO2.client_id)
+				this.clientVO=clientVO2;
 			else
-				return client;
+				this.clientVO=clientVO3;
+			return clientVO;
 		}
 
 		/**
@@ -71,11 +88,11 @@ public class MockClientManage {
 		 * @param vo
 		 * @return 增加新用户成功与否
 		 */
-		public boolean createClient(ClientVO vo){
+		public ResultMessage createClient(ClientVO vo){
 			if(vo.getID() != null)
-				return false;
+				return ResultMessage.SUCCESS;
 			else
-				return true;
+				return ResultMessage.FAIL;
 		}
 		/**
 		 *设置（修改）某一客户信用值

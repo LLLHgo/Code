@@ -58,11 +58,22 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @param vo
 	 * @return 增加新用户成功与否
 	 */
-	public boolean createClient(ClientVO vo){
+	public ResultMessage createClient(ClientVO vo){
 		if(vo.getID() != null)
-			return false;
+			return ResultMessage.SUCCESS;
 		else
-			return true;
+			return ResultMessage.FAIL;
+	}
+	/**
+	 *删除客户
+	 * @param vo
+	 * @return 删除用户成功与否
+	 */
+	public ResultMessage saveSitemanagerDelete(String clientId){
+		if(clientId!= null)
+			return ResultMessage.FAIL;
+		else
+			return ResultMessage.SUCCESS;
 	}
 	/**
 	 *设置（修改）某一客户信用值

@@ -30,11 +30,22 @@ public class ProcessClientViewController implements ProcessClientViewControllerS
 	 * @param vo
 	 * @return 增加新用户成功与否
 	 */
-	public boolean createClient(ClientVO vo){
+	public ResultMessage createClient(ClientVO vo){
 		if(vo.getID() != null)
-			return false;
+			return ResultMessage.FAIL;
 		else
-			return true;
+			return ResultMessage.SUCCESS;
+	}
+	/**
+	 *删除客户
+	 * @param vo
+	 * @return 删除用户成功与否
+	 */
+	public ResultMessage saveSitemanagerDelete(String clientId){
+		if(clientId!= null)
+			return ResultMessage.FAIL;
+		else
+			return ResultMessage.SUCCESS;
 	}
 	/**
 	 *设置（修改）某一客户信用值
@@ -104,11 +115,11 @@ public class ProcessClientViewController implements ProcessClientViewControllerS
 	 * @param orderID
 	 * @return 创建成功与否
 	 */
-	public boolean createOrder(OrderVO vo){
+	public ResultMessage createOrder(OrderVO vo){
 		if(vo!=null)
-			return true;
+			return ResultMessage.SUCCESS;
 		else
-			return false;
+			return ResultMessage.FAIL;
 	}
 	/**
 	 *撤销订单
