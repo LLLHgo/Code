@@ -12,13 +12,12 @@ import vo.levelVO.LevelVO;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class MarketingStrategyDataTool {
-	static SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	static Date begin1=new Date(dfs.format("2016-11-11 00:00:00"));
-	static Date end1=new Date(dfs.format("2016-11-11 23:59:59"));
-	static Date begin2=new Date(dfs.format("2016-12-24 00:00:00"));
-	static Date end2=new Date(dfs.format("2016-12-25 23:59:59"));
-	static Date begin3=new Date(dfs.format("2016-12-31 00:00:00"));
-	static Date end3=new Date(dfs.format("2016-12-31 23:59:59"));
+	static String begin1="2016-11-11 00:00:00";
+	static String end1="2016-11-11 23:59:59";
+	static String begin2="2016-12-24 00:00:00";
+	static String end2="2016-12-25 23:59:59";
+	static String begin3="2016-12-31 00:00:00";
+	static String end3="2016-12-31 23:59:59";
 	static ArrayList<HotelinfoVO> hlist=new ArrayList<HotelinfoVO>();
 	static ArrayList<String> blist=new ArrayList<String>();
 	static ArrayList<VIPType> viplist=new ArrayList<VIPType>();
@@ -33,10 +32,11 @@ public class MarketingStrategyDataTool {
 		viplist.add(VIPType.ENTERPRISEVIP);
 	}
     static Image image;
+    public static MarketingStrategyVO V0=new  MarketingStrategyVO();
     public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.DOUBLE11,
     		begin1,end1,0.75,hlist,image,"North");
     public static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",marketingStrategy.VIPSPECIAL,
     		begin2,end2,0.8,image,blist,"North");
     public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CRATEDE,
-    		begin1,end1,0.85,hlist,blist,image,"North",678,2,lvo,viplist);
+    		begin1,end2,0.85,hlist,blist,image,"North",678,2,lvo,viplist);
 }

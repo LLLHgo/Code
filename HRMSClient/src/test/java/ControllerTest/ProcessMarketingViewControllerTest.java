@@ -34,6 +34,7 @@ public class ProcessMarketingViewControllerTest {
 		sm=new MockStrategyManage();
 		cm=new MockClientManage();
 		om=new MockOrderManage();
+		lm=new MockLogManage();
 		date=new Date(2016,10,17);
 	}
 	@Test
@@ -50,32 +51,32 @@ public class ProcessMarketingViewControllerTest {
 
 	@Test
 	public void testfindAbnormalOrderList(){
-		OrderVO ov1=OrderDataTool.orderVO5,ov2=OrderDataTool.orderVO6,ov3=OrderDataTool.orderVO7;
+		OrderVO ov1=OrderDataTool.orderVO1,ov2=OrderDataTool.orderVO2,ov3=OrderDataTool.orderVO7;
 		List<OrderVO> olist=om.findAbnormalOrderList(date);
 		assertEquals(true,olist.contains(ov1));
 		assertEquals(true,olist.contains(ov2));
-		assertEquals(true,olist.contains(ov3));
+
 	}
 	@Test
 	public void testfindSpecificAbnormalOrder(){
-		OrderVO vo=OrderDataTool.orderVO7;
-		assertEquals(vo.getClientId(),om.findSpecificOrderList("20161017092601").getClientId());
+		OrderVO vo=OrderDataTool.orderVO1;
+		assertEquals(vo.getClientId(),om.findSpecificOrderList("20161015085702").getClientId());
 	}
 
 	@Test
 	public  void testsaveAbnormalOrder(){
 		OrderVO vo=OrderDataTool.orderVO5;
-		assertEquals(vo.getClientId(),om.saveOrder(vo));
+		assertEquals(ResultMessage.SUCCESS,om.saveOrder(vo));
 	}
 
 	@Test
 	public void testaddMarketingStrategy(){
-		MarketingStrategyVO ms=MarketingStrategyDataTool.V3;
+		MarketingStrategyVO ms=MarketingStrategyDataTool.V1;
 		assertEquals(true,sm.addMarketingStrategy(ms));
 	}
 	@Test
 	public void testdeleteMarketingStrategy(){
-		MarketingStrategyVO ms=MarketingStrategyDataTool.V3;
+		MarketingStrategyVO ms=MarketingStrategyDataTool.V1;
 		assertEquals(true,sm.deleteMarketingStrategy(ms));
 	}
 
@@ -101,7 +102,7 @@ public class ProcessMarketingViewControllerTest {
 	}
 
 	@Test
-	public void testgetPrivilege(){
+	public void testfindAllPrivilege(){
 		PrivilegeVO ms1=PrivilegeDataTool.p1;
 		PrivilegeVO ms2=PrivilegeDataTool.p2;
 		assertEquals(true,sm.findAllPrivilege(VIPType.ORDINARYVIP).contains(ms1));

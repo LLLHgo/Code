@@ -1,9 +1,11 @@
 package businesslogicservice.marketinblservice;
 
+import java.util.Date;
 import java.util.List;
 import Enum.ResultMessage;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
+import vo.orderVO.OrderVO;
 
 public interface MarketingBLService {
     /**

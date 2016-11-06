@@ -44,9 +44,13 @@ public class MockStrategyManage {
 		this.hs2=v2;
 	}
 */
-
+   /**
+    * 增加网站营销人员指定的额促销策略
+    * @param vo
+    * @return 是否增加成功
+    */
 	public boolean addMarketingStrategy(MarketingStrategyVO vo) {
-		return true;
+        return true;
 	}
     /**
      * 获得网站营销人员的策略列表
@@ -67,10 +71,7 @@ public class MockStrategyManage {
      * @return 是否删除成功
      */
 	public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
-        if(vo!=null)
-		    return true;
-        else
-        	return false;
+        return true;
 	}
 
     /**
