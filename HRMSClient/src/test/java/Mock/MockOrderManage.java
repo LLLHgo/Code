@@ -106,7 +106,7 @@ public class MockOrderManage {
 	 * @param orderID
 	 * @return 具体订单
 	 */
-	public OrderVO  findSpecificOrderList(String orderID){
+	public OrderVO  findSpecificOrder(String orderID){
 		return OrderDataTool.orderVO1;
 	}
 	/**

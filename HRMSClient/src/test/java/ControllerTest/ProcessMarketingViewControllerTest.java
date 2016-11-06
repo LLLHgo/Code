@@ -60,7 +60,7 @@ public class ProcessMarketingViewControllerTest {
 	@Test
 	public void testfindSpecificAbnormalOrder(){
 		OrderVO vo=OrderDataTool.orderVO1;
-		assertEquals(vo.getClientId(),om.findSpecificOrderList("20161015085702").getClientId());
+		assertEquals(vo.getClientId(),om.findSpecificOrder("20161015085702").getClientId());
 	}
 
 	@Test

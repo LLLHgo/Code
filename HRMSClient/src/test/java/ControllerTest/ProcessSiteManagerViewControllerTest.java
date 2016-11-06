@@ -13,12 +13,15 @@ import Mock.MockClientManage;
 import Mock.MockHotelinfoManage;
 import Mock.MockHotelstaffManager;
 import Mock.MockLogManage;
+import Mock.MockMarketingManage;
 import Mock.MockSitemanagerManage;
 import datatool.ClientDataTool;
+import datatool.HotelinfoDataTool;
+import datatool.HotelstaffDataTool;
 import datatool.LogDataTool;
+import datatool.MarketingDataTool;
 import datatool.SitemanagerDataTool;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
@@ -33,11 +36,21 @@ public class ProcessSiteManagerViewControllerTest {
 	LogDataTool logDataTool;
 	ClientDataTool clientDataTool;
 	SitemanagerDataTool sitemanagerDataTool;
+	MarketingDataTool marketingDataTool;
+	HotelinfoDataTool hotelinfoDataTool;
+	HotelstaffDataTool hotelstaffDataTool;
+	String clientId;
 	String findinfo;
+	String findinfoMarketing;
+	String findinfoHotelstaff;
 	boolean resultB;
+	ClientVO clientVO;
 	SitemanagerVO accountVO;
+	MarketingVO marketingVO;
+	HotelstaffVO hotelstaffVO;
 	ResultMessage result;
 	String logInfo;
+	MockMarketingManage mm;
 	
 	@Before
 	public void setUp(){
@@ -45,12 +58,18 @@ public class ProcessSiteManagerViewControllerTest {
 		mc=new MockClientManage();
 		mh=new MockHotelinfoManage();
 		mhs=new MockHotelstaffManager();
-		//MockMarketingManage mm=new MockMarketingManage();
+		mm=new MockMarketingManage();
 		ml=new MockLogManage();
 		logDataTool=new LogDataTool();
 	    clientDataTool=new ClientDataTool();
 	    sitemanagerDataTool=new SitemanagerDataTool();
-		findinfo="";
+	    hotelstaffDataTool=new HotelstaffDataTool();
+	    marketingDataTool=new MarketingDataTool();
+	    hotelinfoDataTool=new HotelinfoDataTool();
+	    clientId="C00000002";
+		findinfo="C00000001";
+		findinfoMarketing="M00000001";
+		findinfoHotelstaff="H00000001";
 		accountVO=SitemanagerDataTool.sitemanagerVO;
 		result=ResultMessage.SUCCESS;
 		logInfo="";
@@ -58,21 +77,24 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 
 	@Test
-	public void clientAccountUpdate() {
+	public void clientAccountUpdateTest() {
 		// TODO Auto-generated method stub
 		ClientVO clientVO=ClientDataTool.clientVO1;
 		assertEquals(ResultMessage.SUCCESS,mc.updateInfo(clientVO));
 	}
 
 	//@Test
-	public void accountDelete(String userId) {
+	public void accountDeleteTest(String userId) {
 		// TODO Auto-generated method stub
 		//result=ms.saveSitemanagerDelete(userId);
 		//assertEquals(ResultMessage.SUCCESS,result);
+		assertEquals(true,mm.saveSitemanagerDelete(marketingVO));
+		assertEquals(ResultMessage.SUCCESS,mc.saveSitemanagerDelete(clientId));
+		
 	}
 
 	@Test
-	public void clientAccountFind() {
+	public void clientAccountFindTest() {
 		// TODO Auto-generated method stub
 	    ClientVO clientVOExpected=ClientDataTool.clientVO1;
 	    ClientVO clientVOReal=mc.getclient(findinfo);
@@ -87,53 +109,63 @@ public class ProcessSiteManagerViewControllerTest {
 	    assertEquals(clientVOExpected.getType(),clientVOReal.getType());
 	}
 
-	//@Test
-	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
+	@Test
+	public void MarketingAccountAddTest() {
 		// TODO Auto-generated method stub
-		
-		return null;
-	}
-
-	//@Test
-	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	//@Test
-	public MarketingVO MarketingAccountFind(String findInfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	//@Test
-	public ResultMessage MarketingAccountDelete(String marketingID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	//@Test
-	public ResultMessage HotelAccountAdd(HotelinfoVO hotelinfoVO, HotelstaffVO hotelstaffVO) {
-		// TODO Auto-generated method stub
-		
-		return null;
-	}
-
-	//@Test
-	public HotelstaffVO HotelStaffAccountFind(String findInfo) {
-		// TODO Auto-generated method stub
-		
-		return null;
-	}
-
-	//@Test
-	public ResultMessage HotelStaffAccountUpdate(HotelstaffVO hotelstaffVO) {
-		// TODO Auto-generated method stub
-		return null;
+		resultB=mm.saveSitemanagerAdd(marketingVO);
+		assertEquals(true,resultB);
 	}
 
 	@Test
-	public void sitemanagerAcountShow() {
+	public void MarketingAccountUpdateTest() {
+		// TODO Auto-generated method stub
+		result=mm.siteManagerUpdate(marketingVO);
+		assertEquals(ResultMessage.SUCCESS,result);
+	}
+
+	@Test
+	public void MarketingAccountFindTest() {
+		// TODO Auto-generated method stub
+		MarketingVO marketingVOReal=mm.returnSitemanagerAccount(findinfoMarketing);
+		MarketingVO marketingVOExpected=MarketingDataTool.V1;
+		assertEquals(marketingVOExpected.getMarketingID(),marketingVOReal.getMarketingID());
+		assertEquals(marketingVOExpected.getName(),marketingVOReal.getName());
+		assertEquals(marketingVOExpected.getPassword(),marketingVOReal.getPassword());
+		assertEquals(marketingVOExpected.getTelephone(),marketingVOReal.getTelephone());
+	}
+
+	@Test
+	public void MarketingAccountDeleteTest() {
+		// TODO Auto-generated method stub
+		assertEquals(true,mm.saveSitemanagerDelete(marketingVO));
+	}
+
+	@Test
+	public void HotelAccountAddTest() {
+		// TODO Auto-generated method stub
+		assertEquals(true,mh.saveSitemanagerAdd(HotelinfoDataTool.hotelinfoVO1));
+	}
+
+	@Test
+	public void HotelStaffAccountFindTest() {
+		// TODO Auto-generated method stub
+		HotelstaffVO hotelStaffVORreal=mhs.returnSitemanagerAccount(findinfoHotelstaff);
+		HotelstaffVO hotelStaffVOExpected=HotelstaffDataTool.hotelstaffVO1;
+		assertEquals(hotelStaffVOExpected.getHotelID(),hotelStaffVORreal.getHotelID());
+		assertEquals(hotelStaffVOExpected.getPassword(),hotelStaffVORreal.getPassword());
+		assertEquals(hotelStaffVOExpected.getTel(),hotelStaffVORreal.getTel());
+		
+	}
+
+	@Test
+	public void HotelStaffAccountUpdateTest() {
+		// TODO Auto-generated method stub
+		assertEquals(true,mhs.saveSitemanagerUpdate(HotelstaffDataTool.hotelstaffVO1));
+		
+	}
+
+	@Test
+	public void sitemanagerAcountShowTest() {
 		// TODO Auto-generated method stub
 		SitemanagerVO sitemanagerVOReal=ms.sitemanagerAcountShow();
 		SitemanagerVO sitemanagerVOExpexted=SitemanagerDataTool.sitemanagerVO;
@@ -143,22 +175,22 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 
 	@Test
-	public void sitemanagerAccountUpdate() {
+	public void sitemanagerAccountUpdateTest() {
 		// TODO Auto-generated method stub
 		result=ms.sitemanagerAccountUpdate(accountVO);
 		assertEquals(ResultMessage.SUCCESS,result);
 	}
 
 	@Test
-	public void checkAccount() {
+	public void checkAccountTest() {
 		// TODO Auto-generated method stub
 		SitemanagerVO sitemanagerVOReal=SitemanagerDataTool.sitemanagerVO;
 		resultB=ms.checkAccount(sitemanagerVOReal);
-		assertEquals(false,resultB);
+		assertEquals(true,resultB);
 	}
 
 	@Test
-	public void findLogTest() {
+	public void findLogTestTest() {
 		// TODO Auto-generated method stub
 		ArrayList<LogVO> listReal=ml.getLog();
 		ArrayList<LogVO> listExpected=LogDataTool.logList;
@@ -171,7 +203,7 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 
 	@Test
-	public void addLog() {
+	public void addLogTest() {
 		// TODO Auto-generated method stub
 		result=ml.addLog(logInfo);
 		assertEquals(ResultMessage.SUCCESS,result);

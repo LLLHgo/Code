@@ -6,6 +6,7 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import businesslogic.marketingbl.MarketingManage;
+import datatool.MarketingDataTool;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
@@ -25,6 +26,7 @@ public class MockMarketingManage extends MarketingManage{
 	//网站营销人员VO
 	private MarketingVO mv;
 
+	MarketingDataTool marketingdatatool=new MarketingDataTool();
 	public MockMarketingManage(){
     }
 
@@ -190,7 +192,7 @@ public class MockMarketingManage extends MarketingManage{
      * @return 获得网站营销人员基本信息
      */
 	public MarketingVO returnSitemanagerAccount(String marketingID) {
-		return this.mv;
+		return MarketingDataTool.V1;
 	}
 
 }
