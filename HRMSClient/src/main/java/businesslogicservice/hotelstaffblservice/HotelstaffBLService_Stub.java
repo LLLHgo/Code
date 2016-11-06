@@ -11,7 +11,7 @@ import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
-import vo.orderVO.HotelOrderVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 /**
  *
@@ -21,7 +21,7 @@ import vo.strategyVO.HotelStrategyVO;
 public class HotelstaffBLService_Stub implements HotelstaffBLService{
 
 	HotelstaffVO hotelstaffvo ;
-	HotelOrderVO hotelordervo;
+	OrderVO hotelordervo;
 	RoominfoVO roominfovo;
 	HotelinfoVO hotelinfovo;
 
