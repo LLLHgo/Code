@@ -8,7 +8,7 @@ import Enum.VIPType;
 
 public class OrderVO {
 	 // 订单号
-    private String orderId;
+    public String orderId;
     // 客户帐号
     private String clientId;
     // 客户名字
@@ -29,9 +29,9 @@ public class OrderVO {
 	private double price;
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
-	
+
 	public OrderVO(){
-		
+
 	}
 	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
 			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies){
@@ -47,7 +47,7 @@ public class OrderVO {
 		this.price=price;
 		this.strategies=strategies;
 		}
-			
+
 	public String getOrderId() {
 		return orderId;
 	}

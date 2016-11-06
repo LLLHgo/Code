@@ -6,28 +6,28 @@ import Enum.Star;
 
 public class HotelinfoVO {
 	//酒店名称
-	private String name;
+	public String name;
 	//酒店地址
-	private String address;
+	public String address;
 	//酒店所在商圈
-	private String area;
+	public String area;
 	//酒店电话
-	private String tel;
+	public String tel;
 	//酒店所包含的房间
-	private ArrayList<RoominfoVO> roominfoList;
+	public ArrayList<RoominfoVO> roominfoList;
 	//酒店星级 ，ONE，TOW...SEVEN表示一星级到七星级
-	private Star star;
+	public Star star;
 	//酒店评价
-	private ArrayList<String> remark;
+	public ArrayList<String> remark;
 	//酒店简介
-	private String introduction;
+	public String introduction;
 	//酒店ＩＤ
-	private String hotelID;
-	
+	public String hotelID;
+
 	public HotelinfoVO(){
-		
+
 	}
-	
+
 	public HotelinfoVO(String name,String address,String area,
 			String tel,ArrayList<RoominfoVO> roominfoList,Star star,ArrayList<String> remark,
 			String introduciton,String hotelID){
@@ -114,5 +114,5 @@ public class HotelinfoVO {
 	public void setHotelID(String hotelID) {
 		this.hotelID = hotelID;
 	}
-	
+
 }

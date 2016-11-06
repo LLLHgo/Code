@@ -7,6 +7,7 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import datatool.ClientDataTool;
 import presentation.client.view.ProcessClientViewControllerService;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
@@ -15,7 +16,14 @@ import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
 
 public class ProcessClientViewController implements ProcessClientViewControllerService {
+	public boolean checkAccount (ClientVO accountVO){
 
+		if(accountVO.client_id==ClientDataTool.clientVO1.client_id&&
+				accountVO.password==ClientDataTool.clientVO1.password)
+			return true;
+		else
+			return false;
+	}
 	/**
 	 *通过客户ID得到客户个人信息
 	 * @param clientID
@@ -158,8 +166,9 @@ public class ProcessClientViewController implements ProcessClientViewControllerS
 	 * @return 信用记录
 	 */
 	public File getCreditRecord(String clientID){
+		File file=new File("credit");
 		if(clientID!=null)
-			return new File(clientID);
+			return  file;
 		else
 			return null;
 	}

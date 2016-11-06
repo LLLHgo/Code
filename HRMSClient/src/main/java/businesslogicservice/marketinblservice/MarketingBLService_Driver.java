@@ -25,44 +25,19 @@ public class MarketingBLService_Driver {
     	ResultMessage deleteLevelResult=marketingBLService.deleteLevel(Lvo);
     	if(deleteLevelResult==ResultMessage.SUCCESS)System.out.println("删除等级信息成功");
 
-
-    	//返回当日未执行订单列表
-    	Date date=new Date();
-    	List<OrderVO> orderList=marketingBLService.showAbnormal(date);
-    	if(orderList.size()>0)System.out.print("返回当日未执行订单列表成功");
-
-    	//返回异常订单信息
-    	OrderVO Ovo=marketingBLService.findSpecificAbnormalOrder("201610150001");
-    	if(Ovo.getOrderStatus()==OrderType.ABNORMAL)System.out.print("返回异常订单信息成功");
-
-        //撤销异常订单
-    	ResultMessage handleAbnormalResult=marketingBLService.handleAbnormal(Ovo);
-    	if(handleAbnormalResult==ResultMessage.SUCCESS)System.out.println("撤销异常订单成功");
-
-    	//返回客户信息
-    	ClientVO Cvo=marketingBLService.getClient("C0001");
-    	if(Cvo.getLevel()>1)System.out.println("返回客户信息成功");
-
-    	//设置客户信用值
-    	ResultMessage setCreditResult=marketingBLService.setCredit("C0001",200);
-    	if(setCreditResult==ResultMessage.SUCCESS)System.out.println("设置客户信用值成功");
-
     	//修改网站营销人员信息
     	MarketingVO Mvo=new MarketingVO();
-    	ResultMessage updateResult=marketingBLService.update(Mvo);
+    	ResultMessage updateResult=marketingBLService.MarketingAccountUpdate(Mvo);
     	if(updateResult==ResultMessage.SUCCESS)System.out.println("修改网站营销人员信息成功");
 
-    	//网站管理人员修改网站营销人员信息
-    	ResultMessage siteManagerUpdateResult=marketingBLService.siteManagerUpdate(Mvo);
-    	if(siteManagerUpdateResult==ResultMessage.SUCCESS)System.out.println("网站管理人员修改网站营销人员信息成功");
 
     	//网站管理人员增加营销人员信息
-    	boolean addBool=marketingBLService.saveSitemanagerAdd(Mvo);
-    	if(addBool)System.out.println("网站管理人员增加营销人员信息成功");
+    	ResultMessage addBool=marketingBLService.MarketingAccountAdd(Mvo);
+    	if(addBool==ResultMessage.SUCCESS)System.out.println("网站管理人员增加营销人员信息成功");
 
     	//网站管理人员删除营销人员信息
-    	boolean deleteBool=marketingBLService.saveSitemanagerDelete(Mvo);
-    	if(deleteBool)System.out.println("网站管理人员删除营销人员信息成功");
+    	ResultMessage deleteBool=marketingBLService.MarketingAccountDelete(Mvo);
+    	if(deleteBool==ResultMessage.SUCCESS)System.out.println("网站管理人员删除营销人员信息成功");
 
     	//网站营销人员验证登录密码
     	boolean checkBool=marketingBLService.checkAccount("M0001","password");
@@ -73,7 +48,7 @@ public class MarketingBLService_Driver {
     	if(mvo!=null)System.out.println("得到网站营销人员信息成功");
 
     	//返回网站营销人员的个人信息
-    	MarketingVO MVO=marketingBLService.returnSitemanagerAccount("M00010001");
+    	MarketingVO MVO=marketingBLService.MarketingAccountFind("M00010001");
     	if(MVO!=null){System.out.println("已成功返回网站营销人员的个人信息");
     	}
     }

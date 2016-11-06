@@ -40,10 +40,14 @@ public class MockOrderManage {
 	private String logInfo;
 	// orderVO
 	public OrderVO orderVO;
-	
+
 	OrderDataTool orderDatatool=new OrderDataTool();
+<<<<<<< HEAD
 	LogDataTool logDataToll=new LogDataTool();
 	
+=======
+
+>>>>>>> origin/master
 	// 构造函数1
 	public MockOrderManage(OrderVO orderVO){
 		this.orderVO=orderVO;
@@ -61,7 +65,7 @@ public class MockOrderManage {
 	}
 	// 构造函数3
 	public MockOrderManage(){
-		
+
 	}
 	// 构造函数4
 	public MockOrderManage(String str,Date orderDate){
@@ -75,7 +79,7 @@ public class MockOrderManage {
 		}
 	}
 
-	
+
 	/**
 	 * 下订单
 	 * @param orderInfo
@@ -116,7 +120,7 @@ public class MockOrderManage {
 	public List<OrderVO>  findUserOrderList (String userID){
 		return OrderDataTool.list1;
 	}
-	
+
 	/**
 	 * 查找客户某天的订单
 	 * @param clientId
@@ -144,7 +148,7 @@ public class MockOrderManage {
 	public  List<OrderVO> findClientTypeOrder (OrderType type,String clientId){
 		return OrderDataTool.list1;
 	}
-	
+
 	/**
 	 * 查找酒店的某个具体订单
 	 * @param hotelId
@@ -154,7 +158,7 @@ public class MockOrderManage {
 	public OrderVO findSpecificHotelOrder (String hotelId, String orderId){
 		return OrderDataTool.orderVO4;
 	}
-	
+
 	/**
 	 * 查找具体某天的异常订单
 	 * @param date
@@ -176,4 +180,4 @@ public class MockOrderManage {
 	
 
 }
-	
+

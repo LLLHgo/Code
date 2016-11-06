@@ -6,6 +6,7 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import datatool.ClientDataTool;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -13,6 +14,7 @@ import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
 
 public interface ProcessClientViewControllerService {
+	public boolean checkAccount (ClientVO accountVO);
 	/**
 	 *通过客户ID得到客户个人信息
 	 * @param clientID

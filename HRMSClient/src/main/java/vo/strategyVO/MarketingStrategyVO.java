@@ -15,9 +15,9 @@ public class MarketingStrategyVO {
 	//网站营销人员制定的策略的种类，有enum：marketingStrategy{DOUBLE11,VIPSPECIAL,CRATEDE;}
     private marketingStrategy type;
     //活动开始时间
-    private Date startTime;
+    private String startTime;
     //活动结束时间
-    private Date endTime;
+    private String endTime;
     //活动折扣
     private double discount;
     //参加VIP特定专属商圈折扣的商圈
@@ -56,7 +56,7 @@ public class MarketingStrategyVO {
      * @param poster 活动海报
      * @param position 活动海报显示在客户界面的位置
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,Date startTime,Date endTime,double discount,ArrayList<HotelinfoVO> hotels,
+    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,String endTime,double discount,ArrayList<HotelinfoVO> hotels,
     		Image poster,String position){
     	this.name=name;
     	this.type=type;
@@ -79,7 +79,7 @@ public class MarketingStrategyVO {
      * @param businessArea
      * @param position
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,Date startTime,Date endTime,double discount,Image poster,
+    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,String endTime,double discount,Image poster,
     		ArrayList<String> businessArea,String position){
     	this.name=name;
     	this.type=type;
@@ -106,7 +106,7 @@ public class MarketingStrategyVO {
      * @param levels
      * @param vipKinds
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,Date startTime,Date endTime,double discount,ArrayList<HotelinfoVO> hotels,
+    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,String endTime,double discount,ArrayList<HotelinfoVO> hotels,
     		ArrayList<String> businessArea,Image poster,String position,int minSum,int minRooms,LevelVO levels,
     		ArrayList<VIPType> viptypes){
     	this.name=name;
@@ -129,16 +129,16 @@ public class MarketingStrategyVO {
 	public void setType(marketingStrategy type) {
 		this.type = type;
 	}
-	public Date getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Date startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
-	public Date getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(Date endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 	public Image getPoster() {

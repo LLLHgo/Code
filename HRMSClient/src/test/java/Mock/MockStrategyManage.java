@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enum.VIPType;
+import datatool.MarketingStrategyDataTool;
+import datatool.PrivilegeDataTool;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
-public class MockStrategy {
+public class MockStrategyManage {
 	//网站营销人员制定的策略1
 	private MarketingStrategyVO ms1;
 	//网站营销人员制定的策略2
@@ -22,28 +24,33 @@ public class MockStrategy {
 	//福利2
 	private PrivilegeVO pv2;
 
-	public MockStrategy(){
+	public MockStrategyManage(){
 
 	}
-    public MockStrategy(MarketingStrategyVO vo){
+ /*   public MockStrategyManage(MarketingStrategyVO vo){
 		this.ms1=vo;
 	}
 
-    public MockStrategy(MarketingStrategyVO v1,MarketingStrategyVO v2){
+    public MockStrategyManage(MarketingStrategyVO v1,MarketingStrategyVO v2){
 		this.ms1=v1;
 		this.ms2=v2;
 	}
-    public MockStrategy(HotelStrategyVO vo){
+    public MockStrategyManage(HotelStrategyVO vo){
 		this.hs1=vo;
 	}
 
-    public MockStrategy(HotelStrategyVO v1,HotelStrategyVO v2){
+    public MockStrategyManage(HotelStrategyVO v1,HotelStrategyVO v2){
 		this.hs1=v1;
 		this.hs2=v2;
 	}
-
-    public boolean addMarketingStrategy(MarketingStrategyVO vo) {
-		return true;
+*/
+   /**
+    * 增加网站营销人员指定的额促销策略
+    * @param vo
+    * @return 是否增加成功
+    */
+	public boolean addMarketingStrategy(MarketingStrategyVO vo) {
+        return true;
 	}
     /**
      * 获得网站营销人员的策略列表
@@ -52,8 +59,9 @@ public class MockStrategy {
      */
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
 		List<MarketingStrategyVO> list=new ArrayList<MarketingStrategyVO>();
-		list.add(ms1);
-		list.add(ms2);
+		    list.add(MarketingStrategyDataTool.V1);
+		    list.add(MarketingStrategyDataTool.V2);
+		    list.add(MarketingStrategyDataTool.V3);
 		return list;
 	}
 
@@ -63,7 +71,7 @@ public class MockStrategy {
      * @return 是否删除成功
      */
 	public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
-		return true;
+        return true;
 	}
 
     /**
@@ -73,7 +81,7 @@ public class MockStrategy {
      */
 	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
 		List<HotelStrategyVO> list=new ArrayList<HotelStrategyVO>();
-		list.add(hs1);
+		list.add(hs2);
 		list.add(hs2);
 		return list;
 	}
@@ -92,7 +100,10 @@ public class MockStrategy {
      * @return 是否增加成功
      */
 	public boolean addPrivilege(PrivilegeVO vo) {
-		return true;
+		if(vo!=null)
+		    return true;
+		else
+			return false;
 	}
 
     /**
@@ -102,8 +113,10 @@ public class MockStrategy {
      */
 	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
 		List<PrivilegeVO> list=new ArrayList<PrivilegeVO>();
-		list.add(pv1);
-		list.add(pv2);
+		if(type==VIPType.ORDINARYVIP)
+		    list.add(PrivilegeDataTool.p1);
+		else if(type==VIPType.ENTERPRISEVIP)
+		    list.add(PrivilegeDataTool.p2);
 		return list;
 	}
 
@@ -112,8 +125,11 @@ public class MockStrategy {
      * @param vo
      * @return 是否删除成功
      */
-	public boolean delete(PrivilegeVO vo) {
-		return true;
+	public boolean deletePrivilege(PrivilegeVO vo) {
+		if(vo!=null)
+		    return true;
+		else
+			return false;
 	}
 
 }
