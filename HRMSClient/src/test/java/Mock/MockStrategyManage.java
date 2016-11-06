@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enum.VIPType;
+import datatool.MarketingStrategyDataTool;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
-public class MockStrategy {
+public class MockStrategyManage {
 	//网站营销人员制定的策略1
 	private MarketingStrategyVO ms1;
 	//网站营销人员制定的策略2
@@ -22,26 +23,26 @@ public class MockStrategy {
 	//福利2
 	private PrivilegeVO pv2;
 
-	public MockStrategy(){
+	public MockStrategyManage(){
 
 	}
-    public MockStrategy(MarketingStrategyVO vo){
+ /*   public MockStrategyManage(MarketingStrategyVO vo){
 		this.ms1=vo;
 	}
 
-    public MockStrategy(MarketingStrategyVO v1,MarketingStrategyVO v2){
+    public MockStrategyManage(MarketingStrategyVO v1,MarketingStrategyVO v2){
 		this.ms1=v1;
 		this.ms2=v2;
 	}
-    public MockStrategy(HotelStrategyVO vo){
+    public MockStrategyManage(HotelStrategyVO vo){
 		this.hs1=vo;
 	}
 
-    public MockStrategy(HotelStrategyVO v1,HotelStrategyVO v2){
+    public MockStrategyManage(HotelStrategyVO v1,HotelStrategyVO v2){
 		this.hs1=v1;
 		this.hs2=v2;
 	}
-
+*/
     public boolean addMarketingStrategy(MarketingStrategyVO vo) {
 		return true;
 	}
@@ -52,8 +53,11 @@ public class MockStrategy {
      */
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
 		List<MarketingStrategyVO> list=new ArrayList<MarketingStrategyVO>();
-		list.add(ms1);
-		list.add(ms2);
+		if(id.charAt(0)=='M'){
+		    list.add(MarketingStrategyDataTool.V1);
+		    list.add(MarketingStrategyDataTool.V2);
+		    list.add(MarketingStrategyDataTool.V3);
+		}
 		return list;
 	}
 
@@ -73,7 +77,7 @@ public class MockStrategy {
      */
 	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
 		List<HotelStrategyVO> list=new ArrayList<HotelStrategyVO>();
-		list.add(hs1);
+		list.add(hs2);
 		list.add(hs2);
 		return list;
 	}

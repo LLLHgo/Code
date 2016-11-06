@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
-import businesslogic.marketingbl.Marketingbl;
+import businesslogic.marketingbl.MarketingManage;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
 
-public class MockMarketing extends Marketingbl{
+public class MockMarketingManage extends MarketingManage{
 	//网站营销人员制定的会员等级1
 	private LevelVO lv1;
 	//网站营销人员制定的会员等级2
@@ -25,28 +25,28 @@ public class MockMarketing extends Marketingbl{
 	//网站营销人员VO
 	private MarketingVO mv;
 
-	public MockMarketing(){
+	public MockMarketingManage(){
     }
 
-    public MockMarketing(LevelVO vo){
+    public MockMarketingManage(LevelVO vo){
         this.lv1=vo;
     }
 
-    public MockMarketing(LevelVO v1,LevelVO v2){
+    public MockMarketingManage(LevelVO v1,LevelVO v2){
         this.lv1=v1;
         this.lv2=v2;
     }
 
-    public MockMarketing(OrderVO vo){
+    public MockMarketingManage(OrderVO vo){
         this.ov1=vo;
     }
 
-    public MockMarketing(OrderVO v1,OrderVO v2){
+    public MockMarketingManage(OrderVO v1,OrderVO v2){
         this.ov1=v1;
         this.ov2=v2;
     }
 
-    public MockMarketing(ClientVO vo){
+    public MockMarketingManage(ClientVO vo){
         this.cv=vo;
     }
    /**

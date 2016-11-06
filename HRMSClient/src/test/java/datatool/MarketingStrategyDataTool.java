@@ -34,11 +34,11 @@ public class MarketingStrategyDataTool {
 		viplist.add(VIPType.ENTERPRISEVIP);
 	}
     static Image image;
-    static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.DOUBLE11,
+    public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.DOUBLE11,
     		begin1,end1,0.75,hlist,image,"North");
-    static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",marketingStrategy.VIPSPECIAL,
+    public static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",marketingStrategy.VIPSPECIAL,
     		begin2,end2,0.8,image,blist,"North");
-    static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CRATEDE,
+    public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CRATEDE,
     		begin1,end1,0.85,hlist,blist,image,"North",678,2,lvo,viplist);
     static List<MarketingStrategyVO> list;
     static {
