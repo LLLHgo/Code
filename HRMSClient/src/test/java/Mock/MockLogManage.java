@@ -1,5 +1,6 @@
 package Mock;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Enum.ResultMessage;
@@ -20,7 +21,7 @@ public class MockLogManage {
 	 * 界面得到日志列表
 	 * @return 日志列表
 	 */
-	public List<LogVO> getLog(){
+	public ArrayList<LogVO> getLog(){
 		return LogDataTool.logList;
 	}
 	/**
