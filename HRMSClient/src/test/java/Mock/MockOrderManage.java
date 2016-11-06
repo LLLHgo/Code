@@ -42,12 +42,9 @@ public class MockOrderManage {
 	public OrderVO orderVO;
 
 	OrderDataTool orderDatatool=new OrderDataTool();
-<<<<<<< HEAD
-	LogDataTool logDataToll=new LogDataTool();
-	
-=======
 
->>>>>>> origin/master
+	LogDataTool logDataToll=new LogDataTool();
+
 	// 构造函数1
 	public MockOrderManage(OrderVO orderVO){
 		this.orderVO=orderVO;
@@ -177,7 +174,7 @@ public class MockOrderManage {
 	public boolean checkTime (OrderVO order, Date date){
 		return true;
 	}
-	
+
 
 }
 
