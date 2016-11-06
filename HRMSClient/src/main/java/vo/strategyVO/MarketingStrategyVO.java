@@ -108,7 +108,7 @@ public class MarketingStrategyVO {
      */
     public MarketingStrategyVO(String name,marketingStrategy type,Date startTime,Date endTime,double discount,ArrayList<HotelinfoVO> hotels,
     		ArrayList<String> businessArea,Image poster,String position,int minSum,int minRooms,LevelVO levels,
-    		ArrayList<VIPType> vipKinds){
+    		ArrayList<VIPType> viptypes){
     	this.name=name;
     	this.type=type;
     	this.startTime=startTime;
@@ -121,7 +121,7 @@ public class MarketingStrategyVO {
     	this.minSum=minSum;
     	this.minRooms=minRooms;
     	this.levels=levels;
-    	this.vipKinds=vipKinds;
+    	this.vipKinds=viptypes;
     }
 	public marketingStrategy getType() {
 		return type;

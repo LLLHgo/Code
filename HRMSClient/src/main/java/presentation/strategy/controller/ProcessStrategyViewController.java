@@ -4,7 +4,7 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
-import businesslogic.strategybl.Strategybl;
+import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.strategyblservice.*;
 import presentation.strategy.view.ProcessStrategyViewControllerService;
 import vo.strategyVO.HotelStrategyVO;
@@ -15,7 +15,7 @@ public class ProcessStrategyViewController implements ProcessStrategyViewControl
 
 	private StrategyBLService StrategyBLService;
 	public ProcessStrategyViewController(){
-		this.StrategyBLService=(StrategyBLService) new Strategybl();
+		this.StrategyBLService= new StrategyManage();
 	}
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
