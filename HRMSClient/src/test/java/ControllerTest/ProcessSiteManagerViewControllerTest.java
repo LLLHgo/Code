@@ -4,11 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class ProcessSiteManagerViewControllerTest {
+import businesslogic.sitemanagerbl.SitemanagerManage;
+import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+public class ProcessSiteManagerViewControllerTest {
+	
+	SitemanagerBLService sitemanagerBLService=new SitemanagerManage();
+	//ClientBLService clientBLService=new Client
 
 }

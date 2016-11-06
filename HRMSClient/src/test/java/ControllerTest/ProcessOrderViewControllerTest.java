@@ -4,16 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import businesslogic.orderbl.OrderManage;
-import businesslogicservice.orderblservice.OrderBLService;
+import Enum.ResultMessage;
+import Mock.MockLogManage;
+
+
 
 public class ProcessOrderViewControllerTest {
-	OrderBLService orderbl=new OrderManage();
 	
-	
+	MockLogManage logManageMock=new MockLogManage();
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void addLogTest(String logInfo) {
+		assertEquals(ResultMessage.SUCCESS,logManageMock.addLog(logInfo));
 	}
 
 }
