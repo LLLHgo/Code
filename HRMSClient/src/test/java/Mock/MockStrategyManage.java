@@ -45,7 +45,14 @@ public class MockStrategyManage {
 	public boolean deleteMarketingStrategy(MarketingStrategyVO vo) {
         return true;
 	}
-
+	 /**
+     * 删除策略
+     * @param vo
+     * @return 是否删除成功
+     */
+	public boolean deleteHotelStrategy(HotelStrategyVO vo) {
+        return true;
+	}
     /**
      * 获得酒店策略列表
      * @param hotelID

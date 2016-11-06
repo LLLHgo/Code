@@ -8,7 +8,6 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.orderVO.HotelOrderVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -63,7 +62,7 @@ public interface HotelinfoViewControllerService {
 	 * @param vo
 	 * @return 是否将酒店促销策略持久化保存
 	 */
-	public ResultMessage updatehotelStrategy(String hotelID,HotelStrategyVO vo);
+	public ResultMessage updatehotelStrategy(HotelStrategyVO vo);
 	/**
 	 * 获得酒店促销策略信息
 	 * @param hotelID
@@ -76,7 +75,7 @@ public interface HotelinfoViewControllerService {
 	 * @param StrategyID
 	 * @return 是否删除酒店策略
 	 */
-	public ResultMessage deletehotelStrategy(String hotelID , HotelStrategyVO hotelStrategy);
+	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy);
 	/**
 	 * 获得酒店基本信息
 	 * @param vo

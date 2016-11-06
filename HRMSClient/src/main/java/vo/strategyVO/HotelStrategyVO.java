@@ -117,4 +117,92 @@ public class HotelStrategyVO {
     	this.minRooms = minRooms;
     	this.minSum = minSum;
     }
+
+	public HotelStrategy getType() {
+		return type;
+	}
+
+	public void setType(HotelStrategy type) {
+		this.type = type;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
+	public VIPType getViptype() {
+		return viptype;
+	}
+
+	public void setViptype(VIPType viptype) {
+		this.viptype = viptype;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public String getHotelID() {
+		return hotelID;
+	}
+
+	public void setHotelID(String hotelID) {
+		this.hotelID = hotelID;
+	}
+
+	public Image getPoster() {
+		return poster;
+	}
+
+	public void setPoster(Image poster) {
+		this.poster = poster;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public int getMinSum() {
+		return minSum;
+	}
+
+	public void setMinSum(int minSum) {
+		this.minSum = minSum;
+	}
+
+	public int getMinRooms() {
+		return minRooms;
+	}
+
+	public void setMinRooms(int minRooms) {
+		this.minRooms = minRooms;
+	}
+
+	public ArrayList<VIPType> getVipKinds() {
+		return vipKinds;
+	}
+
+	public void setVipKinds(ArrayList<VIPType> vipKinds) {
+		this.vipKinds = vipKinds;
+	}
 }

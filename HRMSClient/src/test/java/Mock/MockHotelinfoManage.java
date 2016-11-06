@@ -3,11 +3,14 @@ package Mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import Enum.HotelStrategy;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
 import Enum.VIPType;
+import businesslogic.hoteinfobl.Roominfo;
+import javafx.scene.image.Image;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -31,7 +34,7 @@ public class MockHotelinfoManage {
 	RoominfoVO roominfo6 ;
 	List<RoominfoVO> roominfoList;
 	ArrayList<String> strategy;
-	
+	HotelStrategyVO V1;
 	public MockHotelinfoManage(){
 		roominfo1 = new RoominfoVO("标准间","8304",200, RoomState.Usable);
 		roominfo2 = new RoominfoVO("标准间","8305",200, RoomState.Usable);
@@ -39,6 +42,7 @@ public class MockHotelinfoManage {
 		roominfo4 = new RoominfoVO("标准间","8307",200, RoomState.Usable);
 		roominfo5 = new RoominfoVO("标准间","8308",200, RoomState.Unusable);
 		roominfo6 = new RoominfoVO("大床房","8309",200, RoomState.Unusable);
+		roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfo1);
 		roominfoList.add(roominfo2);
 		roominfoList.add(roominfo3);
@@ -67,6 +71,12 @@ public class MockHotelinfoManage {
 				VIPType.ORDINARYVIP,"2016-10-17 09:07",OrderType.NORMALNONEXEC,"caesar","H00000001",650.32,strategy);
 		orderList = new ArrayList<OrderVO>();
 		orderList.add(orderVO1);
+		
+		String begin1="2016-11-11 00:00:00";
+		String end1="2016-11-11 23:59:59";
+		Image image = null;
+	    V1=new HotelStrategyVO("H00000001",HotelStrategy.BIRTHDAY,
+	    		VIPType.ORDINARYVIP,begin1,end1,0.75,image,"North");
 	}
 	
 	public HotelinfoVO getBasicinfo(String hotelID) {
@@ -121,7 +131,7 @@ public class MockHotelinfoManage {
 
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
 			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
-		
+		 
 		return 0;
 	}
 
@@ -142,7 +152,7 @@ public class MockHotelinfoManage {
 
 	public HotelStrategyVO gethotelStrategy(String hotelID) {
 		if(hotelID.equals("H00000001")){
-			return 
+			return V1;
 		}
 		return null;
 	}

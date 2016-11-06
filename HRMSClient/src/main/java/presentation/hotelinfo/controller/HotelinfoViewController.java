@@ -18,7 +18,6 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.orderVO.HotelOrderVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -78,9 +77,11 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 	}
 
 	@Override
-	public ResultMessage updatehotelStrategy(String hotelID, HotelStrategyVO vo) {
-		return  strategy.updateHotelStrategy(hotelID,vo);
-
+	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
+		 if(strategy.updateHotelStrategy(vo)==true){
+			 return ResultMessage.SUCCESS;
+		 }
+		 return ResultMessage.FAIL;
 	}
 
 	@Override
@@ -89,8 +90,8 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 	}
 
 	@Override
-	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
-		boolean result = strategy.deletehotelStrategy(hotelStrategy);
+	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy) {
+		boolean result = strategy.deleteHotelStrategy(hotelStrategy);
 		if(result == true){
 			return ResultMessage.SUCCESS;
 		}
