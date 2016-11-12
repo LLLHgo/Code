@@ -6,6 +6,7 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.orderbl.OrderManage;
+import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 import presentation.order.view.ProcessOrderViewControllerService;
 import vo.orderVO.OrderVO;
@@ -13,9 +14,11 @@ import vo.orderVO.OrderVO;
 public class ProcessOrderViewController implements ProcessOrderViewControllerService{
 	
 	private OrderBLService orderBLService;
+	private LogBLService logBLService;
 	
 	public ProcessOrderViewController(){
 		orderBLService=new OrderManage();
+		//logBLService=new LogBLService();
 		
 	}
 
