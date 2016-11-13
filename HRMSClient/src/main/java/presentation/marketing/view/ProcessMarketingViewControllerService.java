@@ -1,11 +1,14 @@
 package presentation.marketing.view;
 
+import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
+import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
@@ -128,6 +131,49 @@ public interface ProcessMarketingViewControllerService {
      * @param vo
      * @return 返回是否删除成功
      */
-    public ResultMessage delete(PrivilegeVO vo);
+    public ResultMessage deletePrivilege(PrivilegeVO vo);
+
+	/**
+	 * 保存订单
+	 * @param order
+	 * @return 保存订单成功（Success）或是失败（fail）的ResultMessage值
+	 */
+	public ResultMessage saveOrder (OrderVO order);
+
+	/**
+	 * 查找具体某天的异常订单
+	 * @param date
+	 * @return 具体某天的所有订单列表
+	 */
+	public List<OrderVO> findAbnormalOrderList (Date date);
+
+	/**
+	 * 查找具体订单
+	 * @param orderID
+	 * @return 具体订单
+	 */
+	public OrderVO  findSpecificOrderList(String orderID);
+
+	/**
+	 *通过客户ID得到客户个人信息
+	 * @param clientID
+	 * @return 客户的个人信息
+	 */
+	public ClientVO getclient (String clientID);
+
+	/**
+	 *设置（修改）某一客户信用值
+	 * @param clientID
+	 * @param recharge
+	 * @return 修改信用值成功与否
+	 */
+
+	public boolean setCredit(String clientID,int recharge);
+	/**
+	 * 根据新的会员等级制度修改所有客户的会员等级
+	 * @param vo
+	 * @return 修改会员等级成功与否
+	 */
+	public boolean setAllClientLevel(LevelVO vo);
 
 }

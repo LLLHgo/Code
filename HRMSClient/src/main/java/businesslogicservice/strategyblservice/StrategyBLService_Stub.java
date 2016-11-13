@@ -100,7 +100,7 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param vo
      * @return 返回是否删除成功
      */
-    public ResultMessage delete(PrivilegeVO vo) {
+    public ResultMessage deletePrivilege(PrivilegeVO vo) {
     	if(vo!=null)
     		return ResultMessage.SUCCESS;
 		else

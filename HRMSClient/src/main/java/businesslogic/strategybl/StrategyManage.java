@@ -52,7 +52,7 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public ResultMessage delete(PrivilegeVO vo) {
+	public ResultMessage deletePrivilege(PrivilegeVO vo) {
 		return ResultMessage.SUCCESS;
 	}
 

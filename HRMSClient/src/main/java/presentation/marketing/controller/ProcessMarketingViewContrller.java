@@ -1,16 +1,22 @@
 package presentation.marketing.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogic.marketingbl.MarketingManage;
+import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
+import businesslogicservice.orderblservice.OrderBLService;
+import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
+import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
@@ -18,10 +24,14 @@ import vo.strategyVO.PrivilegeVO;
 public class ProcessMarketingViewContrller implements ProcessMarketingViewControllerService{
     private MarketingBLService MarketingBlService;
     private StrategyBLService StrategyBLService;
+    private OrderBLService OrderBLService;
+    private ClientBLService ClientBLService;
 
     public ProcessMarketingViewContrller (){
     	this.MarketingBlService=new MarketingManage();
     	this.StrategyBLService=new StrategyManage();
+    	this.OrderBLService=new OrderManage();
+        //this.ClientBLService=new ClientManage();
     }
 
     @Override
@@ -71,50 +81,72 @@ public class ProcessMarketingViewContrller implements ProcessMarketingViewContro
 
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.StrategyBLService.addMarketingStrategy(vo);
 	}
 
 	@Override
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.StrategyBLService.getMarketingStrategy(id);
 	}
 
 	@Override
 	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.StrategyBLService.deleteMarketingStrategy(vo);
 	}
 
 	@Override
 	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.StrategyBLService.getHotelStrategy(hotelID);
 	}
 
 	@Override
 	public ResultMessage updateHotelStrategy(String hotelID, HotelStrategyVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.StrategyBLService.updateHotelStrategy(hotelID, vo);
 	}
 
 	@Override
 	public ResultMessage addPrivilege(PrivilegeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.StrategyBLService.addPrivilege(vo);
 	}
 
 	@Override
 	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
-		// TODO Auto-generated method stub
-		return null;
+		return  this.StrategyBLService.findAllPrivilege(type);
 	}
 
 	@Override
-	public ResultMessage delete(PrivilegeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage deletePrivilege(PrivilegeVO vo) {
+		return this.StrategyBLService.deletePrivilege(vo);
+	}
+
+	@Override
+	public ResultMessage saveOrder(OrderVO order) {
+		return this.OrderBLService.saveOrder(order);
+	}
+
+	@Override
+	public List<OrderVO> findAbnormalOrderList(Date date) {
+		return this.OrderBLService.findAbnormalOrderList(date);
+	}
+
+	@Override
+	public OrderVO findSpecificOrderList(String orderID) {
+		return this.OrderBLService.findSpecificOrderList(orderID);
+	}
+
+	@Override
+	public ClientVO getclient(String clientID) {
+		return this.ClientBLService.getclient(clientID);
+	}
+
+	@Override
+	public boolean setCredit(String clientID, int recharge) {
+		return this.ClientBLService.setCredit(clientID, recharge);
+	}
+
+	@Override
+	public boolean setAllClientLevel(LevelVO vo) {
+		return this.ClientBLService.setAllClientLevel(vo);
 	}
 
 }

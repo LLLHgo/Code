@@ -42,7 +42,7 @@ public class StrategyBLService_Driver {
     	if(privilegeVOList.size()>0)System.out.println("返回会员福利信息列表成功。");
 
     	//删除会员福利
-    	ResultMessage deleteBool=strategyBLService.delete(Pvo);
+    	ResultMessage deleteBool=strategyBLService.deletePrivilege(Pvo);
     	if(deleteBool==ResultMessage.SUCCESS)System.out.println("删除会员福利成功");
     }
 }

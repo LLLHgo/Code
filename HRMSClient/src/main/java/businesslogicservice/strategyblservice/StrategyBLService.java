@@ -68,6 +68,6 @@ public interface StrategyBLService {
      * @param vo
      * @return 返回是否删除成功
      */
-    public ResultMessage delete(PrivilegeVO vo);
+    public ResultMessage deletePrivilege(PrivilegeVO vo);
 
 }
