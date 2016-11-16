@@ -1,5 +1,7 @@
 package presentation.common;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 
 public class GuideBoardButton extends JButton{
@@ -24,6 +26,7 @@ public class GuideBoardButton extends JButton{
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setText(name);
 		this.setFont(new java.awt.Font("微软雅黑",  1,  20));
+		this.setForeground(Color.white);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
 		this.setVisible(true);
