@@ -11,6 +11,8 @@ import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
 
 public interface ProcessSitemanagerViewControllerService {
+	
+	public void setView(ProcessSitemanagerView view);
 	/**
 	 * 修改客户账户
 	 * @param clientId

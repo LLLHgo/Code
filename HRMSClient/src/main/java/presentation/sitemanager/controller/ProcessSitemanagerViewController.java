@@ -3,6 +3,7 @@ package presentation.sitemanager.controller;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
+import presentation.sitemanager.view.ProcessSitemanagerView;
 import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -12,6 +13,12 @@ import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
 
 public class ProcessSitemanagerViewController implements ProcessSitemanagerViewControllerService {
+	
+	private ProcessSitemanagerView processSitemanagerView;
+	
+	public void setView(ProcessSitemanagerView view) {
+		this.processSitemanagerView=view;
+	}
 	
 	@Override
 	public ResultMessage clientAccountUpdate(ClientVO clientVO) {
@@ -102,5 +109,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
+
+
 
 }
