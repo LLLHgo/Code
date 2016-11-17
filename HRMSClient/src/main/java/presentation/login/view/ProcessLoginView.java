@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
 import javax.swing.text.Caret;
 
+import presentation.MainFrame;
 import presentation.DialogCreator;
 
 public class ProcessLoginView extends JPanel {
@@ -69,7 +70,7 @@ public class ProcessLoginView extends JPanel {
 			signUpButton.setOpaque(false);
 			signUpButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					DialogCreator.successDialog("Success");
+					MainFrame.cl.show(MainFrame.jCards,"ClientPanel");
 				}
 				});
 			this.add(loginButton);

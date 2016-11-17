@@ -5,6 +5,7 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import presentation.client.view.ProcessClientView;
 import presentation.login.view.ProcessLoginView;
 
 public class MainFrame extends JFrame{
@@ -13,11 +14,16 @@ public class MainFrame extends JFrame{
 	Container ct;
 	public static JPanel jCards=new JPanel();
 	public static CardLayout cl=new CardLayout();
+	private ProcessLoginView loginPanel;
+	private ProcessClientView clientPanel;
 
 	public MainFrame(){
-	ProcessLoginView loginPanel=new ProcessLoginView();
+	loginPanel=new ProcessLoginView();
+	clientPanel=new ProcessClientView();
+
 	jCards.setLayout(cl);
 	jCards.add(loginPanel, "LoginPanel");
+	jCards.add(clientPanel, "ClientPanel");
 	jCards.setBounds(0, 0, 1000, 618);
 	jCards.setVisible(true);
 	ct = this.getContentPane();
