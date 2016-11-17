@@ -13,23 +13,31 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import presentation.DialogCreator;
+import presentation.common.GuideBoardButton;
 
-public class ProcessClientView extends JPanel {
+public class ClientPanel extends JPanel {
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JButton loginButton;
-	private JButton signUpButton;
+	private JButton searchHotel;
+	private GuideBoardButton signUpButton;
 	 private ImageIcon imageIcon = null;
-	public ProcessClientView(){
-			imageIcon = new ImageIcon("image/client.png");
+	public ClientPanel(){
+
+			imageIcon = new ImageIcon("image/clientWel.png");
+			ImageIcon shb=new ImageIcon("image/searchHotel.png");
+			searchHotel=new GuideBoardButton(240,"查询酒店");
+			/*searchHotel.setBounds(70,230,140,40);
+			searchHotel.setIcon(shb);
+			searchHotel.setOpaque(false);
+			searchHotel.setBorderPainted(false);*/
+
+			this.add(searchHotel);
 			this.setOpaque(true);
 		    this.setLayout(null);
-
 		    this.setSize(1000, 618);
-
 		    this.setVisible(true);
 	}
 	@Override
