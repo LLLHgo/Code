@@ -159,5 +159,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	public void setView(ProcessMarketingView view) {
 		this.view=view;
 	}
+	@Override
+	public void profileButtonClicked() {
+          view.profileButtonClicked();
+	}
 
 }

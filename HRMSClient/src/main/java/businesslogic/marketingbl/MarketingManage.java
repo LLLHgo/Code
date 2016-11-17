@@ -42,7 +42,7 @@ public class MarketingManage implements MarketingBLService{
 	@Override
 	public MarketingVO init(String id) {
 
-		return MarketingDataTool.V2;
+		return MarketingDataTool.V1;
 	}
 
 

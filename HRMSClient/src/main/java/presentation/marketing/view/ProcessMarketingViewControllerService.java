@@ -183,4 +183,6 @@ public interface ProcessMarketingViewControllerService {
 
 	public void setView(ProcessMarketingView view);
 
+	public void profileButtonClicked();
+
 }
