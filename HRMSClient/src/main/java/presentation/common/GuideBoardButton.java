@@ -25,7 +25,7 @@ public class GuideBoardButton extends JButton{
 	private void setOthers(){
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setText(name);
-		this.setFont(new java.awt.Font("微软雅黑",  1,  20));
+		this.setFont(new java.awt.Font("微软雅黑",  1,  25));
 		this.setForeground(Color.white);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
