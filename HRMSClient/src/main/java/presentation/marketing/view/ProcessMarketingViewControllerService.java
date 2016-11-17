@@ -15,6 +15,11 @@ import vo.strategyVO.PrivilegeVO;
 
 public interface ProcessMarketingViewControllerService {
     /**
+     *
+     * @return 网站营销人员的ID
+     */
+	public String getMarketingID();
+    /**
      * 增加等级信息
      * @param vo
      * @return 是否增加成功
@@ -175,5 +180,7 @@ public interface ProcessMarketingViewControllerService {
 	 * @return 修改会员等级成功与否
 	 */
 	public boolean setAllClientLevel(LevelVO vo);
+
+	public void setView(ProcessMarketingView view);
 
 }

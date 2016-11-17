@@ -8,6 +8,7 @@ import Enum.VIPType;
 import businesslogic.marketingbl.MarketingManage;
 import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
+import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -21,19 +22,24 @@ import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
-public class ProcessMarketingViewContrller implements ProcessMarketingViewControllerService{
+public class ProcessMarketingViewController implements ProcessMarketingViewControllerService{
     private MarketingBLService MarketingBlService;
     private StrategyBLService StrategyBLService;
     private OrderBLService OrderBLService;
     private ClientBLService ClientBLService;
-
-    public ProcessMarketingViewContrller (){
+    private String marketingID;
+    private ProcessMarketingView view;
+    public ProcessMarketingViewController (String marketingID){
+    	this.marketingID=marketingID;
     	this.MarketingBlService=new MarketingManage();
     	this.StrategyBLService=new StrategyManage();
     	this.OrderBLService=new OrderManage();
         //this.ClientBLService=new ClientManage();
     }
-
+    @Override
+    public String getMarketingID(){
+    	return this.marketingID;
+    }
     @Override
 	public ResultMessage addLevel(LevelVO vo) {
 		return this.MarketingBlService.addLevel(vo);
@@ -147,6 +153,11 @@ public class ProcessMarketingViewContrller implements ProcessMarketingViewContro
 	@Override
 	public boolean setAllClientLevel(LevelVO vo) {
 		return this.ClientBLService.setAllClientLevel(vo);
+	}
+
+	@Override
+	public void setView(ProcessMarketingView view) {
+		this.view=view;
 	}
 
 }

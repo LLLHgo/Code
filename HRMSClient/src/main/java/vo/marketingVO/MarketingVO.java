@@ -1,5 +1,7 @@
 package vo.marketingVO;
 
+import javax.swing.ImageIcon;
+
 public class MarketingVO {
 	//网站营销人员姓名
     private String name;
@@ -9,6 +11,9 @@ public class MarketingVO {
     private String marketingID;
     //网站营销人员电话
     private String telephone;
+    //网站营销人员头像
+    @SuppressWarnings("unused")
+	private ImageIcon image;
 
     public MarketingVO(){
     }
@@ -20,17 +25,34 @@ public class MarketingVO {
      * @param marketingID
      * @param telephone
      */
+    public MarketingVO(String name,String marketingID,String telephone,ImageIcon image){
+    	this.setName(name);
+    	this.setMarketingID(marketingID);
+    	this.setTelephone(telephone);
+    	this.image=image;
+    }
+
     public MarketingVO(String name,String marketingID,String telephone){
     	this.setName(name);
     	this.setMarketingID(marketingID);
     	this.setTelephone(telephone);
     }
+
+    public MarketingVO(String name,String password,String marketingID,String telephone,ImageIcon image){
+    	this.setName(name);
+    	this.password=password;
+    	this.setMarketingID(marketingID);
+    	this.setTelephone(telephone);
+    	this.image=image;
+    }
+
     public MarketingVO(String name,String password,String marketingID,String telephone){
     	this.setName(name);
     	this.password=password;
     	this.setMarketingID(marketingID);
     	this.setTelephone(telephone);
     }
+
 	public String getName() {
 		return name;
 	}
