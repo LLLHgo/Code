@@ -5,6 +5,7 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import businesslogicservice.marketinblservice.MarketingBLService;
+import datatool.MarketingDataTool;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
@@ -40,7 +41,8 @@ public class MarketingManage implements MarketingBLService{
 
 	@Override
 	public MarketingVO init(String id) {
-		return null;
+
+		return MarketingDataTool.V2;
 	}
 
 

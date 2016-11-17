@@ -1,5 +1,7 @@
 package businesslogic.marketingbl;
 
+import java.awt.Image;
+
 public class Marketing {
 	//网站营销人员姓名
     private String name;
@@ -9,6 +11,8 @@ public class Marketing {
     private String marketingID;
     //网站营销人员电话
     private String telephone;
+    //网站营销人员头像
+    private Image image;
 
     public Marketing(){
     }
@@ -54,5 +58,13 @@ public class Marketing {
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 }
