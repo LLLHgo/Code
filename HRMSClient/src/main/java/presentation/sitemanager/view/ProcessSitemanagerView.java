@@ -1,10 +1,8 @@
 package presentation.sitemanager.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -15,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import presentation.common.GuideBoardButton;
+import presentation.common.MyLabel;
+import presentation.common.MyTextField;
 import presentation.sitemanager.controller.ProcessSitemanagerViewController;
 
 public class ProcessSitemanagerView extends JPanel{
@@ -24,18 +24,16 @@ public class ProcessSitemanagerView extends JPanel{
 	private ProcessSitemanagerViewControllerService controller;
 	//private Image image;//background
 	private ImageIcon backgroundImage;
-	private ImageIcon currentRightImage;
 	private GuideBoardButton jbClientManage;
 	private GuideBoardButton jbHotelManage;
 	private GuideBoardButton jbMarktingManage;
 	private GuideBoardButton jbSitemanagerManage;
 	private GuideBoardButton jbShowLog;
 	private GuideBoardButton jbExit;
+	public JPanel mainPanel;
 	
 	public ProcessSitemanagerView(ProcessSitemanagerViewControllerService controller){
-		backgroundImage=new ImageIcon(getClass().getResource("/picture/sitemanager/MainManageBackground.png"));
-		//this.setIcon(backgroundIcon);
-		
+		backgroundImage=new ImageIcon("src/main/resource/picture/sitemanager/accountManageBackground.png");
 		this.controller=controller;
 		this.setLayout(null);
 		this.setLocation(0, 0);
@@ -50,13 +48,18 @@ public class ProcessSitemanagerView extends JPanel{
 		jbShowLog=new GuideBoardButton(471,"查看日志");
 		jbExit=new GuideBoardButton(528,"退出");
 		
-		jbClientManage.setVisible(true);
+		mainPanel=new JPanel();
+		mainPanel.setBounds(276,82,702,502);
+		mainPanel.setLayout(null);
+		mainPanel.setOpaque(false);
+		
 		this.add(jbClientManage);
 		this.add(jbHotelManage);
 		this.add(jbMarktingManage);
 		this.add(jbSitemanagerManage);
 		this.add(jbShowLog);
 		this.add(jbExit);
+		this.add(mainPanel);
 		
 		jbSitemanagerManage.addMouseListener(new jbSiteManagerListener());
 		this.setVisible(true);
@@ -72,14 +75,13 @@ public class ProcessSitemanagerView extends JPanel{
 	
 	// 按钮监听－网站管理人员管理账户
 	class jbSiteManagerListener implements MouseListener{
-		Point point=jbSitemanagerManage.getLocation();
-		int x=point.x;
-		int y=point.y;
+
 		public void mouseClicked(MouseEvent e) {
-			jbSitemanagerManage.setBorderPainted(true);
 			JPanel siteManagerPanel=new SitemanagerAccountShowPanel();
-			siteManagerPanel.setBounds(275,80,704,502);
-			
+			siteManagerPanel.setBounds(0, 0, 702, 502);
+			siteManagerPanel.setVisible(true);
+			mainPanel.add(siteManagerPanel);
+			mainPanel.setBackground(Color.blue);
 		}
 
 		public void mousePressed(MouseEvent e) {
@@ -97,36 +99,44 @@ public class ProcessSitemanagerView extends JPanel{
 		public void mouseExited(MouseEvent e) {
 			//jbSitemanagerManage.setBorderPainted(false);
 		}
+
 		
 	}
 	
 	class SitemanagerAccountShowPanel extends JPanel{
 		private static final long serialVersionUID = 1L;
-		JLabel idLabel=new JLabel("ID:");
-		JLabel telLabel=new JLabel("TEL:");
-		JLabel passwordLabel=new JLabel("PASSWORD:");
-		JLabel idTextLabel=new JLabel("S00000001");
-		JTextField telField=new JTextField("025-88888878");
-		JTextField passWordField=new JTextField("HRMSsitemanager");
+		MyLabel idLabel;
+		MyLabel telLabel;
+		MyLabel passwordLabel;
+		MyLabel idTextLabel;
+		MyTextField telField;
+		MyTextField passWordField;
+		ImageIcon img=new ImageIcon("src/main/resource/picture/sitemanager/sitemanagerAccountShow.png");
 		
 		public  SitemanagerAccountShowPanel(){
-			currentRightImage=new ImageIcon(getClass().getResource("/picture/sitemanager/sitemanagerAccountShow.png"));
-			this.setSize(704,502);
+			this.setBounds(0,0,702,502);
 			this.setLayout(null);
 			
-			idLabel.setBounds(300, 300, 30, 20);
-			telLabel.setBounds(300,350,30,20);
-			passwordLabel.setBounds(300, 400, 30, 20);
+			idLabel=new MyLabel(300, 200, 60, 40,"帐号:");
+			telLabel=new MyLabel(300,240,60,40,"电话:");
+			passwordLabel=new MyLabel(300, 280, 100, 40,"密码:");
+			idTextLabel=new MyLabel(350,200,150,40,"S00000001");
+			telField=new MyTextField(350,240,150,40,"025-88888878");
+			passWordField=new MyTextField(350,280,150,40,"HRMSsitemanager");
+	
 			this.add(idLabel);
 			this.add(telLabel);
 			this.add(passwordLabel);
+			this.add(idTextLabel);
+			this.add(telField);
+			this.add(passWordField);
 			
 			this.setVisible(true);
 		}
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
-			currentRightImage.setImage(currentRightImage.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
-			currentRightImage.paintIcon(this, g, 0, 0);
+			img.setImage(img.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
+			img.paintIcon(this, g, 0, 0);
 		}
 	}
 	

@@ -9,7 +9,7 @@ public class frame {
 
 	public static void main(String[] args) {
 		JFrame mFrame = new JFrame();
-		mFrame.setSize(1000, 618);
+		mFrame.setSize(1000, 638);
 		mFrame.setLocation(100, 100);
 		ProcessSitemanagerViewControllerService controller = new ProcessSitemanagerViewController();
 		ProcessSitemanagerView view = new ProcessSitemanagerView(controller);
