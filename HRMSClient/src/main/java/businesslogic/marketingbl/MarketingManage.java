@@ -1,15 +1,12 @@
 package businesslogic.marketingbl;
 
-import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import datatool.MarketingDataTool;
-import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
-import vo.orderVO.OrderVO;
 
 public class MarketingManage implements MarketingBLService{
 
@@ -42,7 +39,7 @@ public class MarketingManage implements MarketingBLService{
 	@Override
 	public MarketingVO init(String id) {
 
-		return MarketingDataTool.V1;
+		return MarketingDataTool.V2;
 	}
 
 

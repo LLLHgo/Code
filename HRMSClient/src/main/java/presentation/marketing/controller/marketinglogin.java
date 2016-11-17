@@ -1,7 +1,5 @@
 package presentation.marketing.controller;
 
-import java.awt.FlowLayout;
-
 import javax.swing.JFrame;
 
 import presentation.marketing.view.ProcessMarketingView;
@@ -19,5 +17,6 @@ public class marketinglogin {
         controller.setView(view);
         mframe.getContentPane().add(view);
 		mframe.setVisible(true);
+		mframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

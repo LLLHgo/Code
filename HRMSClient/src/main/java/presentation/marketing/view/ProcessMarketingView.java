@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import presentation.common.GuideBoardButton;
 import vo.marketingVO.MarketingVO;
@@ -151,6 +152,7 @@ public class ProcessMarketingView extends JPanel{
         	field.setBounds(250, 46+num*80, 200, 48);
         	field.setBackground(null);
         	field.setOpaque(false);
+        	field.setBorder(new EmptyBorder(0,0,0,0));
         	field.setEditable(false);
         	num++;
         	profilePanel.add(field);
@@ -165,6 +167,7 @@ public class ProcessMarketingView extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TELField.setEditable(true);
+				//TELField.setBorder(border);
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {}
@@ -203,21 +206,20 @@ public class ProcessMarketingView extends JPanel{
         Icon photoIcon=new ImageIcon("./src/main/resource/picture/marketing/addphoto.png");
         JLabel addphotoLabel=new JLabel();
         addphotoLabel.setIcon(photoIcon);
-
+        //分为两种情况 有无设置头像
         if(Mvo.getImage()!=null){
         	Icon myphoto=new ImageIcon(Mvo.getImage());
         	JLabel myphotoLabel=new JLabel();
         	myphotoLabel.setIcon(myphoto);
-        	myphotoLabel.setBounds(320,445, 200, 200);
-        	addphotoLabel.setBounds(320,445, 60, 60);
+        	myphotoLabel.setBounds(230,350, 200, 200);
+        	profilePanel.add(myphotoLabel);
+        	addphotoLabel.setBounds(400,375, 60, 60);
         }else{
-            addphotoLabel.setBounds(340,445, 60, 60);
+            addphotoLabel.setBounds(325,375, 60, 60);
         }
         addphotoLabel.addMouseListener(new MouseListener(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String newTEL=TELField.getText(),newPassword=passwordField.getText();
-
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {}
@@ -240,7 +242,8 @@ public class ProcessMarketingView extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String newTEL=TELField.getText(),newPassword=passwordField.getText();
-
+                Mvo.setTelephone(newTEL);Mvo.setPassword(newPassword);
+                controller.MarketingAccountUpdate(Mvo);
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {}
