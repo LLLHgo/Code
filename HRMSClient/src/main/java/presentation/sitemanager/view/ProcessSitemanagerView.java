@@ -9,9 +9,11 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+import presentation.common.CheckButton;
+import presentation.common.DeleteButton;
 import presentation.common.GuideBoardButton;
+import presentation.common.ModifyButton;
 import presentation.common.MyLabel;
 import presentation.common.MyTextField;
 import vo.sitemanager.SitemanagerVO;
@@ -140,6 +142,9 @@ public class ProcessSitemanagerView extends JPanel{
 		MyLabel idTextLabel;
 		MyTextField telField;
 		MyTextField passWordField;
+		ModifyButton modifyButton;
+		//DeleteButton deleteButton;
+		CheckButton checkButton;
 		ImageIcon img=new ImageIcon("src/main/resource/picture/sitemanager/sitemanagerAccountShow.png");
 		
 		public  SitemanagerAccountShowPanel(SitemanagerVO sitemanagerVO){
@@ -155,13 +160,19 @@ public class ProcessSitemanagerView extends JPanel{
 			idTextLabel=new MyLabel(350,200,150,40,id);
 			telField=new MyTextField(350,240,200,40,tel);
 			passWordField=new MyTextField(350,280,200,40,password);
-	
+			modifyButton=new ModifyButton(620,180,50,50);
+			//deleteButton=new DeleteButton(612,280,65,65);
+			checkButton=new CheckButton(618,280,55,55);
+			
 			this.add(idLabel);
 			this.add(telLabel);
 			this.add(passwordLabel);
 			this.add(idTextLabel);
 			this.add(telField);
 			this.add(passWordField);
+			this.add(modifyButton);
+			//this.add(deleteButton);
+			this.add(checkButton);
 			
 			this.setVisible(true);
 		}
