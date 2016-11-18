@@ -3,6 +3,8 @@ package businesslogicservice.sitemanagerblservice;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import vo.clientVO.ClientVO;
@@ -14,17 +16,20 @@ import vo.sitemanager.SitemanagerVO;
 import Enum.VIPType;
 
 public class SitemanagerBLService_Stub implements SitemanagerBLService{
+	
 	SitemanagerVO sitemanagerVO;
 	ArrayList<LogVO> list;
+	SitemanagerVO currentSitemanagerVO;
+	ImageIcon image=null;
 
-	public SitemanagerBLService_Stub(SitemanagerVO sitemanagerVO){
-		this.sitemanagerVO=sitemanagerVO;
+	public SitemanagerBLService_Stub(){
+		sitemanagerVO=new SitemanagerVO("S00000001","025-88888825","HRMSSitemanager",image);
+		currentSitemanagerVO=new SitemanagerVO("S00000001","025-88888825","HRMSSitemanager",image);
 	}
 	
-	public SitemanagerBLService_Stub(ArrayList<LogVO> list){
-		this.list=list;
+	public SitemanagerVO init(String id){
+		return currentSitemanagerVO;
 	}
-	
 
 	/**
 	 * 检查登录的网站管理人员账户密码是否正确
@@ -40,6 +45,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public SitemanagerVO sitemanagerAcountShow() {
 		// TODO Auto-generated method stub
+	
 		return sitemanagerVO;
 	}
 

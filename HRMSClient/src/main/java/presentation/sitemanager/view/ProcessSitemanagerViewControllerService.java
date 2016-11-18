@@ -13,6 +13,10 @@ import vo.sitemanager.SitemanagerVO;
 public interface ProcessSitemanagerViewControllerService {
 	
 	public void setView(ProcessSitemanagerView view);
+	
+	public String getSitemanagerId();
+	
+	public SitemanagerVO init(String id);
 	/**
 	 * 修改客户账户
 	 * @param clientId

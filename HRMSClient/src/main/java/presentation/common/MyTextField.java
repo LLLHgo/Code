@@ -24,7 +24,9 @@ public class MyTextField extends JTextField{
 	void setOthers(){
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setFont(new java.awt.Font("微软雅黑",  1,  20));
-		this.setForeground(Color.white);
+		this.setForeground(Color.black);
 		this.setText(info);
+		this.setBackground(null);
+		this.setEditable(false);
 	}
 }

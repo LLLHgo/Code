@@ -55,4 +55,10 @@ public class SitemanagerManage implements SitemanagerBLService {
 	public ResultMessage addLog(String logInfo){
 		return null;
 	}
+
+	@Override
+	public SitemanagerVO init(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

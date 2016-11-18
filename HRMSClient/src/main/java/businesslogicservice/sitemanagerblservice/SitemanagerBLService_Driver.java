@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
+
 import Enum.ResultMessage;
 import Enum.Star;
 import Enum.VIPType;
@@ -26,6 +28,7 @@ public class SitemanagerBLService_Driver {
 		SitemanagerVO sitemanagerVO=null;
 		ArrayList<LogVO> list=new ArrayList<LogVO>();
 		String logInfo=null;
+		ImageIcon image = null;
 		
 
 		
@@ -38,7 +41,7 @@ public class SitemanagerBLService_Driver {
 		
 		// 修改网站管理人员账户
 		System.out.println("修改酒店工作人员账户:");
-		result=sitemanagerBLService.sitemanagerAccountUpdate(new SitemanagerVO("S00000006","h123","17889967883"));
+		result=sitemanagerBLService.sitemanagerAccountUpdate(new SitemanagerVO("S00000001","17889967883","h123",image));
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("修改成功");
 		}
@@ -49,7 +52,7 @@ public class SitemanagerBLService_Driver {
 		
 		// 检查登录的网站管理人员账户密码是否正确
 		System.out.println("检查登录的网站管理人员账户密码是否正确:");
-		result=sitemanagerBLService.checkAccount(new SitemanagerVO("S00000001","010-08923","IAMSITEMANAGER"));
+		result=sitemanagerBLService.checkAccount(new SitemanagerVO("S00000001","17889967883","h123",image));
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("登录帐号密码正确");
 		}
