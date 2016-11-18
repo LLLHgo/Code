@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import presentation.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import presentation.hotelstaff.view.HotelstaffView;
-import presentation.login.view.LoginPanel;
+import presentation.login.view.ProcessLoginView;
 
 public class TestFrame {
 	

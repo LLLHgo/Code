@@ -1,43 +1,56 @@
 package presentation.client.view;
-import java.awt.CardLayout;
-import java.awt.Container;
 
-import javax.swing.JFrame;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-import presentation.client.view.ClientPanel;
+import presentation.DialogCreator;
+import presentation.common.GuideBoardButton;
 
-
-public class ProcessClientView extends JFrame{
-
+public class ProcessClientView extends JPanel {
+	/**
+	 *
+	 */
 	private static final long serialVersionUID = 1L;
-	Container ct;
-	public static JPanel jCards=new JPanel();
-	public static CardLayout cl=new CardLayout();
-	private ClientPanel clientPanel;
 
-
-
+	private GuideBoardButton searchHotel;
+	private GuideBoardButton viewOrder;
+	private GuideBoardButton personal;
+	private GuideBoardButton evaluate;
+	private GuideBoardButton register;
+	private GuideBoardButton exit;
+	 private ImageIcon imageIcon = null;
 	public ProcessClientView(){
-	clientPanel=new ClientPanel();
-	jCards.setLayout(cl);
-	jCards.add(clientPanel, "ClientPanel");
-	jCards.setBounds(0, 0, 1000, 618);
-	jCards.setVisible(true);
-	ct = this.getContentPane();
-	ct.add(jCards);
-	cl.show(jCards, "ClientPanel");
 
-	this.setTitle("HRMS");
-	this.setSize(1000, 638);
-	this.setLocationRelativeTo(null);
-	this.setLayout(null);
-	this.setVisible(false);
-	this.setResizable(false);
-	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+			imageIcon = new ImageIcon("image/clientWel.png");
+			searchHotel=new GuideBoardButton(240,"查询酒店");
+			viewOrder=new GuideBoardButton(290,"浏览订单");
+			personal=new GuideBoardButton(340,"个人订单");
+			evaluate=new GuideBoardButton(390,"评价酒店");
+			register=new GuideBoardButton(440,"注册会员");
+			exit=new GuideBoardButton(490,"退出");
+			this.add(searchHotel);
+			this.add(viewOrder);
+			this.add(personal);
+			this.add(evaluate);
+			this.add(register);
+			this.add(exit);
+			this.setOpaque(true);
+		    this.setLayout(null);
+		    this.setSize(1000, 618);
+		    this.setVisible(true);
 	}
-/*public static void main(String args[]){
-	ProcessLoginView m=new ProcessLoginView();
-}*/
+	@Override
+	 public void paintComponent(Graphics g) {
+		    g.drawImage(imageIcon.getImage(), 0, 0, this);
+		    super.paintComponents(g);
+		   }
 }

@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import presentation.common.GuideBoardButton;
 import presentation.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import presentation.login.view.LoginPanel;
+import presentation.login.view.ProcessLoginView;
 
 public class HotelstaffView extends JPanel{
 	
