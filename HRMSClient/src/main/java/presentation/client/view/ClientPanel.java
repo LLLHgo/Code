@@ -21,20 +21,28 @@ public class ClientPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JButton searchHotel;
-	private GuideBoardButton signUpButton;
+	private GuideBoardButton searchHotel;
+	private GuideBoardButton viewOrder;
+	private GuideBoardButton personal;
+	private GuideBoardButton evaluate;
+	private GuideBoardButton register;
+	private GuideBoardButton exit;
 	 private ImageIcon imageIcon = null;
 	public ClientPanel(){
 
 			imageIcon = new ImageIcon("image/clientWel.png");
-			ImageIcon shb=new ImageIcon("image/searchHotel.png");
 			searchHotel=new GuideBoardButton(240,"查询酒店");
-			/*searchHotel.setBounds(70,230,140,40);
-			searchHotel.setIcon(shb);
-			searchHotel.setOpaque(false);
-			searchHotel.setBorderPainted(false);*/
-
+			viewOrder=new GuideBoardButton(290,"浏览订单");
+			personal=new GuideBoardButton(340,"个人订单");
+			evaluate=new GuideBoardButton(390,"评价酒店");
+			register=new GuideBoardButton(440,"注册会员");
+			exit=new GuideBoardButton(490,"退出系统");
 			this.add(searchHotel);
+			this.add(viewOrder);
+			this.add(personal);
+			this.add(evaluate);
+			this.add(register);
+			this.add(exit);
 			this.setOpaque(true);
 		    this.setLayout(null);
 		    this.setSize(1000, 618);

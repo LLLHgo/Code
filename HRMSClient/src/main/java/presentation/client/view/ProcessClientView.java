@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import presentation.client.view.ClientPanel;
 
 
-public class ProcessLoginView extends JFrame{
+public class ProcessClientView extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	Container ct;
@@ -18,7 +18,7 @@ public class ProcessLoginView extends JFrame{
 
 
 
-	public ProcessLoginView(){
+	public ProcessClientView(){
 	clientPanel=new ClientPanel();
 	jCards.setLayout(cl);
 	jCards.add(clientPanel, "ClientPanel");
@@ -32,12 +32,12 @@ public class ProcessLoginView extends JFrame{
 	this.setSize(1000, 638);
 	this.setLocationRelativeTo(null);
 	this.setLayout(null);
-	this.setVisible(true);
+	this.setVisible(false);
 	this.setResizable(false);
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
-public static void main(String args[]){
+/*public static void main(String args[]){
 	ProcessLoginView m=new ProcessLoginView();
-}
+}*/
 }
