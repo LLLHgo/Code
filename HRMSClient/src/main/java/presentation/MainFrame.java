@@ -11,8 +11,8 @@ import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.view.LoginPanel;
 
 public class MainFrame {
-	
-	/*public static void main(String[] args){
+
+	public static void main(String[] args){
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(new LoginPanel());
@@ -20,7 +20,7 @@ public class MainFrame {
 		//frame.getContentPane().add(new HotelinfoPanel());
 		frame.setVisible(true);
 		frame.setSize(1000, 618);
-		
+
 		Toolkit kit = Toolkit.getDefaultToolkit();    // 定义工具包
 	    Dimension screenSize = kit.getScreenSize();   // 获取屏幕的尺寸
 	    int screenWidth = screenSize.width/2;         // 获取屏幕的宽
@@ -30,5 +30,5 @@ public class MainFrame {
 	    frame.setLocation(screenWidth-width/2, screenHeight-height/2);
 
 	}
-	*/
+
 }
