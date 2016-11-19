@@ -3,14 +3,14 @@ package presentation.common;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class UserIconModify extends JButton{
+public class UserIconModifyButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
 	int w;
 	int h;
 	ImageIcon img;
-	public UserIconModify(int x,int y,int w,int h){
+	public UserIconModifyButton(int x,int y,int w,int h){
 		super();
 		this.x=x;
 		this.y=y;

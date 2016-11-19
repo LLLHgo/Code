@@ -3,7 +3,6 @@ package presentation.sitemanager.view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Label;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -11,6 +10,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import Enum.ResultMessage;
 import presentation.common.AddButton;
@@ -20,7 +20,9 @@ import presentation.common.GuideBoardButton;
 import presentation.common.ModifyButton;
 import presentation.common.MyLabel;
 import presentation.common.MyTextField;
-import presentation.common.UserIconModify;
+import presentation.common.SearchBar;
+import presentation.common.SearchButton;
+import presentation.common.UserIconModifyButton;
 import vo.sitemanager.SitemanagerVO;
 
 public class ProcessSitemanagerView extends JPanel{
@@ -45,6 +47,8 @@ public class ProcessSitemanagerView extends JPanel{
 	SitemanagerVO sitemanagerVO;
 	SitemanagerVO currentSitemanagerUserVO;
 	String currentUserId;
+	
+	
 	
 	public ProcessSitemanagerView(ProcessSitemanagerViewControllerService controller){
 		backgroundImage=new ImageIcon("src/main/resource/picture/sitemanager/accountManageBackground.png");
@@ -73,6 +77,7 @@ public class ProcessSitemanagerView extends JPanel{
 		jbShowLog=new GuideBoardButton(471,"查看日志");
 		jbExit=new GuideBoardButton(528,"退出");
 		
+		
 		mainPanel=new JPanel();
 		mainPanel.setBounds(276,82,702,502);
 		mainPanel.setLayout(null);
@@ -89,6 +94,7 @@ public class ProcessSitemanagerView extends JPanel{
 		this.add(mainPanel);
 		
 		jbSitemanagerManage.addMouseListener(new jbSiteManagerListener());
+		jbMarktingManage.addMouseListener(new jbMarketingListener());
 		this.setVisible(true);
 	}
 	// 设置当前sitemanager头像
@@ -138,7 +144,7 @@ public class ProcessSitemanagerView extends JPanel{
 
 		
 	}
-	
+	// 网站管理人员账户管理panel
 	class SitemanagerAccountShowPanel extends JPanel{
 		private static final long serialVersionUID = 1L;
 		String id;
@@ -160,7 +166,7 @@ public class ProcessSitemanagerView extends JPanel{
 		// 主菜单界面的账户头像
 		JLabel accountUserHeadLabel;
 		ImageIcon defaultAddUserIcon;
-		UserIconModify userIconModify;
+		UserIconModifyButton userIconModify;
 		// 主菜单界面的账户头像的icon
 		ImageIcon currentUserIcon;
 		ImageIcon img=new ImageIcon("src/main/resource/picture/sitemanager/sitemanagerAccountShow.png");
@@ -186,7 +192,7 @@ public class ProcessSitemanagerView extends JPanel{
 			UploadUserIcon.setForeground(Color.white);
 			conditionalLabel=new MyLabel(80,450,350,40,"操作中...");
 			conditionalLabel.setForeground(Color.white);
-			userIconModify=new UserIconModify(220,280,100,100);
+			userIconModify=new UserIconModifyButton(220,280,100,100);
 			
 			defaultAddUserIcon=new ImageIcon("src/main/resource/picture/sitemanager/defaultUserAddIcon.png");
 			accountUserHeadLabel=new JLabel();
@@ -325,5 +331,74 @@ public class ProcessSitemanagerView extends JPanel{
 		}
 	}
 	
-	
+	class jbMarketingListener implements MouseListener{
+
+		public void mouseClicked(MouseEvent e) {
+			MarktingAccountShowPanel marktingAccountShowPanel=new MarktingAccountShowPanel();
+			marktingAccountShowPanel.setBounds(0, 0, 704, 502);
+			marktingAccountShowPanel.setVisible(true);
+			mainPanel.add(marktingAccountShowPanel);
+			mainPanel.setBackground(Color.blue);
+		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
+		
+	}
+	class MarktingAccountShowPanel extends JPanel{
+		private static final long serialVersionUID = 1L;
+		String id;
+		String name;
+		String tel;
+		String password;
+		ImageIcon background;
+		MyLabel idLabel;
+		MyLabel nameLabel;
+		MyLabel telLabel;
+		MyLabel passwordLabel;
+		JLabel currentImgLabel;
+		MyLabel marktingId;
+		MyTextField marktingName;
+		MyTextField marktingTel;
+		MyTextField marktingPassword;
+
+		SearchButton searchButton;
+		JTextField searchBarText;
+		
+		ModifyButton modifyButton;
+		CheckButton checkButton;
+		DeleteButton deleteButton;
+		AddButton addButton;
+		
+		//放网站管理人员头像的label
+		JLabel marktingIcon;
+		ImageIcon currentMarktingIcon;
+		// 上传头像按钮
+		MyLabel updateIcon;
+		UserIconModifyButton userIconModigyButton;
+		public MarktingAccountShowPanel(){
+			background=new ImageIcon("src/main/resource/picture/sitemanager/marketingAccountManage.png");
+			searchButton=new SearchButton(530,20,40,40);
+			
+			modifyButton=new ModifyButton(618,135,50,50);;
+			checkButton=new CheckButton(618,200,55,55);
+			deleteButton=new DeleteButton(610,275,65,65);
+			addButton=new AddButton(612,355,65,65);
+			
+			this.add(searchButton);
+			
+			this.add(modifyButton);
+			this.add(checkButton);
+			this.add(deleteButton);
+			this.add(addButton);
+		}
+		
+		public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			background.setImage(background.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
+			background.paintIcon(this, g, 0, 0);
+		}
+		
+	}
 }
