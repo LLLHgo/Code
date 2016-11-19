@@ -1,5 +1,6 @@
 package presentation.marketing.view;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -157,7 +158,7 @@ public interface ProcessMarketingViewControllerService {
 	 * @param orderID
 	 * @return 具体订单
 	 */
-	public OrderVO  findSpecificOrderList(String orderID);
+	public OrderVO  findSpecificOrder(String orderID);
 
 	/**
 	 *通过客户ID得到客户个人信息
@@ -184,5 +185,7 @@ public interface ProcessMarketingViewControllerService {
 	public void setView(ProcessMarketingView view);
 
 	public void profileButtonClicked();
+	public void abnormalButtonClicked();
+	public void searchAbnormalLabelClicked();
 
 }

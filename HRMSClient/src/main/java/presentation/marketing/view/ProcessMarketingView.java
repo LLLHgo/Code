@@ -4,21 +4,32 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import presentation.common.GuideBoardButton;
 import vo.marketingVO.MarketingVO;
+import vo.orderVO.OrderVO;
 
 
 public class ProcessMarketingView extends JPanel{
@@ -30,6 +41,7 @@ public class ProcessMarketingView extends JPanel{
 	private JLabel ID=new JLabel("ID:");
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);
 	private Font font2=new Font("楷体",Font.ITALIC,20);
+	private Font font3=new Font("微软雅黑",Font.HANGING_BASELINE,28);
 	private GuideBoardButton profile=new GuideBoardButton(241,"个人信息");
 	private GuideBoardButton abnormal=new GuideBoardButton(301,"异常订单");
 	private GuideBoardButton credit=new GuideBoardButton(361,"修改信用值");
@@ -39,7 +51,17 @@ public class ProcessMarketingView extends JPanel{
 	private JLabel welcome;
 	private Icon pressedIcon=new ImageIcon("./src/main/resource/picture/pressedIcon.png");
 	private JPanel profilePanel;
+	private JPanel abnormalPanel;
+	private JPanel creditPanel;
+	private JPanel VIPPanel;
+	private JPanel strategyPanel;
+	private JPanel exitPanel;
+	private JPanel searchAbnormalPanel;
+	private JPanel abnormalListPanel;
+	private JPanel showAbnormalOrderPanel;
+	private JScrollPane showAbnormalScrollPane;
 	private MarketingVO Mvo;
+	private Image newImage=null;
 
     public ProcessMarketingView(ProcessMarketingViewControllerService controller){
     	image=new ImageIcon("./src/main/resource/picture/marketing/marketing.png").getImage();
@@ -64,27 +86,38 @@ public class ProcessMarketingView extends JPanel{
 
         this.validate();
 
-
-        //给 profile button加监听
+       //给 profile button加监听
     	profile.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-               // profile.setIcon(pressedIcon);
-			   deleteWelcome();//调用外部类的隐藏welcome的JLabel的方法
+               hideWelcome();//调用外部类的隐藏welcome的JLabel的方法
+			   hideAbnormal();
+			   hideCredit();
+			   hideVIP();
+			   hideStrategy();
                controller.profileButtonClicked();
 			}
 
     	});
 
-    	this.add(profile);this.add(abnormal);this.add(credit);
+    	//给 abnormal button加监听
+    	abnormal.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				hideWelcome();//调用外部类的隐藏welcome的JLabel的方法
+				hideProfile();
+		        hideCredit();
+				hideVIP();
+				hideStrategy();
+               controller.abnormalButtonClicked();
+			}
+    	});
+
+      	this.add(profile);this.add(abnormal);this.add(credit);
     	this.add(VIP);this.add(strategy);this.add(exit);
         this.setLayout(null);
-    }
-
-    //点击菜单栏后，隐藏welcome的JLabel
-    private void deleteWelcome(){
-    	welcome.setVisible(false);
     }
 
     //获得头像和welcome的方法
@@ -167,7 +200,11 @@ public class ProcessMarketingView extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TELField.setEditable(true);
-				//TELField.setBorder(border);
+				JLabel TELBackgroundLabel=new JLabel();
+				TELBackgroundLabel.setBounds(210, 225, 200, 250);
+				Icon TELBackground=new ImageIcon("./src/main/resource/picture/marketing/fieldBackground.png");
+				TELBackgroundLabel.setIcon(TELBackground);
+				//profilePanel.add(TELBackgroundLabel);
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {}
@@ -189,6 +226,11 @@ public class ProcessMarketingView extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				passwordField.setEditable(true);
+				JLabel passwordBackgroundLabel=new JLabel();
+				passwordBackgroundLabel.setBounds(210, 300, 300,400);
+				Icon passwordBackground=new ImageIcon("./src/main/resource/picture/marketing/fieldBackground.png");
+				passwordBackgroundLabel.setIcon(passwordBackground);
+				//profilePanel.add(passwordBackgroundLabel);
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {}
@@ -206,6 +248,7 @@ public class ProcessMarketingView extends JPanel{
         Icon photoIcon=new ImageIcon("./src/main/resource/picture/marketing/addphoto.png");
         JLabel addphotoLabel=new JLabel();
         addphotoLabel.setIcon(photoIcon);
+
         //分为两种情况 有无设置头像
         if(Mvo.getImage()!=null){
         	Icon myphoto=new ImageIcon(Mvo.getImage());
@@ -220,6 +263,20 @@ public class ProcessMarketingView extends JPanel{
         addphotoLabel.addMouseListener(new MouseListener(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				final JFileChooser fileChooser=new JFileChooser();
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+				fileChooser.showOpenDialog(null);
+				File f=fileChooser.getSelectedFile();
+				try {
+					InputStream in=new FileInputStream(f);
+					BufferedImage bi=ImageIO.read(in);
+					newImage=(Image)bi;
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {}
@@ -243,6 +300,7 @@ public class ProcessMarketingView extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				String newTEL=TELField.getText(),newPassword=passwordField.getText();
                 Mvo.setTelephone(newTEL);Mvo.setPassword(newPassword);
+                if(newImage!=null)Mvo.setImage(newImage);
                 controller.MarketingAccountUpdate(Mvo);
 			}
 			@Override
@@ -259,5 +317,126 @@ public class ProcessMarketingView extends JPanel{
         this.add(profilePanel);
 	}
 
+	public void abnormalButtonClicked() {
+		//abnormalButton点击后的JPanel
+		abnormalPanel=new JPanel();
+		abnormalPanel.setLayout(null);
+		abnormalPanel.setBounds(276, 82, 704, 90);
+		abnormalPanel.setOpaque(false);
 
+		//添加搜索订单与查看订单列表JLabel
+		JLabel searchLabel=new JLabel("搜索订单");
+		JLabel abnormalListLabel=new JLabel("异常订单列表");
+		searchLabel.setFont(font3);abnormalListLabel.setFont(font3);
+		searchLabel.setForeground(Color.white);abnormalListLabel.setForeground(Color.white);
+		searchLabel.setBounds(125, 0, 200, 80);abnormalListLabel.setBounds(375,0, 200, 80);
+    	abnormalPanel.add(searchLabel);abnormalPanel.add(abnormalListLabel);
+
+    	//为搜索订单JLabel添加监听
+    	searchLabel.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+                controller.searchAbnormalLabelClicked();
+			}@Override
+			public void mousePressed(MouseEvent e) {}
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+     		@Override
+			public void mouseExited(MouseEvent e) {}
+
+    	} );
+    	this.add(abnormalPanel);
+	}
+
+	public void searchAbnormalLabelClicked() {
+		//searchAbnormalLabel点击后的JPanel
+		searchAbnormalPanel=new JPanel();
+		searchAbnormalPanel.setLayout(null);
+		searchAbnormalPanel.setBounds(275, 140, 700, 92);
+		searchAbnormalPanel.setOpaque(false);
+
+		//为搜索Bar加组件 Label加背景Icon和JTextField
+		JLabel searchBarLabel=new JLabel();
+		JTextField searchBarField=new JTextField();
+		Icon searchBarIcon=new ImageIcon("./src/main/resource/picture/marketing/searchBar.png");
+	    searchBarLabel.setIcon(searchBarIcon);
+	    searchBarField.setFont(font2);
+	    searchBarField.setOpaque(false);
+	    searchBarField.setBorder(new EmptyBorder(0,0,0,0));
+	    searchBarLabel.setBounds(60, 45, 500, 50);
+		searchBarField.setBounds(17, 0, 405,44);
+     	searchBarLabel.add(searchBarField);
+		searchAbnormalPanel.add(searchBarLabel);
+
+		//为搜索key加组件 Label加背景和监听
+		JLabel searchKeyLabel=new JLabel();
+		Icon searchKeyIcon=new ImageIcon("./src/main/resource/picture/marketing/searchKey.png");
+		searchKeyLabel.setIcon(searchKeyIcon);
+		searchKeyLabel.setBounds(550, 45, 60, 60);
+		searchKeyLabel.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String orderIDEntered=searchBarField.getText();
+				OrderVO order=controller.findSpecificOrder(orderIDEntered);
+				ArrayList<OrderVO> orders=new ArrayList<OrderVO>();
+				orders.add(order);
+				showAbnormalOrders(orders);//调用显示abnormalOrder的方法
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {}
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+			@Override
+			public void mouseExited(MouseEvent e) {}
+		});
+		searchAbnormalPanel.add(searchKeyLabel);
+
+        this.add(searchAbnormalPanel);
+        this.repaint();
+	}
+
+	public void showAbnormalOrders(ArrayList<OrderVO> orders){
+		//设置放置Order信息的JPanel
+        showAbnormalOrderPanel=new JPanel();
+        showAbnormalOrderPanel.setLayout(null);
+        showAbnormalOrderPanel.setBounds(275, 230, 702, 352);
+        showAbnormalOrderPanel.setOpaque(false);
+
+        //设置放置showAbnormalOrderPanel的JScrollPanel
+        JScrollPane showAbnormalScrollPane = new JScrollPane(showAbnormalOrderPanel);
+        showAbnormalScrollPane.setBounds(275, 230, 702, 100);
+        int num=0;
+        for(OrderVO order:orders){
+
+        }
+        this.add(showAbnormalScrollPane);
+	}
+    //点击菜单栏后，隐藏welcome的JPanel
+    private void hideWelcome(){
+    	welcome.setVisible(false);
+    }
+    //点击菜单栏后，隐藏profile的JPanel
+    private void hideProfile(){
+    	welcome.setVisible(false);
+    }
+    //点击菜单栏后，隐藏abnormal的JPanel
+    private void hideAbnormal(){
+    	welcome.setVisible(false);
+    }
+    //点击菜单栏后，隐藏credit的JPanel
+    private void hideCredit(){
+    	welcome.setVisible(false);
+    }
+    //点击菜单栏后，隐藏VIP的JPanel
+    private void hideVIP(){
+    	welcome.setVisible(false);
+    }
+    //点击菜单栏后，隐藏strategy的JPanel
+    private void hideStrategy(){
+    	welcome.setVisible(false);
+    }
 }

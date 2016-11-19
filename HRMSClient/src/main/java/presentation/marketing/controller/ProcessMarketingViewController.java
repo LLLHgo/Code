@@ -1,5 +1,6 @@
 package presentation.marketing.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -136,8 +137,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public OrderVO findSpecificOrderList(String orderID) {
-		return this.OrderBLService.findSpecificOrderList(orderID);
+	public OrderVO findSpecificOrder(String orderID) {
+		return this.OrderBLService.findSpecificOrderList(orderID);//删掉List
 	}
 
 	@Override
@@ -163,5 +164,14 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	public void profileButtonClicked() {
           view.profileButtonClicked();
 	}
+	@Override
+	public void abnormalButtonClicked() {
+		view.abnormalButtonClicked();
+	}
+	@Override
+	public void searchAbnormalLabelClicked() {
+		view.searchAbnormalLabelClicked();
+	}
+
 
 }

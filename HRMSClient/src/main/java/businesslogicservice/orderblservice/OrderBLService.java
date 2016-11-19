@@ -39,7 +39,7 @@ public interface OrderBLService {
 	 * @return 某种用户(客户或酒店)的所有订单列表
 	 */
 	public List<OrderVO>  findUserOrderList (String userID);
-	
+
 	/**
 	 * 查找客户某天的订单
 	 * @param clientId
@@ -61,7 +61,7 @@ public interface OrderBLService {
 	 * @return 客户某个种类（正常未执行、正常已执行、取消、异常）的订单列表
 	 */
 	public  List<OrderVO> findClientTypeOrder (OrderType type,String clientId);
-	
+
 	/**
 	 * 查找酒店的某个具体订单
 	 * @param hotelId
@@ -69,7 +69,7 @@ public interface OrderBLService {
 	 * @return 酒店的某个具体订单
 	 */
 	public OrderVO findSpecificHotelOrder (String hotelId, String orderId);
-	
+
 	/**
 	 * 查找具体某天的异常订单
 	 * @param date
