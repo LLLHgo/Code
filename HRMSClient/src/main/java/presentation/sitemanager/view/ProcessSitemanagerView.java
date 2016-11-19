@@ -3,19 +3,24 @@ package presentation.sitemanager.view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Label;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Enum.ResultMessage;
+import presentation.common.AddButton;
 import presentation.common.CheckButton;
 import presentation.common.DeleteButton;
 import presentation.common.GuideBoardButton;
 import presentation.common.ModifyButton;
 import presentation.common.MyLabel;
 import presentation.common.MyTextField;
+import presentation.common.UserIconModify;
 import vo.sitemanager.SitemanagerVO;
 
 public class ProcessSitemanagerView extends JPanel{
@@ -136,6 +141,9 @@ public class ProcessSitemanagerView extends JPanel{
 	
 	class SitemanagerAccountShowPanel extends JPanel{
 		private static final long serialVersionUID = 1L;
+		String id;
+		String tel;
+		String password;
 		MyLabel idLabel;
 		MyLabel telLabel;
 		MyLabel passwordLabel;
@@ -144,16 +152,26 @@ public class ProcessSitemanagerView extends JPanel{
 		MyTextField passWordField;
 		ModifyButton modifyButton;
 		//DeleteButton deleteButton;
+		AddButton addButton;
 		CheckButton checkButton;
+		MyLabel conditionalLabel;
+		MyLabel UploadUserIcon;
+		//UploadUserIcon uploadUserIcon;
+		// 主菜单界面的账户头像
+		JLabel accountUserHeadLabel;
+		ImageIcon defaultAddUserIcon;
+		UserIconModify userIconModify;
+		// 主菜单界面的账户头像的icon
+		ImageIcon currentUserIcon;
 		ImageIcon img=new ImageIcon("src/main/resource/picture/sitemanager/sitemanagerAccountShow.png");
 		
 		public  SitemanagerAccountShowPanel(SitemanagerVO sitemanagerVO){
 			this.setBounds(0,0,702,502);
 			this.setLayout(null);
 			
-			String id=sitemanagerVO.getSitemanagerId();
-			String tel=sitemanagerVO.getSitemanagerPhoneNumber();
-			String password=sitemanagerVO.getPassword();
+			id=sitemanagerVO.getSitemanagerId();
+			tel=sitemanagerVO.getSitemanagerPhoneNumber();
+			password=sitemanagerVO.getPassword();
 			idLabel=new MyLabel(300, 200, 60, 40,"帐号:");
 			telLabel=new MyLabel(300,240,60,40,"电话:");
 			passwordLabel=new MyLabel(300, 280, 100, 40,"密码:");
@@ -163,6 +181,21 @@ public class ProcessSitemanagerView extends JPanel{
 			modifyButton=new ModifyButton(620,180,50,50);
 			//deleteButton=new DeleteButton(612,280,65,65);
 			checkButton=new CheckButton(618,280,55,55);
+			//addButton=new AddButton(614,340,65,65);
+			UploadUserIcon=new MyLabel(160,320,100,20,"上传头像");
+			UploadUserIcon.setForeground(Color.white);
+			conditionalLabel=new MyLabel(80,450,350,40,"操作中...");
+			conditionalLabel.setForeground(Color.white);
+			userIconModify=new UserIconModify(220,280,100,100);
+			
+			defaultAddUserIcon=new ImageIcon("src/main/resource/picture/sitemanager/defaultUserAddIcon.png");
+			accountUserHeadLabel=new JLabel();
+			accountUserSetImageIcon(sitemanagerVO.getUserImage());
+			accountUserHeadLabel.setBounds(160,200,100,100);
+			
+			modifyButton.addMouseListener(new ModifyListener());
+			checkButton.addMouseListener(new AddListener());
+			userIconModify.addMouseListener(new UserIconModifyListener());
 			
 			this.add(idLabel);
 			this.add(telLabel);
@@ -173,13 +206,122 @@ public class ProcessSitemanagerView extends JPanel{
 			this.add(modifyButton);
 			//this.add(deleteButton);
 			this.add(checkButton);
-			
+			//this.add(addButton);
+			this.add(UploadUserIcon);
+			this.add(conditionalLabel);
+			this.add(accountUserHeadLabel);
+			this.add(userIconModify);
 			this.setVisible(true);
 		}
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			img.setImage(img.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
 			img.paintIcon(this, g, 0, 0);
+		}
+		
+		void accountUserSetImageIcon(ImageIcon imageIcon){
+			if(imageIcon==null){
+				accountUserHeadLabel.setIcon(defaultAddUserIcon);
+			}
+			else
+				accountUserHeadLabel.setIcon(imageIcon);
+			currentUserIcon=imageIcon;
+		}
+		
+		
+		class ModifyListener implements MouseListener{
+
+			public void mouseClicked(MouseEvent e) {
+				telField.setEditable(true);
+				passWordField.setEditable(true);
+			}
+
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			public void mouseExited(MouseEvent e) {
+				
+			}
+			
+		}
+		
+		class AddListener implements MouseListener{
+			String newTel;
+			String newPassword;
+			ImageIcon newImg;
+			SitemanagerVO newSitemanagerVO;
+			ResultMessage result;
+			public void mouseClicked(MouseEvent e) {
+				newTel=telField.getText();
+				newPassword=passWordField.getText();
+				newImg=currentUserIcon;
+				newSitemanagerVO=new SitemanagerVO(id,newTel,newPassword,currentUserIcon);
+				result=controller.sitemanagerAccountUpdate(newSitemanagerVO);
+				if(result==ResultMessage.SUCCESS){
+					conditionalLabel.setText("保存成功！");
+				}
+				else{
+					conditionalLabel.setText("信息并未发生修改，不再进行保存！");
+				}
+				telField.setEditable(false);
+				passWordField.setEditable(false);
+			}
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			public void mouseExited(MouseEvent e) {
+				
+			}
+			
+		}
+		class UserIconModifyListener implements MouseListener{
+			// 找图片文件
+				// 按取消键，则不保存，默认newimage为当前的icon
+			Icon newImage=UploadUserIcon.getIcon();
+			public void mouseClicked(MouseEvent e) {
+				if(currentUserIcon==newImage){
+					currentUserIcon=(ImageIcon) newImage;
+				}
+				else{
+					UploadUserIcon.setIcon(newImage);
+					conditionalLabel.setText("上传头像成功");
+				}
+			}
+
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			public void mouseExited(MouseEvent e) {
+				
+			}
+			
 		}
 	}
 	

@@ -1,6 +1,5 @@
 package businesslogicservice.sitemanagerblservice;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -45,7 +44,6 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public SitemanagerVO sitemanagerAcountShow() {
 		// TODO Auto-generated method stub
-	
 		return sitemanagerVO;
 	}
 
@@ -53,7 +51,16 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	@Override
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO) {
 		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
+		if(accountVO.getSitemanagerPhoneNumber().equals(sitemanagerVO.getSitemanagerPhoneNumber())&&
+				(accountVO.getPassword().equals(sitemanagerVO.getPassword()))&&
+						(accountVO.getUserImage()==sitemanagerVO.getUserImage())
+			){
+			return ResultMessage.FAIL;
+		}
+		else{
+			sitemanagerVO=accountVO;
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	@Override

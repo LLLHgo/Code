@@ -88,7 +88,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 	@Override
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO) {
-		return ResultMessage.SUCCESS;
+		return sitemanagerblservice.sitemanagerAccountUpdate(accountVO);
 	}
 
 	@Override
