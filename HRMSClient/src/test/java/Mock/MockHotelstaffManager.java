@@ -1,8 +1,13 @@
 package Mock;
 
+import Enum.ResultMessage;
+import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 
-public class MockHotelstaffManager {
+public class MockHotelstaffManager implements HotelstaffBLService{
+	
+	
 	
 	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
 		if(vo.getHotelID().equals("H00000001")){
@@ -31,5 +36,23 @@ public class MockHotelstaffManager {
 		else{
 			return null;
 		}
+	}
+
+
+	@Override
+	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
+		return new HotelstaffBasicinfoVO("000000");
+	}
+
+
+	@Override
+	public ResultMessage setPassword(String hotelID, String password) {
+		return ResultMessage.SUCCESS;
+	}
+
+
+	@Override
+	public boolean checkAccount(String hotelID, String password) {
+		return true;
 	}
 }

@@ -120,11 +120,11 @@ public class ProcessClientViewControllerTest {
 		HotelinfoVO hvo3=HotelinfoDataTool.hotelinfoVO3;
 		List<HotelinfoVO> list=mh.getBasicinfoList(vo);
 		HotelinfoVO hvo=list.get(0);
-		assertEquals(hvo1.name,hvo.name);
+		assertEquals(hvo1.getName(),hvo.getName());
 		hvo=list.get(1);
-		assertEquals(hvo2.name,hvo.name);
+		assertEquals(hvo2.getName(),hvo.getName());
 		hvo=list.get(2);
-		assertEquals(hvo3.name,hvo.name);
+		assertEquals(hvo3.getName(),hvo.getName());
 	}
 	/**
 	 *得到具体日期的客户订单
@@ -248,11 +248,11 @@ public class ProcessClientViewControllerTest {
 		HotelinfoVO hvo3=HotelinfoDataTool.hotelinfoVO3;
 		List<HotelinfoVO> list=mh.getBasicinfoList(vo);
 		HotelinfoVO hvo=list.get(0);
-		assertEquals(hvo1.name,hvo.name);
+		assertEquals(hvo1.getName(),hvo.getName());
 		hvo=list.get(1);
-		assertEquals(hvo2.name,hvo.name);
+		assertEquals(hvo2.getName(),hvo.getName());
 		hvo=list.get(2);
-		assertEquals(hvo3.name,hvo.name);
+		assertEquals(hvo3.getName(),hvo.getName());
 	}
 
 

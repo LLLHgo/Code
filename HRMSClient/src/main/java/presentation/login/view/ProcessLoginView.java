@@ -68,7 +68,8 @@ public class ProcessLoginView extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					if(IdField.getText().equals("C")){
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new HotelinfoPanel());
+						frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()
+								));
 						frame.getContentPane().add(new ProcessClientView());
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();

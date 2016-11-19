@@ -1,4 +1,4 @@
-package presentation.hotelstaff.view;
+package presentation.hotelinfo.view.component;
 
 import java.awt.Color;
 

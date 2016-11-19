@@ -15,7 +15,7 @@ public class TestFrame {
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new HotelstaffView(frame,new HotelstaffViewController(),"H00000000"));
+		frame.getContentPane().add(new HotelstaffView(frame,"H00000001"));
 		frame.setVisible(true);
 		frame.setSize(1000, 618);
 		

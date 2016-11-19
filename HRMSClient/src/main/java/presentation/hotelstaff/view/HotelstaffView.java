@@ -13,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import presentation.common.GuideBoardButton;
+import presentation.hotelinfo.controller.HotelinfoViewController;
 import presentation.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
+import presentation.hotelstaff.view.component.UserImageLabel;
 import presentation.login.view.ProcessLoginView;
 
 public class HotelstaffView extends JPanel{
@@ -22,21 +24,18 @@ public class HotelstaffView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private String hotelID;
 	private JFrame frame;
-	private HotelstaffViewController controller;
 	private ImageIcon init_image;
-	private ImageIcon user_image;
 	private GuideBoardButton jbHotelinfo;
 	private GuideBoardButton jbRoominfo;
 	private GuideBoardButton jbOrder;
 	private GuideBoardButton jbStrategy;
 	private GuideBoardButton jbPersonalinfo;
 	private GuideBoardButton jbExit;
-	private JLabel userLabel;
+	private UserImageLabel userLabel;
 	private JLabel IDLabel;
 	
-	public HotelstaffView(JFrame frame,HotelstaffViewController controller,String hotelID){
+	public HotelstaffView(JFrame frame,String hotelID){
 		this.frame = frame;
-		this.controller = controller;
 		this.hotelID = hotelID;
 		initHotelstaff();
 	}
@@ -67,13 +66,11 @@ public class HotelstaffView extends JPanel{
 		jbRoominfo.addActionListener(new JBRoominfoActionListener());
 		jbOrder.addActionListener(new JBOrderActionListener());
 		jbStrategy.addActionListener(new JBStrategyinfoActionListener());
+		jbPersonalinfo.addActionListener(new JBPersonalinfoActionListener());
 		jbExit.addActionListener(new JBExitActionListener());
 		
 		//初始化头像标签
-		userLabel = new JLabel();
-		user_image = new ImageIcon("./src/main/resource/picture/hotelstaff/user_image.png");
-		userLabel.setIcon(user_image);
-		userLabel.setBounds(88, 95, 97, 85);
+		userLabel = new UserImageLabel(88,95);
 		this.add(userLabel);
 		//初始化ID标签
 		IDLabel = new JLabel();
@@ -94,8 +91,8 @@ public class HotelstaffView extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			frame.getContentPane().removeAll();
-			frame.getContentPane().add(new HotelinfoPanel());
-			frame.getContentPane().add(new HotelstaffView(frame,new HotelstaffViewController(),hotelID));
+			frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(),hotelID));
+			frame.getContentPane().add(new HotelstaffView(frame,hotelID));
 			frame.getContentPane().revalidate();
 			frame.getContentPane().repaint();
 			
@@ -132,6 +129,19 @@ public class HotelstaffView extends JPanel{
 		
 	}
 	
+	class JBPersonalinfoActionListener	implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			frame.getContentPane().removeAll();
+			frame.getContentPane().add(new HotelstaffPanel(new HotelstaffViewController(),hotelID));
+			frame.getContentPane().add(new HotelstaffView(frame,hotelID));
+			frame.getContentPane().revalidate();
+			frame.getContentPane().repaint();
+			
+		}
+		
+	}
 	class JBExitActionListener implements ActionListener{
 
 		@Override
