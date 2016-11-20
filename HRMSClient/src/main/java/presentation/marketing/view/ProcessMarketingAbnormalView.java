@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import datatool.OrderDataTool;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
 
@@ -114,30 +115,32 @@ public class ProcessMarketingAbnormalView extends JPanel{
 }
 
 public void showAbnormalOrders(ArrayList<OrderVO> orders){
+	 orders=OrderDataTool.list1;
 	//设置放置Order信息的JPanel
     showAbnormalOrderPanel=new JPanel();
-   // showAbnormalOrderPanel.setBorder(new EmptyBorder(5,5,5,5));
     showAbnormalOrderPanel.setLayout(null);
+    showAbnormalOrderPanel.setPreferredSize(new Dimension(720,200*orders.size()));
     showAbnormalOrderPanel.setBounds(0, 0, 702, 3520);
-    //showAbnormalOrderPanel.setOpaque(false);
+    showAbnormalOrderPanel.setBackground(Color.LIGHT_GRAY);
+    showAbnormalOrderPanel.setOpaque(false);
 
     //设置放置showAbnormalOrderPanel的JScrollPanel
-    JScrollPane showAbnormalScrollPane = new JScrollPane(showAbnormalOrderPanel);
-    showAbnormalScrollPane.setViewportView(showAbnormalOrderPanel);
-    showAbnormalScrollPane.setBounds(0, 130, 702, 365);
-    showAbnormalScrollPane.setOpaque(false);
+    JScrollPane showAbnormalScroll = new JScrollPane(showAbnormalOrderPanel);
+    showAbnormalScroll.setBounds(20, 150, 699, 365);
+    showAbnormalScroll.setBorder(new EmptyBorder(0,0,0,0));
+    showAbnormalScroll.setOpaque(false);
+    showAbnormalScroll.getViewport().setOpaque(false);
     int num=0;
-    JLabel l=new JLabel("ajkfjeefek");
-    l.setBounds(0, 0, 200, 200);
-    showAbnormalOrderPanel.add(l);
+   
     for(int i=0;i<10;i++){
-    	JLabel l1=new JLabel("ajkfjeefbhjbjhbek");
-        l1.setBounds(0, num*40, 200, 200);
-        showAbnormalOrderPanel.add(l1);
+        JPanel panel=new JPanel();
+        panel.setBackground(Color.LIGHT_GRAY);
+        panel.setBounds(0, 10+70*num, 700, 50);
+        showAbnormalOrderPanel.add(panel);
         num++;
     }
-    showAbnormalScrollPane.setViewportView(showAbnormalOrderPanel);
-    this.add(showAbnormalScrollPane);
+
+    this.add(showAbnormalScroll);
     this.revalidate();
     this.repaint();
 }
