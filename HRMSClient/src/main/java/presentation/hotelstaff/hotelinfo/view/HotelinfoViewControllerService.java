@@ -1,4 +1,4 @@
-package presentation.hotelinfo.view;
+package presentation.hotelstaff.hotelinfo.view;
 
 import java.util.List;
 

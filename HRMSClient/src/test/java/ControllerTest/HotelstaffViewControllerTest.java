@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import Mock.MockHotelinfoManage;
 import Mock.MockHotelstaffManager;
-import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelstaffVO.HotelstaffVO;
 
 public class HotelstaffViewControllerTest {

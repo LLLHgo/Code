@@ -1,4 +1,4 @@
-package presentation.hotelinfo.controller;
+package presentation.hotelstaff.hotelinfo.controller;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
-import presentation.hotelinfo.view.HotelinfoViewControllerService;
+import presentation.hotelstaff.hotelinfo.view.HotelinfoViewControllerService;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;

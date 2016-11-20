@@ -122,12 +122,12 @@ public class MockHotelinfoManage {
 
 
 	public RoominfoVO getRoominfo(String hotelID, String roomtype) {
-		return null;
+		return roominfo1;
 	}
 
 
 	public List<RoominfoVO> getRoominfoList(String hotelID) {
-		return null;
+		return roominfoList;
 	}
 
 

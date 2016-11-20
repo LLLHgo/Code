@@ -1,4 +1,4 @@
-package presentation.hotelinfo.view;
+package presentation.hotelstaff.hotelinfo.view;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ import javax.swing.JPanel;
 import Enum.Star;
 import presentation.common.ModifyButton;
 import presentation.common.MyLabel;
-import presentation.hotelinfo.controller.HotelinfoViewController;
-import presentation.hotelinfo.view.component.CancleButton;
-import presentation.hotelinfo.view.component.ConfirmButton;
-import presentation.hotelinfo.view.component.ReviewButton;
-import presentation.hotelinfo.view.component.ReviewTextArea;
+import presentation.hotelstaff.component.CancleButton;
+import presentation.hotelstaff.component.ConfirmButton;
+import presentation.hotelstaff.component.ReviewButton;
+import presentation.hotelstaff.component.ReviewTextArea;
+import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class HotelinfoPanel extends JPanel{

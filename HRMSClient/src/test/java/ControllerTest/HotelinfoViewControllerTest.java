@@ -19,7 +19,7 @@ import Enum.VIPType;
 import Enum.marketingStrategy;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import javafx.scene.image.Image;
-import presentation.hotelinfo.controller.HotelinfoViewController;
+import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;

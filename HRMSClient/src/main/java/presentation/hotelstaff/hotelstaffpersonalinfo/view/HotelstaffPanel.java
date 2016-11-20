@@ -1,4 +1,4 @@
-package presentation.hotelstaff.view;
+package presentation.hotelstaff.hotelstaffpersonalinfo.view;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,17 +12,17 @@ import javax.swing.JPasswordField;
 
 import Enum.Star;
 import presentation.common.ModifyButton;
-import presentation.hotelinfo.view.component.CancleButton;
-import presentation.hotelinfo.view.component.ConfirmButton;
-import presentation.hotelinfo.view.component.ReviewTextArea;
-import presentation.hotelstaff.controller.HotelstaffViewController;
+import presentation.hotelstaff.component.CancleButton;
+import presentation.hotelstaff.component.ConfirmButton;
+import presentation.hotelstaff.component.ReviewTextArea;
+import presentation.hotelstaff.hotelstaffpersonalinfo.controller.HotelstaffPanelController;
 import presentation.hotelstaff.view.component.ReviewImageButton;
 import presentation.hotelstaff.view.component.UserImageLabel;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class HotelstaffPanel extends JPanel{
 	
-	private HotelstaffViewController controller;
+	private HotelstaffPanelController controller;
 	private String hotelID;
 	private ImageIcon ipassword;
 	private JPasswordField jpfPassword;
@@ -33,7 +33,7 @@ public class HotelstaffPanel extends JPanel{
 	private CancleButton jbCancle;
 	private String password;
 	
-	public HotelstaffPanel(HotelstaffViewController controller,String hotelID){
+	public HotelstaffPanel(HotelstaffPanelController controller,String hotelID){
 		this.controller = controller;
 		this.hotelID = hotelID;
 		initHotelstaffPanel();
@@ -97,6 +97,7 @@ public class HotelstaffPanel extends JPanel{
 			jbConfirm.setVisible(true);
 			jbCancle.setVisible(true);
 			jbModify.setVisible(false);
+			jpfPassword.setEditable(true);
 		}	
 	}
 	
@@ -107,6 +108,7 @@ public class HotelstaffPanel extends JPanel{
 			jbConfirm.setVisible(false);
 			jbCancle.setVisible(false);
 			jbModify.setVisible(true);
+			jpfPassword.setEditable(false);
 			password = jpfPassword.getPassword().toString();
 			controller.setPassword(hotelID, password);
 			//TODO
@@ -120,6 +122,7 @@ public class HotelstaffPanel extends JPanel{
 			jbConfirm.setVisible(false);
 			jbCancle.setVisible(false);
 			jbModify.setVisible(true);
+			jpfPassword.setEditable(false);
 			jpfPassword.setText(password);
 		}	
 	}

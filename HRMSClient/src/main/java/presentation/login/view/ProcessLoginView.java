@@ -23,8 +23,7 @@ import javax.swing.text.Caret;
 import presentation.DialogCreator;
 import presentation.client.view.ProcessClientView;
 import presentation.client.view.ProcessClientView;
-import presentation.hotelinfo.view.HotelinfoPanel;
-import presentation.hotelstaff.controller.HotelstaffViewController;
+import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 
 public class ProcessLoginView extends JPanel {

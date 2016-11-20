@@ -1,10 +1,10 @@
-package presentation.hotelstaff.view;
+package presentation.hotelstaff.hotelstaffpersonalinfo.view;
 
 import Enum.ResultMessage;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 
-public interface HotelstaffViewControllerService {
+public interface HotelstaffPanelControllerService {
 	/**
 	 * 获得酒店工作人员信息
 	 * @param hotelID
