@@ -9,6 +9,8 @@ import Enum.VIPType;
 import businesslogic.marketingbl.MarketingManage;
 import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
+import presentation.marketing.view.ProcessMarketingAbnormalView;
+import presentation.marketing.view.ProcessMarketingProfileView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
@@ -30,6 +32,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     private ClientBLService ClientBLService;
     private String marketingID;
     private ProcessMarketingView view;
+    private ProcessMarketingProfileView profileView;
+    private ProcessMarketingAbnormalView abnormalView;
     public ProcessMarketingViewController (String marketingID){
     	this.marketingID=marketingID;
     	this.MarketingBlService=new MarketingManage();
@@ -162,16 +166,23 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 	@Override
 	public void profileButtonClicked() {
-          view.profileButtonClicked();
+		view.hideWelcome();
+		if(profileView!=null) profileView.hideProfile();
+		profileView=null;
+		if(abnormalView!=null) abnormalView.hideAbnormal();
+		abnormalView=null;
+		profileView=new ProcessMarketingProfileView(this,view);
 	}
 	@Override
 	public void abnormalButtonClicked() {
-		view.abnormalButtonClicked();
+		view.hideWelcome();
+		if(profileView!=null) profileView.hideProfile();
+		profileView=null;
+		if(abnormalView!=null) abnormalView.hideAbnormal();
+		abnormalView=null;
+		abnormalView=new ProcessMarketingAbnormalView(this,view);
 	}
-	@Override
-	public void searchAbnormalLabelClicked() {
-		view.searchAbnormalLabelClicked();
-	}
+
 
 
 }

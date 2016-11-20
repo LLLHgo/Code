@@ -2,6 +2,7 @@ package presentation.marketing.controller;
 
 import javax.swing.JFrame;
 
+import presentation.marketing.view.ProcessMarketingProfileView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 
@@ -16,7 +17,7 @@ public class marketinglogin {
         ProcessMarketingView view=new ProcessMarketingView(controller);
         controller.setView(view);
         mframe.getContentPane().add(view);
-		mframe.setVisible(true);
+        mframe.setVisible(true);
 		mframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
