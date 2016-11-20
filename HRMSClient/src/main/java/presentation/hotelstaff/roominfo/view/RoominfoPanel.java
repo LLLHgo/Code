@@ -1,14 +1,18 @@
 package presentation.hotelstaff.roominfo.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
+import Enum.RoomState;
 import Enum.Star;
 import presentation.common.ModifyButton;
 import presentation.common.MyLabel;
@@ -17,10 +21,12 @@ import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.DetailedRoominfo;
 import presentation.hotelstaff.component.LeftButton;
+import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.component.RightButton;
 import presentation.hotelstaff.component.RoominfoLabel;
 import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.RoominfoVO;
 
 public class RoominfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -30,8 +36,6 @@ public class RoominfoPanel extends JPanel{
 	private ModifyButton jbModify1;
 	private ModifyButton jbModify2;
 	private ModifyButton jbModify3;
-	private ConfirmButton jbConfirm;
-	private CancleButton jbCancle;
 	private LeftButton jbLeft;
 	private RightButton jbRight;
 	private AddButton jbAdd;
@@ -51,9 +55,22 @@ public class RoominfoPanel extends JPanel{
 	private RoominfoLabel arrayType[]=new RoominfoLabel[3];
 	private RoominfoLabel arrayPrice[]=new RoominfoLabel[3];
 	private RoominfoLabel arrayState[]=new RoominfoLabel[3];
-	private DetailedRoominfo detail;
 	private int page=1;
 	private int maxPage;
+	
+	private JFrame frame;
+	private String roomID="";
+	private String type="";
+	private String price="";
+	private String state="";
+	private ImageIcon init_detailedroominfo_image;
+	private ReviewTextArea jtaRoomID;
+	private ReviewTextArea jtaType;
+	private ReviewTextArea jtaPrice;
+	private ReviewTextArea jtaState;
+	private CancleButton jbDetailedCancle;
+	private ConfirmButton jbDetailedConfirm;
+	private JPanel panel;
 
 	public RoominfoPanel(HotelinfoViewController controller,String hotelID){
 		this.controller = controller;
@@ -62,6 +79,8 @@ public class RoominfoPanel extends JPanel{
 	}
 	
 	private void initHotelinfoPanel(){
+		page=1;
+		
 		this.setLayout(null);
 		this.setBounds(0,0,1000,618);
 		this.setVisible(true);
@@ -165,62 +184,140 @@ public class RoominfoPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==jbModify1){
-				jbModify1.setVisible(false);
-				jbModify2.setEnabled(false);
-				jbModify3.setEnabled(false);
+				
+				roomID = label1_roomNO.getText().substring(4);
+				type = label1_type.getText().substring(3);
+				price = label1_price.getText().substring(3);
+				state = label1_state.getText().substring(3);
+				
 			}else if(e.getSource()==jbModify2){
-				jbModify2.setVisible(false);
-				jbModify1.setEnabled(false);
-				jbModify3.setEnabled(false);
+				
+				roomID = label2_roomNO.getText().substring(4);
+				type = label2_type.getText().substring(3);
+				price = label2_price.getText().substring(3);
+				state = label2_state.getText().substring(3);
+				
 			}else if(e.getSource()==jbModify3){
-				jbModify3.setVisible(false);
-				jbModify1.setEnabled(false);
-				jbModify2.setEnabled(false);
+				
+				roomID = label3_roomNO.getText().substring(4);
+				type = label3_type.getText().substring(3);
+				price = label3_price.getText().substring(3);
+				state = label3_state.getText().substring(3);
+				
 			}
-//			jbCancle.setVisible(true);
-//			jbConfirm.setVisible(true);
-			jbAdd.setVisible(false);
+			initDetailedRoominfo();
+			jtaRoomID.setEditable(false);
+			jtaType.setEditable(true);
+			jtaPrice.setEditable(true);
+			jtaState.setEditable(true);
+			setPanelUnEditable();
 		}
 		
 	}
 	
-//	private class ConfirmButtonActionListener implements ActionListener{
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			
-//			jbModify1.setVisible(true);
-//			jbModify2.setVisible(true);
-//			jbModify3.setVisible(true);
-//			jbCancle.setVisible(false);
-//			jbConfirm.setVisible(false);
-//			jbAdd.setVisible(true);
-//			
-//		}
-//	}
-//	private class CancleButtonActionListener implements ActionListener{
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			jbModify1.setVisible(true);
-//			jbModify2.setVisible(true);
-//			jbModify3.setVisible(true);
-//			jbCancle.setVisible(false);
-//			jbConfirm.setVisible(false);
-//			jbAdd.setVisible(true);
-//		}
-//	}
-	private void setPanelUnEditable(){
-		this.setVisible(false);
+	private class ConfirmButtonActionListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			roomID = jtaRoomID.getText();
+			type = jtaPrice.getText();
+			price = jtaPrice.getText();
+			state = jtaPrice.getText();
+			if(state.equals("Unusable")){
+				controller.updateroominfo(new RoominfoVO(type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
+			}else if(state.equals("Unusable")){
+				controller.updateroominfo(new RoominfoVO(type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
+			}else{
+				//TODO
+			}
+			frame.dispose();
+			refreshPanel();
+		}
+	}
+	private class CancleButtonActionListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			frame.dispose();
+			refreshPanel();
+		}
 	}
 	
+	private void setPanelUnEditable(){
+		this.removeAll();
+	}
+	private void refreshPanel(){
+		this.initHotelinfoPanel();
+	}
 	
 	private class AddButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new DetailedRoominfo("","","","");
+			roomID = "";
+			type = "";
+			price = "";
+			state = "";
+			initDetailedRoominfo();
+			jtaRoomID.setEditable(true);
+			jtaType.setEditable(true);
+			jtaPrice.setEditable(true);
+			jtaState.setEditable(true);
 			setPanelUnEditable();
 		}
+	}
+	
+	public void initDetailedRoominfo(){
+		frame = new JFrame();
+		frame.setSize(300,380);
+		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+		frame.setUndecorated(true);
+		frame.setVisible(true);
+		
+		Toolkit kit = Toolkit.getDefaultToolkit();    // 定义工具包
+	    Dimension screenSize = kit.getScreenSize();   // 获取屏幕的尺寸
+	    int screenWidth = screenSize.width/2;         // 获取屏幕的宽
+	    int screenHeight = screenSize.height/2;       // 获取屏幕的高
+	    int height = frame.getHeight();
+	    int width = frame.getWidth();
+	    frame.setLocation(screenWidth-width/2, screenHeight-height/2);
+	    
+	    init_detailedroominfo_image = new ImageIcon("C:/Users/1/Documents/GitHub/Code/HRMSClient/src/main/resource/picture/hotelinfo/detailedroominfo.png");
+	    
+	    panel = new JPanel(){
+			protected void paintComponent(Graphics g) {
+				g.drawImage(init_detailedroominfo_image.getImage(),0,0,300,380,panel);
+		    }
+		};
+	    panel.setLayout(null);
+	    panel.setSize(300,380);
+	    panel.setVisible(true);
+	    panel.setOpaque(false);
+		frame.getContentPane().add(panel);
+		
+		jtaRoomID = new ReviewTextArea(83,54,200,30,roomID);
+		jtaType = new ReviewTextArea(83,104,200,30,type);
+		jtaPrice = new ReviewTextArea(83,157,200,30,price);
+		jtaState = new ReviewTextArea(83,213,200,30,state);
+		jtaRoomID.setForeground(Color.BLACK);
+		jtaType.setForeground(Color.BLACK);
+		jtaPrice.setForeground(Color.BLACK);
+		jtaState.setForeground(Color.BLACK);
+		jtaRoomID.setText(roomID);
+		jtaType.setText(type);
+		jtaState.setText(state);
+		jtaPrice.setText(price);
+
+		panel.add(jtaRoomID);
+		panel.add(jtaType);
+		panel.add(jtaPrice);
+		panel.add(jtaState);
+		
+		jbDetailedConfirm = new ConfirmButton(230,300);
+		jbDetailedConfirm.addActionListener(new ConfirmButtonActionListener());
+		panel.add(jbDetailedConfirm);
+		
+		jbDetailedCancle = new CancleButton(20,300);
+		jbDetailedCancle.addActionListener(new CancleButtonActionListener());
+		panel.add(jbDetailedCancle);
 	}
 	
 	private class LeftButtonActionListener  implements ActionListener{

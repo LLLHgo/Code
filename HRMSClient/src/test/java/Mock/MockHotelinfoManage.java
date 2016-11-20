@@ -50,10 +50,10 @@ public class MockHotelinfoManage {
 		roominfoList.add(roominfo5);
 		roominfoList.add(roominfo6);
 		
-//		hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","GuLouArea","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
-//				new ArrayList<String>(),"Brief Introduction","H00000001");
-		hotelinfoVO1 = new HotelinfoVO("BeijingDongRode","GuLouArea",
-		"Brief Introduction","Facility","12345678",Star.FOUR,"H00000001");
+		hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","GuLouArea","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
+				new ArrayList<String>(),"Brief Introduction","H00000001");
+//		hotelinfoVO1 = new HotelinfoVO("BeijingDongRode","GuLouArea",
+//		"Brief Introduction","Facility","12345678",Star.FOUR,"H00000001");
 		hotelinfoVO2 = new HotelinfoVO("RuJia","LongPanRode","GuLouArea","12345679",new ArrayList<RoominfoVO>(),Star.FOUR,
 				new ArrayList<String>(),"Brief Introduction","H00000002");
 		hotelinfoVO3 = new HotelinfoVO("LvZhou","XianLinRode","XianLinArea","12345670",new ArrayList<RoominfoVO>(),Star.FOUR,
@@ -192,8 +192,8 @@ public class MockHotelinfoManage {
 	}
 
 
-	public ResultMessage updateOrderState(String orderID, OrderType orderType) {
-	
-		return ResultMessage.SUCCESS;
+	public boolean updateroominfo(RoominfoVO vo, String hotelID) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

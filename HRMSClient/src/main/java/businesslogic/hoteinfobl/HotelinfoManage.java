@@ -72,8 +72,8 @@ public class HotelinfoManage implements HotelinfoBLService{
 	}
 
 	@Override
-	public ResultMessage updateroominfo(HotelinfoVO vo) {
+	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 }

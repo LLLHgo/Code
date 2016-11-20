@@ -144,8 +144,9 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * @param vo
 	 * @return 是否将房间信息持久化保存
 	 */
-	public ResultMessage updateroominfo(HotelinfoVO vo) {
-		return ResultMessage.SUCCESS;
+	@Override
+	public boolean updateroominfo(RoominfoVO vo, String hotelID) {
+		return true;
 	}
 
 //	/**
@@ -177,6 +178,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
 		return true;
 	}
+
 
 
 //	/**

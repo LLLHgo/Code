@@ -1,5 +1,7 @@
 package presentation.hotelstaff.controller;
 
-public class HotelstaffViewController {
+import presentation.hotelstaff.view.HotelstaffViewControllerService;
+
+public class HotelstaffViewController implements HotelstaffViewControllerService{
 
 }

@@ -74,6 +74,6 @@ public interface HotelinfoBLService {
 	 * @param vo
 	 * @return 是否将房间信息持久化保存
 	 */
-	public ResultMessage updateroominfo(HotelinfoVO vo);
+	public boolean updateroominfo(RoominfoVO vo,String hotelID);
 
 }

@@ -111,8 +111,11 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 	}
 
 	@Override
-	public ResultMessage updateroominfo(HotelinfoVO vo) {
-		return hotelinfo.updateroominfo(vo);
+	public ResultMessage updateroominfo(RoominfoVO vo,String hotelID) {
+		if(hotelinfo.updateroominfo(vo,hotelID)==true){
+			return ResultMessage.SUCCESS;
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override

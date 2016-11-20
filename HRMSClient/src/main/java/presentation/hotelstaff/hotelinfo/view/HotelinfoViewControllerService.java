@@ -93,7 +93,7 @@ public interface HotelinfoViewControllerService {
 	 * @param vo
 	 * @return 是否将房间信息持久化保存
 	 */
-	public ResultMessage updateroominfo(HotelinfoVO vo);
+	public ResultMessage updateroominfo(RoominfoVO vo,String hotelID);
 	/**
 	 * 获得酒店订单列表
 	 * @param hotelID
