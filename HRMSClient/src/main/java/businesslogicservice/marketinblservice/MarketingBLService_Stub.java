@@ -25,6 +25,9 @@ public class MarketingBLService_Stub implements MarketingBLService {
     public MarketingBLService_Stub(double discount){
        this.discount=discount;
 	}
+    public MarketingBLService_Stub(){
+    	
+    }
 
     /**
      * 增加等级信息

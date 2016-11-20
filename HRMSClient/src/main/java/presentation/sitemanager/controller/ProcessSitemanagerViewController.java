@@ -3,6 +3,8 @@ package presentation.sitemanager.controller;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
+import businesslogicservice.marketinblservice.MarketingBLService;
+import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService_Stub;
 import presentation.sitemanager.view.ProcessSitemanagerView;
@@ -19,10 +21,12 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	String sitemanagerId;
 	private ProcessSitemanagerView processSitemanagerView;
 	SitemanagerBLService sitemanagerblservice; // 以stub调用
+	MarketingBLService marketingblservice; // 以stub调用
 	
 	public ProcessSitemanagerViewController(String sitemanagerId){
 		this.sitemanagerId=sitemanagerId;
 		sitemanagerblservice=new SitemanagerBLService_Stub();
+		marketingblservice=new MarketingBLService_Stub();
 	}
 	
 	
@@ -54,12 +58,12 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	}
 
 
-	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
-		return ResultMessage.SUCCESS;
+	public ResultMessage MarketingAccountUpdate(MarketingVO marketingVO) {
+		return marketingblservice.MarketingAccountUpdate(marketingVO);
 	}
 
 	public MarketingVO MarketingAccountFind(String findInfo) {
-		return null;
+		return marketingblservice.MarketingAccountFind(findInfo);
 	}
 
 	public ResultMessage MarketingAccountAdd(HotelinfoVO hotelinfo) {
