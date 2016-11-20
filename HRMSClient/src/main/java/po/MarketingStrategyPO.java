@@ -1,10 +1,10 @@
 package po;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.*;
-import javafx.scene.image.Image;
 
 
 public class MarketingStrategyPO {

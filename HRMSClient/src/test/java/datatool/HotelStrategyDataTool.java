@@ -1,9 +1,9 @@
 package datatool;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import Enum.HotelStrategy;
 import Enum.VIPType;
-import javafx.scene.image.Image;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 

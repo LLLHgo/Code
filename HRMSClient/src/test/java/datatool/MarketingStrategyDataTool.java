@@ -1,12 +1,12 @@
 package datatool;
 
+import java.awt.Image;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.VIPType;
 import Enum.marketingStrategy;
-import javafx.scene.image.Image;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.strategyVO.MarketingStrategyVO;

@@ -1,12 +1,12 @@
 package vo.strategyVO;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.HotelStrategy;
 import Enum.VIPType;
 import Enum.marketingStrategy;
-import javafx.scene.image.Image;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 

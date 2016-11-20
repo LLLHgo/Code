@@ -1,5 +1,6 @@
 package Mock;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import Enum.RoomState;
 import Enum.Star;
 import Enum.VIPType;
 import businesslogic.hoteinfobl.Roominfo;
-import javafx.scene.image.Image;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;

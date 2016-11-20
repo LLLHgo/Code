@@ -2,6 +2,7 @@ package ControllerTest;
 
 import static org.junit.Assert.*;
 
+import java.awt.Image;
 import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -18,7 +19,6 @@ import Enum.Star;
 import Enum.VIPType;
 import Enum.marketingStrategy;
 import businesslogic.hoteinfobl.HotelinfoManage;
-import javafx.scene.image.Image;
 import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
