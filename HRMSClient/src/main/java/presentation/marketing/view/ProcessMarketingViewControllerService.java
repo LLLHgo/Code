@@ -174,7 +174,7 @@ public interface ProcessMarketingViewControllerService {
 	 * @return 修改信用值成功与否
 	 */
 
-	public boolean setCredit(String clientID,int recharge);
+	public boolean setCredit(String clientID,double recharge);
 	/**
 	 * 根据新的会员等级制度修改所有客户的会员等级
 	 * @param vo
@@ -186,5 +186,6 @@ public interface ProcessMarketingViewControllerService {
 
 	public void profileButtonClicked();
 	public void abnormalButtonClicked();
+	public void addLog(String log);
 
 }

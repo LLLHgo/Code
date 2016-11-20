@@ -13,6 +13,7 @@ import presentation.marketing.view.ProcessMarketingProfileView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
+import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
@@ -25,7 +26,8 @@ import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
 public class ProcessMarketingViewController implements ProcessMarketingViewControllerService{
-    private MarketingBLService MarketingBlService;
+    private LogBLService LogBLService;;
+	private MarketingBLService MarketingBlService;
     private StrategyBLService StrategyBLService;
     private OrderBLService OrderBLService;
     private ClientBLService ClientBLService;
@@ -150,8 +152,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public boolean setCredit(String clientID, int recharge) {
-		return this.ClientBLService.setCredit(clientID, recharge);
+	public boolean setCredit(String clientID, double recharge) {//改为double
+		System.out.println(recharge);
+		return this.ClientBLService.setCredit(clientID, (int)recharge);
 	}
 
 	@Override
@@ -180,6 +183,11 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		if(abnormalView!=null) abnormalView.hideAbnormal();
 		abnormalView=null;
 		abnormalView=new ProcessMarketingAbnormalView(this,view);
+	}
+	@Override
+	public void addLog(String log) {
+		this.LogBLService.addLog(log);
+
 	}
 
 

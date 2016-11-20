@@ -4,19 +4,26 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Date;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Enum.OrderType;
+import Enum.ResultMessage;
 import datatool.OrderDataTool;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
@@ -24,7 +31,7 @@ import vo.orderVO.OrderVO;
 public class ProcessMarketingAbnormalView extends JPanel{
 	private ProcessMarketingViewControllerService controller;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);
-	private Font font2=new Font("楷体",Font.ITALIC,20);
+	private Font font2=new Font("楷体",Font.PLAIN,17);
 	private Font font3=new Font("微软雅黑",Font.HANGING_BASELINE,28);
 	private Image newImage=null;
 	private String MarketingID;
@@ -119,7 +126,7 @@ public void showAbnormalOrders(ArrayList<OrderVO> orders){
 	//设置放置Order信息的JPanel
     showAbnormalOrderPanel=new JPanel();
     showAbnormalOrderPanel.setLayout(null);
-    showAbnormalOrderPanel.setPreferredSize(new Dimension(720,200*orders.size()));
+    showAbnormalOrderPanel.setPreferredSize(new Dimension(680,+30+150*orders.size()));
     showAbnormalOrderPanel.setBounds(0, 0, 702, 3520);
     showAbnormalOrderPanel.setBackground(Color.LIGHT_GRAY);
     showAbnormalOrderPanel.setOpaque(false);
@@ -131,11 +138,99 @@ public void showAbnormalOrders(ArrayList<OrderVO> orders){
     showAbnormalScroll.setOpaque(false);
     showAbnormalScroll.getViewport().setOpaque(false);
     int num=0;
-   
-    for(int i=0;i<10;i++){
-        JPanel panel=new JPanel();
-        panel.setBackground(Color.LIGHT_GRAY);
-        panel.setBounds(0, 10+70*num, 700, 50);
+
+    Image image=new ImageIcon("./src/main/resource/picture/marketing/orderBackground.png").getImage();
+    for(OrderVO order:orders){
+    	//制作order背景
+        JPanel panel=new JPanel(){
+			private static final long serialVersionUID = 1L;
+			protected  void paintComponent(Graphics g) {
+            	g.drawImage(image,0,0,getSize().width,getSize().height,this);
+            }
+		};
+        panel.setBounds(10, 10+150*num, 700, 150);
+        panel.setLayout(null);
+
+        //制作order需要的组件
+        Icon checkIcon=new ImageIcon("./src/main/resource/picture/marketing/littleCheck.png");
+        JLabel nameLabel=new JLabel("用户："+order.getClientName());
+        JLabel orderIDLabel=new JLabel("订单号："+order.getOrderId());
+        JLabel hotelLabel=new JLabel("入住酒店："+order.getHotelName());
+        JLabel priceLabel=new JLabel("订单价格："+order.getPrice());
+        JLabel creditLabel=new JLabel("恢复信用值 ");
+        JRadioButton fullButton=new JRadioButton("全额",false);
+        JRadioButton halfButton=new JRadioButton("半额",false);
+        JLabel checkLabel=new JLabel();
+        ButtonGroup group=new ButtonGroup();
+        group.add(fullButton);group.add(halfButton);
+        checkLabel.setIcon(checkIcon);
+
+
+        nameLabel.setBounds(5, 5, 600, 30);
+        orderIDLabel.setBounds(5, 31, 600, 30);
+        hotelLabel.setBounds(5, 57, 300, 30);
+        priceLabel.setBounds(310, 57, 300, 30);
+        creditLabel.setBounds(5, 86, 300, 30);
+        fullButton.setBounds(165, 86, 67, 30);
+        halfButton.setBounds(280, 86, 67, 30);
+        checkLabel.setBounds(430, 86, 30, 30);
+
+        nameLabel.setFont(font2);     nameLabel.setForeground(Color.white);
+        orderIDLabel.setFont(font2);  orderIDLabel.setForeground(Color.white);
+        hotelLabel.setFont(font2);    hotelLabel.setForeground(Color.white);
+        priceLabel.setFont(font2);    priceLabel.setForeground(Color.white);
+        creditLabel.setFont(font2);   creditLabel.setForeground(Color.white);
+        fullButton.setFont(font2);     fullButton.setForeground(Color.white);
+        halfButton.setFont(font2);     halfButton.setForeground(Color.white);
+
+        fullButton.setContentAreaFilled(false);
+        fullButton.setOpaque(false);
+        fullButton.setBackground(null);
+        fullButton.setBorderPainted(false);;
+
+
+        panel.add(nameLabel);
+        panel.add(orderIDLabel);
+        panel.add(hotelLabel);
+        panel.add(priceLabel);
+        panel.add(creditLabel);
+        panel.add(fullButton);
+        panel.add(halfButton);
+
+
+        checkLabel.addMouseListener(new MouseListener(){
+        	boolean ifSuccess=false;
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String log=MarketingID+"撤销异常订单"+order.orderId;
+				// Date date=new Date();
+				if(group.getSelection()==fullButton){
+					controller.setCredit(order.getClientId(),order.getPrice());
+					log=log+"全额";
+					System.out.println("dss");
+				}else if(group.getSelection()==halfButton){
+					controller.setCredit(order.getClientId(), order.getPrice()*0.5);
+					log=log+"半额";
+				}
+				if (group.getSelection()!=null){
+					order.setOrderStatus(OrderType.ABNORMALCANCEL);
+					controller.saveOrder(order);
+					//log=log+
+					controller.addLog(log);
+				}
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {}
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+			@Override
+			public void mouseExited(MouseEvent e) {}
+        });
+        panel.add(checkLabel);
+
+
         showAbnormalOrderPanel.add(panel);
         num++;
     }
