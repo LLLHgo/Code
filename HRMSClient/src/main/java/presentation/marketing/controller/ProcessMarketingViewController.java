@@ -5,6 +5,7 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
+import businesslogic.logbl.LogManage;
 import businesslogic.marketingbl.MarketingManage;
 import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
@@ -26,7 +27,7 @@ import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
 public class ProcessMarketingViewController implements ProcessMarketingViewControllerService{
-    private LogBLService LogBLService;;
+    private LogManage LogBLService;//bl层的logManage未实现blservice
 	private MarketingBLService MarketingBlService;
     private StrategyBLService StrategyBLService;
     private OrderBLService OrderBLService;
@@ -40,6 +41,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     	this.MarketingBlService=new MarketingManage();
     	this.StrategyBLService=new StrategyManage();
     	this.OrderBLService=new OrderManage();
+    	this.LogBLService=new LogManage();
         //this.ClientBLService=new ClientManage();
     }
     @Override
@@ -153,8 +155,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public boolean setCredit(String clientID, double recharge) {//改为double
-		System.out.println(recharge);
-		return this.ClientBLService.setCredit(clientID, (int)recharge);
+		//return this.ClientBLService.setCredit(clientID, (int)recharge);
+		return true;
+
 	}
 
 	@Override
