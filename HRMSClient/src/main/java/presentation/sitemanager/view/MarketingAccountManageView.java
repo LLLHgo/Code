@@ -27,7 +27,7 @@ public class MarketingAccountManageView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ProcessSitemanagerViewControllerService controller;
 	MarketingVO marketingVO;
-	
+
 	String id;
 	String name;
 	String tel;
@@ -46,25 +46,25 @@ public class MarketingAccountManageView extends JPanel{
 
 	SearchButton searchButton;
 	JTextField searchBarText;
-	
+
 	ModifyButton modifyButton;
 	CheckButton checkButton;
 	DeleteButton deleteButton;
 	AddButton addButton;
-	
+
 	//放网站管理人员头像的label
 	JLabel marktingIcon;
 	ImageIcon currentMarktingIcon;
-	
+
 	// 上传头像按钮
 	MyLabel updateIconLabel;
 	UserIconModifyButton userIconModigyButton;
 	ImageIcon userIconDefault;
 	UserIconModifyButton userIconModifyButton;
-	
+
 	// 状态栏
 	MyLabel conditionalText;
-	
+
 	//修改后的新信息
 	String newName;
 	String newTel;
@@ -72,7 +72,7 @@ public class MarketingAccountManageView extends JPanel{
 	MarketingVO newMarketingVO;
 	Icon newImg;
 	public MarketingAccountManageView(ProcessSitemanagerViewControllerService controller){
-		this.controller=controller; 
+		this.controller=controller;
 		this.setLayout(null);
 		background=new ImageIcon("src/main/resource/picture/sitemanager/marketingAccountManage.png");
 		userIconDefault=new ImageIcon("src/main/resource/picture/sitemanager/defaultUserAddIcon.png");
@@ -109,11 +109,11 @@ public class MarketingAccountManageView extends JPanel{
 		updateIconLabel=new MyLabel(160,320,100,20,"上传头像");
 		updateIconLabel.setForeground(Color.white);
 		userIconModifyButton=new UserIconModifyButton(220,280,100,100);
-		
+
 		modifyButton.setEnabled(false);
 		checkButton.setEnabled(false);
 		deleteButton.setEnabled(false);
-		
+
 		modifyButton.addMouseListener(new MarketingModifyListener());
 		checkButton.addMouseListener(new MarketingCheckListener());
 		// 右边工具栏
@@ -126,7 +126,7 @@ public class MarketingAccountManageView extends JPanel{
 		this.add(nameLabel);
 		this.add(telLabel);
 		this.add(passwordLabel);
-		
+
 		this.add(marketingIdLabel);
 		this.add(marketingName);
 		this.add(marketingTel);
@@ -150,7 +150,7 @@ public class MarketingAccountManageView extends JPanel{
 		marketingName.setText(name);
 		marketingTel.setText(tel);
 		marketingPassword.setText(password);
-		
+
 		checkButton.setEnabled(true);
 		modifyButton.setEnabled(true);
 		marketingName.setEditable(false);
@@ -168,16 +168,16 @@ public class MarketingAccountManageView extends JPanel{
 				conditionalText.setText("找到匹配账户");
 				showSpecificAccountInfo(marketingVO);
 			}
-			
+
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
 	}
-	
+
 	class MarketingModifyListener implements MouseListener{
-		
+
 		public void mouseClicked(MouseEvent e) {
 			marketingName.setEditable(true);
 			marketingTel.setEditable(true);
@@ -187,21 +187,21 @@ public class MarketingAccountManageView extends JPanel{
 		}
 		public void mouseReleased(MouseEvent e) {
 		}
-		public void mouseEntered(MouseEvent e) {	
+		public void mouseEntered(MouseEvent e) {
 		}
 		public void mouseExited(MouseEvent e) {
 		}
-		
+
 	}
 	class MarketingCheckListener implements MouseListener{
-		
+
 		public void mouseClicked(MouseEvent e) {
 			ResultMessage result;
 			newName=marketingName.getText();
 			newTel=marketingTel.getText();
 			newPassword=marketingPassword.getText();
 			newImg= marktingIcon.getIcon();
-			newMarketingVO=new MarketingVO(newName,newPassword,id,newTel,(Image)newImg);
+			newMarketingVO=new MarketingVO(newName,newPassword,id,newTel);
 			result=controller.MarketingAccountUpdate(newMarketingVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("修改成功！");
@@ -218,11 +218,11 @@ public class MarketingAccountManageView extends JPanel{
 		public void mouseExited(MouseEvent e) {
 		}
 	}
-	
+
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		background.setImage(background.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
 		background.paintIcon(this, g, 0, 0);
 	}
-	
+
 }
