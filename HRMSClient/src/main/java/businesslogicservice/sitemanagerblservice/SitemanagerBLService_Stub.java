@@ -22,8 +22,8 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	ImageIcon image=null;
 
 	public SitemanagerBLService_Stub(){
-		sitemanagerVO=new SitemanagerVO("S00000001","025-88888825","HRMSSitemanager",image);
-		currentSitemanagerVO=new SitemanagerVO("S00000001","025-88888825","HRMSSitemanager",image);
+		sitemanagerVO=new SitemanagerVO("S00000001","025-88888825","HRMSSitemanager");
+		currentSitemanagerVO=new SitemanagerVO("S00000001","025-88888825","HRMSSitemanager");
 	}
 	
 	public SitemanagerVO init(String id){
@@ -52,8 +52,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO) {
 		// TODO Auto-generated method stub
 		if(accountVO.getSitemanagerPhoneNumber().equals(sitemanagerVO.getSitemanagerPhoneNumber())&&
-				(accountVO.getPassword().equals(sitemanagerVO.getPassword()))&&
-						(accountVO.getUserImage()==sitemanagerVO.getUserImage())
+				(accountVO.getPassword().equals(sitemanagerVO.getPassword()))
 			){
 			return ResultMessage.FAIL;
 		}

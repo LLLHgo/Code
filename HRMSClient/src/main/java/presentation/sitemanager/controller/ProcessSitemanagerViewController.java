@@ -9,6 +9,7 @@ import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService_Stub;
 import presentation.sitemanager.view.ProcessSitemanagerView;
 import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
+import presentation.sitemanager.view.SitemanagerAccountManageView;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
@@ -19,7 +20,9 @@ import vo.sitemanager.SitemanagerVO;
 public class ProcessSitemanagerViewController implements ProcessSitemanagerViewControllerService {
 	
 	String sitemanagerId;
+	SitemanagerVO sitemanagerVO;
 	private ProcessSitemanagerView processSitemanagerView;
+	private SitemanagerAccountManageView sitemanagerAccountManageView;
 	SitemanagerBLService sitemanagerblservice; // 以stub调用
 	MarketingBLService marketingblservice; // 以stub调用
 	
@@ -38,8 +41,10 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	}
 	
 	public SitemanagerVO init(String id) {
-		return sitemanagerblservice.init(id);
+		sitemanagerVO= sitemanagerblservice.init(id);
+		return sitemanagerVO;
 	}
+
 	public ResultMessage clientAccountUpdate(ClientVO clientVO) {
 		return ResultMessage.SUCCESS;
 	}
@@ -109,7 +114,11 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	public ResultMessage addLog(String logInfo) {
 		return ResultMessage.SUCCESS;
 	}
-
-
+	
+	@Override
+	public void jbSitemanagerManageButtonClicked(){
+		processSitemanagerView.hideWelcome();
+		sitemanagerAccountManageView=new SitemanagerAccountManageView(this,processSitemanagerView,sitemanagerVO);
+	}
 
 }

@@ -41,7 +41,7 @@ public class SitemanagerBLService_Driver {
 		
 		// 修改网站管理人员账户
 		System.out.println("修改酒店工作人员账户:");
-		result=sitemanagerBLService.sitemanagerAccountUpdate(new SitemanagerVO("S00000001","17889967883","h123",image));
+		result=sitemanagerBLService.sitemanagerAccountUpdate(new SitemanagerVO("S00000001","17889967883","h123"));
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("修改成功");
 		}
@@ -52,7 +52,7 @@ public class SitemanagerBLService_Driver {
 		
 		// 检查登录的网站管理人员账户密码是否正确
 		System.out.println("检查登录的网站管理人员账户密码是否正确:");
-		result=sitemanagerBLService.checkAccount(new SitemanagerVO("S00000001","17889967883","h123",image));
+		result=sitemanagerBLService.checkAccount(new SitemanagerVO("S00000001","17889967883","h123"));
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("登录帐号密码正确");
 		}
