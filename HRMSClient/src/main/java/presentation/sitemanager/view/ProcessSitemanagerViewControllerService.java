@@ -121,4 +121,8 @@ public interface ProcessSitemanagerViewControllerService {
 	 */
 	public ResultMessage addLog(String logInfo);
 	
+	public void jbSitemanagerManageButtonClicked();
+	
+	public void jbMarketingManageButtonClicked();
+	
 }

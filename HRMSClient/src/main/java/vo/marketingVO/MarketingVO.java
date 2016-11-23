@@ -1,7 +1,5 @@
 package vo.marketingVO;
 
-import java.awt.Image;
-
 public class MarketingVO {
 	//网站营销人员姓名
     private String name;
@@ -11,8 +9,6 @@ public class MarketingVO {
     private String marketingID;
     //网站营销人员电话
     private String telephone;
-    //网站营销人员头像
-    private Image image;
 
     public MarketingVO(){
     }
@@ -24,26 +20,10 @@ public class MarketingVO {
      * @param marketingID
      * @param telephone
      */
-    public MarketingVO(String name,String marketingID,String telephone,Image image){
-    	this.setName(name);
-    	this.setMarketingID(marketingID);
-    	this.setTelephone(telephone);
-    	this.setImage(image);
-    }
-
-    public MarketingVO(String name,String marketingID,String telephone){
-    	this.setName(name);
-    	this.setMarketingID(marketingID);
-    	this.setTelephone(telephone);
-    	this.image=null;
-    }
-
-    public MarketingVO(String name,String password,String marketingID,String telephone,Image image){
-    	this.setName(name);
+    public MarketingVO(String name,String password,String telephone){
     	this.password=password;
-    	this.setMarketingID(marketingID);
-    	this.setTelephone(telephone);
-    	this.setImage(image);
+    	this.name=name;
+    	this.password=password;
     }
 
     public MarketingVO(String name,String password,String marketingID,String telephone){
@@ -51,7 +31,7 @@ public class MarketingVO {
     	this.password=password;
     	this.setMarketingID(marketingID);
     	this.setTelephone(telephone);
-    	this.image=null;
+
     }
 
 	public String getName() {
@@ -77,13 +57,5 @@ public class MarketingVO {
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}
-
-	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(Image image2) {
-		this.image = image2;
 	}
 }

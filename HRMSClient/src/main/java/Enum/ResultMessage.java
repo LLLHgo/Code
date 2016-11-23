@@ -2,5 +2,8 @@ package Enum;
 
 public enum ResultMessage {
     SUCCESS,
-    FAIL
+    FAIL,
+    DUPLICATENAME,
+    DUPLICATETEL,
+	DATEBASEFAIL
 }

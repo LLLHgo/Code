@@ -5,18 +5,10 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -25,11 +17,13 @@ import javax.swing.border.EmptyBorder;
 import vo.marketingVO.MarketingVO;
 
 public class ProcessMarketingProfileView extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ProcessMarketingViewControllerService controller;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);
 	private Font font2=new Font("楷体",Font.ITALIC,20);
-	private Font font3=new Font("微软雅黑",Font.HANGING_BASELINE,28);
-	private Image newImage=null;
 	private String MarketingID;
 	private MarketingVO Mvo;
 	public ProcessMarketingProfileView(ProcessMarketingViewControllerService controller,JPanel panel){
@@ -45,10 +39,9 @@ public class ProcessMarketingProfileView extends JPanel{
         JLabel  accountLabel =new JLabel("账号");
         JLabel  TELLabel =new JLabel("TEL");
         JLabel passwordLabel=new JLabel("密码");
-        JLabel photoLabel=new JLabel("头像");
         ArrayList<JLabel> labelList =new ArrayList<JLabel>();
         labelList.add(nameLabel);labelList.add(accountLabel);
-        labelList.add(TELLabel);labelList.add(passwordLabel);labelList.add(photoLabel);
+        labelList.add(TELLabel);labelList.add(passwordLabel);
         int num=0;
         for(JLabel label:labelList){
         	label.setFont(font);
@@ -131,51 +124,8 @@ public class ProcessMarketingProfileView extends JPanel{
         });
         this.add(modifyLabelForPassword);
 
-        //加入头像监听
-        Icon photoIcon=new ImageIcon("./src/main/resource/picture/marketing/addphoto.png");
-        JLabel addphotoLabel=new JLabel();
-        addphotoLabel.setIcon(photoIcon);
 
-        //分为两种情况 有无设置头像
-        if(Mvo.getImage()!=null){
-        	Icon myphoto=new ImageIcon(Mvo.getImage());
-        	JLabel myphotoLabel=new JLabel();
-        	myphotoLabel.setIcon(myphoto);
-        	myphotoLabel.setBounds(230,350, 200, 200);
-        	this.add(myphotoLabel);
-        	addphotoLabel.setBounds(400,375, 60, 60);
-        }else{
-            addphotoLabel.setBounds(325,375, 60, 60);
-        }
-        addphotoLabel.addMouseListener(new MouseListener(){
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				final JFileChooser fileChooser=new JFileChooser();
-				fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-				fileChooser.showOpenDialog(null);
-				File f=fileChooser.getSelectedFile();
-				try {
-					InputStream in=new FileInputStream(f);
-					BufferedImage bi=ImageIO.read(in);
-					newImage=(Image)bi;
-				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
 
-			}
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			@Override
-			public void mouseExited(MouseEvent e) {}
-
-        });
-        this.add(addphotoLabel);
 
         //加入确认图标
         Icon ensureIcon=new ImageIcon("./src/main/resource/picture/marketing/ensure.png");
@@ -187,7 +137,6 @@ public class ProcessMarketingProfileView extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				String newTEL=TELField.getText(),newPassword=passwordField.getText();
                 Mvo.setTelephone(newTEL);Mvo.setPassword(newPassword);
-                if(newImage!=null)Mvo.setImage(newImage);
                 controller.MarketingAccountUpdate(Mvo);
 			}
 			@Override
@@ -204,7 +153,6 @@ public class ProcessMarketingProfileView extends JPanel{
         this.repaint();
         panel.add(this);
 	}
-
 
 	public void profileButtonClicked() {
         this.setVisible(true);

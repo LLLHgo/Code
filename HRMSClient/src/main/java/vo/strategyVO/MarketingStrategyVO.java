@@ -1,8 +1,6 @@
 package vo.strategyVO;
 
-import java.awt.Image;
 import java.util.ArrayList;
-import java.util.Date;
 
 import Enum.*;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -24,10 +22,6 @@ public class MarketingStrategyVO {
     private ArrayList<String> businessArea;
     //参加活动的酒店
     private ArrayList<HotelinfoVO> hotels;
-    //活动海报
-    private Image poster;
-    //活动海报显示在客户界面的位置
-    private String position;
     //享受折扣的最低消费金额
     private int minSum;
     //享受折扣的最少房间数
@@ -56,16 +50,15 @@ public class MarketingStrategyVO {
      * @param poster 活动海报
      * @param position 活动海报显示在客户界面的位置
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,String endTime,double discount,ArrayList<HotelinfoVO> hotels,
-    		Image poster,String position){
+    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,
+    		String endTime,double discount,ArrayList<HotelinfoVO> hotels){
     	this.name=name;
     	this.type=type;
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
     	this.hotels=hotels;
-    	this.poster=poster;
-    	this.position=position;
+
     }
 
     /**
@@ -79,16 +72,15 @@ public class MarketingStrategyVO {
      * @param businessArea
      * @param position
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,String endTime,double discount,Image poster,
-    		ArrayList<String> businessArea,String position){
+    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,
+    		String endTime,ArrayList<String> businessArea,double discount){
     	this.name=name;
     	this.type=type;
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
     	this.businessArea=businessArea;
-    	this.poster=poster;
-    	this.position=position;
+
     }
 
     /**
@@ -107,7 +99,7 @@ public class MarketingStrategyVO {
      * @param vipKinds
      */
     public MarketingStrategyVO(String name,marketingStrategy type,String startTime,String endTime,double discount,ArrayList<HotelinfoVO> hotels,
-    		ArrayList<String> businessArea,Image poster,String position,int minSum,int minRooms,LevelVO levels,
+    		ArrayList<String> businessArea,int minSum,int minRooms,LevelVO levels,
     		ArrayList<VIPType> viptypes){
     	this.name=name;
     	this.type=type;
@@ -116,8 +108,7 @@ public class MarketingStrategyVO {
     	this.discount=discount;
     	this.hotels=hotels;
     	this.businessArea=businessArea;
-    	this.poster=poster;
-    	this.position=position;
+
     	this.minSum=minSum;
     	this.minRooms=minRooms;
     	this.levels=levels;
@@ -141,12 +132,7 @@ public class MarketingStrategyVO {
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
-	public Image getPoster() {
-		return poster;
-	}
-	public void setPoster(Image poster) {
-		this.poster = poster;
-	}
+
 	public double getDiscount() {
 		return discount;
 	}
@@ -165,12 +151,7 @@ public class MarketingStrategyVO {
 	public void setHotels(ArrayList<HotelinfoVO> hotels) {
 		this.hotels = hotels;
 	}
-	public String getPosition() {
-		return position;
-	}
-	public void setPosition(String position) {
-		this.position = position;
-	}
+
 	public int getMinSum() {
 		return minSum;
 	}

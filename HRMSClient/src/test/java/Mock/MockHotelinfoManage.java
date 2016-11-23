@@ -1,6 +1,5 @@
 package Mock;
 
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,6 @@ import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
 import Enum.VIPType;
-import businesslogic.hoteinfobl.Roominfo;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -49,7 +47,7 @@ public class MockHotelinfoManage {
 		roominfoList.add(roominfo4);
 		roominfoList.add(roominfo5);
 		roominfoList.add(roominfo6);
-		
+
 		hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","GuLouArea","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
 				new ArrayList<String>(),"Brief Introduction","H00000001");
 //		hotelinfoVO1 = new HotelinfoVO("BeijingDongRode","GuLouArea",
@@ -62,25 +60,24 @@ public class MockHotelinfoManage {
 		list.add(hotelinfoVO1);
 		list.add(hotelinfoVO2);
 		list.add(hotelinfoVO3);
-		
+
 		String strategy1="M2016091501";
 		String strategy2="H2016091602";
 		strategy=new ArrayList<String>();
 		strategy.add(strategy1);
 		strategy.add(strategy2);
-		
+
 		orderVO1=new OrderVO("20161017090702","C00000002","Lucy","17714368889",
 				VIPType.ORDINARYVIP,"2016-10-17 09:07",OrderType.NORMALNONEXEC,"caesar","H00000001",650.32,strategy);
 		orderList = new ArrayList<OrderVO>();
 		orderList.add(orderVO1);
-		
+
 		String begin1="2016-11-11 00:00:00";
 		String end1="2016-11-11 23:59:59";
-		Image image = null;
-	    V1=new HotelStrategyVO("H00000001",HotelStrategy.BIRTHDAY,
-	    		VIPType.ORDINARYVIP,begin1,end1,0.75,image,"North");
+		V1=new HotelStrategyVO("H00000001",HotelStrategy.BIRTHDAY,
+	    		VIPType.ORDINARYVIP,begin1,end1,0.75);
 	}
-	
+
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		if(hotelID.equals("H00000001")){
 			return hotelinfoVO1;
@@ -133,7 +130,7 @@ public class MockHotelinfoManage {
 
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
 			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
-		 
+
 		return 0;
 	}
 
@@ -147,7 +144,7 @@ public class MockHotelinfoManage {
 
 
 	public ResultMessage updatehotelStrategy(String hotelID, HotelStrategyVO vo) {
-		
+
 		return null;
 	}
 
@@ -161,7 +158,7 @@ public class MockHotelinfoManage {
 
 
 	public ResultMessage deletehotelStrategy(String hotelID, HotelStrategyVO hotelStrategy) {
-		
+
 		return ResultMessage.SUCCESS;
 	}
 
@@ -173,7 +170,7 @@ public class MockHotelinfoManage {
 
 
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
-	
+
 		return null;
 	}
 

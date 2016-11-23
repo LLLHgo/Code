@@ -1,9 +1,6 @@
 package datatool;
 
-import java.awt.Image;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import Enum.VIPType;
 import Enum.marketingStrategy;
@@ -31,12 +28,11 @@ public class MarketingStrategyDataTool {
 		viplist.add(VIPType.ORDINARYVIP);
 		viplist.add(VIPType.ENTERPRISEVIP);
 	}
-    static Image image;
     public static MarketingStrategyVO V0=new  MarketingStrategyVO();
     public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.DOUBLE11,
-    		begin1,end1,0.75,hlist,image,"North");
+    		begin1,end1,0.75,hlist);
     public static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",marketingStrategy.VIPSPECIAL,
-    		begin2,end2,0.8,image,blist,"North");
+    		begin2,end2,blist,0.8);
     public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CRATEDE,
-    		begin1,end2,0.85,hlist,blist,image,"North",678,2,lvo,viplist);
+    		begin1,end2,0.85,hlist,blist,678,2,lvo,viplist);
 }

@@ -1,6 +1,5 @@
 package datatool;
 
-import java.awt.Image;
 import java.util.ArrayList;
 import Enum.HotelStrategy;
 import Enum.VIPType;
@@ -21,14 +20,13 @@ public class HotelStrategyDataTool {
 		viplist.add(VIPType.ORDINARYVIP);
 		viplist.add(VIPType.ENTERPRISEVIP);
 	}
-    static Image image;
     public static MarketingStrategyVO V0=new  MarketingStrategyVO();
     public static HotelStrategyVO V1=new HotelStrategyVO("H00000001",HotelStrategy.BIRTHDAY,
-    		VIPType.ORDINARYVIP,begin1,end1,0.75,image,"North");
+    		VIPType.ORDINARYVIP,begin1,end1,0.75);
     public static HotelStrategyVO V2=new HotelStrategyVO("H00000031",HotelStrategy.COMPANY,
-    		begin2,end2,0.8,image,"North");
+    		begin2,end2,0.8);
     public static HotelStrategyVO V3=new HotelStrategyVO("H00000003",HotelStrategy.OVERTHREEROOMS,
-    		begin3,end3,0.85,image,"North",3);
+    		begin3,end3,0.85,3);
     public static HotelStrategyVO V4=new HotelStrategyVO("H00000093",HotelStrategy.SPECIALDAY,
-    		viplist,begin4,end4,0.85,image,"North",3,789);
+    		viplist,begin4,end4,0.85,3,789);
 }

@@ -102,11 +102,7 @@ public class ProcessMarketingView extends JPanel{
         JLabel defaultLabel=new JLabel();
         // 设置放置图片的JLabel的位置
         defaultLabel.setBounds(85,90,100,200);
-        Icon photo;
-        if(Mvo.getImage()!=null)//位置营销人员设置个人头像
-            photo=new ImageIcon(Mvo.getImage());
-        else  //网站营销人员未设置个人头像，则使用默认头像
-        	photo=new ImageIcon("./src/main/resource/picture/default.png");
+        Icon photo=new ImageIcon("./src/main/resource/picture/default.png");
         defaultLabel.setIcon(photo);
         this.add(defaultLabel);
 
