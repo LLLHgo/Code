@@ -68,7 +68,7 @@ public class MockClientManage {
 		Date day=new Date(1996,2,29);
 		File file=new File("c.txt");
 		ClientVO client=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
-				 VIPType.ORDINARYVIP,2,day,"",file);
+				 VIPType.ORDINARYVIP,2,"1996-02-29","",file,100);
 		public boolean checkAccount (ClientVO accountVO){
 
 			if(accountVO.client_id==ClientDataTool.clientVO1.client_id&&

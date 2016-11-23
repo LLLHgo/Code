@@ -10,16 +10,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import presentation.common.GuideBoardButton;
-import presentation.common.ModifyButton;
-import presentation.common.MyLabel;
-import presentation.common.MyTextField;
-import presentation.common.SearchBar;
-import presentation.common.SearchButton;
-import presentation.common.UserIconModifyButton;
-import vo.marketingVO.MarketingVO;
+import presentation.sitemanager.component.MyLabel;
 import vo.sitemanager.SitemanagerVO;
 
 public class ProcessSitemanagerView extends JPanel{
@@ -118,8 +111,22 @@ public class ProcessSitemanagerView extends JPanel{
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseExited(MouseEvent e) {}
 		});
+		
+
+		jbClientManage.addMouseListener(new  MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				controller.jbClientManageButtonClicked();
+			}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+		});
+		
 		this.setVisible(true);
 	}
+	
 	
 	// 大框架界面 ：包括左上logo，左边导航栏的矩形框架、右边主界面
 	public void paintComponent(Graphics g){

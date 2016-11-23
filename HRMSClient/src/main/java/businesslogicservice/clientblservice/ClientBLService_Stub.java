@@ -27,13 +27,15 @@ public class ClientBLService_Stub implements ClientBLService {
 //用户会员等级
 	 int vip_level;
 //用户生日
-	 Date client_birth;
+	 String client_birth;
 //用户所属企业
 	 String client_firm;
 //用户信用记录
 	File creditRecord;
+// 用户信用值
+	int credit;
 	public ClientBLService_Stub(String client_id,String password,String client_name,String client_tel,
-			VIPType vip_type,int vip_level,Date client_birth,String client_firm,File creditRecord){
+			VIPType vip_type,int vip_level,String client_birth,String client_firm,File creditRecord,int credit){
 		this.client_id=client_id;
 		this.password=password;
 		this.client_name=client_name;
@@ -44,13 +46,18 @@ public class ClientBLService_Stub implements ClientBLService {
 		this.client_firm=client_firm;
 		this.creditRecord=creditRecord;
 	}
+	public ClientBLService_Stub(){
+		
+	}
 	/**
 	 *通过客户ID得到客户个人信息
 	 * @param clientID
 	 * @return 客户的个人信息
 	 */
 	public ClientVO getclient (String clientID){
-		return new ClientVO();
+		creditRecord=null;
+		return new ClientVO("C00000001","justfun","ErgouWang","13747474741",
+				 VIPType.ORDINARYVIP,2,"1996-02-29","",creditRecord,100);
 	}
 
 	/**

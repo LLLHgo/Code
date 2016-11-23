@@ -3,10 +3,13 @@ package presentation.sitemanager.controller;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
+import businesslogicservice.clientblservice.ClientBLService;
+import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService_Stub;
+import presentation.sitemanager.view.ProcessClientAccountManageView;
 import presentation.sitemanager.view.ProcessMarketingAccountManageView;
 import presentation.sitemanager.view.ProcessSitemanagerView;
 import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
@@ -22,16 +25,21 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	
 	String sitemanagerId;
 	SitemanagerVO sitemanagerVO;
+	ClientVO clientVO;
 	private ProcessSitemanagerView processSitemanagerView;
 	private ProcessSitemanagerAccountManageView sitemanagerAccountManageView;
 	private ProcessMarketingAccountManageView marketingAccountManageView;
+	private ProcessClientAccountManageView clientAccountManageView;
+	
 	SitemanagerBLService sitemanagerblservice; // 以stub调用
 	MarketingBLService marketingblservice; // 以stub调用
+	ClientBLService clientblservice; // 以stub调用
 	
 	public ProcessSitemanagerViewController(String sitemanagerId){
 		this.sitemanagerId=sitemanagerId;
 		sitemanagerblservice=new SitemanagerBLService_Stub();
 		marketingblservice=new MarketingBLService_Stub();
+		clientblservice=new ClientBLService_Stub();
 		sitemanagerVO=init(sitemanagerId);
 	}
 	
@@ -46,6 +54,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		sitemanagerAccountManageView.setVisible(false);
 		marketingAccountManageView=new ProcessMarketingAccountManageView(this,processSitemanagerView);
 		marketingAccountManageView.setVisible(false);
+		clientAccountManageView=new ProcessClientAccountManageView(this,processSitemanagerView);
+		clientAccountManageView.setVisible(false);
 		
 	}
 	
@@ -62,8 +72,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		return marketingblservice.saveSitemanagerDelete(userId);
 	}
 
-	public ClientVO clientAccountFind(String findInfo) {
-		return null;
+	public ClientVO clientAccountFind(String id) {
+		return clientblservice.getclient(id);
 	}
 
 	
@@ -140,6 +150,13 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		
 		marketingAccountManageView.setVisible(true);
 		
+	}
+	
+	public void jbClientManageButtonClicked(){
+		processSitemanagerView.hideWelcome();
+		sitemanagerAccountManageView.setVisible(false);
+		marketingAccountManageView.setVisible(false);
+		clientAccountManageView.setVisible(true);
 	}
 
 }
