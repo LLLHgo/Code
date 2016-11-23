@@ -25,7 +25,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
        this.discount=discount;
 	}
     public MarketingBLService_Stub(){
-    	
+ 
     }
 
     /**
@@ -82,11 +82,11 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @param vo
      * @return 返回是否网站管理人员修改营销人员信息成功
      */
-	public ResultMessage MarketingAccountUpdate(MarketingVO vo) {
-		if(vo.getMarketingID()=="M0001")
-			return ResultMessage.FAIL;
+	public ResultMessage MarketingAccountUpdate(String userId) {
+		if(userId.charAt(0)=='M')
+			return ResultMessage.SUCCESS;
 	    else
-	    	return ResultMessage.SUCCESS;
+	    	return ResultMessage.FAIL;
 	}
 
     /**
@@ -95,10 +95,10 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @return 返回是否网站管理人员增加营销人员信息成功
      */
 	public ResultMessage MarketingAccountAdd(MarketingVO vo) {
-		if(vo.getMarketingID()=="M0000001")
-			return ResultMessage.SUCCESS;
+		if(vo.getName().equals("xiaohua"))
+			return ResultMessage.DUPLICATENAME;
 	    else
-	    	return ResultMessage.FAIL;
+	    	return ResultMessage.SUCCESS;
 	}
 
     /**
@@ -106,11 +106,11 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @param vo
      * @return 返回是否网站管理人员删除营销人员信息成功
      */
-	public boolean saveSitemanagerDelete(MarketingVO vo) {
-		if(vo.getMarketingID()=="M0000001")
-			return true;
+	public ResultMessage saveSitemanagerDelete(String id) {
+		if(id.charAt(0)=='M')
+			return ResultMessage.SUCCESS;
 	    else
-	    	return false;
+	    	return ResultMessage.FAIL;
 	}
 
     /**
@@ -159,7 +159,12 @@ public class MarketingBLService_Stub implements MarketingBLService {
 	}
 
 	@Override
-	public ResultMessage MarketingAccountDelete(MarketingVO marketing) {
+	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage MarketingAccountDelete(MarketingVO marketingVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

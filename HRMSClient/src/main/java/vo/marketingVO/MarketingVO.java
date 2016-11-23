@@ -20,11 +20,10 @@ public class MarketingVO {
      * @param marketingID
      * @param telephone
      */
-    public MarketingVO(String name,String marketingID,String telephone){
-    	this.setName(name);
-    	this.setMarketingID(marketingID);
-    	this.setTelephone(telephone);
-
+    public MarketingVO(String name,String password,String telephone){
+    	this.password=password;
+    	this.name=name;
+    	this.password=password;
     }
 
     public MarketingVO(String name,String password,String marketingID,String telephone){

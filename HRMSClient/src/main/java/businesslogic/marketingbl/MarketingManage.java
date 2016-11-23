@@ -1,5 +1,6 @@
 package businesslogic.marketingbl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Enum.ResultMessage;
@@ -55,6 +56,12 @@ public class MarketingManage implements MarketingBLService{
 
 	@Override
 	public MarketingVO MarketingAccountFind(String marketingID) {
+		return null;
+	}
+
+	@Override
+	public ResultMessage saveSitemanagerDelete(String userId) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

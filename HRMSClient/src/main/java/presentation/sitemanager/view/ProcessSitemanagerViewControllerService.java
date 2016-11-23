@@ -123,4 +123,6 @@ public interface ProcessSitemanagerViewControllerService {
 	
 	public void jbSitemanagerManageButtonClicked();
 	
+	public void jbMarketingManageButtonClicked();
+	
 }

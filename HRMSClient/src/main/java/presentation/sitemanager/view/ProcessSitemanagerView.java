@@ -45,11 +45,11 @@ public class ProcessSitemanagerView extends JPanel{
 	private JLabel welComeLabel;
 	Icon welcomeIcon;
 	// 右主区域界面2:个人账户管理
-	public SitemanagerAccountManageView sitemanagerAccountManageView;
+	public ProcessSitemanagerAccountManageView sitemanagerAccountManageView;
 	// 右主区域界面2:网站营销人员账户管理
-	public MarketingAccountManageView marketingAccountManageView;
+	public ProcessMarketingAccountManageView marketingAccountManageView;
 	
-	SitemanagerVO sitemanagerVO;
+	public SitemanagerVO sitemanagerVO;
 
 	public ProcessSitemanagerView(ProcessSitemanagerViewControllerService controller){
 		backgroundImage=new ImageIcon("src/main/resource/picture/sitemanager/accountManageBackground.png");
@@ -111,7 +111,7 @@ public class ProcessSitemanagerView extends JPanel{
 		
 		jbMarktingManage.addMouseListener(new MouseListener(){
 			public void mouseClicked(MouseEvent e) {
-	
+				controller.jbMarketingManageButtonClicked();
 			}
 			public void mousePressed(MouseEvent e) {}
 			public void mouseReleased(MouseEvent e) {}

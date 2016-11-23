@@ -7,9 +7,10 @@ import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService_Stub;
+import presentation.sitemanager.view.ProcessMarketingAccountManageView;
 import presentation.sitemanager.view.ProcessSitemanagerView;
 import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
-import presentation.sitemanager.view.SitemanagerAccountManageView;
+import presentation.sitemanager.view.ProcessSitemanagerAccountManageView;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
@@ -22,7 +23,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	String sitemanagerId;
 	SitemanagerVO sitemanagerVO;
 	private ProcessSitemanagerView processSitemanagerView;
-	private SitemanagerAccountManageView sitemanagerAccountManageView;
+	private ProcessSitemanagerAccountManageView sitemanagerAccountManageView;
+	private ProcessMarketingAccountManageView marketingAccountManageView;
 	SitemanagerBLService sitemanagerblservice; // 以stub调用
 	MarketingBLService marketingblservice; // 以stub调用
 	
@@ -30,6 +32,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		this.sitemanagerId=sitemanagerId;
 		sitemanagerblservice=new SitemanagerBLService_Stub();
 		marketingblservice=new MarketingBLService_Stub();
+		sitemanagerVO=init(sitemanagerId);
 	}
 	
 	
@@ -38,6 +41,12 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	}
 	public void setView(ProcessSitemanagerView view) {
 		this.processSitemanagerView=view;
+		
+		sitemanagerAccountManageView=new ProcessSitemanagerAccountManageView(this,processSitemanagerView,sitemanagerVO);
+		sitemanagerAccountManageView.setVisible(false);
+		marketingAccountManageView=new ProcessMarketingAccountManageView(this,processSitemanagerView);
+		marketingAccountManageView.setVisible(false);
+		
 	}
 	
 	public SitemanagerVO init(String id) {
@@ -50,7 +59,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	}
 
 	public ResultMessage accountDelete(String userId) {
-		return ResultMessage.SUCCESS;
+		return marketingblservice.saveSitemanagerDelete(userId);
 	}
 
 	public ClientVO clientAccountFind(String findInfo) {
@@ -58,8 +67,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	}
 
 	
-	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
-		return ResultMessage.SUCCESS;
+	public ResultMessage MarketingAccountAdd(MarketingVO marketingVO) {
+		return marketingblservice.MarketingAccountAdd(marketingVO);
 	}
 
 
@@ -118,7 +127,19 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	@Override
 	public void jbSitemanagerManageButtonClicked(){
 		processSitemanagerView.hideWelcome();
-		sitemanagerAccountManageView=new SitemanagerAccountManageView(this,processSitemanagerView,sitemanagerVO);
+		marketingAccountManageView.setVisible(false);
+		
+		sitemanagerAccountManageView.setVisible(true);
+	}
+
+
+	@Override
+	public void jbMarketingManageButtonClicked() {
+		processSitemanagerView.hideWelcome();
+		sitemanagerAccountManageView.setVisible(false);
+		
+		marketingAccountManageView.setVisible(true);
+		
 	}
 
 }

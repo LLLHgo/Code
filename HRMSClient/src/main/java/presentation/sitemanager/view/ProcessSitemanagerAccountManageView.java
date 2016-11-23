@@ -18,7 +18,7 @@ import presentation.common.MyLabel;
 import presentation.common.MyTextField;
 import vo.sitemanager.SitemanagerVO;
 
-public class SitemanagerAccountManageView extends JPanel{
+public class ProcessSitemanagerAccountManageView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ProcessSitemanagerViewControllerService controller;
 	private ProcessSitemanagerView view;
@@ -42,12 +42,11 @@ public class SitemanagerAccountManageView extends JPanel{
 	
 	ImageIcon img=new ImageIcon("src/main/resource/picture/sitemanager/sitemanagerAccountShow.png");
 	
-	public  SitemanagerAccountManageView(ProcessSitemanagerViewControllerService controller
+	public  ProcessSitemanagerAccountManageView(ProcessSitemanagerViewControllerService controller
 		,ProcessSitemanagerView processSitemanagerView,SitemanagerVO sitemanagerVO){
 		this.controller=controller;
 		this.view=processSitemanagerView;
 		
-		this.setBounds(0,0,702,502);
 		this.setLayout(null);
 		this.controller=controller;
 		// 账户信息显示区域
@@ -86,7 +85,7 @@ public class SitemanagerAccountManageView extends JPanel{
 		this.add(accountUserHeadLabel);
 		this.setVisible(true);
 		this.setBounds(276,82,702,502);
-		
+		this.repaint();
 		view.add(this);
 	}
 	public void paintComponent(Graphics g){
@@ -131,5 +130,9 @@ public class SitemanagerAccountManageView extends JPanel{
 		public void mouseReleased(MouseEvent e) {}
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
+	}
+	
+	public void hideSitemanagerAccountManageView(){
+		this.setVisible(false);
 	}
 }

@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,13 +19,14 @@ import presentation.common.ModifyButton;
 import presentation.common.MyLabel;
 import presentation.common.MyTextField;
 import presentation.common.SearchButton;
-import presentation.common.UserIconModifyButton;
 import vo.marketingVO.MarketingVO;
 
-public class MarketingAccountManageView extends JPanel{
+public class ProcessMarketingAccountManageView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ProcessSitemanagerViewControllerService controller;
+	private ProcessSitemanagerView view;
 	MarketingVO marketingVO;
+	ResultMessage result;
 
 	String id;
 	String name;
@@ -43,39 +43,43 @@ public class MarketingAccountManageView extends JPanel{
 	MyTextField marketingName;
 	MyTextField marketingTel;
 	MyTextField marketingPassword;
-
+	// 搜索框
 	SearchButton searchButton;
 	JTextField searchBarText;
-
+	// 工具栏区
 	ModifyButton modifyButton;
-	CheckButton checkButton;
 	DeleteButton deleteButton;
 	AddButton addButton;
+	
+	CheckButton checkModifyButton;
+	CheckButton checkAddButton;
 
-	//放网站管理人员头像的label
+	// 放网站管理人员头像的label
 	JLabel marktingIcon;
-	ImageIcon currentMarktingIcon;
-
-	// 上传头像按钮
-	MyLabel updateIconLabel;
-	UserIconModifyButton userIconModigyButton;
 	ImageIcon userIconDefault;
-	UserIconModifyButton userIconModifyButton;
 
 	// 状态栏
 	MyLabel conditionalText;
 
-	//修改后的新信息
+	// 修改后的新信息
 	String newName;
 	String newTel;
 	String newPassword;
 	MarketingVO newMarketingVO;
-	Icon newImg;
-	public MarketingAccountManageView(ProcessSitemanagerViewControllerService controller){
+	
+	// 新增加的账户的信息
+	String addName;
+	String addTel;
+	String addPassword;
+	MarketingVO addMarketingVO;
+
+	public ProcessMarketingAccountManageView(ProcessSitemanagerViewControllerService controller,ProcessSitemanagerView processSitemanagerView){
 		this.controller=controller;
+		this.view=processSitemanagerView;
+		this.setBounds(277,79,702,502);
 		this.setLayout(null);
 		background=new ImageIcon("src/main/resource/picture/sitemanager/marketingAccountManage.png");
-		userIconDefault=new ImageIcon("src/main/resource/picture/sitemanager/defaultUserAddIcon.png");
+		userIconDefault=new ImageIcon("src/main/resource/picture/sitemanager/defaulteUserIcon.png");
 		// 搜索按钮
 		searchButton=new SearchButton(530,20,40,40);
 		// 搜索区域
@@ -88,10 +92,13 @@ public class MarketingAccountManageView extends JPanel{
 		conditionalText=new MyLabel(80,450,500,40,"操作中...");
 		conditionalText.setForeground(Color.white);
 		// 右边工具栏
-		modifyButton=new ModifyButton(618,135,50,50);;
-		checkButton=new CheckButton(618,200,55,55);
-		deleteButton=new DeleteButton(610,275,65,65);
-		addButton=new AddButton(612,355,65,65);
+		modifyButton=new ModifyButton(618,180,50,50);;
+		deleteButton=new DeleteButton(610,240,65,65);
+		addButton=new AddButton(612,310,65,65);
+		// 确认修改信息按钮 
+		checkModifyButton=new CheckButton(400,340,55,55);
+		// 确认添加信息按钮 
+		checkAddButton=new CheckButton(400,340,55,55);
 		// 账户信息
 		idLabel=new MyLabel(300,160,60,40,"帐号：");
 		nameLabel=new MyLabel(300,200,60,40,"名字：");
@@ -99,26 +106,33 @@ public class MarketingAccountManageView extends JPanel{
 		passwordLabel=new MyLabel(300,280,60,40,"密码：");
 		marketingIdLabel=new MyLabel(350,160,200,40,"");
 		marketingName=new MyTextField(350,200,200,40,"");
+		marketingName.setEnabled(true);
 		marketingTel=new MyTextField(350,240,200,40,"");
+		marketingTel.setEnabled(true);
 		marketingPassword=new MyTextField(350,280,200,40,"");
+		marketingPassword.setEnabled(true);
 		// 网站营销人员头像区域
 		marktingIcon=new JLabel();
 		marktingIcon.setIcon(userIconDefault);
 		marktingIcon.setBounds(160,200,100,100);
-		// 显示－>上传头像的label
-		updateIconLabel=new MyLabel(160,320,100,20,"上传头像");
-		updateIconLabel.setForeground(Color.white);
-		userIconModifyButton=new UserIconModifyButton(220,280,100,100);
-
+		// 工具栏
 		modifyButton.setEnabled(false);
-		checkButton.setEnabled(false);
 		deleteButton.setEnabled(false);
-
+		// 给两个确认按钮加监听
+		checkModifyButton.setVisible(false);
+		checkModifyButton.addMouseListener(new MarketingModifyCheckListener());
+		
+		checkAddButton.setVisible(false);
+		checkAddButton.addMouseListener(new MarketingAddCheckListener());
+		
+		// 给工具栏按钮加监听
+		addButton.addMouseListener(new MarketingAddListener());
 		modifyButton.addMouseListener(new MarketingModifyListener());
-		checkButton.addMouseListener(new MarketingCheckListener());
+		deleteButton.addMouseListener(new MarketingDeleteListener());
 		// 右边工具栏
 		this.add(modifyButton);
-		this.add(checkButton);
+		this.add(checkModifyButton);
+		this.add(checkAddButton);
 		this.add(deleteButton);
 		this.add(addButton);
 		// 主面板详细信息
@@ -137,10 +151,18 @@ public class MarketingAccountManageView extends JPanel{
 		this.add(conditionalText);
 		// 网站营销人员头像
 		this.add(marktingIcon);
-		this.add(updateIconLabel);
-		this.add(userIconModifyButton);
+		this.setVisible(true);
+		this.repaint();
+		view.add(this);
 	}
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		background.setImage(background.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
+		background.paintIcon(this, g, 0, 0);
+	}
+	// 显示账户信息
 	void showSpecificAccountInfo(MarketingVO marketingVO){
+		deleteButton.setEnabled(true);
 		this.setLayout(null);
 		id=marketingVO.getMarketingID();
 		name=marketingVO.getName();
@@ -151,12 +173,13 @@ public class MarketingAccountManageView extends JPanel{
 		marketingTel.setText(tel);
 		marketingPassword.setText(password);
 
-		checkButton.setEnabled(true);
+		//checkButton.setEnabled(true);
 		modifyButton.setEnabled(true);
 		marketingName.setEditable(false);
 		marketingTel.setEditable(false);
 		marketingPassword.setEditable(false);
 	}
+	// 搜索按钮的监听
 	class SearchListener implements MouseListener{
 		public void mouseClicked(MouseEvent e) {
 			id=searchBarText.getText();
@@ -175,10 +198,12 @@ public class MarketingAccountManageView extends JPanel{
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
 	}
-
+	// 修改账户的监听
 	class MarketingModifyListener implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
+			checkModifyButton.setVisible(true);
+			checkAddButton.setVisible(false);
 			marketingName.setEditable(true);
 			marketingTel.setEditable(true);
 			marketingPassword.setEditable(true);
@@ -193,14 +218,14 @@ public class MarketingAccountManageView extends JPanel{
 		}
 
 	}
-	class MarketingCheckListener implements MouseListener{
+	// 确认修改按钮的监听
+	class MarketingModifyCheckListener implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
 			ResultMessage result;
 			newName=marketingName.getText();
 			newTel=marketingTel.getText();
 			newPassword=marketingPassword.getText();
-			newImg= marktingIcon.getIcon();
 			newMarketingVO=new MarketingVO(newName,newPassword,id,newTel);
 			result=controller.MarketingAccountUpdate(newMarketingVO);
 			if(result==ResultMessage.SUCCESS){
@@ -218,11 +243,78 @@ public class MarketingAccountManageView extends JPanel{
 		public void mouseExited(MouseEvent e) {
 		}
 	}
+	
+	// 确认添加按钮的监听
+	class MarketingAddCheckListener implements MouseListener{
 
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		background.setImage(background.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
-		background.paintIcon(this, g, 0, 0);
+
+		public void mouseClicked(MouseEvent e) {
+			addName=marketingName.getText();
+			addTel=marketingTel.getText();
+			addPassword=marketingPassword.getText();
+			addMarketingVO=new MarketingVO(addName,addPassword,addTel);
+			result=controller.MarketingAccountAdd(addMarketingVO);
+			
+			if(result==ResultMessage.SUCCESS){
+				conditionalText.setText("添加账户成功！");
+			}
+			else{
+				conditionalText.setText("添加账户失败! "+result);
+			}
+		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
+	}
+	// 添加账户按钮的监听
+	class MarketingAddListener implements MouseListener{
+
+		public void mouseClicked(MouseEvent e) {
+			deleteButton.setEnabled(false);
+			marketingIdLabel.setText("");
+			marketingName.setText("");
+			marketingName.setEditable(true);
+			marketingTel.setText("");
+			marketingTel.setEditable(true);
+			marketingPassword.setText("");
+			marketingPassword.setEditable(true);
+			checkAddButton.setVisible(true);
+			checkModifyButton.setVisible(false);
+			
+		}
+		public void mousePressed(MouseEvent e) {
+		
+		}
+		public void mouseReleased(MouseEvent e) {
+		}
+
+		public void mouseEntered(MouseEvent e) {		
+		}
+		public void mouseExited(MouseEvent e) {
+		}
+		
+	}
+	
+	// 删除账户按钮的监听
+	class MarketingDeleteListener implements MouseListener{
+		public void mouseClicked(MouseEvent e) {
+			result=controller.accountDelete(id);
+			if(result==ResultMessage.SUCCESS){
+				conditionalText.setText("删除成功");
+			}
+			else{
+				conditionalText.setText("删除失败！"+result);
+			}
+		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+
+		public void mouseExited(MouseEvent e) {}
+	}
+	public void hideMarketingAccoutManageView(){
+		this.setVisible(false);
 	}
 
 }

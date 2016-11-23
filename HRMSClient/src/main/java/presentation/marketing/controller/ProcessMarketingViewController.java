@@ -1,5 +1,6 @@
 package presentation.marketing.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -74,8 +75,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public ResultMessage MarketingAccountDelete(MarketingVO marketing) {
-		return this.MarketingBlService.MarketingAccountDelete(marketing);
+	public ResultMessage MarketingAccountDelete(MarketingVO marketingVO) {
+		return this.MarketingBlService.MarketingAccountDelete(marketingVO);
 	}
 
 	@Override
@@ -192,7 +193,6 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		this.LogBLService.addLog(log);
 
 	}
-
 
 
 }
