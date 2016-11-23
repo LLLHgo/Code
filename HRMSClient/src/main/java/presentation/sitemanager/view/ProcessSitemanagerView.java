@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import presentation.common.GuideBoardButton;
+import presentation.common.SitemanagerIconLabel;
 import presentation.sitemanager.component.MyLabel;
 import vo.sitemanager.SitemanagerVO;
 
@@ -22,7 +23,7 @@ public class ProcessSitemanagerView extends JPanel{
 	private ProcessSitemanagerViewControllerService controller;
 	// 左上区域 网站管理人员账户信息
 	private MyLabel currentUserIdLabel;
-	private JLabel currentUserIconLabel;
+	private SitemanagerIconLabel sitemanagerIconLabel;
 	private ImageIcon backgroundImage;
 	private ImageIcon defaultUserIcon;
 	SitemanagerVO currentSitemanagerUserVO;
@@ -59,10 +60,8 @@ public class ProcessSitemanagerView extends JPanel{
 		
 		currentUserIdLabel=new MyLabel(60,190,200,40,"ID: "+currentUserId);
 		currentUserIdLabel.setForeground(Color.white);
-		currentUserIconLabel=new JLabel();
 		
-		currentUserIconLabel.setIcon(defaultUserIcon);
-		currentUserIconLabel.setBounds(90, 90, 95, 95);
+		sitemanagerIconLabel=new SitemanagerIconLabel(90, 90);
 		
 		// 得到导航栏的按钮
 		jbClientManage=new GuideBoardButton(241,"用户账户管理");
@@ -80,7 +79,7 @@ public class ProcessSitemanagerView extends JPanel{
 		welComeLabel.setIcon(welcomeIcon);
 		
 		this.add(currentUserIdLabel);
-		this.add(currentUserIconLabel);
+		this.add(sitemanagerIconLabel);
 		this.add(jbClientManage);
 		this.add(jbHotelManage);
 		this.add(jbMarktingManage);

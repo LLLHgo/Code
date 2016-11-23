@@ -10,8 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import Enum.ResultMessage;
+import presentation.common.MarketingIconLabel;
 import presentation.sitemanager.component.AddButton;
 import presentation.sitemanager.component.CheckButton;
 import presentation.sitemanager.component.DeleteButton;
@@ -54,15 +56,13 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	CheckButton checkModifyButton;
 	CheckButton checkAddButton;
 
-	// 放网站管理人员头像的label
-	JLabel marktingIcon;
-	ImageIcon userIconDefault;
+	// 放网站营销人员头像的label
+	MarketingIconLabel marketingIconLabel;
 
 	// 状态栏
 	MyLabel conditionalText;
 
 	// 修改后的新信息
-	String newName;
 	String newTel;
 	String newPassword;
 	MarketingVO newMarketingVO;
@@ -79,7 +79,6 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		this.setBounds(277,79,702,502);
 		this.setLayout(null);
 		background=new ImageIcon("src/main/resource/picture/sitemanager/marketingAccountManage.png");
-		userIconDefault=new ImageIcon("src/main/resource/picture/sitemanager/defaulteUserIcon.png");
 		// 搜索按钮
 		searchButton=new SearchButton(530,20,40,40);
 		// 搜索区域
@@ -87,6 +86,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		searchBarText.setBounds(210,17,275,40);
 		searchBarText.setFont(new java.awt.Font("微软雅黑",  1,  20));
 		searchBarText.setOpaque(false);
+		searchBarText.setBorder(new EmptyBorder(0,0,0,0));
 		searchButton.addMouseListener(new SearchListener());
 		// 状态栏
 		conditionalText=new MyLabel(80,450,500,40,"操作中...");
@@ -112,9 +112,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		marketingPassword=new MyTextField(350,280,200,40,"");
 		marketingPassword.setEnabled(true);
 		// 网站营销人员头像区域
-		marktingIcon=new JLabel();
-		marktingIcon.setIcon(userIconDefault);
-		marktingIcon.setBounds(160,200,100,100);
+		marketingIconLabel=new MarketingIconLabel(160,200);
 		// 工具栏
 		modifyButton.setEnabled(false);
 		deleteButton.setEnabled(false);
@@ -150,7 +148,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		this.add(searchBarText);
 		this.add(conditionalText);
 		// 网站营销人员头像
-		this.add(marktingIcon);
+		this.add(marketingIconLabel);
 		this.setVisible(true);
 		this.repaint();
 		view.add(this);
@@ -175,7 +173,6 @@ public class ProcessMarketingAccountManageView extends JPanel{
 
 		//checkButton.setEnabled(true);
 		modifyButton.setEnabled(true);
-		marketingName.setEditable(false);
 		marketingTel.setEditable(false);
 		marketingPassword.setEditable(false);
 	}
@@ -204,7 +201,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			checkModifyButton.setVisible(true);
 			checkAddButton.setVisible(false);
-			marketingName.setEditable(true);
+			marketingName.setEditable(false);
 			marketingTel.setEditable(true);
 			marketingPassword.setEditable(true);
 		}
@@ -223,10 +220,9 @@ public class ProcessMarketingAccountManageView extends JPanel{
 
 		public void mouseClicked(MouseEvent e) {
 			ResultMessage result;
-			newName=marketingName.getText();
 			newTel=marketingTel.getText();
 			newPassword=marketingPassword.getText();
-			newMarketingVO=new MarketingVO(newName,newPassword,id,newTel);
+			newMarketingVO=new MarketingVO(name,newPassword,id,newTel);
 			result=controller.MarketingAccountUpdate(newMarketingVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("修改成功！");
@@ -272,9 +268,9 @@ public class ProcessMarketingAccountManageView extends JPanel{
 
 		public void mouseClicked(MouseEvent e) {
 			deleteButton.setEnabled(false);
+			marketingName.setEditable(true);
 			marketingIdLabel.setText("");
 			marketingName.setText("");
-			marketingName.setEditable(true);
 			marketingTel.setText("");
 			marketingTel.setEditable(true);
 			marketingPassword.setText("");

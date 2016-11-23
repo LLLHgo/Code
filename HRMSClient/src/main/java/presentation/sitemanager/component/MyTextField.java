@@ -3,6 +3,7 @@ package presentation.sitemanager.component;
 import java.awt.Color;
 
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class MyTextField extends JTextField{
 	
@@ -24,9 +25,11 @@ public class MyTextField extends JTextField{
 	void setOthers(){
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setFont(new java.awt.Font("华文黑体",  1,  20));
-		this.setForeground(Color.black);
+		this.setForeground(Color.white);
 		this.setText(info);
 		this.setBackground(null);
+		this.setBorder(new EmptyBorder(0,0,0,0));
+		this.setOpaque(false);
 		this.setEditable(false);
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Enum.ResultMessage;
+import presentation.common.SitemanagerIconLabel;
 import presentation.sitemanager.component.AddButton;
 import presentation.sitemanager.component.CheckButton;
 import presentation.sitemanager.component.ModifyButton;
@@ -37,8 +38,7 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 	MyLabel conditionalLabel;
 
 	// 主菜单界面的账户头像
-	JLabel accountUserHeadLabel;
-	ImageIcon defaultUserIcon;
+	SitemanagerIconLabel sitemanagerIconLabel;
 	
 	ImageIcon img=new ImageIcon("src/main/resource/picture/sitemanager/sitemanagerAccountShow.png");
 	
@@ -65,10 +65,7 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 		conditionalLabel=new MyLabel(80,450,350,40,"操作中...");
 		conditionalLabel.setForeground(Color.white);
 		// 设置右边主菜单的账户头像
-		defaultUserIcon=new ImageIcon("src/main/resource/picture/sitemanager/defaulteUserIcon.png");
-		accountUserHeadLabel=new JLabel();
-		accountUserHeadLabel.setBounds(160,200,100,100);
-		accountUserHeadLabel.setIcon(defaultUserIcon);
+		sitemanagerIconLabel=new SitemanagerIconLabel(160,200);
 		// 给修改、确认按钮加监听
 		modifyButton.addMouseListener(new ModifyListener());
 		checkButton.addMouseListener(new CheckListener());
@@ -82,7 +79,7 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 		this.add(modifyButton);
 		this.add(checkButton);
 		this.add(conditionalLabel);
-		this.add(accountUserHeadLabel);
+		this.add(sitemanagerIconLabel);
 		this.setVisible(true);
 		this.setBounds(276,82,702,502);
 		this.repaint();
