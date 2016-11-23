@@ -1,9 +1,11 @@
 package presentation.hotelstaff;
 
 import java.awt.Dimension;
+import java.awt.Label;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;

@@ -1,4 +1,4 @@
-package presentation.hotelstaff.view.component;
+package presentation.hotelstaff.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
