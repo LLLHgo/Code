@@ -1,16 +1,16 @@
-package presentation.common;
+package presentation.sitemanager.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class CheckButton extends JButton{
+public class AddButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
 	int w;
 	int h;
 	ImageIcon img;
-	public CheckButton(int x,int y,int w,int h){
+	public AddButton(int x,int y,int w,int h){
 		super();
 		this.x=x;
 		this.y=y;
@@ -19,7 +19,7 @@ public class CheckButton extends JButton{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/checkIcon.png");
+		img=new ImageIcon("src/main/resource/picture/sitemanager/addIcon.png");
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setContentAreaFilled(false);

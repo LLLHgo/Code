@@ -1,4 +1,4 @@
-package presentation.common;
+package presentation.sitemanager.component;
 
 
 import javax.swing.ImageIcon;

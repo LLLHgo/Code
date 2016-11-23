@@ -97,7 +97,7 @@ public class HotelinfoViewControllerTest {
 		File file=new File("credit");
 		Date day3=new Date(1992,5,29);
 		clientVO1=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
-				 VIPType.ORDINARYVIP,2,day1,"",file);
+				 VIPType.ORDINARYVIP,2,"19960-02-29","",file,100);
 
 		ArrayList<String> strategy;
 		String strategy1="M2016091501";

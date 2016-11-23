@@ -12,13 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Enum.ResultMessage;
-import presentation.common.AddButton;
-import presentation.common.CheckButton;
-import presentation.common.DeleteButton;
-import presentation.common.ModifyButton;
-import presentation.common.MyLabel;
-import presentation.common.MyTextField;
-import presentation.common.SearchButton;
+import presentation.sitemanager.component.AddButton;
+import presentation.sitemanager.component.CheckButton;
+import presentation.sitemanager.component.DeleteButton;
+import presentation.sitemanager.component.ModifyButton;
+import presentation.sitemanager.component.MyLabel;
+import presentation.sitemanager.component.MyTextField;
+import presentation.sitemanager.component.SearchButton;
 import vo.marketingVO.MarketingVO;
 
 public class ProcessMarketingAccountManageView extends JPanel{

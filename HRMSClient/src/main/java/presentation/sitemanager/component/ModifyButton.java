@@ -1,16 +1,16 @@
-package presentation.common;
+package presentation.sitemanager.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class UserIconModifyButton extends JButton{
+public class ModifyButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
 	int w;
 	int h;
 	ImageIcon img;
-	public UserIconModifyButton(int x,int y,int w,int h){
+	public ModifyButton(int x,int y,int w,int h){
 		super();
 		this.x=x;
 		this.y=y;
@@ -19,7 +19,7 @@ public class UserIconModifyButton extends JButton{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/userUpdateIcon.png");
+		img=new ImageIcon("src/main/resource/picture/sitemanager/modifyIcon.png");
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setContentAreaFilled(false);

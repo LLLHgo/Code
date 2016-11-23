@@ -20,16 +20,26 @@ public class ClientVO {
 		//用户会员等级
 			public int vip_level;
 		//用户生日
-			public Date client_birth;
+			public String client_birth;
 		//用户所属企业
 			public String client_firm;
 		//用户信用记录
 			public File creditRecord;
+		//用户信用值
+			public int credit;
+			public int getCredit() {
+				return credit;
+			}
+
+			public void setCredit(int credit) {
+				this.credit = credit;
+			}
+
 			public ClientVO(){
 			}
 
 				public ClientVO(String client_id,String password,String client_name,String client_tel,
-				 VIPType vip_type,int vip_level,Date client_birth,String client_firm,File creditRecord){
+				 VIPType vip_type,int vip_level,String client_birth,String client_firm,File creditRecord,int credit){
 				this.client_id=client_id;
 				this.password=password;
 				this.client_name=client_name;
@@ -39,6 +49,7 @@ public class ClientVO {
 				this.vip_level=vip_level;
 				this.client_firm=client_firm;
 				this.creditRecord=creditRecord;
+				this.credit=credit;
 			}
 				/*public ClientVO(Client c){
 					this.client_id=c.client_id;
@@ -66,7 +77,7 @@ public class ClientVO {
 				public VIPType getType(){
 					return vip_type;
 				}
-				public Date getBirth(){
+				public String getBirth(){
 					return client_birth;
 				}
 				public int getLevel(){
@@ -94,7 +105,7 @@ public class ClientVO {
 				public void setType(VIPType vip_type){
 					this.vip_type=vip_type;
 				}
-				public void setBirth(Date birth){
+				public void setBirth(String birth){
 					this.client_birth=birth;
 				}
 				public void setLevel(int level){
