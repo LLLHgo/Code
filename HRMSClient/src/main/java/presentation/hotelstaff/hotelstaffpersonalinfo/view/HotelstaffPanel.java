@@ -14,10 +14,10 @@ import Enum.Star;
 import presentation.common.ModifyButton;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
-import presentation.hotelstaff.component.ReviewImageButton;
 import presentation.hotelstaff.component.ReviewTextArea;
-import presentation.hotelstaff.component.UserImageLabel;
 import presentation.hotelstaff.hotelstaffpersonalinfo.controller.HotelstaffPanelController;
+import presentation.hotelstaff.view.component.ReviewImageButton;
+import presentation.hotelstaff.view.component.UserImageLabel;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class HotelstaffPanel extends JPanel{

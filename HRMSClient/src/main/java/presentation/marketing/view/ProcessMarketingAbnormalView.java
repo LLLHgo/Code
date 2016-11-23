@@ -222,7 +222,7 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	}
 
    public void showAbnormalOrders(ArrayList<OrderVO> orders){
-	//orders=OrderDataTool.list1;
+	 orders=OrderDataTool.list1;
 	//设置放置Order信息的JPanel
     showAbnormalOrderPanel=new JPanel();
     showAbnormalOrderPanel.setLayout(null);

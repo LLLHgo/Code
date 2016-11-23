@@ -95,33 +95,11 @@ public interface HotelinfoViewControllerService {
 	 */
 	public ResultMessage updateroominfo(RoominfoVO vo,String hotelID);
 	/**
-	 * 获得酒店所有订单列表
-	 * @param hotelID,OrderType
+	 * 获得酒店订单列表
+	 * @param hotelID
 	 * @return 酒店订单列表
 	 */
-	public List<OrderVO> getALLHotelOrderList(String hotelID,OrderType ALL);
-	
-	/**
-	 * 获得酒店已入住订单列表
-	 * @param hotelID,OrderType
-	 * @return 酒店订单列表
-	 */
-	public List<OrderVO> getUnexecutedHotelOrderList(String hotelID,OrderType NORMALEXEC);
-	
-	/**
-	 * 获得酒店未入住订单列表
-	 * @param hotelID,OrderType
-	 * @return 酒店订单列表
-	 */
-	public List<OrderVO> getExecutedHotelOrderList(String hotelID,OrderType NORMALNONEXEC);
-	
-	/**
-	 * 获得酒店异常订单列表
-	 * @param hotelID,OrderType
-	 * @return 酒店订单列表
-	 */
-	public List<OrderVO> getAbnormalHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
-	
+	public List<OrderVO> gethotelOrderList(String hotelID);
 	/**
 	 * 将订单状态持久化保存
 	 * @param OrderVO
