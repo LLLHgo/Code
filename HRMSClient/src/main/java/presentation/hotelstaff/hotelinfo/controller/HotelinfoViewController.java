@@ -118,14 +118,34 @@ public class HotelinfoViewController implements HotelinfoViewControllerService{
 		return ResultMessage.FAIL;
 	}
 
-	@Override
-	public List<OrderVO> gethotelOrderList(String hotelID) {
-		return order.findUserOrderList(hotelID);
-	}
 
 	@Override
 	public ResultMessage updateOrderState(OrderVO vo) {
 		return order.saveOrder(vo);
+	}
+
+	@Override
+	public List<OrderVO> getALLHotelOrderList(String hotelID, OrderType ALL) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderVO> getUnexecutedHotelOrderList(String hotelID, OrderType NORMALEXEC) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderVO> getExecutedHotelOrderList(String hotelID, OrderType NORMALNONEXEC) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

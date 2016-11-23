@@ -1,5 +1,7 @@
 package presentation.hotelstaff.component;
 
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -12,6 +14,8 @@ public class LeftButton extends JButton{
 	private ImageIcon icon;
 	
 	public LeftButton(int x,int y){
+		
+		
 		super();
 		this.x = x;
 		this.y = y;
@@ -20,6 +24,6 @@ public class LeftButton extends JButton{
 		this.setIcon(this.icon);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
-		this.setVisible(true);
+		this.setVisible(true);		
 	}
 }
