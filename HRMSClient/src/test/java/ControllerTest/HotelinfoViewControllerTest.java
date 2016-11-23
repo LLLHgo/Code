@@ -133,10 +133,6 @@ public class HotelinfoViewControllerTest {
 		assertEquals(ResultMessage.SUCCESS,controller.updateOrderState(orderVO1));
 	}
 
-	@Test
-	public void testgethotelOrderList(){
-		assertEquals("H00000001",controller.gethotelOrderList("H00000001").get(0).getHotelId());
-	}
 
 	@Test
 	public void testgethotelStrategy(){
