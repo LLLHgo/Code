@@ -19,6 +19,7 @@ import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.hotelstaffpersonalinfo.controller.HotelstaffPanelController;
 import presentation.hotelstaff.hotelstaffpersonalinfo.view.HotelstaffPanel;
+import presentation.hotelstaff.roominfo.view.NewRoominfoPanel;
 import presentation.hotelstaff.roominfo.view.RoominfoPanel;
 import presentation.login.view.ProcessLoginView;
 
@@ -108,7 +109,8 @@ public class HotelstaffView extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			frame.getContentPane().removeAll();
-			frame.getContentPane().add(new RoominfoPanel(new HotelinfoViewController(),hotelID));
+//			frame.getContentPane().add(new RoominfoPanel(new HotelinfoViewController(),hotelID));
+			frame.getContentPane().add(new NewRoominfoPanel(new HotelinfoViewController(),hotelID));
 			frame.getContentPane().add(new HotelstaffView(frame,hotelID));
 			frame.getContentPane().revalidate();
 			frame.getContentPane().repaint();

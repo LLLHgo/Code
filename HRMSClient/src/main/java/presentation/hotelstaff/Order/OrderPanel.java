@@ -27,6 +27,7 @@ import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import vo.orderVO.OrderVO;
 
 import Enum.OrderType;
+import Enum.VIPType;
 import datatool.OrderDataTool;
 
 public class OrderPanel extends JPanel{
@@ -106,7 +107,21 @@ public class OrderPanel extends JPanel{
 		jbDrag.setBorder(null);
 		jbDrag.addActionListener(new DragButtonActionListener());
 		this.add(jbDrag);
-	
+		
+
+		OrderVO orderVO4=new OrderVO("20161016092301","C00000010","Lily","17887780990"
+				,VIPType.ORDINARYVIP,"2016-10-16 09:23",OrderType.NORMALNONEXEC,"LLLHH","H00000002",998,null);
+
+		OrderVO orderVO5=new OrderVO("20161017092401","C00000011","Tinny","17887780991"
+				,VIPType.ORDINARYVIP,"2016-10-17 09:24",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
+
+		OrderVO orderVO6=new OrderVO("20161017092501","C00000012","belikout","17887780992"
+				,VIPType.ORDINARYVIP,"2016-10-17 09:25",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
+
+		OrderVO orderVO7=new OrderVO("20161017092601","C00000013","sweetstreet","17887780993"
+				,VIPType.ORDINARYVIP,"2016-10-17 09:26",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
+		OrderDataTool.list1.add(orderVO4);
+		OrderDataTool.list1.add(orderVO5);
 		showOrderList(OrderDataTool.list1);
 	}
 	
@@ -119,6 +134,7 @@ public class OrderPanel extends JPanel{
 				jbExecuted.setVisible(true);
 				jbAbnormal.setVisible(true);
 				jlDetailedSearch.setVisible(true);
+				scrollPane.setVisible(false);
 				buttonFlag  = false;
 			}else{
 				jbAll.setVisible(false);
@@ -126,6 +142,7 @@ public class OrderPanel extends JPanel{
 				jbExecuted.setVisible(false);
 				jbAbnormal.setVisible(false);
 				jlDetailedSearch.setVisible(false);
+				scrollPane.setVisible(true);
 				buttonFlag = true;
 			}
 		}
@@ -163,7 +180,7 @@ public class OrderPanel extends JPanel{
 
 	    //设置放置showAbnormalOrderPanel的JScrollPanel
 	    scrollPane = new JScrollPane(orderPanel);
-	    scrollPane.setBounds(320, 150, 699, 365);
+	    scrollPane.setBounds(320, 130, 680, 360);
 	    scrollPane.setBorder(new EmptyBorder(0,0,0,0));
 	    scrollPane.setOpaque(false);
 	    scrollPane.getViewport().setOpaque(false);
@@ -176,10 +193,10 @@ public class OrderPanel extends JPanel{
 	        JPanel panel=new JPanel(){
 				private static final long serialVersionUID = 1L;
 				protected  void paintComponent(Graphics g) {
-	            	g.drawImage(image,0,0,getSize().width,getSize().height,this);
+	            	g.drawImage(image,0,0,630,105,this);
 	            }
 			};
-	        panel.setBounds(10, 10+115*num,630, 115);
+	        panel.setBounds(10, 10+120*num,630, 120);
 	        panel.setLayout(null);
 	        num++;
 	        //制作order需要的组件
@@ -187,24 +204,25 @@ public class OrderPanel extends JPanel{
 	        JLabel nameLabel=new JLabel(order.getClientName());
 	        JLabel priceLabel=new JLabel(String.valueOf(order.getPrice()));
 	        JLabel entertimeLabel = new JLabel(order.getOrderDate());
+//	        JLabel leavetimeLabel;
 	        JLabel phoneLabel = new JLabel(order.getClientPhone());
 	        OrderType[] orderType = {OrderType.NORMALNONEXEC,OrderType.NORMALEXEC,
-	        		OrderType.ABNORMALCANCEL};
+	        		OrderType.ABNORMAL,OrderType.CANCEL};
 	        String stateLabelText = "";
-	    	String [] sOrderType = {"未执行","已执行","异常订单"};
+	    	String [] sOrderType = {"未执行","已执行","异常","已取消"};
 	    	for(int i=0;i<3;i++){
-	    		if(order.getOrderStatus()==orderType[i]){
+	    		if(order.getOrderType()==orderType[i]){
 	    			stateLabelText = sOrderType[i];
 	    		}
 	    	}
 	        JLabel stateLabel = new JLabel(stateLabelText);
-	        	        
+	        
 	        orderIDLabel.setBounds(108, 18, 174, 15);
 	        nameLabel.setBounds(498,16,100,15);
 	        priceLabel.setBounds(370,53,80,15);
 	        entertimeLabel.setBounds(180,53,294,15);
 	        phoneLabel.setBounds(440,53,150,15);
-	        stateLabel.setBounds(17,266,70,15);
+	        stateLabel.setBounds(440,80,70,15);
 
 	        JLabel[] labelList = {orderIDLabel,nameLabel,priceLabel,entertimeLabel,
 	        		phoneLabel,stateLabel};

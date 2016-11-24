@@ -109,16 +109,6 @@ public class RoominfoPanel extends JPanel{
 		jbModify3.addActionListener(new ModifyButtonActionListener());
 		this.add(jbModify3);
 		
-//		jbConfirm = new ConfirmButton(695,485);
-//		jbConfirm.addActionListener(new ConfirmButtonActionListener());
-//		jbConfirm.setVisible(false);
-//		this.add(jbConfirm);
-//		
-//		jbCancle = new CancleButton(495,488);
-//		jbCancle.addActionListener(new CancleButtonActionListener());
-//		jbCancle.setVisible(false);
-//		this.add(jbCancle);
-		
 		jbAdd = new AddButton(590,488);
 		jbAdd.addActionListener(new AddButtonActionListener());
 		jbAdd.setVisible(true);
