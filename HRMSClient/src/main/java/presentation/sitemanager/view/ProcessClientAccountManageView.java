@@ -7,11 +7,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Enum.ResultMessage;
 import Enum.VIPType;
 import presentation.common.ClientIconLabel;
 import presentation.sitemanager.component.CheckButton;
@@ -28,6 +28,7 @@ public class ProcessClientAccountManageView extends JPanel{
 	private ProcessSitemanagerViewControllerService controller;
 	private ProcessSitemanagerView view;
 	ClientVO clientVO;
+	ResultMessage result;
 	String id;
 	String name;
 	String tel;
@@ -145,6 +146,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		view.add(this);
 	}
 	void showSpecificAccountInfo(ClientVO clientVO){
+		id=clientVO.getID();
 		clientIdLabel.setText(clientVO.getID());
 		nameText.setText(clientVO.getName());
 		telText.setText(clientVO.getTel());
@@ -153,7 +155,9 @@ public class ProcessClientAccountManageView extends JPanel{
 		firmLabel.setText(clientVO.getFirm());
 		birthLabel.setText(clientVO.getBirth());
 		creditLabel.setText(clientVO.getCredit()+"");
-		passwordText.setText(clientVO.getPassword());	
+		passwordText.setText(clientVO.getPassword());
+		deleteButton.setEnabled(true);
+		modifyButton.setEnabled(true);
 	}
 	
 	class SearchListener implements MouseListener{
@@ -201,8 +205,18 @@ public class ProcessClientAccountManageView extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+			result=controller.accountDelete(id);
+			modifyButton.setEnabled(false);
+			if(result==ResultMessage.SUCCESS){
+				conditionLabel.setText("删除成功！");
+				deleteButton.setEnabled(false);
+				checkButton.setEnabled(false);
+				modifyButton.setEnabled(false);
+				passwordText.setEditable(false);
+			}
+			else if(result==ResultMessage.FAIL){
+				conditionLabel.setText("删除失败！");
+			}
 		}
 
 		@Override
@@ -232,11 +246,25 @@ public class ProcessClientAccountManageView extends JPanel{
 	}
 
 	class CheckButtonListener implements MouseListener{
-
+		String newPassword;
+        ClientVO newClientVO;
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+			newPassword=passwordText.getText();
+			newClientVO=new ClientVO(clientVO.getID(),newPassword,clientVO.getName(),clientVO.getTel()
+					,clientVO.getType(),clientVO.getLevel(),clientVO.getBirth(),clientVO.getFirm(),
+					clientVO.getCreditRecord(),clientVO.getCredit());
+			result=controller.clientAccountUpdate(newClientVO);
+			if(result==ResultMessage.SUCCESS){
+				conditionLabel.setText("保存成功！");
+			}
+			else if(result==ResultMessage.DATEBASEFAIL){
+				conditionLabel.setText("数据库存储失败！");
+			}
+			else if(result==ResultMessage.SAMEPASSWORD){
+				conditionLabel.setText("密码未做更改，不进行更新！");
+			}
 		}
 
 		@Override
@@ -270,13 +298,14 @@ public class ProcessClientAccountManageView extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+			checkButton.setEnabled(true);
+			passwordText.setEditable(true);
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+		
 		}
 
 		@Override

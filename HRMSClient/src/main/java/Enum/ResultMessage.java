@@ -5,5 +5,6 @@ public enum ResultMessage {
     FAIL,
     DUPLICATENAME,
     DUPLICATETEL,
-	DATEBASEFAIL
+	DATEBASEFAIL,
+	SAMEPASSWORD
 }

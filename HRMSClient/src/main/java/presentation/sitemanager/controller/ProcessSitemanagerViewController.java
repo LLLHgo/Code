@@ -65,11 +65,16 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	}
 
 	public ResultMessage clientAccountUpdate(ClientVO clientVO) {
-		return ResultMessage.SUCCESS;
+		return clientblservice.updateInfo(clientVO);
 	}
 
 	public ResultMessage accountDelete(String userId) {
-		return marketingblservice.saveSitemanagerDelete(userId);
+		if(userId.charAt(0)=='M'){
+			return marketingblservice.saveSitemanagerDelete(userId);}
+		else if(userId.charAt(0)=='C'){
+			return clientblservice.saveSitemanagerDelete(userId);
+		}
+		return ResultMessage.FAIL;
 	}
 
 	public ClientVO clientAccountFind(String id) {
@@ -158,5 +163,12 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		marketingAccountManageView.setVisible(false);
 		clientAccountManageView.setVisible(true);
 	}
+
+
+	public void jbExitButtonClicked() {
+		System.exit(0);
+	}
+	
+	
 
 }

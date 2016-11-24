@@ -7,8 +7,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import Enum.ResultMessage;
 import presentation.common.SitemanagerIconLabel;
@@ -96,6 +96,8 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			telField.setEditable(true);
 			passWordField.setEditable(true);
+			telField.setBorder(new EmptyBorder(1,1,1,1));
+			passWordField.setBorder(new EmptyBorder(1,1,1,1));
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}		

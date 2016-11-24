@@ -25,7 +25,6 @@ public class ProcessSitemanagerView extends JPanel{
 	private MyLabel currentUserIdLabel;
 	private SitemanagerIconLabel sitemanagerIconLabel;
 	private ImageIcon backgroundImage;
-	private ImageIcon defaultUserIcon;
 	SitemanagerVO currentSitemanagerUserVO;
 	String currentUserId;
 	// 左下区域 导航栏
@@ -47,7 +46,6 @@ public class ProcessSitemanagerView extends JPanel{
 
 	public ProcessSitemanagerView(ProcessSitemanagerViewControllerService controller){
 		backgroundImage=new ImageIcon("src/main/resource/picture/sitemanager/accountManageBackground.png");
-		defaultUserIcon=new ImageIcon("src/main/resource/picture/sitemanager/defaulteUserIcon.png");
 		this.controller=controller;
 		this.setLayout(null);
 		this.setLocation(0, 0);
@@ -123,8 +121,21 @@ public class ProcessSitemanagerView extends JPanel{
 			public void mouseExited(MouseEvent e) {}
 		});
 		
+		jbExit.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				controller.jbExitButtonClicked();
+			}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+			
+		});
+		
 		this.setVisible(true);
 	}
+	
 	
 	
 	// 大框架界面 ：包括左上logo，左边导航栏的矩形框架、右边主界面
