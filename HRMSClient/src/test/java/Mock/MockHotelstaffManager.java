@@ -41,7 +41,7 @@ public class MockHotelstaffManager implements HotelstaffBLService{
 
 	@Override
 	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
-		return new HotelstaffBasicinfoVO("000000");
+		return new HotelstaffBasicinfoVO("111111");
 	}
 
 

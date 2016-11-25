@@ -1,4 +1,4 @@
-package presentation.hotelstaff.roominfo.view;
+package presentation.hotelstaff.roominfo;
 
 import java.awt.Color;
 import java.awt.Dimension;

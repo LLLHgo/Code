@@ -1,4 +1,4 @@
-package presentation.hotelstaff.roominfo.view;
+package presentation.hotelstaff.roominfo;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,7 +19,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.sun.glass.events.KeyEvent;
+
 import Enum.OrderType;
+import Enum.RoomState;
 import presentation.common.ModifyButton;
 import presentation.hotelstaff.component.AddButton;
 import presentation.hotelstaff.component.CancleButton;
@@ -153,6 +156,11 @@ public class NewRoominfoPanel extends JPanel{
 	        	textfieldList[i].setEditable(false);
 	        }
 	        
+	        if(room.getRoomState()==RoomState.Usable){
+	        	usableButton.setSelected(true);
+	        }else{
+	        	usableButton.setSelected(false);
+	        }
 	        panel.add(usableButton);
 	        panel.add(unusableButton);
 	        

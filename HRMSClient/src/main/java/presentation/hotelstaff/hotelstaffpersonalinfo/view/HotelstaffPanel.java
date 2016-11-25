@@ -7,9 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
+import Enum.ResultMessage;
 import Enum.Star;
 import presentation.common.ModifyButton;
 import presentation.hotelstaff.component.CancleButton;
@@ -25,13 +28,14 @@ public class HotelstaffPanel extends JPanel{
 	private HotelstaffPanelController controller;
 	private String hotelID;
 	private ImageIcon ipassword;
-	private JPasswordField jpfPassword;
+	private JTextField jtfPassword;
 	private UserImageLabel jlUserImage;
 	private ReviewImageButton jbReviewImage;
 	private ModifyButton jbModify;
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;
 	private String password;
+	private JLabel resultLabel;
 	
 	public HotelstaffPanel(HotelstaffPanelController controller,String hotelID){
 		this.controller = controller;
@@ -40,48 +44,56 @@ public class HotelstaffPanel extends JPanel{
 	}
 	
 	private void initHotelstaffPanel(){
+		//设置panel
 		this.setLayout(null);
 		this.setLocation(0, 0);
 		this.setSize(1000, 618);
 		this.setVisible(true);
 		setOpaque(false);
 		
+		//修改密码的背景
 		ipassword = new ImageIcon("./src/main/resource/picture/hotelstaff/password.png");
 		
 		password = controller.getBasicinfo(hotelID).getPassword();
-		
-		jpfPassword = new JPasswordField(15);
-		jpfPassword.setEchoChar('*');
+	
+		jtfPassword = new JTextField(15);
 		Font font = new Font("微软雅黑",Font.PLAIN,20);
-		jpfPassword.setFont(font);
-		jpfPassword.setForeground(Color.white);
-		jpfPassword.setBounds(345, 260, 585, 50);
-		jpfPassword.setOpaque(false);
-		jpfPassword.setBorder(null);
-		jpfPassword.setText(password);
-		jpfPassword.setEditable(false);
-		this.add(jpfPassword);
+		jtfPassword.setFont(font);
+		jtfPassword.setForeground(Color.white);
+		jtfPassword.setBounds(345, 260, 585, 50);
+		jtfPassword.setOpaque(false);
+		jtfPassword.setBorder(null);
+		jtfPassword.setText(password);
+		jtfPassword.setEditable(false);
+		this.add(jtfPassword);
 		
+		//修改按钮
 		jbModify = new ModifyButton(900,255,60,60);
 		jbModify.addActionListener(new ModifyButtonActionListener());
 		this.add(jbModify);
 		
+		//确认按钮
 		jbConfirm = new ConfirmButton(680,485);
 		jbConfirm.addActionListener(new ConfirmButtonActionListener());
 		jbConfirm.setVisible(false);
 		this.add(jbConfirm);
 		
+		//取消按钮
 		jbCancle = new CancleButton(480,488);
 		jbCancle.addActionListener(new CancleButtonActionListener());
 		jbCancle.setVisible(false);
 		this.add(jbCancle);
 		
-		jlUserImage = new UserImageLabel(550,150);
+		//用户头像
+		jlUserImage = new UserImageLabel(565,150);
 		this.add(jlUserImage);
 		
-		jbReviewImage = new ReviewImageButton(650,187);
-		jbReviewImage.addActionListener(new ReviewImageActionListener());
-		this.add(jbReviewImage);
+		//显示结果
+		resultLabel = new JLabel();
+		resultLabel.setForeground(Color.BLACK);
+		resultLabel.setFont(font);
+		resultLabel.setBounds(290, 50, 500, 20);
+		this.add(resultLabel);
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -97,7 +109,7 @@ public class HotelstaffPanel extends JPanel{
 			jbConfirm.setVisible(true);
 			jbCancle.setVisible(true);
 			jbModify.setVisible(false);
-			jpfPassword.setEditable(true);
+			jtfPassword.setEditable(true);
 		}	
 	}
 	
@@ -108,10 +120,21 @@ public class HotelstaffPanel extends JPanel{
 			jbConfirm.setVisible(false);
 			jbCancle.setVisible(false);
 			jbModify.setVisible(true);
-			jpfPassword.setEditable(false);
-			password = jpfPassword.getPassword().toString();
-			controller.setPassword(hotelID, password);
-			//TODO
+			jtfPassword.setEditable(false);
+			password = jtfPassword.getText();
+			ResultMessage result = controller.setPassword(hotelID, password);
+			new Thread(new Runnable(){
+				@Override
+				public void run() {
+					resultLabel.setText(String.valueOf(result));
+					try {
+						Thread.sleep(1000);
+		            }catch(InterruptedException ex){
+		                    ex.printStackTrace();
+		            }
+		            resultLabel.setText("");
+				}
+			}).start();;
 		}	
 	}
 	
@@ -122,17 +145,20 @@ public class HotelstaffPanel extends JPanel{
 			jbConfirm.setVisible(false);
 			jbCancle.setVisible(false);
 			jbModify.setVisible(true);
-			jpfPassword.setEditable(false);
-			jpfPassword.setText(password);
-		}	
-	}
-	
-
-	private class ReviewImageActionListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			//TODO
+			jtfPassword.setEditable(false);
+			jtfPassword.setText(password);
+			new Thread(new Runnable(){
+				@Override
+				public void run() {
+					resultLabel.setText("Operation was cancled");
+					try {
+						Thread.sleep(1000);
+		            }catch(InterruptedException ex){
+		                    ex.printStackTrace();
+		            }
+		            resultLabel.setText("");
+				}
+			}).start();;
 		}	
 	}
 }

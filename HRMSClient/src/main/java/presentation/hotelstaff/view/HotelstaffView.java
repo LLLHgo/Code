@@ -19,8 +19,8 @@ import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.hotelstaffpersonalinfo.controller.HotelstaffPanelController;
 import presentation.hotelstaff.hotelstaffpersonalinfo.view.HotelstaffPanel;
-import presentation.hotelstaff.roominfo.view.NewRoominfoPanel;
-import presentation.hotelstaff.roominfo.view.RoominfoPanel;
+import presentation.hotelstaff.roominfo.NewRoominfoPanel;
+import presentation.hotelstaff.roominfo.RoominfoPanel;
 import presentation.login.view.ProcessLoginView;
 
 public class HotelstaffView extends JPanel{
@@ -74,7 +74,7 @@ public class HotelstaffView extends JPanel{
 		jbExit.addActionListener(new JBExitActionListener());
 		
 		//初始化头像标签
-		userLabel = new UserImageLabel(88,95);
+		userLabel = new UserImageLabel(98,95);
 		this.add(userLabel);
 		//初始化ID标签
 		IDLabel = new JLabel();

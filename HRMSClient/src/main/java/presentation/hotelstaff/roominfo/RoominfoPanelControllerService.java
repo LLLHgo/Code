@@ -1,4 +1,4 @@
-package presentation.hotelstaff.roominfo.view;
+package presentation.hotelstaff.roominfo;
 
 public interface RoominfoPanelControllerService {
 

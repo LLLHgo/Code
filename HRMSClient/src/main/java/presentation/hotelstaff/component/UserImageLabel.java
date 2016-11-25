@@ -9,6 +9,6 @@ public class UserImageLabel extends JLabel{
 	public UserImageLabel(int x,int y){
 		user_image = new ImageIcon("./src/main/resource/picture/hotelstaff/user_image.png");
 		this.setIcon(user_image);
-		this.setBounds(x, y, 97, 85);
+		this.setBounds(x, y, 100, 100);
 	}
 }
