@@ -25,6 +25,7 @@ import presentation.client.view.ProcessClientView;
 import presentation.client.view.ProcessClientView;
 import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
+import presentation.login.controller.ProcessLoginViewController;
 
 public class ProcessLoginView extends JPanel {
 	/**
@@ -35,9 +36,10 @@ public class ProcessLoginView extends JPanel {
 	private JPasswordField KeyField;
 	private JButton loginButton;
 	private JButton signUpButton;
-	 private ImageIcon imageIcon = null;
-	 public boolean flag=true;
-	public ProcessLoginView(JFrame frame){
+	private ImageIcon imageIcon = null;
+	private ProcessLoginViewController controller;
+	public ProcessLoginView(JFrame frame,ProcessLoginViewController controller){
+			this.controller=controller;
 			ImageIcon lib=new ImageIcon("image/loginButton.png");
 			ImageIcon sub=new ImageIcon("image/signUpButton.png");
 			imageIcon = new ImageIcon("image/login.png");
@@ -65,13 +67,31 @@ public class ProcessLoginView extends JPanel {
 			loginButton.setOpaque(false);
 			loginButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					if(IdField.getText().equals("C")){
+					String id=IdField.getText();
+					System.out.println(id);
+					String key=new String(KeyField.getPassword());
+					switch(controller.login(id,key)){
+					case 'c':
+						frame.getContentPane().removeAll();
+						frame.getContentPane().add(new ProcessClientView());
+						frame.getContentPane().revalidate();
+						frame.getContentPane().repaint();
+						break;
+					case 'h':
 						frame.getContentPane().removeAll();
 						frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()
 								));
 						frame.getContentPane().add(new ProcessClientView());
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
+						break;
+					case 's':
+						break;
+					case 'm':
+						break;
+					case 'e':
+						DialogCreator.failDialog("Fail");
+						break;
 					}
 				}
 				});

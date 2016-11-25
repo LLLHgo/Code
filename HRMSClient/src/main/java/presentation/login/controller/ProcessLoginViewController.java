@@ -8,11 +8,13 @@ public class ProcessLoginViewController {
 	 *验证用户登陆账号
 	 * @param user_id
 	 * @param password
-	 * @return 登陆成功与否
+	 * @return 登陆成功与否及登陆客户种类
 	 */
-		public boolean login(String user_id,String password) {
-		if(user_id!=null)return true;
-		else return false;
+		public char login(String user_id,String password) {
+
+		if(user_id.charAt(0)=='C')return 'c';
+		else if(user_id.charAt(0)=='H')return 'h';
+		else return 'e';
 	}
 
 	/**

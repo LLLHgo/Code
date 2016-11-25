@@ -10,7 +10,7 @@ public interface ProcessLoginControllerService {
 	 * @param password
 	 * @return 登陆成功与否
 	 */
-	public boolean login(String user_id,String password);
+	public char login(String user_id,String password);
 	/**
 	 * 注册新用户
 	 */
