@@ -12,6 +12,7 @@ import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
 import presentation.marketing.view.ProcessMarketingAbnormalView;
 import presentation.marketing.view.ProcessMarketingProfileView;
+import presentation.marketing.view.ProcessMarketingStrategyView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
@@ -37,6 +38,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     private ProcessMarketingView view;
     private ProcessMarketingProfileView profileView;
     private ProcessMarketingAbnormalView abnormalView;
+    private ProcessMarketingStrategyView strategyView;
     public ProcessMarketingViewController (String marketingID){
     	this.marketingID=marketingID;
     	this.MarketingBlService=new MarketingManage();
@@ -173,24 +175,52 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	@Override
 	public void profileButtonClicked() {
 		view.hideWelcome();
-		if(profileView!=null) profileView.hideProfile();
-		profileView=null;
-		if(abnormalView!=null) abnormalView.hideAbnormal();
+		if(profileView!=null)
+			profileView.hideProfile();
+	    profileView=null;
+
+		if(abnormalView!=null)
+			abnormalView.hideAbnormal();
 		abnormalView=null;
+
+		if(strategyView!=null)
+			strategyView.hideStrategy();
+		strategyView=null;
+
 		profileView=new ProcessMarketingProfileView(this,view);
 	}
 	@Override
 	public void abnormalButtonClicked() {
 		view.hideWelcome();
-		if(profileView!=null) profileView.hideProfile();
+		if(profileView!=null)
+			profileView.hideProfile();
 		profileView=null;
-		if(abnormalView!=null) abnormalView.hideAbnormal();
+		if(abnormalView!=null)
+			abnormalView.hideAbnormal();
 		abnormalView=null;
+		if(strategyView!=null)
+			strategyView.hideStrategy();
+		strategyView=null;
 		abnormalView=new ProcessMarketingAbnormalView(this,view);
 	}
 	@Override
 	public void addLog(String log) {
 		this.LogBLService.addLog(log);
+
+	}
+	@Override
+	public void strategyButtonClicked() {
+		view.hideWelcome();
+		if(profileView!=null)
+			profileView.hideProfile();
+		profileView=null;
+		if(abnormalView!=null)
+			abnormalView.hideAbnormal();
+		abnormalView=null;
+		if(strategyView!=null)
+			strategyView.hideStrategy();
+		strategyView=null;
+		strategyView=new ProcessMarketingStrategyView(this,view);
 
 	}
 

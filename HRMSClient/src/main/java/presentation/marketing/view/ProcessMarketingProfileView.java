@@ -35,7 +35,7 @@ public class ProcessMarketingProfileView extends JPanel{
     private MJTextField accountField =new MJTextField(250, 126, 200, 48,font2);
     private MJTextField TELField=new MJTextField(250, 206, 200, 48,font2);
     private MJTextField passwordField=new MJTextField(250, 286, 200, 48,font2);
-    
+
     public ProcessMarketingProfileView(ProcessMarketingViewControllerService controller,JPanel panel){
      	this.MarketingID=controller.getMarketingID();
         this.Mvo=controller.init(MarketingID);
@@ -113,6 +113,7 @@ public class ProcessMarketingProfileView extends JPanel{
 	}
 
     public void hideProfile(){
+    	this.removeAll();
         this.setVisible(false);
     }
 }

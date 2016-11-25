@@ -188,5 +188,6 @@ public interface ProcessMarketingViewControllerService {
 	public void profileButtonClicked();
 	public void abnormalButtonClicked();
 	public void addLog(String log);
+	public void strategyButtonClicked();
 
 }

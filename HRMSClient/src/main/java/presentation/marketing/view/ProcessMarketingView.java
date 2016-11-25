@@ -64,6 +64,14 @@ public class ProcessMarketingView extends JPanel{
 			}
         });
 
+        //给abnormalButtton加监听
+        strategy.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.strategyButtonClicked();
+			}
+        });
+
       	this.add(profile);this.add(abnormal);this.add(credit);
     	this.add(VIP);this.add(strategy);this.add(exit);
 

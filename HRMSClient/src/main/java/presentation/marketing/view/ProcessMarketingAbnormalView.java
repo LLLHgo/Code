@@ -268,6 +268,7 @@ public class ProcessMarketingAbnormalView extends JPanel{
 }
 
 	public void hideAbnormal() {
+		this.removeAll();
 		this.setVisible(false);
 	}
     public void removeOrderPanel(){
