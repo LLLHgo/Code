@@ -9,17 +9,17 @@ public class MockHotelstaffManager implements HotelstaffBLService{
 	
 	
 	
-	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
+	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
 		if(vo.getHotelID().equals("H00000001")){
-			return true;
+			return ResultMessage.SUCCESS;
 		}
 		else if(vo.getHotelID().equals("H00000002")){
-			return true;
+			return ResultMessage.SUCCESS;
 		}
 		else if(vo.getHotelID().equals("H00000003")){
-			return true;
+			return ResultMessage.SUCCESS;
 		}
-		return false;
+		return ResultMessage.FAIL;
 	}
 
 	

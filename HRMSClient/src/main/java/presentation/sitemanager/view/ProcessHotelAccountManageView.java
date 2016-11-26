@@ -96,11 +96,11 @@ public class ProcessHotelAccountManageView extends JPanel{
 		modifyButton.setEnabled(false);
 		checkModifyButton=new CheckButton(610,270,65,65);
 		checkModifyButton.addMouseListener(new CheckModifyListener());
-		checkModifyButton.setVisible(false);
+		checkModifyButton.setEnabled(false);
 		
-		checkAddButton=new CheckButton(400,330,65,65);
+		checkAddButton=new CheckButton(400,350,65,65);
 		checkAddButton.addMouseListener(new CheckAddListener());
-		checkAddButton.setEnabled(false);
+		checkAddButton.setVisible(false);
 		// 状态栏
 		conditionLabel=new MyLabel(80,450,500,40,"操作中...");
 		// 详细信息
@@ -109,10 +109,10 @@ public class ProcessHotelAccountManageView extends JPanel{
 		telLabelL=new MyLabel(300,280,100,25,"电话：");
 		passwordLabelL=new MyLabel(300,330,60,25,"密码:");
 		
-		idLabel=new MyLabel(400,180,180,25,"test");
-		nameTextField=new MyTextField(400,230,180,25,"test");
-		telTextField=new MyTextField(400,280,180,25,"test");
-		passwordField=new MyTextField(400,330,180,25,"test");
+		idLabel=new MyLabel(400,180,180,25,"");
+		nameTextField=new MyTextField(400,230,180,25,"");
+		telTextField=new MyTextField(400,280,180,25,"");
+		passwordField=new MyTextField(400,330,180,25,"");
 		
 		this.add(hotelIconLabel);
 		this.add(addHotelButton);
@@ -171,6 +171,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		}
 		
 	}
+	// 搜索酒店工作人员账户的监听
 	class SearchListener implements MouseListener{
 		String searchId;
 		@Override
@@ -183,9 +184,10 @@ public class ProcessHotelAccountManageView extends JPanel{
 			}
 			else{
 				conditionLabel.setText("找到匹配账户");
-				idLabel.setText(searchId);
+				idLabel.setText(hotelstaffVO.getHotelID());
 				telTextField.setText(hotelstaffVO.getPassword());
 				passwordField.setText(hotelstaffVO.getPassword());
+				nameTextField.setText("");
 				modifyButton.setEnabled(true);
 				checkAddButton.setVisible(false);
 			}
@@ -234,6 +236,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 			else if(result==ResultMessage.SAMEINFO){
 				conditionLabel.setText("信息未做更改，不再进行保存！");
 			}
+			checkModifyButton.setEnabled(true);
 		}
 
 		@Override

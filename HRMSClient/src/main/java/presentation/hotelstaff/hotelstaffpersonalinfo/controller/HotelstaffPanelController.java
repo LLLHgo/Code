@@ -26,7 +26,7 @@ public  class HotelstaffPanelController implements presentation.hotelstaff.hotel
 	}
 
 	@Override
-	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
+	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
 		return hotelstaff.saveSitemanagerUpdate(vo);
 	}
 
