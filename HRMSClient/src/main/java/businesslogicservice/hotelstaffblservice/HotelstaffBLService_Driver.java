@@ -28,8 +28,8 @@ public class HotelstaffBLService_Driver {
 		if(HSTvo!=null)System.out.println("获得酒店工作人员信息成功！");
 
 	    //保存酒店工作人员信息更改
-		boolean hsbls=hotelstaffBLService.saveSitemanagerUpdate(new HotelstaffVO());
-		if(hsbls)System.out.println("保存酒店工作人员信息更改成功！");
+		ResultMessage hsbls=hotelstaffBLService.saveSitemanagerUpdate(new HotelstaffVO());
+		if(hsbls==ResultMessage.SUCCESS)System.out.println("保存酒店工作人员信息更改成功！");
 
 		//设置密码
 		ResultMessage setPasswordResult=hotelstaffBLService.setPassword("H00000000","000000");

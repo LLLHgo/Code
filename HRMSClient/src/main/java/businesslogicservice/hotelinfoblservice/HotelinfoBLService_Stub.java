@@ -11,6 +11,7 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
+import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
@@ -175,8 +176,14 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * @param vo
 	 * @return 是否将酒店工作人员信息的修改持久化保存
 	 */
-	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
-		return true;
+	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCESS;
 	}
 
 

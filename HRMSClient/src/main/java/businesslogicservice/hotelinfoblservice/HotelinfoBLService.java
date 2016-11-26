@@ -8,6 +8,8 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
+import vo.hotelinfoVO.SitemanagerAddVO;
+import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -50,12 +52,6 @@ public interface HotelinfoBLService {
 	 */
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
 			List<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
-	/**
-	 * 请求持久化保存网站管理人员添加的酒店信息
-	 * @param vo
-	 * @return 保存是否成功
-	 */
-	public boolean saveSitemanagerAdd(HotelinfoVO vo);
 
 	/**
 	 * 获得酒店基本信息
@@ -75,5 +71,12 @@ public interface HotelinfoBLService {
 	 * @return 是否将房间信息持久化保存
 	 */
 	public boolean updateroominfo(RoominfoVO vo,String hotelID);
+	/**
+	 * 请求持久化保存网站管理人员添加的酒店信息
+	 * @param sitemanagerAddVO
+	 * @param hotelstaffVO
+	 * @return 保存成功或失败
+	 */
+	ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO);
 
 }

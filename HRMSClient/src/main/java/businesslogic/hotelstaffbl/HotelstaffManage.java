@@ -20,9 +20,9 @@ public class HotelstaffManage implements HotelstaffBLService{
 	}
 
 	@Override
-	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
+	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override

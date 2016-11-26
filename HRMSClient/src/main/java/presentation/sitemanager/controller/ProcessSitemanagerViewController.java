@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import Enum.ResultMessage;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
+import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
+import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService_Stub;
 import presentation.sitemanager.view.ProcessClientAccountManageView;
+import presentation.sitemanager.view.ProcessHotelAccountManageView;
 import presentation.sitemanager.view.ProcessMarketingAccountManageView;
 import presentation.sitemanager.view.ProcessSitemanagerView;
 import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
 import presentation.sitemanager.view.ProcessSitemanagerAccountManageView;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
@@ -30,16 +34,20 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	private ProcessSitemanagerAccountManageView sitemanagerAccountManageView;
 	private ProcessMarketingAccountManageView marketingAccountManageView;
 	private ProcessClientAccountManageView clientAccountManageView;
+	private ProcessHotelAccountManageView hotelAccountManageView;
 	
 	SitemanagerBLService sitemanagerblservice; // 以stub调用
 	MarketingBLService marketingblservice; // 以stub调用
 	ClientBLService clientblservice; // 以stub调用
-	
+	HotelstaffBLService hotelstaffblservice;// 以stub调用
+	HotelinfoBLService_Stub hotelblservice; // 以stub调用
+	 
 	public ProcessSitemanagerViewController(String sitemanagerId){
 		this.sitemanagerId=sitemanagerId;
 		sitemanagerblservice=new SitemanagerBLService_Stub();
 		marketingblservice=new MarketingBLService_Stub();
 		clientblservice=new ClientBLService_Stub();
+		hotelblservice=new HotelinfoBLService_Stub();
 		sitemanagerVO=init(sitemanagerId);
 	}
 	
@@ -56,6 +64,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		marketingAccountManageView.setVisible(false);
 		clientAccountManageView=new ProcessClientAccountManageView(this,processSitemanagerView);
 		clientAccountManageView.setVisible(false);
+		hotelAccountManageView=new ProcessHotelAccountManageView(this,processSitemanagerView);
+		hotelAccountManageView.setVisible(false);
 		
 	}
 	
@@ -100,18 +110,18 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	}
 
 	@Override
-	public ResultMessage HotelAccountAdd(HotelinfoVO hotelinfoVO, HotelstaffVO hotelstaffVO) {
-		return ResultMessage.SUCCESS;
+	public ResultMessage HotelAccountAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
+		return hotelblservice.saveSitemanagerAdd(sitemanagerAddVO,hotelstaffVO);
 	}
 
 	@Override
-	public HotelstaffVO HotelStaffAccountFind(String findInfo) {
-		return null;
+	public HotelstaffVO HotelStaffAccountFind(String id) {
+		return hotelstaffblservice.returnSitemanagerAccount(id);
 	}
 
 	@Override
 	public ResultMessage HotelStaffAccountUpdate(HotelstaffVO hotelstaffVO) {
-		return ResultMessage.SUCCESS;
+		return hotelstaffblservice.saveSitemanagerUpdate(hotelstaffVO);
 	}
 
 	@Override
@@ -143,7 +153,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	public void jbSitemanagerManageButtonClicked(){
 		processSitemanagerView.hideWelcome();
 		marketingAccountManageView.setVisible(false);
-		
+		clientAccountManageView.setVisible(false);
+		hotelAccountManageView.setVisible(false);
 		sitemanagerAccountManageView.setVisible(true);
 	}
 
@@ -152,7 +163,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	public void jbMarketingManageButtonClicked() {
 		processSitemanagerView.hideWelcome();
 		sitemanagerAccountManageView.setVisible(false);
-		
+		clientAccountManageView.setVisible(false);
+		hotelAccountManageView.setVisible(false);
 		marketingAccountManageView.setVisible(true);
 		
 	}
@@ -161,12 +173,24 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		processSitemanagerView.hideWelcome();
 		sitemanagerAccountManageView.setVisible(false);
 		marketingAccountManageView.setVisible(false);
+		hotelAccountManageView.setVisible(false);
 		clientAccountManageView.setVisible(true);
 	}
 
 
 	public void jbExitButtonClicked() {
 		System.exit(0);
+	}
+
+
+	@Override
+	public void jbHotelManageButtonClicked() {
+		processSitemanagerView.hideWelcome();
+		sitemanagerAccountManageView.setVisible(false);
+		marketingAccountManageView.setVisible(false);
+		clientAccountManageView.setVisible(false);
+		hotelAccountManageView.setVisible(true);
+		
 	}
 	
 	

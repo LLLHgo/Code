@@ -9,6 +9,8 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
+import vo.hotelinfoVO.SitemanagerAddVO;
+import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -52,12 +54,6 @@ public class HotelinfoManage implements HotelinfoBLService{
 		return 0;
 	}
 
-	@Override
-	public boolean saveSitemanagerAdd(HotelinfoVO vo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 
 	@Override
 	public HotelinfoVO gethotelinfoVO(String hotelID) {
@@ -75,5 +71,11 @@ public class HotelinfoManage implements HotelinfoBLService{
 	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCESS;
 	}
 }

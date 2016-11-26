@@ -29,7 +29,7 @@ public interface HotelstaffBLService {
 	 * @param vo
 	 * @return 是否将酒店工作人员信息的修改持久化保存
 	 */
-	public boolean saveSitemanagerUpdate(HotelstaffVO vo);
+	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo);
 	/**
 	 *  (网站管理人员)请求返回酒店工作人员信息
 	 * @param hotelID

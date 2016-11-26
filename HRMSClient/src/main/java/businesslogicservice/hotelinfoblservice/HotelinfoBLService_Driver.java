@@ -9,6 +9,8 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
+import vo.hotelinfoVO.SitemanagerAddVO;
+import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -74,8 +76,8 @@ public class HotelinfoBLService_Driver{
 
 		//保存网站工作人员对酒店信息的修改
 		System.out.println("更新酒店工作人员的修改...");
-		boolean result = hotelinfoBLService.saveSitemanagerAdd(new HotelinfoVO());
-		if(result == true)
+		ResultMessage result = hotelinfoBLService.saveSitemanagerAdd(new SitemanagerAddVO("h00000001"),new HotelstaffVO());
+		if(result == ResultMessage.SUCCESS)
 			System.out.println("更新成功！");
 		else
 			System.out.println("更新失败==");

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Enum.ResultMessage;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
@@ -67,11 +68,11 @@ public interface ProcessSitemanagerViewControllerService {
 	
 	/**
 	 * 添加酒店
-	 * @param hotelinfoVO
+	 * @param sitemanagerAddVO
 	 * @param hotelstaffVO
 	 * @return
 	 */
-	public ResultMessage HotelAccountAdd (HotelinfoVO hotelinfoVO,HotelstaffVO hotelstaffVO);
+	public ResultMessage HotelAccountAdd (SitemanagerAddVO sitemanagerAddVO,HotelstaffVO hotelstaffVO);
 	
 	/**
 	 * 管理界面得到酒店工作人员账户信息
@@ -128,4 +129,6 @@ public interface ProcessSitemanagerViewControllerService {
 	public void jbClientManageButtonClicked();
 	
 	public void jbExitButtonClicked();
+	
+	public void jbHotelManageButtonClicked();
 }

@@ -121,6 +121,16 @@ public class ProcessSitemanagerView extends JPanel{
 			public void mouseExited(MouseEvent e) {}
 		});
 		
+		jbHotelManage.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				controller.jbHotelManageButtonClicked();
+			}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+		});
 		jbExit.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {

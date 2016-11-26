@@ -64,8 +64,8 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	 * @return 是否将酒店工作人员信息的修改持久化保存
 	 */
 	@Override
-	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
-		return true;
+	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
+		return ResultMessage.SUCCESS;
 	}
 	
 	/**
