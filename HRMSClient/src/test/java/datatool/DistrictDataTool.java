@@ -12,12 +12,6 @@ public class DistrictDataTool {
 		list1.add("南京英尊假日酒店");
 		list1.add("南京悦宁酒店");
 		list1.add("南京松山湖宾馆");
-		list1.add("南京松山湖宾馆");
-		list1.add("南京松山湖宾馆");
-		list1.add("南京松山湖宾馆");
-		list1.add("南京松山湖宾馆");
-		list1.add("南京松山湖宾馆");
-
 		list1.add("南京新地酒店");
 		list2.add("南京金陵饭店");
 		list2.add("芷服青年旅社");
