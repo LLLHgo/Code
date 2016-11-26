@@ -17,12 +17,15 @@ public class InputPanel extends MJPanel{
 
 	public InputPanel(String text,int x, int y, int w, int h) {
 		super(x, y, w, h);
-		JLabel inputLabel;
-		if(text.length()<=2)
-			inputLabel=new MJLabel(text,30,0,105,50,font);
+		JLabel inputLabel=new MJLabel(text,0,0,105,50,font);
+		JLabel valueLabel;
+		if(text.length()==2)
+			valueLabel=new MJLabel(90,5,100,50,inputIcon);
+		else if(text.length()==5)
+			valueLabel=new MJLabel(125,5,100,50,inputIcon);
 		else
-			inputLabel=new MJLabel(text,0,0,105,50,font);
-		JLabel valueLabel=new MJLabel(110,5,100,50,inputIcon);
+		    valueLabel=new MJLabel(110,5,100,50,inputIcon);
+
 		valueLabel.add(valueField);
 		this.add(inputLabel);
 		this.add(valueLabel);

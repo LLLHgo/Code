@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.compoment.newPanel;
+import vo.districtVO.DistrictVO;
 import vo.marketingVO.MarketingVO;
 import vo.strategyVO.MarketingStrategyVO;;
 
@@ -20,6 +21,7 @@ public class ProcessMarketingStrategyView extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
+	private ProcessMarketingViewControllerService controller;
 	private String MarketingID;
 	private MarketingVO Mvo;
 	private java.util.List<MarketingStrategyVO> MSvo;
@@ -28,10 +30,11 @@ public class ProcessMarketingStrategyView extends JPanel{
 	private Icon backIcon=new ImageIcon("./src/main/resource/picture/marketing/backIcon.png");
 
 	private JPanel groupPanel=new MJPanel(0,0,780,500);
-	private newPanel newPanel=new newPanel(0,0,780,500);
+	private newPanel newPanel;
 
 	private JButton back=new MJButton(80,8,85,50,backIcon);
 	public ProcessMarketingStrategyView(ProcessMarketingViewControllerService controller,JPanel panel){
+		this.controller=controller;
 		this.MarketingID=controller.getMarketingID();
         this.Mvo=controller.init(MarketingID);
         this.MSvo= controller.getMarketingStrategy(MarketingID);
@@ -48,9 +51,6 @@ public class ProcessMarketingStrategyView extends JPanel{
     	groupPanel.add(specialButton);
     	groupPanel.add(newButton);
     	groupPanel.add(browseButton);
-
-    	//增加newPanel
-		this.add(newPanel);
 
 
     	double11Button.addActionListener(new ActionListener(){
@@ -91,11 +91,15 @@ public class ProcessMarketingStrategyView extends JPanel{
 	}
 	public void newButtonClicked(){
 		hideGroup();
+		List<DistrictVO> districts=controller.getDistricts();
+		newPanel=new newPanel(0,0,780,500,districts);
 	    newPanel.setVisible(true);
 	    Calendar c=Calendar.getInstance();
 	    newPanel.getStartPanel().setTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
 	    newPanel.getEndPanel().setTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
 	    newPanel.getDiscountPanel().setInput(0.00);
+	    
+	    this.add(newPanel);
 	    this.revalidate();
 		this.repaint();
 	}
