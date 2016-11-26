@@ -2,6 +2,9 @@ package presentation.marketing.compoment;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Icon;
@@ -27,6 +30,8 @@ public class newPanel extends MJPanel{
     private JPanel expenditurePanel=new InputPanel("最少消费额",385,210,350,50);
     private JPanel hotelPanel=new HotelPanel("酒店",180,250,300,50);
     private JPanel hotelsPanel;
+    private List<String> districtElected=new ArrayList<String>();
+    private List<String> hotelElected=new ArrayList<String>();
     private Icon ensureIcon=new ImageIcon("./src/main/resource/picture/marketing/littleCheck.png");
 
     private static final long serialVersionUID = 1L;
@@ -56,7 +61,15 @@ public class newPanel extends MJPanel{
         	items+=vo.getHotels().size();
         	dis++;
         	JRadioButton district=new MJRadioButton(vo.getName(),false,40,dis*40+(items-vo.getHotels().size())*30,400,50,font);
-        	
+        	district.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(((JRadioButton)e.getSource()).isSelected()){System.out.println("selected");}
+					else {System.out.println("not selected");}
+				}
+        		
+        	});
         	hotelsPanel.add(district);
 
         	List<String> hotelList=vo.getHotels();
