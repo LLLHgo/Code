@@ -30,9 +30,8 @@ public class newPanel extends MJPanel{
     private JPanel expenditurePanel=new InputPanel("最少消费额",385,210,350,50);
     private JPanel hotelPanel=new HotelPanel("酒店",180,250,300,50);
     private JPanel hotelsPanel;
-    private List<String> districtSlected=new ArrayList<String>();
-    private List<String> hotelSlected=new ArrayList<String>();
-   // private List<JRadioButton> districtButton
+    private List<String> hotelSelected=new ArrayList<String>();
+    private List<JRadioButton> hotelButton=new ArrayList<JRadioButton>();
     private Icon ensureIcon=new ImageIcon("./src/main/resource/picture/marketing/littleCheck.png");
 
     private static final long serialVersionUID = 1L;
@@ -68,21 +67,14 @@ public class newPanel extends MJPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(((JRadioButton)e.getSource()).isSelected()){
-						districtSlected.add(((JRadioButton)e.getSource()).getText());
 						for(JRadioButton button:hotelButtonList){
                             button.setSelected(true);;
 						}
-						for(JRadioButton button:hotelButtonList){
-							hotelSlected.add(button.getText());
-						}
+						
 					}
 					else {
-						districtSlected.remove(((JRadioButton)e.getSource()).getText());
 						for(JRadioButton button:hotelButtonList){
                             button.setSelected(false);;
-						}
-						for(JRadioButton button:hotelButtonList){
-							hotelSlected.remove(button.getText());
 						}
                     }
 				}
@@ -96,21 +88,19 @@ public class newPanel extends MJPanel{
 
         	for(String s:hotelList){
         		index++;
-        		JRadioButton hotelButton=new MJRadioButton(s,false,60,dis*40+(items-vo.getHotels().size())*30+40+index*30,400,40,font2);//每个酒店在所对应商圈下方
-        		hotelButton.addActionListener(new ActionListener(){
+        		JRadioButton button=new MJRadioButton(s,false,60,dis*40+(items-vo.getHotels().size())*30+40+index*30,400,40,font2);//每个酒店在所对应商圈下方
+        		button.addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						if(((JRadioButton)e.getSource()).isSelected()){
-
-						}else{
-
+						if(!((JRadioButton)e.getSource()).isSelected()){
+                            district.setSelected(false);
 						}
 					}
-
         		});
-        		hotelButtonList.add(hotelButton);
-        		hotelsPanel.add(hotelButton);
+        		hotelButton.add(button);
+        		hotelButtonList.add(button);
+        		hotelsPanel.add(button);
         	}
 
         }
@@ -123,7 +113,14 @@ public class newPanel extends MJPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+                for(JRadioButton button:hotelButton){
+                	if(button.isSelected()==true){
+                		hotelSelected.add(button.getText());
+                	}
+                }
+                for(String s:hotelSelected){
+                	System.out.println(s);
+                }
 			}
 
         });
