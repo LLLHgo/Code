@@ -1,4 +1,4 @@
-package presentation.hotelstaff.hotelinfo.view;
+package presentation.hotelstaff.controller;
 
 import java.util.List;
 
@@ -8,23 +8,25 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
+import vo.hotelstaffVO.HotelstaffBasicinfoVO;
+import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public interface HotelinfoViewControllerService {
+public interface HotelstaffViewControllerService {
 	/**
 	 * 请求获得hotelID对应的酒店信息
 	 * @param hotelID
 	 * @return 酒店信息
 	 */
-	public HotelinfoVO getBasicinfo(String hotelID);
+	public HotelinfoVO getHotelBasicinfo(String hotelID);
 	/**
 	 * 获得符合客户条件的酒店列表信息
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public List<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo);
+	public List<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo);
 	/**
 	 * 持久化保存酒店信息
 	 * @param VO
@@ -129,4 +131,36 @@ public interface HotelinfoViewControllerService {
 	 * @return 是否将订单状态持久化保存
 	 */
 	public ResultMessage updateOrderState(OrderVO vo);
+	
+	/**
+	 * 获得酒店工作人员信息
+	 * @param hotelID
+	 * @return 获得酒店工作人员信息
+	 */
+	public HotelstaffBasicinfoVO getHotelstaffBasicinfo(String hotelID);
+	/**
+	 * 将新密码持久化保存
+	 * @param password
+	 * @return 是否将新密码持久化保存
+	 */
+	public ResultMessage setPassword(String hotelID,String password);
+	/**
+	 * (网站管理人员请求)将酒店工作人员信息的修改持久化保存
+	 * @param vo
+	 * @return 是否将酒店工作人员信息的修改持久化保存
+	 */
+	public boolean saveSitemanagerUpdate(HotelstaffVO vo);
+	/**
+	 *  (网站管理人员)请求返回酒店工作人员信息
+	 * @param hotelID
+	 * @return 酒店工作人员信息
+	 */
+	public HotelstaffVO returnSitemanagerAccount(String hotelID);
+	/**
+	 * 登录时检测账号密码
+	 * @param hotelID
+	 * @param password
+	 * @return 账号密码是否匹配
+	 */
+	public boolean checkAccount(String hotelID,String password);
 }

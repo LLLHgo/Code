@@ -1,4 +1,4 @@
-package presentation.hotelstaff.Order;
+package presentation.hotelstaff.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import presentation.hotelstaff.component.OrderTypeButton;
-import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
+import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.orderVO.OrderVO;
 
 import Enum.OrderType;
@@ -33,7 +33,7 @@ import datatool.OrderDataTool;
 public class OrderPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
-	private HotelinfoViewController controller;
+	private HotelstaffViewController controller;
 	private String hotelID;
 	private ImageIcon init_image;
 	private JTextField checkbox;
@@ -54,7 +54,7 @@ public class OrderPanel extends JPanel{
 	private boolean buttonFlag;
 	private JPanel orderPanel;
 	
-	public OrderPanel(HotelinfoViewController controller , String hotelID){
+	public OrderPanel(HotelstaffViewController controller , String hotelID){
 		this.controller = controller;
 		this.hotelID = hotelID;
 		init();

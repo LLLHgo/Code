@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
-import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
+import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
 import presentation.login.view.ProcessLoginControllerService;

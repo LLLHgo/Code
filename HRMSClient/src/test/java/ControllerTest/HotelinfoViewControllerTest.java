@@ -17,7 +17,7 @@ import Enum.RoomState;
 import Enum.Star;
 import Enum.VIPType;
 import businesslogic.hoteinfobl.HotelinfoManage;
-import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
+import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
@@ -25,7 +25,7 @@ import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 
 public class HotelinfoViewControllerTest {
-	HotelinfoViewController controller;
+	HotelstaffViewController controller;
 
 	HotelinfoManage hotelinfo;
 	HotelinfoVO hotelinfoVO1;
@@ -82,7 +82,7 @@ public class HotelinfoViewControllerTest {
 		roominfoList.add(roominfo5);
 		roominfoList.add(roominfo6);
 
-		controller = new HotelinfoViewController();
+		controller = new HotelstaffViewController();
 
 		String begin1="2016-11-11 00:00:00";
 		String end1="2016-11-11 23:59:59";
@@ -113,10 +113,10 @@ public class HotelinfoViewControllerTest {
 
 	@Test
 	public void testgetBasicInfo(){
-		assertEquals(hotelinfoVO1.getAddress(),controller.getBasicinfo("H00000001").getAddress());
-		assertEquals(hotelinfoVO1.getArea(),controller.getBasicinfo("H00000001").getArea());
-		assertEquals(hotelinfoVO1.getName(),controller.getBasicinfo("H00000001").getName());
-		assertEquals(hotelinfoVO1.getStar(),controller.getBasicinfo("H00000001").getStar());
+		assertEquals(hotelinfoVO1.getAddress(),controller.getHotelBasicinfo("H00000001").getAddress());
+		assertEquals(hotelinfoVO1.getArea(),controller.getHotelBasicinfo("H00000001").getArea());
+		assertEquals(hotelinfoVO1.getName(),controller.getHotelBasicinfo("H00000001").getName());
+		assertEquals(hotelinfoVO1.getStar(),controller.getHotelBasicinfo("H00000001").getStar());
 	}
 
 

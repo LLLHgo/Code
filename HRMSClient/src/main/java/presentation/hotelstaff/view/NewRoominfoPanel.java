@@ -1,4 +1,4 @@
-package presentation.hotelstaff.roominfo;
+package presentation.hotelstaff.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,13 +32,13 @@ import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.component.RightButton;
 import presentation.hotelstaff.component.RoominfoLabel;
 import presentation.hotelstaff.component.RoominfoTextField;
-import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
+import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
 
 public class NewRoominfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
-	private HotelinfoViewController controller;
+	private HotelstaffViewController controller;
 	private String hotelID;
 	private ModifyButton jbModify;
 	private LeftButton jbLeft;
@@ -66,7 +66,7 @@ public class NewRoominfoPanel extends JPanel{
 	private ConfirmButton jbDetailedConfirm;
 	private JPanel panel;
 	
-	public NewRoominfoPanel(HotelinfoViewController controller,String hotelID){
+	public NewRoominfoPanel(HotelstaffViewController controller,String hotelID){
 		this.controller = controller;
 		this.hotelID = hotelID;
 		initRoominfoPanel();

@@ -23,8 +23,7 @@ import javax.swing.text.Caret;
 import presentation.DialogCreator;
 import presentation.client.view.ProcessClientView;
 import presentation.client.view.ProcessClientView;
-import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
-import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
+import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
 import presentation.sitemanager.controller.ProcessSitemanagerViewController;
@@ -89,7 +88,7 @@ public class ProcessLoginView extends JPanel {
 						break;
 					case 'h':
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()));
+						//frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()));
 						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
