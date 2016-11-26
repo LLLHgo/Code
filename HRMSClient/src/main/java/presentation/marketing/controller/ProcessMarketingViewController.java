@@ -16,6 +16,7 @@ import presentation.marketing.view.ProcessMarketingStrategyView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
+import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogicservice.clientblservice.ClientBLService;
@@ -41,7 +42,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     private ProcessMarketingStrategyView strategyView;
     public ProcessMarketingViewController (String marketingID){
     	this.marketingID=marketingID;
-    	this.MarketingBlService=new MarketingManage();
+    	this.MarketingBlService=new MarketingBLService_Stub();
     	this.StrategyBLService=new StrategyManage();
     	this.OrderBLService=new OrderManage();
     	this.LogBLService=new LogManage();
@@ -223,6 +224,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		strategyView=new ProcessMarketingStrategyView(this,view);
 
 	}
+
 
 
 }

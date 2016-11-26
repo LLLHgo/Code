@@ -3,56 +3,55 @@ package presentation.marketing.view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import presentation.marketing.compoment.MJButton;
-import presentation.marketing.compoment.MJLabel;
 import presentation.marketing.compoment.MJPanel;
-import presentation.marketing.compoment.timePanel;
+import presentation.marketing.compoment.newPanel;
 import vo.marketingVO.MarketingVO;
 import vo.strategyVO.MarketingStrategyVO;;
 
 public class ProcessMarketingStrategyView extends JPanel{
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private String MarketingID;
 	private MarketingVO Mvo;
-	private List<MarketingStrategyVO> MSvo;
+	private java.util.List<MarketingStrategyVO> MSvo;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,28);
-
-	private Font font2=new Font("微软雅黑",Font.HANGING_BASELINE,25);
-
 	private Icon strategyPreIcon=new ImageIcon("./src/main/resource/picture/marketing/strategyPreIcon.png");
 	private Icon backIcon=new ImageIcon("./src/main/resource/picture/marketing/backIcon.png");
-	private JButton double11Button=new MJButton("双11促销",250,50,400,100,font,strategyPreIcon);
-	private JButton specialButton=new MJButton ("VIPSpecial",250,155,400,100,font,strategyPreIcon);
-	private JButton newButton=new MJButton("制定新策略",250,260,400,100,font,strategyPreIcon);
-	private JButton browseButton=new MJButton("查看策略",250,365,400,100,font,strategyPreIcon);
+
 	private JPanel groupPanel=new MJPanel(0,0,780,500);
-	private JPanel newPanel=new MJPanel(0,0,780,500);
+	private newPanel newPanel=new newPanel(0,0,780,500);
+
 	private JButton back=new MJButton(80,8,85,50,backIcon);
 	public ProcessMarketingStrategyView(ProcessMarketingViewControllerService controller,JPanel panel){
 		this.MarketingID=controller.getMarketingID();
         this.Mvo=controller.init(MarketingID);
-        this.MSvo=controller.getMarketingStrategy(MarketingID);
+        this.MSvo= controller.getMarketingStrategy(MarketingID);
     	this.setBounds(200, 82, 780, 500);
     	this.setLayout(null);
     	this.setOpaque(false);
+
+    	JButton double11Button=new MJButton("双11促销",250,50,400,100,font,strategyPreIcon);
+    	JButton specialButton=new MJButton ("VIPSpecial",250,155,400,100,font,strategyPreIcon);
+    	JButton newButton=new MJButton("制定新策略",250,260,400,100,font,strategyPreIcon);
+    	JButton browseButton=new MJButton("查看策略",250,365,400,100,font,strategyPreIcon);
 
     	groupPanel.add(double11Button);
     	groupPanel.add(specialButton);
     	groupPanel.add(newButton);
     	groupPanel.add(browseButton);
+
+    	//增加newPanel
+		this.add(newPanel);
+
 
     	double11Button.addActionListener(new ActionListener(){
 			@Override
@@ -92,9 +91,13 @@ public class ProcessMarketingStrategyView extends JPanel{
 	}
 	public void newButtonClicked(){
 		hideGroup();
-		JPanel startPanel=new timePanel(100,50,660,50);
-		newPanel.add(startPanel);
-		this.add(newPanel);
+	    newPanel.setVisible(true);
+	    Calendar c=Calendar.getInstance();
+	    newPanel.getStartPanel().setTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
+	    newPanel.getEndPanel().setTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
+	    newPanel.getDiscountPanel().setInput(0.00);
+	    this.revalidate();
+		this.repaint();
 	}
 	public void browseButtonClicked(){
 		hideGroup();

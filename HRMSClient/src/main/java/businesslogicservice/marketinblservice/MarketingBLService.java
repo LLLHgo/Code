@@ -75,4 +75,6 @@ public interface MarketingBLService {
      */
 	public ResultMessage saveSitemanagerDelete(String userId);
 
+
+
 }
