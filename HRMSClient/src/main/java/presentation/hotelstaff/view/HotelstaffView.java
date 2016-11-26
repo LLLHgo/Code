@@ -74,7 +74,7 @@ public class HotelstaffView extends JPanel{
 		IDLabel.setBounds(35, 195, 260, 24);
 		IDLabel.setFont(new java.awt.Font("微软雅黑", 1, 28));
 		IDLabel.setForeground(Color.white);
-		IDLabel.setText("ID:"+hotelID);
+		IDLabel.setText("ID:"+controller.gethotelID());
 		this.add(IDLabel);
 	}
 	

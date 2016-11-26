@@ -42,7 +42,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	MockStrategyManage strategy;
 	MockOrderManage order;
 	MockHotelstaffManage hotelstaff;
-	
 //	public HotelstaffViewController(){
 //		new HotelstaffViewController("H00000001");
 //	}
@@ -205,7 +204,8 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public boolean checkAccount(String hotelID, String password) {
-		return hotelstaff.checkAccount(hotelID, password);
+
+		return true;
 	}
 
 	public void JBHotelinfoClicked(){
@@ -251,4 +251,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
+
+
 }

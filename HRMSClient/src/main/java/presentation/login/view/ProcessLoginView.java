@@ -89,7 +89,7 @@ public class ProcessLoginView extends JPanel {
 						break;
 					case 'h':
 						frame.getContentPane().removeAll();
-						HotelstaffViewController hotelstaff = HotelstaffViewController.getInstance(key);
+						HotelstaffViewController hotelstaff = HotelstaffViewController.getInstance(id);
 						HotelstaffView view = new HotelstaffView(hotelstaff);
 						hotelstaff.setView(view);
 						frame.getContentPane().add(view);
