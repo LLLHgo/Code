@@ -1,7 +1,7 @@
 package presentation.hotelstaff.hotelstaffpersonalinfo.controller;
 
 import Enum.ResultMessage;
-import Mock.MockHotelstaffManager;
+import Mock.MockHotelstaffManage;
 import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
@@ -12,7 +12,7 @@ public  class HotelstaffPanelController implements presentation.hotelstaff.hotel
 	HotelstaffBLService hotelstaff;
 	public HotelstaffPanelController(){
 		//hotelstaff = new HotelstaffManage();
-		hotelstaff = new MockHotelstaffManager();
+		hotelstaff = new MockHotelstaffManage();
 	}
 	
 	@Override

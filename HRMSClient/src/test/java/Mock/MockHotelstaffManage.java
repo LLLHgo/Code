@@ -5,7 +5,7 @@ import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 
-public class MockHotelstaffManager implements HotelstaffBLService{
+public class MockHotelstaffManage implements HotelstaffBLService{
 	
 	
 	

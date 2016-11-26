@@ -11,7 +11,7 @@ import org.junit.Test;
 import Enum.ResultMessage;
 import Mock.MockClientManage;
 import Mock.MockHotelinfoManage;
-import Mock.MockHotelstaffManager;
+import Mock.MockHotelstaffManage;
 import Mock.MockLogManage;
 import Mock.MockMarketingManage;
 import Mock.MockSitemanagerManage;
@@ -31,7 +31,7 @@ public class ProcessSiteManagerViewControllerTest {
 	MockSitemanagerManage ms;
 	MockClientManage mc;
 	MockHotelinfoManage mh;
-	MockHotelstaffManager mhs;
+	MockHotelstaffManage mhs;
 	MockLogManage ml;
 	LogDataTool logDataTool;
 	ClientDataTool clientDataTool;
@@ -57,7 +57,7 @@ public class ProcessSiteManagerViewControllerTest {
 	    ms=new MockSitemanagerManage();
 		mc=new MockClientManage();
 		mh=new MockHotelinfoManage();
-		mhs=new MockHotelstaffManager();
+		mhs=new MockHotelstaffManage();
 		mm=new MockMarketingManage();
 		ml=new MockLogManage();
 		logDataTool=new LogDataTool();

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Mock.MockHotelinfoManage;
-import Mock.MockHotelstaffManager;
+import Mock.MockHotelstaffManage;
 import Mock.MockOrderManage;
 import Mock.MockStrategyManage;
 import businesslogic.hotelstaffbl.Hotelstaff;
@@ -41,7 +41,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	MockHotelinfoManage hotelinfo;
 	MockStrategyManage strategy;
 	MockOrderManage order;
-	MockHotelstaffManager hotelstaff;
+	MockHotelstaffManage hotelstaff;
 	
 //	public HotelstaffViewController(){
 //		new HotelstaffViewController("H00000001");
@@ -60,7 +60,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		hotelinfo = new MockHotelinfoManage();
 		strategy = new MockStrategyManage();
 		order = new MockOrderManage();
-		hotelstaff = new MockHotelstaffManager();
+		hotelstaff = new MockHotelstaffManage();
 	
 	}
 
