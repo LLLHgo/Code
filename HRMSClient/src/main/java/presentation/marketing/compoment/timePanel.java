@@ -12,9 +12,6 @@ import javax.swing.JTextField;
 
 public class TimePanel extends JPanel{
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private Font font=new Font("楷体",Font.ITALIC,20);
@@ -64,6 +61,8 @@ public class TimePanel extends JPanel{
 		this.add(bridge2);
 		this.add(colon);
 	}
+
+
 
 	public void setTime(int year,int month,int date,int hour,int minute){
 		this.yearField.setText(""+year);
