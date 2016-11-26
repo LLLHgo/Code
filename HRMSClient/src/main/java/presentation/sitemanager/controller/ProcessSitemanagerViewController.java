@@ -7,6 +7,7 @@ import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import businesslogicservice.hotelstaffblservice.HotelstaffBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
@@ -48,6 +49,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		marketingblservice=new MarketingBLService_Stub();
 		clientblservice=new ClientBLService_Stub();
 		hotelblservice=new HotelinfoBLService_Stub();
+		hotelstaffblservice=new HotelstaffBLService_Stub();
 		sitemanagerVO=init(sitemanagerId);
 	}
 	
