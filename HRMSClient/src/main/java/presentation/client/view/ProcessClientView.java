@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import presentation.DialogCreator;
+import presentation.client.compoment.PersonalPanel;
 import presentation.client.compoment.SearchPanel;
 import presentation.client.compoment.ViewOrderPanel;
 import presentation.client.compoment.WelPanel;
@@ -37,6 +38,7 @@ public class ProcessClientView extends JPanel {
 	private WelPanel wp;
 	private SearchPanel sp;
 	private ViewOrderPanel vp;
+	private PersonalPanel pp;
 	private ImageIcon imageIcon = null;
 	private JLabel idLabel;
 	private JFrame frame;
@@ -50,12 +52,14 @@ public class ProcessClientView extends JPanel {
 			wp=new WelPanel();
 			sp=new SearchPanel();
 			vp=new ViewOrderPanel();
+			pp=new PersonalPanel();
 			imageIcon = new ImageIcon("image/clientPanel.png");
 			searchHotel=new GuideBoardButton(240,"查询酒店");
 			searchHotel.addActionListener( new searchButtonListener());
 			viewOrder=new GuideBoardButton(290,"浏览订单");
 			viewOrder.addActionListener( new viewOrderButtonListener());
 			personal=new GuideBoardButton(340,"个人信息");
+			personal.addActionListener( new personalButtonListener());
 			evaluate=new GuideBoardButton(390,"评价酒店");
 			register=new GuideBoardButton(440,"注册会员");
 			exit=new GuideBoardButton(490,"退出");
@@ -71,10 +75,12 @@ public class ProcessClientView extends JPanel {
 		    wp.setLocation(277,82);
 		    sp.setLocation(277,82);
 		    vp.setLocation(277,82);
+		    pp.setLocation(277,82);
 		    wp.setVisible(true);
 		    frame.add(wp);
 		    frame.add(sp);
 		    frame.add(vp);
+		    frame.add(pp);
 		    this.setSize(1000, 618);
 		    this.setVisible(true);
 	}
@@ -83,6 +89,7 @@ public class ProcessClientView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			pp.setVisible(false);
 			wp.setVisible(false);
 			vp.setVisible(false);
 			sp.setVisible(true);
@@ -94,9 +101,22 @@ public class ProcessClientView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			pp.setVisible(false);
 			wp.setVisible(false);
 			sp.setVisible(false);
 			vp.setVisible(true);
+		}
+
+	}
+	private class personalButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			wp.setVisible(false);
+			sp.setVisible(false);
+			vp.setVisible(false);
+			pp.setVisible(true);
 		}
 
 	}
