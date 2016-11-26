@@ -81,8 +81,8 @@ public class HotelinfoViewControllerTest {
 		roominfoList.add(roominfo4);
 		roominfoList.add(roominfo5);
 		roominfoList.add(roominfo6);
-
-		controller = new HotelstaffViewController();
+//
+		controller = HotelstaffViewController.getInstance("H00000001");
 
 		String begin1="2016-11-11 00:00:00";
 		String end1="2016-11-11 23:59:59";

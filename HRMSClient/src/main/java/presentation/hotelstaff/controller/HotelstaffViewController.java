@@ -10,10 +10,12 @@ import Mock.MockHotelinfoManage;
 import Mock.MockHotelstaffManager;
 import Mock.MockOrderManage;
 import Mock.MockStrategyManage;
+import businesslogic.hotelstaffbl.Hotelstaff;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffPanel;
 import presentation.hotelstaff.view.NewRoominfoPanel;
+import presentation.hotelstaff.view.OrderPanel;
 import presentation.hotelstaff.view.RoominfoPanel;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
@@ -27,9 +29,11 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelstaffViewController implements HotelstaffViewControllerService{
 	
+	private static HotelstaffViewController controller;
+	
 	private String hotelID;
-	private JPanel view;
-
+	public JPanel view;
+	public JPanel panel;
 //	HotelinfoBLService hotelinfo;
 //	StrategyBLService strategy;
 //	OrderBLService order;
@@ -39,15 +43,15 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	MockOrderManage order;
 	MockHotelstaffManager hotelstaff;
 	
-	public HotelstaffViewController(){
-		new HotelstaffViewController("H00000001");
-	}
+//	public HotelstaffViewController(){
+//		new HotelstaffViewController("H00000001");
+//	}
 
 	public String gethotelID(){
 		return hotelID;
 	}
 
-	public HotelstaffViewController(String hotelID){
+	private HotelstaffViewController(String hotelID){
 		this.hotelID = hotelID;
 //		hotelinfo = new HotelinfoManage();
 //		strategy = new StrategyManage();
@@ -57,8 +61,16 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		strategy = new MockStrategyManage();
 		order = new MockOrderManage();
 		hotelstaff = new MockHotelstaffManager();
+	
 	}
 
+	public static HotelstaffViewController getInstance(String hotelID){
+		if(controller == null){
+			controller = new HotelstaffViewController(hotelID);
+		}
+		return controller;
+	}
+	
 	public void setView(JPanel view){
 		this.view = view;
 	}
@@ -197,37 +209,44 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	public void JBHotelinfoClicked(){
-		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
-		JPanel panel = new HotelinfoPanel(panelcontroller);
-		panelcontroller.setView(panel);
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new HotelinfoPanel(panelcontroller);
 		view.add(panel);
 		panel.revalidate();
 		panel.repaint();
 	}
 	
 	public void JBRoominfoClicked(){
-		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
-		JPanel panel = new NewRoominfoPanel(panelcontroller);
-		panelcontroller.setView(panel);
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new NewRoominfoPanel(panelcontroller);
 		view.add(panel);
 		panel.revalidate();
 		panel.repaint();
 	}
 	
 	public void JBOrderClicked(){
-		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
-		JPanel panel = new HotelinfoPanel(panelcontroller);
-		panelcontroller.setView(panel);
-		view.removeAll();
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new OrderPanel(panelcontroller);
 		view.add(panel);
 		panel.revalidate();
 		panel.repaint();
 	}
 	
 	public void JBPersonalinfoClicked(){
-		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
-		JPanel panel = new HotelstaffPanel(panelcontroller);
-		panelcontroller.setView(panel);
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new HotelstaffPanel(panelcontroller);
 		view.add(panel);
 		panel.revalidate();
 		panel.repaint();
