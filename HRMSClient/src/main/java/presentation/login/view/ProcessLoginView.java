@@ -23,6 +23,7 @@ import javax.swing.text.Caret;
 import presentation.DialogCreator;
 import presentation.client.view.ProcessClientView;
 import presentation.client.view.ProcessClientView;
+import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
@@ -47,9 +48,8 @@ public class ProcessLoginView extends JPanel {
 		    this.setLayout(null);
 		    IdField = new JTextField();
 			KeyField = new JPasswordField();
-			Font fm=new Font("Comic Sans MS",Font.PLAIN,20);
-			IdField.setFont(fm);
-			KeyField.setFont(fm);
+			IdField.setFont(new java.awt.Font("微软雅黑", 4,  25));
+			KeyField.setFont(new java.awt.Font("微软雅黑", 4,  25));
 			IdField.setBorder(new EmptyBorder(0,0,0,0));
 			IdField.setBounds(385, 220, 300, 48);
 			IdField.setOpaque(false);
@@ -73,15 +73,14 @@ public class ProcessLoginView extends JPanel {
 					switch(controller.login(id,key)){
 					case 'c':
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new ProcessClientView());
+						frame.getContentPane().add(new ProcessClientView(frame,id));
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
 						break;
 					case 'h':
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()
-								));
-						frame.getContentPane().add(new ProcessClientView());
+						frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()));
+						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
 						break;
