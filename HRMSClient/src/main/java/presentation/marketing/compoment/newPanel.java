@@ -60,23 +60,30 @@ public class newPanel extends MJPanel{
         for(DistrictVO vo:list){
         	items+=vo.getHotels().size();
         	dis++;
+        	List<JRadioButton> hotelButtonList;
         	JRadioButton district=new MJRadioButton(vo.getName(),false,40,dis*40+(items-vo.getHotels().size())*30,400,50,font);
         	district.addActionListener(new ActionListener(){
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					if(((JRadioButton)e.getSource()).isSelected()){System.out.println("selected");}
+					if(((JRadioButton)e.getSource()).isSelected()){
+						//for(JRadioButton button:hotelButtonList){
+
+						//}
+						}
 					else {System.out.println("not selected");}
 				}
-        		
+
         	});
         	hotelsPanel.add(district);
 
         	List<String> hotelList=vo.getHotels();
+        	hotelButtonList=new ArrayList<JRadioButton>();
         	int index=-1;
         	for(String s:hotelList){
         		index++;
         		JRadioButton hotelButton=new MJRadioButton(s,false,60,dis*40+(items-vo.getHotels().size())*30+40+index*30,400,40,font2);//每个酒店在所对应商圈下方
+        		hotelButtonList.add(hotelButton);
         		hotelsPanel.add(hotelButton);
         	}
 
@@ -84,7 +91,7 @@ public class newPanel extends MJPanel{
 
         //放置showAbnormalOrderPanel的JScrollPanel
         JScrollPane hotelsScroll = new MJScrollPane(205, 285, 590, 150,hotelsPanel);
-        
+
         JButton check=new MJButton(385,435,60,60,ensureIcon);
         this.add(hotelsScroll);
         this.add(check);
