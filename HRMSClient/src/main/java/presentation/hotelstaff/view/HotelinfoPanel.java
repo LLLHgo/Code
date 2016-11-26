@@ -39,9 +39,9 @@ public class HotelinfoPanel extends JPanel{
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;
 	
-	public HotelinfoPanel(HotelstaffViewController controller,String hotelID){
+	public HotelinfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
-		this.hotelID = hotelID;
+		this.hotelID = controller.gethotelID();
 		initHotelinfoPanel();
 	}
 	

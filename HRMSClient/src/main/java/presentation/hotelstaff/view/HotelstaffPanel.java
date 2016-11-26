@@ -37,9 +37,9 @@ public class HotelstaffPanel extends JPanel{
 	private String password;
 	private JLabel resultLabel;
 	
-	public HotelstaffPanel(HotelstaffViewController controller,String hotelID){
+	public HotelstaffPanel(HotelstaffViewController controller){
 		this.controller = controller;
-		this.hotelID = hotelID;
+		this.hotelID = controller.gethotelID();
 		initHotelstaffPanel();
 	}
 	

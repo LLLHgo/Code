@@ -37,7 +37,7 @@ public class HotelstaffView extends JPanel{
 		initHotelstaff();
 	}
 	
-	private void initHotelstaff(){
+	public void initHotelstaff(){
 		this.setLayout(null);
 		this.setLocation(0, 0);
 		this.setSize(1000, 618);
@@ -87,8 +87,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			
+			controller.JBHotelinfoClicked();
 		}
 		
 	}
@@ -97,8 +96,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
-			
+			controller.JBRoominfoClicked();
 		}
 		
 	}
@@ -107,8 +105,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			
+			controller.JBOrderClicked();
 		}
 	}
 	
@@ -116,7 +113,6 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-	
 			
 		}
 		
@@ -126,8 +122,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		
-			
+			controller.JBPersonalinfoClicked();
 		}
 		
 	}

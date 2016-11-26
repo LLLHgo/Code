@@ -11,6 +11,10 @@ import Mock.MockHotelstaffManager;
 import Mock.MockOrderManage;
 import Mock.MockStrategyManage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import presentation.hotelstaff.view.HotelinfoPanel;
+import presentation.hotelstaff.view.HotelstaffPanel;
+import presentation.hotelstaff.view.NewRoominfoPanel;
+import presentation.hotelstaff.view.RoominfoPanel;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -25,6 +29,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	
 	private String hotelID;
 	private JPanel view;
+
 //	HotelinfoBLService hotelinfo;
 //	StrategyBLService strategy;
 //	OrderBLService order;
@@ -38,6 +43,9 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		new HotelstaffViewController("H00000001");
 	}
 
+	public String gethotelID(){
+		return hotelID;
+	}
 
 	public HotelstaffViewController(String hotelID){
 		this.hotelID = hotelID;
@@ -188,6 +196,40 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		return hotelstaff.checkAccount(hotelID, password);
 	}
 
+	public void JBHotelinfoClicked(){
+		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
+		JPanel panel = new HotelinfoPanel(panelcontroller);
+		panelcontroller.setView(panel);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
 	
+	public void JBRoominfoClicked(){
+		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
+		JPanel panel = new NewRoominfoPanel(panelcontroller);
+		panelcontroller.setView(panel);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
 	
+	public void JBOrderClicked(){
+		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
+		JPanel panel = new HotelinfoPanel(panelcontroller);
+		panelcontroller.setView(panel);
+		view.removeAll();
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
+	
+	public void JBPersonalinfoClicked(){
+		HotelstaffViewController panelcontroller = new HotelstaffViewController(hotelID);
+		JPanel panel = new HotelstaffPanel(panelcontroller);
+		panelcontroller.setView(panel);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
 }

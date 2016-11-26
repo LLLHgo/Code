@@ -30,7 +30,7 @@ public class TestFrame {
 		
 		
 
-		HotelstaffViewController hotelstaff = new HotelstaffViewController("H000000001");
+		HotelstaffViewController hotelstaff = new HotelstaffViewController("H00000001");
 		HotelstaffView view = new HotelstaffView(hotelstaff);
 		hotelstaff.setView(view);
 		frame.getContentPane().add(view);

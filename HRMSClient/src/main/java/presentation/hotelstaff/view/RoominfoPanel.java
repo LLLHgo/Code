@@ -72,9 +72,9 @@ public class RoominfoPanel extends JPanel{
 	private ConfirmButton jbDetailedConfirm;
 	private JPanel panel;
 
-	public RoominfoPanel(HotelstaffViewController controller,String hotelID){
+	public RoominfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
-		this.hotelID = hotelID;
+		this.hotelID = controller.gethotelID();
 		initHotelinfoPanel();
 	}
 	

@@ -54,9 +54,9 @@ public class OrderPanel extends JPanel{
 	private boolean buttonFlag;
 	private JPanel orderPanel;
 	
-	public OrderPanel(HotelstaffViewController controller , String hotelID){
+	public OrderPanel(HotelstaffViewController controller){
 		this.controller = controller;
-		this.hotelID = hotelID;
+		this.hotelID = controller.gethotelID();
 		init();
 	}
 	
