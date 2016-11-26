@@ -27,6 +27,9 @@ import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
 import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
+import presentation.sitemanager.controller.ProcessSitemanagerViewController;
+import presentation.sitemanager.view.ProcessSitemanagerView;
+import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
 
 public class ProcessLoginView extends JPanel {
 	/**
@@ -39,7 +42,11 @@ public class ProcessLoginView extends JPanel {
 	private JButton signUpButton;
 	private ImageIcon imageIcon = null;
 	private ProcessLoginViewController controller;
+	private ProcessSitemanagerViewControllerService ps;
 	public ProcessLoginView(JFrame frame,ProcessLoginViewController controller){
+		ProcessSitemanagerViewControllerService controller0 = new ProcessSitemanagerViewController("S00000001");
+		ProcessSitemanagerView view = new ProcessSitemanagerView(controller0);
+		controller0.setView(view);
 			this.controller=controller;
 			ImageIcon lib=new ImageIcon("image/loginButton.png");
 			ImageIcon sub=new ImageIcon("image/signUpButton.png");
@@ -64,7 +71,10 @@ public class ProcessLoginView extends JPanel {
 			loginButton=new JButton();
 			loginButton.setBounds(353,417,120,32);
 			loginButton.setIcon(lib);
-			loginButton.setOpaque(false);
+			loginButton.setOpaque(true);
+			loginButton.setContentAreaFilled(false);
+			loginButton.setBorderPainted(false);
+			loginButton.setFocusPainted(false);
 			loginButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					String id=IdField.getText();
@@ -85,6 +95,12 @@ public class ProcessLoginView extends JPanel {
 						frame.getContentPane().repaint();
 						break;
 					case 's':
+						frame.getContentPane().removeAll();
+						frame.getContentPane().add(new ProcessSitemanagerView(controller0));
+						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
+						frame.getContentPane().revalidate();
+						frame.getContentPane().repaint();
+
 						break;
 					case 'm':
 						break;
@@ -98,7 +114,10 @@ public class ProcessLoginView extends JPanel {
 			signUpButton=new JButton();
 			signUpButton.setBounds(548,417,120,32);
 			signUpButton.setIcon(sub);
-			signUpButton.setOpaque(false);
+			signUpButton.setOpaque(true);
+			signUpButton.setContentAreaFilled(false);
+			signUpButton.setBorderPainted(false);
+			signUpButton.setFocusPainted(false);
 			signUpButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					DialogCreator.successDialog("Success");

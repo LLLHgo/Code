@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import presentation.DialogCreator;
 import presentation.client.compoment.SearchPanel;
+import presentation.client.compoment.ViewOrderPanel;
 import presentation.client.compoment.WelPanel;
 import presentation.common.GuideBoardButton;
 
@@ -35,6 +36,7 @@ public class ProcessClientView extends JPanel {
 	private String id;
 	private WelPanel wp;
 	private SearchPanel sp;
+	private ViewOrderPanel vp;
 	private ImageIcon imageIcon = null;
 	private JLabel idLabel;
 	private JFrame frame;
@@ -47,11 +49,13 @@ public class ProcessClientView extends JPanel {
 			idLabel.setForeground(Color.WHITE);
 			wp=new WelPanel();
 			sp=new SearchPanel();
+			vp=new ViewOrderPanel();
 			imageIcon = new ImageIcon("image/clientPanel.png");
 			searchHotel=new GuideBoardButton(240,"查询酒店");
 			searchHotel.addActionListener( new searchButtonListener());
 			viewOrder=new GuideBoardButton(290,"浏览订单");
-			personal=new GuideBoardButton(340,"个人订单");
+			viewOrder.addActionListener( new viewOrderButtonListener());
+			personal=new GuideBoardButton(340,"个人信息");
 			evaluate=new GuideBoardButton(390,"评价酒店");
 			register=new GuideBoardButton(440,"注册会员");
 			exit=new GuideBoardButton(490,"退出");
@@ -66,9 +70,11 @@ public class ProcessClientView extends JPanel {
 		    this.add(idLabel);
 		    wp.setLocation(277,82);
 		    sp.setLocation(277,82);
+		    vp.setLocation(277,82);
 		    wp.setVisible(true);
 		    frame.add(wp);
 		    frame.add(sp);
+		    frame.add(vp);
 		    this.setSize(1000, 618);
 		    this.setVisible(true);
 	}
@@ -78,7 +84,19 @@ public class ProcessClientView extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			wp.setVisible(false);
+			vp.setVisible(false);
 			sp.setVisible(true);
+		}
+
+	}
+	private class viewOrderButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			wp.setVisible(false);
+			sp.setVisible(false);
+			vp.setVisible(true);
 		}
 
 	}

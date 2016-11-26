@@ -8,14 +8,15 @@ import javax.swing.JFrame;
 import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
+import presentation.login.view.ProcessLoginControllerService;
 import presentation.login.view.ProcessLoginView;
 
 public class MainFrame {
-
+	//private static ProcessLoginControllerService controller;
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new ProcessLoginView(frame,new ProcessLoginViewController()));
+		frame.getContentPane().add(new ProcessLoginView(frame, new ProcessLoginViewController()));
 		//frame.getContentPane().add(new HotelstaffView(frame,new HotelstaffViewController(),"H00000000"));
 		//frame.getContentPane().add(new HotelinfoPanel());
 		frame.setVisible(true);

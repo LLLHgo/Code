@@ -2,6 +2,8 @@ package presentation.client.compoment;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -28,6 +30,15 @@ public class SearchPanel extends JPanel{
 	    this.setLayout(null);
 	    this.setSize(704, 502);
 	    this.setOpaque(false);
+	}
+	private class searchButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String info=searchField.getText();
+		}
+
 	}
 	@Override
 	public void paintComponent(Graphics g) {
