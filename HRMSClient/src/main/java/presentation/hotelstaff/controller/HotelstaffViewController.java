@@ -182,7 +182,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public boolean saveSitemanagerUpdate(HotelstaffVO vo) {
+	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
 		return hotelstaff.saveSitemanagerUpdate(vo);
 	}
 
