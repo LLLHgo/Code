@@ -20,14 +20,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import datatool.OrderDataTool;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJLabel;
 import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.compoment.MJRadioButton;
+import presentation.marketing.compoment.MJScrollPane;
 import presentation.marketing.compoment.MJTextField;
 import vo.orderVO.OrderVO;
 
@@ -168,18 +169,15 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	}
 
    public void showAbnormalOrders(ArrayList<OrderVO> orders){
+	    orders=OrderDataTool.list1;
 	   removeOrderPanel();
 	   if(orders==null||orders.size()==0)return;
 	   //设置放置Order信息的JPanel
        orderPanel=new MJPanel(0, 0, 702, 3520);
        orderPanel.setPreferredSize(new Dimension(680,+30+150*orders.size()));
 
-       //设置放置showAbnormalOrderPanel的JScrollPanel
-       JScrollPane showAbnormalScroll = new JScrollPane(orderPanel);
-       showAbnormalScroll.setBounds(20, 150, 699, 365);
-       showAbnormalScroll.setBorder(new EmptyBorder(0,0,0,0));
-       showAbnormalScroll.setOpaque(false);
-       showAbnormalScroll.getViewport().setOpaque(false);
+       //放置showAbnormalOrderPanel的JScrollPanel
+       JScrollPane showAbnormalScroll = new MJScrollPane(20, 150, 699, 365,orderPanel);
        int num=0;
 
        Image image=new ImageIcon("./src/main/resource/picture/marketing/orderBackground.png").getImage();

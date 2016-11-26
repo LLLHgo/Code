@@ -8,6 +8,7 @@ import java.util.List;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import vo.clientVO.ClientVO;
+import vo.districtVO.DistrictVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
@@ -189,5 +190,6 @@ public interface ProcessMarketingViewControllerService {
 	public void abnormalButtonClicked();
 	public void addLog(String log);
 	public void strategyButtonClicked();
+	public List<DistrictVO> getDistricts();
 
 }

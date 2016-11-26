@@ -8,9 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
+import presentation.hotelstaff.controller.HotelstaffViewControllerService;
+import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
-import presentation.hotelstaff.view.HotelstaffViewControllerService;
 import presentation.login.view.ProcessLoginView;
 
 public class TestFrame {
@@ -29,9 +29,11 @@ public class TestFrame {
 		frame.setLocation(screenWidth-width/2, screenHeight-height/2);
 		
 		
-//		//把一堆controller new出来
-//		HotelstaffViewControllerService hotelstaff = new HotelstaffViewController();
-		frame.getContentPane().add(new HotelstaffView(frame,"H00000001"));
+
+		HotelstaffViewController hotelstaff = new HotelstaffViewController("H00000001");
+		HotelstaffView view = new HotelstaffView(hotelstaff);
+		hotelstaff.setView(view);
+		frame.getContentPane().add(view);
 		
 		frame.setVisible(true);
 	}

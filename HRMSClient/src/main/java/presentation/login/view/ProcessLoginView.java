@@ -23,9 +23,12 @@ import javax.swing.text.Caret;
 import presentation.DialogCreator;
 import presentation.client.view.ProcessClientView;
 import presentation.client.view.ProcessClientView;
-import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
+import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
+import presentation.sitemanager.controller.ProcessSitemanagerViewController;
+import presentation.sitemanager.view.ProcessSitemanagerView;
+import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
 
 public class ProcessLoginView extends JPanel {
 	/**
@@ -38,7 +41,11 @@ public class ProcessLoginView extends JPanel {
 	private JButton signUpButton;
 	private ImageIcon imageIcon = null;
 	private ProcessLoginViewController controller;
+	private ProcessSitemanagerViewControllerService ps;
 	public ProcessLoginView(JFrame frame,ProcessLoginViewController controller){
+		ProcessSitemanagerViewControllerService controller0 = new ProcessSitemanagerViewController("S00000001");
+		ProcessSitemanagerView view = new ProcessSitemanagerView(controller0);
+		controller0.setView(view);
 			this.controller=controller;
 			ImageIcon lib=new ImageIcon("image/loginButton.png");
 			ImageIcon sub=new ImageIcon("image/signUpButton.png");
@@ -47,9 +54,8 @@ public class ProcessLoginView extends JPanel {
 		    this.setLayout(null);
 		    IdField = new JTextField();
 			KeyField = new JPasswordField();
-			Font fm=new Font("Comic Sans MS",Font.PLAIN,20);
-			IdField.setFont(fm);
-			KeyField.setFont(fm);
+			IdField.setFont(new java.awt.Font("微软雅黑", 4,  25));
+			KeyField.setFont(new java.awt.Font("微软雅黑", 4,  25));
 			IdField.setBorder(new EmptyBorder(0,0,0,0));
 			IdField.setBounds(385, 220, 300, 48);
 			IdField.setOpaque(false);
@@ -64,7 +70,10 @@ public class ProcessLoginView extends JPanel {
 			loginButton=new JButton();
 			loginButton.setBounds(353,417,120,32);
 			loginButton.setIcon(lib);
-			loginButton.setOpaque(false);
+			loginButton.setOpaque(true);
+			loginButton.setContentAreaFilled(false);
+			loginButton.setBorderPainted(false);
+			loginButton.setFocusPainted(false);
 			loginButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					String id=IdField.getText();
@@ -73,19 +82,24 @@ public class ProcessLoginView extends JPanel {
 					switch(controller.login(id,key)){
 					case 'c':
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new ProcessClientView());
+						frame.getContentPane().add(new ProcessClientView(frame,id));
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
 						break;
 					case 'h':
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()
-								));
-						frame.getContentPane().add(new ProcessClientView());
+						//frame.getContentPane().add(new HotelstaffView(frame,IdField.getText()));
+						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
 						break;
 					case 's':
+						frame.getContentPane().removeAll();
+						frame.getContentPane().add(new ProcessSitemanagerView(controller0));
+						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
+						frame.getContentPane().revalidate();
+						frame.getContentPane().repaint();
+
 						break;
 					case 'm':
 						break;
@@ -99,7 +113,10 @@ public class ProcessLoginView extends JPanel {
 			signUpButton=new JButton();
 			signUpButton.setBounds(548,417,120,32);
 			signUpButton.setIcon(sub);
-			signUpButton.setOpaque(false);
+			signUpButton.setOpaque(true);
+			signUpButton.setContentAreaFilled(false);
+			signUpButton.setBorderPainted(false);
+			signUpButton.setFocusPainted(false);
 			signUpButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					DialogCreator.successDialog("Success");

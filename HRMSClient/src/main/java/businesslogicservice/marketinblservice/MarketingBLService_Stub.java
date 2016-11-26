@@ -5,15 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
-import Enum.VIPType;
-import Enum.marketingStrategy;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public class MarketingBLService_Stub implements MarketingBLService {
 	//折扣
@@ -25,7 +20,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
        this.discount=discount;
 	}
     public MarketingBLService_Stub(){
- 
+
     }
 
     /**
@@ -168,5 +163,6 @@ public class MarketingBLService_Stub implements MarketingBLService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

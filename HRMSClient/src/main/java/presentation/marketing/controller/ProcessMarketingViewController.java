@@ -7,7 +7,6 @@ import java.util.List;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogic.logbl.LogManage;
-import businesslogic.marketingbl.MarketingManage;
 import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
 import presentation.marketing.view.ProcessMarketingAbnormalView;
@@ -16,11 +15,13 @@ import presentation.marketing.view.ProcessMarketingStrategyView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
-import businesslogicservice.logblservice.LogBLService;
+import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
+import datatool.DistrictDataTool;
 import vo.clientVO.ClientVO;
+import vo.districtVO.DistrictVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
@@ -41,7 +42,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     private ProcessMarketingStrategyView strategyView;
     public ProcessMarketingViewController (String marketingID){
     	this.marketingID=marketingID;
-    	this.MarketingBlService=new MarketingManage();
+    	this.MarketingBlService=new MarketingBLService_Stub();
     	this.StrategyBLService=new StrategyManage();
     	this.OrderBLService=new OrderManage();
     	this.LogBLService=new LogManage();
@@ -223,6 +224,14 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		strategyView=new ProcessMarketingStrategyView(this,view);
 
 	}
+	@Override
+	public List<DistrictVO> getDistricts() {
+		List<DistrictVO> list=new ArrayList<DistrictVO>();
+	    list.add(DistrictDataTool.dis1);
+	    list.add(DistrictDataTool.dis2);
+	    return list;
+	}
+
 
 
 }

@@ -1,4 +1,4 @@
-package presentation.hotelstaff.roominfo;
+package presentation.hotelstaff.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,43 +32,24 @@ import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.component.RightButton;
 import presentation.hotelstaff.component.RoominfoLabel;
 import presentation.hotelstaff.component.RoominfoTextField;
-import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
+import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
 
 public class NewRoominfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
-	private HotelinfoViewController controller;
+	private HotelstaffViewController controller;
 	private String hotelID;
 	private ModifyButton jbModify;
-	private LeftButton jbLeft;
-	private RightButton jbRight;
 	private AddButton jbAdd;
-	private RoominfoLabel jlroomNO;
-	private RoominfoLabel jltype;
-	private RoominfoLabel jlprice;
-	private RoominfoLabel jlstate;
+
 
 	private JPanel roominfoPanel;
 	private JScrollPane scrollPane;
-	
-	private JFrame frame;
-	private String roomID="";
-	private String type="";
-	private String price="";
-	private String state="";
-	private ImageIcon init_detailedroominfo_image;
-	private ReviewTextArea jtaRoomID;
-	private ReviewTextArea jtaType;
-	private ReviewTextArea jtaPrice;
-	private ReviewTextArea jtaState;
-	private CancleButton jbDetailedCancle;
-	private ConfirmButton jbDetailedConfirm;
-	private JPanel panel;
-	
-	public NewRoominfoPanel(HotelinfoViewController controller,String hotelID){
+
+	public NewRoominfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
-		this.hotelID = hotelID;
+		this.hotelID = controller.gethotelID();
 		initRoominfoPanel();
 	}
 	/**

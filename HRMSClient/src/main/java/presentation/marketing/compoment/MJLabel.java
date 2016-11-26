@@ -25,4 +25,11 @@ public class MJLabel extends JLabel{
     	this.setFont(font);
     	this.setForeground(Color.white);
     }
+	public MJLabel(String s, int x,int y,int w,int h,Font font,Icon icon){
+		this.setText(s);
+    	this.setBounds(x, y, w, h);
+    	this.setFont(font);
+    	this.setForeground(Color.white);
+    	this.setIcon(icon);
+    }
 }

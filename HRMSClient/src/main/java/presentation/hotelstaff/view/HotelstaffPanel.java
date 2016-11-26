@@ -1,4 +1,4 @@
-package presentation.hotelstaff.hotelstaffpersonalinfo.view;
+package presentation.hotelstaff.view;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,12 +20,12 @@ import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.ReviewImageButton;
 import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.component.UserImageLabel;
-import presentation.hotelstaff.hotelstaffpersonalinfo.controller.HotelstaffPanelController;
+import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class HotelstaffPanel extends JPanel{
 	
-	private HotelstaffPanelController controller;
+	private HotelstaffViewController controller;
 	private String hotelID;
 	private ImageIcon ipassword;
 	private JTextField jtfPassword;
@@ -37,9 +37,9 @@ public class HotelstaffPanel extends JPanel{
 	private String password;
 	private JLabel resultLabel;
 	
-	public HotelstaffPanel(HotelstaffPanelController controller,String hotelID){
+	public HotelstaffPanel(HotelstaffViewController controller){
 		this.controller = controller;
-		this.hotelID = hotelID;
+		this.hotelID = controller.gethotelID();
 		initHotelstaffPanel();
 	}
 	
@@ -54,7 +54,7 @@ public class HotelstaffPanel extends JPanel{
 		//修改密码的背景
 		ipassword = new ImageIcon("./src/main/resource/picture/hotelstaff/password.png");
 		
-		password = controller.getBasicinfo(hotelID).getPassword();
+		password = controller.getHotelstaffBasicinfo(hotelID).getPassword();
 	
 		jtfPassword = new JTextField(15);
 		Font font = new Font("微软雅黑",Font.PLAIN,20);

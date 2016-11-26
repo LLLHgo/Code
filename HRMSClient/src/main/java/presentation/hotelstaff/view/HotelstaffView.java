@@ -13,21 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import presentation.common.GuideBoardButton;
-import presentation.hotelstaff.Order.OrderPanel;
 import presentation.hotelstaff.component.UserImageLabel;
-import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
-import presentation.hotelstaff.hotelinfo.view.HotelinfoPanel;
-import presentation.hotelstaff.hotelstaffpersonalinfo.controller.HotelstaffPanelController;
-import presentation.hotelstaff.hotelstaffpersonalinfo.view.HotelstaffPanel;
-import presentation.hotelstaff.roominfo.NewRoominfoPanel;
-import presentation.hotelstaff.roominfo.RoominfoPanel;
+import presentation.hotelstaff.controller.HotelstaffViewController;
 import presentation.login.view.ProcessLoginView;
 
 public class HotelstaffView extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
+	private HotelstaffViewController controller;
 	private String hotelID;
-	private JFrame frame;
 	private ImageIcon init_image;
 	private GuideBoardButton jbHotelinfo;
 	private GuideBoardButton jbRoominfo;
@@ -38,13 +32,12 @@ public class HotelstaffView extends JPanel{
 	private UserImageLabel userLabel;
 	private JLabel IDLabel;
 	
-	public HotelstaffView(JFrame frame,String hotelID){
-		this.frame = frame;
-		this.hotelID = hotelID;
+	public HotelstaffView(HotelstaffViewController controller){
+		this.controller = controller;
 		initHotelstaff();
 	}
 	
-	private void initHotelstaff(){
+	public void initHotelstaff(){
 		this.setLayout(null);
 		this.setLocation(0, 0);
 		this.setSize(1000, 618);
@@ -94,12 +87,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(),hotelID));
-			frame.getContentPane().add(new HotelstaffView(frame,hotelID));
-			frame.getContentPane().revalidate();
-			frame.getContentPane().repaint();
-			
+			controller.JBHotelinfoClicked();
 		}
 		
 	}
@@ -108,13 +96,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			frame.getContentPane().removeAll();
-//			frame.getContentPane().add(new RoominfoPanel(new HotelinfoViewController(),hotelID));
-			frame.getContentPane().add(new NewRoominfoPanel(new HotelinfoViewController(),hotelID));
-			frame.getContentPane().add(new HotelstaffView(frame,hotelID));
-			frame.getContentPane().revalidate();
-			frame.getContentPane().repaint();
-			
+			controller.JBRoominfoClicked();
 		}
 		
 	}
@@ -123,12 +105,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(new OrderPanel(new HotelinfoViewController(),hotelID));
-			frame.getContentPane().add(new HotelstaffView(frame,hotelID));
-			frame.getContentPane().revalidate();
-			frame.getContentPane().repaint();
-			
+			controller.JBOrderClicked();
 		}
 	}
 	
@@ -136,7 +113,6 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-	
 			
 		}
 		
@@ -146,12 +122,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(new HotelstaffPanel(new HotelstaffPanelController(),hotelID));
-			frame.getContentPane().add(new HotelstaffView(frame,hotelID));
-			frame.getContentPane().revalidate();
-			frame.getContentPane().repaint();
-			
+			controller.JBPersonalinfoClicked();
 		}
 		
 	}
@@ -159,7 +130,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			frame.dispose();
+		
 		}
 		
 	}

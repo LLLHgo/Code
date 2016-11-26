@@ -1,4 +1,4 @@
-package presentation.hotelstaff.hotelinfo.view;
+package presentation.hotelstaff.view;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -14,12 +14,12 @@ import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.ReviewButton;
 import presentation.hotelstaff.component.ReviewTextArea;
-import presentation.hotelstaff.hotelinfo.controller.HotelinfoViewController;
+import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class HotelinfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
-	private HotelinfoViewController controller;
+	private HotelstaffViewController controller;
 	private String hotelID;
 	private String name;
 	private String address;
@@ -39,9 +39,9 @@ public class HotelinfoPanel extends JPanel{
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;
 	
-	public HotelinfoPanel(HotelinfoViewController controller,String hotelID){
+	public HotelinfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
-		this.hotelID = hotelID;
+		this.hotelID = controller.gethotelID();
 		initHotelinfoPanel();
 	}
 	
@@ -57,13 +57,13 @@ public class HotelinfoPanel extends JPanel{
 		jbModify.addActionListener(new ModifyButtonActionListener());
 		this.add(jbModify);
 		
-		this.name = controller.getBasicinfo(hotelID).getName();
-		this.address = controller.getBasicinfo(hotelID).getAddress();
-		this.area = controller.getBasicinfo(hotelID).getArea();
-		this.intro = controller.getBasicinfo(hotelID).getIntroduction();
-		this.facility = controller.getBasicinfo(hotelID).getFacility();
-		this.tel = controller.getBasicinfo(hotelID).getTel();
-		this.star = controller.getBasicinfo(hotelID).getStar();
+		this.name = controller.getHotelBasicinfo(hotelID).getName();
+		this.address = controller.getHotelBasicinfo(hotelID).getAddress();
+		this.area = controller.getHotelBasicinfo(hotelID).getArea();
+		this.intro = controller.getHotelBasicinfo(hotelID).getIntroduction();
+		this.facility = controller.getHotelBasicinfo(hotelID).getFacility();
+		this.tel = controller.getHotelBasicinfo(hotelID).getTel();
+		this.star = controller.getHotelBasicinfo(hotelID).getStar();
 		
 		jtaAddress = new ReviewTextArea(345,135,580,25,address);
 		jtaArea= new ReviewTextArea(345,186,580,25,area);
