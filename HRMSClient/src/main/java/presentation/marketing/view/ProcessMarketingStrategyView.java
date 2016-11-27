@@ -1,5 +1,6 @@
 package presentation.marketing.view;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -192,7 +193,9 @@ public class ProcessMarketingStrategyView extends JPanel{
 	public void browseButtonClicked(){
 		hideGroup();
 		List<MarketingStrategyVO> strategys=controller.getMarketingStrategy(controller.getMarketingID());
-		browsePanel=new browsePanel(80,0,690,500,strategys);
+        JPanel panel=new MJPanel(0,0,200,200);
+        panel.setPreferredSize(new Dimension(690,690));
+		browsePanel=new browsePanel(80,0,690,500,strategys,panel);
 		browsePanel.setVisible(true);
         this.add(browsePanel);
 	    this.revalidate();
