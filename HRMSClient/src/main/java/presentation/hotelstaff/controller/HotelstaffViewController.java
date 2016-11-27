@@ -258,8 +258,10 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public ResultMessage addArea(String area) {
-		
-		return ResultMessage.SUCCESS;
+		if(hotelinfo.addArea(area)==true){
+			return ResultMessage.AddAreaSuccess;
+		}
+		return null;
 	}
 
 	@Override
@@ -267,4 +269,9 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		
 		return hotelinfo.getArea();
 	}
+	
+	public void JBStrategyClicked(){
+		
+	}
+	
 }

@@ -29,7 +29,13 @@ import vo.orderVO.OrderVO;
 import Enum.OrderType;
 import Enum.VIPType;
 import datatool.OrderDataTool;
-
+/**
+ * 
+ * @version 1
+ * @since 16.11.27
+ * @author liuyu
+ *
+ */
 public class OrderPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
@@ -187,7 +193,7 @@ public class OrderPanel extends JPanel{
 	    this.add(scrollPane);
 	    int num=0;
 
-	    Image image=new ImageIcon("./src/main/resource/picture/hotelorder/order.png").getImage();
+	    Image image=new ImageIcon("./src/main/resource/picture/hotelorder/hotelorder.png").getImage();
 	    for(OrderVO order:orders){
 	    	//制作order背景
 	        JPanel panel=new JPanel(){

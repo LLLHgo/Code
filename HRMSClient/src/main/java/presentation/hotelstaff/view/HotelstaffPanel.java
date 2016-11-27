@@ -22,7 +22,13 @@ import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.component.UserImageLabel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.HotelinfoVO;
-
+/**
+ * 
+ * @version 1
+ * @since 16.11.27
+ * @author liuyu
+ *
+ */
 public class HotelstaffPanel extends JPanel{
 	
 	private HotelstaffViewController controller;

@@ -21,7 +21,13 @@ import presentation.hotelstaff.component.ReviewButton;
 import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.HotelinfoVO;
-
+/**
+ * 
+ * @version 1
+ * @since 16.11.27
+ * @author liuyu
+ *
+ */
 public class HotelinfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private HotelstaffViewController controller;
@@ -143,6 +149,7 @@ public class HotelinfoPanel extends JPanel{
 			jtaAddress.setEditable(true);
 			//TODO
 			jcbArea.setEnabled(true);
+			jcbArea.setEditable(true);//商圈也可以自己添加
 			jtaIntro.setEditable(true);
 			jtaFacility.setEditable(true);
 			jtaTEL.setEditable(true);
@@ -177,6 +184,7 @@ public class HotelinfoPanel extends JPanel{
 			address = jtaAddress.getText();
 			//TODO
 			area = jcbArea.getSelectedItem().toString();
+
 			intro = jtaIntro.getText();
 			facility = jtaFacility.getText();
 			tel = jtaTEL.getText();
@@ -190,21 +198,32 @@ public class HotelinfoPanel extends JPanel{
 				}
 			}
 			
-			ResultMessage result = controller.updateBassicinfo(new HotelinfoVO(address,area,intro,facility,tel,star,hotelID));
 			
+			final ResultMessage result = controller.addArea(area);
 			//提示信息
-			new Thread(new Runnable(){
-				@Override
-				public void run() {
-					resultLabel.setText(result.toString());
-					try {
-						Thread.sleep(1000);
-		            }catch(InterruptedException ex){
-		                    ex.printStackTrace();
-		            }
-		            resultLabel.setText("");
-				}
-			}).start();;
+
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						if(result!=null){
+							resultLabel.setText(result.toString());
+							try {
+								Thread.sleep(1000);
+							}catch(InterruptedException ex){
+								ex.printStackTrace();
+							}
+						}
+						resultLabel.setText(controller.updateBassicinfo
+						(new HotelinfoVO(address,area,intro,facility,tel,star,hotelID)).toString());
+						try {
+							Thread.sleep(1000);
+					    }catch(InterruptedException ex){
+					        ex.printStackTrace();
+					    }
+					        resultLabel.setText("");
+					}
+				}).start();
+			
 		}
 		
 	}

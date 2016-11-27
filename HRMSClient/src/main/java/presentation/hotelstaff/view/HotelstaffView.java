@@ -113,7 +113,7 @@ public class HotelstaffView extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			controller.JBStrategyClicked();
 		}
 		
 	}

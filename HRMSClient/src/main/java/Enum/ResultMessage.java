@@ -7,5 +7,6 @@ public enum ResultMessage {
     DUPLICATETEL,
 	DATEBASEFAIL,
 	SAMEPASSWORD,
-	SAMEINFO
+	SAMEINFO,
+	AddAreaSuccess
 }
