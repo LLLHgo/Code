@@ -1,17 +1,23 @@
 package presentation.client.compoment;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
 
 public class EvaluatePanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private SearchButton searchButton;
 	private JTextField searchField;
+	private JScrollPane scrollPane;
+	private JPanel roominfoPanel;
 	public EvaluatePanel(){
 	imageIcon = new ImageIcon("image/searchPanel.png");
 	searchField=new JTextField();
@@ -22,6 +28,8 @@ public class EvaluatePanel extends JPanel{
 	searchField.setForeground(Color.WHITE);
 	searchField.setOpaque(false);
 	searchField.setFocusable(true);
+
+
 
 	this.add(searchButton);
 	this.add(searchField);
