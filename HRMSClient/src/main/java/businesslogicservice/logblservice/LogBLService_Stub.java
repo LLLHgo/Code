@@ -1,7 +1,6 @@
 package businesslogicservice.logblservice;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Enum.ResultMessage;
 import businesslogicservice.logblservice.LogBLService;
@@ -21,10 +20,12 @@ public class LogBLService_Stub implements LogBLService {
 	 * @return 日志列表
 	 */
 	@Override
-	public List<LogVO> getLog() {
+	public ArrayList<LogVO> getLog() {
 		// TODO Auto-generated method stub
-		List<LogVO> logList=new ArrayList<LogVO>();
+		ArrayList<LogVO> logList=new ArrayList<LogVO>();
 		logList.add(new LogVO("C00000001 2016-10-15  00:25:25 登录"));
+		logList.add(new LogVO("C00000002 2016-10-15  00:25:29 登录"));
+		logList.add(new LogVO("C00000003 2016-10-16  00:25:29 登录"));
 		return logList;
 	}
 	/**

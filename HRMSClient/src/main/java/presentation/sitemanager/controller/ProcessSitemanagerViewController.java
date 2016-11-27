@@ -151,7 +151,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 	@Override
 	public ArrayList<LogVO> findLog() {
-		return null;
+		return logblservice.getLog();
 	}
 
 	@Override

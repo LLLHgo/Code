@@ -7,8 +7,6 @@ public class RefreshButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
-	int w;
-	int h;
 	ImageIcon img;
 	public RefreshButton(int x,int y){
 		super();

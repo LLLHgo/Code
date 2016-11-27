@@ -18,6 +18,7 @@ public class frame {
 		mFrame.setLayout(null);
 		mFrame.getContentPane().add(view);
 		mFrame.setVisible(true);
+		mFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
