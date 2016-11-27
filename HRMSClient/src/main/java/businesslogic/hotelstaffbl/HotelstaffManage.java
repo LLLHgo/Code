@@ -7,9 +7,10 @@ import vo.hotelstaffVO.HotelstaffVO;
 
 public class HotelstaffManage implements HotelstaffBLService{
 
+	
 	@Override
 	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

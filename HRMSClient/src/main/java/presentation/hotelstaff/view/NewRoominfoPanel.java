@@ -43,7 +43,6 @@ public class NewRoominfoPanel extends JPanel{
 	private ModifyButton jbModify;
 	private AddButton jbAdd;
 
-
 	private JPanel roominfoPanel;
 	private JScrollPane scrollPane;
 

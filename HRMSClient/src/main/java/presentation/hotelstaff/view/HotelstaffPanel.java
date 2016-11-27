@@ -123,6 +123,8 @@ public class HotelstaffPanel extends JPanel{
 			jtfPassword.setEditable(false);
 			password = jtfPassword.getText();
 			ResultMessage result = controller.setPassword(hotelID, password);
+			
+			//提示信息
 			new Thread(new Runnable(){
 				@Override
 				public void run() {
@@ -147,6 +149,8 @@ public class HotelstaffPanel extends JPanel{
 			jbModify.setVisible(true);
 			jtfPassword.setEditable(false);
 			jtfPassword.setText(password);
+			
+			//提示信息
 			new Thread(new Runnable(){
 				@Override
 				public void run() {

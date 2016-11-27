@@ -204,8 +204,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public boolean checkAccount(String hotelID, String password) {
-
-		return true;
+		return hotelstaff.checkAccount(hotelID, password);
 	}
 
 	public void JBHotelinfoClicked(){
@@ -253,4 +252,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 
+	public void JBExitClicked(){
+		System.exit(0);
+	}
 }
