@@ -30,11 +30,11 @@ public class OrderVO {
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
 	//订单离开时间
-	private String leaveDate;
+	private String leaveDate="2016-10-19";
 	//房间类型
-	private String roomType;
+	private String roomType="标准间";
 	//房间数量
-	private int roomNum;
+	private int roomNum=1;
 	
 	public OrderVO(){
 

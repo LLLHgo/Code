@@ -22,11 +22,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.OrderTypeButton;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.orderVO.OrderVO;
 
 import Enum.OrderType;
+import Enum.ResultMessage;
 import Enum.VIPType;
 import datatool.OrderDataTool;
 /**
@@ -59,6 +61,7 @@ public class OrderPanel extends JPanel{
 	private JButton jbDrag;
 	private boolean buttonFlag;
 	private JPanel orderPanel;
+	private JLabel resultLabel;
 	
 	public OrderPanel(HotelstaffViewController controller){
 		this.controller = controller;
@@ -129,6 +132,13 @@ public class OrderPanel extends JPanel{
 		OrderDataTool.list1.add(orderVO4);
 		OrderDataTool.list1.add(orderVO5);
 		showOrderList(OrderDataTool.list1);
+		
+		//显示结果
+		resultLabel = new JLabel();
+		resultLabel.setForeground(Color.BLACK);
+		resultLabel.setFont(font);
+		resultLabel.setBounds(290, 50, 500, 20);
+		this.add(resultLabel);
 	}
 	
 	private class DragButtonActionListener implements ActionListener{
@@ -210,8 +220,10 @@ public class OrderPanel extends JPanel{
 	        JLabel nameLabel=new JLabel("客户姓名："+order.getClientName());
 	        JLabel priceLabel=new JLabel("价格："+String.valueOf(order.getPrice()));
 	        JLabel entertimeLabel = new JLabel("计划入住时间："+order.getOrderDate());
-	        JLabel leavetimeLabel = new JLabel("计划离开时间：");
+	        JLabel leavetimeLabel = new JLabel("计划离开时间："+order.getLeaveDate());
 	        JLabel phoneLabel = new JLabel("客户电话："+order.getClientPhone());
+	        JLabel roomTypeLabel = new JLabel(order.getRoomType());
+	        JLabel roomNumLabel = new JLabel("* "+String.valueOf(order.getRoomNum()));
 	        OrderType[] orderType = {OrderType.NORMALNONEXEC,OrderType.NORMALEXEC,
 	        		OrderType.ABNORMAL,OrderType.CANCEL};
 	        String stateLabelText = "";
@@ -222,28 +234,70 @@ public class OrderPanel extends JPanel{
 	    		}
 	    	}
 	        JLabel stateLabel = new JLabel(stateLabelText);
+	      
 	        
-	        orderIDLabel.setBounds(108, 18, 174, 15);
-	        nameLabel.setBounds(498,16,100,15);
-	        priceLabel.setBounds(370,53,80,15);
-	        entertimeLabel.setBounds(180,53,294,15);
-	        phoneLabel.setBounds(440,53,150,15);
-	        stateLabel.setBounds(440,80,70,15);
-
+	        orderIDLabel.setBounds(5, 18, 220, 16);
+	        nameLabel.setBounds(400,18,200,16);
+	        priceLabel.setBounds(265,48,120,16);
+	        entertimeLabel.setBounds(5,48,294,16);
+	        leavetimeLabel.setBounds(5,77,295,16);
+	        phoneLabel.setBounds(400,48,200,16);
+	        stateLabel.setBounds(440,80,70,16);
+	        roomTypeLabel.setBounds(265,18,96,16);
+	        roomNumLabel.setBounds(360,18,90,16);
+	        
+	        
 	        JLabel[] labelList = {orderIDLabel,nameLabel,priceLabel,entertimeLabel,
-	        		phoneLabel,stateLabel};
+	        		phoneLabel,stateLabel,leavetimeLabel,roomTypeLabel,roomNumLabel};
 	        
 	        for(int i=0;i<labelList.length;i++){
 	        	panel.add(labelList[i]);
 	        	labelList[i].setForeground(Color.white);
-	        	labelList[i].setFont(new Font("微软雅黑",Font.PLAIN,14));
+	        	labelList[i].setFont(new Font("微软雅黑",Font.PLAIN,16));
 	        }
 	        
+	        if(stateLabelText.equals("已执行")){
+	        	stateLabel.setForeground(Color.black);
+	        }else if(stateLabelText.equals("异常")){
+	        	stateLabel.setForeground(Color.red);
+	        }
+	        
+	        //确认入住按钮，按钮按下后订单状态改变
+		    ConfirmButton button = new ConfirmButton(550,50);
+		    panel.add(button);
+	        button.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					order.setOrderStatus(OrderType.NORMALEXEC);
+					showMessage(controller.updateOrderState(order));
+				}
+	        	
+	        });
 	        orderPanel.add(panel);
 	        
 	    };
+	
+	}
+	
+	private void showMessage(ResultMessage message){
+	 	//提示信息
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				if(message.equals(ResultMessage.SUCCESS))
+				resultLabel.setText("订单已执行");
+				else
+				resultLabel.setText("订单状态改变失败");
+				try {
+					Thread.sleep(1000);
+	            }catch(InterruptedException ex){
+	                    ex.printStackTrace();
+	            }
+	            resultLabel.setText("");
+			}
+		}).start();
 		
-	    
 	}
 	
 	private void showAllOrderList(){
