@@ -5,22 +5,23 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
+import Enum.VIPType;
+import Enum.marketingStrategy;
 import vo.districtVO.DistrictVO;
+import vo.strategyVO.MarketingStrategyVO;
 
 public class newPanel extends MJPanel{
 
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,21);
 	private Font font2=new Font("微软雅黑",Font.CENTER_BASELINE,18);
+	private JPanel namePanel=new NamePanel("策略名称",160,10,660,50);
 	private JPanel startPanel=new TimePanel("开始时间",160,50,660,50);
 	private JPanel endPanel=new TimePanel("结束时间",160,90,660,50);
 	private JPanel typePanel=new MemberPanel("会员种类",160,130,350,50);
@@ -31,14 +32,16 @@ public class newPanel extends MJPanel{
     private JPanel hotelPanel=new HotelPanel("酒店",180,250,300,50);
     private JPanel hotelsPanel;
     private List<String> hotelSelected=new ArrayList<String>();
+    private List<VIPType> VIPSelected;
+    private MarketingStrategyVO createdVO;
     private List<JRadioButton> hotelButton=new ArrayList<JRadioButton>();
-    private Icon ensureIcon=new ImageIcon("./src/main/resource/picture/marketing/littleCheck.png");
 
     private static final long serialVersionUID = 1L;
 
 	public newPanel(int x, int y, int w, int h,List<DistrictVO> list) {
 		super(x, y, w, h);
 		this.setVisible(false);
+		this.add(namePanel);
 		this.add(startPanel);
     	this.add(endPanel);
     	this.add(discountPanel);
@@ -53,7 +56,7 @@ public class newPanel extends MJPanel{
         	items+=vo.getHotels().size();
         }
         hotelsPanel=new MJPanel(0, 0, 700,3520);
-        hotelsPanel.setPreferredSize(new Dimension(565,30*items+40*list.size()));//dimension的高度是酒店占高度和商圈占高度的和
+        hotelsPanel.setPreferredSize(new Dimension(565,10+30*items+40*list.size()));//dimension的高度是酒店占高度和商圈占高度的和,10是下方边距
 
         int dis=-1;//商圈的个数 每个商圈需要40高度
         items=0;
@@ -63,14 +66,12 @@ public class newPanel extends MJPanel{
         	List<JRadioButton> hotelButtonList =new ArrayList<JRadioButton>();;
         	JRadioButton district=new MJRadioButton(vo.getName(),false,40,dis*40+(items-vo.getHotels().size())*30,400,50,font);
         	district.addActionListener(new ActionListener(){
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(((JRadioButton)e.getSource()).isSelected()){
 						for(JRadioButton button:hotelButtonList){
                             button.setSelected(true);;
 						}
-						
 					}
 					else {
 						for(JRadioButton button:hotelButtonList){
@@ -78,19 +79,16 @@ public class newPanel extends MJPanel{
 						}
                     }
 				}
-
         	});
+
         	hotelsPanel.add(district);
-
         	List<String> hotelList=vo.getHotels();
-
         	int index=-1;
-
         	for(String s:hotelList){
         		index++;
-        		JRadioButton button=new MJRadioButton(s,false,60,dis*40+(items-vo.getHotels().size())*30+40+index*30,400,40,font2);//每个酒店在所对应商圈下方
+        		JRadioButton button=new MJRadioButton(s,false,60,dis*40+(items-vo.getHotels().size())*30+40+index*30,
+        				400,40,font2);//每个酒店在所对应商圈下方
         		button.addActionListener(new ActionListener(){
-
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if(!((JRadioButton)e.getSource()).isSelected()){
@@ -102,42 +100,48 @@ public class newPanel extends MJPanel{
         		hotelButtonList.add(button);
         		hotelsPanel.add(button);
         	}
-
         }
 
         //放置showAbnormalOrderPanel的JScrollPanel
         JScrollPane hotelsScroll = new MJScrollPane(205, 285, 590, 150,hotelsPanel);
 
-        JButton check=new MJButton(385,435,60,60,ensureIcon);
-        check.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                for(JRadioButton button:hotelButton){
-                	if(button.isSelected()==true){
-                		hotelSelected.add(button.getText());
-                	}
-                }
-                for(String s:hotelSelected){
-                	System.out.println(s);
-                }
-			}
-
-        });
         this.add(hotelsScroll);
-        this.add(check);
         this.revalidate();
         this.repaint();
 
 	}
-	public TimePanel getStartPanel(){
-		return (TimePanel) this.startPanel;
+	public MarketingStrategyVO getCreatedVO() {
+		 for(JRadioButton button:hotelButton){
+         	if(button.isSelected()==true){
+         		hotelSelected.add(button.getText());
+         	}
+         }
+         String name=namePanel.getName();
+         Calendar start=((TimePanel) startPanel).getTime();
+         Calendar end=((TimePanel) endPanel).getTime();
+         VIPSelected=((MemberPanel) typePanel).getSelections();
+         int minLevel=(int) ((InputPanel)levelPanel).getInput();
+         double discount= ((InputPanel)discountPanel).getInput();
+         int minRoom=(int) ((InputPanel)roomPanel).getInput();
+         double minExpenditure=((InputPanel)expenditurePanel).getInput();
+
+         setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.CRATEDE,
+              start,end,discount,hotelSelected,minExpenditure,minRoom,minLevel,VIPSelected));
+		 return createdVO;
 	}
-	public TimePanel getEndPanel(){
-		return (TimePanel) this.endPanel;
+	private void setCreatedVO(MarketingStrategyVO createdVO) {
+		this.createdVO = createdVO;
 	}
-	public InputPanel getDiscountPanel() {
-		return (InputPanel) this.discountPanel;
+	public void setStartTime(int year, int month, int date, int hour, int minute) {
+		((TimePanel) startPanel).setTime(year,  month,  date,  hour,  minute);
+
+	}
+	public void setEndTime(int year, int month, int date, int hour, int minute) {
+		((TimePanel) endPanel).setTime(year,  month,  date,  hour,  minute);
+
+	}
+	public void setDiscount(double discount) {
+		((InputPanel) discountPanel).setInput(discount);
 	}
 
 }

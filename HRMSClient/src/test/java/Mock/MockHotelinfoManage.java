@@ -1,6 +1,7 @@
 package Mock;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import Enum.HotelStrategy;
@@ -48,6 +49,11 @@ public class MockHotelinfoManage {
 		roominfoList.add(roominfo5);
 		roominfoList.add(roominfo6);
 
+	    Calendar begin1=Calendar.getInstance();
+		Calendar end1=Calendar.getInstance();
+		begin1.set(2016,11,11,00,00);
+		end1.set(2016,11,11,23,59);
+
 		hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","GuLouArea","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
 				new ArrayList<String>(),"Brief Introduction","H00000001");
 //		hotelinfoVO1 = new HotelinfoVO("BeijingDongRode","GuLouArea",
@@ -72,9 +78,8 @@ public class MockHotelinfoManage {
 		orderList = new ArrayList<OrderVO>();
 		orderList.add(orderVO1);
 
-		String begin1="2016-11-11 00:00:00";
-		String end1="2016-11-11 23:59:59";
-		V1=new HotelStrategyVO("H00000001",HotelStrategy.BIRTHDAY,
+
+		V1=new HotelStrategyVO("策略1","H00000001",HotelStrategy.BIRTHDAY,
 	    		VIPType.ORDINARYVIP,begin1,end1,0.75);
 	}
 

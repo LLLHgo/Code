@@ -1,38 +1,41 @@
 package datatool;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import Enum.VIPType;
 import Enum.marketingStrategy;
-import vo.hotelinfoVO.HotelinfoVO;
-import vo.levelVO.LevelVO;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class MarketingStrategyDataTool {
-	static String begin1="2016-11-11 00:00:00";
-	static String end1="2016-11-11 23:59:59";
-	static String begin2="2016-12-24 00:00:00";
-	static String end2="2016-12-25 23:59:59";
-	static String begin3="2016-12-31 00:00:00";
-	static String end3="2016-12-31 23:59:59";
-	static ArrayList<HotelinfoVO> hlist=new ArrayList<HotelinfoVO>();
+	static Calendar begin1=Calendar.getInstance();
+	static Calendar end1=Calendar.getInstance();
+	static Calendar begin2=Calendar.getInstance();
+	static Calendar end2=Calendar.getInstance();
+	static Calendar begin3=Calendar.getInstance();
+	static Calendar end3=Calendar.getInstance();
+	static ArrayList<String> hlist=new ArrayList<String>();
 	static ArrayList<String> blist=new ArrayList<String>();
 	static ArrayList<VIPType> viplist=new ArrayList<VIPType>();
-	static LevelVO lvo=new LevelVO(1,"铜牌",1000);
 	static{
-		hlist.add(HotelinfoDataTool.hotelinfoVO1);
-		hlist.add(HotelinfoDataTool.hotelinfoVO2);
-		hlist.add(HotelinfoDataTool.hotelinfoVO3);
-		blist.add("新街口");
-		blist.add("仙林大学城");
+		begin1.set(2016,11,11,00,00);
+		end1.set(2016,11,11,23,59);
+		begin2.set(2016,12,24,00,00);
+		end2.set(2016,11,11,00,00);
+		begin3.set(2016,12,31,00,00);
+		end3.set(2016,12,31,23,59);
+		hlist.add(HotelinfoDataTool.hotelinfoVO1.getName());
+		hlist.add(HotelinfoDataTool.hotelinfoVO2.getName());
+		hlist.add(HotelinfoDataTool.hotelinfoVO3.getName());
+
 		viplist.add(VIPType.ORDINARYVIP);
 		viplist.add(VIPType.ENTERPRISEVIP);
 	}
     public static MarketingStrategyVO V0=new  MarketingStrategyVO();
-    public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.DOUBLE11,
-    		begin1,end1,0.75,hlist);
+    public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.PERIOD,
+    		begin1,end1,0.75);
     public static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",marketingStrategy.VIPSPECIAL,
     		begin2,end2,blist,0.8);
     public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CRATEDE,
-    		begin1,end2,0.85,hlist,blist,678,2,lvo,viplist);
+    		begin1,end2,0.85,hlist,678,2,2,viplist);
 }

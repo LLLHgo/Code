@@ -17,8 +17,9 @@ public class StrategyBLService_Stub implements StrategyBLService{
 	 * @return 返回是否增加成功
 	 */
     public ResultMessage  addMarketingStrategy(MarketingStrategyVO vo) {
-		if(vo!=null)
+		if(vo!=null){
 			return ResultMessage.SUCCESS;
+		}
 		else
 			return ResultMessage.FAIL;
 	}
