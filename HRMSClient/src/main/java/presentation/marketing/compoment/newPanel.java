@@ -125,7 +125,7 @@ public class newPanel extends MJPanel{
          int minRoom=(int) ((InputPanel)roomPanel).getInput();
          double minExpenditure=((InputPanel)expenditurePanel).getInput();
 
-         setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.CRATEDE,
+         setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.CREATED,
               start,end,discount,hotelSelected,minExpenditure,minRoom,minLevel,VIPSelected));
 		 return createdVO;
 	}

@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import presentation.DialogCreator;
 import presentation.client.compoment.EvaluatePanel;
+import presentation.client.compoment.HotelListPanel;
 import presentation.client.compoment.PersonalPanel;
 import presentation.client.compoment.RegisterPanel;
 import presentation.client.compoment.SearchPanel;
@@ -37,6 +38,7 @@ public class ProcessClientView extends JPanel {
 	private GuideBoardButton register;
 	private GuideBoardButton exit;
 	private String id;
+	private HotelListPanel hlp;
 	private WelPanel wp;
 	private SearchPanel sp;
 	private ViewOrderPanel vp;
@@ -53,6 +55,7 @@ public class ProcessClientView extends JPanel {
 			idLabel.setBounds(80,185, 180, 30);
 			idLabel.setFont(new java.awt.Font("微软雅黑", 4,  25));
 			idLabel.setForeground(Color.WHITE);
+			hlp=new HotelListPanel();
 			wp=new WelPanel();
 			sp=new SearchPanel();
 			vp=new ViewOrderPanel();
@@ -91,7 +94,9 @@ public class ProcessClientView extends JPanel {
 		    pp.setLocation(277,82);
 		    rp.setLocation(277,82);
 		    ep.setLocation(277,82);
+		    hlp.setLocation(327,152);
 		    wp.setVisible(true);
+		    frame.add(hlp);
 		    frame.add(wp);
 		    frame.add(sp);
 		    frame.add(vp);
@@ -162,6 +167,7 @@ public class ProcessClientView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			hlp.setVisible(true);
 			wp.setVisible(false);
 			sp.setVisible(false);
 			vp.setVisible(false);

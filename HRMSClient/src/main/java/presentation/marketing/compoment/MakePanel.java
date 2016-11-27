@@ -33,14 +33,10 @@ public class MakePanel extends MJPanel{
 
 	}
 
-	public  void setInput(double dis){
-		levelField.setText(""+dis);
+	public double getDiscount(){
+		return Double.parseDouble(discountField.getText());
 	}
-
-	public double[] getInput(){
-		double dou[]=new double[2];
-		dou[0]=Double.parseDouble(levelField.getText());
-		dou[1]=Double.parseDouble(discountField.getText());
-		return dou;
+	public int getLevel(){
+		return Integer.parseInt(levelField.getText());
 	}
 }

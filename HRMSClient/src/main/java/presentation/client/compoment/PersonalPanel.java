@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import javafx.scene.text.Font;
 
 public class PersonalPanel extends JPanel{
 	private ImageIcon imageIcon = null;

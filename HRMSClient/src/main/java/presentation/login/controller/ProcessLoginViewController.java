@@ -15,6 +15,7 @@ public class ProcessLoginViewController {
 		if(user_id.charAt(0)=='C')return 'c';
 		else if(user_id.charAt(0)=='H')return 'h';
 		else if(user_id.charAt(0)=='S')return 's';
+		else if(user_id.charAt(0)=='M')return 'm';
 		else return 'e';
 	}
 

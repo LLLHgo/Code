@@ -2,6 +2,7 @@ package datatool;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import Enum.VIPType;
 import Enum.marketingStrategy;
@@ -17,6 +18,9 @@ public class MarketingStrategyDataTool {
 	static ArrayList<String> hlist=new ArrayList<String>();
 	static ArrayList<String> blist=new ArrayList<String>();
 	static ArrayList<VIPType> viplist=new ArrayList<VIPType>();
+	static int[] levels={0,1,2};
+	static double[] discounts={0.7,0.8,0.9};
+	public static List<MarketingStrategyVO> list=new ArrayList<MarketingStrategyVO>();
 	static{
 		begin1.set(2016,11,11,00,00);
 		end1.set(2016,11,11,23,59);
@@ -35,7 +39,14 @@ public class MarketingStrategyDataTool {
     public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.PERIOD,
     		begin1,end1,0.75);
     public static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",marketingStrategy.VIPSPECIAL,
-    		begin2,end2,blist,0.8);
-    public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CRATEDE,
+    		begin2,end2,"仙林大学城",levels,discounts);
+    public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CREATED,
     		begin1,end2,0.85,hlist,678,2,2,viplist);
+
+    static{
+    	list.add(V0);
+    	list.add(V1);
+    	list.add(V2);
+    	list.add(V3);
+    }
 }
