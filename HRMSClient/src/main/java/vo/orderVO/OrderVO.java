@@ -29,7 +29,13 @@ public class OrderVO {
 	private double price;
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
-
+	//订单离开时间
+	private String leaveDate;
+	//房间类型
+	private String roomType;
+	//房间数量
+	private int roomNum;
+	
 	public OrderVO(){
 
 	}
@@ -48,6 +54,22 @@ public class OrderVO {
 		this.strategies=strategies;
 		}
 
+	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,
+			String orderDate,String leaveDate,OrderType orderType,String roomType,
+			int roomNum,double price){
+		this.orderId=orderId;
+		this.clientId=clientId;
+		this.clientName=clientName;
+		this.clientPhone=clientPhone;
+		this.orderDate=orderDate;
+		this.orderType=orderType;
+		this.price=price;
+		this.leaveDate = leaveDate;
+		this.roomType = roomType;
+		this.roomNum = roomNum;
+	}
+
+	
 	public String getOrderId() {
 		return orderId;
 	}
@@ -120,4 +142,23 @@ public class OrderVO {
 	public void setOrderType(OrderType orderType) {
 		this.orderType = orderType;
 	}
+	public String getLeaveDate() {
+		return leaveDate;
+	}
+	public void setLeaveDate(String leaveDate) {
+		this.leaveDate = leaveDate;
+	}
+	public String getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+	public int getRoomNum() {
+		return roomNum;
+	}
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
+	}
+	
 }

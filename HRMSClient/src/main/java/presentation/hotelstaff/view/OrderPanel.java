@@ -206,12 +206,12 @@ public class OrderPanel extends JPanel{
 	        panel.setLayout(null);
 	        num++;
 	        //制作order需要的组件
-	        JLabel orderIDLabel=new JLabel(order.getOrderId());
-	        JLabel nameLabel=new JLabel(order.getClientName());
-	        JLabel priceLabel=new JLabel(String.valueOf(order.getPrice()));
-	        JLabel entertimeLabel = new JLabel(order.getOrderDate());
-//	        JLabel leavetimeLabel;
-	        JLabel phoneLabel = new JLabel(order.getClientPhone());
+	        JLabel orderIDLabel=new JLabel("订单号："+order.getOrderId());
+	        JLabel nameLabel=new JLabel("客户姓名："+order.getClientName());
+	        JLabel priceLabel=new JLabel("价格："+String.valueOf(order.getPrice()));
+	        JLabel entertimeLabel = new JLabel("计划入住时间："+order.getOrderDate());
+	        JLabel leavetimeLabel = new JLabel("计划离开时间：");
+	        JLabel phoneLabel = new JLabel("客户电话："+order.getClientPhone());
 	        OrderType[] orderType = {OrderType.NORMALNONEXEC,OrderType.NORMALEXEC,
 	        		OrderType.ABNORMAL,OrderType.CANCEL};
 	        String stateLabelText = "";
