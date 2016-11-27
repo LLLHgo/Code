@@ -13,6 +13,9 @@ public class LogBLService_Stub implements LogBLService {
 	public LogBLService_Stub(String logInfo){
 		this.logInfo=logInfo;
 	}
+	public LogBLService_Stub(){
+		
+	}
 	/**
 	 * 界面得到日志列表
 	 * @return 日志列表
