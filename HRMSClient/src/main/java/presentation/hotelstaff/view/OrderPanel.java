@@ -122,7 +122,7 @@ public class OrderPanel extends JPanel{
 				,VIPType.ORDINARYVIP,"2016-10-16 09:23",OrderType.NORMALNONEXEC,"LLLHH","H00000002",998,null);
 
 		OrderVO orderVO5=new OrderVO("20161017092401","C00000011","Tinny","17887780991"
-				,VIPType.ORDINARYVIP,"2016-10-17 09:24",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
+				,VIPType.ORDINARYVIP,"2016-10-17 09:24",OrderType.NORMALEXEC,"LLLHH","H00000002",666,null);
 
 		OrderVO orderVO6=new OrderVO("20161017092501","C00000012","belikout","17887780992"
 				,VIPType.ORDINARYVIP,"2016-10-17 09:25",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
@@ -131,6 +131,8 @@ public class OrderPanel extends JPanel{
 				,VIPType.ORDINARYVIP,"2016-10-17 09:26",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
 		OrderDataTool.list1.add(orderVO4);
 		OrderDataTool.list1.add(orderVO5);
+		OrderDataTool.list1.add(orderVO6);
+		OrderDataTool.list1.add(orderVO7);
 		showOrderList(OrderDataTool.list1);
 		
 		//显示结果
@@ -256,12 +258,6 @@ public class OrderPanel extends JPanel{
 	        	labelList[i].setFont(new Font("微软雅黑",Font.PLAIN,16));
 	        }
 	        
-	        if(stateLabelText.equals("已执行")){
-	        	stateLabel.setForeground(Color.black);
-	        }else if(stateLabelText.equals("异常")){
-	        	stateLabel.setForeground(Color.red);
-	        }
-	        
 	        //确认入住按钮，按钮按下后订单状态改变
 		    ConfirmButton button = new ConfirmButton(550,50);
 		    panel.add(button);
@@ -270,22 +266,31 @@ public class OrderPanel extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					order.setOrderStatus(OrderType.NORMALEXEC);
-					showMessage(controller.updateOrderState(order));
+					ResultMessage result = controller.updateOrderState(order);
+					showMessage(result.toString());
 				}
 	        	
 	        });
+	        
+	        if(stateLabelText.equals("已执行")){
+	        	stateLabel.setForeground(Color.black);
+	        	button.setVisible(false);
+	        }else if(stateLabelText.equals("异常")){
+	        	stateLabel.setForeground(Color.red);
+	        }
+	        
 	        orderPanel.add(panel);
 	        
 	    };
 	
 	}
 	
-	private void showMessage(ResultMessage message){
+	public void showMessage(String message){
 	 	//提示信息
 		new Thread(new Runnable(){
 			@Override
 			public void run() {
-				if(message.equals(ResultMessage.SUCCESS))
+				if(message.equals(ResultMessage.SUCCESS.toString()))
 				resultLabel.setText("订单已执行");
 				else
 				resultLabel.setText("订单状态改变失败");

@@ -177,4 +177,17 @@ public interface HotelstaffViewControllerService {
 	 * @return String[]
 	 */
 	public String[] getArea();
+	
+	/**
+	 * 增加房间类型
+	 * @param type
+	 * @return ResultMessage
+	 */
+	public ResultMessage addRoomType(String type);
+	
+	/**
+	 * 获得所有房间类型
+	 * @return String[]
+	 */
+	public String[] getRoomType();
 }

@@ -142,7 +142,7 @@ public class HotelstaffPanel extends JPanel{
 		            }
 		            resultLabel.setText("");
 				}
-			}).start();;
+			}).start();
 		}	
 	}
 	

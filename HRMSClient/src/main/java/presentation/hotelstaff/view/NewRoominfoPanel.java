@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 import com.sun.glass.events.KeyEvent;
 
 import Enum.OrderType;
+import Enum.ResultMessage;
 import Enum.RoomState;
 import presentation.common.ModifyButton;
 import presentation.hotelstaff.component.AddButton;
@@ -42,10 +43,10 @@ public class NewRoominfoPanel extends JPanel{
 	private String hotelID;
 	private ModifyButton jbModify;
 	private AddButton jbAdd;
-
 	private JPanel roominfoPanel;
 	private JScrollPane scrollPane;
-
+	private JLabel resultLabel;
+	
 	public NewRoominfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
 		this.hotelID = controller.gethotelID();
@@ -64,6 +65,13 @@ public class NewRoominfoPanel extends JPanel{
 		jbAdd.addActionListener(new AddButtonActionListener());
 		jbAdd.setVisible(true);
 		this.add(jbAdd);
+		
+		//显示结果
+		resultLabel = new JLabel();
+		resultLabel.setForeground(Color.BLACK);
+		resultLabel.setFont(new Font("微软雅黑",Font.PLAIN,20));
+		resultLabel.setBounds(290, 50, 500, 20);
+		this.add(resultLabel);
 		
 		showRoomList((ArrayList<RoominfoVO>)controller.getRoominfoList(hotelID));
 	}
@@ -101,48 +109,16 @@ public class NewRoominfoPanel extends JPanel{
 	        num++;
 	        
 	        //制作roominfo需要的组件
-	        RoominfoLabel roomIDLabel=new RoominfoLabel(20,10,80,25,"房间号：");
-	        RoominfoLabel typeLabel=new RoominfoLabel(190,10,80,25,"类型：");
-	        RoominfoLabel priceLabel=new RoominfoLabel(190,45,80,25,"价格：");
-	        RoominfoLabel stateLabel = new RoominfoLabel(190,80,80,25,"状态：");
-	        JRadioButton usableButton=new JRadioButton("可用",false);
-	        JRadioButton unusableButton=new JRadioButton("不可用",false);
-	        ButtonGroup group=new ButtonGroup();
-	        group.add(usableButton);
-	        group.add(unusableButton);
-	     
-	        
-	        RoominfoTextField roomIDText = new RoominfoTextField(100,10,180,25);
-	        RoominfoTextField typeText = new RoominfoTextField(255,10,180,25);
-	        RoominfoTextField priceText = new RoominfoTextField(255,45,180,25);
-	      //  RoominfoTextField stateText = new RoominfoTextField(240,80,180,25);
+	        RoominfoLabel roomIDLabel=new RoominfoLabel(20,10,180,25,"房间号："+room.getRoomNum());
+	        RoominfoLabel typeLabel=new RoominfoLabel(190,10,180,25,"类型："+room.getType());
+	        RoominfoLabel priceLabel=new RoominfoLabel(190,45,180,25,"价格："+String.valueOf(room.getPrice()));
+	        RoominfoLabel stateLabel = new RoominfoLabel(190,80,180,25,"状态："+room.getRoomState().toString());
 	        
 	        JLabel[] labelList = {roomIDLabel,typeLabel,priceLabel,stateLabel};
-	        JTextField[] textfieldList = {roomIDText,typeText,priceText};
-	        
-	        textfieldList[0].setText(room.getRoomNum());
-	        textfieldList[1].setText(room.getType());
-	        textfieldList[2].setText(String.valueOf(room.getPrice()));
-
-	        usableButton.setBounds(255, 80, 80, 25);
-	        unusableButton.setBounds(320,80,80,25);
 	        
 	        for(int i=0;i<labelList.length;i++){
 	        	panel.add(labelList[i]);
 	        }
-	        
-	        for(int i=0;i<textfieldList.length;i++){
-	        	panel.add(textfieldList[i]);
-	        	textfieldList[i].setEditable(false);
-	        }
-	        
-	        if(room.getRoomState()==RoomState.Usable){
-	        	usableButton.setSelected(true);
-	        }else{
-	        	usableButton.setSelected(false);
-	        }
-	        panel.add(usableButton);
-	        panel.add(unusableButton);
 	        
 	        jbModify = new ModifyButton(500,40,60,60);
 			jbModify.addActionListener(new ActionListener(){
@@ -150,9 +126,8 @@ public class NewRoominfoPanel extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 				
-					 for(int i=1;i<textfieldList.length;i++){
-				        	textfieldList[i].setEditable(true);
-				        }
+
+					
 				}
 				
 			});
@@ -162,18 +137,37 @@ public class NewRoominfoPanel extends JPanel{
 
 	}
 }
-
-	
-	private void addRoom(){
-		
-	}
 	
 	private class AddButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			addRoom();
+			controller.JBAddRoomClicked();
 		}
 	}
 	
-	
+	public void showMessage(String message){
+	 	//提示信息
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				if(message.equals(ResultMessage.SUCCESS.toString()))
+					//TODO
+					resultLabel.setText("");
+				else if(message.equals("新增房间成功")){
+					resultLabel.setText(message);
+				}else if(message.equals("修改房间成功")){
+					resultLabel.setText(message);
+				}else if(message.equals("取消操作成功")){
+					resultLabel.setText(message);
+				}
+				try {
+					Thread.sleep(1000);
+	            }catch(InterruptedException ex){
+	                    ex.printStackTrace();
+	            }
+	            resultLabel.setText("");
+			}
+		}).start();
+		
+	}
 }

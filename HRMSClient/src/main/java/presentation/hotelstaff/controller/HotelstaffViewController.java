@@ -12,6 +12,7 @@ import Mock.MockOrderManage;
 import Mock.MockStrategyManage;
 import businesslogic.hotelstaffbl.Hotelstaff;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import presentation.hotelstaff.view.AddRoomPanel;
 import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffPanel;
 import presentation.hotelstaff.view.NewRoominfoPanel;
@@ -256,6 +257,32 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		System.exit(0);
 	}
 
+	public void JBAddRoomClicked(){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new AddRoomPanel(panelcontroller);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
+	
+	public void JBStrategyClicked(){
+	}
+	
+	public void JBRoomClicked(String message){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new NewRoominfoPanel(panelcontroller);
+		view.add(panel);
+		((NewRoominfoPanel)panel).showMessage(message);
+		panel.revalidate();
+		panel.repaint();
+	}
+	
 	@Override
 	public ResultMessage addArea(String area) {
 		if(hotelinfo.addArea(area)==true){
@@ -270,8 +297,17 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		return hotelinfo.getArea();
 	}
 	
-	public void JBStrategyClicked(){
+
+	@Override
+	public ResultMessage addRoomType(String type) {
 		
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public String[] getRoomType() {
+		String[] types = {"标准间","大床房","总统套房"};
+		return types;
 	}
 	
 }
