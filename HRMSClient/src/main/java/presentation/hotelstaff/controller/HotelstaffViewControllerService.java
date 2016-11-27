@@ -163,4 +163,18 @@ public interface HotelstaffViewControllerService {
 	 * @return 账号密码是否匹配
 	 */
 	public boolean checkAccount(String hotelID,String password);
+	
+	
+	/**
+	 * 新增商圈
+	 * @param area
+	 * @return ResultMessage
+	 */
+	public ResultMessage addArea(String area);
+	
+	/**
+	 * 获得所有商圈名
+	 * @return String[]
+	 */
+	public String[] getArea();
 }

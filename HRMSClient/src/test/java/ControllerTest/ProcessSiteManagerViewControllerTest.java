@@ -160,7 +160,7 @@ public class ProcessSiteManagerViewControllerTest {
 	@Test
 	public void HotelStaffAccountUpdateTest() {
 		// TODO Auto-generated method stub
-		assertEquals(true,mhs.saveSitemanagerUpdate(HotelstaffDataTool.hotelstaffVO1));
+		assertEquals(ResultMessage.SUCCESS,mhs.saveSitemanagerUpdate(HotelstaffDataTool.hotelstaffVO1));
 		
 	}
 

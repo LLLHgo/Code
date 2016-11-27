@@ -46,7 +46,7 @@ public class HotelinfoPanel extends JPanel{
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;
 	private JLabel resultLabel;
-	private String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈"};
+	private String[] areas;
 	
 	public HotelinfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
@@ -90,7 +90,7 @@ public class HotelinfoPanel extends JPanel{
 		//this.add(jtaStar);
 		
 		//TODO
-//		areas = {"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈"};
+		areas = controller.getArea();
 		jcbArea = new JComboBox(areas);
 		jcbArea.setBounds(345,186,580,25);
 		jcbArea.setOpaque(false);

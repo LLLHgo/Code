@@ -255,4 +255,16 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public void JBExitClicked(){
 		System.exit(0);
 	}
+
+	@Override
+	public ResultMessage addArea(String area) {
+		
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public String[] getArea() {
+		
+		return hotelinfo.getArea();
+	}
 }

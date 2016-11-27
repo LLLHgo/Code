@@ -199,4 +199,14 @@ public class MockHotelinfoManage {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	public String[] getArea(){
+		String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈"};
+		return areas;
+	}
+	
+	public boolean addArea(String area){
+		return true;
+		
+	}
 }

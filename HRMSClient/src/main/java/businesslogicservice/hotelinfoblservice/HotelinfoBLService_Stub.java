@@ -186,6 +186,18 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
+	public String[] getArea() {
+		//TODO
+		String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈"};
+		return areas;
+	}
+
+	@Override
+	public boolean addArea(String area) {
+		return true;
+	}
+
 
 
 //	/**

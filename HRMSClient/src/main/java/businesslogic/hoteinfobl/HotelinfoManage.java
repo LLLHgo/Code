@@ -78,4 +78,22 @@ public class HotelinfoManage implements HotelinfoBLService{
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
+
+	@Override
+	public String[] getArea() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addArea(String area) {
+		String[] originArray = getArea();
+		String[] newArray = new String[originArray.length+1];
+		for(int i=0;i<originArray.length;i++){
+			newArray[i] = originArray[i];
+		}
+		originArray[originArray.length] = area;
+		//TODO序列化保存
+		return false;
+	}
 }

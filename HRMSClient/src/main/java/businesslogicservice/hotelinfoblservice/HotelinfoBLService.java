@@ -1,5 +1,6 @@
 package businesslogicservice.hotelinfoblservice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Enum.OrderType;
@@ -78,5 +79,16 @@ public interface HotelinfoBLService {
 	 * @return 保存成功或失败
 	 */
 	ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO);
-
+	
+	/**
+	 * 获得系统内所有商圈名
+	 * @return String[]
+	 */
+	public String[] getArea();
+	
+	/**
+	 *添加商圈名 
+	 * @return boolean
+	 */
+	public boolean addArea(String area);
 }
