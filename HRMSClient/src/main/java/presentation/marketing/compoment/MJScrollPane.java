@@ -11,8 +11,16 @@ public class MJScrollPane extends JScrollPane{
 		super(panel);
 		this.setBounds(x,y,w,h);
 	    this.setBorder(new EmptyBorder(0,0,0,0));
-	    this.setOpaque(false);
+	   // this.setOpaque(false);
 	    this.getViewport().setOpaque(false);
 	}
+
+	public MJScrollPane(int x,int y,int w,int h){
+		this.setBounds(x,y,w,h);
+	    this.setBorder(new EmptyBorder(0,0,0,0));
+	   //this.setOpaque(false);
+	    this.getViewport().setOpaque(false);
+	}
+
 
 }

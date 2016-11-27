@@ -63,7 +63,7 @@ public class ProcessMarketingStrategyView extends JPanel{
 			public void actionPerformed(ActionEvent e) {
                groupPanel.setVisible(true);
 
-               
+
                if(periodPanel!=null){
             	   periodPanel.setVisible(false);
             	   periodPanel.removeAll();
@@ -74,13 +74,13 @@ public class ProcessMarketingStrategyView extends JPanel{
             	   specialPanel.removeAll();
             	   specialPanel=null;
                }
-               
+
                if(newPanel!=null){
             	   newPanel.setVisible(false);
             	   newPanel.removeAll();
             	   newPanel=null;
                }
-               
+
                if(browsePanel!=null){
             	   browsePanel.setVisible(false);
             	   browsePanel.removeAll();
@@ -148,6 +148,28 @@ public class ProcessMarketingStrategyView extends JPanel{
 
 	public void specialButtonClicked(){
 		hideGroup();
+		List<String> districts=controller.getDistrictNames();
+		specialPanel=new specialPanel(0,0,780,500,districts);
+		specialPanel.setVisible(true);
+	    Calendar c=Calendar.getInstance();
+	    specialPanel.setStartTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
+	    specialPanel.setEndTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
+
+	    //确认Button及其监听
+        JButton check=new MJButton(385,440,60,60,ensureIcon);
+        check.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+              MarketingStrategyVO specialVO= specialPanel.getCreatedVO();
+              controller.addMarketingStrategy(specialVO);
+			}
+
+        });
+
+        specialPanel.add(check);
+	    this.add(specialPanel);
+	    this.revalidate();
+		this.repaint();
 	}
 	public void newButtonClicked(){
 		hideGroup();

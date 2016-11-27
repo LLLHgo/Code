@@ -231,6 +231,12 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	    list.add(DistrictDataTool.dis2);
 	    return list;
 	}
+	@Override
+	public List<String> getDistrictNames() {
+		List<String> list=new ArrayList<String>();
+	    list=(DistrictDataTool.list1);
+	    return list;
+	}
 
 
 
