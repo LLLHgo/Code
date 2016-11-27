@@ -1,11 +1,10 @@
 package vo.strategyVO;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import Enum.*;
-import vo.hotelinfoVO.HotelinfoVO;
-import vo.levelVO.LevelVO;
-
 
 public class MarketingStrategyVO {
 	//活动名称
@@ -13,23 +12,23 @@ public class MarketingStrategyVO {
 	//网站营销人员制定的策略的种类，有enum：marketingStrategy{DOUBLE11,VIPSPECIAL,CRATEDE;}
     private marketingStrategy type;
     //活动开始时间
-    private String startTime;
+    private Calendar startTime;
     //活动结束时间
-    private String endTime;
+    private Calendar endTime;
     //活动折扣
     private double discount;
     //参加VIP特定专属商圈折扣的商圈
-    private ArrayList<String> businessArea;
+    private List<String> businessArea;
     //参加活动的酒店
-    private ArrayList<HotelinfoVO> hotels;
+    private List<String> hotels;
     //享受折扣的最低消费金额
-    private int minSum;
+    private double minSum;
     //享受折扣的最少房间数
     private int minRooms;
     //参加活动的最低会员等级
-    private LevelVO levels;
+    private int levels;
     //参加活动的会员种类
-    private ArrayList<VIPType> vipKinds;
+    private List<VIPType> vipKinds;
 
     /**
      * 空的构造函数
@@ -40,7 +39,7 @@ public class MarketingStrategyVO {
     }
 
     /**
-     * 营销人员制定双十一促销策略
+     * 营销人员制定特定时间促销策略
      *
      * @param type  网站营销人员制定的策略的种类，这里为DOUBLE11
      * @param startTime 活动开始时间
@@ -50,15 +49,13 @@ public class MarketingStrategyVO {
      * @param poster 活动海报
      * @param position 活动海报显示在客户界面的位置
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,
-    		String endTime,double discount,ArrayList<HotelinfoVO> hotels){
+    public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,
+    		Calendar endTime,double discount){
     	this.name=name;
     	this.type=type;
-    	this.startTime=startTime;
-    	this.endTime=endTime;
+    	this.setStartTime(startTime);
+    	this.setEndTime(endTime);
     	this.discount=discount;
-    	this.hotels=hotels;
-
     }
 
     /**
@@ -72,12 +69,12 @@ public class MarketingStrategyVO {
      * @param businessArea
      * @param position
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,
-    		String endTime,ArrayList<String> businessArea,double discount){
+    public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,
+    		Calendar endTime,List<String> businessArea,double discount){
     	this.name=name;
     	this.type=type;
-    	this.startTime=startTime;
-    	this.endTime=endTime;
+    	this.setStartTime(startTime);
+    	this.setEndTime(endTime);
     	this.discount=discount;
     	this.businessArea=businessArea;
 
@@ -98,17 +95,14 @@ public class MarketingStrategyVO {
      * @param levels
      * @param vipKinds
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,String startTime,String endTime,double discount,ArrayList<HotelinfoVO> hotels,
-    		ArrayList<String> businessArea,int minSum,int minRooms,LevelVO levels,
-    		ArrayList<VIPType> viptypes){
+    public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,Calendar endTime,double discount,List<String> hotels,
+    		double minSum,int minRooms,int levels,List<VIPType> viptypes){
     	this.name=name;
     	this.type=type;
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
     	this.hotels=hotels;
-    	this.businessArea=businessArea;
-
     	this.minSum=minSum;
     	this.minRooms=minRooms;
     	this.levels=levels;
@@ -120,18 +114,7 @@ public class MarketingStrategyVO {
 	public void setType(marketingStrategy type) {
 		this.type = type;
 	}
-	public String getStartTime() {
-		return startTime;
-	}
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-	public String getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+
 
 	public double getDiscount() {
 		return discount;
@@ -139,23 +122,23 @@ public class MarketingStrategyVO {
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
-	public ArrayList<String> getBusinessArea() {
+	public List<String> getBusinessArea() {
 		return businessArea;
 	}
 	public void setBusinessArea(ArrayList<String> businessArea) {
 		this.businessArea = businessArea;
 	}
-	public ArrayList<HotelinfoVO> getHotels() {
+	public List<String> getHotels() {
 		return hotels;
 	}
-	public void setHotels(ArrayList<HotelinfoVO> hotels) {
+	public void setHotels(ArrayList<String> hotels) {
 		this.hotels = hotels;
 	}
 
-	public int getMinSum() {
+	public double getMinSum() {
 		return minSum;
 	}
-	public void setMinSum(int minSum) {
+	public void setMinSum(double minSum) {
 		this.minSum = minSum;
 	}
 	public int getMinRooms() {
@@ -164,13 +147,13 @@ public class MarketingStrategyVO {
 	public void setMinRooms(int minRooms) {
 		this.minRooms = minRooms;
 	}
-	public LevelVO getLevels() {
+	public int getLevels() {
 		return levels;
 	}
-	public void setLevels(LevelVO levels) {
+	public void setLevels(int levels) {
 		this.levels = levels;
 	}
-	public ArrayList<VIPType> getVipKinds() {
+	public List<VIPType> getVipKinds() {
 		return vipKinds;
 	}
 	public void setVipKinds(ArrayList<VIPType> vipKinds) {
@@ -183,6 +166,22 @@ public class MarketingStrategyVO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Calendar getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Calendar startTime) {
+		this.startTime = startTime;
+	}
+
+	public Calendar getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Calendar endTime) {
+		this.endTime = endTime;
 	}
 
 

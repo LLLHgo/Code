@@ -7,13 +7,15 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
+import Enum.VIPType;
+
 public class MemberPanel extends MJPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Font font=new Font("楷体",Font.ITALIC,20);
 	private JRadioButton ordinary=new MJRadioButton("普通会员",false,100,0,112,50,font);
 	private JRadioButton enterprise=new MJRadioButton("企业会员",false,240,0,112,50,font);
-	private List<MJRadioButton> buttons=new ArrayList<MJRadioButton>();
+	private List<VIPType> buttons=new ArrayList<VIPType>();
 
 	public MemberPanel(String text,int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -35,12 +37,10 @@ public class MemberPanel extends MJPanel {
 		}
 	}
 
-	public boolean ifOSelected(){
-		return ordinary.isSelected();
-	}
-
-	public boolean ifESelected(){
-		return enterprise.isSelected();
+	public List<VIPType> getSelections(){
+		if(ordinary.isSelected())buttons.add(VIPType.ORDINARYVIP);
+		if(enterprise.isSelected())buttons.add(VIPType.ENTERPRISEVIP);
+		return buttons;
 	}
 
 }

@@ -1,7 +1,6 @@
 package presentation.marketing.view;
 
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -191,5 +190,6 @@ public interface ProcessMarketingViewControllerService {
 	public void addLog(String log);
 	public void strategyButtonClicked();
 	public List<DistrictVO> getDistricts();
+	public List<String> getDistrictNames();
 
 }

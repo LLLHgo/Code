@@ -1,17 +1,21 @@
 package vo.strategyVO;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import Enum.HotelStrategy;
 import Enum.VIPType;
 
 public class HotelStrategyVO {
+	//策略的名字
+	private String name;
 	//酒店工作人员制定的策略的种类，有enum：hotelStrategy{BIRTHDAY,COMPANY,SPECIALDAY,OVERTHREEROOMS;}
     private HotelStrategy type;
     //活动开始时间
-    private String startTime;
+    private Calendar startTime;
     //活动结束时间
-    private String endTime;
+    private Calendar endTime;
     //会员类型
     private VIPType viptype;
     //活动折扣
@@ -23,7 +27,7 @@ public class HotelStrategyVO {
     //享受折扣的最少房间数
     private int minRooms;
     //参加活动的会员种类
-    private ArrayList<VIPType> vipKinds;
+    private  List<VIPType> vipKinds;
 
     public HotelStrategyVO(){
     }
@@ -39,13 +43,14 @@ public class HotelStrategyVO {
      * @param poster
      * @param position
      */
-    public HotelStrategyVO(String hotelID,HotelStrategy type,VIPType viptype,String startTime,String endTime,double discount){
+    public HotelStrategyVO(String name,String hotelID,HotelStrategy type,VIPType viptype,Calendar startTime,Calendar endTime,double discount){
     	this.hotelID=hotelID;
     	this.type=type;
     	this.viptype=viptype;
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
+    	this.name=name;
 
     }
 
@@ -59,12 +64,13 @@ public class HotelStrategyVO {
      * @param poster
      * @param position
      */
-    public HotelStrategyVO(String hotelID,HotelStrategy type,String startTime,String endTime,double discount){
+    public HotelStrategyVO(String name,String hotelID,HotelStrategy type,Calendar startTime,Calendar endTime,double discount){
     	this.hotelID=hotelID;
     	this.type=type;
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
+    	this.name=name;
 
     }
 
@@ -79,7 +85,7 @@ public class HotelStrategyVO {
      * @param position
      * @param minRooms
      */
-    public HotelStrategyVO(String hotelID,HotelStrategy type,String startTime,String endTime,double discount,
+    public HotelStrategyVO(String name,String hotelID,HotelStrategy type,Calendar startTime,Calendar endTime,double discount,
     		int minRooms){
     	this.hotelID=hotelID;
     	this.type=type;
@@ -88,9 +94,10 @@ public class HotelStrategyVO {
     	this.discount=discount;
 
     	this.minRooms = minRooms;
+    	this.name=name;
     }
 
-    public HotelStrategyVO(String hotelID,HotelStrategy type,ArrayList<VIPType> vipKinds,String startTime,String endTime,double discount,
+    public HotelStrategyVO(String name,String hotelID,HotelStrategy type,List<VIPType> vipKinds,Calendar startTime,Calendar endTime,double discount,
     		int minRooms,int minSum){
     	this.hotelID=hotelID;
     	this.type=type;
@@ -98,6 +105,7 @@ public class HotelStrategyVO {
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
+    	this.name=name;
 
     	this.minRooms = minRooms;
     	this.minSum = minSum;
@@ -111,19 +119,19 @@ public class HotelStrategyVO {
 		this.type = type;
 	}
 
-	public String getStartTime() {
+	public Calendar getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(String startTime) {
+	public void setStartTime(Calendar startTime) {
 		this.startTime = startTime;
 	}
 
-	public String getEndTime() {
+	public Calendar getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(String endTime) {
+	public void setEndTime(Calendar endTime) {
 		this.endTime = endTime;
 	}
 
@@ -168,11 +176,11 @@ public class HotelStrategyVO {
 		this.minRooms = minRooms;
 	}
 
-	public ArrayList<VIPType> getVipKinds() {
+	public List<VIPType> getVipKinds() {
 		return vipKinds;
 	}
 
-	public void setVipKinds(ArrayList<VIPType> vipKinds) {
+	public void setVipKinds(List<VIPType> vipKinds) {
 		this.vipKinds = vipKinds;
 	}
 }

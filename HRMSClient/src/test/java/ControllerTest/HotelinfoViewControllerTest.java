@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Before;
@@ -84,11 +85,13 @@ public class HotelinfoViewControllerTest {
 //
 		controller = HotelstaffViewController.getInstance("H00000001");
 
-		String begin1="2016-11-11 00:00:00";
-		String end1="2016-11-11 23:59:59";
+		Calendar begin1=Calendar.getInstance();
+		Calendar end1=Calendar.getInstance();
+		begin1.set(2016,11,11,00,00);
+		end1.set(2016,11,11,23,59);
 		ArrayList<HotelinfoVO> hlist=new ArrayList<HotelinfoVO>();
 
-		V1=new HotelStrategyVO("H00000001",HotelStrategy.SPECIALDAY,
+		V1=new HotelStrategyVO("策略1","H00000001",HotelStrategy.SPECIALDAY,
 	    		begin1,end1,0.75);
 		hotelstrategyList = new ArrayList<HotelStrategyVO>();
 		hotelstrategyList.add(V1);

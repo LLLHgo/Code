@@ -143,6 +143,18 @@ public class ProcessSitemanagerView extends JPanel{
 			
 		});
 		
+		jbShowLog.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.jbShowLogButtonClicked();
+			}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+		});
+		
 		this.setVisible(true);
 	}
 	

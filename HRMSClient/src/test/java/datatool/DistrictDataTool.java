@@ -6,8 +6,8 @@ import java.util.List;
 import vo.districtVO.DistrictVO;
 
 public class DistrictDataTool {
-	static List<String> list1=new ArrayList<String>();
-	static List<String> list2=new ArrayList<String>();
+	public static List<String> list1=new ArrayList<String>();
+	public static List<String> list2=new ArrayList<String>();
 	static{
 		list1.add("南京英尊假日酒店");
 		list1.add("南京悦宁酒店");

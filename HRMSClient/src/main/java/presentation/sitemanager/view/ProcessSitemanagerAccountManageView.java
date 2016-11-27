@@ -96,8 +96,8 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			telField.setEditable(true);
 			passWordField.setEditable(true);
-			telField.setBorder(new EmptyBorder(1,1,1,1));
-			passWordField.setBorder(new EmptyBorder(1,1,1,1));
+			//telField.setBorder(new EmptyBorder(1,1,1,1));
+			//passWordField.setBorder(new EmptyBorder(1,1,1,1));
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}		

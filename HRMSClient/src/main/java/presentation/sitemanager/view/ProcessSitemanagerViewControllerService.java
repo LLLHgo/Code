@@ -131,4 +131,6 @@ public interface ProcessSitemanagerViewControllerService {
 	public void jbExitButtonClicked();
 	
 	public void jbHotelManageButtonClicked();
+	
+	public void jbShowLogButtonClicked();
 }

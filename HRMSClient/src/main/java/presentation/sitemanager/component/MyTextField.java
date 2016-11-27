@@ -25,10 +25,10 @@ public class MyTextField extends JTextField{
 	void setOthers(){
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setFont(new java.awt.Font("华文黑体",  1,  20));
-		this.setForeground(Color.white);
+		this.setForeground(Color.DARK_GRAY);
 		this.setText(info);
 		this.setBackground(null);
-		this.setBorder(new EmptyBorder(0,0,0,0));
+		//this.setBorder(new EmptyBorder(0,0,0,0));
 		this.setOpaque(false);
 		this.setEditable(false);
 	}
