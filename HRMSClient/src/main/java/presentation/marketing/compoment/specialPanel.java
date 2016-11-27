@@ -22,7 +22,8 @@ public class specialPanel extends MJPanel{
 	private JPanel startPanel=new TimePanel("开始时间",160,50,660,50);
 	private JPanel endPanel=new TimePanel("结束时间",160,90,660,50);
 	private JPanel districtPanel;
-	private JScrollPane addPane=new addPane(160,190,550,250);
+	//private JScrollPane addPane=new addPane(160,190,550,250);
+			//new MJPanel(0,0,100,100));
 
 	private MarketingStrategyVO createdVO;
     private List<JRadioButton> districtButton=new ArrayList<JRadioButton>();
@@ -38,7 +39,7 @@ public class specialPanel extends MJPanel{
 		this.add(startPanel);
     	this.add(endPanel);
     	this.add(districtPanel);
-    	this.add(addPane);
+    	//this.add(addPane);
 
         this.revalidate();
         this.repaint();
