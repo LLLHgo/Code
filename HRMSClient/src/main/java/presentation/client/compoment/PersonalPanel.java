@@ -95,18 +95,7 @@ public class PersonalPanel extends JPanel{
 		this.setBounds(270,350,60,60);
 		}
 	}
-	 class editButton extends JButton{
-			ImageIcon icon;
-			public editButton(int x,int y){
-			icon=new ImageIcon("image/editButton.png");
-			this.setIcon(icon);
-			this.setOpaque(true);
-			this.setContentAreaFilled(false);
-			this.setBorderPainted(false);
-			this.setFocusPainted(false);
-			this.setBounds(x,y,40,40);
-			}
-		}
+
 	 private class editNameButtonListener implements ActionListener{
 
 			@Override

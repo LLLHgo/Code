@@ -16,7 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import presentation.DialogCreator;
+import presentation.client.compoment.EvaluatePanel;
 import presentation.client.compoment.PersonalPanel;
+import presentation.client.compoment.RegisterPanel;
 import presentation.client.compoment.SearchPanel;
 import presentation.client.compoment.ViewOrderPanel;
 import presentation.client.compoment.WelPanel;
@@ -39,6 +41,8 @@ public class ProcessClientView extends JPanel {
 	private SearchPanel sp;
 	private ViewOrderPanel vp;
 	private PersonalPanel pp;
+	private RegisterPanel rp;
+	private EvaluatePanel ep;
 	private ImageIcon imageIcon = null;
 	private JLabel idLabel;
 	private JFrame frame;
@@ -53,6 +57,8 @@ public class ProcessClientView extends JPanel {
 			sp=new SearchPanel();
 			vp=new ViewOrderPanel();
 			pp=new PersonalPanel();
+			rp=new RegisterPanel();
+			ep=new EvaluatePanel();
 			imageIcon = new ImageIcon("image/clientPanel.png");
 			searchHotel=new GuideBoardButton(240,"查询酒店");
 			searchHotel.addActionListener( new searchButtonListener());
@@ -61,8 +67,15 @@ public class ProcessClientView extends JPanel {
 			personal=new GuideBoardButton(340,"个人信息");
 			personal.addActionListener( new personalButtonListener());
 			evaluate=new GuideBoardButton(390,"评价酒店");
+			evaluate.addActionListener( new evaluateButtonListener());
 			register=new GuideBoardButton(440,"注册会员");
+			register.addActionListener( new registerButtonListener());
 			exit=new GuideBoardButton(490,"退出");
+			exit.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+				});
 			this.add(searchHotel);
 			this.add(viewOrder);
 			this.add(personal);
@@ -76,11 +89,15 @@ public class ProcessClientView extends JPanel {
 		    sp.setLocation(277,82);
 		    vp.setLocation(277,82);
 		    pp.setLocation(277,82);
+		    rp.setLocation(277,82);
+		    ep.setLocation(277,82);
 		    wp.setVisible(true);
 		    frame.add(wp);
 		    frame.add(sp);
 		    frame.add(vp);
 		    frame.add(pp);
+		    frame.add(rp);
+		    frame.add(ep);
 		    this.setSize(1000, 618);
 		    this.setVisible(true);
 	}
@@ -92,7 +109,23 @@ public class ProcessClientView extends JPanel {
 			pp.setVisible(false);
 			wp.setVisible(false);
 			vp.setVisible(false);
+			rp.setVisible(false);
+			ep.setVisible(false);
 			sp.setVisible(true);
+		}
+
+	}
+	private class registerButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			pp.setVisible(false);
+			wp.setVisible(false);
+			vp.setVisible(false);
+			sp.setVisible(false);
+			ep.setVisible(false);
+			rp.setVisible(true);
 		}
 
 	}
@@ -102,8 +135,10 @@ public class ProcessClientView extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			pp.setVisible(false);
+			rp.setVisible(false);
 			wp.setVisible(false);
 			sp.setVisible(false);
+			ep.setVisible(false);
 			vp.setVisible(true);
 		}
 
@@ -116,7 +151,23 @@ public class ProcessClientView extends JPanel {
 			wp.setVisible(false);
 			sp.setVisible(false);
 			vp.setVisible(false);
+			rp.setVisible(false);
+			ep.setVisible(false);
 			pp.setVisible(true);
+		}
+
+	}
+	private class evaluateButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			wp.setVisible(false);
+			sp.setVisible(false);
+			vp.setVisible(false);
+			rp.setVisible(false);
+			pp.setVisible(false);
+			ep.setVisible(true);
 		}
 
 	}
