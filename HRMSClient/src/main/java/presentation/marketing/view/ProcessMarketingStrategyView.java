@@ -14,7 +14,6 @@ import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.compoment.*;
 import vo.districtVO.DistrictVO;
-import vo.marketingVO.MarketingVO;
 import vo.strategyVO.MarketingStrategyVO;;
 
 public class ProcessMarketingStrategyView extends JPanel{
@@ -22,9 +21,6 @@ public class ProcessMarketingStrategyView extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	private ProcessMarketingViewControllerService controller;
-	private String MarketingID;
-	private MarketingVO Mvo;
-	private java.util.List<MarketingStrategyVO> MSvo;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,28);
 	private Icon strategyPreIcon=new ImageIcon("./src/main/resource/picture/marketing/strategyPreIcon.png");
 	private Icon backIcon=new ImageIcon("./src/main/resource/picture/marketing/backIcon.png");
@@ -40,10 +36,7 @@ public class ProcessMarketingStrategyView extends JPanel{
 	private JButton back=new MJButton(80,8,85,50,backIcon);
 	public ProcessMarketingStrategyView(ProcessMarketingViewControllerService controller,JPanel panel){
 		this.controller=controller;
-		this.MarketingID=controller.getMarketingID();
-        this.Mvo=controller.init(MarketingID);
-        this.MSvo= controller.getMarketingStrategy(MarketingID);
-    	this.setBounds(200, 82, 780, 500);
+		this.setBounds(200, 82, 780, 500);
     	this.setLayout(null);
     	this.setOpaque(false);
 
@@ -62,8 +55,6 @@ public class ProcessMarketingStrategyView extends JPanel{
     		@Override
 			public void actionPerformed(ActionEvent e) {
                groupPanel.setVisible(true);
-
-
                if(periodPanel!=null){
             	   periodPanel.setVisible(false);
             	   periodPanel.removeAll();
@@ -160,7 +151,7 @@ public class ProcessMarketingStrategyView extends JPanel{
         check.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-              MarketingStrategyVO specialVO= specialPanel.getCreatedVO();
+              MarketingStrategyVO specialVO= specialPanel.getSpecialVO();
               controller.addMarketingStrategy(specialVO);
 			}
 
@@ -200,7 +191,12 @@ public class ProcessMarketingStrategyView extends JPanel{
 
 	public void browseButtonClicked(){
 		hideGroup();
-
+		List<MarketingStrategyVO> strategys=controller.getMarketingStrategy(controller.getMarketingID());
+		browsePanel=new browsePanel(80,0,690,500,strategys);
+		browsePanel.setVisible(true);
+        this.add(browsePanel);
+	    this.revalidate();
+		this.repaint();
 	}
 
 	public void hideStrategy() {

@@ -13,20 +13,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
-import Enum.VIPType;
 import Enum.marketingStrategy;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class specialPanel extends MJPanel{
 
 	private Font font=new Font("楷体",Font.ITALIC,20);
-	private Font font2=new Font("微软雅黑",Font.CENTER_BASELINE,18);
 	private Icon addIcon=new ImageIcon("./src/main/resource/picture/marketing/addIcon.png");
 	private Icon deleteIcon=new ImageIcon("./src/main/resource/picture/marketing/delete.png");
-
 	private JPanel namePanel=new NamePanel("策略名称",160,10,660,50);
 	private JPanel startPanel=new TimePanel("开始时间",160,50,660,50);
 	private JPanel endPanel=new TimePanel("结束时间",160,90,660,50);
@@ -35,14 +31,9 @@ public class specialPanel extends MJPanel{
 	private JPanel Apanel=new MJPanel(0,0,200,200);
 	private JScrollPane addPane;
 	private JButton addButton=new MJButton(230,10,60,60,addIcon);
-	private List<Integer> leve=new ArrayList<Integer>();
-	private List<Double> dis=new ArrayList<Double>();
+	private int[] levels;
+	private double[] discounts;
     private List<MakePanel> makePanels=new ArrayList<MakePanel>();
-
-
-	private MarketingStrategyVO createdVO;
-    private List<JRadioButton> districtButton=new ArrayList<JRadioButton>();
-
 	private static final long serialVersionUID = 1L;
 
 	public specialPanel(int x, int y, int w, int h,List<String> list) {
@@ -69,8 +60,20 @@ public class specialPanel extends MJPanel{
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						//找到被删除的Item的位置
+						int index=makePanels.indexOf(makePanel);
 						makePanel.removeAll();
+						makePanels.remove(makePanel);
+						//从index开始的每个item，包括addButton都往下移50.
+						for(int i=index;i<makePanels.size();i++){
+							MakePanel panel=makePanels.get(i);
+							panel.setLocation(100, 10+50*i);
+						}
+						addButton.setLocation(230, 50*makePanels.size()+10);
+						Apanel.setPreferredSize(new Dimension(300,60+50*makePanels.size()+10));
+						refresh();
 					}
+
 
 				});
 				makePanel.add(delete);
@@ -80,15 +83,12 @@ public class specialPanel extends MJPanel{
                 addButton.setLocation(230,50*makePanels.size()+10);
                 refresh();
 			}
-
     	});
 
     	Apanel.add(addButton);
-    	addPane=new MJScrollPane(160,210,550,240,Apanel);
+    	addPane=new MJScrollPane(160,210,650,240,Apanel);
     	this.add(addPane);
-
-        this.revalidate();
-        this.repaint();
+        refresh();
 
 	}
 
@@ -97,20 +97,22 @@ public class specialPanel extends MJPanel{
 		this.repaint();
 	}
 
-	public MarketingStrategyVO getCreatedVO() {
-
+	public MarketingStrategyVO getSpecialVO() {
         String name=namePanel.getName();
         Calendar start=((TimePanel) startPanel).getTime();
         Calendar end=((TimePanel) endPanel).getTime();
-
-
-        /*setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.CRATEDE,
-             start,end,discount,hotelSelected,minExpenditure,minRoom,minLevel,VIPSelected));*/
-		 return createdVO;
+        String districtName=districtPanel.getName();
+        levels=new int[makePanels.size()];
+        discounts=new double[makePanels.size()];
+        int i=0;
+        for(MakePanel m:makePanels){
+        	levels[i]=m.getLevel();
+        	discounts[i++]=m.getDiscount();
+        }
+        MarketingStrategyVO vo= new MarketingStrategyVO(name,marketingStrategy.VIPSPECIAL,start,end,districtName,levels,discounts);
+		return vo;
 	}
-	private void setCreatedVO(MarketingStrategyVO createdVO) {
-		this.createdVO = createdVO;
-	}
+
 	public void setStartTime(int year, int month, int date, int hour, int minute) {
 		((TimePanel) startPanel).setTime(year,  month,  date,  hour,  minute);
 

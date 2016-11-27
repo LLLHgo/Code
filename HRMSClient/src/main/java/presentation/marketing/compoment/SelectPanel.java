@@ -25,6 +25,7 @@ public class SelectPanel extends MJPanel{
 	}
 
 	public String getName(){
-		return null;
+		return dbtype.getSelectedItem().toString();
+
 	}
 }
