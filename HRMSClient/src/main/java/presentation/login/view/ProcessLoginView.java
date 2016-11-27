@@ -27,6 +27,9 @@ import presentation.hotelstaff.controller.HotelstaffViewController;
 import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
+import presentation.marketing.controller.ProcessMarketingViewController;
+import presentation.marketing.view.ProcessMarketingView;
+import presentation.marketing.view.ProcessMarketingViewControllerService;
 import presentation.sitemanager.controller.ProcessSitemanagerViewController;
 import presentation.sitemanager.view.ProcessSitemanagerView;
 import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
@@ -105,6 +108,13 @@ public class ProcessLoginView extends JPanel {
 
 						break;
 					case 'm':
+						ProcessMarketingViewControllerService controller1=new ProcessMarketingViewController(id);
+						frame.getContentPane().removeAll();
+						frame.getContentPane().add(new ProcessMarketingView(controller1));
+						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
+						frame.getContentPane().revalidate();
+						frame.getContentPane().repaint();
+
 						break;
 					case 'e':
 						DialogCreator.failDialog("Fail");

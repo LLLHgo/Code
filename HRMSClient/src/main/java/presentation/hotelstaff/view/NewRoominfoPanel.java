@@ -55,15 +55,15 @@ public class NewRoominfoPanel extends JPanel{
 		this.setBounds(0,0,1000,618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		jbAdd = new AddButton(690,488);
 		jbAdd.addActionListener(new AddButtonActionListener());
 		jbAdd.setVisible(true);
 		this.add(jbAdd);
-		
+
 		showRoomList((ArrayList<RoominfoVO>)controller.getRoominfoList(hotelID));
 	}
-	
+
 	private void showRoomList(ArrayList<RoominfoVO> rooms){
 		//设置放置room信息的JPanel
 	    roominfoPanel=new JPanel();
@@ -80,7 +80,7 @@ public class NewRoominfoPanel extends JPanel{
 	    scrollPane.getVerticalScrollBar().setVisible(false);
 	    scrollPane.setBorder(new EmptyBorder(0,0,0,0));
 	    this.add(scrollPane);
-	  
+
 	    int num=0;
 
 	    Image image=new ImageIcon("./src/main/resource/picture/hotelinfo/newroominfo.png").getImage();
@@ -95,7 +95,7 @@ public class NewRoominfoPanel extends JPanel{
 	        panel.setBounds(10, 10+120*num,680, 130);
 	        panel.setLayout(null);
 	        num++;
-	        
+
 	        //制作roominfo需要的组件
 	        RoominfoLabel roomIDLabel=new RoominfoLabel(20,10,80,25,"房间号：");
 	        RoominfoLabel typeLabel=new RoominfoLabel(190,10,80,25,"类型：");
@@ -106,32 +106,32 @@ public class NewRoominfoPanel extends JPanel{
 	        ButtonGroup group=new ButtonGroup();
 	        group.add(usableButton);
 	        group.add(unusableButton);
-	     
-	        
+
+
 	        RoominfoTextField roomIDText = new RoominfoTextField(100,10,180,25);
 	        RoominfoTextField typeText = new RoominfoTextField(255,10,180,25);
 	        RoominfoTextField priceText = new RoominfoTextField(255,45,180,25);
 	      //  RoominfoTextField stateText = new RoominfoTextField(240,80,180,25);
-	        
+
 	        JLabel[] labelList = {roomIDLabel,typeLabel,priceLabel,stateLabel};
 	        JTextField[] textfieldList = {roomIDText,typeText,priceText};
-	        
+
 	        textfieldList[0].setText(room.getRoomNum());
 	        textfieldList[1].setText(room.getType());
 	        textfieldList[2].setText(String.valueOf(room.getPrice()));
 
 	        usableButton.setBounds(255, 80, 80, 25);
 	        unusableButton.setBounds(320,80,80,25);
-	        
+
 	        for(int i=0;i<labelList.length;i++){
 	        	panel.add(labelList[i]);
 	        }
-	        
+
 	        for(int i=0;i<textfieldList.length;i++){
 	        	panel.add(textfieldList[i]);
 	        	textfieldList[i].setEditable(false);
 	        }
-	        
+
 	        if(room.getRoomState()==RoomState.Usable){
 	        	usableButton.setSelected(true);
 	        }else{
@@ -139,37 +139,37 @@ public class NewRoominfoPanel extends JPanel{
 	        }
 	        panel.add(usableButton);
 	        panel.add(unusableButton);
-	        
+
 	        jbModify = new ModifyButton(500,40,60,60);
 			jbModify.addActionListener(new ActionListener(){
-			
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-				
+
 					 for(int i=1;i<textfieldList.length;i++){
 				        	textfieldList[i].setEditable(true);
 				        }
 				}
-				
+
 			});
 			panel.add(jbModify);
-	        
+
 	        roominfoPanel.add(panel);
 
 	}
 }
 
-	
+
 	private void addRoom(){
-		
+
 	}
-	
+
 	private class AddButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			addRoom();
 		}
 	}
-	
-	
+
+
 }
