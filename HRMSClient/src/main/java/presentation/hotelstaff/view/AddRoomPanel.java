@@ -35,9 +35,9 @@ public class AddRoomPanel extends JPanel{
 	private JComboBox jcbType;
 	private String[] types;
 	private String type;
-	private String num="";
-	private double price;
-	private RoomState state;
+	private String num;
+	private String price;
+	private String state;
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;
 	private JLabel resultLabel;
@@ -61,8 +61,6 @@ public class AddRoomPanel extends JPanel{
 		
 		jtfroomNum = new RoominfoTextField(406,128,200,30);
 		jtfroomPrice = new RoominfoTextField(406,282,200,30);
-		jtfroomNum.setOpaque(true);
-		jtfroomPrice.setOpaque(true);
 		this.add(jtfroomNum);
 		this.add(jtfroomPrice);
 		
@@ -106,12 +104,14 @@ public class AddRoomPanel extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			vo = getRoominfoVO();
 			if(vo!=null){
-				vo = getRoominfoVO();
 				ResultMessage result = controller.updateroominfo(vo, hotelID);
 				if(result == ResultMessage.SUCCESS){
-					controller.JBRoomClicked("修改成功");
+					controller.JBRoomClicked("新增成功");
 				}
+			}else{
+				showMessage("信息不完整，新增房间失败");
 			}
 		}
 		
@@ -127,15 +127,46 @@ public class AddRoomPanel extends JPanel{
 	}
 	
 	private RoominfoVO getRoominfoVO(){
-		vo.setRoomNum(num);
-		vo.setRoomState(state);
-		vo.setPrice(price);
-		vo.setType(type);
+		if(jcbType.getSelectedItem()==null||jcbState.getSelectedItem()==null){
+			return null;
+		}
+		//获得room属性
+		num = jtfroomNum.getText();
+		price = jtfroomPrice.getText();
+		type = jcbType.getSelectedItem().toString();
+		state = jcbState.getSelectedItem().toString();
+		//如果没有填写完整，返回null
+		if(num.equals("")||price.equals("")||type.equals("")||state.equals("")){
+			return null;
+		}
+		//如果填写完整，返回vo包
+		else{
+			vo.setPrice(Double.parseDouble(price));
+			vo.setRoomNum(num);
+			vo.setType(type);
+			if(state.equals("可用")){
+				vo.setRoomState(RoomState.Usable);
+			}else{
+				vo.setRoomState(RoomState.Unusable);
+			}
+		}
 		return vo;
 	}
 	
 	public void showMessage(String message){
-		
+		//提示信息
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				resultLabel.setText(message);
+				try {
+					Thread.sleep(1000);
+			    }catch(InterruptedException ex){
+	                ex.printStackTrace();
+	            }
+		           resultLabel.setText("");
+				}
+			}).start();
 	}
 	
 	protected void paintComponent(Graphics g) {

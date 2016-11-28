@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,8 +19,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import com.sun.glass.events.KeyEvent;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
@@ -41,7 +40,6 @@ public class NewRoominfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private HotelstaffViewController controller;
 	private String hotelID;
-	private ModifyButton jbModify;
 	private AddButton jbAdd;
 	private JPanel roominfoPanel;
 	private JScrollPane scrollPane;
@@ -61,7 +59,8 @@ public class NewRoominfoPanel extends JPanel{
 		this.setVisible(true);
 		setOpaque(false);
 		
-		jbAdd = new AddButton(690,488);
+		//新增房间信息
+		jbAdd = new AddButton(800,490);
 		jbAdd.addActionListener(new AddButtonActionListener());
 		jbAdd.setVisible(true);
 		this.add(jbAdd);
@@ -86,7 +85,7 @@ public class NewRoominfoPanel extends JPanel{
 
 	    //设置放置roominfo的JScrollPanel
 	    scrollPane = new JScrollPane(roominfoPanel);
-	    scrollPane.setBounds(285, 130, 800, 360);
+	    scrollPane.setBounds(285, 110, 800, 360);
 	    scrollPane.setOpaque(false);
 	    scrollPane.getViewport().setOpaque(false);
 	    scrollPane.getVerticalScrollBar().setVisible(false);
@@ -112,7 +111,18 @@ public class NewRoominfoPanel extends JPanel{
 	        RoominfoLabel roomIDLabel=new RoominfoLabel(20,10,180,25,"房间号："+room.getRoomNum());
 	        RoominfoLabel typeLabel=new RoominfoLabel(190,10,180,25,"类型："+room.getType());
 	        RoominfoLabel priceLabel=new RoominfoLabel(190,45,180,25,"价格："+String.valueOf(room.getPrice()));
-	        RoominfoLabel stateLabel = new RoominfoLabel(190,80,180,25,"状态："+room.getRoomState().toString());
+	        RoominfoLabel stateLabel = new RoominfoLabel(190,80,80,25,"状态：");
+	        String[] states = {"可用","不可用"};
+	        JComboBox jcbState = new JComboBox(states);
+	        if(room.getRoomState()==RoomState.Usable){
+	        	jcbState.setSelectedIndex(0);
+	        }else{
+	        	jcbState.setSelectedIndex(1);
+	        }
+	        jcbState.setEnabled(false);
+	        jcbState.setBounds(250,78,90,30);
+	        
+	        panel.add(jcbState);
 	        
 	        JLabel[] labelList = {roomIDLabel,typeLabel,priceLabel,stateLabel};
 	        
@@ -120,19 +130,70 @@ public class NewRoominfoPanel extends JPanel{
 	        	panel.add(labelList[i]);
 	        }
 	        
-	        jbModify = new ModifyButton(500,40,60,60);
+
+			ConfirmButton jbConfirm= new ConfirmButton(550,40);
+			CancleButton jbCancle = new CancleButton(450,40);
+			ModifyButton jbModify = new ModifyButton(500,40,60,60);
+			 
+			jbConfirm.setVisible(false);
+			jbConfirm.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					jbConfirm.setVisible(false);
+					jbCancle.setVisible(false);
+					jbModify.setVisible(true);
+					String state = jcbState.getSelectedItem().toString();
+					if(state.equals("可用")){
+						room.setRoomState(RoomState.Usable);
+					}else{
+						room.setRoomState(RoomState.Unusable);
+					}
+					ResultMessage message = controller.updateroominfo(room, hotelID);
+					if(message == ResultMessage.SUCCESS){
+						showMessage("修改成功");
+					}
+					else{
+						showMessage(message.toString());
+					}
+					jcbState.setEnabled(false);
+				}
+				
+			});
+			panel.add(jbConfirm);
+			
+			
+			jbCancle.setVisible(false);
+			jbCancle.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					jbConfirm.setVisible(false);
+					jbCancle.setVisible(false);
+					jbModify.setVisible(true);
+					jcbState.setEnabled(false);
+					showMessage("取消成功");
+				}
+				
+			});
+			panel.add(jbCancle);
+	        
+	       
 			jbModify.addActionListener(new ActionListener(){
 			
 				@Override
 				public void actionPerformed(ActionEvent e) {
-				
-
-					
+					jbConfirm.setVisible(true);
+					jbCancle.setVisible(true);
+					jbModify.setVisible(false);
+					jcbState.setEnabled(true);
+					showMessage("选择房间状态");
 				}
 				
 			});
 			panel.add(jbModify);
 	        
+			
 	        roominfoPanel.add(panel);
 
 	}
@@ -150,16 +211,7 @@ public class NewRoominfoPanel extends JPanel{
 		new Thread(new Runnable(){
 			@Override
 			public void run() {
-				if(message.equals(ResultMessage.SUCCESS.toString()))
-					//TODO
-					resultLabel.setText("");
-				else if(message.equals("新增房间成功")){
 					resultLabel.setText(message);
-				}else if(message.equals("修改房间成功")){
-					resultLabel.setText(message);
-				}else if(message.equals("取消操作成功")){
-					resultLabel.setText(message);
-				}
 				try {
 					Thread.sleep(1000);
 	            }catch(InterruptedException ex){
