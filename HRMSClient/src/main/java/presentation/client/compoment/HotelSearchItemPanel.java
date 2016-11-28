@@ -11,7 +11,7 @@ public class HotelSearchItemPanel extends JPanel{
 	private viewButton vb;
 
 public HotelSearchItemPanel(int x,int y){
-	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");
+	imageIcon = new ImageIcon("image/hotelSearchPanel.png");
 
 	vb=new viewButton(500, 30);
 
