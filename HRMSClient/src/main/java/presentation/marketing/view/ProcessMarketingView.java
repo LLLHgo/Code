@@ -64,13 +64,29 @@ public class ProcessMarketingView extends JPanel{
 			}
         });
 
-        //给abnormalButtton加监听
+        //给strategyButtton加监听
         strategy.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.strategyButtonClicked();
 			}
         });
+
+      //给VIPButtton加监听
+        VIP.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.VIPButtonClicked();
+			}
+        });
+
+        //给exitButton加监听
+        exit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+			}
+         });
 
       	this.add(profile);this.add(abnormal);this.add(credit);
     	this.add(VIP);this.add(strategy);this.add(exit);

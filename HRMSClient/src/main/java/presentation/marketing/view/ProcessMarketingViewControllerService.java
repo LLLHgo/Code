@@ -191,5 +191,6 @@ public interface ProcessMarketingViewControllerService {
 	public void strategyButtonClicked();
 	public List<DistrictVO> getDistricts();
 	public List<String> getDistrictNames();
+	public void VIPButtonClicked();
 
 }

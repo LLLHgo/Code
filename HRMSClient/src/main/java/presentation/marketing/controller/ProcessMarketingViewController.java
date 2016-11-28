@@ -11,6 +11,7 @@ import businesslogic.orderbl.OrderManage;
 import presentation.marketing.view.ProcessMarketingAbnormalView;
 import presentation.marketing.view.ProcessMarketingProfileView;
 import presentation.marketing.view.ProcessMarketingStrategyView;
+import presentation.marketing.view.ProcessMarketingVIPView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
@@ -40,6 +41,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     private ProcessMarketingProfileView profileView;
     private ProcessMarketingAbnormalView abnormalView;
     private ProcessMarketingStrategyView strategyView;
+    private ProcessMarketingVIPView VIPView;
+
     public ProcessMarketingViewController (String marketingID){
     	this.marketingID=marketingID;
     	this.MarketingBlService=new MarketingBLService_Stub();
@@ -188,6 +191,10 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 			strategyView.hideStrategy();
 		strategyView=null;
 
+		if(VIPView!=null)
+			VIPView.hideVIP();
+		VIPView=null;
+
 		profileView=new ProcessMarketingProfileView(this,view);
 	}
 	@Override
@@ -202,6 +209,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		if(strategyView!=null)
 			strategyView.hideStrategy();
 		strategyView=null;
+		if(VIPView!=null)
+			VIPView.hideVIP();
+		VIPView=null;
 		abnormalView=new ProcessMarketingAbnormalView(this,view);
 	}
 	@Override
@@ -221,6 +231,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		if(strategyView!=null)
 			strategyView.hideStrategy();
 		strategyView=null;
+		if(VIPView!=null)
+			VIPView.hideVIP();
+		VIPView=null;
 		strategyView=new ProcessMarketingStrategyView(this,view);
 
 	}
@@ -236,6 +249,23 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		List<String> list=new ArrayList<String>();
 	    list=(DistrictDataTool.list1);
 	    return list;
+	}
+	@Override
+	public void VIPButtonClicked() {
+		view.hideWelcome();
+		if(profileView!=null)
+			profileView.hideProfile();
+		profileView=null;
+		if(abnormalView!=null)
+			abnormalView.hideAbnormal();
+		abnormalView=null;
+		if(strategyView!=null)
+			strategyView.hideStrategy();
+		strategyView=null;
+		if(VIPView!=null)
+			VIPView.hideVIP();
+		VIPView=null;
+		VIPView=new ProcessMarketingVIPView(this,view);
 	}
 
 
