@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -14,7 +15,10 @@ public class SearchPanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private JTextField searchField;
 	private SearchButton searchButton;
-	public SearchPanel(){
+	private HotelSearchListPane hslp;
+	public SearchPanel(JFrame frame){
+		hslp=new HotelSearchListPane();
+		frame.add(hslp);
 		imageIcon = new ImageIcon("image/searchPanel.png");
 		searchField=new JTextField();
 		searchButton=new SearchButton();
@@ -30,6 +34,11 @@ public class SearchPanel extends JPanel{
 	    this.setLayout(null);
 	    this.setSize(704, 502);
 	    this.setOpaque(false);
+	}
+	public void setvisible(boolean flag){
+		this.setVisible(flag);
+		hslp.setVisible(flag);
+
 	}
 	private class searchButtonListener implements ActionListener{
 

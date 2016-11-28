@@ -57,7 +57,7 @@ public class ProcessClientView extends JPanel {
 			idLabel.setForeground(Color.WHITE);
 
 			wp=new WelPanel();
-			sp=new SearchPanel();
+			sp=new SearchPanel(frame);
 			vp=new ViewOrderPanel(frame);
 			pp=new PersonalPanel();
 			rp=new RegisterPanel();
@@ -117,7 +117,7 @@ public class ProcessClientView extends JPanel {
 			vp.setvisible(false);
 			rp.setVisible(false);
 			ep.setvisible(false);
-			sp.setVisible(true);
+			sp.setvisible(true);
 		}
 
 	}
@@ -130,7 +130,7 @@ public class ProcessClientView extends JPanel {
 			pp.setVisible(false);
 			wp.setVisible(false);
 			vp.setvisible(false);
-			sp.setVisible(false);
+			sp.setvisible(false);
 			ep.setvisible(false);
 			rp.setVisible(true);
 		}
@@ -145,7 +145,7 @@ public class ProcessClientView extends JPanel {
 			pp.setVisible(false);
 			rp.setVisible(false);
 			wp.setVisible(false);
-			sp.setVisible(false);
+			sp.setvisible(false);
 			ep.setvisible(false);
 			vp.setvisible(true);
 		}
@@ -158,7 +158,7 @@ public class ProcessClientView extends JPanel {
 			// TODO Auto-generated method stub
 
 			wp.setVisible(false);
-			sp.setVisible(false);
+			sp.setvisible(false);
 			vp.setvisible(false);
 			rp.setVisible(false);
 			ep.setvisible(false);
@@ -173,7 +173,7 @@ public class ProcessClientView extends JPanel {
 			// TODO Auto-generated method stub
 
 			wp.setVisible(false);
-			sp.setVisible(false);
+			sp.setvisible(false);
 			vp.setvisible(false);
 			rp.setVisible(false);
 			pp.setVisible(false);
