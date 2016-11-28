@@ -28,7 +28,7 @@ public interface StrategyBLService {
      * @param vo
      * @return 返回是否删除成功
      */
-    public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo);
+    public ResultMessage deleteMarketingStrategy(String vo);
     /**
      * 删除酒店工作人员制定的促销策略
      * @param vo

@@ -20,7 +20,7 @@ public class StrategyBLService_Driver {
     	if(marketingStrategyList.size()>0)System.out.println("返回网站营销人员制定的促销策略信息列表成功。");
 
     	//删除网站营销人员促销策略信息
-    	ResultMessage deleteMarketingStrategy=strategyBLService.deleteMarketingStrategy(Mvo);
+    	ResultMessage deleteMarketingStrategy=strategyBLService.deleteMarketingStrategy("双11促销");
     	if(deleteMarketingStrategy==ResultMessage.SUCCESS)System.out.println("删除网站营销人员促销策略信息成功。");
 
     	//返回酒店工作人员制定的促销策略信息列表

@@ -103,7 +103,7 @@ public interface ProcessMarketingViewControllerService {
      * @param vo
      * @return 返回是否删除成功
      */
-    public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo);
+    public ResultMessage deleteMarketingStrategy(String vo);
 
     /**
      * 根据酒店ID返回该酒店的促销策略

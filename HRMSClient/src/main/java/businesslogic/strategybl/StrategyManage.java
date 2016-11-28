@@ -22,7 +22,7 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
+	public ResultMessage deleteMarketingStrategy(String vo) {
 		return ResultMessage.SUCCESS;
 	}
 

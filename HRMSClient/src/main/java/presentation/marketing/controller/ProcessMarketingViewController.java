@@ -108,7 +108,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public ResultMessage deleteMarketingStrategy(MarketingStrategyVO vo) {
+	public ResultMessage deleteMarketingStrategy(String vo) {
 		return this.StrategyBLService.deleteMarketingStrategy(vo);
 	}
 

@@ -34,7 +34,6 @@ public class ProcessMarketingStrategyView extends JPanel{
 	private specialPanel specialPanel;
 	private browsePanel browsePanel;
 
-	private JButton back=new MJButton(80,8,85,50,backIcon);
 	public ProcessMarketingStrategyView(ProcessMarketingViewControllerService controller,JPanel panel){
 		this.controller=controller;
 		this.setBounds(200, 82, 780, 500);
@@ -50,36 +49,6 @@ public class ProcessMarketingStrategyView extends JPanel{
     	groupPanel.add(specialButton);
     	groupPanel.add(newButton);
     	groupPanel.add(browseButton);
-
-
-    	back.addActionListener(new ActionListener(){
-    		@Override
-			public void actionPerformed(ActionEvent e) {
-               groupPanel.setVisible(true);
-               if(periodPanel!=null){
-            	   periodPanel.setVisible(false);
-            	   periodPanel.removeAll();
-            	   periodPanel=null;
-               }
-               if(specialPanel!=null){
-            	   specialPanel.setVisible(false);
-            	   specialPanel.removeAll();
-            	   specialPanel=null;
-               }
-
-               if(newPanel!=null){
-            	   newPanel.setVisible(false);
-            	   newPanel.removeAll();
-            	   newPanel=null;
-               }
-
-               if(browsePanel!=null){
-            	   browsePanel.setVisible(false);
-            	   browsePanel.removeAll();
-            	   browsePanel=null;
-               }
-			}
-    	});
 
     	periodButton.addActionListener(new ActionListener(){
 			@Override
@@ -131,6 +100,20 @@ public class ProcessMarketingStrategyView extends JPanel{
 
         });
 
+        JButton back1=new MJButton(80,8,85,50,backIcon);
+        back1.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				groupPanel.setVisible(true);
+				periodPanel.removeAll();
+				periodPanel.setVisible(false);
+				periodPanel=null;
+			}
+
+        });
+        periodPanel.add(back1);
+
         periodPanel.add(check);
 	    this.add(periodPanel);
 	    this.revalidate();
@@ -158,6 +141,20 @@ public class ProcessMarketingStrategyView extends JPanel{
 
         });
 
+        JButton back2=new MJButton(80,8,85,50,backIcon);
+        back2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				groupPanel.setVisible(true);
+				specialPanel.removeAll();
+				specialPanel.setVisible(false);
+				specialPanel=null;
+			}
+
+        });
+        specialPanel.add(back2);
+
         specialPanel.add(check);
 	    this.add(specialPanel);
 	    this.revalidate();
@@ -184,6 +181,20 @@ public class ProcessMarketingStrategyView extends JPanel{
 
         });
 
+        JButton back3=new MJButton(80,8,85,50,backIcon);
+        back3.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				groupPanel.setVisible(true);
+				newPanel.removeAll();
+				newPanel.setVisible(false);
+				newPanel=null;
+			}
+
+        });
+        newPanel.add(back3);
+
         newPanel.add(check);
 	    this.add(newPanel);
 	    this.revalidate();
@@ -193,10 +204,28 @@ public class ProcessMarketingStrategyView extends JPanel{
 	public void browseButtonClicked(){
 		hideGroup();
 		List<MarketingStrategyVO> strategys=controller.getMarketingStrategy(controller.getMarketingID());
-        JPanel panel=new MJPanel(0,0,200,200);
+		JPanel panel=new MJPanel(0,0,200,200);
         panel.setPreferredSize(new Dimension(690,690));
-		browsePanel=new browsePanel(80,0,690,500,strategys,panel);
+		browsePanel=new browsePanel(80,0,820,500,strategys,panel);
 		browsePanel.setVisible(true);
+
+		JButton back4=new MJButton(2,8,85,50,backIcon);
+
+		back4.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                List<String> delete=browsePanel.getDelete();
+                for(String s:delete){
+                	controller.deleteMarketingStrategy(s);
+                }
+                groupPanel.setVisible(true);
+				browsePanel.removeAll();
+				browsePanel.setVisible(false);
+				browsePanel=null;
+			}
+		});
+
+		browsePanel.add(back4);
         this.add(browsePanel);
 	    this.revalidate();
 		this.repaint();
@@ -208,7 +237,6 @@ public class ProcessMarketingStrategyView extends JPanel{
 	}
 	public void hideGroup(){
 		groupPanel.setVisible(false);
-		this.add(back);
 	}
 
 }
