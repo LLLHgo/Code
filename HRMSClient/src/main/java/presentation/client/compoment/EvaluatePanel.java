@@ -6,6 +6,7 @@ import java.awt.Graphics;
 
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import javax.swing.JTextField;
@@ -16,7 +17,10 @@ public class EvaluatePanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private SearchButton searchButton;
 	private JTextField searchField;
-	public EvaluatePanel(){
+	private HotelListPane hlp;
+	public EvaluatePanel(JFrame frame){
+		hlp=new HotelListPane();
+		frame.add(hlp);
 	imageIcon = new ImageIcon("image/searchPanel.png");
 	searchField=new JTextField();
 	searchButton=new SearchButton();
@@ -35,6 +39,12 @@ public class EvaluatePanel extends JPanel{
     this.setLayout(null);
     this.setSize(704, 502);
     this.setOpaque(false);
+	}
+
+	public void setvisible(boolean flag){
+		this.setVisible(flag);
+		hlp.setVisible(flag);
+
 	}
 	@Override
 	public void paintComponent(Graphics g) {

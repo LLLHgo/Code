@@ -12,13 +12,13 @@ public class HotelEvaluateItemPanel extends JPanel{
 	private evaluateButton eb;
 	private viewButton vb;
 
-public HotelEvaluateItemPanel(){
+public HotelEvaluateItemPanel(int x,int y){
 	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");
 	eb=new evaluateButton(510, 7);
 	vb=new viewButton(450, 30);
 
     this.setLayout(null);
-	this.setSize(600,100);
+	this.setBounds(x,y,600,100);
 	this.add(vb);
 	this.add(eb);
 	this.setOpaque(false);

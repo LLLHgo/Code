@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -17,9 +18,12 @@ public class ViewOrderPanel extends JPanel{
 	private Button fin;
 	private Button abnormal;
 	private Button repeal;
-
-public ViewOrderPanel(){
+	private OrderListPane olp;
+public ViewOrderPanel(JFrame frame){
+	olp=new OrderListPane();
+	frame.add(olp);
 	imageIcon = new ImageIcon("image/searchPanel.png");
+	ImageIcon icon=new ImageIcon("image/unfinButton.png");
 	searchButton=new SearchButton();
 	searchField=new JTextField();
 	searchField.setBounds(72, 18, 450, 50);
@@ -28,10 +32,13 @@ public ViewOrderPanel(){
 	searchField.setForeground(Color.WHITE);
 	searchField.setOpaque(false);
 	searchField.setFocusable(true);
-		unfin=new Button(100,"未执行");
-		fin=new Button(170,"已执行");
-		abnormal=new Button(240,"异常");
-		repeal=new Button(310,"已撤销");
+		unfin=new Button(icon,10,100);
+		icon=new ImageIcon("image/finButton.png");
+		fin=new Button(icon,10,190);
+		icon=new ImageIcon("image/abnormalButton.png");
+		abnormal=new Button(icon,10,280);
+		icon=new ImageIcon("image/repealButton.png");
+		repeal=new Button(icon,10,370);
 		this.setLayout(null);
 	    this.setSize(704, 502);
 	    this.setOpaque(false);
@@ -50,35 +57,23 @@ public void paintComponent(Graphics g) {
 
 	   }
 
+public void setvisible(boolean flag){
+	this.setVisible(flag);
+	olp.setVisible(flag);
 
+}
 
-	class Button extends JButton{
+class Button extends JButton{
 
-		private static final long serialVersionUID = 1L;
-		int x=0;
-		int y;
-		int w=150;
-		int h=40;
-		String name;
+	ImageIcon icon;
+	public Button(ImageIcon icon,int x,int y){
 
-		public Button(int y,String name){
-			super();
-
-			this.y=y;
-			this.name=name;
-
-			setOthers();
-		}
-
-		private void setOthers(){
-			this.setBounds(this.x,this.y,this.w,this.h);
-			this.setText(name);
-			this.setFont(new java.awt.Font("微软雅黑", 4,  20));
-			this.setForeground(Color.white);
-			this.setContentAreaFilled(false);
-			this.setBorderPainted(false);
-			this.setVisible(true);
-
-		}
+	this.setIcon(icon);
+	this.setOpaque(true);
+	this.setContentAreaFilled(false);
+	this.setBorderPainted(false);
+	this.setFocusPainted(false);
+	this.setBounds(x,y,80,80);
 	}
+}
 }

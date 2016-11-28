@@ -10,13 +10,13 @@ public class OrderItemPanel extends JPanel{
 	private minideleteButton db;
 	private viewButton vb;
 
-public OrderItemPanel(){
+public OrderItemPanel(int x,int y){
 	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");
 	db=new minideleteButton(500, 7);
 	vb=new viewButton(450, 30);
 
     this.setLayout(null);
-	this.setSize(600,100);
+	this.setBounds(x,y,600,100);
 	this.add(vb);
 	this.add(db);
 	this.setOpaque(false);
