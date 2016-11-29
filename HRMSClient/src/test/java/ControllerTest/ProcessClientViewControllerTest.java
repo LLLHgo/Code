@@ -34,7 +34,7 @@ public class ProcessClientViewControllerTest {
 	@Before
 	public void setUp(){
 		 Date day1=new Date(1996,2,29);
-		 File file=new File("credit");
+		 ArrayList<String> file=new  ArrayList<String>();
 		 Date day3=new Date(1992,5,29);
 		c1 = new Client("C00000001","justfun","ErgouWang","13747474741",
 				 VIPType.ORDINARYVIP,2,day1,"",1,file);
