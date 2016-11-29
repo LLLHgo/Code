@@ -70,7 +70,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 	public ProcessHotelAccountManageView(ProcessSitemanagerViewControllerService controller,ProcessSitemanagerView processSitemanagerView){
 		this.controller=controller;
 		this.view=processSitemanagerView;
-		this.setBounds(277,79,702,502);
+		this.setBounds(276,82,702,502);
 		this.setLayout(null);
 		// 设置背景图片
 		background=new ImageIcon("src/main/resource/picture/sitemanager/hotelManageMain.png");
@@ -102,7 +102,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		checkAddButton.addMouseListener(new CheckAddListener());
 		checkAddButton.setVisible(false);
 		// 状态栏
-		conditionLabel=new MyLabel(80,450,500,40,"操作中...");
+		conditionLabel=new MyLabel(80,450,500,40,"");
 		// 详细信息
 		idLabelL=new MyLabel(300,180,100,25,"酒店帐号：");
 		nameLabelL=new MyLabel(300,230,100,25,"酒店名称：");

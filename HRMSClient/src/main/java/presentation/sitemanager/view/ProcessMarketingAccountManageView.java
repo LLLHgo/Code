@@ -76,7 +76,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	public ProcessMarketingAccountManageView(ProcessSitemanagerViewControllerService controller,ProcessSitemanagerView processSitemanagerView){
 		this.controller=controller;
 		this.view=processSitemanagerView;
-		this.setBounds(277,79,702,502);
+		this.setBounds(275,81,702,502);
 		this.setLayout(null);
 		background=new ImageIcon("src/main/resource/picture/sitemanager/marketingAccountManage.png");
 		// 搜索按钮
@@ -89,7 +89,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		searchBarText.setBorder(new EmptyBorder(0,0,0,0));
 		searchButton.addMouseListener(new SearchListener());
 		// 状态栏
-		conditionalText=new MyLabel(80,450,500,40,"操作中...");
+		conditionalText=new MyLabel(80,450,500,40,"");
 		conditionalText.setForeground(Color.white);
 		// 右边工具栏
 		modifyButton=new ModifyButton(618,180,50,50);;
@@ -253,6 +253,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("添加账户成功！");
+				deleteButton.setEnabled(true);
 			}
 			else{
 				conditionalText.setText("添加账户失败! "+result);

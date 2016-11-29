@@ -41,7 +41,7 @@ public class ProcessShowLogView extends JPanel{
 			ProcessSitemanagerView processSitemanagerView){
 		this.controller=controller;
 		this.view=processSitemanagerView;
-		this.setBounds(277,79,702,502);
+		this.setBounds(276,82,702,502);
 		this.setLayout(null);
 		// 背景图片
 		background=new ImageIcon("src/main/resource/picture/sitemanager/showLog.png");
@@ -91,6 +91,7 @@ public class ProcessShowLogView extends JPanel{
 		view.add(this);
 		
 		showLog();
+		
 	}
 	public void showLog(){
 		listShow=new ArrayList<String>();
@@ -101,6 +102,7 @@ public class ProcessShowLogView extends JPanel{
 		for(int i=0;i<listShow.size();i++){
 			logArea.append(listShow.get(i)+'\n');
 		}
+		logArea.setEditable(false);
 	}
 	
 	class refreshButtonListener implements MouseListener{

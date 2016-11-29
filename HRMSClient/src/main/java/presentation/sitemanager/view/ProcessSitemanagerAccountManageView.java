@@ -62,7 +62,7 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 		modifyButton=new ModifyButton(620,180,50,50);
 		checkButton=new CheckButton(618,280,55,55);
 		// 设置状态栏
-		conditionalLabel=new MyLabel(80,450,350,40,"操作中...");
+		conditionalLabel=new MyLabel(80,450,350,40,"");
 		conditionalLabel.setForeground(Color.white);
 		// 设置右边主菜单的账户头像
 		sitemanagerIconLabel=new SitemanagerIconLabel(160,200);

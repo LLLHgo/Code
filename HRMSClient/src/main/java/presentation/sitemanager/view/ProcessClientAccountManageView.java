@@ -95,7 +95,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		searchText.setBorder(new EmptyBorder(0,0,0,0));
 		searchButton.addMouseListener(new SearchListener());		
 		// 状态栏
-		conditionLabel=new MyLabel(80,450,500,40,"操作中...");
+		conditionLabel=new MyLabel(80,450,500,40,"");
 		conditionLabel.setForeground(Color.white);
 		// 右边工具栏
 		modifyButton=new ModifyButton(618,180,50,50);
