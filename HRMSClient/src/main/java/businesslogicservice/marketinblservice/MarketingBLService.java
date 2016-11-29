@@ -11,20 +11,13 @@ public interface MarketingBLService {
      * @param vo
      * @return 是否增加成功
      */
-	public ResultMessage addLevel(LevelVO vo);
+	public ResultMessage updateLevel(List<LevelVO> vo);
 
 	/**
 	 * 返回所有等级信息
 	 * @return 返回所有等级信息列表
 	 */
     public List<LevelVO> findAllLevel();
-
-    /**
-     * 删除等级信息
-     * @param vo
-     * @return 是否删除等级信息成功
-     */
-    public ResultMessage deleteLevel(LevelVO vo);
 
     /**
      * 修改网站营销人员信息

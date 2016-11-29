@@ -9,6 +9,7 @@ import Enum.VIPType;
 import businesslogic.logbl.LogManage;
 import businesslogic.orderbl.OrderManage;
 import presentation.marketing.view.ProcessMarketingAbnormalView;
+import presentation.marketing.view.ProcessMarketingCreditView;
 import presentation.marketing.view.ProcessMarketingProfileView;
 import presentation.marketing.view.ProcessMarketingStrategyView;
 import presentation.marketing.view.ProcessMarketingVIPView;
@@ -42,6 +43,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     private ProcessMarketingAbnormalView abnormalView;
     private ProcessMarketingStrategyView strategyView;
     private ProcessMarketingVIPView VIPView;
+    private ProcessMarketingCreditView creditView;
 
     public ProcessMarketingViewController (String marketingID){
     	this.marketingID=marketingID;
@@ -56,8 +58,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     	return this.marketingID;
     }
     @Override
-	public ResultMessage addLevel(LevelVO vo) {
-		return this.MarketingBlService.addLevel(vo);
+	public ResultMessage updateLevel(List<LevelVO> vo) {
+		return this.MarketingBlService.updateLevel(vo);
 	}
 
 	@Override
@@ -65,10 +67,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		return this.MarketingBlService.findAllLevel();
 	}
 
-	@Override
-	public ResultMessage deleteLevel(LevelVO vo) {
-		return this.MarketingBlService.deleteLevel(vo);
-	}
+
 
 	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
@@ -181,25 +180,24 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		view.hideWelcome();
 		if(profileView!=null)
 			profileView.hideProfile();
-	    profileView=null;
-
+		profileView=null;
 		if(abnormalView!=null)
 			abnormalView.hideAbnormal();
 		abnormalView=null;
-
 		if(strategyView!=null)
 			strategyView.hideStrategy();
 		strategyView=null;
-
 		if(VIPView!=null)
 			VIPView.hideVIP();
 		VIPView=null;
+		if(creditView!=null)
+			creditView.hideCredit();
+		creditView=null;
 
 		profileView=new ProcessMarketingProfileView(this,view);
 	}
 	@Override
 	public void abnormalButtonClicked() {
-		view.hideWelcome();
 		if(profileView!=null)
 			profileView.hideProfile();
 		profileView=null;
@@ -212,6 +210,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		if(VIPView!=null)
 			VIPView.hideVIP();
 		VIPView=null;
+		if(creditView!=null)
+			creditView.hideCredit();
+		creditView=null;
 		abnormalView=new ProcessMarketingAbnormalView(this,view);
 	}
 	@Override
@@ -234,6 +235,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		if(VIPView!=null)
 			VIPView.hideVIP();
 		VIPView=null;
+		if(creditView!=null)
+			creditView.hideCredit();
+		creditView=null;
 		strategyView=new ProcessMarketingStrategyView(this,view);
 
 	}
@@ -251,6 +255,26 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	    return list;
 	}
 	@Override
+	public void creditButtonClicked() {
+		view.hideWelcome();
+		if(profileView!=null)
+			profileView.hideProfile();
+		profileView=null;
+		if(abnormalView!=null)
+			abnormalView.hideAbnormal();
+		abnormalView=null;
+		if(strategyView!=null)
+			strategyView.hideStrategy();
+		strategyView=null;
+		if(VIPView!=null)
+			VIPView.hideVIP();
+		VIPView=null;
+		if(creditView!=null)
+			creditView.hideCredit();
+		creditView=null;
+		creditView=new ProcessMarketingCreditView(this,view);
+	}
+	@Override
 	public void VIPButtonClicked() {
 		view.hideWelcome();
 		if(profileView!=null)
@@ -265,6 +289,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		if(VIPView!=null)
 			VIPView.hideVIP();
 		VIPView=null;
+		if(creditView!=null)
+			creditView.hideCredit();
+		creditView=null;
 		VIPView=new ProcessMarketingVIPView(this,view);
 	}
 

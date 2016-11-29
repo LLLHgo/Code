@@ -31,7 +31,7 @@ public class ProcessMarketingView extends JPanel{
 	private GuideBoardButton profile=new GuideBoardButton(241,"个人信息");
 	private GuideBoardButton abnormal=new GuideBoardButton(301,"异常订单");
 	private GuideBoardButton credit=new GuideBoardButton(361,"修改信用值");
-	private GuideBoardButton VIP=new GuideBoardButton(421,"管理会员");
+	private GuideBoardButton VIP=new GuideBoardButton(421,"等级设置");
 	private GuideBoardButton strategy=new GuideBoardButton(481,"制定策略");
 	private GuideBoardButton exit=new GuideBoardButton(541,"退出");
 	private MJLabel welcome=new MJLabel(275,-19,775,800,welcomeIcon);
@@ -77,6 +77,14 @@ public class ProcessMarketingView extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.VIPButtonClicked();
+			}
+        });
+
+      //给creditButtton加监听
+        credit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.creditButtonClicked();
 			}
         });
 

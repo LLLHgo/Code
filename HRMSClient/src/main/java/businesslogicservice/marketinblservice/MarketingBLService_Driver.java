@@ -1,30 +1,28 @@
 package businesslogicservice.marketinblservice;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import Enum.OrderType;
 import Enum.ResultMessage;
-import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
-import vo.orderVO.OrderVO;
 
 public class MarketingBLService_Driver {
     public void drive(MarketingBLService marketingBLService){
 
     	//建立LevelVO
-    	LevelVO Lvo=new LevelVO(1,"银牌",200);
-    	ResultMessage addLevelResult=marketingBLService.addLevel(Lvo);
+    	LevelVO Lvo1=new LevelVO(2,"银牌",2000,0.97);
+    	LevelVO Lvo2=new LevelVO(1,"铜牌",1000,0.98);
+    	LevelVO Lvo3=new LevelVO(3,"金牌",3000,0.9);
+    	List<LevelVO> levelList=new ArrayList<LevelVO>();
+    	levelList.add(Lvo1);
+    	levelList.add(Lvo2);
+    	levelList.add(Lvo3);
+    	ResultMessage addLevelResult=marketingBLService.updateLevel(levelList);
     	if(addLevelResult==ResultMessage.SUCCESS)System.out.println("建立LevelVO成功");
 
     	//返回Level等级
     	List<LevelVO> levellist=marketingBLService.findAllLevel();
     	if(levellist.size()>0)System.out.println("返回Level等级成功");
-
-    	//删除等级信息
-    	ResultMessage deleteLevelResult=marketingBLService.deleteLevel(Lvo);
-    	if(deleteLevelResult==ResultMessage.SUCCESS)System.out.println("删除等级信息成功");
 
     	//修改网站营销人员信息
     	MarketingVO Mvo=new MarketingVO();

@@ -12,7 +12,7 @@ import vo.marketingVO.MarketingVO;
 public class MarketingManage implements MarketingBLService{
 
 	@Override
-	public ResultMessage addLevel(LevelVO vo) {
+	public ResultMessage updateLevel(List<LevelVO> vo) {
 		return null;
 	}
 
@@ -21,10 +21,7 @@ public class MarketingManage implements MarketingBLService{
 		return null;
 	}
 
-	@Override
-	public ResultMessage deleteLevel(LevelVO vo) {
-		return null;
-	}
+
 
 	@Override
 	public ResultMessage MarketingAccountUpdate(MarketingVO vo) {

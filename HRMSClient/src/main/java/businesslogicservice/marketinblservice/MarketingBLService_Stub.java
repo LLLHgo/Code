@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
+import datatool.LevelDataTool;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
@@ -28,9 +29,17 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @param vo
      * @return 是否增加等级信息
      */
-	public ResultMessage addLevel(LevelVO vo) {
-	    if(vo.getCreditNeeded()>2000)
+	public ResultMessage updateLevel(List<LevelVO> vos) {
+	    if(vos!=null)
+	    {   for(LevelVO vo :vos){
+	    	System.out.println("add:"+vo.getLevel());
+	    	System.out.println("add:"+vo.getName());
+
+	    	System.out.println("add:"+vo.getCreditNeeded());
+	    	System.out.println("add:"+vo.getDiscount());
+	    }
 	    	return ResultMessage.FAIL;
+	    }
 	    else
 	    	return ResultMessage.SUCCESS;
 	}
@@ -40,22 +49,8 @@ public class MarketingBLService_Stub implements MarketingBLService {
 	 * @return 返回所有等级信息列表
 	 */
 	public List<LevelVO> findAllLevel() {
-		List<LevelVO> levels=new ArrayList<LevelVO>();
-		LevelVO vo=new LevelVO(1,"铜牌",2000);
-		levels.add(vo);
-		return levels;
-	}
 
-    /**
-     * 删除等级信息
-     * @param vo
-     * @return 是否删除等级信息成功
-     */
-	public ResultMessage deleteLevel(LevelVO vo) {
-		if(vo.getLevel()>0)
-			return ResultMessage.FAIL;
-	    else
-	    	return ResultMessage.SUCCESS;
+		return LevelDataTool.list;
 	}
 
 
@@ -163,6 +158,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 }

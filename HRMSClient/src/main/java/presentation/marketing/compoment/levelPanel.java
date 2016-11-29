@@ -15,13 +15,14 @@ import vo.levelVO.LevelVO;
 
 public class levelPanel extends MJScrollPane{
 	private static final long serialVersionUID = 1L;
-	private List<LevelVO> list=new ArrayList<LevelVO>();
+    private List<LevelVO> list=new ArrayList<LevelVO>();
+	private List<showLevel> panelList=new ArrayList<showLevel>();
 
 	private JPanel panel;
     private Icon deleteIcon=new ImageIcon("./src/main/resource/picture/marketing/delete.png");
-    private int height=180;
+    private int height=220;
     private Icon addIcon=new ImageIcon("./src/main/resource/picture/marketing/addIcon.png");
-    private JButton add;
+    private JButton addButton;
 
 
 	public levelPanel(int x, int y, int w, int h,List<LevelVO> list,JPanel panel) {
@@ -29,54 +30,68 @@ public class levelPanel extends MJScrollPane{
 		this.list=list;
 		this.panel=panel;
 
-		add=new MJButton(250,list.size()*height+30,50,50,addIcon);
-		add.addActionListener(new ActionListener(){
-
+		addButton=new MJButton(270,height*list.size()+30,50,50,addIcon);
+		addButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			    list.add(new LevelVO(0,"",0));
-			    add.setLocation(250, list.size()*height+30);
+				LevelVO vo=new LevelVO(0,"",0,0.0);
+				changeList();
+				MJPanel showLevel=new showLevel(vo.getName(),vo.getLevel(),vo.getCreditNeeded(),vo.getDiscount(),90,height*list.size(),420,height);
+			    panel.add(showLevel);
+			    panelList.add((showLevel) showLevel);
+			    changeList();
+			    addButton.setLocation(270,height*list.size()+30);
 			    refresh();
 			}
 
 		});
 
-		this.add(add);
-
 		refresh();
 	}
 
-	private void refresh(){
-		panel.removeAll();
-
-		add.setLocation(250, list.size()*height+30);
-        panel.setPreferredSize(new Dimension(690,height*list.size()+30+50));
+	private void changeList() {
+		this.list=getLevel();
+	}
+    private void refresh(){
+       	panel.removeAll();
+       	panelList=new ArrayList<showLevel>();
+		addButton.setLocation(270,height*list.size()+30);
+		panel.add(addButton);
+        panel.setPreferredSize(new Dimension(690,height*list.size()+80));
 
         int position=30;//记录当前panel排版的位置
         for(LevelVO vo:list){
-      	    JPanel showLevel=new showLevel(vo.getName(),vo.getLevel(),vo.getCreditNeeded(),90,position,420,height);
-        	JButton delete=new MJButton(190,height-40,70,40,deleteIcon);
+        	MJPanel showLevel=new showLevel(vo.getName(),vo.getLevel(),vo.getCreditNeeded(),vo.getDiscount(),90,position,420,height);
+          	JButton delete=new MJButton(190,height-40,70,40,deleteIcon);
             delete.addActionListener(new ActionListener(){
-    			@Override
+				@Override
     			public void actionPerformed(ActionEvent e) {
+                    panelList.remove(showLevel);
                     list.remove(vo);
 
+						changeList();
                     refresh();
     			}
              });
             showLevel.add(delete);
         	position+=height;
         	panel.add(showLevel);
-
+        	panelList.add((showLevel) showLevel);
         }
+
         this.revalidate();
         this.repaint();
+
 	}
 
 
-	public List<LevelVO> getLevel(){
-		List<LevelVO> d=list;
-		list=new ArrayList<LevelVO>();
+
+	public List<LevelVO> getLevel() {
+		List<LevelVO> d=new ArrayList<LevelVO>();
+		for(MJPanel panel:panelList){
+	        LevelVO vo=((showLevel) panel).getText();
+		    d.add(vo);
+		}
 		return d;
 
 	}

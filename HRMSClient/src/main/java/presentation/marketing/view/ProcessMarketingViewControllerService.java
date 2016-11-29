@@ -22,11 +22,11 @@ public interface ProcessMarketingViewControllerService {
      */
 	public String getMarketingID();
     /**
-     * 增加等级信息
+     * 更新等级信息
      * @param vo
      * @return 是否增加成功
      */
-	public ResultMessage addLevel(LevelVO vo);
+	public ResultMessage updateLevel(List<LevelVO> vo);
 
 	/**
 	 * 返回所有等级信息
@@ -34,12 +34,7 @@ public interface ProcessMarketingViewControllerService {
 	 */
     public List<LevelVO> findAllLevel();
 
-    /**
-     * 删除等级信息
-     * @param vo
-     * @return 是否删除等级信息成功
-     */
-    public ResultMessage deleteLevel(LevelVO vo);
+
 
     /**
      * 修改网站营销人员信息
@@ -189,6 +184,7 @@ public interface ProcessMarketingViewControllerService {
 	public void abnormalButtonClicked();
 	public void addLog(String log);
 	public void strategyButtonClicked();
+	public void creditButtonClicked();
 	public List<DistrictVO> getDistricts();
 	public List<String> getDistrictNames();
 	public void VIPButtonClicked();
