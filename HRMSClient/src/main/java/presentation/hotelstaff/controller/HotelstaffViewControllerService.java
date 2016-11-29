@@ -122,8 +122,14 @@ public interface HotelstaffViewControllerService {
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
-	public List<OrderVO> getAbnormalHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
+	public List<OrderVO> getCancleHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
 	
+	/**
+	 * 获得酒店异常订单列表
+	 * @param hotelID,OrderType
+	 * @return 酒店订单列表
+	 */
+	public List<OrderVO> getAbnormalHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
 	/**
 	 * 将订单状态持久化保存
 	 * @param OrderVO
@@ -190,4 +196,19 @@ public interface HotelstaffViewControllerService {
 	 * @return String[]
 	 */
 	public String[] getRoomType();
+	
+	/**
+	 * 
+	 * 获得详细策略信息
+	 * @param vo
+	 */
+	public void detailedStrategy(HotelStrategyVO vo);
+	
+	
+	/**
+	 * 
+	 * 新建策略
+	 * @param vo
+	 */
+	public void newStrategy();
 }

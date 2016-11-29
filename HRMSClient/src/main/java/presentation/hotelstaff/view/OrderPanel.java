@@ -56,6 +56,7 @@ public class OrderPanel extends JPanel{
 	private OrderTypeButton jbUnexecuted;
 	private OrderTypeButton jbExecuted;
 	private OrderTypeButton jbAbnormal;
+	private OrderTypeButton jbCancle;
 	private JLabel jlDetailedSearch;
 	private ImageIcon IDetailedSearch;
 	private JButton jbDrag;
@@ -90,8 +91,9 @@ public class OrderPanel extends JPanel{
 		this.add(jlSearch);
 		jlSearch.setText("所有订单");
 		
+		//下拉框背景
 		jlDetailedSearch = new JLabel();
-		jlDetailedSearch.setBounds(320, 82, 180, 200);
+		jlDetailedSearch.setBounds(320, 100, 180, 200);
 		jlDetailedSearch.setIcon(IDetailedSearch);
 		jlDetailedSearch.setVisible(false);
 		this.add(jlDetailedSearch);
@@ -100,14 +102,17 @@ public class OrderPanel extends JPanel{
 		jbUnexecuted = new OrderTypeButton(315,153,"未执行");
 		jbExecuted = new OrderTypeButton(315,188,"已执行");
 		jbAbnormal = new OrderTypeButton(315,223,"异常");
+		jbCancle = new OrderTypeButton(315,260,"已撤销");
 		jbAll.addActionListener(new SearchButtonActionListener());
 		jbUnexecuted.addActionListener(new SearchButtonActionListener());
 		jbExecuted.addActionListener(new SearchButtonActionListener());
 		jbAbnormal.addActionListener(new SearchButtonActionListener());
+		jbCancle.addActionListener(new SearchButtonActionListener());
 		this.add(jbAll);
 		this.add(jbUnexecuted); 
 		this.add(jbExecuted); 
 		this.add(jbAbnormal);
+		this.add(jbCancle);
 		
 		jbDrag = new JButton();
 		jbDrag.setIcon(new ImageIcon("./src/main/resource/picture/hotelorder/triangle.png"));
@@ -151,6 +156,7 @@ public class OrderPanel extends JPanel{
 				jbUnexecuted.setVisible(true);
 				jbExecuted.setVisible(true);
 				jbAbnormal.setVisible(true);
+				jbCancle.setVisible(true);
 				jlDetailedSearch.setVisible(true);
 				scrollPane.setVisible(false);
 				buttonFlag  = false;
@@ -159,6 +165,7 @@ public class OrderPanel extends JPanel{
 				jbUnexecuted.setVisible(false);
 				jbExecuted.setVisible(false);
 				jbAbnormal.setVisible(false);
+				jbCancle.setVisible(false);
 				jlDetailedSearch.setVisible(false);
 				scrollPane.setVisible(true);
 				buttonFlag = true;
@@ -181,14 +188,18 @@ public class OrderPanel extends JPanel{
 			}else if(e.getSource()==jbAbnormal){
 				jlSearch.setText("异常订单");
 				showAbnormalOrderList();
-			}else{
-				
+			}else if(e.getSource()==jbCancle){
+				jlSearch.setText("已撤销订单");
+				showCancleOrderList();
 			}
 		}
 	}
 	
 	
 	private void showOrderList(ArrayList<OrderVO> orders){ 
+		if(orders==null){
+			return;
+		}
 		//设置放置Order信息的JPanel
 	    orderPanel=new JPanel();
 	    orderPanel.setLayout(null);
@@ -229,7 +240,7 @@ public class OrderPanel extends JPanel{
 	        OrderType[] orderType = {OrderType.NORMALNONEXEC,OrderType.NORMALEXEC,
 	        		OrderType.ABNORMAL,OrderType.CANCEL};
 	        String stateLabelText = "";
-	    	String [] sOrderType = {"未执行","已执行","异常","已取消"};
+	    	String [] sOrderType = {"未执行","已执行","异常","已撤销"};
 	    	for(int i=0;i<3;i++){
 	    		if(order.getOrderType()==orderType[i]){
 	    			stateLabelText = sOrderType[i];
@@ -267,6 +278,7 @@ public class OrderPanel extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 					order.setOrderStatus(OrderType.NORMALEXEC);
 					ResultMessage result = controller.updateOrderState(order);
+					controller.JBOrderClicked();
 					showMessage(result.toString());
 				}
 	        	
@@ -310,16 +322,20 @@ public class OrderPanel extends JPanel{
 	}
 	
 	private void showUnexecutedOrderList(){
-		showOrderList((ArrayList<OrderVO>)controller.getUnexecutedHotelOrderList(hotelID,OrderType.ALL));
+		showOrderList((ArrayList<OrderVO>)controller.getUnexecutedHotelOrderList(hotelID,OrderType.NORMALNONEXEC));
 	}
 	
 	
 	private void showExecutedOrderList(){
-		showOrderList((ArrayList<OrderVO>)controller.getExecutedHotelOrderList(hotelID,OrderType.ALL));
+		showOrderList((ArrayList<OrderVO>)controller.getExecutedHotelOrderList(hotelID,OrderType.NORMALEXEC));
 	}
 	
 	private void showAbnormalOrderList(){
-		showOrderList((ArrayList<OrderVO>)controller.getAbnormalHotelOrderList(hotelID,OrderType.ALL));
+		showOrderList((ArrayList<OrderVO>)controller.getAbnormalHotelOrderList(hotelID,OrderType.ABNORMAL));
+	}
+
+	private void showCancleOrderList(){
+		showOrderList((ArrayList<OrderVO>)controller.getCancleHotelOrderList(hotelID, OrderType.CANCEL));
 	}
 	
 	protected void paintComponent(Graphics g) {

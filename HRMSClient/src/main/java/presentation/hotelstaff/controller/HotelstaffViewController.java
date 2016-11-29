@@ -13,11 +13,14 @@ import Mock.MockStrategyManage;
 import businesslogic.hotelstaffbl.Hotelstaff;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import presentation.hotelstaff.view.AddRoomPanel;
+import presentation.hotelstaff.view.DetailedStrategy;
 import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffPanel;
 import presentation.hotelstaff.view.NewRoominfoPanel;
+import presentation.hotelstaff.view.NewStrategyPanel;
 import presentation.hotelstaff.view.OrderPanel;
 import presentation.hotelstaff.view.RoominfoPanel;
+import presentation.hotelstaff.view.StrategyPanel;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -269,6 +272,14 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 	
 	public void JBStrategyClicked(){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new StrategyPanel(panelcontroller);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
 	}
 	
 	public void JBRoomClicked(String message){
@@ -308,6 +319,39 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public String[] getRoomType() {
 		String[] types = {"标准间","大床房","总统套房"};
 		return types;
+	}
+
+	@Override
+	public List<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void detailedStrategy(HotelStrategyVO vo) {
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new DetailedStrategy(panelcontroller,vo);
+		view.add(panel);
+		//TODO
+//		((NewRoominfoPanel)panel).showMessage(message);
+		panel.revalidate();
+		panel.repaint();
+		
+	}
+
+	@Override
+	public void newStrategy() {
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new NewStrategyPanel(panelcontroller);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
 	}
 	
 }

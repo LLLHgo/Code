@@ -183,4 +183,13 @@ public class HotelStrategyVO {
 	public void setVipKinds(List<VIPType> vipKinds) {
 		this.vipKinds = vipKinds;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }
