@@ -1,6 +1,7 @@
 package businesslogicservice.clientblservice;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import Enum.OrderType;
@@ -26,15 +27,15 @@ public class ClientBLService_Driver {
 		boolean sal=clientBLService.setAllClientLevel(new LevelVO(0, null, 0));
 		if(sal)System.out.println("Set Level!");
 		//测试搜索酒店
-		List<HotelinfoVO> hil=clientBLService.getSearchHotel(new ClientRequirementVO());
+		/*List<HotelinfoVO> hil=clientBLService.getSearchHotel(new ClientRequirementVO());
 		if(hil!=null)System.out.println("Get Hotel List!");
 		//测试查看正常已完成订单列表
 		List<OrderVO> ol=clientBLService.getOrderList("000001", OrderType.NORMALEXEC);
 		if(ol!=null)System.out.println("Get Client Normal Execeeded List!");
-		//测试修改个人基本信息
-		if(clientBLService.updateInfo(vo)==ResultMessage.SUCCESS)System.out.println("Update Info!");
+		//测试修改个人基本信息*/
+		if(clientBLService.updateInfo("C000000001",vo)==ResultMessage.SUCCESS)System.out.println("Update Info!");
 		//测试查看个人信用记录
-		File cr=clientBLService.getCreditRecord("000001");
+		ArrayList<String>  cr=clientBLService.getCreditRecord("000001");
 		if(cr!=null)System.out.println("Get Client Credit Record!");
 	}
 }

@@ -2,6 +2,7 @@ package vo.clientVO;
 
 import java.io.File;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import Enum.VIPType;
 import businesslogic.clientbl.Client;
@@ -24,7 +25,7 @@ public class ClientVO {
 		//用户所属企业
 			public String client_firm;
 		//用户信用记录
-			public File creditRecord;
+			public ArrayList<String> creditRecord;
 		//用户信用值
 			public int credit;
 			public int getCredit() {
@@ -39,7 +40,7 @@ public class ClientVO {
 			}
 
 				public ClientVO(String client_id,String password,String client_name,String client_tel,
-				 VIPType vip_type,int vip_level,String client_birth,String client_firm,File creditRecord,int credit){
+				 VIPType vip_type,int vip_level,String client_birth,String client_firm,int credit,ArrayList<String> creditRecord){
 				this.client_id=client_id;
 				this.password=password;
 				this.client_name=client_name;
@@ -87,7 +88,7 @@ public class ClientVO {
 				public String getFirm(){
 					return client_firm;
 				}
-				public File getCreditRecord(){
+				public ArrayList<String> getCreditRecord(){
 					return creditRecord;
 				}
 				public void setID(String id){
@@ -115,7 +116,7 @@ public class ClientVO {
 				public void setFirm(String firm){
 					this.client_firm=firm;
 				}
-				public void setFirm(File record){
+				public void setFirm(ArrayList<String> record){
 					this.creditRecord=record;
 				}
 }

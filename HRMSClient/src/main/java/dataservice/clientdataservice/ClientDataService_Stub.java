@@ -2,11 +2,14 @@ package dataservice.clientdataservice;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import dataservice.clientdataservice.ClientDataService;
 import po.ClientPO;
 import po.LevelPO;
+import vo.clientVO.ClientVO;
+import vo.levelVO.LevelVO;
 
 public class ClientDataService_Stub implements ClientDataService{
 
@@ -15,7 +18,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @throws RemoteException
 	 */
 	public void init() throws RemoteException{
-		
+
 	}
 	/**
 	 * 查询信用记录
@@ -42,8 +45,8 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param clientID
 	 * @return 客户PO
 	 */
-	public ClientPO  findPersonalInfo (String clientID)throws RemoteException{
-		return new ClientPO();
+	public ClientVO  findPersonalInfo (String clientID)throws RemoteException{
+		return new ClientVO();
 	}
 	/**
 	 * 修改客户个人基本信息
@@ -51,7 +54,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (String clientID,ClientPO po)throws RemoteException{
+	public ResultMessage modifyPersonalInfo (String clientID,ClientVO vo)throws RemoteException{
 		if(clientID!=null)
 			return ResultMessage.SUCCESS;
 		else
@@ -74,10 +77,10 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 是否设置成功
 	 */
-	public boolean setAllLevel(LevelPO po)throws RemoteException{
-		if(po!=null)
+	public boolean setAllLevel(LevelVO vo)throws RemoteException{
+		if(vo!=null)
 			return true;
-		else 
+		else
 			return false;
 	}
 	/**
@@ -85,11 +88,27 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 创建是否成功
 	 */
-	public boolean createClient(ClientPO po)throws RemoteException{
-		if(po!=null)
+	public boolean createClient(ClientVO vo)throws RemoteException{
+		if(vo!=null)
 			return true;
-		else 
+		else
 			return false;
+	}
+	/**
+	 * 删除客户
+	 * @param po
+	 * @return 删除是否成功
+	 */
+	public boolean deleteClient(String clientId)throws RemoteException{
+		if(clientId!=null)
+			return true;
+		else
+			return false;
+	}
+	@Override
+	public ArrayList<String> getCreditRecord(String clientID) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

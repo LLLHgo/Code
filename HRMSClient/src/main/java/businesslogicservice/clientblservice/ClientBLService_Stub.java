@@ -31,11 +31,11 @@ public class ClientBLService_Stub implements ClientBLService {
 //用户所属企业
 	 String client_firm;
 //用户信用记录
-	File creditRecord;
+	 ArrayList<String> creditRecord;
 // 用户信用值
 	int credit;
 	public ClientBLService_Stub(String client_id,String password,String client_name,String client_tel,
-			VIPType vip_type,int vip_level,String client_birth,String client_firm,File creditRecord,int credit){
+			VIPType vip_type,int vip_level,String client_birth,String client_firm,ArrayList<String> creditRecord,int credit){
 		this.client_id=client_id;
 		this.password=password;
 		this.client_name=client_name;
@@ -47,7 +47,7 @@ public class ClientBLService_Stub implements ClientBLService {
 		this.creditRecord=creditRecord;
 	}
 	public ClientBLService_Stub(){
-		
+
 	}
 	/**
 	 *通过客户ID得到客户个人信息
@@ -57,7 +57,7 @@ public class ClientBLService_Stub implements ClientBLService {
 	public ClientVO getclient (String clientID){
 		creditRecord=null;
 		return new ClientVO("C00000001","justfun","ErgouWang","13747474741",
-				 VIPType.ORDINARYVIP,2,"1996-02-29","",creditRecord,100);
+				 VIPType.ORDINARYVIP,2,"1996-02-29","",100,creditRecord);
 	}
 
 	/**
@@ -192,9 +192,9 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @param clientID
 	 * @return 信用记录
 	 */
-	public File getCreditRecord(String clientID){
+	public ArrayList<String> getCreditRecord(String clientID){
 		if(clientID!=null)
-			return new File(clientID);
+			return new ArrayList<String>();
 		else
 			return null;
 	}
@@ -208,9 +208,9 @@ public class ClientBLService_Stub implements ClientBLService {
 		return hotel;
 	}
 	@Override
-	public boolean Order(OrderVO vo) {
+	public ResultMessage updateInfo(String clientID, ClientVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 

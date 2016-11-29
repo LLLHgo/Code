@@ -3,10 +3,13 @@ package dataservice.clientdataservice;
 import java.io.File;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import po.ClientPO;
 import po.LevelPO;
+import vo.clientVO.ClientVO;
+import vo.levelVO.LevelVO;
 
 public interface ClientDataService extends Remote{
 	/**
@@ -32,14 +35,14 @@ public interface ClientDataService extends Remote{
 	 * @param clientID
 	 * @return 客户PO
 	 */
-	public ClientPO  findPersonalInfo (String clientID)throws RemoteException;
+	public ClientVO  findPersonalInfo (String clientID)throws RemoteException;
 	/**
 	 * 修改客户个人基本信息
 	 * @param clientID
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (String clientID,ClientPO po)throws RemoteException;
+	public ResultMessage modifyPersonalInfo (String clientID,ClientVO vo)throws RemoteException;
 	/**
 	 * 查找客户账户
 	 * @param client_id
@@ -52,11 +55,24 @@ public interface ClientDataService extends Remote{
 	 * @param po
 	 * @return 是否设置成功
 	 */
-	public boolean setAllLevel(LevelPO po)throws RemoteException;
+	public boolean setAllLevel(LevelVO vo)throws RemoteException;
+	/**
+	 *得到客户的信用记录
+	 * @param clientID
+	 * @return 信用记录
+	 */
+	public ArrayList<String> getCreditRecord(String clientID);
 	/**
 	 * 创建新客户
 	 * @param po
 	 * @return 创建是否成功
 	 */
-	public boolean createClient(ClientPO po)throws RemoteException;
+
+	public boolean createClient(ClientVO vo)throws RemoteException;
+	/**
+	 * 删除客户
+	 * @param po
+	 * @return 删除是否成功
+	 */
+	public boolean deleteClient(String clientId)throws RemoteException;
 }
