@@ -35,7 +35,7 @@ public class MockClientManage {
 	//用户所属企业
 		 String client_firm;
 	//用户信用记录
-		File creditRecord;
+		ArrayList<String> creditRecord=null;
 		ClientVO clientVO;
 		ClientVO clientVO1=ClientDataTool.clientVO1;
 		ClientVO clientVO2=ClientDataTool.clientVO2;
@@ -68,7 +68,7 @@ public class MockClientManage {
 		Date day=new Date(1996,2,29);
 		File file=new File("c.txt");
 		ClientVO client=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
-				 VIPType.ORDINARYVIP,2,"1996-02-29","",file,100);
+				 VIPType.ORDINARYVIP,2,"1996-02-29","",100,creditRecord);
 		public boolean checkAccount (ClientVO accountVO){
 
 			if(accountVO.client_id==ClientDataTool.clientVO1.client_id&&

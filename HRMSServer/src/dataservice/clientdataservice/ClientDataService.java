@@ -39,7 +39,7 @@ public interface ClientDataService extends Remote{
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (String clientID,ClientPO po)throws RemoteException;
+	public ResultMessage modifyPersonalInfo (ClientPO po)throws RemoteException;
 	/**
 	 * 查找客户账户
 	 * @param client_id

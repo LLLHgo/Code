@@ -12,7 +12,7 @@ import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 
 public class ClientDataService_Stub implements ClientDataService{
-
+	String clientId;
 	/**
 	 * 初始化持久化数据库
 	 * @throws RemoteException
@@ -54,8 +54,8 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (String clientID,ClientVO vo)throws RemoteException{
-		if(clientID!=null)
+	public ResultMessage modifyPersonalInfo (ClientVO vo)throws RemoteException{
+		if(clientId!=null)
 			return ResultMessage.SUCCESS;
 		else
 			return ResultMessage.FAIL;

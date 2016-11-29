@@ -84,10 +84,10 @@ public class ClientManage implements ClientBLService{
 
 
 	@Override
-	public ResultMessage updateInfo(String clientID,ClientVO vo) {
+	public ResultMessage updateInfo(ClientVO vo) {
 		// TODO Auto-generated method stub
 		try{
-			return clientdata.modifyPersonalInfo(clientID,vo);
+			return clientdata.modifyPersonalInfo(vo);
 			}catch(Exception e){
 				e.printStackTrace();
 			}

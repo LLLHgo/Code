@@ -207,11 +207,6 @@ public class ClientBLService_Stub implements ClientBLService {
 		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
 		return hotel;
 	}
-	@Override
-	public ResultMessage updateInfo(String clientID, ClientVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

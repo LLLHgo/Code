@@ -24,7 +24,7 @@ public class ClientDataService_Driver {
 		boolean sal=clientDataService.setAllLevel(new LevelPO(0, null, 0));
 		if(sal)System.out.println("Set Level!");
 		//测试修改个人基本信息
-		if(clientDataService.modifyPersonalInfo("000001", po)==ResultMessage.SUCCESS)System.out.println("Update Info!");
+		if(clientDataService.modifyPersonalInfo( po)==ResultMessage.SUCCESS)System.out.println("Update Info!");
 		//测试查看个人信用记录
 		File cr=clientDataService.findCreditRecord("000001");
 		if(cr!=null)System.out.println("Get Client Credit Record!");

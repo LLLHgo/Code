@@ -38,11 +38,10 @@ public interface ClientDataService extends Remote{
 	public ClientVO  findPersonalInfo (String clientID)throws RemoteException;
 	/**
 	 * 修改客户个人基本信息
-	 * @param clientID
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (String clientID,ClientVO vo)throws RemoteException;
+	public ResultMessage modifyPersonalInfo (ClientVO vo)throws RemoteException;
 	/**
 	 * 查找客户账户
 	 * @param client_id

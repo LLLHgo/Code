@@ -33,7 +33,7 @@ public class ClientBLService_Driver {
 		List<OrderVO> ol=clientBLService.getOrderList("000001", OrderType.NORMALEXEC);
 		if(ol!=null)System.out.println("Get Client Normal Execeeded List!");
 		//测试修改个人基本信息*/
-		if(clientBLService.updateInfo("C000000001",vo)==ResultMessage.SUCCESS)System.out.println("Update Info!");
+		if(clientBLService.updateInfo(vo)==ResultMessage.SUCCESS)System.out.println("Update Info!");
 		//测试查看个人信用记录
 		ArrayList<String>  cr=clientBLService.getCreditRecord("000001");
 		if(cr!=null)System.out.println("Get Client Credit Record!");

@@ -116,7 +116,7 @@ public class ClientVO {
 				public void setFirm(String firm){
 					this.client_firm=firm;
 				}
-				public void setFirm(ArrayList<String> record){
+				public void setCreditRecord(ArrayList<String> record){
 					this.creditRecord=record;
 				}
 }

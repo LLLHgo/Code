@@ -175,7 +175,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			//creditFrame=new CreditFrame(cl);
+			creditFrame=new CreditFrame(clientVO.getCreditRecord());
 		}
 
 		@Override
@@ -297,7 +297,7 @@ public class ProcessClientAccountManageView extends JPanel{
 			newPassword=passwordText.getText();
 			newClientVO=new ClientVO(clientVO.getID(),newPassword,clientVO.getName(),clientVO.getTel()
 					,clientVO.getType(),clientVO.getLevel(),clientVO.getBirth(),clientVO.getFirm(),
-					clientVO.getCreditRecord(),clientVO.getCredit());
+					clientVO.getCredit(),clientVO.getCreditRecord());
 			result=controller.clientAccountUpdate(newClientVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("保存成功！");

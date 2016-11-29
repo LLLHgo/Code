@@ -72,7 +72,7 @@ public interface ClientBLService {
 	 * @param vo
 	 * @return 修改个人信息成功与否提示信息
 	 */
-	public  ResultMessage updateInfo(String clientID,ClientVO vo);
+	public  ResultMessage updateInfo(ClientVO vo);
 	/**
 	 *创建订单
 	 * @param orderID

@@ -36,7 +36,7 @@ public class ClientData extends UnicastRemoteObject implements ClientDataService
 		return null;
 	}
 
-	public ResultMessage modifyPersonalInfo(String clientID, ClientPO po) throws RemoteException {
+	public ResultMessage modifyPersonalInfo(ClientPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
