@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import Enum.ResultMessage;
 import presentation.common.SitemanagerIconLabel;

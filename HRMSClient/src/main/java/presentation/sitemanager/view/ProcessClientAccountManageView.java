@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import presentation.common.ClientIconLabel;
 import presentation.sitemanager.component.CheckButton;
+import presentation.sitemanager.component.CreditLabel;
 import presentation.sitemanager.component.DeleteButton;
 import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
@@ -27,7 +29,7 @@ public class ProcessClientAccountManageView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ProcessSitemanagerViewControllerService controller;
 	private ProcessSitemanagerView view;
-	ClientVO clientVO;
+	ClientVO clientVO=null;
 	ResultMessage result;
 	String id;
 	String name;
@@ -37,6 +39,9 @@ public class ProcessClientAccountManageView extends JPanel{
 	String birth;
 	int credit;
 	String password;
+	// 信用值列表 图标及信用记录窗体
+	CreditLabel creditIconLabel;
+	CreditFrame creditFrame;
 	// 左边的label
 	MyLabel idLabelL;
 	MyLabel nameLabelL;
@@ -130,6 +135,9 @@ public class ProcessClientAccountManageView extends JPanel{
 		creditLabel=new MyLabel(400,340,180,25,"");
 		passwordText=new MyTextField(400,370,180,25,"");
 		
+		creditIconLabel=new CreditLabel(240,320);
+		creditIconLabel.addMouseListener(new ShowCreditListener());
+		
 		this.add(searchButton);
 		this.add(searchText);
 		this.add(conditionLabel);
@@ -137,6 +145,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		this.add(checkButton);
 		this.add(deleteButton);
 		this.add(clientIconLabel);
+		this.add(creditIconLabel);
 		this.add(idLabelL);  this.add(nameLabelL);  this.add(telLabelL); this.add(viptypeLabelL); this.add(vipgradeLabelL);
 		this.add(birthLabelL); this.add(creditLabelL); this.add(passwordLabelL); this.add(firmLabelL);
 		
@@ -160,6 +169,40 @@ public class ProcessClientAccountManageView extends JPanel{
 		modifyButton.setEnabled(true);
 	}
 	
+	
+	class ShowCreditListener implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			//creditFrame=new CreditFrame(cl);
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
 	class SearchListener implements MouseListener{
 
 		@Override
@@ -334,3 +377,4 @@ public class ProcessClientAccountManageView extends JPanel{
 		background.paintIcon(this, g, 0, 0);
 	}
 }
+

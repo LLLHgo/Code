@@ -3,7 +3,6 @@ package presentation.sitemanager.component;
 import java.awt.Color;
 
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 public class MyTextField extends JTextField{
 	
