@@ -24,7 +24,7 @@ public class ClientBLService_Driver {
 		boolean sc=clientBLService.setCredit("000001", 2);
 		if(sc)System.out.println("Update Credit!");
 		//测试设置会员等级
-		boolean sal=clientBLService.setAllClientLevel(new LevelVO(0, null, 0));
+		boolean sal=clientBLService.setAllClientLevel(new LevelVO(0, null, 0,0));
 		if(sal)System.out.println("Set Level!");
 		//测试搜索酒店
 		/*List<HotelinfoVO> hil=clientBLService.getSearchHotel(new ClientRequirementVO());
