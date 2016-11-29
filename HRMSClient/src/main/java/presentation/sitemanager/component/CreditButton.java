@@ -3,12 +3,12 @@ package presentation.sitemanager.component;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class CreditLabel extends JLabel{
+public class CreditButton extends JLabel{
 	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
 	ImageIcon img;
-	public CreditLabel(int x,int y){
+	public CreditButton(int x,int y){
 		super();
 		this.x=x;
 		this.y=y;

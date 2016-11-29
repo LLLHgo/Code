@@ -15,8 +15,9 @@ import javax.swing.border.EmptyBorder;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import presentation.common.ClientIconLabel;
+import presentation.common.CreditFrame;
 import presentation.sitemanager.component.CheckButton;
-import presentation.sitemanager.component.CreditLabel;
+import presentation.sitemanager.component.CreditButton;
 import presentation.sitemanager.component.DeleteButton;
 import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
@@ -40,7 +41,7 @@ public class ProcessClientAccountManageView extends JPanel{
 	int credit;
 	String password;
 	// 信用值列表 图标及信用记录窗体
-	CreditLabel creditIconLabel;
+	CreditButton creditIconButton;
 	CreditFrame creditFrame;
 	// 左边的label
 	MyLabel idLabelL;
@@ -135,8 +136,8 @@ public class ProcessClientAccountManageView extends JPanel{
 		creditLabel=new MyLabel(400,340,180,25,"");
 		passwordText=new MyTextField(400,370,180,25,"");
 		
-		creditIconLabel=new CreditLabel(240,320);
-		creditIconLabel.addMouseListener(new ShowCreditListener());
+		creditIconButton=new CreditButton(240,320);
+		creditIconButton.addMouseListener(new ShowCreditListener());
 		
 		this.add(searchButton);
 		this.add(searchText);
@@ -145,7 +146,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		this.add(checkButton);
 		this.add(deleteButton);
 		this.add(clientIconLabel);
-		this.add(creditIconLabel);
+		this.add(creditIconButton);
 		this.add(idLabelL);  this.add(nameLabelL);  this.add(telLabelL); this.add(viptypeLabelL); this.add(vipgradeLabelL);
 		this.add(birthLabelL); this.add(creditLabelL); this.add(passwordLabelL); this.add(firmLabelL);
 		

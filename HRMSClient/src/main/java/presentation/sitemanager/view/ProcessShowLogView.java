@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
 
 import presentation.sitemanager.component.MyLabel;
 import presentation.sitemanager.component.MyTextField;
@@ -91,14 +92,16 @@ public class ProcessShowLogView extends JPanel{
 		// 中间显示日志的jtextarea
 		logArea=new JTextArea(10,1);
 		logArea.setFont(new java.awt.Font("华文黑体",  1,  20));
-		logArea.setForeground(Color.black);
+		logArea.setForeground(Color.white);
 		logArea.setWrapStyleWord(true);
 		logArea.setLineWrap(true);
 		logArea.setOpaque(false);
 		
 		// 给JTextArea加滚动条
 		jscrollPane = new JScrollPane(logArea);
-		jscrollPane.setBounds(46, 78, 610, 365);
+		jscrollPane.setBounds(46, 78, 810, 365);
+		jscrollPane.getViewport().setOpaque(false);
+		jscrollPane.setBorder(new EmptyBorder(0,0,0,0));
 		jscrollPane.setOpaque(false); 
 		
 		// 装有textArea背景图片的panel
@@ -149,7 +152,7 @@ public class ProcessShowLogView extends JPanel{
 		for(int i=0;i<listShow.size();i++){
 			logArea.append(listShow.get(i)+'\n');
 		}
-		logArea.setEditable(false);
+		//logArea.setEditable(false);
 	}
 	
 	class refreshButtonListener implements MouseListener{

@@ -47,9 +47,6 @@ public class ProcessLoginView extends JPanel {
 	private ProcessLoginViewController controller;
 	private ProcessSitemanagerViewControllerService ps;
 	public ProcessLoginView(JFrame frame,ProcessLoginViewController controller){
-		ProcessSitemanagerViewControllerService controller0 = new ProcessSitemanagerViewController("S00000001");
-		ProcessSitemanagerView view = new ProcessSitemanagerView(controller0);
-		controller0.setView(view);
 			this.controller=controller;
 			ImageIcon lib=new ImageIcon("image/loginButton.png");
 			ImageIcon sub=new ImageIcon("image/signUpButton.png");
@@ -101,8 +98,10 @@ public class ProcessLoginView extends JPanel {
 						break;
 					case 's':
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new ProcessSitemanagerView(controller0));
-						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
+						ProcessSitemanagerViewControllerService sitemanagerC = new ProcessSitemanagerViewController("S00000001");
+						ProcessSitemanagerView sitemanagerview = new ProcessSitemanagerView(sitemanagerC);
+						sitemanagerC.setView(sitemanagerview);
+						frame.getContentPane().add(sitemanagerview);
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
 
@@ -110,8 +109,9 @@ public class ProcessLoginView extends JPanel {
 					case 'm':
 						ProcessMarketingViewControllerService controller1=new ProcessMarketingViewController(id);
 						frame.getContentPane().removeAll();
-						frame.getContentPane().add(new ProcessMarketingView(controller1));
-						//frame.getContentPane().add(new HotelinfoPanel(new HotelinfoViewController(), key));
+						ProcessMarketingView marketingView=new ProcessMarketingView(controller1);
+						controller1.setView(marketingView);
+						frame.getContentPane().add(marketingView);
 						frame.getContentPane().revalidate();
 						frame.getContentPane().repaint();
 

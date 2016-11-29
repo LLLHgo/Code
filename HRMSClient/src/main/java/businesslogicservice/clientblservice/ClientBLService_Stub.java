@@ -1,5 +1,4 @@
 package businesslogicservice.clientblservice;
-import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +46,6 @@ public class ClientBLService_Stub implements ClientBLService {
 		this.creditRecord=creditRecord;
 	}
 	public ClientBLService_Stub(){
-
 	}
 	/**
 	 *通过客户ID得到客户个人信息
@@ -55,7 +53,10 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @return 客户的个人信息
 	 */
 	public ClientVO getclient (String clientID){
-		creditRecord=null;
+		creditRecord=new ArrayList<String>();
+		creditRecord.add("100 100");
+		creditRecord.add("200,120");
+		creditRecord.add("200,100");
 		return new ClientVO("C00000001","justfun","ErgouWang","13747474741",
 				 VIPType.ORDINARYVIP,2,"1996-02-29","",100,creditRecord);
 	}
