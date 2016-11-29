@@ -109,11 +109,6 @@ public interface ProcessSitemanagerViewControllerService {
 	 */
 	public ResultMessage checkAccount (SitemanagerVO accountVO);
 	
-	/**
-	 * 管理界面得到日志列表
-	 * @return ArrayList<LogVO>
-	 */
-	public ArrayList<LogVO> findLog();
 	
 	/**
 	 * 添加日志
@@ -133,4 +128,9 @@ public interface ProcessSitemanagerViewControllerService {
 	public void jbHotelManageButtonClicked();
 	
 	public void jbShowLogButtonClicked();
+	/**
+	 * 管理界面得到日志列表
+	 * @return ArrayList<LogVO>
+	 */
+	ArrayList<LogVO> findLog(String year, String month, String day);
 }

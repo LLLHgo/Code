@@ -14,7 +14,7 @@ public class LogBLService_Driver {
 	
 		//界面得到日志列表
 		System.out.println("界面得到日志列表");
-		logVOList =logBLService.getLog();
+		logVOList =logBLService.getLog("2016","11","29");
 		System.out.println("显示结果：");
 		it=logVOList.iterator();
 		/*while (it.hasNext()){

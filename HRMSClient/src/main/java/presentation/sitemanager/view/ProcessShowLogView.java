@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -14,7 +15,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import presentation.sitemanager.component.MyLabel;
+import presentation.sitemanager.component.MyTextField;
 import presentation.sitemanager.component.RefreshButton;
+import presentation.sitemanager.component.SearchButton;
 import vo.logVO.LogVO;
 
 public class ProcessShowLogView extends JPanel{
@@ -29,6 +32,17 @@ public class ProcessShowLogView extends JPanel{
 	ImageIcon logJTextAreaIcon;
 	// 日志题头
 	MyLabel logUpLabel;
+	// 选择日期
+	MyLabel chooseDate;
+	MyLabel yearLabel;
+	MyLabel monthLabel;
+	MyLabel dayLabel;
+	MyTextField yearField;
+	MyTextField monthField;
+	MyTextField dayField;
+	// 搜索按钮
+	SearchButton searchButton;
+	
 	// 中间的jtextarea部分
 	ArrayList<LogVO> listVO;
 	ArrayList<String> listShow;
@@ -36,6 +50,13 @@ public class ProcessShowLogView extends JPanel{
 	JScrollPane jscrollPane;
 	// 下面的刷新按钮
 	RefreshButton refreshButton;
+	// 得到日期
+	String year;
+	String month;
+	String day;
+	String currentYear;
+	String currentMonth;
+	String currentDay;
 	
 	public ProcessShowLogView(ProcessSitemanagerViewControllerService controller,
 			ProcessSitemanagerView processSitemanagerView){
@@ -50,6 +71,23 @@ public class ProcessShowLogView extends JPanel{
 		// 刷新按钮
 		refreshButton=new RefreshButton(320,443);
 		refreshButton.addMouseListener(new refreshButtonListener());
+		// 选择日期
+		 Calendar ca = Calendar.getInstance();
+		 
+		chooseDate=new MyLabel(200,30,100,30,"选择日期");
+		yearLabel=new MyLabel(370,30,30,30,"年");
+		yearField=new MyTextField(300,30,70,30, ca.get(Calendar.YEAR)+"");
+		yearField.setEditable(true);
+		monthLabel=new MyLabel(440,30,30,30,"月");
+		monthField=new MyTextField(400,30,40,30,ca.get(Calendar.MONTH)+"");
+		monthField.setEditable(true);
+		dayLabel=new MyLabel(510,30,30,30,"日");
+		dayField=new MyTextField(470,30,40,30,ca.get(Calendar.DATE)+"");
+		dayField.setEditable(true);
+		// 搜索按钮
+		searchButton=new SearchButton(550,27,40,40);
+		searchButton.addMouseListener(new SearchListener());
+		
 		// 中间显示日志的jtextarea
 		logArea=new JTextArea(10,1);
 		logArea.setFont(new java.awt.Font("华文黑体",  1,  20));
@@ -80,22 +118,31 @@ public class ProcessShowLogView extends JPanel{
 		backdrop.add(jscrollPane);
 		
 		// 日志抬头
-		logUpLabel=new MyLabel(310,30,100,30,"日志");
+		logUpLabel=new MyLabel(100,30,100,30,"日志");
 		logUpLabel.setFont(new java.awt.Font("华文黑体",  1,  25));
 		
 		this.add(backdrop);
 		this.add(logUpLabel);
 		this.add(jscrollPane);
 		this.add(refreshButton);
+		this.add(searchButton);
+		this.add(chooseDate);
+		this.add(dayLabel);
+		this.add(monthLabel);
+		this.add(yearLabel);
+		this.add(dayField);
+		this.add(monthField);
+		this.add(yearField);
 		this.repaint();
 		view.add(this);
 		
-		showLog();
+		listVO=controller.findLog(ca.get(Calendar.YEAR)+"",ca.get(Calendar.MONTH)+"", ca.get(Calendar.DATE)+"");
+		showLog(listVO);
 		
 	}
-	public void showLog(){
+	public void showLog(ArrayList<LogVO> list){
+		
 		listShow=new ArrayList<String>();
-		listVO=controller.findLog();
 		for(int i=listVO.size()-1;i>=0;i--){
 			listShow.add(listVO.get(i).getLogInfo());
 		}
@@ -109,7 +156,8 @@ public class ProcessShowLogView extends JPanel{
 
 		public void mouseClicked(MouseEvent e) {
 			logArea.setText("");
-			showLog();
+			listVO=controller.findLog(year, month, day);
+			showLog(listVO);	
 		}
 
 		public void mousePressed(MouseEvent e) {
@@ -124,6 +172,47 @@ public class ProcessShowLogView extends JPanel{
 		}
 
 		public void mouseExited(MouseEvent e) {
+		}
+		
+	}
+	class SearchListener implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			logArea.setText("");
+			year=yearField.getText();
+			month=monthField.getText();
+			day=dayField.getText();
+			currentYear=year;
+			currentMonth=month;
+			currentDay=day;
+			listVO=controller.findLog(year, month, day);
+			showLog(listVO);
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 	}
