@@ -29,12 +29,15 @@ public class Order {
 	private double price;
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
+	// 实际离开时间
+	private String actualLeaveTime;
 	
 	public Order(){
 		
 	}
 	public Order(String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
-			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies){
+			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies
+			,String actualLeaveTime){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
@@ -46,6 +49,7 @@ public class Order {
 		this.hotelId=hotelId;
 		this.price=price;
 		this.strategies=strategies;
+		this.actualLeaveTime=actualLeaveTime;
 		}
 			
 	public String getOrderId() {
@@ -119,5 +123,11 @@ public class Order {
 	}
 	public void setOrderType(OrderType orderType) {
 		this.orderType = orderType;
+	}
+	public String getActualLeaveTime() {
+		return actualLeaveTime;
+	}
+	public void setActualLeaveTime(String actualLeaveTime) {
+		this.actualLeaveTime = actualLeaveTime;
 	}
 }

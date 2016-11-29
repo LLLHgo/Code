@@ -84,5 +84,12 @@ public interface OrderBLService {
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
 	public boolean checkTime (OrderVO order, Date date);
+	/**
+	 * 酒店的订单，返回给酒店
+	 * @param OrderType
+	 * @param hotelId
+	 * @return OrderVO的list
+	 */
+	public List<OrderVO> findHotelTypeOrder(OrderType type, String hotelId);
 
 }

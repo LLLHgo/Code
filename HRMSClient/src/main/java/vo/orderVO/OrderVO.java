@@ -35,12 +35,16 @@ public class OrderVO {
 	private String roomType="标准间";
 	//房间数量
 	private int roomNum=1;
+	// 实际离开时间
+	private String actualLeaveTime;
 	
 	public OrderVO(){
 
 	}
+	// 少了actualleavetime，和其他人沟通好后删
 	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
-			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies){
+			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies
+			){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
@@ -53,6 +57,23 @@ public class OrderVO {
 		this.price=price;
 		this.strategies=strategies;
 		}
+	// 完整的ordervo
+	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
+			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies
+			,String actualLeaveTime){
+		this.orderId=orderId;
+		this.clientId=clientId;
+		this.clientName=clientName;
+		this.clientPhone=clientPhone;
+		this.vipType=vipType;
+		this.orderDate=orderDate;
+		this.orderType=orderType;
+		this.hotelName=hotelName;
+		this.hotelId=hotelId;
+		this.price=price;
+		this.strategies=strategies;
+		this.actualLeaveTime=actualLeaveTime;
+	}
 
 	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,
 			String orderDate,String leaveDate,OrderType orderType,String roomType,
@@ -159,6 +180,12 @@ public class OrderVO {
 	}
 	public void setRoomNum(int roomNum) {
 		this.roomNum = roomNum;
+	}
+	public String getActualLeaveTime() {
+		return actualLeaveTime;
+	}
+	public void setActualLeaveTime(String actualLeaveTime) {
+		this.actualLeaveTime = actualLeaveTime;
 	}
 	
 }

@@ -138,5 +138,10 @@ public class OrderBLService_Stub implements OrderBLService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public List<OrderVO> findHotelTypeOrder(OrderType type, String hotelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
