@@ -44,6 +44,7 @@ public class NewRoominfoPanel extends JPanel{
 	private JPanel roominfoPanel;
 	private JScrollPane scrollPane;
 	private JLabel resultLabel;
+	private String state;
 	
 	public NewRoominfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
@@ -93,7 +94,7 @@ public class NewRoominfoPanel extends JPanel{
 	    this.add(scrollPane);
 	  
 	    int num=0;
-
+	    
 	    Image image=new ImageIcon("./src/main/resource/picture/hotelinfo/newroominfo.png").getImage();
 	    for(RoominfoVO room:rooms){
 	    	//制作roominfo背景
@@ -171,6 +172,7 @@ public class NewRoominfoPanel extends JPanel{
 					jbConfirm.setVisible(false);
 					jbCancle.setVisible(false);
 					jbModify.setVisible(true);
+					jcbState.setSelectedItem(state);
 					jcbState.setEnabled(false);
 					showMessage("取消成功");
 				}
@@ -183,6 +185,7 @@ public class NewRoominfoPanel extends JPanel{
 			
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					state = jcbState.getSelectedItem().toString();
 					jbConfirm.setVisible(true);
 					jbCancle.setVisible(true);
 					jbModify.setVisible(false);

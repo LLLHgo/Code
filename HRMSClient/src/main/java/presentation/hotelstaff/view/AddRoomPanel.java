@@ -110,9 +110,8 @@ public class AddRoomPanel extends JPanel{
 				if(result == ResultMessage.SUCCESS){
 					controller.JBRoomClicked("新增成功");
 				}
-			}else{
-				showMessage("信息不完整，新增房间失败");
 			}
+				
 		}
 		
 	}
@@ -128,15 +127,17 @@ public class AddRoomPanel extends JPanel{
 	
 	private RoominfoVO getRoominfoVO(){
 		if(jcbType.getSelectedItem()==null||jcbState.getSelectedItem()==null){
+			showMessage("信息不完整，新增房间失败");
 			return null;
 		}
 		//获得room属性
 		num = jtfroomNum.getText();
 		price = jtfroomPrice.getText();
-		type = jcbType.getSelectedItem().toString();
-		state = jcbState.getSelectedItem().toString();
+			state = jcbState.getSelectedItem().toString();type = jcbType.getSelectedItem().toString();
+	
 		//如果没有填写完整，返回null
 		if(num.equals("")||price.equals("")||type.equals("")||state.equals("")){
+			showMessage("信息不完整，新增房间失败");
 			return null;
 		}
 		//如果填写完整，返回vo包
