@@ -98,15 +98,10 @@ public class SitemanagerManage implements SitemanagerBLService {
 			e.printStackTrace();
 		}
 		if(accountVO.getSitemanagerId().equals(sitemanagerPO.getSitemanagerId())&&
-				sitemanagerPO.getPassword().equals(sitemanagerPO.getPassword())){
+				accountVO.getPassword().equals(sitemanagerPO.getPassword())){
 			return ResultMessage.SUCCESS;
 		}
 		else
 			return ResultMessage.FAIL;
-	}
-	
-	// 测试时加的方法
-	public void setSitemanagerVO(SitemanagerVO vo){
-		this.sitemanagerVO=vo;
 	}
 }

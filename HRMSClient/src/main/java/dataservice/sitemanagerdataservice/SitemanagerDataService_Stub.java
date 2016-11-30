@@ -9,6 +9,7 @@ public class SitemanagerDataService_Stub implements SitemanagerDataService{
 	SitemanagerPO sitemanagerPO;
 	
 	public SitemanagerDataService_Stub() throws RemoteException{	
+		sitemanagerPO=new SitemanagerPO("S00000001","025-88888888","HRMSSitemanager");
 	}
 	
 	/**

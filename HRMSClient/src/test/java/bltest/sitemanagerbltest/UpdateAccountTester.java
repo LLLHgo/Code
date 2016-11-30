@@ -28,7 +28,7 @@ public class UpdateAccountTester {
 		updateVO6=new SitemanagerVO("S00000001","","");
 		
 		s=new SitemanagerManage();
-		s.setSitemanagerVO(sitemanagerVO);
+		s.sitemanagerAcountShow();
 	}
 	@Test
 	public void test1() {
