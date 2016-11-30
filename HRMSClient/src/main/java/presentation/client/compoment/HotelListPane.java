@@ -3,6 +3,7 @@ package presentation.client.compoment;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -10,8 +11,10 @@ import javax.swing.border.EmptyBorder;
 
 public class HotelListPane extends JScrollPane{
 	static JPanel roominfoPanel=new JPanel();
-public HotelListPane(){
+	private JFrame frame;
+public HotelListPane(JFrame frame){
 	super(roominfoPanel);
+	this.frame=frame;
 	roominfoPanel.setLayout(null);
     roominfoPanel.setPreferredSize(new Dimension(600,600));
     roominfoPanel.setBounds(0,0,1000,4000);

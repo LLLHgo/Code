@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import presentation.common.CreditFrame;
 
 
 public class PersonalPanel extends JPanel{
@@ -25,9 +28,14 @@ public class PersonalPanel extends JPanel{
 	private creditButton cb;
 	private editButton editName;
 	private editButton editTel;
+	private ArrayList<String> credits;
 	public PersonalPanel(){
+		credits=new ArrayList<String>();
+		credits.add("hello");
+		credits.add("world");
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
 		cb=new creditButton();
+		cb.addActionListener(new creditButtonListener());
 		imageIcon = new ImageIcon("image/personalPanel.png");
 		idLabel=new Label("ID:C00000001");
 		idLabel.setBounds(250,170,200,30);
@@ -114,6 +122,17 @@ public class PersonalPanel extends JPanel{
 				telField.setOpaque(true);
 				telField.setForeground(Color.BLACK);
 				telField.setFocusable(true);
+
+
+			}
+
+		}
+	 private class creditButtonListener implements ActionListener{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new CreditFrame(credits);
 
 
 			}

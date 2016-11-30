@@ -25,7 +25,7 @@ public class CreditFrame extends JFrame{
 	CheckButton checkButton;
 	ImageIcon background;
 	ArrayList<String> credits;
-	
+
 	public CreditFrame(ArrayList<String> credits){
 		this.credits=credits;
 		background=new ImageIcon("src/main/resource/picture/sitemanager/creditBackground.png");
@@ -38,31 +38,32 @@ public class CreditFrame extends JFrame{
 				background.paintIcon(this, g, 0, 0);
 			}
 		};
-		
+
 		creditArea=new JTextArea(10,1);
 		creditArea.setFont(new java.awt.Font("华文黑体",  1,  15));
 		creditArea.setForeground(Color.white);
 		creditArea.setWrapStyleWord(true);
 		creditArea.setLineWrap(true);
 		creditArea.setOpaque(false);
+		creditArea.setEditable(false);
 		creditArea.setText("信用值记录"+"\n");
-		
+
 		jscrollPane = new JScrollPane(creditArea);
 		jscrollPane.setBounds(10,10,500,300);
-		jscrollPane.setOpaque(false); 
+		jscrollPane.setOpaque(false);
 		jscrollPane.getViewport().setOpaque(false);
 		jscrollPane.setBorder(new EmptyBorder(0,0,0,0));
-		
+
 		checkButton=new CheckButton(200,300,65,65);
 		checkButton.addMouseListener(new CheckListener());
-		
+
 		creditShowPanel.add(checkButton);
 		creditShowPanel.add(jscrollPane);
 		creditShowPanel.setLayout(null);
 		creditShowPanel.setBounds(0,0,300,380);
-		
+
 		this.getContentPane().add(creditShowPanel);
-		
+
 		this.setBounds(580, 250, 300, 380);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -71,7 +72,7 @@ public class CreditFrame extends JFrame{
 			creditArea.append(credits.get(i)+"\n");
 		}
 	}
-	
+
 	class CheckListener implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
@@ -81,6 +82,6 @@ public class CreditFrame extends JFrame{
 		public void mouseReleased(MouseEvent e) {}
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
-		
+
 	}
 }

@@ -19,7 +19,7 @@ public class EvaluatePanel extends JPanel{
 	private JTextField searchField;
 	private HotelListPane hlp;
 	public EvaluatePanel(JFrame frame){
-		hlp=new HotelListPane();
+		hlp=new HotelListPane(frame);
 		frame.add(hlp);
 	imageIcon = new ImageIcon("image/searchPanel.png");
 	searchField=new JTextField();

@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import presentation.DialogCreator;
 import presentation.client.compoment.EvaluatePanel;
+import presentation.client.compoment.HotelDetailPanel;
 import presentation.client.compoment.HotelListPane;
 import presentation.client.compoment.PersonalPanel;
 import presentation.client.compoment.RegisterPanel;
@@ -48,7 +49,9 @@ public class ProcessClientView extends JPanel {
 	private ImageIcon imageIcon = null;
 	private JLabel idLabel;
 	private JFrame frame;
+	HotelDetailPanel hdp;
 	public ProcessClientView(JFrame frame,String id){
+			//hdp=new HotelDetailPanel();
 			this.frame=frame;
 			this.id=id;
 			idLabel =new JLabel(id);
@@ -103,6 +106,7 @@ public class ProcessClientView extends JPanel {
 		    frame.add(pp);
 		    frame.add(rp);
 		    frame.add(ep);
+		    //frame.add(hdp);
 		    this.setSize(1000, 618);
 		    this.setVisible(true);
 	}
