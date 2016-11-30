@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -27,6 +28,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 	ProcessSitemanagerViewControllerService controller;
 	ProcessSitemanagerView view;
 	ResultMessage result;
+	Date date;
 	
 	HotelstaffVO addHotelstaffVO;
 	HotelstaffVO modifyHotelstaffVO;
@@ -229,6 +231,8 @@ public class ProcessHotelAccountManageView extends JPanel{
 			result=controller.HotelStaffAccountUpdate(modifyHotelstaffVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("修改成功！");
+				date=new Date();
+				addLog("S00000001 "+date.toString()+" 修改"+idLabel.getText()+"账户");
 			}
 			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionLabel.setText("数据库保存失败！");
@@ -312,6 +316,8 @@ public class ProcessHotelAccountManageView extends JPanel{
 			result=controller.HotelAccountAdd(sitemanagerAddVO,addHotelstaffVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("添加成功！");
+				date=new Date();
+				addLog("S00000001 "+date.toString()+" 添加酒店"+addName+"账户");
 			}
 			else{
 				conditionLabel.setText("添加失败！ "+result);
@@ -342,6 +348,9 @@ public class ProcessHotelAccountManageView extends JPanel{
 			
 		}
 		
+	}
+	void addLog(String info){
+		controller.addLog(info);
 	}
 }
 

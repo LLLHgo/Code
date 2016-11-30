@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -31,6 +32,7 @@ public class ProcessClientAccountManageView extends JPanel{
 	private ProcessSitemanagerViewControllerService controller;
 	private ProcessSitemanagerView view;
 	ClientVO clientVO=null;
+	Date date;
 	ResultMessage result;
 	String id;
 	String name;
@@ -302,6 +304,8 @@ public class ProcessClientAccountManageView extends JPanel{
 			result=controller.clientAccountUpdate(newClientVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("保存成功！");
+				date=new Date();
+				addLog("S00000001 "+date.toString()+" 修改"+clientVO.getID()+"账户");
 			}
 			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionLabel.setText("数据库存储失败！");
@@ -371,7 +375,9 @@ public class ProcessClientAccountManageView extends JPanel{
 		}
 		
 	}
-
+	void addLog(String info){
+		controller.addLog(info);
+	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		background.setImage(background.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));

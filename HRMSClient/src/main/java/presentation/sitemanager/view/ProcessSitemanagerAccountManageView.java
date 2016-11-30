@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -22,6 +23,8 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ProcessSitemanagerViewControllerService controller;
 	private ProcessSitemanagerView view;
+	ResultMessage result;
+	Date date;
 	String id;
 	String tel;
 	String password;
@@ -117,6 +120,8 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 			result=controller.sitemanagerAccountUpdate(newSitemanagerVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalLabel.setText("保存成功！");
+				date = new Date();
+				addLog("S00000001 "+date.toString()+" 修改网站管理人员账户");
 			}
 			else{
 				conditionalLabel.setText("信息并未发生修改，不再进行保存！");
@@ -128,6 +133,10 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 		public void mouseReleased(MouseEvent e) {}
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
+	}
+	
+	void addLog(String info){
+		result=controller.addLog(info);
 	}
 	
 	public void hideSitemanagerAccountManageView(){

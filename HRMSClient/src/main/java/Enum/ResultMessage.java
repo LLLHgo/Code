@@ -9,5 +9,7 @@ public enum ResultMessage {
 	SAMEPASSWORD,
 	SAMEINFO,
 	AddAreaSuccess,
-	REMOTEEXCEPTION
+	REMOTEEXCEPTION,
+	VOIDTEL,
+	VOIDPASSWORD,
 }
