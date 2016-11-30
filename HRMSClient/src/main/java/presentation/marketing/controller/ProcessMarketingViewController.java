@@ -19,6 +19,7 @@ import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogicservice.clientblservice.ClientBLService;
+import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import businesslogicservice.strategyblservice.StrategyBLService_Stub;
 import datatool.DistrictDataTool;
@@ -51,7 +52,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     	this.StrategyBLService=new StrategyBLService_Stub();
     	this.OrderBLService=new OrderManage();
     	this.LogBLService=new LogManage();
-        //this.ClientBLService=new ClientManage();
+        this.ClientBLService=new ClientBLService_Stub();
     }
     @Override
     public String getMarketingID(){
@@ -161,9 +162,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public boolean setCredit(String clientID, double recharge) {//改为double
-		//return this.ClientBLService.setCredit(clientID, (int)recharge);
-		return true;
-
+		return this.ClientBLService.setCredit(clientID, (int)recharge);
 	}
 
 	@Override
