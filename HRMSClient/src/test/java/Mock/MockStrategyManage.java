@@ -60,8 +60,19 @@ public class MockStrategyManage {
      */
 	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
 		List<HotelStrategyVO> list=new ArrayList<HotelStrategyVO>();
-		if(hotelID=="H00000001")
+		if(hotelID=="H00000001"){
 			list.add( HotelStrategyDataTool.V1);
+			list.add( HotelStrategyDataTool.V2);
+			list.add( HotelStrategyDataTool.V3);
+			list.add( HotelStrategyDataTool.V4);
+			list.add( HotelStrategyDataTool.V1);
+			list.add( HotelStrategyDataTool.V2);
+			list.add( HotelStrategyDataTool.V3);
+			list.add( HotelStrategyDataTool.V4);
+			list.add( HotelStrategyDataTool.V1);
+			list.add( HotelStrategyDataTool.V1);
+			list.add( HotelStrategyDataTool.V1);
+		}
 		else if(hotelID=="H00000031")
 			list.add( HotelStrategyDataTool.V2);
 		else if(hotelID=="H00000003")

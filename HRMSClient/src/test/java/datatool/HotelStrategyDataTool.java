@@ -34,12 +34,12 @@ public class HotelStrategyDataTool {
 		viplist.add(VIPType.ENTERPRISEVIP);
 	}
     public static MarketingStrategyVO V0=new  MarketingStrategyVO();
-    public static HotelStrategyVO V1=new HotelStrategyVO("策略1","H00000001",HotelStrategy.BIRTHDAY,
+    public static HotelStrategyVO V1=new HotelStrategyVO("生日","H00000001",HotelStrategy.BIRTHDAY,
     		VIPType.ORDINARYVIP,begin1,end1,0.75);
-    public static HotelStrategyVO V2=new HotelStrategyVO("策略2","H00000031",HotelStrategy.COMPANY,
+    public static HotelStrategyVO V2=new HotelStrategyVO("三间及以上预订特惠","H00000031",HotelStrategy.COMPANY,
     		begin2,end2,0.8);
-    public static HotelStrategyVO V3=new HotelStrategyVO("策略3","H00000003",HotelStrategy.OVERTHREEROOMS,
+    public static HotelStrategyVO V3=new HotelStrategyVO("合作企业客户折扣","H00000003",HotelStrategy.OVERTHREEROOMS,
     		begin3,end3,0.85,3);
-    public static HotelStrategyVO V4=new HotelStrategyVO("策略4","H00000093",HotelStrategy.SPECIALDAY,
+    public static HotelStrategyVO V4=new HotelStrategyVO("双十一活动折扣","H00000093",HotelStrategy.SPECIALDAY,
     		viplist,begin4,end4,0.8,4,899);
 }

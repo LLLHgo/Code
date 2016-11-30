@@ -1,5 +1,6 @@
 package presentation.hotelstaff.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -12,16 +13,22 @@ import Mock.MockOrderManage;
 import Mock.MockStrategyManage;
 import businesslogic.hotelstaffbl.Hotelstaff;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import datatool.DistrictDataTool;
 import presentation.hotelstaff.view.AddRoomPanel;
+import presentation.hotelstaff.view.BirthdayStrategyPanel;
+import presentation.hotelstaff.view.BusinessStrategyPanel;
 import presentation.hotelstaff.view.DetailedStrategy;
+import presentation.hotelstaff.view.PeriodStrategy;
 import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffPanel;
 import presentation.hotelstaff.view.NewRoominfoPanel;
 import presentation.hotelstaff.view.NewStrategyPanel;
 import presentation.hotelstaff.view.OrderPanel;
+import presentation.hotelstaff.view.RoomStrategyPanel;
 import presentation.hotelstaff.view.RoominfoPanel;
 import presentation.hotelstaff.view.StrategyPanel;
 import vo.clientVO.ClientVO;
+import vo.districtVO.DistrictVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
@@ -282,6 +289,18 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.repaint();
 	}
 	
+	public void JBStrategyClicked(String message){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new StrategyPanel(panelcontroller);
+		view.add(panel);
+		((StrategyPanel)panel).showMessage(message);
+		panel.revalidate();
+		panel.repaint();
+	}
+	
 	public void JBRoomClicked(String message){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -333,7 +352,18 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		if(panel!=null){
 			view.remove(panel);
 		}
-		panel = new DetailedStrategy(panelcontroller,vo);
+		if(vo.getName().equals("生日特惠折扣")){
+			panel = new BirthdayStrategyPanel(panelcontroller,vo);
+		}else if(vo.getName().equals("三间及以上预订特惠")){
+			panel = new RoomStrategyPanel(panelcontroller,vo);
+		}else if(vo.getName().equals("合作企业客户折扣")){
+			panel = new BusinessStrategyPanel(panelcontroller,vo);
+		}else if(vo.getName().equals("双十一活动折扣")){
+			panel = new PeriodStrategy(panelcontroller,vo);
+		}else{
+			panel = new DetailedStrategy(panelcontroller,vo);
+		}
+		
 		view.add(panel);
 		//TODO
 //		((NewRoominfoPanel)panel).showMessage(message);
@@ -353,5 +383,5 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
+
 }

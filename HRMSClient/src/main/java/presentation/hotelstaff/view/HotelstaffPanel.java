@@ -131,18 +131,11 @@ public class HotelstaffPanel extends JPanel{
 			ResultMessage result = controller.setPassword(hotelID, password);
 			
 			//提示信息
-			new Thread(new Runnable(){
-				@Override
-				public void run() {
-					resultLabel.setText(String.valueOf(result));
-					try {
-						Thread.sleep(1000);
-		            }catch(InterruptedException ex){
-		                    ex.printStackTrace();
-		            }
-		            resultLabel.setText("");
-				}
-			}).start();
+			if(result==ResultMessage.SUCCESS){
+				showMessage("保存成功");
+			}else{
+				showMessage(result.toString());
+			}
 		}	
 	}
 	
@@ -157,18 +150,23 @@ public class HotelstaffPanel extends JPanel{
 			jtfPassword.setText(password);
 			
 			//提示信息
-			new Thread(new Runnable(){
-				@Override
-				public void run() {
-					resultLabel.setText("Operation was cancled");
-					try {
-						Thread.sleep(1000);
-		            }catch(InterruptedException ex){
-		                    ex.printStackTrace();
-		            }
-		            resultLabel.setText("");
-				}
-			}).start();
+			showMessage("操作取消");
 		}	
+	}
+	
+	public void showMessage(String message){
+	 	//提示信息
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				resultLabel.setText(message);
+				try {
+					Thread.sleep(1000);
+	            }catch(InterruptedException ex){
+	                    ex.printStackTrace();
+	            }
+	            resultLabel.setText("");
+			}
+		}).start();
 	}
 }
