@@ -8,5 +8,7 @@ public enum ResultMessage {
 	DATEBASEFAIL,
 	SAMEPASSWORD,
 	SAMEINFO,
+	VOIDTEL,
+	VOIDPASSWORD,
 	AddAreaSuccess
 }

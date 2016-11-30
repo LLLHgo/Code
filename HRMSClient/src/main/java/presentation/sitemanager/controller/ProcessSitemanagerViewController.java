@@ -156,7 +156,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 	@Override
 	public ResultMessage addLog(String logInfo) {
-		return ResultMessage.SUCCESS;
+		return logblservice.addLog(logInfo);
 	}
 	
 	@Override

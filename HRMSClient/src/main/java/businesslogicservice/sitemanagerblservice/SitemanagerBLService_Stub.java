@@ -6,13 +6,8 @@ import javax.swing.ImageIcon;
 
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
-import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.HotelinfoVO;
-import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
-import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
-import Enum.VIPType;
 
 public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	
@@ -62,8 +57,8 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 		}
 	}
 
-	@Override
-	public ArrayList<LogVO> findLog() {
+	//@Override
+	/*public ArrayList<LogVO> findLog() {
 		// TODO Auto-generated method stub
 		return list;
 	}
@@ -73,5 +68,5 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
-	
+	*/
 }

@@ -8,12 +8,13 @@ import vo.logVO.LogVO;
 
 public class LogBLService_Stub implements LogBLService {
 	String logInfo;
+	ArrayList<LogVO> logs;
 	
 	public LogBLService_Stub(String logInfo){
 		this.logInfo=logInfo;
 	}
 	public LogBLService_Stub(){
-		
+		logs=new ArrayList<LogVO>();
 	}
 	/**
 	 * 界面得到日志列表
@@ -25,8 +26,8 @@ public class LogBLService_Stub implements LogBLService {
 		ArrayList<LogVO> logList1=new ArrayList<LogVO>();
 		ArrayList<LogVO> logList2=new ArrayList<LogVO>();
 		if(day.equals("28")){
-			logList1.add(new LogVO("C00000001 2016-11-28  00:25:25 登录"));
-			logList1.add(new LogVO("C00000002 2016-11-28  00:25:29 登录"));
+			logList1.add(new LogVO("C00000001 2016-11-28 00:25:25 登录"));
+			logList1.add(new LogVO("C00000002 2016-11-28 00:25:29 登录"));
 			return logList1;
 		}
 		if(day.equals("29")){
@@ -44,7 +45,8 @@ public class LogBLService_Stub implements LogBLService {
 	@Override
 	public ResultMessage addLog(String logInfo) {
 		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
+		logs.add(new LogVO(logInfo));
+		return ResultMessage.SUCCESS; 
 	}
 
 }

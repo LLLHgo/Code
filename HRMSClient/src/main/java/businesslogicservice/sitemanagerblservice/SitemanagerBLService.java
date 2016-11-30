@@ -1,9 +1,6 @@
 package businesslogicservice.sitemanagerblservice;
-
-import vo.logVO.LogVO;
 import vo.sitemanager.SitemanagerVO;
 
-import java.util.ArrayList;
 
 import Enum.ResultMessage;
 
@@ -41,14 +38,14 @@ public interface SitemanagerBLService {
 	 * 管理界面得到日志列表
 	 * @return ArrayList<LogVO>
 	 */
-	public ArrayList<LogVO> findLog();
+	//public ArrayList<LogVO> findLog();
 	
 	/**
 	 * 添加日志
 	 * @param logInfo
 	 * @return 添加日志成功或失败的ResultMessage值
 	 */
-	public ResultMessage addLog(String logInfo);
+	//public ResultMessage addLog(String logInfo);
 	
 }
 	

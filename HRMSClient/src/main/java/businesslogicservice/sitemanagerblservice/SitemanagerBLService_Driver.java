@@ -61,20 +61,20 @@ public class SitemanagerBLService_Driver {
 		}
 		
 		// 显示日志列表
-		System.out.println("显示日志列表：");
+		/*System.out.println("显示日志列表：");
 		list=sitemanagerBLService.findLog();
 		System.out.println("这里是日志列表的第一条：");
-		System.out.println(list.get(0));
+		System.out.println(list.get(0));*/
 		
 		// 添加日志
-		System.out.println("添加日志：");
+		/*System.out.println("添加日志：");
 		result=sitemanagerBLService.addLog(logInfo);
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("添加成功");
 		}
 		else if(result==ResultMessage.FAIL){
 			System.out.println("添加失败");
-		}
+		}*/
 		
 	}
 }

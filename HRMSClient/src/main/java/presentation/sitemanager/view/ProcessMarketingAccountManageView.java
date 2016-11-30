@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -30,6 +31,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	MarketingVO marketingVO;
 	ResultMessage result;
 
+	Date date;
 	String id;
 	String name;
 	String tel;
@@ -226,6 +228,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			result=controller.MarketingAccountUpdate(newMarketingVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("修改成功！");
+				date=new Date();
+				addLog("S00000001 "+date.toString()+" 修改"+id+"账户");
 			}else{
 				conditionalText.setText("信息未做更改，不再进行保存！");
 			}
@@ -253,6 +257,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("添加账户成功！");
+				date=new Date();
+				addLog("S00000001 "+date.toString()+" 添加网站营销人员"+addName+"账户");
 				deleteButton.setEnabled(true);
 			}
 			else{
@@ -313,5 +319,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	public void hideMarketingAccoutManageView(){
 		this.setVisible(false);
 	}
-
+	void addLog(String info){
+		controller.addLog(info);
+	}
+	
 }

@@ -1,23 +1,32 @@
 package businesslogic.sitemanagerbl;
 
-import java.util.ArrayList;
+import java.rmi.RemoteException;
 
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
-import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.HotelinfoVO;
-import vo.hotelstaffVO.HotelstaffVO;
-import vo.logVO.LogVO;
-import vo.marketingVO.MarketingVO;
+import dataservice.sitemanagerdataservice.SitemanagerDataService;
+import po.SitemanagerPO;
 import vo.sitemanager.SitemanagerVO;
 
 public class SitemanagerManage implements SitemanagerBLService {
+	SitemanagerDataService SitemanagerDataService;
+	SitemanagerVO sitemanagerVO;
+	SitemanagerPO sitemanagerPO;
+	String currentTel,updateTel;
+	String currentPassword,updatePassword;
 	/**
 	 * 管理界面得到网站管理人员账户信息
 	 * @return SitemanagerVO
 	 */
 	public SitemanagerVO sitemanagerAcountShow(){
-		return null;
+		try {
+			sitemanagerPO=SitemanagerDataService.getAccount();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		sitemanagerVO=new SitemanagerVO(sitemanagerPO.getSitemanagerId(),sitemanagerPO.getSitemanagerPhoneNumber(),
+				sitemanagerPO.getPassword());
+		return sitemanagerVO;
 	}
 	
 	/**
@@ -25,8 +34,39 @@ public class SitemanagerManage implements SitemanagerBLService {
 	 * @param accountVO
 	 * @return
 	 */
-	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO){
-		return null;
+	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO updateVO){
+		currentTel=sitemanagerVO.getSitemanagerPhoneNumber();
+		currentPassword=sitemanagerVO.getPassword();
+		updateTel=updateVO.getSitemanagerPhoneNumber();
+		updatePassword=updateVO.getPassword();
+		if(sameTel()&&samePassword())
+			return ResultMessage.SAMEINFO;
+		else if (voidTel())
+			return ResultMessage.VOIDTEL;
+		else if(voidPassword())
+			return ResultMessage.VOIDPASSWORD;
+		else{
+			sitemanagerPO=new SitemanagerPO(updateVO.getSitemanagerId(),updateTel,updatePassword);
+			// 将更新的账户信息保存到数据层
+			try {
+				SitemanagerDataService.SitemanagerAccountUpdate(sitemanagerPO);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			return ResultMessage.SUCCESS;
+		}
+	}
+	boolean sameTel(){
+		return currentTel.equals(updateTel);
+	}
+	boolean samePassword(){
+		return currentPassword.equals(updatePassword);
+	}
+	boolean voidTel(){
+		return updateTel.trim().equals("")||(updateTel==null);
+	}
+	boolean voidPassword(){
+		return updatePassword.trim().equals("")||(updatePassword==null);
 	}
 	
 	
@@ -36,29 +76,30 @@ public class SitemanagerManage implements SitemanagerBLService {
 	 * @return 登录帐号或密码正确（true）或错误（false）的布尔值
 	 */
 	public ResultMessage checkAccount (SitemanagerVO accountVO){
-		return null;
+		try {
+			sitemanagerPO=SitemanagerDataService.getAccount();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(accountVO.getSitemanagerId().equals(sitemanagerPO.getSitemanagerId())&&
+				sitemanagerPO.getPassword().equals(sitemanagerPO.getPassword())){
+			return ResultMessage.SUCCESS;
+		}
+		else
+			return ResultMessage.FAIL;
 	}
 	
-	/**
-	 * 管理界面得到日志列表
-	 * @return ArrayList<LogVO>
-	 */
-	public ArrayList<LogVO> findLog(){
-		return null;
-	}
-	
-	/**
-	 * 添加日志
-	 * @param logInfo
-	 * @return 添加日志成功或失败的ResultMessage值
-	 */
-	public ResultMessage addLog(String logInfo){
-		return null;
-	}
 
 	@Override
 	public SitemanagerVO init(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			sitemanagerPO=SitemanagerDataService.getAccount();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		sitemanagerVO=new SitemanagerVO(sitemanagerPO.getSitemanagerId(),sitemanagerPO.getSitemanagerPhoneNumber(),
+				sitemanagerPO.getPassword());
+		return sitemanagerVO;
 	}
 }
