@@ -12,4 +12,5 @@ public enum ResultMessage {
 	REMOTEEXCEPTION,
 	VOIDTEL,
 	VOIDPASSWORD,
+	VOIDINFO
 }

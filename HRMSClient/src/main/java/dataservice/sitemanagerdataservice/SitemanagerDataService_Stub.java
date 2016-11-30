@@ -8,8 +8,7 @@ public class SitemanagerDataService_Stub implements SitemanagerDataService{
 	
 	SitemanagerPO sitemanagerPO;
 	
-	public SitemanagerDataService_Stub(SitemanagerPO sitemanagerPO) throws RemoteException{
-		this.sitemanagerPO=sitemanagerPO;	
+	public SitemanagerDataService_Stub() throws RemoteException{	
 	}
 	
 	/**

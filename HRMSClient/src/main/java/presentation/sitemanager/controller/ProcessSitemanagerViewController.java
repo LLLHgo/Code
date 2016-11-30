@@ -57,7 +57,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		hotelblservice=new HotelinfoBLService_Stub();
 		hotelstaffblservice=new HotelstaffBLService_Stub();
 		logblservice=new LogBLService_Stub();
-		sitemanagerVO=init(sitemanagerId);
+		sitemanagerVO=init();
 	}
 	
 	
@@ -79,8 +79,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		showLogView.setVisible(false);
 	}
 	
-	public SitemanagerVO init(String id) {
-		sitemanagerVO= sitemanagerblservice.init(id);
+	public SitemanagerVO init() {
+		sitemanagerVO= sitemanagerblservice.sitemanagerAcountShow();
 		return sitemanagerVO;
 	}
 

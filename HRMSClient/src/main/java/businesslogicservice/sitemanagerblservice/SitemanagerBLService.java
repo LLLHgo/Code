@@ -5,14 +5,6 @@ import vo.sitemanager.SitemanagerVO;
 import Enum.ResultMessage;
 
 public interface SitemanagerBLService {
-	
-	
-	/**
-	 * 界面得到当前网站管理人员账户的vo
-	 * @param id
-	 * @return SitemanagerVO
-	 */
-	public SitemanagerVO init(String id);
 	/**
 	 * 管理界面得到网站管理人员账户信息
 	 * @return SitemanagerVO

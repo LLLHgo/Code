@@ -54,7 +54,7 @@ public class ProcessSitemanagerView extends JPanel{
 		setOpaque(false);
 		// 得到左上角网站管理人员账户信息
 		currentUserId=controller.getSitemanagerId();
-		currentSitemanagerUserVO=controller.init(currentUserId);
+		currentSitemanagerUserVO=controller.init();
 		
 		currentUserIdLabel=new MyLabel(60,190,200,40,"ID: "+currentUserId);
 		currentUserIdLabel.setForeground(Color.white);

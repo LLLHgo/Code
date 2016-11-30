@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
+import dataservice.sitemanagerdataservice.SitemanagerDataService_Stub;
 import po.SitemanagerPO;
 import vo.sitemanager.SitemanagerVO;
 
@@ -14,6 +15,16 @@ public class SitemanagerManage implements SitemanagerBLService {
 	SitemanagerPO sitemanagerPO;
 	String currentTel,updateTel;
 	String currentPassword,updatePassword;
+	boolean result;
+	
+	public SitemanagerManage(){
+		try {
+			SitemanagerDataService=new SitemanagerDataService_Stub();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 管理界面得到网站管理人员账户信息
 	 * @return SitemanagerVO
@@ -41,6 +52,8 @@ public class SitemanagerManage implements SitemanagerBLService {
 		updatePassword=updateVO.getPassword();
 		if(sameTel()&&samePassword())
 			return ResultMessage.SAMEINFO;
+		else if(voidTel()&&voidPassword())
+			return ResultMessage.VOIDINFO;
 		else if (voidTel())
 			return ResultMessage.VOIDTEL;
 		else if(voidPassword())
@@ -49,11 +62,14 @@ public class SitemanagerManage implements SitemanagerBLService {
 			sitemanagerPO=new SitemanagerPO(updateVO.getSitemanagerId(),updateTel,updatePassword);
 			// 将更新的账户信息保存到数据层
 			try {
-				SitemanagerDataService.SitemanagerAccountUpdate(sitemanagerPO);
+				result=SitemanagerDataService.SitemanagerAccountUpdate(sitemanagerPO);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
-			return ResultMessage.SUCCESS;
+			if(result==true)
+				return ResultMessage.SUCCESS;
+			else
+				return ResultMessage.DATEBASEFAIL;
 		}
 	}
 	boolean sameTel(){
@@ -89,17 +105,8 @@ public class SitemanagerManage implements SitemanagerBLService {
 			return ResultMessage.FAIL;
 	}
 	
-
-	@Override
-	public SitemanagerVO init(String id) {
-		// TODO Auto-generated method stub
-		try {
-			sitemanagerPO=SitemanagerDataService.getAccount();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		sitemanagerVO=new SitemanagerVO(sitemanagerPO.getSitemanagerId(),sitemanagerPO.getSitemanagerPhoneNumber(),
-				sitemanagerPO.getPassword());
-		return sitemanagerVO;
+	// 测试时加的方法
+	public void setSitemanagerVO(SitemanagerVO vo){
+		this.sitemanagerVO=vo;
 	}
 }

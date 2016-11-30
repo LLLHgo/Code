@@ -17,7 +17,7 @@ public interface ProcessSitemanagerViewControllerService {
 	
 	public String getSitemanagerId();
 	
-	public SitemanagerVO init(String id);
+	public SitemanagerVO init();
 	/**
 	 * 修改客户账户
 	 * @param clientId
