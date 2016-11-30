@@ -51,12 +51,7 @@ public interface HotelstaffViewControllerService {
 	 */
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
 			List<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
-	/**
-	 * 请求持久化保存网站管理人员添加的酒店信息
-	 * @param vo
-	 * @return 保存是否成功
-	 */
-	public boolean saveSitemanagerAdd(HotelinfoVO vo);
+
 	
 	/**
 	 * 将酒店促销策略持久化保存
@@ -149,18 +144,7 @@ public interface HotelstaffViewControllerService {
 	 * @return 是否将新密码持久化保存
 	 */
 	public ResultMessage setPassword(String hotelID,String password);
-	/**
-	 * (网站管理人员请求)将酒店工作人员信息的修改持久化保存
-	 * @param vo
-	 * @return 是否将酒店工作人员信息的修改持久化保存
-	 */
-	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo);
-	/**
-	 *  (网站管理人员)请求返回酒店工作人员信息
-	 * @param hotelID
-	 * @return 酒店工作人员信息
-	 */
-	public HotelstaffVO returnSitemanagerAccount(String hotelID);
+
 	/**
 	 * 登录时检测账号密码
 	 * @param hotelID

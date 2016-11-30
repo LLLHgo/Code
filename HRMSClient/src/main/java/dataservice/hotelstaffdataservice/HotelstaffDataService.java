@@ -16,13 +16,13 @@ public interface HotelstaffDataService extends Remote{
 	 * @param hotelStaffID
 	 * @return
 	 */
-	public HotelstaffPO findBasicInfo(String hotelStaffID);
+	public HotelstaffPO findBasicInfo(String hotelStaffID)throws RemoteException;
 	/**
 	 * 更新密码
 	 * @param po
 	 * @throws RemoteException
 	 */
-	public boolean updatePassword(HotelstaffPO po) throws RemoteException;
+	public boolean update(HotelstaffPO po) throws RemoteException;
 	/**
 	 * 检查酒店工作人员账户密码
 	 * @param po

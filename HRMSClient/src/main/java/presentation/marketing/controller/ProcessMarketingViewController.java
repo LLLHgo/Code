@@ -121,7 +121,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public ResultMessage updateHotelStrategy(String hotelID, HotelStrategyVO vo) {
-		return this.StrategyBLService.updateHotelStrategy(hotelID, vo);
+		return this.StrategyBLService.updateHotelStrategy(vo);
 	}
 
 	@Override

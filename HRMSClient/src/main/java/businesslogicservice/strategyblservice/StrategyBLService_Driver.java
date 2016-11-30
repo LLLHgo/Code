@@ -29,7 +29,7 @@ public class StrategyBLService_Driver {
 
     	//更新酒店工作人员促销策略信息
     	HotelStrategyVO Hvo=new HotelStrategyVO();
-    	ResultMessage updateHotelStrategyBool=strategyBLService.updateHotelStrategy("H0000001",Hvo);
+    	ResultMessage updateHotelStrategyBool=strategyBLService.updateHotelStrategy(Hvo);
     	if(updateHotelStrategyBool==ResultMessage.SUCCESS)System.out.println("更新酒店工作人员促销策略信息成功。");
 
     	//增加会员福利

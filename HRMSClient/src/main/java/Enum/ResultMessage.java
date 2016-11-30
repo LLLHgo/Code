@@ -8,5 +8,6 @@ public enum ResultMessage {
 	DATEBASEFAIL,
 	SAMEPASSWORD,
 	SAMEINFO,
-	AddAreaSuccess
+	AddAreaSuccess,
+	REMOTEEXCEPTION
 }

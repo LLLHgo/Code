@@ -35,12 +35,12 @@ public interface HotelinfoBLService {
 	 */
 	public ResultMessage updateBassicinfo(HotelinfoVO VO);
 	/**
-	 * 获得某酒店某类型的房间信息
+	 * 获得某酒店的房间信息
 	 * @param hotelID
 	 * @param roomtype
 	 * @return 房间信息
 	 */
-	public RoominfoVO getRoominfo(String hotelID,String roomtype);
+	public RoominfoVO getRoominfo(String hotelID,String roomid);
 	/**
 	 * 获得酒店的房间信息列表
 	 * @param hotelID

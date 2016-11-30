@@ -64,7 +64,7 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param vo
      * @return 返回是否更新成功
      */
-    public ResultMessage updateHotelStrategy(String hotelID,HotelStrategyVO vo) {
+    public ResultMessage updateHotelStrategy(HotelStrategyVO vo) {
     	if(vo!=null)
     		return ResultMessage.SUCCESS;
 		else

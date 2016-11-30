@@ -37,7 +37,7 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public ResultMessage updateHotelStrategy(String hotelID, HotelStrategyVO vo) {
+	public ResultMessage updateHotelStrategy(HotelStrategyVO vo) {
 		return ResultMessage.SUCCESS;
 	}
 
@@ -55,5 +55,6 @@ public class StrategyManage implements StrategyBLService{
 	public ResultMessage deletePrivilege(PrivilegeVO vo) {
 		return ResultMessage.SUCCESS;
 	}
+
 
 }

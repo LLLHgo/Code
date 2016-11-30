@@ -1,6 +1,7 @@
 package businesslogic.hotelstaffbl;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 
 import Enum.ResultMessage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
@@ -14,34 +15,74 @@ public class HotelstaffManage implements HotelstaffBLService{
 	HotelstaffDataService_Stub data = new HotelstaffDataService_Stub();
 	HotelstaffPO po;
 	HotelstaffVO vo;
+	
 	@Override
 	public String getBasicinfo(String hotelID) {
+		if(data.findBasicInfo(hotelID)==null){
+			return null;
+		}
 		String password = data.findBasicInfo(hotelID).getPassword();
 		return password;
 	}
 
 	@Override
 	public ResultMessage setPassword(String hotelID, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		po = new HotelstaffPO();
+		po.setHotelID(hotelID);
+		po.setPassword(password);
+		boolean result = false;
+		try {
+			result = data.update(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.REMOTEEXCEPTION;
+		}
+		if(result==true){
+			return ResultMessage.SUCCESS;
+		}else{
+			return ResultMessage.FAIL;
+		}
 	}
 
 	@Override
 	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
-		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
+		po = new HotelstaffPO(vo.getHotelID(),vo.getPassword(),vo.getTel());
+		boolean result = false;
+		try {
+			result = data.update(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.REMOTEEXCEPTION;
+		}
+		if(result==true){
+			return ResultMessage.SUCCESS;
+		}else{
+			return ResultMessage.FAIL;
+		}
 	}
 
 	@Override
 	public HotelstaffVO returnSitemanagerAccount(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
+		po = data.findBasicInfo(hotelID);
+		if(po == null){
+			return null;
+		}
+		vo = new HotelstaffVO(po.getHotelID(),po.getPassword(),po.getTel());
+		return vo;
 	}
 
+	//TODO
 	@Override
 	public boolean checkAccount(String hotelID, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		po = new HotelstaffPO(hotelID,password);
+		boolean result = false;
+		try {
+			result = data.checkAccount(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return result;
 	}
 
 }

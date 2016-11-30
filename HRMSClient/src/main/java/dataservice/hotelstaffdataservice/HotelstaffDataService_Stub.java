@@ -26,11 +26,11 @@ public class HotelstaffDataService_Stub implements HotelstaffDataService{
 	}
 
 	/**
-	 * 更新密码
+	 * 更新酒店工作人员信息
 	 * @param po
 	 * @throws RemoteException
 	 */
-	public boolean updatePassword(HotelstaffPO po) throws RemoteException {
+	public boolean update(HotelstaffPO po) throws RemoteException {
 		return true;
 	}
 

@@ -25,7 +25,7 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	HotelinfoVO hotelinfovo;
 
 	public HotelstaffBLService_Stub(){
-		hotelstaffvo = new HotelstaffVO("H00000000","000000","025-12345678");
+		hotelstaffvo = new HotelstaffVO("H00000001","000000","025-12345678");
 		roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
 		ArrayList<RoominfoVO> roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfovo);
@@ -33,7 +33,7 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 		remark.add("超级棒！");
 		remark.add("一个很温馨的地方，么么哒~");
 		String introduction = "一个可以让大家一起愉快地写大作业的地方哈哈哈哈";
-		String hotelID = "H00000000";
+		String hotelID = "H00000001";
 		hotelinfovo = new HotelinfoVO("LLLH酒店","仙林大道163号","栖霞区商圈","025-12345678",
 			roominfoList,Star.SEVEN,remark,introduction,hotelID);
 

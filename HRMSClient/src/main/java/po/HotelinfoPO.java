@@ -23,9 +23,22 @@ public class HotelinfoPO {
 	private String introduction;
 	//酒店ＩＤ
 	private String hotelID;
+	//酒店设施
+	private String facility;
 	
 	public HotelinfoPO(){
 		
+	}
+	
+	public HotelinfoPO(String address,String area,String introduction,String facility
+			,String tel,Star star,String hotelID){
+		this.address = address;
+		this.area = area;
+		this.introduction = introduction;
+		this.facility = facility;
+		this.tel = tel;
+		this.star = star;
+		this.hotelID = hotelID;
 	}
 	
 	public HotelinfoPO(String name,String address,String area,
@@ -114,4 +127,13 @@ public class HotelinfoPO {
 	public void setHotelID(String hotelID) {
 		this.hotelID = hotelID;
 	}
+
+	public String getFacility() {
+		return facility;
+	}
+
+	public void setFacility(String facility) {
+		this.facility = facility;
+	}
+	
 }

@@ -123,12 +123,12 @@ public class HotelinfoViewControllerTest {
 	}
 
 
-	@Test
-	public void testsaveSitemanagerAdd(){
-		assertEquals(true,controller.saveSitemanagerAdd(hotelinfoVO1));
-		assertEquals(true,controller.saveSitemanagerAdd(hotelinfoVO2));
-		assertEquals(false,controller.saveSitemanagerAdd(hotelinfoVO4));
-	}
+//	@Test
+//	public void testsaveSitemanagerAdd(){
+//		assertEquals(true,controller.saveSitemanagerAdd(hotelinfoVO1));
+//		assertEquals(true,controller.saveSitemanagerAdd(hotelinfoVO2));
+//		assertEquals(false,controller.saveSitemanagerAdd(hotelinfoVO4));
+//	}
 
 
 	@Test

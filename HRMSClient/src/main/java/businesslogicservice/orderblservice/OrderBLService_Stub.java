@@ -14,9 +14,14 @@ public class OrderBLService_Stub implements OrderBLService{
 	    
 	OrderVO orderVO;
 	
+	public OrderBLService_Stub(){
+	
+	}
+	
 	public OrderBLService_Stub(OrderVO orderVO){
 		this.orderVO=orderVO;
 	}
+
 	/**
 	 * 下订单
 	 * @param orderInfo

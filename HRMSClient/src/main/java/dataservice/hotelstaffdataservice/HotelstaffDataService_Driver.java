@@ -29,7 +29,7 @@ public class HotelstaffDataService_Driver {
 		
 		//更新密码
 		System.out.println("更新密码...");
-		result = hotelstaffDataService.updatePassword(new HotelstaffPO());
+		result = hotelstaffDataService.update(new HotelstaffPO());
 		if(result == true){
 			System.out.println("登录成功");
 		}else
@@ -42,7 +42,7 @@ public class HotelstaffDataService_Driver {
 		//返回酒店工作人员信息
 		HotelstaffPO Hpo=hotelstaffDataService.findBasicInfo("H00000000");
 	    if(Hpo!=null)System.out.println("返回酒店工作人员信息成功");
-		hotelstaffDataService.updatePassword(new HotelstaffPO());
+		hotelstaffDataService.update(new HotelstaffPO());
 		
 		//结束数据库使用
 		System.out.println("结束使用数据库");

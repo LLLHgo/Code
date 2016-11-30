@@ -47,7 +47,7 @@ public interface StrategyBLService {
      * @param vo
      * @return 返回是否更新成功
      */
-    public ResultMessage updateHotelStrategy(String hotelID,HotelStrategyVO vo);
+    public ResultMessage updateHotelStrategy(HotelStrategyVO vo);
 
     /**
      * 增加会员福利信息

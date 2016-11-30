@@ -11,8 +11,17 @@ import Mock.MockHotelinfoManage;
 import Mock.MockHotelstaffManage;
 import Mock.MockOrderManage;
 import Mock.MockStrategyManage;
+import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.hotelstaffbl.Hotelstaff;
+import businesslogic.hotelstaffbl.HotelstaffManage;
+import businesslogic.orderbl.OrderManage;
+import businesslogic.strategybl.StrategyManage;
+import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import businesslogicservice.orderblservice.OrderBLService;
+import businesslogicservice.orderblservice.OrderBLService_Stub;
+import businesslogicservice.strategyblservice.StrategyBLService;
+import businesslogicservice.strategyblservice.StrategyBLService_Stub;
 import datatool.DistrictDataTool;
 import presentation.hotelstaff.view.AddRoomPanel;
 import presentation.hotelstaff.view.BirthdayStrategyPanel;
@@ -44,14 +53,15 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	private String hotelID;
 	public JPanel view;
 	public JPanel panel;
-//	HotelinfoBLService hotelinfo;
-//	StrategyBLService strategy;
-//	OrderBLService order;
-//	HotelstaffBLService hotelstaff;
-	MockHotelinfoManage hotelinfo;
-	MockStrategyManage strategy;
-	MockOrderManage order;
-	MockHotelstaffManage hotelstaff;
+	
+	HotelinfoBLService hotelinfo;
+	StrategyBLService strategy;
+	OrderBLService order;
+	HotelstaffBLService hotelstaff;
+//	HotelinfoBLService_stub hotelinfo;
+//	StrategyBLService_stub strategy;
+//	OrderBLService_stub order;
+//	HotelstaffBLService_stub hotelstaff;
 //	public HotelstaffViewController(){
 //		new HotelstaffViewController("H00000001");
 //	}
@@ -62,15 +72,15 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	private HotelstaffViewController(String hotelID){
 		this.hotelID = hotelID;
-//		hotelinfo = new HotelinfoManage();
+		hotelinfo = new HotelinfoManage();
 //		strategy = new StrategyManage();
 //		order = new OrderManage();
-//		hotelstaff = new HotelstaffManage();
-		hotelinfo = new MockHotelinfoManage();
-		strategy = new MockStrategyManage();
-		order = new MockOrderManage();
-		hotelstaff = new MockHotelstaffManage();
+		hotelstaff = new HotelstaffManage();
 	
+//		hotelinfo = new HotelinfoBLService_stub();
+		strategy = new StrategyBLService_Stub();
+		order = new OrderBLService_Stub();
+//		hotelstaff = new HotelstaffBLService_stub();
 	}
 
 	public static HotelstaffViewController getInstance(String hotelID){
@@ -115,17 +125,10 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		return hotelinfo.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
 	}
 
-	@Override
-	public boolean saveSitemanagerAdd(HotelinfoVO vo) {
-		return hotelinfo.saveSitemanagerAdd(vo);
-	}
 
 	@Override
 	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
-		 if(strategy.updateHotelStrategy(vo)==true){
-			 return ResultMessage.SUCCESS;
-		 }
-		 return ResultMessage.FAIL;
+		 return strategy.updateHotelStrategy(vo);
 	}
 
 	@Override
@@ -135,7 +138,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy) {
-		boolean result = strategy.deleteHotelStrategy(hotelStrategy);
+		boolean result = strategy.deletehotelStrategy(hotelStrategy);
 		if(result == true){
 			return ResultMessage.SUCCESS;
 		}
@@ -200,16 +203,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	@Override
 	public ResultMessage setPassword(String hotelID, String password) {
 		return hotelstaff.setPassword(hotelID, password);
-	}
-
-	@Override
-	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
-		return hotelstaff.saveSitemanagerUpdate(vo);
-	}
-
-	@Override
-	public HotelstaffVO returnSitemanagerAccount(String hotelID) {
-		return hotelstaff.returnSitemanagerAccount(hotelID);
 	}
 
 	@Override
@@ -382,5 +375,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
+
 
 }

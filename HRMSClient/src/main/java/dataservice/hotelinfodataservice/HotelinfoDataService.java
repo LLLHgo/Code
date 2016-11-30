@@ -14,12 +14,29 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public void init() throws RemoteException;
 	/**
+	 * 获得某个具体房间的信息
+	 * @param hotelID
+	 * @param roomID
+	 * @return RoominfoPO
+	 * @throws RemoteException
+	 */
+	public RoominfoPO getRoominfo(String hotelID,String roomID) throws RemoteException;
+	/**
 	 * 获得房间信息列表
 	 * @param hotelID
 	 * @return
 	 * @throws RemoteException
 	 */
 	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException;
+	
+	/**
+	 * 获得某商圈的酒店信息列表
+	 * @param hotelID
+	 * @return
+	 * @throws RemoteException
+	 */
+	public List<HotelinfoPO> findHotelinfoList(String area) throws RemoteException;
+	
 	/**
 	 * 获得房间信息
 	 * @param hotelID
