@@ -2,7 +2,6 @@ package Mock;
 
 import Enum.ResultMessage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 
 public class MockHotelstaffManage implements HotelstaffBLService{
@@ -40,8 +39,8 @@ public class MockHotelstaffManage implements HotelstaffBLService{
 
 
 	@Override
-	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
-		return new HotelstaffBasicinfoVO("111111");
+	public String getBasicinfo(String hotelID) {
+		return "111111";
 	}
 
 

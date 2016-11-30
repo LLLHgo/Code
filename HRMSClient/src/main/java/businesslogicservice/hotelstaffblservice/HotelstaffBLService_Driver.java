@@ -6,7 +6,6 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
@@ -19,8 +18,8 @@ public class HotelstaffBLService_Driver {
 		if(checkAccountBool)System.out.println("登录成功！");
 
 		//获得酒店工作人员信息
-		HotelstaffBasicinfoVO Hvo=hotelstaffBLService.getBasicinfo("H00000000");
-		if(Hvo!=null)System.out.println("获得酒店工作人员信息成功！");
+		String result =hotelstaffBLService.getBasicinfo("H00000000");
+		if(result!=null)System.out.println("获得酒店工作人员信息成功！");
 
 		
 		//返回酒店工作人员信息

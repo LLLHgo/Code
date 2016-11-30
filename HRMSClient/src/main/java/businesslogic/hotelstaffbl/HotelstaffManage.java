@@ -5,14 +5,19 @@ import java.rmi.Naming;
 import Enum.ResultMessage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import dataservice.hotelstaffdataservice.HotelstaffDataService;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
+import dataservice.hotelstaffdataservice.HotelstaffDataService_Stub;
+import po.HotelstaffPO;
 import vo.hotelstaffVO.HotelstaffVO;
 
 public class HotelstaffManage implements HotelstaffBLService{
-	
+	//桩测试
+	HotelstaffDataService_Stub data = new HotelstaffDataService_Stub();
+	HotelstaffPO po;
+	HotelstaffVO vo;
 	@Override
-	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
-		return null;
+	public String getBasicinfo(String hotelID) {
+		String password = data.findBasicInfo(hotelID).getPassword();
+		return password;
 	}
 
 	@Override

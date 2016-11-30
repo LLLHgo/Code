@@ -32,7 +32,6 @@ import vo.districtVO.DistrictVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
@@ -194,7 +193,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 	
 	@Override
-	public HotelstaffBasicinfoVO getHotelstaffBasicinfo(String hotelID) {
+	public String getHotelstaffBasicinfo(String hotelID) {
 		return hotelstaff.getBasicinfo(hotelID);
 	}
 

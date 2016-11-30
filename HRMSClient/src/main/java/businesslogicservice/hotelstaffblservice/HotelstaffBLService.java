@@ -6,7 +6,6 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
@@ -15,9 +14,9 @@ public interface HotelstaffBLService {
 	/**
 	 * 获得酒店工作人员信息
 	 * @param hotelID
-	 * @return 获得酒店工作人员信息
+	 * @return 获得酒店工作人员信息,这里是密码
 	 */
-	public HotelstaffBasicinfoVO getBasicinfo(String hotelID);
+	public String getBasicinfo(String hotelID);
 	/**
 	 * 将新密码持久化保存
 	 * @param password

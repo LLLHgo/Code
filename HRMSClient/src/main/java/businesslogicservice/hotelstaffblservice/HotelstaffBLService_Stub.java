@@ -9,7 +9,6 @@ import Enum.RoomState;
 import Enum.Star;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
@@ -45,8 +44,8 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	 * @param hotelID
 	 * @return 获得酒店工作人员信息
 	 */
-	public HotelstaffBasicinfoVO getBasicinfo(String hotelID) {
-		return new HotelstaffBasicinfoVO(hotelstaffvo.getPassword());
+	public String getBasicinfo(String hotelID) {
+		return hotelstaffvo.getPassword();
 	}
 
 	/**

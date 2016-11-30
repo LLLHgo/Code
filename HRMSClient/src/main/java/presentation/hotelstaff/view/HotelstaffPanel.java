@@ -60,7 +60,7 @@ public class HotelstaffPanel extends JPanel{
 		//修改密码的背景
 		ipassword = new ImageIcon("./src/main/resource/picture/hotelstaff/password.png");
 		
-		password = controller.getHotelstaffBasicinfo(hotelID).getPassword();
+		password = controller.getHotelstaffBasicinfo(hotelID);
 	
 		jtfPassword = new JTextField(15);
 		Font font = new Font("微软雅黑",Font.PLAIN,20);

@@ -8,7 +8,6 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelstaffVO.HotelstaffBasicinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
@@ -143,7 +142,7 @@ public interface HotelstaffViewControllerService {
 	 * @param hotelID
 	 * @return 获得酒店工作人员信息
 	 */
-	public HotelstaffBasicinfoVO getHotelstaffBasicinfo(String hotelID);
+	public String getHotelstaffBasicinfo(String hotelID);
 	/**
 	 * 将新密码持久化保存
 	 * @param password
