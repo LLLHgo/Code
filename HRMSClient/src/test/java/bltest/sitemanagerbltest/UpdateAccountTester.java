@@ -9,8 +9,7 @@ import businesslogic.sitemanagerbl.SitemanagerManage;
 import vo.sitemanager.SitemanagerVO;
 
 public class UpdateAccountTester {
-	SitemanagerManage s;
-	private SitemanagerVO sitemanagerVO;
+	SitemanagerManage sManage;
 	private SitemanagerVO updateVO1;
 	private SitemanagerVO updateVO2;
 	private SitemanagerVO updateVO3;
@@ -19,7 +18,6 @@ public class UpdateAccountTester {
 	private SitemanagerVO updateVO6;
 	
 	public UpdateAccountTester(){
-		sitemanagerVO=new SitemanagerVO("S00000001","025-88888888","HRMSSitemanager");
 		updateVO1=new SitemanagerVO("S00000001","025-88888888","HRMSSitemanager");
 		updateVO2=new SitemanagerVO("S00000001","","HRMSSitemanager");
 		updateVO3=new SitemanagerVO("S00000001","025-88888888","");
@@ -27,38 +25,38 @@ public class UpdateAccountTester {
 		updateVO5=new SitemanagerVO("S00000001","025-88888888","HRMS");
 		updateVO6=new SitemanagerVO("S00000001","","");
 		
-		s=new SitemanagerManage();
-		s.sitemanagerAcountShow();
+		sManage=new SitemanagerManage();
+		sManage.sitemanagerAcountShow();
 	}
 	@Test
 	public void test1() {
 		// 只修改电话 
-		assertEquals(ResultMessage.SUCCESS,s.sitemanagerAccountUpdate(updateVO4));
+		assertEquals(ResultMessage.SUCCESS,sManage.sitemanagerAccountUpdate(updateVO4));
 	}
 	@Test
 	public void test2() {
 		// 只修改密码
-		assertEquals(ResultMessage.SUCCESS,s.sitemanagerAccountUpdate(updateVO5));
+		assertEquals(ResultMessage.SUCCESS,sManage.sitemanagerAccountUpdate(updateVO5));
 	}
 	@Test
 	public void test3() {
 		// 不修改密码或电话，信息不变
-		assertEquals(ResultMessage.SAMEINFO,s.sitemanagerAccountUpdate(updateVO1));
+		assertEquals(ResultMessage.SAMEINFO,sManage.sitemanagerAccountUpdate(updateVO1));
 	}
 	@Test
 	public void test4() {
 		// 电话为空
-		assertEquals(ResultMessage.VOIDTEL,s.sitemanagerAccountUpdate(updateVO2));
+		assertEquals(ResultMessage.VOIDTEL,sManage.sitemanagerAccountUpdate(updateVO2));
 	}
 	@Test
 	public void test5() {
 		// 密码为空
-		assertEquals(ResultMessage.VOIDPASSWORD,s.sitemanagerAccountUpdate(updateVO3));
+		assertEquals(ResultMessage.VOIDPASSWORD,sManage.sitemanagerAccountUpdate(updateVO3));
 	}
 	@Test
 	public void test6() {
 		// 电话密码都为空
-		assertEquals(ResultMessage.VOIDINFO,s.sitemanagerAccountUpdate(updateVO6));
+		assertEquals(ResultMessage.VOIDINFO,sManage.sitemanagerAccountUpdate(updateVO6));
 	}
 
 }

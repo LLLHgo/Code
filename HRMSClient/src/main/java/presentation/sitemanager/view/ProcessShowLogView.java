@@ -91,7 +91,7 @@ public class ProcessShowLogView extends JPanel{
 		
 		// 中间显示日志的jtextarea
 		logArea=new JTextArea(10,1);
-		logArea.setFont(new java.awt.Font("华文黑体",  1,  20));
+		logArea.setFont(new java.awt.Font("华文黑体",  1,  15));
 		logArea.setForeground(Color.white);
 		logArea.setWrapStyleWord(true);
 		logArea.setLineWrap(true);
@@ -152,7 +152,7 @@ public class ProcessShowLogView extends JPanel{
 		for(int i=0;i<listShow.size();i++){
 			logArea.append(listShow.get(i)+'\n');
 		}
-		//logArea.setEditable(false);
+		logArea.setEditable(false);
 	}
 	
 	class refreshButtonListener implements MouseListener{

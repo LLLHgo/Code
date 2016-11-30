@@ -25,13 +25,13 @@ public class LogBLService_Stub implements LogBLService {
 		// TODO Auto-generated method stub
 		ArrayList<LogVO> logList1=new ArrayList<LogVO>();
 		ArrayList<LogVO> logList2=new ArrayList<LogVO>();
-		if(day.equals("28")){
-			logList1.add(new LogVO("C00000001 2016-11-28 00:25:25 登录"));
-			logList1.add(new LogVO("C00000002 2016-11-28 00:25:29 登录"));
+		if(day.equals("29")){
+			logList1.add(new LogVO("C00000001 Mon May 29 09:51:52 CDT 2016 登录"));
+			logList1.add(new LogVO("C00000002 Mon May 29 09:51:56 CDT 2016 登录"));
 			return logList1;
 		}
-		if(day.equals("29")){
-			logList2.add(new LogVO("C00000003 2016-11-29  00:25:29 登录"));
+		if(day.equals("30")){
+			logList2.add(new LogVO("C00000003 Tues May 30 09:52:01 CDT 2016 登录"));
 			return logList2;
 		}
 		

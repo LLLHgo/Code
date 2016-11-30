@@ -3,14 +3,18 @@ package Enum;
 public enum ResultMessage {
     SUCCESS,
     FAIL,
+    // 账户管理用到的值
     DUPLICATENAME,
     DUPLICATETEL,
 	DATEBASEFAIL,
 	SAMEPASSWORD,
 	SAMEINFO,
-	AddAreaSuccess,
 	REMOTEEXCEPTION,
 	VOIDTEL,
 	VOIDPASSWORD,
-	VOIDINFO
+	VOIDINFO,
+	// 酒店管理用到的值
+	AddAreaSuccess,
+	// 日志管理用到的值
+	WRONGFORMAT
 }
