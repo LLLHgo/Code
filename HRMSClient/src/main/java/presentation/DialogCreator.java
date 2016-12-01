@@ -31,7 +31,7 @@ public class DialogCreator {
 		dialogPane.setLayout(null);
 		JLabel imageLabel = new JLabel(dialogBgIcon);
 		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
-		
+
 		okButton = new JButton();
 		okButton.setIcon(okIcon);
 		okButton.setBounds(170,180,okIcon.getIconWidth(),okIcon.getIconHeight());
@@ -43,18 +43,18 @@ public class DialogCreator {
 			public void actionPerformed(ActionEvent e) {
 				dialog.dispose();
 			}
-			
+
 		});
-		
+
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
 		dialogPane.setOpaque(false);
-		
+
 		dialogPane.setPreferredSize(new Dimension(400,250));
 		dialog = dialogPane.createDialog(okButton,name);
 	    dialog.setVisible(true);
 		dialog.add(dialogPane);
-		dialog.getRootPane().setDefaultButton(okButton); 
+		dialog.getRootPane().setDefaultButton(okButton);
 	}
 	public static void failDialog(String name){
 		JButton okButton;
@@ -64,7 +64,7 @@ public class DialogCreator {
 		dialogPane.setLayout(null);
 		JLabel imageLabel = new JLabel(dialogBgIcon);
 		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
-	
+
 		okButton = new JButton();
 		okButton.setIcon(okIcon);
 		okButton.setBounds(170,180,okIcon.getIconWidth(),okIcon.getIconHeight());
@@ -76,19 +76,19 @@ public class DialogCreator {
 			public void actionPerformed(ActionEvent e) {
 				dialog.dispose();
 			}
-			
+
 		});
 
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
-		
+
 		dialogPane.setOpaque(false);
-		
+
 		dialogPane.setPreferredSize(new Dimension(400,250));
 		dialog = dialogPane.createDialog(okButton,name);
 	    dialog.setVisible(true);
 		dialog.add(dialogPane);
-		dialog.getRootPane().setDefaultButton(okButton); 
+		dialog.getRootPane().setDefaultButton(okButton);
 	}
 	public static void successDialog0(String name){
 		JButton okButton;
@@ -110,18 +110,18 @@ public class DialogCreator {
 			public void actionPerformed(ActionEvent e) {
 				dialog.dispose();
 			}
-			
+
 		});
-	
+
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
 		dialogPane.setOpaque(false);
-		
+
 		dialogPane.setPreferredSize(new Dimension(400,250));
 		dialog = dialogPane.createDialog(okButton,name);
 	    dialog.setVisible(true);
 		dialog.add(dialogPane);
-		dialog.getRootPane().setDefaultButton(okButton); 
+		dialog.getRootPane().setDefaultButton(okButton);
 	}
 	public static void failDialog0(String name){
 		JButton okButton;
@@ -131,7 +131,7 @@ public class DialogCreator {
 		dialogPane.setLayout(null);
 		JLabel imageLabel = new JLabel(dialogBgIcon);
 		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
-		
+
 		okButton = new JButton();
 		okButton.setIcon(okIcon);
 		okButton.setBounds(170,180,okIcon.getIconWidth(),okIcon.getIconHeight());
@@ -143,17 +143,17 @@ public class DialogCreator {
 			public void actionPerformed(ActionEvent e) {
 				dialog.dispose();
 			}
-			
+
 		});
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
 		dialogPane.setOpaque(false);
-		
+
 		dialogPane.setPreferredSize(new Dimension(400,250));
 		dialog = dialogPane.createDialog(okButton,name);
 	    dialog.setVisible(true);
 		dialog.add(dialogPane);
-		dialog.getRootPane().setDefaultButton(okButton); 
+		dialog.getRootPane().setDefaultButton(okButton);
 	}
 	public static void failDialog1(String name){
 		JButton okButton;
@@ -163,8 +163,8 @@ public class DialogCreator {
 		dialogPane.setLayout(null);
 		JLabel imageLabel = new JLabel(dialogBgIcon);
 		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
-		
-		
+
+
 		okButton = new JButton();
 		okButton.setIcon(okIcon);
 		okButton.setBounds(170,180,okIcon.getIconWidth(),okIcon.getIconHeight());
@@ -176,17 +176,17 @@ public class DialogCreator {
 			public void actionPerformed(ActionEvent e) {
 				dialog.dispose();
 			}
-			
+
 		});
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
 		dialogPane.setOpaque(false);
-		
+
 		dialogPane.setPreferredSize(new Dimension(400,250));
 		dialog = dialogPane.createDialog(okButton,name);
 	    dialog.setVisible(true);
 		dialog.add(dialogPane);
-		dialog.getRootPane().setDefaultButton(okButton); 
+		dialog.getRootPane().setDefaultButton(okButton);
 	}
 	public static  String InputDialog(String name){
 		String input = null;
@@ -198,7 +198,7 @@ public class DialogCreator {
 		dialogPane.setLayout(null);
 		JLabel imageLabel = new JLabel(dialogBgIcon);
 		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
-		
+
 		okButton = new JButton();
 		okButton.setIcon(okIcon);
 		okButton.setBounds(170,190,okIcon.getIconWidth(),okIcon.getIconHeight());
@@ -210,24 +210,24 @@ public class DialogCreator {
 			public void actionPerformed(ActionEvent e) {
 				dialog.dispose();
 			}
-			
+
 		});
 		inputField = new JTextField();
 		inputField.setBounds(80, 100, 250, 40);
 		inputField.setFocusable(true);
-		
+
 		dialogPane.add(inputField);
-		
+
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
 		dialogPane.setOpaque(false);
-		
+
 		dialogPane.setPreferredSize(new Dimension(400,250));
 		dialog = dialogPane.createDialog(okButton,name);
 	    dialog.setVisible(true);
 		dialog.add(dialogPane);
-		dialog.getRootPane().setDefaultButton(okButton); 
-		
+		dialog.getRootPane().setDefaultButton(okButton);
+
 		input = inputField.getText();
 		System.out.println(input);
 		return input;
@@ -267,24 +267,24 @@ public class DialogCreator {
 			public void actionPerformed(ActionEvent e) {
 				dialog.dispose();
 			}
-			
+
 		});
 		inputField = new JTextField("Please Input the Name Of File");
 		inputField.setBounds(80, 120, 250, 40);
 		inputField.setFocusable(true);
-		
+
 		dialogPane.add(inputField);
 		dialogPane.add(text);
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
 		dialogPane.setOpaque(false);
-		
+
 		dialogPane.setPreferredSize(new Dimension(400,250));
 		dialog = dialogPane.createDialog(okButton,name);
 	    dialog.setVisible(true);
 		dialog.add(dialogPane);
-		dialog.getRootPane().setDefaultButton(okButton); 
-		
+		dialog.getRootPane().setDefaultButton(okButton);
+
 		input = inputField.getText();
 		System.out.println(input);
 		return input;
