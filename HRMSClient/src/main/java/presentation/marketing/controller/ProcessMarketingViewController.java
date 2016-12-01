@@ -6,6 +6,7 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
+import Enum.UserType;
 import businesslogic.logbl.LogManage;
 import businesslogic.orderbl.OrderManage;
 import presentation.marketing.view.ProcessMarketingAbnormalView;
@@ -152,7 +153,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public OrderVO findSpecificOrder(String orderID) {
-		return this.OrderBLService.findSpecificOrderList(orderID);//删掉List
+		return this.OrderBLService.findSpecificOrderList(UserType.MARKETING,orderID);//删掉List
 	}
 
 	@Override

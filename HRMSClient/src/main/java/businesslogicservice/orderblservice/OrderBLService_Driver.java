@@ -45,14 +45,7 @@ public class OrderBLService_Driver {
 		else 
 			System.out.println("成功将该订单号对应订单置为取消状态");
 		
-		// 查找具体订单
-		System.out.println("查找订单:20160929170503");
-		orderVO=orderBLService.findSpecificOrderList("20160929170503");
-		System.out.print("查找结果： ");
-		/*System.out.println(orderVO.getClientId()+" "+orderVO.getClientName()+" "
-		            +orderVO.getHotelName()+" "+orderVO.getPrice()+orderVO.getOrderDate());
-		*/
-		System.out.print("这里是订单号为20160929170503的订单信息");
+
 				
 		// 查找某种用户(客户或酒店)的所有订单
 		System.out.println("查找Lily的所有订单：");

@@ -11,6 +11,12 @@ import po.OrderPO;
 
 public interface OrderDataService extends Remote{
 	/**
+	 * 在数据库中查看当前可用的新id号
+	 * @return 当前可用的新id号
+	 * @throws RemoteException
+	 */
+	public int lookIdValid() throws RemoteException;
+	/**
 	 * 在数据库中增加一个订单记录
 	 * @param order
 	 * @return  添加成功（true）或失败（false）的布尔值

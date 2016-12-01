@@ -1,24 +1,23 @@
 package po;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import Enum.OrderType;
 import Enum.VIPType;
 
 public class OrderPO {
 	 // 订单号
-   private String orderId;
-   // 客户帐号
-   private String clientId;
-   // 客户名字
+    public String orderId;
+    // 客户帐号
+    private String clientId;
+    // 客户名字
 	private String clientName;
 	// 客户手机号
 	private String clientPhone;
 	// 客户vip类型
 	private VIPType vipType;
 	// 订单下达时间
-	private String orderDate;
+	private String orderDate;  // "2016-12-01 12:21:21"
 	// 订单类型
 	private OrderType orderType;
 	// 订单中酒店名称
@@ -29,12 +28,27 @@ public class OrderPO {
 	private double price;
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
+	//房间类型
+	private String roomType="标准间";
+	//房间数量
+	private int roomNum=1;
+	// 入住天数
+	private int days=1;
+	// 预计入住时间
+	private String anticipateArrivedTime; // 如“2016-12-02 12:00:00
+	// 实际入住时间
+	private String actualArrivedTime; // 如“2016-12-02 13:28:40
+	// 预计离开时间
+	private String anticipateLeaveTime; // 预计离开时间 如“2016-12-03 12:00:00”
 	
 	public OrderPO(){
-		
+
 	}
+	// 完整的orderVO
 	public OrderPO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
-			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies){
+			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies,
+			String roomType,int roomNum,int days,String anticipateArrivedTime,String actualArrivedTime,
+			String anticipateLeaveTime){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
@@ -46,8 +60,15 @@ public class OrderPO {
 		this.hotelId=hotelId;
 		this.price=price;
 		this.strategies=strategies;
-		}
-			
+		this.roomType=roomType;
+		this.roomNum=roomNum;
+		this.days=days;
+		this.anticipateArrivedTime=anticipateArrivedTime;
+		this.actualArrivedTime=actualArrivedTime;
+		this.anticipateLeaveTime=anticipateLeaveTime;
+	}
+
+	
 	public String getOrderId() {
 		return orderId;
 	}
@@ -76,7 +97,7 @@ public class OrderPO {
 		return orderDate;
 	}
 	public void setOrderDate(String orderDate) {
-    	this.orderDate = orderDate;
+     	this.orderDate = orderDate;
 	}
 	public OrderType getOrderStatus() {
 		return orderType;
@@ -120,4 +141,47 @@ public class OrderPO {
 	public void setOrderType(OrderType orderType) {
 		this.orderType = orderType;
 	}
+	public String getLeaveDate() {
+		return anticipateLeaveTime;
+	}
+	public void setLeaveDate(String anticipateLeaveTime) {
+		this.anticipateLeaveTime = anticipateLeaveTime;
+	}
+	public String getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+	public int getRoomNum() {
+		return roomNum;
+	}
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
+	}
+	public int getDays() {
+		return days;
+	}
+	public void setDays(int days) {
+		this.days = days;
+	}
+	public String getAnticipateArrivedTime() {
+		return anticipateArrivedTime;
+	}
+	public void setAnticipateArrivedTime(String anticipateArrivedTime) {
+		this.anticipateArrivedTime = anticipateArrivedTime;
+	}
+	public String getActualArrivedTime() {
+		return actualArrivedTime;
+	}
+	public void setActualArrivedTime(String actualArrivedTime) {
+		this.actualArrivedTime = actualArrivedTime;
+	}
+	public String getAnticipateLeaveTime() {
+		return anticipateLeaveTime;
+	}
+	public void setAnticipateLeaveTime(String anticipateLeaveTime) {
+		this.anticipateLeaveTime = anticipateLeaveTime;
+	}
 }
+

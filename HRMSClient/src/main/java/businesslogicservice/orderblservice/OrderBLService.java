@@ -5,6 +5,7 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import Enum.UserType;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
 
@@ -27,12 +28,7 @@ public interface OrderBLService {
 	 * @return 置订单于取消状态成功（Success）或是失败（fail）的ResultMessage值
 	 */
 	public ResultMessage cancelOrder (String orderId);
-	/**
-	 * 查找具体订单
-	 * @param orderID
-	 * @return 具体订单
-	 */
-	public OrderVO  findSpecificOrderList(String orderID);
+
 	/**
 	 * 查找某种用户(客户或酒店)的所有订单
 	 * @param userID
@@ -91,5 +87,12 @@ public interface OrderBLService {
 	 * @return OrderVO的list
 	 */
 	public List<OrderVO> findHotelTypeOrder(OrderType type, String hotelId);
+	/**
+	 * 返回给具体用户的具体订单
+	 * @param userType
+	 * @param orderID
+	 * @return
+	 */
+	public OrderVO findSpecificOrderList(UserType userType, String orderID);
 
 }

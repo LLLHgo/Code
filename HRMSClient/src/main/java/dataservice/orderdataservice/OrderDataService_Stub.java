@@ -14,6 +14,8 @@ public class OrderDataService_Stub implements OrderDataService{
 	public OrderDataService_Stub(OrderPO orderPO,List<OrderPO> orderPOList){
 		this.orderPO=orderPO;
 		this.orderPOList=orderPOList;
+	}
+	public OrderDataService_Stub() throws RemoteException{
 		
 	}
 	/**
@@ -102,6 +104,11 @@ public class OrderDataService_Stub implements OrderDataService{
 	public void checkTime(String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public int lookIdValid() throws RemoteException {
+		
+		return 105;
 	}
 
 }

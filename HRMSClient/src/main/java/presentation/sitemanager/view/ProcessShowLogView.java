@@ -139,7 +139,7 @@ public class ProcessShowLogView extends JPanel{
 		this.repaint();
 		view.add(this);
 		
-		listVO=controller.findLog(ca.get(Calendar.YEAR)+"",ca.get(Calendar.MONTH)+"", ca.get(Calendar.DATE)+"");
+		listVO=controller.findLog(ca.get(Calendar.YEAR)+"",ca.get(Calendar.MONTH+1)+"", ca.get(Calendar.DATE)+"");
 		showLog(listVO);
 		
 	}
@@ -185,7 +185,7 @@ public class ProcessShowLogView extends JPanel{
 			// TODO Auto-generated method stub
 			logArea.setText("");
 			year=yearField.getText();
-			month=monthField.getText();
+			month=monthField.getText()+1;
 			day=dayField.getText();
 			currentYear=year;
 			currentMonth=month;

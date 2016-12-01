@@ -6,6 +6,7 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import Enum.UserType;
 import businesslogicservice.orderblservice.OrderBLService;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
@@ -53,16 +54,16 @@ public class OrderBLService_Stub implements OrderBLService{
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
+
 	/**
-	 * 查找具体订单
-	 * @param orderID
-	 * @return 具体订单
+	 * 查找某种用户的具体订单
 	 */
 	@Override
-	public OrderVO findSpecificOrderList(String orderID) {
+	public OrderVO findSpecificOrderList(UserType userType, String orderID) {
 		// TODO Auto-generated method stub
-		return orderVO;
+		return null;
 	}
+
 	/**
 	 * 查找某种用户(客户或酒店)的所有订单
 	 * @param userID
@@ -148,5 +149,6 @@ public class OrderBLService_Stub implements OrderBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
 }
