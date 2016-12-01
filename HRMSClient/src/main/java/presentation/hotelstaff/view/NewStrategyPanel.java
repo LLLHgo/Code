@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -13,11 +14,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
+import Enum.HotelStrategy;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
+import presentation.hotelstaff.component.MJRadioButton;
 import presentation.hotelstaff.component.TextField;
 import presentation.hotelstaff.component.TimePanel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
@@ -40,8 +44,9 @@ public class NewStrategyPanel extends JPanel{
 	private TextField jtfdiscount;
 	private TextField jtfroom;
 	private TextField jtfmoney;
-	private JComboBox jcbKind;
-	private JComboBox jcbLevel;
+	private TextField jtflevel;
+	private MJRadioButton jrbClient;
+	private MJRadioButton jrbBusiness;
 	private ConfirmButton confirm;
 	private CancleButton cancle;
 	private HotelStrategyVO vo;
@@ -49,7 +54,9 @@ public class NewStrategyPanel extends JPanel{
 	private Calendar startTime;
 	private Calendar endTime;
 	private VIPType viptype;
+	private List<VIPType> vipKinds;
 	private double discount;
+	private int level;
 	private int minSum;
 	private int minRooms;
 	
@@ -89,7 +96,13 @@ public class NewStrategyPanel extends JPanel{
 		jtfmoney = new TextField("",460,453,50,35,4);
 		this.add(jtfmoney);
 		
-		//TODO radiobutton
+		jtflevel = new TextField("",460,347,50,35,4);
+		this.add(jtflevel);
+		
+		jrbClient = new MJRadioButton("普通会员",true,455,295,200,35);
+		jrbBusiness = new MJRadioButton("企业会员",true,620,295,200,35);
+		this.add(jrbClient);
+		this.add(jrbBusiness);
 		
 		confirm = new ConfirmButton(840,480);
 		this.add(confirm);
@@ -97,7 +110,24 @@ public class NewStrategyPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+			//try{	
+				name = jtfname.getText();
+				discount = Double.parseDouble(jtfdiscount.getText());
+				minRooms = Integer.parseInt(jtfroom.getText());
+				minSum = Integer.parseInt(jtfmoney.getText());
+				level = Integer.parseInt(jtflevel.getText());
+				vipKinds = new ArrayList<VIPType>();
+				if(jrbClient.isSelected()){
+					vipKinds.add(VIPType.ORDINARYVIP);
+				}
+				if(jrbBusiness.isSelected()){
+					vipKinds.add(VIPType.ENTERPRISEVIP);
+				}
+			//}catch(){
+				
+			//}
+				vo = new HotelStrategyVO(name,hotelID,HotelStrategy.CREATED,vipKinds,
+						startTime,endTime,discount,minRooms,minSum);
 				ResultMessage result = controller.updatehotelStrategy(vo);
 				if(result == ResultMessage.SUCCESS){
 					controller.JBStrategyClicked("新增策略成功");

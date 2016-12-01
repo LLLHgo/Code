@@ -12,17 +12,22 @@ import vo.hotelstaffVO.HotelstaffVO;
 
 public class HotelstaffManage implements HotelstaffBLService{
 	//桩测试
-	HotelstaffDataService_Stub data = new HotelstaffDataService_Stub();
+	HotelstaffDataService data = new HotelstaffDataService_Stub();
 	HotelstaffPO po;
 	HotelstaffVO vo;
 	
 	@Override
 	public String getBasicinfo(String hotelID) {
-		if(data.findBasicInfo(hotelID)==null){
+		try {
+			if(data.findBasicInfo(hotelID)==null){
+				return null;
+			}
+			return data.findBasicInfo(hotelID).getPassword();
+		} catch (RemoteException e) {
+			e.printStackTrace();
 			return null;
 		}
-		String password = data.findBasicInfo(hotelID).getPassword();
-		return password;
+	
 	}
 
 	@Override
@@ -63,7 +68,12 @@ public class HotelstaffManage implements HotelstaffBLService{
 
 	@Override
 	public HotelstaffVO returnSitemanagerAccount(String hotelID) {
-		po = data.findBasicInfo(hotelID);
+		try {
+			po = data.findBasicInfo(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
 		if(po == null){
 			return null;
 		}

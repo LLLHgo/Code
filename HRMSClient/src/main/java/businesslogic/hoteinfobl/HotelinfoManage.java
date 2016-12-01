@@ -7,6 +7,7 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
+import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.HotelinfoPO;
 import po.RoominfoPO;
@@ -23,7 +24,7 @@ import vo.strategyVO.MarketingStrategyVO;
 public class HotelinfoManage implements HotelinfoBLService{
 
 	//桩测试
-	HotelinfoDataService_Stub data;
+	HotelinfoDataService data = new HotelinfoDataService_Stub();
 	HotelinfoPO po;
 	HotelinfoVO vo;
 	
@@ -33,6 +34,9 @@ public class HotelinfoManage implements HotelinfoBLService{
 			po = data.findhotelinfo(hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return null;
+		}
+		if(po == null){
 			return null;
 		}
 		vo = new HotelinfoVO(po.getAddress(),po.getArea(),po.getIntroduction(),
@@ -105,10 +109,32 @@ public class HotelinfoManage implements HotelinfoBLService{
 
 	@Override
 	public List<RoominfoVO> getRoominfoList(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
+		List<RoominfoPO> listPO;
+		List<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
+		try {
+			listPO = data.getRoominfoList(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+		for(int i=0;i<listPO.size();i++){
+			listVO.add(po2vo(listPO.get(i)));
+		}
+		return listVO;
 	}
 
+	private RoominfoVO po2vo(RoominfoPO po){
+		RoominfoVO vo;
+		try{
+			vo = new RoominfoVO(po.getRoomNum(),po.getType(),
+					po.getPrice(),po.getRoomState());
+		}catch(NullPointerException e){
+			e.printStackTrace();
+			return null;
+		}
+		return vo;
+	}
+	
 	@Override
 	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
 			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
@@ -143,8 +169,8 @@ public class HotelinfoManage implements HotelinfoBLService{
 
 	@Override
 	public String[] getArea() {
-		// TODO Auto-generated method stub
-		return null;
+		String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈"};
+		return areas;
 	}
 
 	@Override

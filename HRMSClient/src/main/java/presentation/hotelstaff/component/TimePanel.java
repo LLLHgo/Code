@@ -15,16 +15,16 @@ public class TimePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	Calendar c=Calendar.getInstance();
-	private JTextField yearField=new TextField(
-			String.valueOf(c.get(Calendar.YEAR)),10,0,70,40,4);
-	private JTextField monthField=new TextField(
-			String.valueOf(c.get(Calendar.MONTH)),95,0,40,40,2);
-	private JTextField dateField=new TextField(
-			String.valueOf(c.get(Calendar.DATE)),150,0,40,40,2);
-	private JTextField hourField=new TextField(
-			String.valueOf(c.get(Calendar.HOUR_OF_DAY)),210,0,40,40,2);
-	private JTextField minuteField=new TextField(
-			String.valueOf(c.get(Calendar.MINUTE)),270,0,40,40,2);
+	private TextField yearField=new TextField(
+			String.valueOf(c.get(Calendar.YEAR)),3,0,70,40,4);
+	private TextField monthField=new TextField(
+			String.valueOf(c.get(Calendar.MONTH)),97,0,38,40,2);
+	private TextField dateField=new TextField(
+			String.valueOf(c.get(Calendar.DATE)),153,0,38,40,2);
+	private TextField hourField=new TextField(
+			String.valueOf(c.get(Calendar.HOUR_OF_DAY)),212,0,38,40,2);
+	private TextField minuteField=new TextField(
+			String.valueOf(c.get(Calendar.MINUTE)),272,0,38,40,2);
 
 	public TimePanel(int x,int y,int w,int h){
 		this.setLayout(null);
