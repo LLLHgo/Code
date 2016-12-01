@@ -127,7 +127,7 @@ public class NewStrategyPanel extends JPanel{
 				
 			//}
 				vo = new HotelStrategyVO(name,hotelID,HotelStrategy.CREATED,vipKinds,
-						startTime,endTime,discount,minRooms,minSum);
+						startTime,endTime,discount,minRooms,minSum,level);
 				ResultMessage result = controller.updatehotelStrategy(vo);
 				if(result == ResultMessage.SUCCESS){
 					controller.JBStrategyClicked("新增策略成功");

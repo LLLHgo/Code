@@ -5,6 +5,7 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
+import datatool.HotelStrategyDataTool;
 import datatool.MarketingStrategyDataTool;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -53,10 +54,7 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @return 返回该酒店的促销策略列表
      */
     public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
-    	HotelStrategyVO vo=new HotelStrategyVO();
-		List<HotelStrategyVO> list=new ArrayList<HotelStrategyVO>();
-		list.add(vo);
-		return list;
+    	return HotelStrategyDataTool.list;
 	}
 
     /**

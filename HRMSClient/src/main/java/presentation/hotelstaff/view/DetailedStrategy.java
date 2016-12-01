@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
+import presentation.hotelstaff.component.MJRadioButton;
 import presentation.hotelstaff.component.TextField;
 import presentation.hotelstaff.component.TimePanel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
@@ -34,7 +36,6 @@ public class DetailedStrategy extends JPanel{
 
 	private HotelstaffViewController controller;
 	private String hotelID;
-	private HotelStrategyVO vo;
 	private JPanel newPanel;
 	private ImageIcon Iinit;
 	private JLabel resultLabel;
@@ -42,22 +43,32 @@ public class DetailedStrategy extends JPanel{
 	private TextField jtfdiscount;
 	private TextField jtfroom;
 	private TextField jtfmoney;
-	private JComboBox jcbKind;
-	private JComboBox jcbLevel;
+	private TextField jtflevel;
+	private MJRadioButton jrbClient;
+	private MJRadioButton jrbBusiness;
 	private ConfirmButton confirm;
 	private CancleButton cancle;
+	private HotelStrategyVO vo;
 	private String name;
 	private Calendar startTime;
 	private Calendar endTime;
 	private VIPType viptype;
+	private List<VIPType> vipKinds;
 	private double discount;
+	private int level;
 	private int minSum;
 	private int minRooms;
 	
 	public DetailedStrategy(HotelstaffViewController controller,HotelStrategyVO vo){
 		this.controller=controller;
 		this.hotelID=controller.gethotelID();
-		this.vo = vo;
+		this.name = vo.getName();
+		this.discount = vo.getDiscount();
+		this.startTime = vo.getStartTime();
+		this.endTime = vo.getEndTime();
+		this.level = vo.getLevel();
+		this.startTime = vo.getStartTime();
+		this.endTime = vo.getEndTime();
 		Iinit = new ImageIcon("./src/main/resource/picture/hotelstrategy/newstrategy.png");
 		init();
 	}
@@ -79,23 +90,25 @@ public class DetailedStrategy extends JPanel{
 		this.add(new TimePanel(458,129,308,37));
 		this.add(new TimePanel(458,182,308,37));
 		
-		jtfname = new TextField("",460,90,400,35,4);
-		jtfname.setText(vo.getName());
+		jtfname = new TextField(name,460,90,400,35,4);
 		this.add(jtfname);
 		
-		jtfdiscount = new TextField("",460,234,50,35,4);
-		jtfdiscount.setText(String.valueOf(vo.getDiscount()));
+		jtfdiscount = new TextField(String.valueOf(discount),460,234,50,35,4);
 		this.add(jtfdiscount);
 		
-		jtfroom = new TextField("",460,401,50,35,4);
-		jtfroom.setText(String.valueOf(vo.getMinRooms()));
+		jtfroom = new TextField(String.valueOf(minRooms),460,401,50,35,4);
 		this.add(jtfroom);
 		
-		jtfmoney = new TextField("",460,453,50,35,4);
-		jtfmoney.setText(String.valueOf(vo.getMinSum()));
+		jtfmoney = new TextField(String.valueOf(minSum),460,453,50,35,4);
 		this.add(jtfmoney);
 		
-		//TODO radiobutton
+		jtflevel = new TextField(String.valueOf(level),460,347,50,35,4);
+		this.add(jtflevel);
+		
+		jrbClient = new MJRadioButton("普通会员",true,455,295,200,35);
+		jrbBusiness = new MJRadioButton("企业会员",true,620,295,200,35);
+		this.add(jrbClient);
+		this.add(jrbBusiness);
 		
 		confirm = new ConfirmButton(840,480);
 		this.add(confirm);
@@ -103,7 +116,24 @@ public class DetailedStrategy extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+			//try{	
+				name = jtfname.getText();
+				discount = Double.parseDouble(jtfdiscount.getText());
+				minRooms = Integer.parseInt(jtfroom.getText());
+				minSum = Integer.parseInt(jtfmoney.getText());
+				level = Integer.parseInt(jtflevel.getText());
+				vipKinds = new ArrayList<VIPType>();
+				if(jrbClient.isSelected()){
+					vipKinds.add(VIPType.ORDINARYVIP);
+				}
+				if(jrbBusiness.isSelected()){
+					vipKinds.add(VIPType.ENTERPRISEVIP);
+				}
+			//}catch(){
+				
+			//}
+				vo = new HotelStrategyVO(name,hotelID,HotelStrategy.CREATED,vipKinds,
+						startTime,endTime,discount,minRooms,minSum,level);
 				ResultMessage result = controller.updatehotelStrategy(vo);
 				if(result == ResultMessage.SUCCESS){
 					controller.JBStrategyClicked("修改策略成功");

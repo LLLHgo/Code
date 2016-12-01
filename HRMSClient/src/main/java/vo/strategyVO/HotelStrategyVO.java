@@ -28,8 +28,18 @@ public class HotelStrategyVO {
     private int minRooms;
     //参加活动的会员种类
     private  List<VIPType> vipKinds;
+    //会员等级
+    private int level;
 
-    public HotelStrategyVO(){
+    public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public HotelStrategyVO(){
     }
 
     /**
@@ -96,9 +106,9 @@ public class HotelStrategyVO {
     	this.minRooms = minRooms;
     	this.name=name;
     }
-
+    
     public HotelStrategyVO(String name,String hotelID,HotelStrategy type,List<VIPType> vipKinds,Calendar startTime,Calendar endTime,double discount,
-    		int minRooms,int minSum){
+    		int minRooms,int minSum,int level){
     	this.hotelID=hotelID;
     	this.type=type;
     	this.vipKinds=vipKinds;
@@ -106,7 +116,7 @@ public class HotelStrategyVO {
     	this.endTime=endTime;
     	this.discount=discount;
     	this.name=name;
-
+    	this.level = level;
     	this.minRooms = minRooms;
     	this.minSum = minSum;
     }

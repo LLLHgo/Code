@@ -21,6 +21,7 @@ public class TextField extends JTextField{
     	this.setBackground(null);
     	this.setOpaque(false);
     	this.setBorder(new EmptyBorder(0,0,0,0));
+    	this.setText(string);
     }
 
 //	public TextField(int x,int y,int w,int h,Font font){
