@@ -26,7 +26,7 @@ public class HotelStrategyDataTool {
 		end2.set(2016,11,11,00,00);
 		begin3.set(2016,12,31,00,00);
 		end3.set(2016,12,31,23,59);
-		begin4.set(2017,01,05,00,00);
+		begin4.set(2017,12,05,00,00);
 		end4.set(2016,01,06,23,59);
 
 		viplist.add(VIPType.ORDINARYVIP);

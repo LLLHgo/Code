@@ -45,6 +45,8 @@ public class NewStrategyPanel extends JPanel{
 	private TextField jtfroom;
 	private TextField jtfmoney;
 	private TextField jtflevel;
+	private TimePanel tpStart;
+	private TimePanel tpEnd;
 	private MJRadioButton jrbClient;
 	private MJRadioButton jrbBusiness;
 	private ConfirmButton confirm;
@@ -81,8 +83,10 @@ public class NewStrategyPanel extends JPanel{
 		resultLabel.setBounds(290, 50, 500, 20);
 		this.add(resultLabel);	
 		
-		this.add(new TimePanel(458,129,308,37));
-		this.add(new TimePanel(458,182,308,37));
+		tpStart = new TimePanel(458,129,308,37);
+		tpEnd = new TimePanel(458,182,308,37);
+		this.add(tpStart);
+		this.add(tpEnd);
 		
 		jtfname = new TextField("",460,90,400,35,4);
 		this.add(jtfname);
@@ -123,6 +127,8 @@ public class NewStrategyPanel extends JPanel{
 				if(jrbBusiness.isSelected()){
 					vipKinds.add(VIPType.ENTERPRISEVIP);
 				}
+				startTime = tpStart.getTime();
+				endTime = tpEnd.getTime();
 			//}catch(){
 				
 			//}

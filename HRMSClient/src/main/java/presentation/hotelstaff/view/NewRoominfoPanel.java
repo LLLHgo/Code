@@ -45,7 +45,7 @@ public class NewRoominfoPanel extends JPanel{
 	private JScrollPane scrollPane;
 	private JLabel resultLabel;
 	private String state;
-	private JTextField jtfPrice;
+	
 	
 	public NewRoominfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
@@ -127,12 +127,14 @@ public class NewRoominfoPanel extends JPanel{
 	        jcbState.setBounds(250,78,90,30);
 	        
 	        
-	        jtfPrice = new JTextField(String.valueOf(price));
+	        JTextField jtfPrice = new JTextField(String.valueOf(price));
 	        jtfPrice.setBounds(250,45,100,25);
 	        jtfPrice.setFont(new Font("微软雅黑",Font.PLAIN,20));
 	        jtfPrice.setBorder(null);
 	        jtfPrice.setOpaque(false);
+	        jtfPrice.setForeground(Color.white);
 	        jtfPrice.setEditable(false);
+	        
 	        panel.add(jtfPrice);
 	        
 	        panel.add(jcbState);
@@ -153,9 +155,7 @@ public class NewRoominfoPanel extends JPanel{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					jbConfirm.setVisible(false);
-					jbCancle.setVisible(false);
-					jbModify.setVisible(true);
+					
 					String state = jcbState.getSelectedItem().toString();
 					if(state.equals("可用")){
 						room.setRoomState(RoomState.Usable);
@@ -170,9 +170,14 @@ public class NewRoominfoPanel extends JPanel{
 						ResultMessage message = controller.updateroominfo(room, hotelID);
 						if(message == ResultMessage.SUCCESS){
 							showMessage("修改成功");
+							jbConfirm.setVisible(false);
+							jbCancle.setVisible(false);
+							jbModify.setVisible(true);
+							jtfPrice.setEditable(false);
 						}
 						else{
-							showMessage(message.toString());
+							//TODO 可能有其他返回信息
+							showMessage("修改失败");
 						}
 						jcbState.setEnabled(false);
 					}
@@ -193,6 +198,7 @@ public class NewRoominfoPanel extends JPanel{
 					jcbState.setSelectedItem(state);
 					jcbState.setEnabled(false);
 					jtfPrice.setText(price);
+					jtfPrice.setEditable(false);
 					showMessage("取消成功");
 				}
 				
@@ -204,13 +210,13 @@ public class NewRoominfoPanel extends JPanel{
 			
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					jtfPrice.setEditable(true);
 					state = jcbState.getSelectedItem().toString();
 					jbConfirm.setVisible(true);
 					jbCancle.setVisible(true);
 					jbModify.setVisible(false);
 					jcbState.setEnabled(true);
-					jtfPrice.setEditable(true);
-					showMessage("选择房间状态");
+					showMessage("修改房间信息");
 				}
 				
 			});
