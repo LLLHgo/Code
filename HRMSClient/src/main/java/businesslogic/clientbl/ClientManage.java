@@ -108,6 +108,14 @@ public class ClientManage implements ClientBLService{
 		return null;
 	}
 
+	@Override
+	public boolean checkAccount(String clientID, String password) {
+		// TODO Auto-generated method stub
+		if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
+		return true;
+		else return false;
+	}
+
 
 
 }

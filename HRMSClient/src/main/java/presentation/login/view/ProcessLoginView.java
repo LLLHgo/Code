@@ -21,6 +21,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.text.Caret;
 
 import presentation.DialogCreator;
+import presentation.client.controller.PersonalPanelController;
 import presentation.client.view.ProcessClientView;
 import presentation.client.view.ProcessClientView;
 import presentation.hotelstaff.controller.HotelstaffViewController;

@@ -16,10 +16,10 @@ import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
 
 public class ProcessClientViewController implements ProcessClientViewControllerService {
-	public boolean checkAccount (ClientVO accountVO){
+	public boolean checkAccount (String clientID,String password){
 
-		if(accountVO.client_id==ClientDataTool.clientVO1.client_id&&
-				accountVO.password==ClientDataTool.clientVO1.password)
+		if(clientID==ClientDataTool.clientVO1.client_id&&
+				password==ClientDataTool.clientVO1.password)
 			return true;
 		else
 			return false;

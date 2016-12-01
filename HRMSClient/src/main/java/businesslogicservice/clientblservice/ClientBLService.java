@@ -16,6 +16,12 @@ import vo.levelVO.*;
 
 public interface ClientBLService {
 	/**
+	 *通过客户ID看是否能验证通过
+	 * @param clientID
+	 * @return 验证是否通过
+	 */
+	public boolean checkAccount (String clientID,String password);
+	/**
 	 *通过客户ID得到客户个人信息
 	 * @param clientID
 	 * @return 客户的个人信息

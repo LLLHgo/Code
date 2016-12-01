@@ -14,7 +14,7 @@ import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
 
 public interface ProcessClientViewControllerService {
-	public boolean checkAccount (ClientVO accountVO);
+	public boolean checkAccount (String clientID,String password);
 	/**
 	 *通过客户ID得到客户个人信息
 	 * @param clientID

@@ -208,6 +208,11 @@ public class ClientBLService_Stub implements ClientBLService {
 		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
 		return hotel;
 	}
+	@Override
+	public boolean checkAccount(String clientID, String password) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
 
 }
