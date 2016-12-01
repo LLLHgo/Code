@@ -1,7 +1,6 @@
 package businesslogic.orderbl;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import Enum.OrderType;
 import Enum.VIPType;
@@ -31,6 +30,10 @@ public class Order {
 	private ArrayList <String> strategies;
 	// 实际离开时间
 	private String actualLeaveTime;
+	// 预计到达时间
+	private String scheduleArriveTime;
+	// 实际到达时间
+	private String scheduleLeaveTime;
 	
 	public Order(){
 		

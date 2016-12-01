@@ -63,6 +63,12 @@ public class OrderManage implements OrderBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<OrderVO> findHotelTypeOrder(OrderType type, String hotelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public List<OrderVO> findAbnormalOrderList(Date date) {
@@ -76,11 +82,7 @@ public class OrderManage implements OrderBLService{
 		return false;
 	}
 
-	@Override
-	public List<OrderVO> findHotelTypeOrder(OrderType type, String hotelId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 	
 	
