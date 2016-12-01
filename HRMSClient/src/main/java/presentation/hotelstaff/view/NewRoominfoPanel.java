@@ -45,6 +45,7 @@ public class NewRoominfoPanel extends JPanel{
 	private JScrollPane scrollPane;
 	private JLabel resultLabel;
 	private String state;
+	private JTextField jtfPrice;
 	
 	public NewRoominfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
@@ -107,11 +108,13 @@ public class NewRoominfoPanel extends JPanel{
 	        panel.setBounds(10, 10+120*num,680, 130);
 	        panel.setLayout(null);
 	        num++;
+
+	        String price = String.valueOf(room.getPrice());
 	        
 	        //制作roominfo需要的组件
 	        RoominfoLabel roomIDLabel=new RoominfoLabel(20,10,180,25,"房间号："+room.getRoomNum());
 	        RoominfoLabel typeLabel=new RoominfoLabel(190,10,180,25,"类型："+room.getType());
-	        RoominfoLabel priceLabel=new RoominfoLabel(190,45,180,25,"价格："+String.valueOf(room.getPrice()));
+	        RoominfoLabel priceLabel=new RoominfoLabel(190,45,70,25,"价格：");
 	        RoominfoLabel stateLabel = new RoominfoLabel(190,80,80,25,"状态：");
 	        String[] states = {"可用","不可用"};
 	        JComboBox jcbState = new JComboBox(states);
@@ -122,6 +125,15 @@ public class NewRoominfoPanel extends JPanel{
 	        }
 	        jcbState.setEnabled(false);
 	        jcbState.setBounds(250,78,90,30);
+	        
+	        
+	        jtfPrice = new JTextField(String.valueOf(price));
+	        jtfPrice.setBounds(250,45,100,25);
+	        jtfPrice.setFont(new Font("微软雅黑",Font.PLAIN,20));
+	        jtfPrice.setBorder(null);
+	        jtfPrice.setOpaque(false);
+	        jtfPrice.setEditable(false);
+	        panel.add(jtfPrice);
 	        
 	        panel.add(jcbState);
 	        
@@ -150,14 +162,20 @@ public class NewRoominfoPanel extends JPanel{
 					}else{
 						room.setRoomState(RoomState.Unusable);
 					}
-					ResultMessage message = controller.updateroominfo(room, hotelID);
-					if(message == ResultMessage.SUCCESS){
-						showMessage("修改成功");
+					String sPrice = jtfPrice.getText();
+					if(sPrice.equals("")){
+						showMessage("信息不完整，重新填写");
+					}else{
+						room.setPrice(Double.parseDouble(sPrice));
+						ResultMessage message = controller.updateroominfo(room, hotelID);
+						if(message == ResultMessage.SUCCESS){
+							showMessage("修改成功");
+						}
+						else{
+							showMessage(message.toString());
+						}
+						jcbState.setEnabled(false);
 					}
-					else{
-						showMessage(message.toString());
-					}
-					jcbState.setEnabled(false);
 				}
 				
 			});
@@ -174,6 +192,7 @@ public class NewRoominfoPanel extends JPanel{
 					jbModify.setVisible(true);
 					jcbState.setSelectedItem(state);
 					jcbState.setEnabled(false);
+					jtfPrice.setText(price);
 					showMessage("取消成功");
 				}
 				
@@ -190,6 +209,7 @@ public class NewRoominfoPanel extends JPanel{
 					jbCancle.setVisible(true);
 					jbModify.setVisible(false);
 					jcbState.setEnabled(true);
+					jtfPrice.setEditable(true);
 					showMessage("选择房间状态");
 				}
 				

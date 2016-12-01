@@ -84,6 +84,10 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	 */
 	@Override
 	public boolean checkAccount(String hotelID, String password) {
-		return true;
+		if(hotelID.equals("H00000001")&&password.equals("000000")){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

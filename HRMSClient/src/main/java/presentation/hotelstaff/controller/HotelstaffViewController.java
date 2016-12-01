@@ -110,8 +110,8 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public RoominfoVO getRoominfo(String hotelID, String roomtype) {
-		return hotelinfo.getRoominfo(hotelID, roomtype);
+	public RoominfoVO getRoominfo(String hotelID, String roomID) {
+		return hotelinfo.getroominfo(hotelID, roomID);
 	}
 
 	@Override
