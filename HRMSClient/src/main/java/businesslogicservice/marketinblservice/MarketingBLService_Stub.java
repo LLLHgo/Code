@@ -104,7 +104,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @return 返回是否网站营销人员登录验证成功
      */
 	public boolean checkAccount(String marketingID, String password) {
-		if(marketingID=="M00010001"&&password=="password")
+		if(marketingID.equals("M00010001")&&password.equals("password"))
 			return true;
 	    else
 	    	return false;
