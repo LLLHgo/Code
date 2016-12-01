@@ -1,5 +1,6 @@
 package presentation.marketing.view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -23,8 +24,6 @@ public class ProcessMarketingView extends JPanel{
 
 	private Image image=new ImageIcon("./src/main/resource/picture/marketing/marketing.png").getImage();;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);
-	private Font font2=new Font("楷体",Font.ITALIC,20);
-	private Font font3=new Font("微软雅黑",Font.HANGING_BASELINE,28);
 	private MJLabel ID=new MJLabel("ID:",50,185,50,30,font);
 	private MJLabel defaultLabel=new MJLabel(95,37,100,200,photo);
 	private MJLabel IDLabel;
@@ -35,6 +34,7 @@ public class ProcessMarketingView extends JPanel{
 	private GuideBoardButton strategy=new GuideBoardButton(481,"制定策略");
 	private GuideBoardButton exit=new GuideBoardButton(541,"退出");
 	private MJLabel welcome=new MJLabel(275,-19,775,800,welcomeIcon);
+	private MJLabel hintLabel=new MJLabel("FEFW",280,35,700,40,font);
 
 	public ProcessMarketingView(ProcessMarketingViewControllerService controller){
 		this.MarketingID=controller.getMarketingID();
@@ -96,8 +96,16 @@ public class ProcessMarketingView extends JPanel{
 			}
          });
 
-      	this.add(profile);this.add(abnormal);this.add(credit);
-    	this.add(VIP);this.add(strategy);this.add(exit);
+      	this.add(profile);
+      	this.add(abnormal);
+      	this.add(credit);
+    	this.add(VIP);
+    	this.add(strategy);
+    	this.add(exit);
+
+    	hintLabel.setForeground(Color.black);
+    	this.add(hintLabel);
+    	//hintLabel.setVisible(false);
 
     }
 
@@ -111,5 +119,33 @@ public class ProcessMarketingView extends JPanel{
     	welcome.setVisible(false);
     }
 
+    public void setHint(String hint){
+
+    	hintLabel.setVisible(true);
+    	
+    	System.out.println(hint);
+    	this.revalidate();
+    	this.repaint();
+    	showHint(hint);
+        
+        System.out.println("FEFWEWEFWEFW"+hint);
+    	hintLabel.setVisible(false);
+
+    }
+
+    private void showHint(String hint){
+    	new Thread(new Runnable(){
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(3000);
+					hintLabel.setText(hint);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}).start();
+    }
 
 }

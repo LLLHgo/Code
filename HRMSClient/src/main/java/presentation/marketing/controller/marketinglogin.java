@@ -2,7 +2,6 @@ package presentation.marketing.controller;
 
 import javax.swing.JFrame;
 
-import presentation.marketing.view.ProcessMarketingProfileView;
 import presentation.marketing.view.ProcessMarketingView;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 

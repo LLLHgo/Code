@@ -31,13 +31,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      */
 	public ResultMessage updateLevel(List<LevelVO> vos) {
 	    if(vos!=null)
-	    {   for(LevelVO vo :vos){
-	    	System.out.println("add:"+vo.getLevel());
-	    	System.out.println("add:"+vo.getName());
-
-	    	System.out.println("add:"+vo.getCreditNeeded());
-	    	System.out.println("add:"+vo.getDiscount());
-	    }
+	    {
 	    	return ResultMessage.FAIL;
 	    }
 	    else
@@ -110,7 +104,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @return 返回是否网站营销人员登录验证成功
      */
 	public boolean checkAccount(String marketingID, String password) {
-		if(marketingID==password)
+		if(marketingID=="M00010001"&&password=="password")
 			return true;
 	    else
 	    	return false;

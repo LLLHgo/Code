@@ -6,20 +6,15 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
-import businesslogic.logbl.LogManage;
-import businesslogic.orderbl.OrderManage;
-import presentation.marketing.view.ProcessMarketingAbnormalView;
-import presentation.marketing.view.ProcessMarketingCreditView;
-import presentation.marketing.view.ProcessMarketingProfileView;
-import presentation.marketing.view.ProcessMarketingStrategyView;
-import presentation.marketing.view.ProcessMarketingVIPView;
-import presentation.marketing.view.ProcessMarketingView;
+import presentation.marketing.view.*;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.orderblservice.OrderBLService;
+import businesslogicservice.orderblservice.OrderBLService_Stub;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
+import businesslogicservice.logblservice.*;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import businesslogicservice.strategyblservice.StrategyBLService_Stub;
 import datatool.DistrictDataTool;
@@ -33,7 +28,7 @@ import vo.strategyVO.MarketingStrategyVO;
 import vo.strategyVO.PrivilegeVO;
 
 public class ProcessMarketingViewController implements ProcessMarketingViewControllerService{
-    private LogManage LogBLService;//bl层的logManage未实现blservice
+    private LogBLService LogBLService;//bl层的logManage未实现blservice
 	private MarketingBLService MarketingBlService;
     private StrategyBLService StrategyBLService;
     private OrderBLService OrderBLService;
@@ -50,8 +45,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     	this.marketingID=marketingID;
     	this.MarketingBlService=new MarketingBLService_Stub();
     	this.StrategyBLService=new StrategyBLService_Stub();
-    	this.OrderBLService=new OrderManage();
-    	this.LogBLService=new LogManage();
+    	this.OrderBLService=new OrderBLService_Stub();
+    	this.LogBLService=new LogBLService_Stub();
         this.ClientBLService=new ClientBLService_Stub();
     }
     @Override
@@ -177,41 +172,12 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	@Override
 	public void profileButtonClicked() {
 		view.hideWelcome();
-		if(profileView!=null)
-			profileView.hideProfile();
-		profileView=null;
-		if(abnormalView!=null)
-			abnormalView.hideAbnormal();
-		abnormalView=null;
-		if(strategyView!=null)
-			strategyView.hideStrategy();
-		strategyView=null;
-		if(VIPView!=null)
-			VIPView.hideVIP();
-		VIPView=null;
-		if(creditView!=null)
-			creditView.hideCredit();
-		creditView=null;
-
+		hide();
 		profileView=new ProcessMarketingProfileView(this,view);
 	}
 	@Override
 	public void abnormalButtonClicked() {
-		if(profileView!=null)
-			profileView.hideProfile();
-		profileView=null;
-		if(abnormalView!=null)
-			abnormalView.hideAbnormal();
-		abnormalView=null;
-		if(strategyView!=null)
-			strategyView.hideStrategy();
-		strategyView=null;
-		if(VIPView!=null)
-			VIPView.hideVIP();
-		VIPView=null;
-		if(creditView!=null)
-			creditView.hideCredit();
-		creditView=null;
+		hide();
 		abnormalView=new ProcessMarketingAbnormalView(this,view);
 	}
 	@Override
@@ -222,21 +188,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	@Override
 	public void strategyButtonClicked() {
 		view.hideWelcome();
-		if(profileView!=null)
-			profileView.hideProfile();
-		profileView=null;
-		if(abnormalView!=null)
-			abnormalView.hideAbnormal();
-		abnormalView=null;
-		if(strategyView!=null)
-			strategyView.hideStrategy();
-		strategyView=null;
-		if(VIPView!=null)
-			VIPView.hideVIP();
-		VIPView=null;
-		if(creditView!=null)
-			creditView.hideCredit();
-		creditView=null;
+		hide();
 		strategyView=new ProcessMarketingStrategyView(this,view);
 
 	}
@@ -256,44 +208,39 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	@Override
 	public void creditButtonClicked() {
 		view.hideWelcome();
-		if(profileView!=null)
-			profileView.hideProfile();
-		profileView=null;
-		if(abnormalView!=null)
-			abnormalView.hideAbnormal();
-		abnormalView=null;
-		if(strategyView!=null)
-			strategyView.hideStrategy();
-		strategyView=null;
-		if(VIPView!=null)
-			VIPView.hideVIP();
-		VIPView=null;
-		if(creditView!=null)
-			creditView.hideCredit();
-		creditView=null;
+		hide();
 		creditView=new ProcessMarketingCreditView(this,view);
 	}
 	@Override
 	public void VIPButtonClicked() {
 		view.hideWelcome();
-		if(profileView!=null)
-			profileView.hideProfile();
-		profileView=null;
-		if(abnormalView!=null)
-			abnormalView.hideAbnormal();
-		abnormalView=null;
-		if(strategyView!=null)
-			strategyView.hideStrategy();
-		strategyView=null;
-		if(VIPView!=null)
-			VIPView.hideVIP();
-		VIPView=null;
-		if(creditView!=null)
-			creditView.hideCredit();
-		creditView=null;
+		hide();
+
 		VIPView=new ProcessMarketingVIPView(this,view);
 	}
 
+
+	private void hide(){
+		if(abnormalView!=null)
+			abnormalView.hideAbnormal();
+		abnormalView=null;
+
+		if(profileView!=null)
+			profileView.hideProfile();
+		profileView=null;
+
+		if(strategyView!=null)
+			strategyView.hideStrategy();
+		strategyView=null;
+
+		if(VIPView!=null)
+			VIPView.hideVIP();
+		VIPView=null;
+
+		if(creditView!=null)
+			creditView.hideCredit();
+		creditView=null;
+	}
 
 
 }

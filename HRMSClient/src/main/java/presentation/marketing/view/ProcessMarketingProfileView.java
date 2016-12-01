@@ -14,9 +14,7 @@ import presentation.marketing.compoment.MJLabel;
 import vo.marketingVO.MarketingVO;
 
 public class ProcessMarketingProfileView extends JPanel{
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);
 	private Font font2=new Font("楷体",Font.ITALIC,20);
@@ -36,7 +34,7 @@ public class ProcessMarketingProfileView extends JPanel{
     private MJTextField TELField=new MJTextField(250, 206, 200, 48,font2);
     private MJTextField passwordField=new MJTextField(250, 286, 200, 48,font2);
 
-    public ProcessMarketingProfileView(ProcessMarketingViewControllerService controller,JPanel panel){
+    public ProcessMarketingProfileView(ProcessMarketingViewControllerService controller,ProcessMarketingView view){
      	this.MarketingID=controller.getMarketingID();
         this.Mvo=controller.init(MarketingID);
     	this.setBounds(200, 82, 704, 500);
@@ -67,25 +65,37 @@ public class ProcessMarketingProfileView extends JPanel{
         this.add(passwordField);
 
         //加入确认图标
-        MJButton ensureLabel=new MJButton(344,390, 60, 60,ensureIcon);
-        ensureLabel.addActionListener(new ActionListener(){
+        MJButton ensureButton=new MJButton(344,390, 60, 60,ensureIcon);
+        ensureButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String newTEL=TELField.getText(),newPassword=passwordField.getText();
-                Mvo.setTelephone(newTEL);Mvo.setPassword(newPassword);
-                controller.MarketingAccountUpdate(Mvo);
-                ensureLabel.setEnabled(false);
+				if(newTEL!=null&&newPassword!=null){//电话和密码都不为空时才进行分析
+					if(newTEL.matches("^[0-9]*$")){  //密码可以自由设置，电话必须全部为数字
+                        Mvo.setTelephone(newTEL);Mvo.setPassword(newPassword);
+                        controller.MarketingAccountUpdate(Mvo);
+                        ensureButton.setEnabled(false);
+                        TELField.setEditable(false);
+                        passwordField.setEditable(false);
+                        ((ProcessMarketingView) view).setHint("保存成功。");
+					}else{//提示电话格式输入错误
+						((ProcessMarketingView) view).setHint("电话格式有误。");
+					}
+				}else{//提示重新填写
+					((ProcessMarketingView) view).setHint("请继续填写。");
+				}
+
 			}
            });
-        ensureLabel.setEnabled(false);
-        this.add(ensureLabel);
+        ensureButton.setEnabled(false);
+        this.add(ensureButton);
 
         //设置TELmodifyJButton图标与监听
         MJButton modifyLabelForTEL=new MJButton(550, 215, 60, 60,modifyIcon);
         modifyLabelForTEL.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ensureLabel.setEnabled(true);
+				ensureButton.setEnabled(true);
 				TELField.setEditable(true);
 			}
         });
@@ -96,14 +106,14 @@ public class ProcessMarketingProfileView extends JPanel{
         modifyLabelForPassword.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ensureLabel.setEnabled(true);
+				ensureButton.setEnabled(true);
 				passwordField.setEditable(true);
 			}
         });
         this.add(modifyLabelForPassword);
 
         this.repaint();
-        panel.add(this);
+        view.add(this);
 	}
 
 	public void profileButtonClicked() {
