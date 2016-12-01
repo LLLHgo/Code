@@ -24,6 +24,8 @@ import presentation.client.compoment.RegisterPanel;
 import presentation.client.compoment.SearchPanel;
 import presentation.client.compoment.ViewOrderPanel;
 import presentation.client.compoment.WelPanel;
+import presentation.client.controller.PersonalPanelController;
+import presentation.client.controller.RegisterPanelController;
 import presentation.common.GuideBoardButton;
 
 public class ProcessClientView extends JPanel {
@@ -62,8 +64,8 @@ public class ProcessClientView extends JPanel {
 			wp=new WelPanel();
 			sp=new SearchPanel(frame);
 			vp=new ViewOrderPanel(frame);
-			pp=new PersonalPanel();
-			rp=new RegisterPanel();
+			pp=new PersonalPanel(id,new PersonalPanelController());
+			rp=new RegisterPanel(id,new RegisterPanelController());
 			ep=new EvaluatePanel(frame);
 			imageIcon = new ImageIcon("image/clientPanel.png");
 			searchHotel=new GuideBoardButton(240,"查询酒店");

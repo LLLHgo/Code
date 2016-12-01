@@ -85,8 +85,9 @@ public class SearchPanel extends JPanel{
 		    	p.vb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
 		    			scrollpanel.setVisible(false);
-		    			HotelDetailPanel h=new HotelDetailPanel();
-		    			frame.add(h);
+		    			HotelDetailPanel h=new HotelDetailPanel(temp);
+		    			//frame.add(h);
+		    			//h.repaint();
 		    			//temp.add(h);
 
 		    			//frame.add(new HotelDetailPanel());

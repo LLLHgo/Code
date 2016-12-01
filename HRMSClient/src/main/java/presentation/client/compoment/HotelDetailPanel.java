@@ -18,7 +18,7 @@ public class HotelDetailPanel extends JPanel{
 	private exitButton exit;
 	private JPanel panel;
 	//public HotelDetailPanel(JFrame frame,HotelSearchListPane hsp){
-	public HotelDetailPanel(){
+	public HotelDetailPanel(JPanel sp){
 
 	exit=new exitButton();
 	imageIcon = new ImageIcon("image/HotelDetailPanel.png");
@@ -30,6 +30,8 @@ public class HotelDetailPanel extends JPanel{
     this.setBounds(50,80,591,413);
     this.setOpaque(false);
     this.setVisible(true);
+    this.repaint();
+    sp.add(this);
     //frame.add(this);
     //panel=this;
 	}

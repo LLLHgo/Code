@@ -10,6 +10,7 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogicservice.clientblservice.ClientBLService;
 import dataservice.clientdataservice.ClientDataService;
+import datatool.ClientDataTool;
 import po.ClientPO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
@@ -23,12 +24,12 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public ClientVO getclient(String clientID) {
 		// TODO Auto-generated method stub
-		try{
+		/*try{
 		return clientdata.findPersonalInfo (clientID);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return null;
+		return null;*/return ClientDataTool.clientVO1;
 	}
 
 	@Override
@@ -86,11 +87,11 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public ResultMessage updateInfo(ClientVO vo) {
 		// TODO Auto-generated method stub
-		try{
+		/*try{
 			return clientdata.modifyPersonalInfo(vo);
 			}catch(Exception e){
 				e.printStackTrace();
-			}
+			}*/
 		return null;
 	}
 

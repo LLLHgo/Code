@@ -13,7 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import presentation.DialogCreator;
+import presentation.client.controller.PersonalPanelController;
 import presentation.common.CreditFrame;
+import vo.clientVO.ClientVO;
 
 
 public class PersonalPanel extends JPanel{
@@ -25,24 +28,32 @@ public class PersonalPanel extends JPanel{
 	private Label telLabel;
 	private Label vipLabel;
 	private Label creditLabel;
+	private okButton ok;
+	private deleteButton delete;
 	private creditButton cb;
 	private editButton editName;
 	private editButton editTel;
+	private PersonalPanelController controller;
 	private ArrayList<String> credits;
-	public PersonalPanel(){
-		credits=new ArrayList<String>();
-		credits.add("hello");
-		credits.add("world");
+	private ClientVO vo;
+	public PersonalPanel(String clientID,PersonalPanelController controller){
+		this.controller=controller;
+		vo=controller.getclient(clientID);
+		credits=vo.getCreditRecord();
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
 		cb=new creditButton();
 		cb.addActionListener(new creditButtonListener());
 		imageIcon = new ImageIcon("image/personalPanel.png");
-		idLabel=new Label("ID:C00000001");
+		idLabel=new Label("ID:"+clientID);
 		idLabel.setBounds(250,170,200,30);
-		nameField=new Field("王二狗",200,220,100,35);
-		telField=new Field("13747474741",200,270,200,35);
+		nameField=new Field(vo.getName(),200,220,100,35);
+		telField=new Field(vo.getTel(),200,270,200,35);
 		nameLabel=new Label("姓名：");
 		nameLabel.setBounds(120,220,100,30);
+		ok=new okButton(500,150);
+		ok.addActionListener(new okButtonListener());
+		delete=new deleteButton(520,270);
+		delete.addActionListener(new deleteButtonListener());
 		editName=new editButton(320,220);
 		editName.addActionListener(new editNameButtonListener());
 		telLabel=new Label("电话：");
@@ -51,7 +62,7 @@ public class PersonalPanel extends JPanel{
 		editTel.addActionListener(new editTelButtonListener());
 		vipLabel=new Label("会员类型：非会员");
 		vipLabel.setBounds(120,320,200,30);
-		creditLabel=new Label("信用值：100");
+		creditLabel=new Label("信用值："+vo.getCredit());
 		creditLabel.setBounds(120,370,150,30);
 		this.add(idLabel);
 		this.add(nameLabel);
@@ -61,6 +72,8 @@ public class PersonalPanel extends JPanel{
 		this.add(vipLabel);
 		this.add(creditLabel);
 		this.add(cb);
+		this.add(ok);
+		this.add(delete);
 		this.add(editName);
 		this.add(editTel);
 		this.setVisible(false);
@@ -102,7 +115,43 @@ public class PersonalPanel extends JPanel{
 		this.setBounds(270,350,60,60);
 		}
 	}
+	 private class okButtonListener implements ActionListener{
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				vo.setName(nameField.getText());
+				vo.setTel(telField.getText());
+				boolean k=controller.updateInfo(vo);
+				if(k)DialogCreator.successDialog("suceess");
+				else DialogCreator.failDialog("fail");
+				nameField.setOpaque(false);
+				nameField.setFocusable(false);
+				nameField.setForeground(Color.WHITE);
+				telField.setOpaque(false);
+				telField.setFocusable(false);
+				telField.setForeground(Color.WHITE);
+
+			}
+
+		}
+	 private class deleteButtonListener implements ActionListener{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				nameField.setText(vo.getName());
+				telField.setText(vo.getTel());
+				nameField.setOpaque(false);
+				nameField.setFocusable(false);
+				nameField.setForeground(Color.WHITE);
+				telField.setOpaque(false);
+				telField.setFocusable(false);
+				telField.setForeground(Color.WHITE);
+
+			}
+
+		}
 	 private class editNameButtonListener implements ActionListener{
 
 			@Override

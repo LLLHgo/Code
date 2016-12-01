@@ -12,8 +12,7 @@ public class testFrame {
 		//frame.getContentPane().add(new ProcessLoginView(frame, new ProcessLoginViewController()));
 		//frame.getContentPane().add(new HotelstaffView(frame,new HotelstaffViewController(),"H00000000"));
 		//frame.getContentPane().add(new HotelinfoPanel());
-HotelDetailPanel h=new HotelDetailPanel();
-		frame.add(h);
+
 		frame.setLocationRelativeTo(null);
 		frame.setLayout(null);
 		frame.setVisible(true);

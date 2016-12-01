@@ -17,7 +17,6 @@ public class HotelSearchItemPanel extends JPanel{
 	private PersonalPanel ppp;
 public HotelSearchItemPanel(int x,int y,JFrame frame){
 	imageIcon = new ImageIcon("image/hotelSearchPanel.png");
-	 ppp=new PersonalPanel();
 	vb=new viewButton(500, 30);
 
     this.setLayout(null);
