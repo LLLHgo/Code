@@ -67,20 +67,21 @@ public class OrderVO {
 		this.actualArrivedTime=actualArrivedTime;
 		this.anticipateLeaveTime=anticipateLeaveTime;
 	}
-
-	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,
-			String orderDate,String anticipateLeaveTime,OrderType orderType,String roomType,
-			int roomNum,double price){
+	// 旧orderVO
+	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
+			String orderDate,OrderType orderType,String hotelName,
+			String hotelId,double price,ArrayList <String> strategies){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
 		this.clientPhone=clientPhone;
+		this.vipType=vipType;
 		this.orderDate=orderDate;
 		this.orderType=orderType;
+		this.hotelName=hotelName;
+		this.hotelId=hotelId;
 		this.price=price;
-		this.anticipateLeaveTime = anticipateLeaveTime;
-		this.roomType = roomType;
-		this.roomNum = roomNum;
+		this.strategies=strategies;
 	}
 
 	

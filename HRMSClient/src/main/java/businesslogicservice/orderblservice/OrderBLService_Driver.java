@@ -21,21 +21,21 @@ public class OrderBLService_Driver {
 		
 		// 下订单
 		System.out.println("下订单:");
-		result=orderBLService.createOrder(new OrderVO("20161015085702","C00000002","Lucy","17714368889",
+		/*result=orderBLService.createOrder(new OrderVO("20161015085702","C00000002","Lucy","17714368889",
 				VIPType.ORDINARYVIP,"2016-10-15 08:57",OrderType.NORMALNONEXEC,"caesar","H00000001",650.32,new ArrayList<String>()));
 		if(result==ResultMessage.SUCCESS) 
 			System.out.println("创建失败");
 		else if(result==ResultMessage.FAIL)
-			System.out.println("创建成功");
+			System.out.println("创建成功");*/
 		
 		// 保存订单
 		System.out.println("保存订单:");
-		result=orderBLService.createOrder(new OrderVO("20161015085702","C00000002","Lucy","17714368889",
+		/*result=orderBLService.createOrder(new OrderVO("20161015085702","C00000002","Lucy","17714368889",
 				VIPType.ORDINARYVIP,"2016-10-15 08:57",OrderType.NORMALNONEXEC,"caesar","H00000001",650.32,new ArrayList<String>()));
 		if(result==ResultMessage.SUCCESS) 
 			System.out.println("保存成功");
 		else if(result==ResultMessage.FAIL)
-			System.out.println("保存失败");
+			System.out.println("保存失败");*/
 		
 		// 取消订单
 		System.out.println("取消订单:");
