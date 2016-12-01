@@ -61,7 +61,7 @@ public class HotelinfoBLService_Driver{
 
 		//查找某酒店某类型的房间信息
 		System.out.println("查找ID为H00000000的酒店，类型为四人间的酒店房间信息...");
-		RoominfoVO roominfoVO  = hotelinfoBLService.getRoominfo("H00000000", "四人间");
+		RoominfoVO roominfoVO  = hotelinfoBLService.getroominfo("H00000000", "四人间");
 		if(roominfoVO!=null)System.out.println("查找成功");
 
 		//查找某酒店的所有房间信息

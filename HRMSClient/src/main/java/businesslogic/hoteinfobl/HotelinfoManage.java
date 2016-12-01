@@ -1,5 +1,14 @@
 package businesslogic.hoteinfobl;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,21 +102,6 @@ public class HotelinfoManage implements HotelinfoBLService{
 	}
 
 	@Override
-	public RoominfoVO getRoominfo(String hotelID, String roomID) {
-		//TODO
-		//增加了一个直接从数据库里找某个房间信息的方法，不知道是不是合适
-//		RoominfoPO po;
-//		RoominfoVO vo;
-//		try {
-//			po = data.getRoominfo(hotelID, roomID);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-		return null;
-	}
-
-	@Override
 	public List<RoominfoVO> getRoominfoList(String hotelID) {
 		List<RoominfoPO> listPO;
 		List<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
@@ -126,7 +120,7 @@ public class HotelinfoManage implements HotelinfoBLService{
 	private RoominfoVO po2vo(RoominfoPO po){
 		RoominfoVO vo;
 		try{
-			vo = new RoominfoVO(po.getRoomNum(),po.getType(),
+			vo = new RoominfoVO(po.getType(),po.getRoomNum(),
 					po.getPrice(),po.getRoomState());
 		}catch(NullPointerException e){
 			e.printStackTrace();
@@ -145,21 +139,46 @@ public class HotelinfoManage implements HotelinfoBLService{
 
 	@Override
 	public HotelinfoVO gethotelinfoVO(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
+		HotelinfoPO po = null;
+		try {
+			po = data.findhotelinfo(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(po==null){
+			return null;
+		}
+		return PO2VO(po);
 	}
 
 	@Override
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
-		// TODO Auto-generated method stub
-		return null;
+		RoominfoPO po = null;
+		try {
+			po = data.getRoominfo(hotelID, roomID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(po==null){
+			return null;
+		}
+		return po2vo(po);
 	}
 
 	@Override
 	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
-		// TODO Auto-generated method stub
+		RoominfoPO po = new RoominfoPO(
+				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
+		try {
+			data.updateroominfo(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 		return false;
 	}
+	
 
 	@Override
 	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
@@ -169,13 +188,49 @@ public class HotelinfoManage implements HotelinfoBLService{
 
 	@Override
 	public String[] getArea() {
-		String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈"};
+		BufferedReader br = null;
+		String data = "";
+		String[] areas = null;
+		try {
+			br = new BufferedReader(new FileReader(new File("./src/main/resource/txt/Area.txt")));
+			while((data = br.readLine())!=null)
+			{
+				areas = data.split(",");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return areas;
 	}
 
 	@Override
 	public boolean addArea(String area) {
-		//TODO 序列化保存
+		String[] areas = getArea();
+		int flag = 0;
+		for(int i=0;i<areas.length;i++){
+			if(area.equals(areas[i])){
+				flag = 1;
+			}
+		}
+		if(flag == 1){
+			return false;
+		}
+		BufferedWriter bw;
+		String data = "";
+		try {
+			bw = new BufferedWriter(new FileWriter(
+					new File("./src/main/resource/txt/Area.txt"),true));
+			bw.write(","+area);	
+			bw.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
 		return true;
 	}
 }
