@@ -5,15 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
-import Enum.VIPType;
 import vo.clientVO.ClientVO;
 import vo.districtVO.DistrictVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public interface ProcessMarketingViewControllerService {
     /**
@@ -100,40 +97,6 @@ public interface ProcessMarketingViewControllerService {
      */
     public ResultMessage deleteMarketingStrategy(String vo);
 
-    /**
-     * 根据酒店ID返回该酒店的促销策略
-     * @param hotelID
-     * @return 返回该酒店的促销策略列表
-     */
-    public List<HotelStrategyVO> getHotelStrategy(String hotelID);
-
-    /**
-     * 更新酒店制定的促销策略
-     * @param vo
-     * @return 返回是否更新成功
-     */
-    public ResultMessage updateHotelStrategy(String hotelID,HotelStrategyVO vo);
-
-    /**
-     * 增加会员福利信息
-     * @param vo
-     * @return 返回是否增加成功
-     */
-    public  ResultMessage addPrivilege(PrivilegeVO vo);
-
-    /**
-     * 根据VIPType返回该类型VIP的福利优惠信息
-     * @param VIPType
-     * @return 返回福利信息列表
-     */
-    public List<PrivilegeVO> findAllPrivilege(VIPType type);
-
-    /**
-     * 删除会员福利信息
-     * @param vo
-     * @return 返回是否删除成功
-     */
-    public ResultMessage deletePrivilege(PrivilegeVO vo);
 
 	/**
 	 * 保存订单

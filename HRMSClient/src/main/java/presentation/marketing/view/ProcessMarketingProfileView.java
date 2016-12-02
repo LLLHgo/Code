@@ -1,5 +1,6 @@
 package presentation.marketing.view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,10 +54,14 @@ public class ProcessMarketingProfileView extends JPanel{
         TELField.setText(Mvo.getTelephone());
         passwordField.setText(Mvo.getPassword());
 
-        nameField.setEditable(false);;
-        accountField.setEditable(false);;
-        TELField.setEditable(false);;
-        passwordField.setEditable(false);;
+        nameField.setEditable(false);
+        accountField.setEditable(false);
+        TELField.setEditable(false);
+        passwordField.setEditable(false);
+        nameField.setForeground(Color.white);
+        accountField.setForeground(Color.white);
+        TELField.setForeground(Color.white);
+        passwordField.setForeground(Color.white);
 
 
         this.add(nameField);
@@ -70,9 +75,10 @@ public class ProcessMarketingProfileView extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String newTEL=TELField.getText(),newPassword=passwordField.getText();
-				if(newTEL!=null&&newPassword!=null&&newTEL.length()!=0&&newPassword.length()!=0){//电话和密码都不为空时才进行分析
+				if(newTEL.length()!=0&&newPassword.length()!=0){//电话和密码都不为空时才进行分析
 					if(newTEL.matches("^[0-9]*$")){  //密码可以自由设置，电话必须全部为数字
-                        Mvo.setTelephone(newTEL);Mvo.setPassword(newPassword);
+                        Mvo.setTelephone(newTEL);
+                        Mvo.setPassword(newPassword);
                         controller.MarketingAccountUpdate(Mvo);
                         ensureButton.setEnabled(false);
                         TELField.setEditable(false);
@@ -86,6 +92,7 @@ public class ProcessMarketingProfileView extends JPanel{
 				}
       		}
            });
+
         ensureButton.setEnabled(false);
         this.add(ensureButton);
 
