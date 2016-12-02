@@ -19,6 +19,7 @@ import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import businesslogicservice.orderblservice.OrderBLService_Stub;
+import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import businesslogicservice.strategyblservice.StrategyBLService_Stub;
 import datatool.DistrictDataTool;
@@ -55,7 +56,8 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	
 	HotelinfoBLService hotelinfo;
 	StrategyBLService strategy;
-	OrderOperatorBLService order;
+	OrderFindBLService orderFind;
+	OrderOperatorBLService orderOperator;
 	HotelstaffBLService hotelstaff;
 //	HotelinfoBLService_stub hotelinfo;
 //	StrategyBLService_stub strategy;
@@ -78,7 +80,8 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	
 //		hotelinfo = new HotelinfoBLService_stub();
 		strategy = new StrategyBLService_Stub();
-		order = new OrderBLService_Stub();
+		orderFind = new OrderBLService_Stub();
+		orderOperator=new OrderBLService_Stub();
 //		hotelstaff = new HotelstaffBLService_stub();
 	}
 
@@ -167,32 +170,32 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public ResultMessage updateOrderState(OrderVO vo) {
-		return order.saveOrderPO(vo);
+		return orderOperator.saveOrderPO(vo);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getALLHotelOrderList(String hotelID, OrderType ALL) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(ALL, hotelID);
+		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ALL, hotelID);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getUnexecutedHotelOrderList(String hotelID, OrderType NORMALEXEC) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(NORMALEXEC, hotelID);
+		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(NORMALEXEC, hotelID);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, OrderType NORMALNONEXEC) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(NORMALNONEXEC, hotelID);
+		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(NORMALNONEXEC, hotelID);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
+		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
 	}
 	
 	@Override
 	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
+		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
 	}
 	
 	@Override
@@ -369,7 +372,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
-		ArrayList<OrderVO> list = (ArrayList<OrderVO>) order.findSpecificHotelClientOrderList(clientID, hotelID);
+		ArrayList<OrderVO> list = (ArrayList<OrderVO>) orderFind.findSpecificHotelClientOrderList(clientID, hotelID);
 		return list;
 	}
 
