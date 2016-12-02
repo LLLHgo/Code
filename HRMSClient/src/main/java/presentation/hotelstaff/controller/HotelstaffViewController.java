@@ -173,27 +173,27 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public ArrayList<OrderVO> getALLHotelOrderList(String hotelID, OrderType ALL) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrder(ALL, hotelID);
+		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(ALL, hotelID);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getUnexecutedHotelOrderList(String hotelID, OrderType NORMALEXEC) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrder(NORMALEXEC, hotelID);
+		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(NORMALEXEC, hotelID);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, OrderType NORMALNONEXEC) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrder(NORMALNONEXEC, hotelID);
+		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(NORMALNONEXEC, hotelID);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrder(ABNORMALCANCEL, hotelID);
+		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
 	}
 	
 	@Override
 	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		return (ArrayList<OrderVO>) order.findHotelTypeOrder(ABNORMALCANCEL, hotelID);
+		return (ArrayList<OrderVO>) order.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
 	}
 	
 	@Override
@@ -370,7 +370,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
-		ArrayList<OrderVO> list = (ArrayList<OrderVO>) order.findSpecificHotelClientOrder(clientID, hotelID);
+		ArrayList<OrderVO> list = (ArrayList<OrderVO>) order.findSpecificHotelClientOrderList(clientID, hotelID);
 		return list;
 	}
 
