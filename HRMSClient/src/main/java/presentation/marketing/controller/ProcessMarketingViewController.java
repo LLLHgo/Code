@@ -2,8 +2,6 @@ package presentation.marketing.controller;
 
 import java.util.Date;
 import java.util.List;
-
-<<<<<<< HEAD
 import Enum.ResultMessage;
 import Enum.VIPType;
 import Enum.UserType;
@@ -27,12 +25,10 @@ import businesslogicservice.logblservice.*;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import businesslogicservice.strategyblservice.StrategyBLService_Stub;
 import datatool.DistrictDataTool;
-=======
 import Enum.*;
 import businesslogic.marketingbl.MarketingBLController;
 import presentation.marketing.view.*;
 import businesslogicservice.marketinblservice.*;
->>>>>>> origin/master
 import vo.clientVO.ClientVO;
 import vo.districtVO.DistrictVO;
 import vo.levelVO.LevelVO;
@@ -41,17 +37,15 @@ import vo.orderVO.OrderVO;
 import vo.strategyVO.*;
 
 public class ProcessMarketingViewController implements ProcessMarketingViewControllerService{
-<<<<<<< HEAD
+
     private LogBLService LogBLService;//bl层的logManage未实现blservice
 	private MarketingBLService MarketingBlService;
     private StrategyBLService StrategyBLService;
     private OrderOperatorBLService OrderBLOperatorService;
     private OrderFindBLService OrderBLFindService;
     private ClientBLService ClientBLService;
-=======
     private MarketingBLControllerService MarketingBLControllerService;
 
->>>>>>> origin/master
     private String marketingID;
     private ProcessMarketingView view;
     private ProcessMarketingProfileView profileView;
@@ -62,16 +56,13 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
     public ProcessMarketingViewController (String marketingID){
     	this.marketingID=marketingID;
-<<<<<<< HEAD
     	this.MarketingBlService=new MarketingBLService_Stub();
     	this.StrategyBLService=new StrategyBLService_Stub();
     	this.OrderBLOperatorService=new OrderBLService_Stub();
     	this.OrderBLFindService=new OrderBLService_Stub();
     	this.LogBLService=new LogBLService_Stub();
         this.ClientBLService=new ClientBLService_Stub();
-=======
     	this.MarketingBLControllerService=new MarketingBLController();
->>>>>>> origin/master
     }
     @Override
     public String getMarketingID(){
@@ -135,20 +126,6 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 
-	@Override
-	public ResultMessage saveOrder(OrderVO order) {
-		return this.MarketingBLControllerService.saveOrderPO(order);
-	}
-
-	@Override
-	public List<OrderVO> findAbnormalOrderList(Date date) {
-		return this.MarketingBLControllerService.findAbnormalOrderList(date);
-	}
-
-	@Override
-	public OrderVO findSpecificOrder(String orderID) {
-		return this.MarketingBLControllerService.findSpecificOrder(marketingID,orderID);//删掉List
-	}
 
 	@Override
 	public ClientVO getclient(String clientID) {
@@ -156,7 +133,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public ResultMessage saveOrder(OrderVO order) {
 		return this.OrderBLOperatorService.saveOrderPO(order);
 	}
@@ -169,7 +146,9 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	@Override
 	public OrderVO findSpecificOrder(String orderID) {
 		return this.OrderBLFindService.findSpecificOrder(marketingID,orderID);//删掉List
-=======
+	}
+
+	@Override
 	public boolean setCredit(String clientID, double amount) {//改为double
 		return this.MarketingBLControllerService.setCredit(clientID, (int)amount);
 	}
@@ -182,7 +161,6 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	@Override
 	public List<DistrictVO> getDistricts() {
 		return this.MarketingBLControllerService.getDistricts();
->>>>>>> origin/master
 	}
 	@Override
 	public List<String> getDistrictNames() {
