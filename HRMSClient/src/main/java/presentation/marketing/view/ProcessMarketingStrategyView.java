@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.compoment.*;
-import vo.districtVO.DistrictVO;
+import vo.areaVO.AreaVO;
 import vo.strategyVO.MarketingStrategyVO;;
 
 public class ProcessMarketingStrategyView extends JPanel{
@@ -162,7 +162,7 @@ public class ProcessMarketingStrategyView extends JPanel{
 	}
 	public void newButtonClicked(){
 		hideGroup();
-		List<DistrictVO> districts=controller.getDistricts();
+		List<AreaVO> districts=controller.getDistricts();
 		newPanel=new newPanel(0,0,780,500,districts);
 	    newPanel.setVisible(true);
 	    Calendar c=Calendar.getInstance();

@@ -4,14 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
+import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.districtVO.DistrictVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public interface MarketingBLControllerService {
 
@@ -42,11 +40,6 @@ public interface MarketingBLControllerService {
 
 	public ResultMessage saveOrderPO(OrderVO order);
 
-	public ResultMessage deletePrivilege(PrivilegeVO vo);
-
-	public ResultMessage updateHotelStrategy(HotelStrategyVO vo);
-
-	public List<HotelStrategyVO> getHotelStrategy(String hotelID);
 
 	public ClientVO getclient(String clientID);
 
@@ -58,7 +51,7 @@ public interface MarketingBLControllerService {
 
 	public void addLog(String log);
 
-	public List<DistrictVO> getDistricts();
+	public List<AreaVO> getDistricts();
 
 	public List<String> getDistrictNames();
 

@@ -4,154 +4,132 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
+import businesslogicservice.clientblservice.ClientBLService;
+import businesslogicservice.clientblservice.ClientBLService_Stub;
+import businesslogicservice.logblservice.LogBLService;
+import businesslogicservice.logblservice.LogBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLControllerService;
+import businesslogicservice.marketinblservice.MarketingBLService;
+import businesslogicservice.marketinblservice.MarketingBLService_Stub;
+import businesslogicservice.orderblservice.*;
+import businesslogicservice.strategyblservice.StrategyBLService;
+import businesslogicservice.strategyblservice.StrategyBLService_Stub;
+import datatool.AreaDataTool;
+import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.districtVO.DistrictVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public class MarketingBLController implements MarketingBLControllerService{
 
+	private MarketingBLService marketingBL=new MarketingBLService_Stub();
+	private ClientBLService clientBL=new ClientBLService_Stub();
+	private StrategyBLService strategyBL=new StrategyBLService_Stub();
+	private OrderBLService_Stub orderBL=new OrderBLService_Stub();
+	private LogBLService logBL=new LogBLService_Stub();
+
 	@Override
 	public ResultMessage updateLevel(List<LevelVO> vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.marketingBL.updateLevel(vo);
 	}
 
 	@Override
 	public List<LevelVO> findAllLevel() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.marketingBL.findAllLevel();
 	}
 
 	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.marketingBL.MarketingAccountAdd(marketing);
 	}
 
 	@Override
 	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.marketingBL.MarketingAccountUpdate(marketing);
 	}
 
 	@Override
 	public ResultMessage MarketingAccountDelete(MarketingVO marketingVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.marketingBL.MarketingAccountDelete(marketingVO);
 	}
 
 	@Override
 	public MarketingVO MarketingAccountFind(String marketingID) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.marketingBL.MarketingAccountFind(marketingID);
 	}
 
 	@Override
 	public boolean checkAccount(String marketingID, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.marketingBL.checkAccount(marketingID, password);
 	}
 
 	@Override
 	public MarketingVO init(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.marketingBL.init(id);
 	}
 
 	@Override
 	public boolean setAllClientLevel(LevelVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.clientBL.setAllClientLevel(vo);
 	}
 
 	@Override
 	public boolean setCredit(String clientID, int amount) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.clientBL.setCredit(clientID,amount);
 	}
 
 	@Override
 	public OrderVO findSpecificOrder(String marketingID, String orderID) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.orderBL.findSpecificOrder(marketingID, orderID);
 	}
 
 	@Override
 	public List<OrderVO> findAbnormalOrderList(Date date) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.orderBL.findAbnormalOrderList(date);
 	}
 
 	@Override
 	public ResultMessage saveOrderPO(OrderVO order) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.orderBL.saveOrderPO(order);
 	}
 
-	@Override
-	public ResultMessage deletePrivilege(PrivilegeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public ResultMessage updateHotelStrategy(HotelStrategyVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ClientVO getclient(String clientID) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.clientBL.getclient(clientID);
 	}
 
 	@Override
 	public ResultMessage deleteMarketingStrategy(String vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.strategyBL.deleteMarketingStrategy(vo);
 	}
 
 	@Override
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.strategyBL.getMarketingStrategy(id);
 	}
 
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.strategyBL.addMarketingStrategy(vo);
 	}
 
 	@Override
 	public void addLog(String log) {
-		// TODO Auto-generated method stub
-
+		this.logBL.addLog(log);
 	}
 
 	@Override
-	public List<DistrictVO> getDistricts() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AreaVO> getDistricts() {
+		return AreaDataTool.vos;
 	}
 
 	@Override
 	public List<String> getDistrictNames() {
-		// TODO Auto-generated method stub
-		return null;
+		return AreaDataTool.list1;
 	}
 
 }

@@ -61,13 +61,4 @@ public interface MarketingBLService {
      */
     public MarketingVO init(String id);
 
-    /**
-     * 网站管理人员删除网站营销人员账户
-     * @param userId
-     * @return 删除网站营销人员账户成功或失败的ResultMessage的enum值
-     */
-	public ResultMessage saveSitemanagerDelete(String userId);
-
-
-
 }

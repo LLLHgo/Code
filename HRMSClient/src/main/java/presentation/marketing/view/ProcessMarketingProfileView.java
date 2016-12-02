@@ -9,6 +9,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Enum.ResultMessage;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJTextField;
 import presentation.marketing.compoment.MJLabel;
@@ -77,20 +78,23 @@ public class ProcessMarketingProfileView extends JPanel{
 				String newTEL=TELField.getText(),newPassword=passwordField.getText();
 				if(newTEL.length()!=0&&newPassword.length()!=0){//电话和密码都不为空时才进行分析
 					if(newTEL.matches("^[0-9]*$")){  //密码可以自由设置，电话必须全部为数字
-                        Mvo.setTelephone(newTEL);
+  						Mvo.setTelephone(newTEL);
                         Mvo.setPassword(newPassword);
-                        controller.MarketingAccountUpdate(Mvo);
-                        ensureButton.setEnabled(false);
-                        TELField.setEditable(false);
-                        passwordField.setEditable(false);
+                        if(controller.MarketingAccountUpdate(Mvo)==ResultMessage.SUCCESS){
+                            ensureButton.setEnabled(false);
+                            TELField.setEditable(false);
+                            passwordField.setEditable(false);
                         ((ProcessMarketingView) view).setHint("保存成功。");
-					}else{//提示电话格式输入错误
+                        }else{
+                        	((ProcessMarketingView) view).setHint("保存失败。");
+                        }
+                        }else{//提示电话格式输入错误
 						((ProcessMarketingView) view).setHint("电话格式有误。");
 					}
 				}else{//提示重新填写
 					((ProcessMarketingView) view).setHint("请继续填写。");
 				}
-      		}
+			}
            });
 
         ensureButton.setEnabled(false);

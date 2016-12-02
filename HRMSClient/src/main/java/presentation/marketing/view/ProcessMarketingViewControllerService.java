@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
+import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.districtVO.DistrictVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
@@ -148,7 +148,7 @@ public interface ProcessMarketingViewControllerService {
 	public void addLog(String log);
 	public void strategyButtonClicked();
 	public void creditButtonClicked();
-	public List<DistrictVO> getDistricts();
+	public List<AreaVO> getDistricts();
 	public List<String> getDistrictNames();
 	public void VIPButtonClicked();
 

@@ -50,30 +50,6 @@ public class MarketingBLService_Stub implements MarketingBLService {
 
 
     /**
-     * 修改网站营销人员信息
-     * @param vo
-     * @return 返回是否修改网站营销人员信息成功
-     */
-	public ResultMessage update(MarketingVO vo) {
-		if(vo.getMarketingID()=="M0000001")
-			return ResultMessage.FAIL;
-	    else
-	    	return ResultMessage.SUCCESS;
-	}
-
-    /**
-     * 网站管理人员修改营销人员信息
-     * @param vo
-     * @return 返回是否网站管理人员修改营销人员信息成功
-     */
-	public ResultMessage MarketingAccountUpdate(String userId) {
-		if(userId.charAt(0)=='M')
-			return ResultMessage.SUCCESS;
-	    else
-	    	return ResultMessage.FAIL;
-	}
-
-    /**
      * 网站管理人员增加营销人员信息
      * @param vo
      * @return 返回是否网站管理人员增加营销人员信息成功
@@ -83,18 +59,6 @@ public class MarketingBLService_Stub implements MarketingBLService {
 			return ResultMessage.DUPLICATENAME;
 	    else
 	    	return ResultMessage.SUCCESS;
-	}
-
-    /**
-     * 网站管理人员删除营销人员信息
-     * @param vo
-     * @return 返回是否网站管理人员删除营销人员信息成功
-     */
-	public ResultMessage saveSitemanagerDelete(String id) {
-		if(id.charAt(0)=='M')
-			return ResultMessage.SUCCESS;
-	    else
-	    	return ResultMessage.FAIL;
 	}
 
     /**
@@ -116,7 +80,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
      * @return 返回网站营销人员个人信息
      */
 	public MarketingVO init(String id) {
-		MarketingVO vo=new MarketingVO("营销人员一号","1029384756","M0000002","13380009000");
+		MarketingVO vo=new MarketingVO("营销人员一号","1029384756","M000000001","13380009000");
 		return vo;
 	}
 
@@ -144,8 +108,11 @@ public class MarketingBLService_Stub implements MarketingBLService {
 
 	@Override
 	public ResultMessage MarketingAccountUpdate(MarketingVO marketing) {
-		// TODO Auto-generated method stub
-		return null;
+		if(marketing.getMarketingID().charAt(0)=='M'){
+			return ResultMessage.SUCCESS;
+		}else{
+			return ResultMessage.FAIL;
+		}
 	}
 	@Override
 	public ResultMessage MarketingAccountDelete(MarketingVO marketingVO) {

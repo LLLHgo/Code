@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 
 import Enum.VIPType;
 import Enum.marketingStrategy;
-import vo.districtVO.DistrictVO;
+import vo.areaVO.AreaVO;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class newPanel extends MJPanel{
@@ -38,7 +38,7 @@ public class newPanel extends MJPanel{
 
     private static final long serialVersionUID = 1L;
 
-	public newPanel(int x, int y, int w, int h,List<DistrictVO> list) {
+	public newPanel(int x, int y, int w, int h,List<AreaVO> list) {
 		super(x, y, w, h);
 		this.setVisible(false);
 		this.add(namePanel);
@@ -52,7 +52,7 @@ public class newPanel extends MJPanel{
         this.add(expenditurePanel);
 
         int items=0;//酒店的个数 每个酒店需要30高度
-        for(DistrictVO vo:list){
+        for(AreaVO vo:list){
         	items+=vo.getHotels().size();
         }
         hotelsPanel=new MJPanel(0, 0, 700,3520);
@@ -60,7 +60,7 @@ public class newPanel extends MJPanel{
 
         int dis=-1;//商圈的个数 每个商圈需要40高度
         items=0;
-        for(DistrictVO vo:list){
+        for(AreaVO vo:list){
         	items+=vo.getHotels().size();
         	dis++;
         	List<JRadioButton> hotelButtonList =new ArrayList<JRadioButton>();;

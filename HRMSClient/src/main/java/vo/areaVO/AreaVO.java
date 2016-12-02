@@ -1,20 +1,20 @@
-package vo.districtVO;
+package vo.areaVO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DistrictVO {
+public class AreaVO {
 
 	//商圈名字
 	private String name;
 	//商圈类为维护一个酒店名字组成的list
 	private List<String> hotels;
 
-	public DistrictVO(String name){
+	public AreaVO(String name){
 		this.name=name;
 		setHotels(new ArrayList<String>());
 	}
-	public DistrictVO(String name,List<String> hotels){
+	public AreaVO(String name,List<String> hotels){
 		this.name=name;
 		this.hotels = hotels;
 	}

@@ -56,11 +56,4 @@ public class MarketingManage implements MarketingBLService{
 		return null;
 	}
 
-	@Override
-	public ResultMessage saveSitemanagerDelete(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }
