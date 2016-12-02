@@ -17,6 +17,7 @@ public class MJButton extends JButton{
 		this.setBounds(x,y,w,h);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
+		this.setFocusPainted(false);
 		this.setIcon(icon);
     }
 
@@ -26,6 +27,8 @@ public class MJButton extends JButton{
 		this.setFont(font);
 		this.setForeground(Color.white);
 		this.setContentAreaFilled(false);
+		this.setFocusPainted(false);
+
 		this.setBorderPainted(false);
 
     }
@@ -39,6 +42,7 @@ public class MJButton extends JButton{
 		this.setForeground(Color.white);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
+		this.setFocusPainted(false);
         this.setIcon(icon);
         JLabel label=new MJLabel(text,113,7,180,50,font);
         this.add(label);

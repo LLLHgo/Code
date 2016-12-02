@@ -51,7 +51,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public List<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo) {
+	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo) {
 		ArrayList<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
 		list.add(hotelinfovo);
 		return list;
@@ -81,7 +81,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * @param hotelID
 	 * @return 房间信息列表
 	 */
-	public List<RoominfoVO> getRoominfoList(String hotelID) {
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
 		ArrayList<RoominfoVO> list = new ArrayList<RoominfoVO>();
 		list.add(roominfovo);
 		return list;
@@ -91,8 +91,8 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * 计算打折后的价格
 	 * @return 最终价格
 	 */
-	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
-			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
 		return 666;
 	}
 
@@ -195,6 +195,19 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 
 	@Override
 	public boolean addArea(String area) {
+		return true;
+	}
+
+	@Override
+	public String[] getRoomType() {
+		String[] types = {"标准间","大床房","总统套房"};
+		return types;
+	}
+
+	@Override
+	public boolean addRoomType(String type) {
+		if(type.equals("标准间")||type.equals("大床房")||type.equals("总统套房"))
+		return false;
 		return true;
 	}
 

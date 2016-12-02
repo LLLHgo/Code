@@ -54,9 +54,9 @@ public class HotelinfoManage implements HotelinfoBLService{
 	}
 
 	@Override
-	public List<HotelinfoVO> getBasicinfoList(ClientRequirementVO clientvo) {
-		List<HotelinfoPO> listPO;
-		List<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
+	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO clientvo) {
+		ArrayList<HotelinfoPO> listPO;
+		ArrayList<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
 		try {
 			listPO = data.findHotelinfoList(clientvo.getArea());
 			for(int i=0;i<listPO.size();i++){
@@ -102,9 +102,9 @@ public class HotelinfoManage implements HotelinfoBLService{
 	}
 
 	@Override
-	public List<RoominfoVO> getRoominfoList(String hotelID) {
-		List<RoominfoPO> listPO;
-		List<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
+		ArrayList<RoominfoPO> listPO;
+		ArrayList<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
 		try {
 			listPO = data.getRoominfoList(hotelID);
 		} catch (RemoteException e) {
@@ -130,8 +130,8 @@ public class HotelinfoManage implements HotelinfoBLService{
 	}
 	
 	@Override
-	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
-			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -223,6 +223,53 @@ public class HotelinfoManage implements HotelinfoBLService{
 			bw = new BufferedWriter(new FileWriter(
 					new File("./src/main/resource/txt/Area.txt"),true));
 			bw.write(","+area);	
+			bw.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String[] getRoomType() {
+		BufferedReader br = null;
+		String data = "";
+		String[] roomtypes = null;
+		try {
+			br = new BufferedReader(new FileReader(new File("./src/main/resource/txt/RoomType.txt")));
+			while((data = br.readLine())!=null)
+			{
+				roomtypes = data.split(",");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return roomtypes;
+	}
+
+	@Override
+	public boolean addRoomType(String type) {
+		String[] roomtypes = getRoomType();
+		int flag = 0;
+		for(int i=0;i<roomtypes.length;i++){
+			if(type.equals(roomtypes[i])){
+				flag = 1;
+			}
+		}
+		if(flag == 1){
+			return false;
+		}
+		BufferedWriter bw;
+		try {
+			bw = new BufferedWriter(new FileWriter(
+					new File("./src/main/resource/txt/RoomType.txt"),true));
+			bw.write(","+type);	
 			bw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

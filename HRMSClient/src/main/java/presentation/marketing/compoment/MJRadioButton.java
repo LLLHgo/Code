@@ -20,6 +20,7 @@ public class MJRadioButton extends JRadioButton{
     	this.setContentAreaFilled(false);
 	    this.setOpaque(false);
 	    this.setBackground(null);
-	    this.setBorderPainted(false);;
+	    this.setBorderPainted(false);
+	    this.setFocusPainted(false);
     }
 }

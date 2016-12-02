@@ -54,7 +54,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
+	public ArrayList<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
 		RoominfoPO roominfo1 = new RoominfoPO("标准间","8304",200, RoomState.Usable);
 		RoominfoPO roominfo2 = new RoominfoPO("标准间","8305",200, RoomState.Usable);
 		RoominfoPO roominfo3 = new RoominfoPO("大床房","8306",200, RoomState.Usable);
@@ -117,7 +117,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	}
 
 	@Override
-	public List<HotelinfoPO> findHotelinfoList(String area) throws RemoteException {
+	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException {
 		
 		return null;
 	}

@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ import javax.swing.border.EmptyBorder;
 
 import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.OrderTypeButton;
+import presentation.hotelstaff.component.SearchButton;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.orderVO.OrderVO;
 
@@ -35,6 +38,10 @@ import datatool.OrderDataTool;
  * 
  * @version 1
  * @since 16.11.27
+ * @author liuyu
+ * 
+ * @version 2
+ * @since 16.12.2
  * @author liuyu
  *
  */
@@ -63,6 +70,7 @@ public class OrderPanel extends JPanel{
 	private boolean buttonFlag;
 	private JPanel orderPanel;
 	private JLabel resultLabel;
+	private SearchButton jbSearch;
 	
 	public OrderPanel(HotelstaffViewController controller){
 		this.controller = controller;
@@ -80,7 +88,7 @@ public class OrderPanel extends JPanel{
 		
 		Icheckbox = new ImageIcon("./src/main/resource/picture/hotelorder/checkbox.png");
 		IDetailedSearch = new ImageIcon("./src/main/resource/picture/hotelorder/searchbackground.png");
-		
+	
 		jlSearch = new JLabel();
 		jlSearch.setBounds(330, 90, 180, 25);
 		jlSearch.setForeground(Color.white);
@@ -121,7 +129,18 @@ public class OrderPanel extends JPanel{
 		jbDrag.setBorder(null);
 		jbDrag.addActionListener(new DragButtonActionListener());
 		this.add(jbDrag);
-		
+		jbDrag.addFocusListener(new FocusListener(){
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				showMessage("请选择订单状态");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+			
+		});
 
 		OrderVO orderVO4=new OrderVO("20161016092301","C00000010","Lily","17887780990"
 				,VIPType.ORDINARYVIP,"2016-10-16 09:23",OrderType.NORMALNONEXEC,"LLLHH","H00000002",998,null);
@@ -139,6 +158,49 @@ public class OrderPanel extends JPanel{
 		OrderDataTool.list1.add(orderVO6);
 		OrderDataTool.list1.add(orderVO7);
 		showOrderList(OrderDataTool.list1);
+		
+		//搜索框
+		checkbox = new JTextField();
+		checkbox.setBounds(555,88,330,32);
+		checkbox.setFont(font);
+		checkbox.setBorder(null);
+		checkbox.setOpaque(false);
+		this.add(checkbox);
+		checkbox.addFocusListener(new FocusListener(){
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				showMessage("请输入客户ID或订单ID");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				
+			}
+			
+		});
+		//搜索按钮
+		jbSearch = new SearchButton(890,79);
+		this.add(jbSearch);
+		jbSearch.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String text = checkbox.getText();
+				if(text.equals("")){
+					showMessage("搜索内容不能为空");
+				}else{
+					orderList = controller.getExecutedHotelOrderList(hotelID,text);
+					if(orderList==null){
+						showMessage("未搜索到任何信息");
+					}else{
+						showMessage("搜索成功");
+						showOrderList(orderList);
+					}
+				}
+			}
+			
+		});
 		
 		//显示结果
 		resultLabel = new JLabel();
@@ -180,10 +242,10 @@ public class OrderPanel extends JPanel{
 				jlSearch.setText("所有订单");
 				showAllOrderList();
 			}else if(e.getSource()==jbUnexecuted){
-				jlSearch.setText("已执行订单");
+				jlSearch.setText("未执行订单");
 				showUnexecutedOrderList();
 			}else if(e.getSource()==jbExecuted){
-				jlSearch.setText("未执行订单");
+				jlSearch.setText("已执行订单");
 				showExecutedOrderList();
 			}else if(e.getSource()==jbAbnormal){
 				jlSearch.setText("异常订单");
@@ -302,12 +364,9 @@ public class OrderPanel extends JPanel{
 		new Thread(new Runnable(){
 			@Override
 			public void run() {
-				if(message.equals(ResultMessage.SUCCESS.toString()))
-				resultLabel.setText("订单已执行");
-				else
-				resultLabel.setText("订单状态改变失败");
+				resultLabel.setText(message);
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 	            }catch(InterruptedException ex){
 	                    ex.printStackTrace();
 	            }
@@ -340,6 +399,7 @@ public class OrderPanel extends JPanel{
 	
 	protected void paintComponent(Graphics g) {
 		g.drawImage(Icheckbox.getImage(),310,90,200,25,this);
+		g.drawImage(Icheckbox.getImage(),535,88,350,32,this);
     }
 
 }

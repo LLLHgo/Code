@@ -18,7 +18,7 @@ public class TimePanel extends JPanel{
 	private TextField yearField=new TextField(
 			String.valueOf(c.get(Calendar.YEAR)),3,0,70,40,4);
 	private TextField monthField=new TextField(
-			String.valueOf(c.get(Calendar.MONTH)),97,0,38,40,2);
+			String.valueOf(c.get(Calendar.MONTH)+1),97,0,38,40,2);
 	private TextField dateField=new TextField(
 			String.valueOf(c.get(Calendar.DATE)),153,0,38,40,2);
 	private TextField hourField=new TextField(
@@ -39,7 +39,8 @@ public class TimePanel extends JPanel{
 
 	public void setTime(int year,int month,int date,int hour,int minute){
 		this.yearField.setText(""+year);
-		this.monthField.setText(""+(month+1)%12);
+	//	this.monthField.setText(""+(month+1)%12);
+		this.monthField.setText(""+(month));
 		this.dateField.setText(""+date);
 		this.hourField.setText(""+hour);
 		this.minuteField.setText(""+minute);

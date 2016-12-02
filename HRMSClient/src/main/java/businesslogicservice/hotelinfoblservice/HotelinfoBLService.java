@@ -27,7 +27,7 @@ public interface HotelinfoBLService {
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public List<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo);
+	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo);
 	/**
 	 * 持久化保存酒店信息
 	 * @param VO
@@ -39,13 +39,13 @@ public interface HotelinfoBLService {
 	 * @param hotelID
 	 * @return 房间信息列表
 	 */
-	public List<RoominfoVO> getRoominfoList(String hotelID);
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID);
 	/**
 	 * 计算打折后的价格
 	 * @return 最终价格
 	 */
-	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
-			List<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
+			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
 
 	/**
 	 * 获得酒店基本信息
@@ -84,4 +84,15 @@ public interface HotelinfoBLService {
 	 * @return boolean
 	 */
 	public boolean addArea(String area);
+	/**
+	 * 获得系统内所有房间类型
+	 * @return String[]
+	 */
+	public String[] getRoomType();
+	
+	/**
+	 *添加房间类型
+	 * @return boolean
+	 */
+	public boolean addRoomType(String type);
 }

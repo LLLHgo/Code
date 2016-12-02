@@ -2,6 +2,7 @@ package dataservice.hotelinfodataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import po.HotelinfoPO;
@@ -27,7 +28,7 @@ public interface HotelinfoDataService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException;
+	public ArrayList<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException;
 	
 	/**
 	 * 获得某商圈的酒店信息列表
@@ -35,7 +36,7 @@ public interface HotelinfoDataService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<HotelinfoPO> findHotelinfoList(String area) throws RemoteException;
+	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException;
 	
 	/**
 	 * 获得房间信息

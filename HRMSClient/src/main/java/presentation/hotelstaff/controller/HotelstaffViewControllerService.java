@@ -1,5 +1,6 @@
 package presentation.hotelstaff.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Enum.OrderType;
@@ -25,7 +26,7 @@ public interface HotelstaffViewControllerService {
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public List<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo);
+	public ArrayList<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo);
 	/**
 	 * 持久化保存酒店信息
 	 * @param VO
@@ -44,13 +45,13 @@ public interface HotelstaffViewControllerService {
 	 * @param hotelID
 	 * @return 房间信息列表
 	 */
-	public List<RoominfoVO> getRoominfoList(String hotelID);
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID);
 	/**
 	 * 计算打折后的价格
 	 * @return 最终价格
 	 */
-	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
-			List<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
+			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
 
 	
 	/**
@@ -64,7 +65,7 @@ public interface HotelstaffViewControllerService {
 	 * @param hotelID
 	 * @return 酒店促销策略信息
 	 */
-	public List<HotelStrategyVO> gethotelStrategy(String hotelID);
+	public ArrayList<HotelStrategyVO> gethotelStrategy(String hotelID);
 	/**
 	 * 删除酒店策略
 	 * @param hotelID
@@ -95,35 +96,41 @@ public interface HotelstaffViewControllerService {
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
-	public List<OrderVO> getALLHotelOrderList(String hotelID,OrderType ALL);
+	public ArrayList<OrderVO> getALLHotelOrderList(String hotelID,OrderType ALL);
 	
 	/**
 	 * 获得酒店已入住订单列表
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
-	public List<OrderVO> getUnexecutedHotelOrderList(String hotelID,OrderType NORMALEXEC);
+	public ArrayList<OrderVO> getUnexecutedHotelOrderList(String hotelID,OrderType NORMALEXEC);
 	
 	/**
 	 * 获得酒店未入住订单列表
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
-	public List<OrderVO> getExecutedHotelOrderList(String hotelID,OrderType NORMALNONEXEC);
+	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID,OrderType NORMALNONEXEC);
+	
+	/**
+	 * 获得酒店取消订单列表
+	 * @param hotelID,OrderType
+	 * @return 酒店订单列表
+	 */
+	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
 	
 	/**
 	 * 获得酒店异常订单列表
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
-	public List<OrderVO> getCancleHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
-	
+	public ArrayList<OrderVO> getAbnormalHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
 	/**
-	 * 获得酒店异常订单列表
-	 * @param hotelID,OrderType
+	 * 获得某客户的酒店订单列表
+	 * @param hotelID,clientID
 	 * @return 酒店订单列表
 	 */
-	public List<OrderVO> getAbnormalHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
+	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID,String clientID);
 	/**
 	 * 将订单状态持久化保存
 	 * @param OrderVO
