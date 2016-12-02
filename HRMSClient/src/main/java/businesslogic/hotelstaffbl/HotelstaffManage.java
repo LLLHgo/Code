@@ -32,6 +32,9 @@ public class HotelstaffManage implements HotelstaffBLService{
 
 	@Override
 	public ResultMessage setPassword(String hotelID, String password) {
+		if(password.equals("")){
+			return ResultMessage.VOIDPASSWORD;
+		}
 		po = new HotelstaffPO();
 		po.setHotelID(hotelID);
 		po.setPassword(password);

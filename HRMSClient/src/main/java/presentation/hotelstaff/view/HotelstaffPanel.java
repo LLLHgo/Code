@@ -59,9 +59,9 @@ public class HotelstaffPanel extends JPanel{
 		
 		//修改密码的背景
 		ipassword = new ImageIcon("./src/main/resource/picture/hotelstaff/password.png");
-		
-		password = controller.getHotelstaffBasicinfo(hotelID);
 	
+		password = controller.getHotelstaffBasicinfo(hotelID);
+		
 		jtfPassword = new JTextField(15);
 		Font font = new Font("微软雅黑",Font.PLAIN,20);
 		jtfPassword.setFont(font);
@@ -116,6 +116,7 @@ public class HotelstaffPanel extends JPanel{
 			jbCancle.setVisible(true);
 			jbModify.setVisible(false);
 			jtfPassword.setEditable(true);
+			showMessage("修改密码");
 		}	
 	}
 	
@@ -123,18 +124,21 @@ public class HotelstaffPanel extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			jbConfirm.setVisible(false);
-			jbCancle.setVisible(false);
-			jbModify.setVisible(true);
-			jtfPassword.setEditable(false);
 			password = jtfPassword.getText();
 			ResultMessage result = controller.setPassword(hotelID, password);
-			
 			//提示信息
 			if(result==ResultMessage.SUCCESS){
+				jbConfirm.setVisible(false);
+				jbCancle.setVisible(false);
+				jbModify.setVisible(true);
+				jtfPassword.setEditable(false);
 				showMessage("保存成功");
-			}else{
-				showMessage(result.toString());
+			}else if(result==ResultMessage.REMOTEEXCEPTION){
+				showMessage("联网失败");
+			}else if(result==ResultMessage.FAIL){
+				showMessage("保存失败，请重新设置密码");
+			}else if(result==ResultMessage.VOIDPASSWORD){
+				showMessage("密码不能为空");
 			}
 		}	
 	}
@@ -148,7 +152,6 @@ public class HotelstaffPanel extends JPanel{
 			jbModify.setVisible(true);
 			jtfPassword.setEditable(false);
 			jtfPassword.setText(password);
-			
 			//提示信息
 			showMessage("操作取消");
 		}	
@@ -161,7 +164,7 @@ public class HotelstaffPanel extends JPanel{
 			public void run() {
 				resultLabel.setText(message);
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 	            }catch(InterruptedException ex){
 	                    ex.printStackTrace();
 	            }

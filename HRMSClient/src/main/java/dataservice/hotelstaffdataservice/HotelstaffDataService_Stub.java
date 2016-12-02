@@ -6,14 +6,14 @@ import po.HotelstaffPO;
 
 public class HotelstaffDataService_Stub implements HotelstaffDataService{
 
-	HotelstaffPO hotelstaffPO;
+	HotelstaffPO hotelstaffPO = new HotelstaffPO("H00000001","000000");
 
 	/**
 	 * 初始化持久化数据库
 	 * @throws RemoteException
 	 */
 	public void init() throws RemoteException {
-		hotelstaffPO = new HotelstaffPO("H00000000","000000");
+		hotelstaffPO = new HotelstaffPO("H00000001","000000");
 	}
 
 	/**
@@ -22,6 +22,7 @@ public class HotelstaffDataService_Stub implements HotelstaffDataService{
 	 * @return
 	 */
 	public HotelstaffPO findBasicInfo(String hotelStaffID) {
+		HotelstaffPO hotelstaffPO = new HotelstaffPO("H00000001","000000");
 		return hotelstaffPO;
 	}
 
@@ -41,7 +42,10 @@ public class HotelstaffDataService_Stub implements HotelstaffDataService{
 	 * @throws RemoteException
 	 */
 	public boolean checkAccount(HotelstaffPO po) throws RemoteException {
+		if(po.getHotelID().equals("H00000001")&&po.getPassword().equals("000000"))
 		return true;
+		else 
+		return false;
 	}
 
 	/**

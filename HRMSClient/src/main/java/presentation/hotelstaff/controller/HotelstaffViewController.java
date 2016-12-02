@@ -65,6 +65,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	private HotelstaffViewController(String hotelID){
 		this.hotelID = hotelID;
+		controller = new HotelstaffBLController();
 	}
 
 	public static HotelstaffViewController getInstance(String hotelID){

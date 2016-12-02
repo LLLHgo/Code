@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.hoteinfobl.HotelinfoManage;
+import businesslogic.hoteinfobl.RoominfoManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelinfoblservice.RoominfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffControllerBLService;
@@ -54,6 +55,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	
 	public HotelstaffBLController(){
 		hotelinfo = new HotelinfoManage();
+		roominfo = new RoominfoManage();
 //		orderFind = new OrderFind();
 //		orderOperator=new OrderOperator();
 //		strategy = new StrategyManage();
