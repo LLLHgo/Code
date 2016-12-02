@@ -2,6 +2,9 @@ package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
+
+import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import dataservice.orderdataservice.OrderDataService;
@@ -33,10 +36,25 @@ public class OrderOperator implements OrderOperatorBLService{
 	// 下订单
 	@Override
 	public ResultMessage createOrderPO(OrderVO orderVO) {
+		// 订了0间房，返回ResultMessage.NOROOMORDERED
+		if(orderVO.getRoomNum()==0){
+			return ResultMessage.NOROOMORDERED;
+		}
+		// 订了0天，返回ResultMessage.NODAYORDERED
+		if(orderVO.getDays()==0){
+			return ResultMessage.NODAYORDERED;
+		}
+		// 判断预计入住时间是否无效（在当天的前一天）,如果无效，返回ResultMessage.STARTDAYNOTALLOWED
+		if(!canOrderTime(orderVO.getAnticipateArrivedTime())){
+			return ResultMessage.STARTDAYNOTALLOWED;
+		}
 		// 判断包中的信息是否有空的，如果空，则返回ResultMessage.HASVOID
-		boolean voInfoHasVoid=hasVoidInfo(orderVO);
-		if(voInfoHasVoid){
+		if(hasVoidInfo(orderVO)){
 			return ResultMessage.HASVOID;
+		};
+		// 判断订单中订单状态是否为正常未执行，如果状态不是正常未执行状态，则返回ResultMessage.WORNGORDERTYPEWHENCREATE
+		if(!(orderVO.getOrderType()+"").equals(OrderType.NORMALNONEXEC+"")){
+			return ResultMessage.WORNGORDERTYPEWHENCREATE;
 		}
 		// "000000001"
 		String validId=lookUpIdinDatabase();
@@ -53,12 +71,49 @@ public class OrderOperator implements OrderOperatorBLService{
 		else
 			return ResultMessage.DATEBASEFAIL;
 	}
+	// 该预计到达时间能预定
+	@SuppressWarnings("deprecation")
+	boolean canOrderTime(String anticipateTime){ // 2016-12-02 12:00:00
+		Date date=new Date();
+		//int currentHour=date.getHours();
+		String former=anticipateTime.split(" ")[0];
+		String[] yearMonDay=former.split("-");
+		int currentYear=date.getYear()+1900;
+		int cunrrentMonth=date.getMonth()+1;
+		int currentDay=date.getDate();
+		// 当前时间和预计入住时间之间的差值
+		int deltaDaysCurrentAnticip=
+				dayCount(Integer.parseInt(yearMonDay[0]),Integer.parseInt(yearMonDay[1]),Integer.parseInt(yearMonDay[2]))
+				-dayCount(currentYear,cunrrentMonth,currentDay);
+		// 当天中午12点前订的房间,可定当天及昨天的日期的房间
+		//if(currentHour<=11){
+			// 判断当前年月日是否大于等于预计入住时间年月日
+		//	if(deltaDaysCurrentAnticip>=0){
+		//		return true;
+		//	}	
+		//}
+		// 超过中午12点，订单的预计入住时间必须是今天及之后日期的才有效。
+		//else if(currentHour>=12){
+			// 判断当前年月日是否大等于预计入住时间年月日
+		//	if(deltaDaysCurrentAnticip>=0){
+		//		return true;
+		//	}	
+		//}
+		if(deltaDaysCurrentAnticip>=0){
+			return true;
+		}
+		else
+			return false;
+	}
+	int dayCount(int year,int month,int day){
+		return year*3650+month*300+day;
+	}
 	// 判断vo中信息是否完整
 	boolean hasVoidInfo(OrderVO vo){
 		this.orderVO=vo;
 		if(voidClientId()||voidClientName()||voidClientPhone()||voidcVIPType()||voidOrderDate()||voidcOrderType()||
 				voidHotelName()||voidHotelId()||voidPrice()||voidRoomType()||voidRoomNum()||voidRoomNum()||voidDays()
-				||voidAnticipateArrivedTime()||voidActualArrivedTime()||voidAnticipateLeaveTime())
+				||voidAnticipateArrivedTime()||voidAnticipateLeaveTime())
 			return false;
 		else
 			return true;
@@ -101,9 +156,6 @@ public class OrderOperator implements OrderOperatorBLService{
 	}
 	boolean voidAnticipateArrivedTime(){
 		return orderVO.getAnticipateArrivedTime()==null||orderVO.getAnticipateArrivedTime().equals("");
-	}
-	boolean voidActualArrivedTime(){
-		return orderVO.getActualArrivedTime()==null||orderVO.getActualArrivedTime().equals("");
 	}
 	boolean voidAnticipateLeaveTime(){
 		return orderVO.getAnticipateLeaveTime()==null||orderVO.getAnticipateLeaveTime().equals("");

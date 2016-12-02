@@ -28,7 +28,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	@Override
 	public boolean add(OrderPO order) throws RemoteException{
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	@Override
 	public boolean save(OrderPO order) throws RemoteException{
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	@Override
 	public boolean cancel(String orderId)throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	/**
