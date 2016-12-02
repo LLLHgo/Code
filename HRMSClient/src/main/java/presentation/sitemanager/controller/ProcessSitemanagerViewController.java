@@ -88,14 +88,13 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		return clientblservice.updateInfo(clientVO);
 	}
 
-	public ResultMessage accountDelete(String userId) {
-		if(userId.charAt(0)=='M'){
-			return marketingblservice.saveSitemanagerDelete(userId);}
-		else if(userId.charAt(0)=='C'){
-			return clientblservice.saveSitemanagerDelete(userId);
-		}
-		return ResultMessage.FAIL;
+	public ResultMessage clientAccountDelete(String userId) {
+		return clientblservice.saveSitemanagerDelete(userId);
 	}
+	public ResultMessage marketingAccountDelete(String userId){
+		return marketingblservice.saveSitemanagerDelete(userId);
+	}
+	
 
 	public ClientVO clientAccountFind(String id) {
 		return clientblservice.getclient(id);

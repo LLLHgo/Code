@@ -4,18 +4,18 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import businesslogic.orderbl.OrderManage;
+import businesslogic.orderbl.OrderOperator;
 
 public class LookUpIdTester {
 	
-	OrderManage orderManage;
+	OrderOperator orderOperator;
 
 	public LookUpIdTester(){
-		orderManage=new OrderManage();
+		orderOperator=new OrderOperator();
 	}
 	@Test
 	public void test() {
-		assertEquals("000000105",orderManage.lookUpIdinDatabase());
+		assertEquals("000000105",orderOperator.lookUpIdinDatabase());
 	}
 
 }

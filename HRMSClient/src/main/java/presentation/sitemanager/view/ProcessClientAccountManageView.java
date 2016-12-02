@@ -251,7 +251,7 @@ public class ProcessClientAccountManageView extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			result=controller.accountDelete(id);
+			result=controller.clientAccountDelete(id);
 			modifyButton.setEnabled(false);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("删除成功！");

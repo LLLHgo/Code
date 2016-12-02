@@ -2,17 +2,15 @@ package businesslogicservice.orderblservice;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
-import Enum.UserType;
 import Enum.VIPType;
-import businesslogicservice.orderblservice.OrderBLService;
-import po.OrderPO;
+import businesslogicservice.orderblservice.OrderOperatorBLService;
+
 import vo.orderVO.OrderVO;
 
-public class OrderBLService_Stub implements OrderBLService{
+public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTimeBLService,OrderFindBLService{
 	    
 	OrderVO orderVO;
 	
@@ -74,9 +72,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 某种用户(客户或酒店)的所有订单列表
 	 */
 	@Override
-	public List<OrderVO> findUserOrderList(String userID) {
+	public ArrayList<OrderVO> findUserOrderList(String userID) {
 		// TODO Auto-generated method stub
-		List<OrderVO> UserOrderList=new ArrayList<OrderVO>();
+		ArrayList<OrderVO> UserOrderList=new ArrayList<OrderVO>();
 		return UserOrderList;
 	}
 	/**
@@ -86,9 +84,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 客户某天的订单列表
 	 */
 	@Override
-	public List<OrderVO> findSpecificDayClientOrderList(String clientId, Date date) {
+	public ArrayList<OrderVO> findSpecificDayClientOrderList(String clientId, Date date) {
 		// TODO Auto-generated method stub
-		List<OrderVO> SpecificDayClientOrderList=new ArrayList<OrderVO>();
+		ArrayList<OrderVO> SpecificDayClientOrderList=new ArrayList<OrderVO>();
 		return SpecificDayClientOrderList;
 	}
 	/**
@@ -98,9 +96,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 客户在某个酒店的所有订单列表
 	 */
 	@Override
-	public List<OrderVO> findSpecificHotelClientOrderList(String clientId, String hoteIId) {
+	public ArrayList<OrderVO> findSpecificHotelClientOrderList(String clientId, String hoteIId) {
 		// TODO Auto-generated method stub
-		List<OrderVO> SpecificHotelClientOrderList=new ArrayList<OrderVO>();
+		ArrayList<OrderVO> SpecificHotelClientOrderList=new ArrayList<OrderVO>();
 		return SpecificHotelClientOrderList;
 	}
 	/**
@@ -110,9 +108,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 客户某个种类（正常未执行、正常已执行、取消、异常）的订单列表
 	 */
 	@Override
-	public List<OrderVO> findClientTypeOrderList(OrderType type, String clientId) {
+	public ArrayList<OrderVO> findClientTypeOrderList(OrderType type, String clientId) {
 		// TODO Auto-generated method stub
-		List<OrderVO> ClientTypeOrder=new ArrayList<OrderVO>();
+		ArrayList<OrderVO> ClientTypeOrder=new ArrayList<OrderVO>();
 		return  ClientTypeOrder;
 	}
 
@@ -122,9 +120,9 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 具体某天的所有订单列表
 	 */
 	@Override
-	public List<OrderVO> findAbnormalOrderList(Date date) {
+	public ArrayList<OrderVO> findAbnormalOrderList(Date date) {
 		// TODO Auto-generated method stub
-		List<OrderVO> findAbnormalOrder=new ArrayList<OrderVO>();
+		ArrayList<OrderVO> findAbnormalOrder=new ArrayList<OrderVO>();
 		return  findAbnormalOrder;
 	}
 	/**
@@ -139,7 +137,7 @@ public class OrderBLService_Stub implements OrderBLService{
 		return false;
 	}
 	@Override
-	public List<OrderVO> findHotelTypeOrderList(OrderType type, String hotelId) {
+	public ArrayList<OrderVO> findHotelTypeOrderList(OrderType type, String hotelId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

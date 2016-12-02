@@ -14,11 +14,10 @@ import Mock.MockStrategyManage;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.hotelstaffbl.Hotelstaff;
 import businesslogic.hotelstaffbl.HotelstaffManage;
-import businesslogic.orderbl.OrderManage;
 import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
-import businesslogicservice.orderblservice.OrderBLService;
+import businesslogicservice.orderblservice.OrderOperatorBLService;
 import businesslogicservice.orderblservice.OrderBLService_Stub;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import businesslogicservice.strategyblservice.StrategyBLService_Stub;
@@ -56,7 +55,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	
 	HotelinfoBLService hotelinfo;
 	StrategyBLService strategy;
-	OrderBLService order;
+	OrderOperatorBLService order;
 	HotelstaffBLService hotelstaff;
 //	HotelinfoBLService_stub hotelinfo;
 //	StrategyBLService_stub strategy;

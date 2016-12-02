@@ -26,11 +26,17 @@ public interface ProcessSitemanagerViewControllerService {
 	public ResultMessage clientAccountUpdate (ClientVO clientVO);
 	
 	/**
-	 * 删除账户
+	 * 删除网站营销人员账户
 	 * @param userId
 	 * @return 删除账户成功或失败的ResultMessage的enum值
 	 */
-	public ResultMessage accountDelete (String userId);
+	public ResultMessage marketingAccountDelete (String userId);
+	/**
+	 * 删除客户账户
+	 * @param userId
+	 * @return 删除账户成功或失败的ResultMessage的enum值
+	 */
+	public ResultMessage clientAccountDelete(String userId);
 	
     /**
      * 管理界面得到客户账户信息

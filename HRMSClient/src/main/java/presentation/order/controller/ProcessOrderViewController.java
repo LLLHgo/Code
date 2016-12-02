@@ -5,19 +5,19 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
-import businesslogic.orderbl.OrderManage;
+import businesslogic.orderbl.OrderOperator;
 import businesslogicservice.logblservice.LogBLService;
-import businesslogicservice.orderblservice.OrderBLService;
+import businesslogicservice.orderblservice.OrderOperatorBLService;
 import presentation.order.view.ProcessOrderViewControllerService;
 import vo.orderVO.OrderVO;
 
 public class ProcessOrderViewController implements ProcessOrderViewControllerService{
 	
-	private OrderBLService orderBLService;
+	private OrderOperatorBLService orderBLService;
 	private LogBLService logBLService;
 	
 	public ProcessOrderViewController(){
-		orderBLService=new OrderManage();
+		orderBLService=new OrderOperator();
 		//logBLService=new LogBLService();
 		
 	}

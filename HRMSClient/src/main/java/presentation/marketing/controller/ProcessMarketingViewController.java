@@ -8,7 +8,6 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import Enum.UserType;
 import businesslogic.logbl.LogManage;
-import businesslogic.orderbl.OrderManage;
 import presentation.marketing.view.ProcessMarketingAbnormalView;
 import presentation.marketing.view.ProcessMarketingCreditView;
 import presentation.marketing.view.ProcessMarketingProfileView;
@@ -19,8 +18,9 @@ import presentation.marketing.view.*;
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
-import businesslogicservice.orderblservice.OrderBLService;
+import businesslogicservice.orderblservice.OrderOperatorBLService;
 import businesslogicservice.orderblservice.OrderBLService_Stub;
+import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.logblservice.*;
@@ -40,7 +40,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     private LogBLService LogBLService;//bl层的logManage未实现blservice
 	private MarketingBLService MarketingBlService;
     private StrategyBLService StrategyBLService;
-    private OrderBLService OrderBLService;
+    private OrderOperatorBLService OrderBLOperatorService;
+    private OrderFindBLService OrderBLFindService;
     private ClientBLService ClientBLService;
     private String marketingID;
     private ProcessMarketingView view;
@@ -54,7 +55,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
     	this.marketingID=marketingID;
     	this.MarketingBlService=new MarketingBLService_Stub();
     	this.StrategyBLService=new StrategyBLService_Stub();
-    	this.OrderBLService=new OrderBLService_Stub();
+    	this.OrderBLOperatorService=new OrderBLService_Stub();
+    	this.OrderBLFindService=new OrderBLService_Stub();
     	this.LogBLService=new LogBLService_Stub();
         this.ClientBLService=new ClientBLService_Stub();
     }
@@ -146,17 +148,17 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public ResultMessage saveOrder(OrderVO order) {
-		return this.OrderBLService.saveOrderPO(order);
+		return this.OrderBLOperatorService.saveOrderPO(order);
 	}
 
 	@Override
 	public List<OrderVO> findAbnormalOrderList(Date date) {
-		return this.OrderBLService.findAbnormalOrderList(date);
+		return this.OrderBLFindService.findAbnormalOrderList(date);
 	}
 
 	@Override
 	public OrderVO findSpecificOrder(String orderID) {
-		return this.OrderBLService.findSpecificOrder(marketingID,orderID);//删掉List
+		return this.OrderBLFindService.findSpecificOrder(marketingID,orderID);//删掉List
 	}
 
 	@Override

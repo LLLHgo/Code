@@ -18,6 +18,7 @@ public enum ResultMessage {
 	// 日志管理用到的值
 	WRONGFORMAT,
 	// 订单用到的值
-	IDINVALID
+	IDINVALID,
+	HASVOID
 	
 }
