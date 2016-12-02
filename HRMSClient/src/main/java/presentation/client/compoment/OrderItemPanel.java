@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class OrderItemPanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private minideleteButton db;
-	private viewButton vb;
+	 viewButton vb;
 
 public OrderItemPanel(int x,int y){
 	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");

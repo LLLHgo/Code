@@ -35,13 +35,13 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public ResultMessage createClient(ClientVO vo) {
 		// TODO Auto-generated method stub
-		try{
+		/*try{
 			boolean res=clientdata.createClient(vo);
 			if(res)return ResultMessage.SUCCESS;
 			else 	return ResultMessage.FAIL;
 			}catch(Exception e){
 				e.printStackTrace();
-			}
+			}*/
 		return null;
 	}
 
@@ -111,7 +111,8 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public boolean checkAccount(String clientID, String password) {
 		// TODO Auto-generated method stub
-		if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
+		if(clientID!=null&&password!=null)
+		//if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
 		return true;
 		else return false;
 	}

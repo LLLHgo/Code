@@ -54,6 +54,6 @@ public class ProcessLoginViewController implements ProcessLoginControllerService
 	 * 注册新用户
 	 */
 	public ResultMessage addclient(ClientVO vo) {
-		return ResultMessage.SUCCESS;
+		return client.createClient(vo);
 	}
 }

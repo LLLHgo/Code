@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class HotelEvaluateItemPanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private evaluateButton eb;
-	private viewButton vb;
+	viewButton vb;
 
 public HotelEvaluateItemPanel(int x,int y){
 	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");

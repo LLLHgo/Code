@@ -1,12 +1,16 @@
 package presentation.client.compoment;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -19,7 +23,9 @@ public class ViewOrderPanel extends JPanel{
 	private Button abnormal;
 	private Button repeal;
 	private OrderListPane olp;
+	private JPanel Panel;
 public ViewOrderPanel(JFrame frame){
+	Panel=new JPanel();
 	olp=new OrderListPane();
 	frame.add(olp);
 	imageIcon = new ImageIcon("image/searchPanel.png");
@@ -74,6 +80,37 @@ class Button extends JButton{
 	this.setBorderPainted(false);
 	this.setFocusPainted(false);
 	this.setBounds(x,y,80,80);
+	}
+}
+private class OrderListPane extends JScrollPane{
+
+	private JScrollPane scrollpanel;
+	public OrderListPane(){
+		super(Panel);
+		Panel.setLayout(null);
+	    Panel.setPreferredSize(new Dimension(600,600));
+	    Panel.setBounds(0,0,1000,4000);
+	    Panel.setOpaque(false);
+
+
+	   this.setBounds(370, 170, 920, 400);
+	   this.setOpaque(false);
+	   this.getViewport().setOpaque(false);
+	   this.getVerticalScrollBar().setVisible(false);
+	   this.setBorder(new EmptyBorder(0,0,0,0));
+	   this.setVisible(false);
+	    for(int i=0;i<6;i++){
+	    	OrderItemPanel p=new OrderItemPanel(0, i*100);
+	    	 //p.setBounds(0,i*100,600,100);
+	    	p.vb.addActionListener(new ActionListener(){
+	    		public void actionPerformed(ActionEvent e) {
+	    			new OrderDetailFrame();
+	    		}
+	    		});
+	    	 Panel.add(p);
+	    }
+	    this.getVerticalScrollBar().setVisible(false);
+	    scrollpanel=this;
 	}
 }
 }

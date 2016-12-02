@@ -1,14 +1,15 @@
 package presentation.client.compoment;
 
 import java.awt.Color;
-
+import java.awt.Dimension;
 import java.awt.Graphics;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -18,8 +19,10 @@ public class EvaluatePanel extends JPanel{
 	private SearchButton searchButton;
 	private JTextField searchField;
 	private HotelListPane hlp;
+	private JPanel Panel;
 	public EvaluatePanel(JFrame frame){
-		hlp=new HotelListPane(frame);
+		Panel=new JPanel();
+		hlp=new HotelListPane();
 		frame.add(hlp);
 	imageIcon = new ImageIcon("image/searchPanel.png");
 	searchField=new JTextField();
@@ -51,4 +54,35 @@ public class EvaluatePanel extends JPanel{
 		    g.drawImage(imageIcon.getImage(), 0, 0, this);
 		    super.paintComponents(g);
 		   }
+	class HotelListPane extends JScrollPane{
+
+		private JScrollPane scrollpanel;
+		public HotelListPane(){
+			super(Panel);
+			Panel.setLayout(null);
+		    Panel.setPreferredSize(new Dimension(600,600));
+		    Panel.setBounds(0,0,1000,4000);
+		    Panel.setOpaque(false);
+
+
+		   this.setBounds(370, 170, 920, 400);
+		   this.setOpaque(false);
+		   this.getViewport().setOpaque(false);
+		   this.getVerticalScrollBar().setVisible(false);
+		   this.setBorder(new EmptyBorder(0,0,0,0));
+		   this.setVisible(false);
+		    for(int i=0;i<6;i++){
+		    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100);
+		    	 //p.setBounds(0,i*100,600,100);
+		    	p.vb.addActionListener(new ActionListener(){
+		    		public void actionPerformed(ActionEvent e) {
+		    			new OrderDetailFrame();
+		    		}
+		    		});
+		    	 Panel.add(p);
+		    }
+		    this.getVerticalScrollBar().setVisible(false);
+		    scrollpanel=this;
+		}
+	}
 }

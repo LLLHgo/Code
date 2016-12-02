@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
 import javax.swing.text.Caret;
 
+import Enum.ResultMessage;
 import presentation.DialogCreator;
 import presentation.client.controller.PersonalPanelController;
 import presentation.client.view.ProcessClientView;
@@ -34,6 +35,7 @@ import presentation.marketing.view.ProcessMarketingViewControllerService;
 import presentation.sitemanager.controller.ProcessSitemanagerViewController;
 import presentation.sitemanager.view.ProcessSitemanagerView;
 import presentation.sitemanager.view.ProcessSitemanagerViewControllerService;
+import vo.clientVO.ClientVO;
 
 public class ProcessLoginView extends JPanel {
 	/**
@@ -133,7 +135,11 @@ public class ProcessLoginView extends JPanel {
 			signUpButton.setFocusPainted(false);
 			signUpButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
+					ClientVO vo=new ClientVO(IdField.getText(),KeyField.getPassword().toString(),"","",null,0,"","",0,null);
+					if(controller.addclient(vo)==ResultMessage.SUCCESS)
 					DialogCreator.successDialog("Success");
+					else
+						DialogCreator.failDialog("Fail");
 				}
 				});
 			this.add(loginButton);
