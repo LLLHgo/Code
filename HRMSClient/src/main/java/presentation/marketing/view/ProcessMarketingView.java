@@ -34,7 +34,7 @@ public class ProcessMarketingView extends JPanel{
 	private GuideBoardButton strategy=new GuideBoardButton(481,"制定策略");
 	private GuideBoardButton exit=new GuideBoardButton(541,"退出");
 	private MJLabel welcome=new MJLabel(275,-19,775,800,welcomeIcon);
-	private MJLabel hintLabel=new MJLabel("FEFW",280,35,700,40,font);
+	private MJLabel hintLabel=new MJLabel("",280,35,700,40,font);
 
 	public ProcessMarketingView(ProcessMarketingViewControllerService controller){
 		this.MarketingID=controller.getMarketingID();
@@ -105,7 +105,6 @@ public class ProcessMarketingView extends JPanel{
 
     	hintLabel.setForeground(Color.black);
     	this.add(hintLabel);
-    	//hintLabel.setVisible(false);
 
     }
 
@@ -122,30 +121,21 @@ public class ProcessMarketingView extends JPanel{
     public void setHint(String hint){
 
     	hintLabel.setVisible(true);
-    	
-    	System.out.println(hint);
-    	this.revalidate();
-    	this.repaint();
-    	showHint(hint);
-        
-        System.out.println("FEFWEWEFWEFW"+hint);
-    	hintLabel.setVisible(false);
-
-    }
-
-    private void showHint(String hint){
+        hintLabel.setText(hint);
     	new Thread(new Runnable(){
 			@Override
 			public void run() {
+				hintLabel.setText(hint);
 				try {
 					Thread.sleep(3000);
-					hintLabel.setText(hint);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				hintLabel.setText("");
 			}
 
 		}).start();
+
     }
 
 }

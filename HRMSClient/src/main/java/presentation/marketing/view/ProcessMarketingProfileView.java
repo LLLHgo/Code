@@ -70,7 +70,7 @@ public class ProcessMarketingProfileView extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String newTEL=TELField.getText(),newPassword=passwordField.getText();
-				if(newTEL!=null&&newPassword!=null){//电话和密码都不为空时才进行分析
+				if(newTEL!=null&&newPassword!=null&&newTEL.length()!=0&&newPassword.length()!=0){//电话和密码都不为空时才进行分析
 					if(newTEL.matches("^[0-9]*$")){  //密码可以自由设置，电话必须全部为数字
                         Mvo.setTelephone(newTEL);Mvo.setPassword(newPassword);
                         controller.MarketingAccountUpdate(Mvo);
@@ -84,8 +84,7 @@ public class ProcessMarketingProfileView extends JPanel{
 				}else{//提示重新填写
 					((ProcessMarketingView) view).setHint("请继续填写。");
 				}
-
-			}
+      		}
            });
         ensureButton.setEnabled(false);
         this.add(ensureButton);
