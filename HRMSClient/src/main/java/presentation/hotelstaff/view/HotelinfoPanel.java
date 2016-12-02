@@ -214,7 +214,7 @@ public class HotelinfoPanel extends JPanel{
 							}
 						}
 						resultLabel.setText(controller.updateBassicinfo
-						(new HotelinfoVO(address,area,intro,facility,tel,star,hotelID)).toString());
+						(new HotelinfoVO(name,address,area,intro,facility,tel,star,hotelID)).toString());
 						try {
 							Thread.sleep(1000);
 					    }catch(InterruptedException ex){

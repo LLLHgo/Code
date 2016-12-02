@@ -6,6 +6,7 @@ import java.util.List;
 
 import Enum.RoomState;
 import Enum.Star;
+import datatool.HotelinfoDataTool;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 import vo.hotelinfoVO.RoominfoVO;
@@ -78,7 +79,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	 * @throws RemoteException
 	 */
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
-		return hotelinfoPO;
+		return HotelinfoDataTool.hotelinfoPO1;
 	}
 
 	/**
@@ -118,8 +119,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 
 	@Override
 	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException {
-		
-		return null;
+		return (ArrayList<HotelinfoPO>) HotelinfoDataTool.listPO;
 	}
 
 	@Override

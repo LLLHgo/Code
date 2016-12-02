@@ -48,7 +48,7 @@ public class HotelinfoManage implements HotelinfoBLService{
 		if(po == null){
 			return null;
 		}
-		vo = new HotelinfoVO(po.getAddress(),po.getArea(),po.getIntroduction(),
+		vo = new HotelinfoVO(po.getName(),po.getAddress(),po.getArea(),po.getIntroduction(),
 				po.getFacility(),po.getTel(),po.getStar(),po.getHotelID());
 		return vo;
 	}

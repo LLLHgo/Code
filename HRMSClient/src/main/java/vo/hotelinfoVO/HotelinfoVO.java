@@ -30,8 +30,9 @@ public class HotelinfoVO {
 
 	}
 
-	public HotelinfoVO(String address,String area,String introduction,String facility
+	public HotelinfoVO(String name,String address,String area,String introduction,String facility
 			,String tel,Star star,String hotelID){
+		this.name = name;
 		this.address = address;
 		this.area = area;
 		this.introduction = introduction;

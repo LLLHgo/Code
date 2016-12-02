@@ -18,6 +18,8 @@ import Enum.RoomState;
 import Enum.Star;
 import Enum.VIPType;
 import businesslogic.hoteinfobl.HotelinfoManage;
+import po.HotelinfoPO;
+import po.RoominfoPO;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -55,7 +57,17 @@ public class HotelinfoViewControllerTest {
 	public void setup(){
 		hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","山西路商圈","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
 				new ArrayList<String>(),"Brief Introduction","H00000001");
-
+//		RoominfoVO roominfoVO = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
+//		ArrayList<RoominfoVO> roominfoList = new ArrayList<RoominfoVO>();
+//		roominfoList.add(roominfoVO);
+//		ArrayList<String> remark = new ArrayList<String>();
+//		remark.add("超级棒！");
+//		remark.add("一个很温馨的地方，么么哒~");
+//		String introduction = "一个可以让大家一起愉快地写大作业的地方哈哈哈哈";
+//		String hotelID = "H00000001";
+//		HotelinfoVO hotelinfoVO1 = new HotelinfoVO("name","仙林大道163号","栖霞区商圈","025-12345678",
+//				roominfoList,Star.SEVEN,remark,introduction,hotelID);
+		
 		hotelinfoVO2 = new HotelinfoVO("RuJia","LongPanRode","GuLouArea","12345679",new ArrayList<RoominfoVO>(),Star.FOUR,
 				new ArrayList<String>(),"Brief Introduction","H00000002");
 
