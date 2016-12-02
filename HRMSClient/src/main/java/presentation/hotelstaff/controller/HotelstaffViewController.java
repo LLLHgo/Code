@@ -100,7 +100,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public List<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo) {
+	public ArrayList<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo) {
 		return hotelinfo.getBasicinfoList(vo);
 	}
 
@@ -115,13 +115,13 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public List<RoominfoVO> getRoominfoList(String hotelID) {
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
 		return hotelinfo.getRoominfoList(hotelID);
 	}
 
 	@Override
-	public double calculatePrice(List<HotelStrategyVO> hotelStrategylist,
-			List<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
 		return hotelinfo.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
 	}
 
@@ -132,8 +132,8 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public List<HotelStrategyVO> gethotelStrategy(String hotelID) {
-		return strategy.getHotelStrategy(hotelID);
+	public ArrayList<HotelStrategyVO> gethotelStrategy(String hotelID) {
+		return (ArrayList<HotelStrategyVO>) strategy.getHotelStrategy(hotelID);
 	}
 
 	@Override
@@ -172,27 +172,28 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public List<OrderVO> getALLHotelOrderList(String hotelID, OrderType ALL) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<OrderVO> getALLHotelOrderList(String hotelID, OrderType ALL) {
+		return (ArrayList<OrderVO>) order.findHotelTypeOrder(ALL, hotelID);
 	}
 
 	@Override
-	public List<OrderVO> getUnexecutedHotelOrderList(String hotelID, OrderType NORMALEXEC) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<OrderVO> getUnexecutedHotelOrderList(String hotelID, OrderType NORMALEXEC) {
+		return (ArrayList<OrderVO>) order.findHotelTypeOrder(NORMALEXEC, hotelID);
 	}
 
 	@Override
-	public List<OrderVO> getExecutedHotelOrderList(String hotelID, OrderType NORMALNONEXEC) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, OrderType NORMALNONEXEC) {
+		return (ArrayList<OrderVO>) order.findHotelTypeOrder(NORMALNONEXEC, hotelID);
 	}
 
 	@Override
-	public List<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
+		return (ArrayList<OrderVO>) order.findHotelTypeOrder(ABNORMALCANCEL, hotelID);
+	}
+	
+	@Override
+	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
+		return (ArrayList<OrderVO>) order.findHotelTypeOrder(ABNORMALCANCEL, hotelID);
 	}
 	
 	@Override
@@ -315,27 +316,18 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public String[] getArea() {
-		
 		return hotelinfo.getArea();
 	}
 	
 
 	@Override
 	public ResultMessage addRoomType(String type) {
-		
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public String[] getRoomType() {
-		String[] types = {"标准间","大床房","总统套房"};
-		return types;
-	}
-
-	@Override
-	public List<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		// TODO Auto-generated method stub
-		return null;
+		return hotelinfo.getRoomType();
 	}
 
 
@@ -375,6 +367,13 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
+
+	@Override
+	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
+		ArrayList<OrderVO> list = (ArrayList<OrderVO>) order.findSpecificHotelClientOrder(clientID, hotelID);
+		return list;
+	}
+
 
 
 }
