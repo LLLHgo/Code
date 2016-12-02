@@ -87,7 +87,7 @@ public class MarketingBLController implements MarketingBLControllerService{
 
 	@Override
 	public List<OrderVO> findAbnormalOrderList(String date) {
-		return this.orderBL.findAbnormalOrderList(date);
+		return null;//this.orderBL.findAbnormalOrderList(date);
 	}
 
 	@Override
