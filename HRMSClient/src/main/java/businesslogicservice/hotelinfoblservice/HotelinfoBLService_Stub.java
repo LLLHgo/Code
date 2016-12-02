@@ -17,7 +17,7 @@ import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public class HotelinfoBLService_Stub implements HotelinfoBLService{
+public class HotelinfoBLService_Stub implements HotelinfoBLService,RoominfoBLService{
 
 	HotelinfoVO hotelinfovo;
 	RoominfoVO roominfovo;

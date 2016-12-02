@@ -34,45 +34,14 @@ public interface HotelinfoBLService {
 	 * @return 保存成功或失败
 	 */
 	public ResultMessage updateBassicinfo(HotelinfoVO VO);
-	/**
-	 * 获得酒店的房间信息列表
-	 * @param hotelID
-	 * @return 房间信息列表
-	 */
-	public ArrayList<RoominfoVO> getRoominfoList(String hotelID);
-	/**
-	 * 计算打折后的价格
-	 * @return 最终价格
-	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
+	
 
 	/**
 	 * 获得酒店基本信息
 	 * @param vo
 	 * @return 酒店信息
 	 */
-	public HotelinfoVO gethotelinfoVO(String hotelID);
-	/**
-	 * 获得房间信息
-	 * @param roomID
-	 * @return 房间信息
-	 */
-	public RoominfoVO getroominfo(String hotelID,String roomID);
-	/**
-	 * 将房间信息持久化保存
-	 * @param vo
-	 * @return 是否将房间信息持久化保存
-	 */
-	public boolean updateroominfo(RoominfoVO vo,String hotelID);
-	/**
-	 * 请求持久化保存网站管理人员添加的酒店信息
-	 * @param sitemanagerAddVO
-	 * @param hotelstaffVO
-	 * @return 保存成功或失败
-	 */
-	ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO);
-	
+	public HotelinfoVO gethotelinfoVO(String hotelID);	
 	/**
 	 * 获得系统内所有商圈名
 	 * @return String[]
@@ -85,14 +54,17 @@ public interface HotelinfoBLService {
 	 */
 	public boolean addArea(String area);
 	/**
-	 * 获得系统内所有房间类型
-	 * @return String[]
+	 * 请求持久化保存网站管理人员添加的酒店信息
+	 * @param sitemanagerAddVO
+	 * @param hotelstaffVO
+	 * @return 保存成功或失败
 	 */
-	public String[] getRoomType();
+	ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO);
 	
 	/**
-	 *添加房间类型
-	 * @return boolean
+	 * 获得所有酒店里面的商圈
+	 * @return ArrayList<AreaVO>
 	 */
-	public boolean addRoomType(String type);
+	//public List<AreaVO> getAreaVOList();
+	
 }

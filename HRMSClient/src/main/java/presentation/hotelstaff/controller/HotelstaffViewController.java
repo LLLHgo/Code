@@ -16,6 +16,7 @@ import businesslogic.hotelstaffbl.Hotelstaff;
 import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
+import businesslogicservice.hotelinfoblservice.RoominfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import businesslogicservice.orderblservice.OrderBLService_Stub;
@@ -55,10 +56,12 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public JPanel panel;
 	
 	HotelinfoBLService hotelinfo;
+	RoominfoBLService roominfo;
 	StrategyBLService strategy;
 	OrderFindBLService orderFind;
 	OrderOperatorBLService orderOperator;
 	HotelstaffBLService hotelstaff;
+	
 //	HotelinfoBLService_stub hotelinfo;
 //	StrategyBLService_stub strategy;
 //	OrderBLService_stub order;
@@ -113,18 +116,18 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public RoominfoVO getRoominfo(String hotelID, String roomID) {
-		return hotelinfo.getroominfo(hotelID, roomID);
+		return roominfo.getroominfo(hotelID, roomID);
 	}
 
 	@Override
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
-		return hotelinfo.getRoominfoList(hotelID);
+		return roominfo.getRoominfoList(hotelID);
 	}
 
 	@Override
 	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
 			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
-		return hotelinfo.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
+		return roominfo.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
 	}
 
 
@@ -156,12 +159,12 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
-		return hotelinfo.getroominfo(hotelID, roomID);
+		return roominfo.getroominfo(hotelID, roomID);
 	}
 
 	@Override
 	public ResultMessage updateroominfo(RoominfoVO vo,String hotelID) {
-		if(hotelinfo.updateroominfo(vo,hotelID)==true){
+		if(roominfo.updateroominfo(vo,hotelID)==true){
 			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.FAIL;
@@ -329,7 +332,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public String[] getRoomType() {
-		return hotelinfo.getRoomType();
+		return roominfo.getRoomType();
 	}
 
 

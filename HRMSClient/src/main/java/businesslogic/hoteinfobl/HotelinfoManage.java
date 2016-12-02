@@ -100,43 +100,11 @@ public class HotelinfoManage implements HotelinfoBLService{
 		else return ResultMessage.FAIL;
 			
 	}
-
 	@Override
-	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
-		ArrayList<RoominfoPO> listPO;
-		ArrayList<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
-		try {
-			listPO = data.getRoominfoList(hotelID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return null;
-		}
-		for(int i=0;i<listPO.size();i++){
-			listVO.add(po2vo(listPO.get(i)));
-		}
-		return listVO;
-	}
-
-	private RoominfoVO po2vo(RoominfoPO po){
-		RoominfoVO vo;
-		try{
-			vo = new RoominfoVO(po.getType(),po.getRoomNum(),
-					po.getPrice(),po.getRoomState());
-		}catch(NullPointerException e){
-			e.printStackTrace();
-			return null;
-		}
-		return vo;
-	}
-	
-	@Override
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
+	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
 		// TODO Auto-generated method stub
-		return 0;
+		return ResultMessage.SUCCESS;
 	}
-
-
 	@Override
 	public HotelinfoVO gethotelinfoVO(String hotelID) {
 		HotelinfoPO po = null;
@@ -151,40 +119,7 @@ public class HotelinfoManage implements HotelinfoBLService{
 		return PO2VO(po);
 	}
 
-	@Override
-	public RoominfoVO getroominfo(String hotelID, String roomID) {
-		RoominfoPO po = null;
-		try {
-			po = data.getRoominfo(hotelID, roomID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		if(po==null){
-			return null;
-		}
-		return po2vo(po);
-	}
-
-	@Override
-	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
-		RoominfoPO po = new RoominfoPO(
-				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
-		try {
-			data.updateroominfo(po);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return false;
-		}
-		
-		return false;
-	}
 	
-
-	@Override
-	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
-		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
-	}
 
 	@Override
 	public String[] getArea() {
@@ -234,50 +169,5 @@ public class HotelinfoManage implements HotelinfoBLService{
 		return true;
 	}
 
-	@Override
-	public String[] getRoomType() {
-		BufferedReader br = null;
-		String data = "";
-		String[] roomtypes = null;
-		try {
-			br = new BufferedReader(new FileReader(new File("./src/main/resource/txt/RoomType.txt")));
-			while((data = br.readLine())!=null)
-			{
-				roomtypes = data.split(",");
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return roomtypes;
-	}
-
-	@Override
-	public boolean addRoomType(String type) {
-		String[] roomtypes = getRoomType();
-		int flag = 0;
-		for(int i=0;i<roomtypes.length;i++){
-			if(type.equals(roomtypes[i])){
-				flag = 1;
-			}
-		}
-		if(flag == 1){
-			return false;
-		}
-		BufferedWriter bw;
-		try {
-			bw = new BufferedWriter(new FileWriter(
-					new File("./src/main/resource/txt/RoomType.txt"),true));
-			bw.write(","+type);	
-			bw.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+	
 }
