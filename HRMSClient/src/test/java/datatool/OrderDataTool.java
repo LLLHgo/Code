@@ -60,7 +60,7 @@ public class OrderDataTool {
 	
 	static {
 		list1=new ArrayList<OrderVO>();
-		list1.add(orderVO1);
+		/*list1.add(orderVO1);
 		list1.add(orderVO2);
 		list1.add(orderVO3);
 
@@ -70,7 +70,7 @@ public class OrderDataTool {
 
 		list3=new ArrayList<OrderVO>();
 		list3.add(orderVO1);
-		list3.add(orderVO2);
+		list3.add(orderVO2);*/
 	}
 
 }

@@ -52,6 +52,9 @@ public class OrderOperator implements OrderOperatorBLService{
 		if(hasVoidInfo(orderVO)){
 			return ResultMessage.HASVOID;
 		};
+		//System.out.println(orderVO.getOrderType());
+		//System.out.println(OrderType.NORMALNONEXEC+"");
+		//System.out.println((orderVO.getOrderType()+"").equals(OrderType.NORMALNONEXEC+""));
 		// 判断订单中订单状态是否为正常未执行，如果状态不是正常未执行状态，则返回ResultMessage.WORNGORDERTYPEWHENCREATE
 		if(!(orderVO.getOrderType()+"").equals(OrderType.NORMALNONEXEC+"")){
 			return ResultMessage.WORNGORDERTYPEWHENCREATE;
@@ -114,9 +117,9 @@ public class OrderOperator implements OrderOperatorBLService{
 		if(voidClientId()||voidClientName()||voidClientPhone()||voidcVIPType()||voidOrderDate()||voidcOrderType()||
 				voidHotelName()||voidHotelId()||voidPrice()||voidRoomType()||voidRoomNum()||voidRoomNum()||voidDays()
 				||voidAnticipateArrivedTime()||voidAnticipateLeaveTime())
-			return false;
-		else
 			return true;
+		else
+			return false;
 	}
 	boolean voidClientId(){
 		return orderVO.getClientId()==null||orderVO.getClientId().equals("");

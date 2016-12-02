@@ -45,19 +45,19 @@ public class FindSpecificOrderTester {
 	@Test
 	public void test3() {
 		// 网站营销人员帐号，订单帐号  没找到
-		assertEquals(false,orderPO.getClientPhone().equals(orderFind.findSpecificOrder("M00000001", "000000001").getClientPhone()));
+		assertEquals(null,orderFind.findSpecificOrder("M00000001", "000000001"));
 	}
 	
 	@Test
 	public void test4() {
 		//  客户帐号和订单中的客户信息不匹配 没找到
-		assertEquals(false,orderPO.getClientPhone().equals(orderFind.findSpecificOrder("C00000002", "000000001").getClientPhone()));
+		assertEquals(null,orderFind.findSpecificOrder("C00000002", "000000001"));
 	}
 	
 	@Test
 	public void test5() {
 		// 酒店工作人员帐号与订单中的酒店张哈不匹配， 没找到
-		assertEquals(false,orderPO.getClientPhone().equals(orderFind.findSpecificOrder("H00000001", "000000001").getClientPhone()));
+		assertEquals(null,orderFind.findSpecificOrder("H00000001", "000000001"));
 	}
 	
 }
