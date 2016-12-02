@@ -44,7 +44,7 @@ public class SitemanagerBLService_Stub implements SitemanagerBLService{
 
 
 	@Override
-	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO) {
+	public ResultMessage sitemanagerAccountUpdatePO(SitemanagerVO accountVO) {
 		// TODO Auto-generated method stub
 		if(accountVO.getSitemanagerPhoneNumber().equals(sitemanagerVO.getSitemanagerPhoneNumber())&&
 				(accountVO.getPassword().equals(sitemanagerVO.getPassword()))

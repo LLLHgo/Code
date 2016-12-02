@@ -1,12 +1,12 @@
 package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
-import Enum.UserType;
 import businesslogicservice.orderblservice.OrderBLService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.orderdataservice.OrderDataService_Stub;
@@ -18,20 +18,22 @@ public class OrderManage implements OrderBLService{
 	OrderVO orderVO;
 	ResultMessage result;
 	boolean resultB;
+	ArrayList<OrderPO> orderPOList;
+	ArrayList<OrderVO> orderVOList;
 	
 	
 	public OrderManage(){
 		try {
 			orderDateService=new OrderDataService_Stub();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		
+		orderPOList=new ArrayList<OrderPO>();
+		orderVOList=new ArrayList<OrderVO>();
 	}
 	// 下订单
 	@Override
-	public ResultMessage createOrder(OrderVO orderVO) {
+	public ResultMessage createOrderPO(OrderVO orderVO) {
 		// "000000001"
 		String validId=lookUpIdinDatabase();
 		orderVO.setOrderId(validId);
@@ -56,7 +58,6 @@ public class OrderManage implements OrderBLService{
 		try {
 			id=orderDateService.lookIdValid();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		idValid=id+"";
@@ -77,10 +78,19 @@ public class OrderManage implements OrderBLService{
 				vo.getAnticipateArrivedTime(),vo.getActualArrivedTime(),vo.getAnticipateLeaveTime());
 		return po;
 	}
-
+	// 将orderPO转化为orderVO
+		OrderVO POToVO(OrderPO po){
+			OrderVO vo=new OrderVO(po.getOrderId(),po.getClientId(),po.getClientName(),po.getClientPhone(),
+					po.getVipType(),po.getOrderDate(),po.getOrderType(),po.getHotelName(),po.getHotelId(),
+					po.getPrice(),po.getStrategies(),po.getRoomType(),po.getRoomNum(),po.getDays(),
+					po.getAnticipateArrivedTime(),po.getActualArrivedTime(),po.getAnticipateLeaveTime());
+			return vo;
+		}
+	
+	// 保存订单
 	@Override
-	public ResultMessage saveOrder(OrderVO orderVO) {
-		// TODO Auto-generated method stub
+	public ResultMessage saveOrderPO(OrderVO orderVO) {
+
 		// 转换为po保存到数据库中
 		OrderPO orderPO=VOToPO(orderVO);
 		try {
@@ -94,9 +104,10 @@ public class OrderManage implements OrderBLService{
 		return ResultMessage.DATEBASEFAIL;
 	}
 
+	// 将订单置为撤销状态
 	@Override
-	public ResultMessage cancelOrder(String orderId) {
-		// TODO Auto-generated method stub
+	public ResultMessage cancelOrderPO(String orderId) {
+
 		String lastOrderIdString=lookUpIdinDatabase();
 		// 判断是否存在该帐号
 		if(Integer.parseInt(lastOrderIdString)>=Integer.parseInt(orderId)){
@@ -104,7 +115,7 @@ public class OrderManage implements OrderBLService{
 			try {
 				resultB=orderDateService.cancel(orderId);
 			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 			if(resultB==true)
@@ -116,46 +127,105 @@ public class OrderManage implements OrderBLService{
 			return ResultMessage.IDINVALID;
 	}
 
+	// 找到某用户的某个具体订单
 	@Override
-	public OrderVO findSpecificOrderList(UserType userType, String orderID) {
-		// TODO Auto-generated method stub
-		return null;
+	public OrderVO findSpecificOrder(String userId, String orderID) {
+		
+		OrderPO orderfindPO = null;
+		try {
+			orderfindPO = orderDateService.findSpecificUserOrder(userId, orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		OrderVO orderfindVO=POToVO(orderfindPO);
+		// 用户是否有权限查看该订单
+		// 客户请求，订单是否属于这个客户
+		if(orderfindVO.getClientId().equals(userId)){
+			return orderfindVO;
+		}
+		// 酒店请求，订单是否是该酒店的
+		else if(orderfindVO.getHotelId().equals(userId)){
+			return orderfindVO;
+		}
+		// 网站营销人员请求，该订单是否是异常的
+		else if(orderfindVO.getOrderType().equals(OrderType.ABNORMAL)&&orderID.charAt(0)=='M')
+			return orderfindVO;
+		else
+			return null;
 	}
 	
 	
 	@Override
-	public List<OrderVO> findUserOrderList(String userID) {
+	public ArrayList<OrderVO> findUserOrderList(String userID) {
+
+		if(userID.length()==9){
+			// 调用数据层的数据得到用户的所有订单
+			try {
+				orderPOList=orderDateService.findUserOrderList(userID);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			for(int i=0;i<orderPOList.size();i++){
+				orderVOList.add(POToVO(orderPOList.get(i)));
+			}
+			return orderVOList;
+		}
+		return null;
+	}
+
+	@Override
+	public List<OrderVO> findSpecificDayClientOrderList(String clientId, Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<OrderVO> findSpecificDayClientOrder(String clientId, Date date) {
-		// TODO Auto-generated method stub
+	public List<OrderVO> findSpecificHotelClientOrderList(String clientId, String hotelId) {
+		
+		if(clientId.length()==9&&hotelId.length()==9){
+			try {
+				orderPOList=orderDateService.findClientInHotelAllOrderList(clientId, hotelId);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			for(int i=0;i<orderPOList.size();i++){
+				orderVOList.add(POToVO(orderPOList.get(i)));
+			}
+			return orderVOList;
+		}
 		return null;
 	}
 
 	@Override
-	public List<OrderVO> findSpecificHotelClientOrder(String clientId, String hoteIId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<OrderVO> findClientTypeOrder(OrderType type, String clientId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public OrderVO findSpecificHotelOrder(String hotelId, String orderId) {
-		// TODO Auto-generated method stub
+	public List<OrderVO> findClientTypeOrderList(OrderType type, String clientId) {
+		if(clientId.length()==9&&clientId.charAt(0)=='C'){
+			try {
+				orderPOList=orderDateService.findClientTypeOrderList(type, clientId);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			for(int i=0;i<orderPOList.size();i++){
+				orderVOList.add(POToVO(orderPOList.get(i)));
+			}
+			return orderVOList;
+		}
 		return null;
 	}
 	
 	@Override
-	public List<OrderVO> findHotelTypeOrder(OrderType type, String hotelId) {
-		// TODO Auto-generated method stub
+	public List<OrderVO> findHotelTypeOrderList(OrderType type, String hotelId) {
+		
+		if(hotelId.length()==9&&hotelId.charAt(0)=='H'){
+			try {
+				orderPOList=orderDateService.findHotelTypeOrderList(type, hotelId);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			for(int i=0;i<orderPOList.size();i++){
+				orderVOList.add(POToVO(orderPOList.get(i)));
+			}
+			return orderVOList;
+		}
 		return null;
 	}
 
@@ -166,7 +236,7 @@ public class OrderManage implements OrderBLService{
 	}
 
 	@Override
-	public boolean checkTime(OrderVO order, Date date) {
+	public boolean checkTimeOperateAbnormal(OrderVO order, Date date) {
 		// TODO Auto-generated method stub
 		return false;
 	}

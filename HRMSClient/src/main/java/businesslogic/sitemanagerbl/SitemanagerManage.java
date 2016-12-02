@@ -45,7 +45,7 @@ public class SitemanagerManage implements SitemanagerBLService {
 	 * @param accountVO
 	 * @return
 	 */
-	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO updateVO){
+	public ResultMessage sitemanagerAccountUpdatePO(SitemanagerVO updateVO){
 		currentTel=sitemanagerVO.getSitemanagerPhoneNumber();
 		currentPassword=sitemanagerVO.getPassword();
 		updateTel=updateVO.getSitemanagerPhoneNumber();

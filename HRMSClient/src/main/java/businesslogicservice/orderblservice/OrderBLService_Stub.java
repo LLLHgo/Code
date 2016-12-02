@@ -7,6 +7,7 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.UserType;
+import Enum.VIPType;
 import businesslogicservice.orderblservice.OrderBLService;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
@@ -29,7 +30,7 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 创建订单成功（Success）或是失败（fail）的ResultMessage值
 	 */
 	@Override
-	public ResultMessage createOrder(OrderVO orderInfo) {
+	public ResultMessage createOrderPO(OrderVO orderInfo) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
@@ -40,7 +41,7 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 保存订单成功（Success）或是失败（fail）的ResultMessage值
 	 */
 	@Override
-	public ResultMessage saveOrder(OrderVO order) {
+	public ResultMessage saveOrderPO(OrderVO order) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
@@ -50,18 +51,21 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 置订单于取消状态成功（Success）或是失败（fail）的ResultMessage值
 	 */
 	@Override
-	public ResultMessage cancelOrder(String orderId) {
+	public ResultMessage cancelOrderPO(String orderId) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	/**
-	 * 查找某种用户的具体订单
+	 * 查找某用户的具体订单
 	 */
 	@Override
-	public OrderVO findSpecificOrderList(UserType userType, String orderID) {
+	public OrderVO findSpecificOrder(String userId, String orderID) {
 		// TODO Auto-generated method stub
-		return null;
+		OrderVO orderVO=new OrderVO("000000001","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
+				OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-19 12:00:00",
+				null,"2016-12:20 12:00:00");
+		return orderVO;
 	}
 
 	/**
@@ -82,7 +86,7 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 客户某天的订单列表
 	 */
 	@Override
-	public List<OrderVO> findSpecificDayClientOrder(String clientId, Date date) {
+	public List<OrderVO> findSpecificDayClientOrderList(String clientId, Date date) {
 		// TODO Auto-generated method stub
 		List<OrderVO> SpecificDayClientOrderList=new ArrayList<OrderVO>();
 		return SpecificDayClientOrderList;
@@ -94,7 +98,7 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 客户在某个酒店的所有订单列表
 	 */
 	@Override
-	public List<OrderVO> findSpecificHotelClientOrder(String clientId, String hoteIId) {
+	public List<OrderVO> findSpecificHotelClientOrderList(String clientId, String hoteIId) {
 		// TODO Auto-generated method stub
 		List<OrderVO> SpecificHotelClientOrderList=new ArrayList<OrderVO>();
 		return SpecificHotelClientOrderList;
@@ -106,22 +110,12 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 客户某个种类（正常未执行、正常已执行、取消、异常）的订单列表
 	 */
 	@Override
-	public List<OrderVO> findClientTypeOrder(OrderType type, String clientId) {
+	public List<OrderVO> findClientTypeOrderList(OrderType type, String clientId) {
 		// TODO Auto-generated method stub
 		List<OrderVO> ClientTypeOrder=new ArrayList<OrderVO>();
 		return  ClientTypeOrder;
 	}
-	/**
-	 * 查找酒店的某个具体订单
-	 * @param hotelId
-	 * @param orderId
-	 * @return 酒店的某个具体订单
-	 */
-	@Override
-	public OrderVO findSpecificHotelOrder(String hotelId, String orderId) {
-		// TODO Auto-generated method stub
-		return orderVO;
-	}
+
 	/**
 	 * 查找具体某天的异常订单
 	 * @param date
@@ -140,12 +134,12 @@ public class OrderBLService_Stub implements OrderBLService{
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
 	@Override
-	public boolean checkTime(OrderVO order, Date date) {
+	public boolean checkTimeOperateAbnormal(OrderVO order, Date date) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
-	public List<OrderVO> findHotelTypeOrder(OrderType type, String hotelId) {
+	public List<OrderVO> findHotelTypeOrderList(OrderType type, String hotelId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -24,7 +24,7 @@ public class ProcessOrderViewController implements ProcessOrderViewControllerSer
 
 	
 	public ResultMessage createOrder(OrderVO orderInfo) {
-		return orderBLService.createOrder(new OrderVO());
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage saveOrder(OrderVO order) {

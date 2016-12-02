@@ -168,7 +168,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public ResultMessage updateOrderState(OrderVO vo) {
-		return order.saveOrder(vo);
+		return order.saveOrderPO(vo);
 	}
 
 	@Override

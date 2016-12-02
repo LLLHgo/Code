@@ -6,7 +6,6 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.VIPType;
-<<<<<<< HEAD
 import Enum.UserType;
 import businesslogic.logbl.LogManage;
 import businesslogic.orderbl.OrderManage;
@@ -16,9 +15,7 @@ import presentation.marketing.view.ProcessMarketingProfileView;
 import presentation.marketing.view.ProcessMarketingStrategyView;
 import presentation.marketing.view.ProcessMarketingVIPView;
 import presentation.marketing.view.ProcessMarketingView;
-=======
 import presentation.marketing.view.*;
->>>>>>> origin/master
 import presentation.marketing.view.ProcessMarketingViewControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
@@ -149,7 +146,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public ResultMessage saveOrder(OrderVO order) {
-		return this.OrderBLService.saveOrder(order);
+		return this.OrderBLService.saveOrderPO(order);
 	}
 
 	@Override
@@ -159,7 +156,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public OrderVO findSpecificOrder(String orderID) {
-		return this.OrderBLService.findSpecificOrderList(UserType.MARKETING,orderID);//删掉List
+		return this.OrderBLService.findSpecificOrder(marketingID,orderID);//删掉List
 	}
 
 	@Override

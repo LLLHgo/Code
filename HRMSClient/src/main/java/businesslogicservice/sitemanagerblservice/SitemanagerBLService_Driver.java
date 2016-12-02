@@ -41,7 +41,7 @@ public class SitemanagerBLService_Driver {
 		
 		// 修改网站管理人员账户
 		System.out.println("修改酒店工作人员账户:");
-		result=sitemanagerBLService.sitemanagerAccountUpdate(new SitemanagerVO("S00000001","17889967883","h123"));
+		result=sitemanagerBLService.sitemanagerAccountUpdatePO(new SitemanagerVO("S00000001","17889967883","h123"));
 		if(result==ResultMessage.SUCCESS){
 			System.out.println("修改成功");
 		}

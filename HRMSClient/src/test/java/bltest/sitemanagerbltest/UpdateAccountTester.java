@@ -31,32 +31,32 @@ public class UpdateAccountTester {
 	@Test
 	public void test1() {
 		// 只修改电话 
-		assertEquals(ResultMessage.SUCCESS,sManage.sitemanagerAccountUpdate(updateVO4));
+		assertEquals(ResultMessage.SUCCESS,sManage.sitemanagerAccountUpdatePO(updateVO4));
 	}
 	@Test
 	public void test2() {
 		// 只修改密码
-		assertEquals(ResultMessage.SUCCESS,sManage.sitemanagerAccountUpdate(updateVO5));
+		assertEquals(ResultMessage.SUCCESS,sManage.sitemanagerAccountUpdatePO(updateVO5));
 	}
 	@Test
 	public void test3() {
 		// 不修改密码或电话，信息不变
-		assertEquals(ResultMessage.SAMEINFO,sManage.sitemanagerAccountUpdate(updateVO1));
+		assertEquals(ResultMessage.SAMEINFO,sManage.sitemanagerAccountUpdatePO(updateVO1));
 	}
 	@Test
 	public void test4() {
 		// 电话为空
-		assertEquals(ResultMessage.VOIDTEL,sManage.sitemanagerAccountUpdate(updateVO2));
+		assertEquals(ResultMessage.VOIDTEL,sManage.sitemanagerAccountUpdatePO(updateVO2));
 	}
 	@Test
 	public void test5() {
 		// 密码为空
-		assertEquals(ResultMessage.VOIDPASSWORD,sManage.sitemanagerAccountUpdate(updateVO3));
+		assertEquals(ResultMessage.VOIDPASSWORD,sManage.sitemanagerAccountUpdatePO(updateVO3));
 	}
 	@Test
 	public void test6() {
 		// 电话密码都为空
-		assertEquals(ResultMessage.VOIDINFO,sManage.sitemanagerAccountUpdate(updateVO6));
+		assertEquals(ResultMessage.VOIDINFO,sManage.sitemanagerAccountUpdatePO(updateVO6));
 	}
 
 }

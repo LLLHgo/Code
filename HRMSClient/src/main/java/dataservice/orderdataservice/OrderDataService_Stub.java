@@ -1,22 +1,24 @@
 package dataservice.orderdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
-import Enum.UserType;
+import datatool.OrderDataTool;
 import po.OrderPO;
 
 public class OrderDataService_Stub implements OrderDataService{
 	OrderPO orderPO;
-	List<OrderPO> orderPOList;
-	public OrderDataService_Stub(OrderPO orderPO,List<OrderPO> orderPOList){
+	ArrayList<OrderPO> orderPOList;
+	OrderDataTool orderdatatool;
+	public OrderDataService_Stub(OrderPO orderPO,ArrayList<OrderPO> orderPOList){
 		this.orderPO=orderPO;
 		this.orderPOList=orderPOList;
 	}
 	public OrderDataService_Stub() throws RemoteException{
-		
+		orderdatatool=new OrderDataTool();
 	}
 	/**
 	 * 在数据库中增加一个订单记录
@@ -58,9 +60,9 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return
 	 */
 	@Override
-	public OrderPO findSpecificUserOrder(UserType userType, String orderId) throws RemoteException{
+	public OrderPO findSpecificUserOrder(String userId, String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
-		return orderPO;
+		return orderdatatool.orderPOFindTester;
 	}
 	
 	/**
@@ -69,7 +71,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return
 	 */
 	@Override
-	public List<OrderPO> findUserOrderList(String userId)throws RemoteException {
+	public ArrayList<OrderPO> findUserOrderList(String userId)throws RemoteException {
 		// TODO Auto-generated method stub
 		return orderPOList;
 	}
@@ -80,7 +82,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return 订单列表
 	 */
 	@Override
-	public List<OrderPO> findClientTypeOrder(OrderType orderType,String clientId) throws RemoteException{
+	public ArrayList<OrderPO> findClientTypeOrderList(OrderType orderType,String clientId) throws RemoteException{
 		// TODO Auto-generated method stub
 		return orderPOList;
 	}
@@ -101,7 +103,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param orderId
 	 */
 	@Override
-	public void checkTime(String orderId) throws RemoteException{
+	public void checkTimeOperateAbnormal(String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
 		
 	}
@@ -109,6 +111,16 @@ public class OrderDataService_Stub implements OrderDataService{
 	public int lookIdValid() throws RemoteException {
 		
 		return 105;
+	}
+	@Override
+	public ArrayList<OrderPO> findHotelTypeOrderList(OrderType orderType, String hotelId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<OrderPO> findClientInHotelAllOrderList(String clientId, String hotelId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

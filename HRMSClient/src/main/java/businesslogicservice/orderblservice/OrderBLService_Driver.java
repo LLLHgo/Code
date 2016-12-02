@@ -13,7 +13,7 @@ import Enum.OrderType;
 
 public class OrderBLService_Driver {
 	public void drive(OrderBLService orderBLService){
-		OrderVO orderVO;
+		OrderVO orderVO = null;
 		List<OrderVO> orderList;
 		Iterator<OrderVO> it;
 		Date date;
@@ -39,7 +39,7 @@ public class OrderBLService_Driver {
 		
 		// 取消订单
 		System.out.println("取消订单:");
-		result=orderBLService.cancelOrder("20161015085702");
+		result=orderBLService.cancelOrderPO("20161015085702");
 		if(result==ResultMessage.SUCCESS) 
 			System.out.println("订单号对应的订单不存在，置为取消状态失败");
 		else 
@@ -60,7 +60,7 @@ public class OrderBLService_Driver {
 		
 		// 查找客户某天的订单
 		System.out.println("查找Alina在2016年10月14日的订单：");
-		orderList=orderBLService.findSpecificDayClientOrder("C00000090",new Date());
+		orderList=orderBLService.findSpecificDayClientOrderList("C00000090",new Date());
 		System.out.print("查找结果： ");
 		it=orderList.iterator();
 		/*while(it.hasNext()){
@@ -71,7 +71,7 @@ public class OrderBLService_Driver {
 		
 		// 查找用户客户在某个酒店的所有订单
 		System.out.println("查找Nancy在LLLH酒店的所有订单：");
-		orderList=orderBLService.findSpecificHotelClientOrder("C00000091","H00000001");
+		orderList=orderBLService.findSpecificHotelClientOrderList("C00000091","H00000001");
 		System.out.print("查找结果： ");
 		it=orderList.iterator();
 		/*while(it.hasNext()){
@@ -82,7 +82,7 @@ public class OrderBLService_Driver {
 		
 		// 查找客户某个种类（正常未执行、正常已执行、取消、异常）的订单
 		System.out.println("查找Nancy的正常未执行订单：");
-		orderList=orderBLService.findClientTypeOrder(OrderType.NORMALNONEXEC,"C00000091");
+		orderList=orderBLService.findClientTypeOrderList(OrderType.NORMALNONEXEC,"C00000091");
 		System.out.print("查找结果： ");
 		it=orderList.iterator();
 		/*while(it.hasNext()){
@@ -91,14 +91,6 @@ public class OrderBLService_Driver {
 		}*/
 		System.out.println("这里是Nancy的正常未执行订单");
 		
-		//查找酒店的某个具体订单
-		System.out.println("查找LLLH酒店的订单号为20160910090908的订单：");
-		orderVO=orderBLService.findSpecificHotelOrder("H00000001","20160910090908");
-		System.out.print("查找结果： ");
-		/*System.out.println(orderVO.getClientId()+" "+orderVO.getClientName()+" "
-        +orderVO.getHotelName()+" "+orderVO.getPrice()+orderVO.getOrderDate());
-        */	
-		System.out.println("这里是LLLH酒店的订单号为20160910090908的订单");
 		
 		//查找具体某天的异常订单
 		System.out.println("查找2016年9月15日的异常订单：");
@@ -113,7 +105,7 @@ public class OrderBLService_Driver {
 		
 		//检查时间，判断是否将订单置为异常
 		System.out.println("晚上12点了，判断订单是否要变更为异常状态");
-		boolean resultBoolean=orderBLService.checkTime(orderVO,new Date());
+		boolean resultBoolean=orderBLService.checkTimeOperateAbnormal(orderVO,new Date());
 		System.out.print("结果： ");
 		if(resultBoolean==true)
 			System.out.print("置为异常");

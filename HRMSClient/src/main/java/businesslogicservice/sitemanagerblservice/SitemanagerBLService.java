@@ -16,7 +16,7 @@ public interface SitemanagerBLService {
 	 * @param accountVO
 	 * @return
 	 */
-	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO);
+	public ResultMessage sitemanagerAccountUpdatePO(SitemanagerVO accountVO);
 	
 	
 	/**

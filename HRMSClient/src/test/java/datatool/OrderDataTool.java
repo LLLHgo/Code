@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Enum.OrderType;
 import Enum.VIPType;
+import po.OrderPO;
 import vo.orderVO.OrderVO;
 
 public class OrderDataTool {
@@ -49,7 +50,14 @@ public class OrderDataTool {
 	public static OrderVO orderVO7=new OrderVO("20161017092601","C00000013","sweetstreet","17887780993"
 			,VIPType.ORDINARYVIP,"2016-10-17 09:26",OrderType.ABNORMAL,"LLLHH","H00000002",666,strategy);
 
-
+	public OrderPO orderPOFindTester=new OrderPO("000000001","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
+			OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-19 12:00:00",
+			null,"2016-12-20 12:00:00");
+	
+	public OrderPO orderPOFindTester2=new OrderPO("000000001","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
+			OrderType.ABNORMAL,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-02 12:00:00",
+			null,"2016-12-03 12:00:00");
+	
 	static {
 		list1=new ArrayList<OrderVO>();
 		list1.add(orderVO1);
