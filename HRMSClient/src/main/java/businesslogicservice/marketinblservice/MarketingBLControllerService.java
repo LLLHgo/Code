@@ -36,7 +36,7 @@ public interface MarketingBLControllerService {
 
 	public OrderVO findSpecificOrder(String marketingID, String orderID);
 
-	public List<OrderVO> findAbnormalOrderList(Date date);
+	public List<OrderVO> findAbnormalOrderList(String date);
 
 	public ResultMessage saveOrderPO(OrderVO order);
 

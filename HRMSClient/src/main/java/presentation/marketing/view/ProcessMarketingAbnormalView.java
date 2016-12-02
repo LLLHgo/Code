@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -67,10 +68,12 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	private JLabel yearLabel=new MJLabel("年",275, 16, 30, 40,font2);
 	private JLabel monthLabel=new MJLabel("月",355, 16, 30, 40,font2);
 	private JLabel dayLabel=new MJLabel("日",445, 16, 30, 40,font2);
+	private JPanel view;
 
-	public ProcessMarketingAbnormalView(ProcessMarketingViewControllerService controller,JPanel panel){
+	public ProcessMarketingAbnormalView(ProcessMarketingViewControllerService controller,JPanel view){
     	this.controller=controller;
     	this.MarketingID=controller.getMarketingID();
+    	this.view=view;
         this.setBounds(275, 82, 704, 500);
     	this.setLayout(null);
     	this.setOpaque(false);
@@ -95,7 +98,10 @@ public class ProcessMarketingAbnormalView extends JPanel{
 			}
        	});
 
-    	panel.add(this);
+    	this.revalidate();
+    	this.repaint();
+    	view.add(this);
+
 	}
 
 	public void searchButtonClicked() {
@@ -114,12 +120,16 @@ public class ProcessMarketingAbnormalView extends JPanel{
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 			    String orderIDEntered=searchBarField.getText();
-			    OrderVO order=controller.findSpecificOrder(orderIDEntered);
-			    ArrayList<OrderVO> orders=new ArrayList<OrderVO>();
-			    if(order!=null){
-			    	orders.add(order);
-			        showAbnormalOrders(orders);//调用显示abnormalOrder的方法
-			    }
+			    if(orderIDEntered.length()!=0){//输入的订单号不为空才可以
+			        OrderVO order=controller.findSpecificOrder(orderIDEntered);
+			        ArrayList<OrderVO> orders=new ArrayList<OrderVO>();
+			        if(order!=null){//存在该订单
+			    	    orders.add(order);
+			            showAbnormalOrders(orders);//调用显示abnormalOrder的方法
+			        }else{//传上来的order为空，说明该异常订单不存在
+			        	((ProcessMarketingView)view).setHint("不存在该异常订单，请重新输入。");
+			        }
+	            }
 		    }
 	    });
 	    searchPanel.add(searchKeyButton);
@@ -133,24 +143,38 @@ public class ProcessMarketingAbnormalView extends JPanel{
 		//listButton点击后的JPanel
         searchPanel.setVisible(false);
         listPanel.setVisible(true);
-        removeOrderPanel();
+        this.removeOrderPanel();
 
         Calendar c=Calendar.getInstance();
 		year.setText(c.get(Calendar.YEAR)+"");
-		month.setText(""+(c.get(Calendar.MONTH)+1)%12);
+		month.setText(""+(c.get(Calendar.MONTH)+1));
 		date.setText(""+c.get(Calendar.DATE));
 
 		 //为搜索key加组件 Label加背景和监听
 	    listKeyButton.addActionListener(new ActionListener(){
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	int yearEntered=Integer.parseInt(year.getText());
-		    	int monthEntered=Integer.parseInt(month.getText());
-		    	int dateEntered=Integer.parseInt(date.getText());
-		    	@SuppressWarnings("deprecation")
-				Date date=new Date(yearEntered,monthEntered,dateEntered);
-			    ArrayList<OrderVO> orders=(ArrayList<OrderVO>) controller.findAbnormalOrderList(date);
-			    showAbnormalOrders(orders);//调用显示abnormalOrder的方法
+		    	String y=year.getText();
+		    	String m=month.getText();
+		    	String d=date.getText();
+		    	if(y.length()!=0&&m.length()!=0&&d.length()!=0){//输入的年月日都不为空才行
+		    	    if(y.matches("^[0-9]*$")&&m.matches("^[0-9]*$")&&d.matches("^[0-9]*$")){//输入的年月日都为数
+			    	    boolean convertionSuccess=true;
+			    	    String formated=""+y+m+d;
+			            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+			            try{
+			            	format.setLenient(false);
+			            	format.parse(formated);
+			            }catch(ParseException exception){
+			            	convertionSuccess=false;
+			            }
+
+					    if(convertionSuccess){
+					    	ArrayList<OrderVO> orders=(ArrayList<OrderVO>) controller.findAbnormalOrderList(formated);
+					        showAbnormalOrders(orders);//调用显示abnormalOrder的方法
+		    	         }
+		    	    }
+		    	}
 		    }
 	    });
 
@@ -169,7 +193,7 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	}
 
    public void showAbnormalOrders(ArrayList<OrderVO> orders){
-	    orders=OrderDataTool.list1;
+	   orders=OrderDataTool.list1;
 	   removeOrderPanel();
 	   if(orders==null||orders.size()==0)return;
 	   //设置放置Order信息的JPanel

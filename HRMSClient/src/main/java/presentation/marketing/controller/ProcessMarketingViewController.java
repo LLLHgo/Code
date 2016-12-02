@@ -96,7 +96,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public List<OrderVO> findAbnormalOrderList(Date date) {
+	public List<OrderVO> findAbnormalOrderList(String date) {
 		return this.MarketingBLControllerService.findAbnormalOrderList(date);
 	}
 

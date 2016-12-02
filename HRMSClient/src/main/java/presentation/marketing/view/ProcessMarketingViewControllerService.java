@@ -110,7 +110,7 @@ public interface ProcessMarketingViewControllerService {
 	 * @param date
 	 * @return 具体某天的所有订单列表
 	 */
-	public List<OrderVO> findAbnormalOrderList (Date date);
+	public List<OrderVO> findAbnormalOrderList (String date);
 
 	/**
 	 * 查找具体订单
@@ -133,7 +133,7 @@ public interface ProcessMarketingViewControllerService {
 	 * @return 修改信用值成功与否
 	 */
 
-	public boolean setCredit(String clientID,double recharge);
+	public boolean setCredit(String clientID,double amount);
 	/**
 	 * 根据新的会员等级制度修改所有客户的会员等级
 	 * @param vo
