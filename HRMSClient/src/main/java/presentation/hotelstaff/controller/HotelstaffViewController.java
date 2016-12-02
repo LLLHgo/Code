@@ -12,12 +12,14 @@ import Mock.MockHotelstaffManage;
 import Mock.MockOrderManage;
 import Mock.MockStrategyManage;
 import businesslogic.hoteinfobl.HotelinfoManage;
+import businesslogic.hotelstaffbl.HotelstaffBLController;
 import businesslogic.hotelstaffbl.Hotelstaff;
 import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelinfoblservice.RoominfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import businesslogicservice.hotelstaffblservice.HotelstaffControllerBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import businesslogicservice.orderblservice.OrderBLService_Stub;
 import businesslogicservice.orderblservice.OrderFindBLService;
@@ -49,50 +51,27 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelstaffViewController implements HotelstaffViewControllerService{
 	
-	private static HotelstaffViewController controller;
+	private static HotelstaffViewController viewcontroller;
 	
 	private String hotelID;
 	public JPanel view;
 	public JPanel panel;
-	
-	HotelinfoBLService hotelinfo;
-	RoominfoBLService roominfo;
-	StrategyBLService strategy;
-	OrderFindBLService orderFind;
-	OrderOperatorBLService orderOperator;
-	HotelstaffBLService hotelstaff;
-	
-//	HotelinfoBLService_stub hotelinfo;
-//	StrategyBLService_stub strategy;
-//	OrderBLService_stub order;
-//	HotelstaffBLService_stub hotelstaff;
-//	public HotelstaffViewController(){
-//		new HotelstaffViewController("H00000001");
-//	}
 
+	HotelstaffControllerBLService controller;
+	
 	public String gethotelID(){
 		return hotelID;
 	}
 
 	private HotelstaffViewController(String hotelID){
 		this.hotelID = hotelID;
-		hotelinfo = new HotelinfoManage();
-//		strategy = new StrategyManage();
-//		order = new OrderManage();
-		hotelstaff = new HotelstaffManage();
-	
-//		hotelinfo = new HotelinfoBLService_stub();
-		strategy = new StrategyBLService_Stub();
-		orderFind = new OrderBLService_Stub();
-		orderOperator=new OrderBLService_Stub();
-//		hotelstaff = new HotelstaffBLService_stub();
 	}
 
 	public static HotelstaffViewController getInstance(String hotelID){
-		if(controller == null){
-			controller = new HotelstaffViewController(hotelID);
+		if(viewcontroller == null){
+			viewcontroller = new HotelstaffViewController(hotelID);
 		}
-		return controller;
+		return viewcontroller;
 	}
 	
 	public void setView(JPanel view){
@@ -101,121 +80,138 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	
 	@Override
 	public HotelinfoVO getHotelBasicinfo(String hotelID) {
-		return hotelinfo.getBasicinfo(hotelID);
+		return controller.getHotelBasicinfo(hotelID);
 	}
 
 	@Override
 	public ArrayList<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo) {
-		return hotelinfo.getBasicinfoList(vo);
+		return controller.getHotelBasicinfoList(vo);
 	}
 
 	@Override
 	public ResultMessage updateBassicinfo(HotelinfoVO VO) {
-		return hotelinfo.updateBassicinfo(VO);
+		return controller.updateBassicinfo(VO);
 	}
 
 	@Override
 	public RoominfoVO getRoominfo(String hotelID, String roomID) {
-		return roominfo.getroominfo(hotelID, roomID);
+		return controller.getroominfo(hotelID, roomID);
 	}
 
 	@Override
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
-		return roominfo.getRoominfoList(hotelID);
+		return controller.getRoominfoList(hotelID);
 	}
 
 	@Override
 	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
 			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
-		return roominfo.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
+		return controller.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
 	}
 
 
 	@Override
 	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
-		 return strategy.updateHotelStrategy(vo);
+		 return controller.updatehotelStrategy(vo);
 	}
 
 	@Override
 	public ArrayList<HotelStrategyVO> gethotelStrategy(String hotelID) {
-		return (ArrayList<HotelStrategyVO>) strategy.getHotelStrategy(hotelID);
+		return (ArrayList<HotelStrategyVO>) controller.gethotelStrategy(hotelID);
 	}
 
 	@Override
 	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy) {
-		boolean result = strategy.deletehotelStrategy(hotelStrategy);
-		if(result == true){
-			return ResultMessage.SUCCESS;
-		}
-		else{
-			return ResultMessage.FAIL;
-		}
+		return controller.deletehotelStrategy(hotelStrategy);
 	}
 
 	@Override
 	public HotelinfoVO gethotelinfoVO(String hotelID) {
-		return hotelinfo.gethotelinfoVO(hotelID);
+		return controller.gethotelinfoVO(hotelID);
 	}
 
 	@Override
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
-		return roominfo.getroominfo(hotelID, roomID);
+		return controller.getroominfo(hotelID, roomID);
 	}
 
 	@Override
 	public ResultMessage updateroominfo(RoominfoVO vo,String hotelID) {
-		if(roominfo.updateroominfo(vo,hotelID)==true){
-			return ResultMessage.SUCCESS;
-		}
-		return ResultMessage.FAIL;
+		return controller.updateroominfo(vo,hotelID);
 	}
-
 
 	@Override
 	public ResultMessage updateOrderState(OrderVO vo) {
-		return orderOperator.saveOrderPO(vo);
+		return controller.updateOrderState(vo);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getALLHotelOrderList(String hotelID, OrderType ALL) {
-		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ALL, hotelID);
+		return (ArrayList<OrderVO>) controller.getALLHotelOrderList(hotelID,ALL);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getUnexecutedHotelOrderList(String hotelID, OrderType NORMALEXEC) {
-		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(NORMALEXEC, hotelID);
+		return (ArrayList<OrderVO>) controller.getUnexecutedHotelOrderList(hotelID,NORMALEXEC);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, OrderType NORMALNONEXEC) {
-		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(NORMALNONEXEC, hotelID);
+		return (ArrayList<OrderVO>) controller.getExecutedHotelOrderList(hotelID,NORMALNONEXEC);
 	}
 
 	@Override
 	public ArrayList<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
+		return (ArrayList<OrderVO>) controller.getAbnormalHotelOrderList(hotelID,ABNORMALCANCEL);
 	}
 	
 	@Override
 	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
-		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
+		return (ArrayList<OrderVO>) controller.getCancleHotelOrderList(hotelID,ABNORMALCANCEL);
 	}
 	
 	@Override
 	public String getHotelstaffBasicinfo(String hotelID) {
-		return hotelstaff.getBasicinfo(hotelID);
+		return controller.getHotelstaffBasicinfo(hotelID);
 	}
 
 	@Override
 	public ResultMessage setPassword(String hotelID, String password) {
-		return hotelstaff.setPassword(hotelID, password);
+		return controller.setPassword(hotelID, password);
 	}
 
 	@Override
 	public boolean checkAccount(String hotelID, String password) {
-		return hotelstaff.checkAccount(hotelID, password);
+		return controller.checkAccount(hotelID, password);
 	}
 
+	@Override
+	public ResultMessage addArea(String area) {
+		return controller.addArea(area);
+	}
+
+	@Override
+	public String[] getArea() {
+		return controller.getArea();
+	}
+	
+
+	@Override
+	public ResultMessage addRoomType(String type) {
+		return controller.addRoomType(type);
+	}
+
+	@Override
+	public String[] getRoomType() {
+		return controller.getRoomType();
+	}
+
+
+	@Override
+	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
+		return (ArrayList<OrderVO>) controller.getExecutedHotelOrderList( hotelID,clientID);
+	}
+	
 	public void JBHotelinfoClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -310,30 +306,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
-	@Override
-	public ResultMessage addArea(String area) {
-		if(hotelinfo.addArea(area)==true){
-			return ResultMessage.AddAreaSuccess;
-		}
-		return null;
-	}
-
-	@Override
-	public String[] getArea() {
-		return hotelinfo.getArea();
-	}
-	
-
-	@Override
-	public ResultMessage addRoomType(String type) {
-		return ResultMessage.SUCCESS;
-	}
-
-	@Override
-	public String[] getRoomType() {
-		return roominfo.getRoomType();
-	}
 
 
 	public void detailedStrategy(HotelStrategyVO vo) {
@@ -372,13 +344,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-
-	@Override
-	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
-		ArrayList<OrderVO> list = (ArrayList<OrderVO>) orderFind.findSpecificHotelClientOrderList(clientID, hotelID);
-		return list;
-	}
-
 
 
 }
