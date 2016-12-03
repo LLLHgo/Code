@@ -5,6 +5,7 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -62,9 +63,9 @@ public interface HotelinfoBLService {
 	ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO);
 	
 	/**
-	 * 获得所有酒店里面的商圈
+	 * 获得商圈里面的酒店列表
 	 * @return ArrayList<AreaVO>
 	 */
-	//public List<AreaVO> getAreaVOList();
+	public List<AreaVO> getAreaHotels();
 	
 }

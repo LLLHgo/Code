@@ -26,7 +26,6 @@ import presentation.hotelstaff.component.TimePanel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.newPanel;
-import vo.districtVO.DistrictVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 

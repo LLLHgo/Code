@@ -215,4 +215,5 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 		return list;
 	}
 
+	
 }

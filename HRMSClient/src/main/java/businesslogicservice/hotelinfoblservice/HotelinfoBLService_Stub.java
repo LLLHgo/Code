@@ -7,6 +7,7 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
+import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -209,6 +210,27 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService,RoominfoBLSer
 		if(type.equals("标准间")||type.equals("大床房")||type.equals("总统套房"))
 		return false;
 		return true;
+	}
+
+	@Override
+	public List<AreaVO> getAreaHotels() {
+
+		ArrayList<AreaVO> areas = new ArrayList<AreaVO>();
+		
+		ArrayList<String> list1 = new ArrayList<String>();
+		list1.add("HanTing");
+		list1.add("RuJia");
+		list1.add("LvZhou");
+		AreaVO vo1 = new AreaVO("新街口商圈",list1);
+		
+		ArrayList<String> list2 = new ArrayList<String>();
+		list2.add("LLLH酒店");
+		list2.add("王二狗酒店");
+		AreaVO vo2 = new AreaVO("山西路商圈",list1);
+		
+		areas.add(vo1);
+		areas.add(vo2);
+		return areas;
 	}
 
 

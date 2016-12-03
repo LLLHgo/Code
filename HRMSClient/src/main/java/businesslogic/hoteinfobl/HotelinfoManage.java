@@ -20,6 +20,7 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.HotelinfoPO;
 import po.RoominfoPO;
+import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -167,6 +168,28 @@ public class HotelinfoManage implements HotelinfoBLService{
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public List<AreaVO> getAreaHotels() {
+		String[] areas = getArea();
+		ArrayList<HotelinfoPO> hotelinfoPOList = new ArrayList<HotelinfoPO>();
+		ArrayList<String> hotels = new ArrayList<String>();
+		ArrayList<AreaVO> areaVOList= new ArrayList<AreaVO>();
+		try {
+			for(int i=0;i<areas.length;i++){
+				hotelinfoPOList = data.findHotelinfoList(areas[i]);
+				for(int j=0;j<hotelinfoPOList.size();j++){
+					hotels.add(hotelinfoPOList.get(j).getName());
+				}
+				AreaVO vo = new AreaVO(areas[i],hotels);
+				areaVOList.add(vo);
+			}				
+			} catch (RemoteException e) {
+				e.printStackTrace();
+				return null;
+		}
+		return null;
 	}
 
 	
