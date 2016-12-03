@@ -6,7 +6,7 @@ public class LevelVO {
     //等级名称
     private String name;
     //上升到该等级所需的信用值
-    private int creditNeeded;
+    private double creditNeeded;
     //该等级享受的折扣
     private double discount;
 
@@ -16,7 +16,7 @@ public class LevelVO {
      * @param name
      * @param creditNeeded
      */
-    public LevelVO(int level,String name,int creditNeeded,double discount){
+    public LevelVO(int level,String name,double creditNeeded,double discount){
     	this.setLevel(level);
     	this.setName(name);
     	this.setCreditNeeded(creditNeeded);
@@ -34,10 +34,10 @@ public class LevelVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCreditNeeded() {
+	public double getCreditNeeded() {
 		return creditNeeded;
 	}
-	public void setCreditNeeded(int creditNeeded) {
+	public void setCreditNeeded(double creditNeeded) {
 		this.creditNeeded = creditNeeded;
 	}
 	public double getDiscount() {

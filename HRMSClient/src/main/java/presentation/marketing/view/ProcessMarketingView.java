@@ -29,7 +29,7 @@ public class ProcessMarketingView extends JPanel{
 	private MJLabel IDLabel;
 	private GuideBoardButton profile=new GuideBoardButton(241,"个人信息");
 	private GuideBoardButton abnormal=new GuideBoardButton(301,"异常订单");
-	private GuideBoardButton credit=new GuideBoardButton(361,"修改信用值");
+	private GuideBoardButton credit=new GuideBoardButton(361,"信用值充值");
 	private GuideBoardButton VIP=new GuideBoardButton(421,"等级设置");
 	private GuideBoardButton strategy=new GuideBoardButton(481,"制定策略");
 	private GuideBoardButton exit=new GuideBoardButton(541,"退出");

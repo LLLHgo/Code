@@ -21,7 +21,7 @@ private JTextField nameField;
 private JTextField creditField;
 private JTextField discountField;
 
-public showLevel(String name,int level,int credit,double discount,int x, int y, int w, int h) {
+public showLevel(String name,int level,double credit,double discount,int x, int y, int w, int h) {
 	super(x, y, w, h);
     JLabel Name=new MJLabel("等级名称 ",25,10,400,30,font);
     JLabel Level=new MJLabel("等级层次 ",25,55,130,30,font);
@@ -60,11 +60,16 @@ protected  void paintComponent(Graphics g) {
 
 public  LevelVO getText() {
 	String name=nameField.getText();
-	int level = 0,credit=0;
+	int level = 0;
+	double credit=0;
 	double dis=0.0;
-	if(levelField.getText().length()!=0)level=Integer.parseInt(this.levelField.getText());
-	if(discountField.getText().length()!=0)dis=Double.parseDouble(this.discountField.getText());
-	if(creditField.getText().length()!=0)credit=Integer.parseInt(this.creditField.getText());
+	try{
+	    level=Integer.parseInt(this.levelField.getText());
+	    dis=Double.parseDouble(this.discountField.getText());
+	    credit=Double.parseDouble(this.creditField.getText());
+	}catch(NumberFormatException e){
+		return null;
+	}
 	return new LevelVO(level,name,credit,dis);
 }
 }

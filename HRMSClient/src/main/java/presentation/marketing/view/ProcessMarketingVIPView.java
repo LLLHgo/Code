@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Enum.ResultMessage;
 import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.controller.ProcessMarketingViewController;
 import presentation.marketing.compoment.*;
@@ -42,7 +43,11 @@ public class ProcessMarketingVIPView extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 levelsPos=((levelPanel) levelPanel).getLevel();
-                controller.updateLevel(levelsPos);
+                if(controller.updateLevel(levelsPos)==ResultMessage.SUCCESS){//更新levels成功
+                	view.setHint("等级信息更新成功。");
+                }else{
+                	view.setHint("等级信息更新失败。");
+                }
 			}
         });
         this.add(checkButton);

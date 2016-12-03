@@ -68,8 +68,7 @@ public class levelPanel extends MJScrollPane{
     			public void actionPerformed(ActionEvent e) {
                     panelList.remove(showLevel);
                     list.remove(vo);
-
-						changeList();
+    				changeList();
                     refresh();
     			}
              });
