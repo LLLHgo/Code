@@ -1,4 +1,4 @@
-package bltest.orderbltest;
+package bltest.orderbltest.orderOperatorTester;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +12,7 @@ import Enum.VIPType;
 import businesslogic.orderbl.OrderOperator;
 import vo.orderVO.OrderVO;
 
-public class SaveOrderPOTester {
+public class CancelOrderTester {
 
 	OrderOperator operator;
 	OrderVO orderVO1;
@@ -21,7 +21,7 @@ public class SaveOrderPOTester {
 	OrderVO orderVO4;
 	OrderVO orderVO5;
 	ArrayList<String> strategy;
-	public SaveOrderPOTester(){
+	public CancelOrderTester(){
 		operator=new OrderOperator();
 		strategy=new ArrayList<String>();
 		strategy.add("圣诞节bonus！！");
@@ -38,7 +38,7 @@ public class SaveOrderPOTester {
 		orderVO4=new OrderVO("","C00000001","小螺丝","",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
 				OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-23 12:00:00",
 				null,"2016-12-24 12:00:00");
-		orderVO5=new OrderVO("000000001","C00000001","小螺丝","",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
+		orderVO5=new OrderVO("000000001","C00000001","小螺丝","18798891232",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
 				OrderType.CANCEL,"冠军楼酒店","H00000010",340.28,null,"大床房",0,1,"2016-12-23 12:00:00",
 				null,"2016-12-24 12:00:00");
 	}
@@ -52,19 +52,10 @@ public class SaveOrderPOTester {
 	public void test2() {
 		assertEquals(ResultMessage.IDINVALID,operator.saveOrderPO(orderVO2));
 	}
-	// 缺少一个数据
-	@Test
-	public void test3() {
-		assertEquals(ResultMessage.HASVOID,operator.saveOrderPO(orderVO3));
-	}
-	// 缺少2个数据
-	@Test
-	public void test4() {
-		assertEquals(ResultMessage.HASVOID,operator.saveOrderPO(orderVO4));
-	}
 	// 订单状态原为取消状态，不能对其进行修改
 	@Test
 	public void test5() {
 		assertEquals(ResultMessage.CANCELANDCANNOTMODIFY,operator.saveOrderPO(orderVO5));
 	}
+
 }

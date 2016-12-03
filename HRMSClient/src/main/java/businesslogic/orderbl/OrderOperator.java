@@ -186,7 +186,7 @@ public class OrderOperator implements OrderOperatorBLService{
 	
 		OrderPO preOrderPO = null;
 		try {
-			preOrderPO=orderDateService.findSpecificUserOrder(orderVO.getClientId(), orderVO.getOrderId());
+			preOrderPO=orderDateService.findSpecificUserOrder(orderVO.getOrderId());
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -216,10 +216,22 @@ public class OrderOperator implements OrderOperatorBLService{
 	// 将订单置为撤销状态
 	@Override
 	public ResultMessage cancelOrderPO(String orderId) {
-
+		
+		OrderPO preOrderPO = null;
 		String lastOrderIdString=lookUpIdinDatabase();
+		
 		// 判断是否存在该帐号
 		if(Integer.parseInt(lastOrderIdString)-1>=Integer.parseInt(orderId)){
+			// 存在该帐号，则调用data层的方法，看原订单是否为撤销状态，如果是，则返回已经撤销的信息
+			try {
+				preOrderPO=orderDateService.findSpecificUserOrder( orderId);
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			if((preOrderPO.getOrderType()+"").equals(OrderType.CANCEL))
+				return ResultMessage.CANCELANDCANNOTMODIFY;
+			
 			// 存在该帐号，则调用data层方法，在数据库中将帐号的订单状态置为撤销状态
 			try {
 				resultB=orderDateService.cancel(orderId);

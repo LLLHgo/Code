@@ -11,5 +11,5 @@ public interface OrderCheckTimeBLService {
 	 * @param date
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
-	public boolean checkTimeOperateAbnormal (OrderVO order, Date date);
+	public boolean checkTimeOperateAbnormal (OrderVO order, String date);
 }

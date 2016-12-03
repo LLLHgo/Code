@@ -1,4 +1,4 @@
-package bltest.orderbltest;
+package bltest.orderbltest.orderFindTester;
 
 import static org.junit.Assert.*;
 
@@ -58,6 +58,12 @@ public class FindSpecificOrderTester {
 	public void test5() {
 		// 酒店工作人员帐号与订单中的酒店张哈不匹配， 没找到
 		assertEquals(null,orderFind.findSpecificOrder("H00000001", "000000001"));
+	}
+	
+	@Test
+	public void test6() {
+		// 订单号过大
+		assertEquals(null,orderFind.findSpecificOrder("C00000001", "000000106"));
 	}
 	
 }

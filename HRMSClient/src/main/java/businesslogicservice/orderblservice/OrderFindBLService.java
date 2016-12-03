@@ -21,7 +21,7 @@ public interface OrderFindBLService {
 	 * @param date
 	 * @return 客户某天的订单列表
 	 */
-	public  ArrayList<OrderVO> findSpecificDayClientOrderList(String clientId, Date date);
+	public  ArrayList<OrderVO> findSpecificDayClientOrderList(String clientId, String date);
 	/**
 	 * 查找客户在某个酒店的所有订单
 	 * @param clientId
@@ -50,7 +50,7 @@ public interface OrderFindBLService {
 	 * @param date
 	 * @return 具体某天的所有订单列表
 	 */
-	public ArrayList<OrderVO> findAbnormalOrderList (Date date);
+	public ArrayList<OrderVO> findAbnormalOrderList (String date);
 	/**
 	 * 返回给某一用户的具体订单
 	 * @param userType

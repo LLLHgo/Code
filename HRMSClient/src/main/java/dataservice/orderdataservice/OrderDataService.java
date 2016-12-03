@@ -42,7 +42,15 @@ public interface OrderDataService extends Remote{
 	 * @param orderId
 	 * @return OrderPO
 	 */
-	public OrderPO findSpecificUserOrder(String userId, String orderId)throws RemoteException;
+	public OrderPO findSpecificUserOrder(String orderId)throws RemoteException;
+	/**
+	 * 查找客户某天的所有订单
+	 * @param clientId
+	 * @param orderId
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<OrderPO> findSpecificDayClientOrderList(String clientId,String date)throws RemoteException;
 	
 	/**
 	 * 查找某用户的所有订单
@@ -78,7 +86,7 @@ public interface OrderDataService extends Remote{
 	 * @param date
 	 * @return 异常订单列表
 	 */
-	public List<OrderPO> findAbnormalOrderList(Date date) throws RemoteException;
+	public ArrayList<OrderPO> findAbnormalOrderList(String date) throws RemoteException;
 	
 	/**
 	 * 根据时间，在数据库中将超时订单置为异常状态

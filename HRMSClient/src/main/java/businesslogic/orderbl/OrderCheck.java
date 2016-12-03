@@ -1,6 +1,5 @@
 package businesslogic.orderbl;
 
-import java.util.Date;
 
 import businesslogicservice.orderblservice.OrderCheckTimeBLService;
 import vo.orderVO.OrderVO;
@@ -8,7 +7,7 @@ import vo.orderVO.OrderVO;
 public class OrderCheck implements OrderCheckTimeBLService{
 
 	@Override
-	public boolean checkTimeOperateAbnormal(OrderVO order, Date date) {
+	public boolean checkTimeOperateAbnormal(OrderVO order, String date) {
 		// TODO Auto-generated method stub
 		return false;
 	}

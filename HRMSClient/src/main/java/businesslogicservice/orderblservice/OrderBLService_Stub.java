@@ -84,7 +84,7 @@ public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTim
 	 * @return 客户某天的订单列表
 	 */
 	@Override
-	public ArrayList<OrderVO> findSpecificDayClientOrderList(String clientId, Date date) {
+	public ArrayList<OrderVO> findSpecificDayClientOrderList(String clientId, String date) {
 		// TODO Auto-generated method stub
 		ArrayList<OrderVO> SpecificDayClientOrderList=new ArrayList<OrderVO>();
 		return SpecificDayClientOrderList;
@@ -120,7 +120,7 @@ public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTim
 	 * @return 具体某天的所有订单列表
 	 */
 	@Override
-	public ArrayList<OrderVO> findAbnormalOrderList(Date date) {
+	public ArrayList<OrderVO> findAbnormalOrderList(String date) {
 		// TODO Auto-generated method stub
 		ArrayList<OrderVO> findAbnormalOrder=new ArrayList<OrderVO>();
 		return  findAbnormalOrder;
@@ -132,7 +132,7 @@ public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTim
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
 	@Override
-	public boolean checkTimeOperateAbnormal(OrderVO order, Date date) {
+	public boolean checkTimeOperateAbnormal(OrderVO order, String date) {
 		// TODO Auto-generated method stub
 		return false;
 	}

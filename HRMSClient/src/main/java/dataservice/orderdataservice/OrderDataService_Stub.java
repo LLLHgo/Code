@@ -60,7 +60,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return
 	 */
 	@Override
-	public OrderPO findSpecificUserOrder(String userId, String orderId) throws RemoteException{
+	public OrderPO findSpecificUserOrder(String orderId) throws RemoteException{
 		// TODO Auto-generated method stub
 		return orderdatatool.orderPOFindTester;
 	}
@@ -93,7 +93,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return 异常订单列表
 	 */
 	@Override
-	public List<OrderPO> findAbnormalOrderList(Date date)throws RemoteException {
+	public ArrayList<OrderPO> findAbnormalOrderList(String date)throws RemoteException {
 		// TODO Auto-generated method stub
 		return orderPOList;
 	}
@@ -119,6 +119,11 @@ public class OrderDataService_Stub implements OrderDataService{
 	}
 	@Override
 	public ArrayList<OrderPO> findClientInHotelAllOrderList(String clientId, String hotelId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<OrderPO> findSpecificDayClientOrderList(String clientId, String date) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
