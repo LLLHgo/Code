@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import Enum.ResultMessage;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.compoment.*;
@@ -33,9 +34,11 @@ public class ProcessMarketingStrategyView extends JPanel{
 	private periodPanel periodPanel;
 	private specialPanel specialPanel;
 	private browsePanel browsePanel;
+	private JPanel view;
 
-	public ProcessMarketingStrategyView(ProcessMarketingViewControllerService controller,JPanel panel){
+	public ProcessMarketingStrategyView(ProcessMarketingViewControllerService controller,JPanel view){
 		this.controller=controller;
+		this.view=view;
 		this.setBounds(200, 82, 780, 500);
     	this.setLayout(null);
     	this.setOpaque(false);
@@ -77,7 +80,7 @@ public class ProcessMarketingStrategyView extends JPanel{
 			}
        	});
     	this.add(groupPanel);
-    	panel.add(this);
+    	view.add(this);
 	}
 
 	public void periodButtonClicked(){
@@ -85,8 +88,8 @@ public class ProcessMarketingStrategyView extends JPanel{
 		periodPanel=new periodPanel(0,0,780,500);
 		periodPanel.setVisible(true);
 	    Calendar c=Calendar.getInstance();
-	    periodPanel.setStartTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
-	    periodPanel.setEndTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
+	    periodPanel.setStartTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE));
+	    periodPanel.setEndTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE));
 	    periodPanel.setDiscount(0.00);
 
 	  //确认Button及其监听
@@ -95,7 +98,15 @@ public class ProcessMarketingStrategyView extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
               MarketingStrategyVO periodVO= periodPanel.getCreatedVO();
-              controller.addMarketingStrategy(periodVO);
+              if(periodVO==null){//vo为空 说明信息还未填写完全
+            	  ((ProcessMarketingView)view).setHint("请继续填写.");
+              }else{
+            	  if(controller.addMarketingStrategy(periodVO)==ResultMessage.SUCCESS){//保存新增策略成功
+                	  ((ProcessMarketingView)view).setHint("保存新增策略成功.");
+                  }else {//保存新增策略失败
+                	  ((ProcessMarketingView)view).setHint("保存新增策略失败.");
+                  }
+              }
 			}
 
         });
@@ -123,7 +134,7 @@ public class ProcessMarketingStrategyView extends JPanel{
 
 	public void specialButtonClicked(){
 		hideGroup();
-		List<String> districts=controller.getDistrictNames();
+		List<String> districts=Arrays.asList(controller.getDistrictNames());
 		specialPanel=new specialPanel(0,0,780,500,districts);
 		specialPanel.setVisible(true);
 	    Calendar c=Calendar.getInstance();
@@ -135,8 +146,16 @@ public class ProcessMarketingStrategyView extends JPanel{
         check.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-              MarketingStrategyVO specialVO= specialPanel.getSpecialVO();
-              controller.addMarketingStrategy(specialVO);
+				MarketingStrategyVO specialVO= specialPanel.getSpecialVO();
+				if(specialVO==null){//从specialPanel处得到空的VO，说明有项目还未填写完全
+	            	  ((ProcessMarketingView)view).setHint("请继续填写.");
+	            	  return;
+	              }
+	              if(controller.addMarketingStrategy(specialVO)==ResultMessage.SUCCESS){//保存新增策略成功
+	            	  ((ProcessMarketingView)view).setHint("保存新增策略成功.");
+	              }else {//保存新增策略失败
+	            	  ((ProcessMarketingView)view).setHint("保存新增策略失败.");
+	              }
 			}
 
         });
@@ -162,12 +181,12 @@ public class ProcessMarketingStrategyView extends JPanel{
 	}
 	public void newButtonClicked(){
 		hideGroup();
-		List<AreaVO> districts=controller.getDistricts();
+		List<AreaVO> districts=controller.getDistricts();//调用controller得到商圈及其酒店信息列表
 		newPanel=new newPanel(0,0,780,500,districts);
 	    newPanel.setVisible(true);
 	    Calendar c=Calendar.getInstance();
-	    newPanel.setStartTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
-	    newPanel.setEndTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR),c.get(Calendar.MINUTE));
+	    newPanel.setStartTime(c.get(Calendar.YEAR),(c.get(Calendar.MONTH)),c.get(Calendar.DATE),c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE));
+	    newPanel.setEndTime(c.get(Calendar.YEAR),(c.get(Calendar.MONTH)),c.get(Calendar.DATE),c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE));
 	    newPanel.setDiscount(0.00);
 
 	    //确认Button及其监听
@@ -176,7 +195,15 @@ public class ProcessMarketingStrategyView extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
               MarketingStrategyVO cratedVO= newPanel.getCreatedVO();
-              controller.addMarketingStrategy(cratedVO);
+              if(cratedVO==null){//从newPanel处得到空的VO，说明有项目还未填写完全
+            	  ((ProcessMarketingView)view).setHint("请继续填写.");
+            	  return;
+              }
+              if(controller.addMarketingStrategy(cratedVO)==ResultMessage.SUCCESS){//保存新增策略成功
+            	  ((ProcessMarketingView)view).setHint("保存新增策略成功.");
+              }else {//保存新增策略失败
+            	  ((ProcessMarketingView)view).setHint("保存新增策略失败.");
+              }
 			}
 
         });
@@ -216,7 +243,11 @@ public class ProcessMarketingStrategyView extends JPanel{
 			public void actionPerformed(ActionEvent e) {
                 List<String> delete=browsePanel.getDelete();
                 for(String s:delete){
-                	controller.deleteMarketingStrategy(s);
+                	if(controller.deleteMarketingStrategy(s)==ResultMessage.SUCCESS){//删除策略成功
+                		//((ProcessMarketingView)view).setHint("删除策略成功.");
+                	}else{//删除策略失败
+                		((ProcessMarketingView)view).setHint("删除策略失败.");
+                	}
                 }
                 groupPanel.setVisible(true);
 				browsePanel.removeAll();
@@ -238,5 +269,6 @@ public class ProcessMarketingStrategyView extends JPanel{
 	public void hideGroup(){
 		groupPanel.setVisible(false);
 	}
+
 
 }

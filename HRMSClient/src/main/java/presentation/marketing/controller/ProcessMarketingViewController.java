@@ -1,6 +1,5 @@
 package presentation.marketing.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import Enum.*;
@@ -108,10 +107,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		return this.MarketingBLControllerService.setCredit(clientID, (int)amount);
 	}
 
-	@Override
-	public boolean setAllClientLevel(LevelVO vo) {
-		return this.MarketingBLControllerService.setAllClientLevel(vo);
-	}
+
 
 	@Override
 	public List<AreaVO> getDistricts() {
@@ -119,7 +115,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public List<String> getDistrictNames() {
+	public String[] getDistrictNames() {
 		return this.MarketingBLControllerService.getDistrictNames();
 	}
 

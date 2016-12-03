@@ -33,7 +33,10 @@ public class periodPanel extends MJPanel{
         String name=namePanel.getName();
         Calendar start=((TimePanel) startPanel).getTime();
         Calendar end=((TimePanel) endPanel).getTime();
+        Calendar c=Calendar.getInstance();
         double discount= ((InputPanel)discountPanel).getInput();
+        if(name.length()==0||c.compareTo(start)>=0||start.compareTo(end)>=0||discount<0)
+        	return null;
 
         setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.PERIOD,start,end,discount));
 		 return createdVO;
@@ -44,12 +47,12 @@ public class periodPanel extends MJPanel{
 	}
 
 	public void setStartTime(int year, int month, int date, int hour, int minute) {
-		((TimePanel) startPanel).setTime(year,  month,  date,  hour,  minute);
+		((TimePanel) startPanel).setTime(year,  month+1,  date,  hour,  minute);
 
 	}
 
 	public void setEndTime(int year, int month, int date, int hour, int minute) {
-		((TimePanel) endPanel).setTime(year,  month,  date,  hour,  minute);
+		((TimePanel) endPanel).setTime(year,  month+1,  date,  hour,  minute);
 
 	}
 

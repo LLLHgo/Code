@@ -29,14 +29,22 @@ public class levelPanel extends MJScrollPane{
 		super(x, y, w, h,panel);
 		this.list=list;
 		this.panel=panel;
+		refresh();
+	}
 
-		addButton=new MJButton(270,height*list.size()+30,50,50,addIcon);
+	private void changeList() {
+		this.list=getMyLevels();
+	}
+
+    private void refresh(){
+       	panel.removeAll();
+       	panelList=new ArrayList<showLevel>();
+
+       	addButton=new MJButton(270,height*list.size()+30,50,50,addIcon);
 		addButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				LevelVO vo=new LevelVO(0,"",0,0.0);
-				changeList();
-				MJPanel showLevel=new showLevel(vo.getName(),vo.getLevel(),vo.getCreditNeeded(),vo.getDiscount(),90,height*list.size(),420,height);
+				MJPanel showLevel=new showLevel("",0,0,0,90,height*list.size()+30,420,height);
 			    panel.add(showLevel);
 			    panelList.add((showLevel) showLevel);
 			    changeList();
@@ -46,18 +54,8 @@ public class levelPanel extends MJScrollPane{
 
 		});
 
-		refresh();
-	}
-
-	private void changeList() {
-		this.list=getLevel();
-	}
-    private void refresh(){
-       	panel.removeAll();
-       	panelList=new ArrayList<showLevel>();
-		addButton.setLocation(270,height*list.size()+30);
 		panel.add(addButton);
-        panel.setPreferredSize(new Dimension(690,height*list.size()+80));
+	    panel.setPreferredSize(new Dimension(690,height*list.size()+80));
 
         int position=30;//记录当前panel排版的位置
         for(LevelVO vo:list){
@@ -85,14 +83,44 @@ public class levelPanel extends MJScrollPane{
 
 
 
-	public List<LevelVO> getLevel() {
+	public List<LevelVO> getLevels() {
 		List<LevelVO> d=new ArrayList<LevelVO>();
 		for(MJPanel panel:panelList){
-	        LevelVO vo=((showLevel) panel).getText();
+	        LevelVO vo=((showLevel) panel).getLevel();
+	        if(vo==null)
+	        	return null;//如果得到某个空的Level，则返回null
 		    d.add(vo);
 		}
 		return d;
 
 	}
 
+	private List<LevelVO> getMyLevels() {
+		List<LevelVO> d=new ArrayList<LevelVO>();
+		for(MJPanel panel:panelList){
+	        LevelVO vo=((showLevel) panel).getMyLevel();
+	        if(vo==null)
+	        	vo=new LevelVO(0,"",0,0);
+	        d.add(vo);
+		}
+		return d;
+
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

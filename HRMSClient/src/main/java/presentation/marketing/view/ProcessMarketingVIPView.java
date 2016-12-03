@@ -42,11 +42,18 @@ public class ProcessMarketingVIPView extends JPanel{
         checkButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                levelsPos=((levelPanel) levelPanel).getLevel();
-                if(controller.updateLevel(levelsPos)==ResultMessage.SUCCESS){//更新levels成功
-                	view.setHint("等级信息更新成功。");
+                levelsPos=((levelPanel) levelPanel).getLevels();
+                if(levelsPos==null){
+                	view.setHint("请重新填写等级信息。");
+                	return;
                 }else{
-                	view.setHint("等级信息更新失败。");
+	                if(controller.updateLevel(levelsPos)==ResultMessage.SUCCESS){
+	                	view.setHint("等级信息保存成功!客户数据更新成功！");
+	                }else if(controller.updateLevel(levelsPos)==ResultMessage.FAIL){
+	                	view.setHint("等级信息保存失败。");
+	                }else if(controller.updateLevel(levelsPos)==ResultMessage.FAULT){
+	                	view.setHint("好消息：等级信息已保存成功！坏消息：客户数据更新失败。。。");
+	                }
                 }
 			}
         });

@@ -1,6 +1,7 @@
 package presentation.marketing.compoment;
 
 import java.awt.Font;
+import java.text.ParseException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -34,9 +35,21 @@ public class MakePanel extends MJPanel{
 	}
 
 	public double getDiscount(){
-		return Double.parseDouble(discountField.getText());
+		double result=-1;
+		try{
+			result=Double.parseDouble(discountField.getText());
+		}catch(Exception e){
+			return -1;
+		}
+		return result;
 	}
 	public int getLevel(){
-		return Integer.parseInt(levelField.getText());
+		int result=-1;
+		try{
+			result=Integer.parseInt(levelField.getText());
+		}catch(Exception e){
+			return -1;
+		}
+		return result;
 	}
 }

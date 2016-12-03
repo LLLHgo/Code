@@ -36,6 +36,18 @@ public class InputPanel extends MJPanel{
 	}
 
 	public double getInput(){
-		return Double.parseDouble(valueField.getText());
+		double result=0;
+		try{
+			result=Double.parseDouble(valueField.getText());
+		}catch(NumberFormatException e){
+			return -1;
+		}
+		return result;
 	}
 }
+
+
+
+
+
+

@@ -38,8 +38,10 @@ public class MemberPanel extends MJPanel {
 	}
 
 	public List<VIPType> getSelections(){
-		if(ordinary.isSelected())buttons.add(VIPType.ORDINARYVIP);
-		if(enterprise.isSelected())buttons.add(VIPType.ENTERPRISEVIP);
+		if(ordinary.isSelected())
+			buttons.add(VIPType.ORDINARYVIP);
+		if(enterprise.isSelected())
+			buttons.add(VIPType.ENTERPRISEVIP);
 		return buttons;
 	}
 

@@ -117,6 +117,7 @@ public class newPanel extends MJPanel{
          	}
          }
          String name=namePanel.getName();
+         Calendar c=Calendar.getInstance();
          Calendar start=((TimePanel) startPanel).getTime();
          Calendar end=((TimePanel) endPanel).getTime();
          VIPSelected=((MemberPanel) typePanel).getSelections();
@@ -124,7 +125,10 @@ public class newPanel extends MJPanel{
          double discount= ((InputPanel)discountPanel).getInput();
          int minRoom=(int) ((InputPanel)roomPanel).getInput();
          double minExpenditure=((InputPanel)expenditurePanel).getInput();
-
+         if(name.length()==0||start==null||end==null||minLevel==-1||minExpenditure==-1||discount==-1||minRoom==-1)
+        	 return null;
+         if(c.compareTo(start)>=0||start.compareTo(end)>=0)//输入的日期不符
+        	 return null;
          setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.CREATED,
               start,end,discount,hotelSelected,minExpenditure,minRoom,minLevel,VIPSelected));
 		 return createdVO;
@@ -133,11 +137,11 @@ public class newPanel extends MJPanel{
 		this.createdVO = createdVO;
 	}
 	public void setStartTime(int year, int month, int date, int hour, int minute) {
-		((TimePanel) startPanel).setTime(year,  month,  date,  hour,  minute);
+		((TimePanel) startPanel).setTime(year,  month+1,  date,  hour,  minute);
 
 	}
 	public void setEndTime(int year, int month, int date, int hour, int minute) {
-		((TimePanel) endPanel).setTime(year,  month,  date,  hour,  minute);
+		((TimePanel) endPanel).setTime(year,  month+1,  date,  hour,  minute);
 
 	}
 	public void setDiscount(double discount) {

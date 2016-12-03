@@ -32,10 +32,10 @@ public class MarketingBLService_Stub implements MarketingBLService {
 	public ResultMessage updateLevel(List<LevelVO> vos) {
 	    if(vos!=null)
 	    {
-	    	return ResultMessage.FAIL;
+	    	return ResultMessage.SUCCESS;
 	    }
 	    else
-	    	return ResultMessage.SUCCESS;
+	    	return ResultMessage.FAIL;
 	}
 
 	/**
@@ -116,8 +116,7 @@ public class MarketingBLService_Stub implements MarketingBLService {
 	}
 	@Override
 	public ResultMessage MarketingAccountDelete(MarketingVO marketingVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 

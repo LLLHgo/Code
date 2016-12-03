@@ -28,8 +28,6 @@ public interface MarketingBLControllerService {
 
 	public MarketingVO init(String id);
 
-	public boolean setAllClientLevel(LevelVO vo);
-
 	public boolean setCredit(String clientID, int amount);
 
 
@@ -48,7 +46,7 @@ public interface MarketingBLControllerService {
 
 	public List<AreaVO> getDistricts();
 
-	public List<String> getDistrictNames();
+	public String[] getDistrictNames();
 
 	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log);
 

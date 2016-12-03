@@ -2,6 +2,8 @@ package presentation.marketing.compoment;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.swing.Icon;
@@ -66,19 +68,32 @@ public class TimePanel extends JPanel{
 
 	public void setTime(int year,int month,int date,int hour,int minute){
 		this.yearField.setText(""+year);
-		this.monthField.setText(""+(month+1)%12);
+		this.monthField.setText(""+(month));
 		this.dateField.setText(""+date);
 		this.hourField.setText(""+hour);
 		this.minuteField.setText(""+minute);
 	}
 	public Calendar getTime(){
-		int year=Integer.parseInt(yearField.getText());
-		int month=Integer.parseInt(monthField.getText());
-		int date=Integer.parseInt(dateField.getText());
-		int hour=Integer.parseInt(hourField.getText());
-		int minute=Integer.parseInt(minuteField.getText());
-		Calendar c=Calendar.getInstance();
-		c.set(year,month,date,hour,minute);
+		int year,month,date,hour,minute;
+		String y=yearField.getText(),m=monthField.getText(),d=dateField.getText(),h=hourField.getText(),mi=minuteField.getText();
+		String f=y+"-"+m+"-"+d+" "+h+":"+mi+":"+"00";
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar c;
+		try{
+			year=Integer.parseInt(y);
+			month=Integer.parseInt(m);
+			date=Integer.parseInt(d);
+			hour=Integer.parseInt(h);
+			minute=Integer.parseInt(mi);
+			c=Calendar.getInstance();
+			c.set(year,month-1,date,hour,minute);
+			format.setLenient(false);
+			format.parse(f);
+		}catch(NumberFormatException e){
+			return null;
+		} catch (ParseException e) {
+			return null;
+		}
 		return c;
 	}
 }

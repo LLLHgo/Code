@@ -20,6 +20,8 @@ public class StrategyBLService_Stub implements StrategyBLService{
 	 */
     public ResultMessage  addMarketingStrategy(MarketingStrategyVO vo) {
 		if(vo!=null){
+			System.out.println(vo.getName()+" "+vo.getEndTime());
+			System.out.println(vo.getType()+" "+vo.getStartTime());
 			return ResultMessage.SUCCESS;
 		}
 		else

@@ -58,10 +58,12 @@ protected  void paintComponent(Graphics g) {
 	g.drawImage(background,0,0,getSize().width,getSize().height,this);
 }
 
-public  LevelVO getText() {
+public  LevelVO getLevel() {
 	String name=nameField.getText();
+	if(name.length()==0)//如果名字一栏为空，则需重新输入
+		return null;
 	int level = 0;
-	double credit=0;
+	double credit=0.0;
 	double dis=0.0;
 	try{
 	    level=Integer.parseInt(this.levelField.getText());
@@ -72,4 +74,36 @@ public  LevelVO getText() {
 	}
 	return new LevelVO(level,name,credit,dis);
 }
+
+public  LevelVO getMyLevel() {
+	String name=nameField.getText();
+	int level = 0;
+	double credit=0.0;
+	double dis=0.0;
+	try{
+	    level=Integer.parseInt(this.levelField.getText());
+	    dis=Double.parseDouble(this.discountField.getText());
+	    credit=Double.parseDouble(this.creditField.getText());
+	}catch(NumberFormatException e){
+		return null;
+	}
+	return new LevelVO(level,name,credit,dis);
 }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

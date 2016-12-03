@@ -1,12 +1,14 @@
 package businesslogic.marketingbl;
 
-import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
+import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
+import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
+import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.logblservice.LogBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLControllerService;
@@ -30,10 +32,20 @@ public class MarketingBLController implements MarketingBLControllerService{
 	private StrategyBLService strategyBL=new StrategyBLService_Stub();
 	private OrderBLService_Stub orderBL=new OrderBLService_Stub();
 	private LogBLService logBL=new LogBLService_Stub();
+    private HotelinfoBLService hotelBL=new HotelinfoBLService_Stub();
 
 	@Override
-	public ResultMessage updateLevel(List<LevelVO> vo) {
-		return this.marketingBL.updateLevel(vo);
+	public ResultMessage updateLevel(List<LevelVO> vos) {
+		ResultMessage result=this.marketingBL.updateLevel(vos);//保存等级信息
+		if(result==ResultMessage.SUCCESS){//更新等级信息成功
+			if(this.clientBL.setAllClientLevel((LevelVO) vos.get(0))){//更新用户等级信息成功//这里要改接口的！！！
+				return ResultMessage.SUCCESS;
+			}else{//更新用户等级信息失败
+			    return ResultMessage.FAULT;
+			}
+		}else{//保存等级信息失败
+			return ResultMessage.FAIL;
+		}
 	}
 
 	@Override
@@ -71,10 +83,6 @@ public class MarketingBLController implements MarketingBLControllerService{
 		return this.marketingBL.init(id);
 	}
 
-	@Override
-	public boolean setAllClientLevel(LevelVO vo) {
-		return this.clientBL.setAllClientLevel(vo);
-	}
 
 	@Override
 	public boolean setCredit(String clientID, int amount) {
@@ -114,12 +122,12 @@ public class MarketingBLController implements MarketingBLControllerService{
 
 	@Override
 	public List<AreaVO> getDistricts() {
-		return AreaDataTool.vos;
+		return this.hotelBL.getAreaHotels();
 	}
 
 	@Override
-	public List<String> getDistrictNames() {
-		return AreaDataTool.list1;
+	public String[] getDistrictNames() {
+	    return this.hotelBL.getArea();
 	}
 
 	@Override

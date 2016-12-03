@@ -1,7 +1,6 @@
 package presentation.marketing.view;
 
 
-import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
@@ -130,14 +129,6 @@ public interface ProcessMarketingViewControllerService {
 
 
 	/**
-	 * 根据新的会员等级制度修改所有客户的会员等级
-	 * @param vo
-	 * @return 修改会员等级成功与否
-	 */
-	public boolean setAllClientLevel(LevelVO vo);
-
-
-	/**
 	 * 对异常订单的设置客户信用值，保存日志的操作
 	 * @param order
 	 * @param price
@@ -147,6 +138,8 @@ public interface ProcessMarketingViewControllerService {
 	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log);
 
 
+	public List<AreaVO> getDistricts();
+	public String[] getDistrictNames();
 
 
 
@@ -156,8 +149,7 @@ public interface ProcessMarketingViewControllerService {
 	public void strategyButtonClicked();
 	public void creditButtonClicked();
 	public void VIPButtonClicked();
-	public List<AreaVO> getDistricts();
-	public List<String> getDistrictNames();
+
 
 
 }

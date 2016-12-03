@@ -101,6 +101,7 @@ public class specialPanel extends MJPanel{
         String name=namePanel.getName();
         Calendar start=((TimePanel) startPanel).getTime();
         Calendar end=((TimePanel) endPanel).getTime();
+        Calendar c=Calendar.getInstance();
         String districtName=districtPanel.getName();
         levels=new int[makePanels.size()];
         discounts=new double[makePanels.size()];
@@ -108,17 +109,22 @@ public class specialPanel extends MJPanel{
         for(MakePanel m:makePanels){
         	levels[i]=m.getLevel();
         	discounts[i++]=m.getDiscount();
+        	if(m.getLevel()<0||m.getDiscount()<0)
+        		return null;
         }
+        if(name.length()==0||c.compareTo(start)>=0||start.compareTo(end)>=0||districtName==null)
+        	return null;
+
         MarketingStrategyVO vo= new MarketingStrategyVO(name,marketingStrategy.VIPSPECIAL,start,end,districtName,levels,discounts);
 		return vo;
 	}
 
 	public void setStartTime(int year, int month, int date, int hour, int minute) {
-		((TimePanel) startPanel).setTime(year,  month,  date,  hour,  minute);
+		((TimePanel) startPanel).setTime(year,  month+1,  date,  hour,  minute);
 
 	}
 	public void setEndTime(int year, int month, int date, int hour, int minute) {
-		((TimePanel) endPanel).setTime(year,  month,  date,  hour,  minute);
+		((TimePanel) endPanel).setTime(year,  month+1,  date,  hour,  minute);
 
 	}
 
