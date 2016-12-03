@@ -52,9 +52,6 @@ public class OrderOperator implements OrderOperatorBLService{
 		if(hasVoidInfo(orderVO)){
 			return ResultMessage.HASVOID;
 		};
-		//System.out.println(orderVO.getOrderType());
-		//System.out.println(OrderType.NORMALNONEXEC+"");
-		//System.out.println((orderVO.getOrderType()+"").equals(OrderType.NORMALNONEXEC+""));
 		// 判断订单中订单状态是否为正常未执行，如果状态不是正常未执行状态，则返回ResultMessage.WORNGORDERTYPEWHENCREATE
 		if(!(orderVO.getOrderType()+"").equals(OrderType.NORMALNONEXEC+"")){
 			return ResultMessage.WORNGORDERTYPEWHENCREATE;
@@ -88,20 +85,6 @@ public class OrderOperator implements OrderOperatorBLService{
 		int deltaDaysCurrentAnticip=
 				dayCount(Integer.parseInt(yearMonDay[0]),Integer.parseInt(yearMonDay[1]),Integer.parseInt(yearMonDay[2]))
 				-dayCount(currentYear,cunrrentMonth,currentDay);
-		// 当天中午12点前订的房间,可定当天及昨天的日期的房间
-		//if(currentHour<=11){
-			// 判断当前年月日是否大于等于预计入住时间年月日
-		//	if(deltaDaysCurrentAnticip>=0){
-		//		return true;
-		//	}	
-		//}
-		// 超过中午12点，订单的预计入住时间必须是今天及之后日期的才有效。
-		//else if(currentHour>=12){
-			// 判断当前年月日是否大等于预计入住时间年月日
-		//	if(deltaDaysCurrentAnticip>=0){
-		//		return true;
-		//	}	
-		//}
 		if(deltaDaysCurrentAnticip>=0){
 			return true;
 		}
@@ -120,6 +103,9 @@ public class OrderOperator implements OrderOperatorBLService{
 			return true;
 		else
 			return false;
+	}
+	boolean voidOrderId(){
+		return orderVO.getOrderId()==null||orderVO.getOrderId().equals("");
 	}
 	boolean voidClientId(){
 		return orderVO.getClientId()==null||orderVO.getClientId().equals("");
@@ -188,7 +174,32 @@ public class OrderOperator implements OrderOperatorBLService{
 	// 保存订单
 	@Override
 	public ResultMessage saveOrderPO(OrderVO orderVO) {
-
+		// 如果订单中有要求填而没填的信息，返回空
+		if(hasVoidInfo(orderVO)&&voidOrderId()){
+			return ResultMessage.HASVOID;
+		}
+		// 判断该orderVO中的订单帐号是否存在,如果比当前订单的最后一个id值还大，则不存在，返回id不有效的信息
+		String lastOrderIdString=lookUpIdinDatabase();
+		if(Integer.parseInt(lastOrderIdString)-1<=Integer.parseInt(orderVO.getOrderId())){
+			return ResultMessage.IDINVALID;
+		}
+	
+		OrderPO preOrderPO = null;
+		try {
+			preOrderPO=orderDateService.findSpecificUserOrder(orderVO.getClientId(), orderVO.getOrderId());
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		// 看这个订单原来是否为撤销状态，如果为撤销状态，则不能再对其进行修改，返回不能修改的信息
+		if((preOrderPO.getOrderType()+"").equals(OrderType.CANCEL+"")){
+			return ResultMessage.CANCELANDCANNOTMODIFY;
+		}
+		// 看当前订单的状态是否有改变，如果没改变（即没被修改），则返回相同（没有被修改）的提示信息
+		if((preOrderPO.getOrderType()+"").equals(orderVO.getOrderType()+"")){
+			return ResultMessage.SAMEINFO;
+		}
+		
 		// 转换为po保存到数据库中
 		OrderPO orderPO=packageTrans.VOToPO(orderVO);
 		try {
@@ -208,7 +219,7 @@ public class OrderOperator implements OrderOperatorBLService{
 
 		String lastOrderIdString=lookUpIdinDatabase();
 		// 判断是否存在该帐号
-		if(Integer.parseInt(lastOrderIdString)>=Integer.parseInt(orderId)){
+		if(Integer.parseInt(lastOrderIdString)-1>=Integer.parseInt(orderId)){
 			// 存在该帐号，则调用data层方法，在数据库中将帐号的订单状态置为撤销状态
 			try {
 				resultB=orderDateService.cancel(orderId);
