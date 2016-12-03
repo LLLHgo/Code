@@ -147,19 +147,18 @@ public class HotelinfoPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			jtaAddress.setEditable(true);
-			//TODO
 			jcbArea.setEnabled(true);
 			jcbArea.setEditable(true);//商圈也可以自己添加
 			jtaIntro.setEditable(true);
 			jtaFacility.setEditable(true);
 			jtaTEL.setEditable(true);
-			//TODO
 			jcbStar.setEnabled(true);
 			
 			jbModify.setVisible(false);
 			jbCancle.setVisible(true);
 			jbConfirm.setVisible(true);
-
+			
+			showMessage("修改信息");
 		}
 		
 	}
@@ -169,12 +168,10 @@ public class HotelinfoPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			jtaAddress.setEditable(false);
-			//TODO
 			jcbArea.setEnabled(false);
 			jtaIntro.setEditable(false);
 			jtaFacility.setEditable(false);
 			jtaTEL.setEditable(false);
-			//TODO
 			jcbStar.setEnabled(false);
 			
 			jbModify.setVisible(true);
@@ -182,13 +179,10 @@ public class HotelinfoPanel extends JPanel{
 			jbConfirm.setVisible(false);
 			
 			address = jtaAddress.getText();
-			//TODO
 			area = jcbArea.getSelectedItem().toString();
-
 			intro = jtaIntro.getText();
 			facility = jtaFacility.getText();
 			tel = jtaTEL.getText();
-			//TODO
 			String sStar = jcbStar.getSelectedItem().toString();
 			String[] arrayString = {"ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN"};
 			Star[] arrayStar = {Star.ONE,Star.TWO,Star.THREE,Star.FOUR,Star.FIVE,Star.SIX,Star.SEVEN};
@@ -198,34 +192,36 @@ public class HotelinfoPanel extends JPanel{
 				}
 			}
 			
-			
-			final ResultMessage result = controller.addArea(area);
-			//提示信息
-
-				new Thread(new Runnable(){
-					@Override
-					public void run() {
-						if(result!=null){
-							resultLabel.setText(result.toString());
-							try {
-								Thread.sleep(1000);
-							}catch(InterruptedException ex){
-								ex.printStackTrace();
-							}
-						}
-						resultLabel.setText(controller.updateBassicinfo
-						(new HotelinfoVO(name,address,area,intro,facility,tel,star,hotelID)).toString());
-						try {
-							Thread.sleep(1000);
-					    }catch(InterruptedException ex){
-					        ex.printStackTrace();
-					    }
-					        resultLabel.setText("");
-					}
-				}).start();
-			
+			if(address.equals("")){
+				showMessage("地址不能为空");
+			}else if(area.equals("")){
+				showMessage("商圈不能为空");
+			}else if(intro.equals("")){
+				showMessage("简介不能为空");
+			}else if(facility.equals("")){
+				showMessage("设施不能为空");
+			}else if(tel.equals("")){
+				showMessage("联系电话不能为空");
+			}else if(sStar.equals("")){
+				showMessage("星级不能为空");
+			}else{
+				ResultMessage result = controller.addArea(area);
+				//提示信息
+				if(result == ResultMessage.SUCCESS){
+					showMessage("添加商圈成功");
+				}
+					
+				result = controller.updateBassicinfo(new HotelinfoVO(
+					name,address,area,intro,facility,tel,star,hotelID));
+				if(result == ResultMessage.SUCCESS){
+					showMessage("保存成功");
+				}else if(result == ResultMessage.FAIL){
+					showMessage("保存失败");
+				}else if(result == ResultMessage.REMOTEEXCEPTION){
+					showMessage("网络异常");
+				}
+			}
 		}
-		
 	}
 	
 	private class CancleButtonActionListener implements ActionListener{
@@ -238,38 +234,37 @@ public class HotelinfoPanel extends JPanel{
 			jbConfirm.setVisible(false);
 			
 			jtaAddress.setText(address);
-			//TODO
 			jcbArea.setSelectedItem(area);
 			jtaIntro.setText(intro);
 			jtaFacility.setText(facility);
 			jtaTEL.setText(tel);
-			//TODO
 			
 			jcbStar.setSelectedItem(star.toString());
 			
 			jtaAddress.setEditable(false);
-			//TODO
 			jcbArea.setEnabled(false);
 			jtaIntro.setEditable(false);
 			jtaFacility.setEditable(false);
 			jtaTEL.setEditable(false);
-			//TODO
 			jcbStar.setEnabled(false);
 			
-			//提示信息
+			showMessage("操作取消");
+		}
+	}
+		public void showMessage(String message){
+		 	//提示信息
 			new Thread(new Runnable(){
 				@Override
 				public void run() {
-					resultLabel.setText("Operation was cancled");
+					resultLabel.setText(message);
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(2000);
 		            }catch(InterruptedException ex){
 		                    ex.printStackTrace();
 		            }
 		            resultLabel.setText("");
 				}
-			}).start();;
+			}).start();
 		}
 		
-	}
 }

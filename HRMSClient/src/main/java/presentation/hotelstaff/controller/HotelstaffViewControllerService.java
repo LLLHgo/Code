@@ -201,4 +201,12 @@ public interface HotelstaffViewControllerService {
 	 * @param vo
 	 */
 	public void newStrategy();
+	
+	/**
+	 * 
+	 * @param hotelID
+	 * @param text
+	 * @return
+	 */
+	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text);
 }

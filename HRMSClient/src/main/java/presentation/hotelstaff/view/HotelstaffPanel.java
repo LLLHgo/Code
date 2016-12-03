@@ -30,13 +30,13 @@ import vo.hotelinfoVO.HotelinfoVO;
  *
  */
 public class HotelstaffPanel extends JPanel{
-	
+
+	private static final long serialVersionUID = 1L;
 	private HotelstaffViewController controller;
 	private String hotelID;
 	private ImageIcon ipassword;
 	private JTextField jtfPassword;
 	private UserImageLabel jlUserImage;
-	private ReviewImageButton jbReviewImage;
 	private ModifyButton jbModify;
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;

@@ -327,5 +327,10 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.repaint();
 	}
 
+	@Override
+	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID, String text) {
+		return controller.searchOrderFromHotelUI(hotelID, text);
+	}
+
 
 }

@@ -184,6 +184,12 @@ public interface HotelstaffControllerBLService {
 	 * 获得所有房间类型
 	 * @return String[]
 	 */
-	public String[] getRoomType();	
-	
+	public String[] getRoomType();
+	/**
+	 * 根据酒店界面搜索框输入的ID查找订单列表
+	 * @param hotelID
+	 * @param text
+	 * @return ArrayList<OrderVO>
+	 */
+	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text);
 }

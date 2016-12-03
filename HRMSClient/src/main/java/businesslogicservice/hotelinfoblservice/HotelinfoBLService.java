@@ -103,4 +103,13 @@ public interface HotelinfoBLService {
 	 */
 	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
 			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
+
+	/**
+	 * 根据酒店界面输入订单ID或客户ID搜索订单
+	 * @param hotelID
+	 * @param text
+	 * @return
+	 */
+	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text);
+
 }

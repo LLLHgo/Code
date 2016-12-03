@@ -7,7 +7,7 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
-
+import datatool.OrderDataTool;
 import vo.orderVO.OrderVO;
 
 public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTimeBLService,OrderFindBLService{
@@ -138,8 +138,27 @@ public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTim
 	}
 	@Override
 	public ArrayList<OrderVO> findHotelTypeOrderList(OrderType type, String hotelId) {
-		// TODO Auto-generated method stub
-		return null;
+		OrderVO orderVO4=new OrderVO("20161016092301","C00000010","Lily","17887780990"
+		,VIPType.ORDINARYVIP,"2016-10-16 09:23",OrderType.NORMALNONEXEC,"LLLHH","H00000002",998,null);
+
+OrderVO orderVO5=new OrderVO("20161017092401","C00000011","Tinny","17887780991"
+		,VIPType.ORDINARYVIP,"2016-10-17 09:24",OrderType.NORMALEXEC,"LLLHH","H00000002",666,null);
+
+OrderVO orderVO6=new OrderVO("20161017092501","C00000012","belikout","17887780992"
+		,VIPType.ORDINARYVIP,"2016-10-17 09:25",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
+
+OrderVO orderVO7=new OrderVO("20161017092601","C00000013","sweetstreet","17887780993"
+		,VIPType.ORDINARYVIP,"2016-10-17 09:26",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
+//OrderDataTool.list1.add(orderVO4);
+//OrderDataTool.list1.add(orderVO5);
+//OrderDataTool.list1.add(orderVO6);
+//OrderDataTool.list1.add(orderVO7);
+ArrayList<OrderVO> list=new ArrayList<OrderVO>();
+list.add(orderVO4);
+list.add(orderVO5);
+list.add(orderVO6);
+list.add(orderVO7);
+		return list;
 	}
 
 	

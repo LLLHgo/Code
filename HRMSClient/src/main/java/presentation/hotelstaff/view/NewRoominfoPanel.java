@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -152,21 +154,22 @@ public class NewRoominfoPanel extends JPanel{
 			 
 			jbConfirm.setVisible(false);
 			jbConfirm.addActionListener(new ActionListener(){
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
-					String state = jcbState.getSelectedItem().toString();
-					if(state.equals("可用")){
-						room.setRoomState(RoomState.Usable);
-					}else{
-						room.setRoomState(RoomState.Unusable);
-					}
+					String originState = state;
 					String sPrice = jtfPrice.getText();
 					if(sPrice.equals("")){
 						showMessage("信息不完整，重新填写");
+					}else if(!isNumeric(sPrice)){
+						showMessage("价格格式错误，请输入数字");
 					}else{
 						room.setPrice(Double.parseDouble(sPrice));
+						String state = jcbState.getSelectedItem().toString();
+						if(state.equals("可用")){
+							room.setRoomState(RoomState.Usable);
+						}else{
+							room.setRoomState(RoomState.Unusable);
+						}
 						ResultMessage message = controller.updateroominfo(room, hotelID);
 						if(message == ResultMessage.SUCCESS){
 							showMessage("修改成功");
@@ -176,7 +179,8 @@ public class NewRoominfoPanel extends JPanel{
 							jtfPrice.setEditable(false);
 						}
 						else{
-							//TODO 可能有其他返回信息
+							//TODO 
+							jcbState.setSelectedItem(originState);
 							showMessage("修改失败");
 						}
 						jcbState.setEnabled(false);
@@ -250,5 +254,14 @@ public class NewRoominfoPanel extends JPanel{
 			}
 		}).start();
 		
+	}
+	
+	public boolean isNumeric(String str){ 
+		   Pattern pattern = Pattern.compile("-?[0-9]+.?[0-9]+"); 
+		   Matcher isNum = pattern.matcher(str);
+		   if( !isNum.matches() ){
+		       return false; 
+		   } 
+		   return true; 
 	}
 }

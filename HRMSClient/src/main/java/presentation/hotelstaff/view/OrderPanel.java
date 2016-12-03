@@ -52,7 +52,6 @@ public class OrderPanel extends JPanel{
 	private String hotelID;
 	private ImageIcon init_image;
 	private JTextField checkbox;
-	private JButton searchButton;
 	private ImageIcon Icheckbox;
 	private Font font;
 	private ArrayList<OrderVO> orderList;
@@ -142,22 +141,7 @@ public class OrderPanel extends JPanel{
 			
 		});
 
-		OrderVO orderVO4=new OrderVO("20161016092301","C00000010","Lily","17887780990"
-				,VIPType.ORDINARYVIP,"2016-10-16 09:23",OrderType.NORMALNONEXEC,"LLLHH","H00000002",998,null);
-
-		OrderVO orderVO5=new OrderVO("20161017092401","C00000011","Tinny","17887780991"
-				,VIPType.ORDINARYVIP,"2016-10-17 09:24",OrderType.NORMALEXEC,"LLLHH","H00000002",666,null);
-
-		OrderVO orderVO6=new OrderVO("20161017092501","C00000012","belikout","17887780992"
-				,VIPType.ORDINARYVIP,"2016-10-17 09:25",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
-
-		OrderVO orderVO7=new OrderVO("20161017092601","C00000013","sweetstreet","17887780993"
-				,VIPType.ORDINARYVIP,"2016-10-17 09:26",OrderType.ABNORMAL,"LLLHH","H00000002",666,null);
-		OrderDataTool.list1.add(orderVO4);
-		OrderDataTool.list1.add(orderVO5);
-		OrderDataTool.list1.add(orderVO6);
-		OrderDataTool.list1.add(orderVO7);
-		showOrderList(OrderDataTool.list1);
+		showAllOrderList();
 		
 		//搜索框
 		checkbox = new JTextField();
@@ -190,14 +174,8 @@ public class OrderPanel extends JPanel{
 				if(text.equals("")){
 					showMessage("搜索内容不能为空");
 				}else{
-					//TODO
-					orderList = controller.getExecutedHotelOrderList(hotelID,text);
-					if(orderList==null){
-						showMessage("未搜索到任何信息");
-					}else{
-						showMessage("搜索成功");
-						showOrderList(orderList);
-					}
+					orderList = controller.searchOrderFromHotelUI(hotelID,text);
+					showOrderList(orderList);
 				}
 			}
 			
@@ -214,7 +192,7 @@ public class OrderPanel extends JPanel{
 	private class DragButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(buttonFlag){
+//			if(buttonFlag){
 				jbAll.setVisible(true);
 				jbUnexecuted.setVisible(true);
 				jbExecuted.setVisible(true);
@@ -223,16 +201,17 @@ public class OrderPanel extends JPanel{
 				jlDetailedSearch.setVisible(true);
 				scrollPane.setVisible(false);
 				buttonFlag  = false;
-			}else{
-				jbAll.setVisible(false);
-				jbUnexecuted.setVisible(false);
-				jbExecuted.setVisible(false);
-				jbAbnormal.setVisible(false);
-				jbCancle.setVisible(false);
-				jlDetailedSearch.setVisible(false);
-				scrollPane.setVisible(true);
-				buttonFlag = true;
-			}
+//			}
+//			else{
+//				jbAll.setVisible(false);
+//				jbUnexecuted.setVisible(false);
+//				jbExecuted.setVisible(false);
+//				jbAbnormal.setVisible(false);
+//				jbCancle.setVisible(false);
+//				jlDetailedSearch.setVisible(false);
+//				scrollPane.setVisible(true);
+//				buttonFlag = true;
+//			}
 		}
 	}
 	
@@ -255,12 +234,20 @@ public class OrderPanel extends JPanel{
 				jlSearch.setText("已撤销订单");
 				showCancleOrderList();
 			}
+			jbAll.setVisible(false);
+			jbUnexecuted.setVisible(false);
+			jbExecuted.setVisible(false);
+			jbAbnormal.setVisible(false);
+			jbCancle.setVisible(false);
+			jlDetailedSearch.setVisible(false);
+			scrollPane.setVisible(true);
 		}
 	}
 	
 	
 	private void showOrderList(ArrayList<OrderVO> orders){ 
 		if(orders==null){
+			showMessage("未找到订单");
 			return;
 		}
 		//设置放置Order信息的JPanel
@@ -341,8 +328,13 @@ public class OrderPanel extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 					order.setOrderStatus(OrderType.NORMALEXEC);
 					ResultMessage result = controller.updateOrderState(order);
-					controller.JBOrderClicked();
-					showMessage(result.toString());
+					if(result == ResultMessage.SUCCESS){
+						showMessage("修改成功");
+						controller.JBOrderClicked();
+						//showAllOrderList();
+					}else{
+						showMessage("修改失败");
+					}
 				}
 	        	
 	        });
@@ -378,23 +370,38 @@ public class OrderPanel extends JPanel{
 	}
 	
 	private void showAllOrderList(){
+		if(scrollPane!=null){
+			this.remove(scrollPane);
+		}
 		showOrderList((ArrayList<OrderVO>)controller.getALLHotelOrderList(hotelID,OrderType.ALL));
 	}
 	
 	private void showUnexecutedOrderList(){
+		if(scrollPane!=null){
+			this.remove(scrollPane);
+		}
 		showOrderList((ArrayList<OrderVO>)controller.getUnexecutedHotelOrderList(hotelID,OrderType.NORMALNONEXEC));
 	}
 	
 	
 	private void showExecutedOrderList(){
+		if(scrollPane!=null){
+			this.remove(scrollPane);
+		}
 		showOrderList((ArrayList<OrderVO>)controller.getExecutedHotelOrderList(hotelID,OrderType.NORMALEXEC));
 	}
 	
 	private void showAbnormalOrderList(){
+		if(scrollPane!=null){
+			this.remove(scrollPane);
+		}
 		showOrderList((ArrayList<OrderVO>)controller.getAbnormalHotelOrderList(hotelID,OrderType.ABNORMAL));
 	}
 
 	private void showCancleOrderList(){
+		if(scrollPane!=null){
+			this.remove(scrollPane);
+		}
 		showOrderList((ArrayList<OrderVO>)controller.getCancleHotelOrderList(hotelID, OrderType.CANCEL));
 	}
 	

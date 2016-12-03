@@ -11,6 +11,7 @@ import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
+import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 /**
@@ -137,5 +138,13 @@ public abstract class HotelinfoAbstract implements HotelinfoBLService{
 			
 		return originalPrice;
 	}
-	
+	/**
+	 * 根据酒店界面输入订单ID或客户ID搜索订单
+	 * @param hotelID
+	 * @param text
+	 * @return
+	 */
+	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text) {
+		return null;
+	}
 }

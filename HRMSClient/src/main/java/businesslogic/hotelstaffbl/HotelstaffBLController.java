@@ -213,5 +213,15 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 		return list;
 	}
 
-	
+	@Override
+	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text){
+		//TODO orderFind里面提供的方法可能会改
+		ArrayList<OrderVO> list = 
+		(ArrayList<OrderVO>)orderFind.findSpecificHotelClientOrderList(text, hotelID) ;
+			if(list == null){
+				list = new ArrayList<OrderVO>();
+				list.add(orderFind.findSpecificOrder(hotelID, text));
+			}
+		return list;
+	}
 }
