@@ -15,7 +15,7 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
-import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
+import businesslogicservice.hotelinfoblservice.HotelinfoAbstract;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.HotelinfoPO;
@@ -31,7 +31,7 @@ import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public class HotelinfoManage implements HotelinfoBLService{
+public class HotelinfoManage extends HotelinfoAbstract{
 
 	//桩测试
 	HotelinfoDataService data = new HotelinfoDataService_Stub();
@@ -192,5 +192,4 @@ public class HotelinfoManage implements HotelinfoBLService{
 		return null;
 	}
 
-	
 }

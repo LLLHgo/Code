@@ -7,7 +7,6 @@ import Enum.ResultMessage;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.hoteinfobl.RoominfoManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
-import businesslogicservice.hotelinfoblservice.RoominfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffControllerBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.orderblservice.OrderBLService_Stub;
@@ -45,9 +44,8 @@ import vo.strategyVO.MarketingStrategyVO;
  */
 public class HotelstaffBLController implements HotelstaffControllerBLService{
 	
-	
 	HotelinfoBLService hotelinfo;
-	RoominfoBLService roominfo;
+	HotelinfoBLService roominfo;
 	StrategyBLService strategy;
 	OrderFindBLService orderFind;
 	OrderOperatorBLService orderOperator;
@@ -189,7 +187,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	public ResultMessage addArea(String area) {
 		if(hotelinfo.addArea(area)==true){
 			return ResultMessage.AddAreaSuccess;
-		}
+	}
 		return null;
 	}
 
@@ -206,7 +204,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	@Override
 	public String[] getRoomType() {
-		return roominfo.getRoomType();
+		return hotelinfo.getRoomType();
 	}
 	
 	@Override

@@ -9,20 +9,24 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import Enum.ResultMessage;
-import businesslogicservice.hotelinfoblservice.RoominfoBLService;
+import businesslogicservice.hotelinfoblservice.HotelinfoAbstract;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.RoominfoPO;
+import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.ClientRequirementVO;
+import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public class RoominfoManage implements RoominfoBLService{
+public class RoominfoManage extends HotelinfoAbstract{
 	
 	HotelinfoDataService data;
 	
@@ -141,5 +145,4 @@ public class RoominfoManage implements RoominfoBLService{
 		}
 		return vo;
 	}
-	
 }
