@@ -30,7 +30,7 @@ public interface ProcessSitemanagerViewControllerService {
 	 * @param userId
 	 * @return 删除账户成功或失败的ResultMessage的enum值
 	 */
-	public ResultMessage marketingAccountDelete (String userId);
+	public ResultMessage marketingAccountDelete (MarketingVO vo);
 	/**
 	 * 删除客户账户
 	 * @param userId

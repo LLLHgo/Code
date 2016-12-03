@@ -11,7 +11,6 @@ import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService_Stub;
 import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.logblservice.LogBLService_Stub;
-import businesslogicservice.marketinblservice.MarketingBLControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
@@ -44,7 +43,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	private ProcessShowLogView showLogView;
 	
 	SitemanagerBLService sitemanagerblservice; // 以stub调用
-	MarketingBLControllerService marketingblservice; // 以stub调用
+	MarketingBLService marketingblservice; // 以stub调用
 	ClientBLService clientblservice; // 以stub调用
 	HotelstaffBLService hotelstaffblservice;// 以stub调用
 	HotelinfoBLService hotelblservice; // 以stub调用
@@ -92,8 +91,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	public ResultMessage clientAccountDelete(String userId) {
 		return clientblservice.saveSitemanagerDelete(userId);
 	}
-	public ResultMessage marketingAccountDelete(String userId){
-		return marketingblservice.MarketingAccountDelete(userId);
+	public ResultMessage marketingAccountDelete(MarketingVO vo){
+		return marketingblservice.MarketingAccountDelete(vo);
 	}
 	
 

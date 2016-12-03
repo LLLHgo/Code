@@ -302,7 +302,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	// 删除账户按钮的监听
 	class MarketingDeleteListener implements MouseListener{
 		public void mouseClicked(MouseEvent e) {
-			result=controller.marketingAccountDelete(id);
+			result=controller.marketingAccountDelete(new MarketingVO(id,"",""));
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("删除成功");
 			}
