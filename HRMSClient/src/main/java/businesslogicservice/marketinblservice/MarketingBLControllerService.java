@@ -1,6 +1,5 @@
 package businesslogicservice.marketinblservice;
 
-import java.util.Date;
 import java.util.List;
 
 import Enum.ResultMessage;
@@ -38,8 +37,6 @@ public interface MarketingBLControllerService {
 
 	public List<OrderVO> findAbnormalOrderList(String date);
 
-	public ResultMessage saveOrderPO(OrderVO order);
-
 
 	public ClientVO getclient(String clientID);
 
@@ -49,10 +46,10 @@ public interface MarketingBLControllerService {
 
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo);
 
-	public void addLog(String log);
-
 	public List<AreaVO> getDistricts();
 
 	public List<String> getDistrictNames();
+
+	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log);
 
 }

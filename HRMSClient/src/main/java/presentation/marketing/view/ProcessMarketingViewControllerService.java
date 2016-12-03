@@ -99,13 +99,6 @@ public interface ProcessMarketingViewControllerService {
 
 
 	/**
-	 * 保存订单
-	 * @param order
-	 * @return 保存订单成功（Success）或是失败（fail）的ResultMessage值
-	 */
-	public ResultMessage saveOrder (OrderVO order);
-
-	/**
 	 * 查找具体某天的异常订单
 	 * @param date
 	 * @return 具体某天的所有订单列表
@@ -134,6 +127,8 @@ public interface ProcessMarketingViewControllerService {
 	 */
 
 	public boolean setCredit(String clientID,double amount);
+
+
 	/**
 	 * 根据新的会员等级制度修改所有客户的会员等级
 	 * @param vo
@@ -141,15 +136,28 @@ public interface ProcessMarketingViewControllerService {
 	 */
 	public boolean setAllClientLevel(LevelVO vo);
 
-	public void setView(ProcessMarketingView view);
 
+	/**
+	 * 对异常订单的设置客户信用值，保存日志的操作
+	 * @param order
+	 * @param price
+	 * @param log
+	 * @return
+	 */
+	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log);
+
+
+
+
+
+	public void setView(ProcessMarketingView view);
 	public void profileButtonClicked();
 	public void abnormalButtonClicked();
-	public void addLog(String log);
 	public void strategyButtonClicked();
 	public void creditButtonClicked();
+	public void VIPButtonClicked();
 	public List<AreaVO> getDistricts();
 	public List<String> getDistrictNames();
-	public void VIPButtonClicked();
+
 
 }

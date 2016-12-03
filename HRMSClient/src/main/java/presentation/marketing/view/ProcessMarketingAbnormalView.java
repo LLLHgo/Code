@@ -46,6 +46,7 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	private JPanel searchPanel=new MJPanel(0, 80, 700, 70);
 	private JPanel listPanel=new MJPanel(0, 80, 700, 70);
 	private JPanel orderPanel;
+	private JScrollPane showAbnormalScroll;
 
 	private MJButton searchButton=new MJButton("搜索订单",125, 0, 200, 80,font3);
 	private MJButton listButton=new MJButton("异常订单列表",375,0, 200, 80,font3);
@@ -121,10 +122,10 @@ public class ProcessMarketingAbnormalView extends JPanel{
 		    public void actionPerformed(ActionEvent e) {
 			    String orderIDEntered=searchBarField.getText();
 			    if(orderIDEntered.length()!=0){//输入的订单号不为空才可以
-			        OrderVO order=controller.findSpecificOrder(orderIDEntered);
+			        OrderVO order=controller.findSpecificOrder(orderIDEntered);//调用controller的方法返回订单
 			        ArrayList<OrderVO> orders=new ArrayList<OrderVO>();
 			        if(order!=null){//存在该订单
-			    	    orders.add(order);
+			        	orders.add(order);
 			            showAbnormalOrders(orders);//调用显示abnormalOrder的方法
 			        }else{//传上来的order为空，说明该异常订单不存在
 			        	((ProcessMarketingView)view).setHint("不存在该异常订单，请重新输入。");
@@ -160,18 +161,25 @@ public class ProcessMarketingAbnormalView extends JPanel{
 		    	if(y.length()!=0&&m.length()!=0&&d.length()!=0){//输入的年月日都不为空才行
 		    	    if(y.matches("^[0-9]*$")&&m.matches("^[0-9]*$")&&d.matches("^[0-9]*$")){//输入的年月日都为数
 			    	    boolean convertionSuccess=true;
-			    	    String formated=""+y+m+d;
+			    	    String formated=""+y+"-"+m+"-"+d;
 			            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-			            try{
+			            int result=-1;
+			            try{//对日期进行判断 是否合法
 			            	format.setLenient(false);
 			            	format.parse(formated);
+			            	Calendar c1=Calendar.getInstance();
+					        Calendar c2=Calendar.getInstance();
+					        c2.set(Integer.parseInt(y),Integer.parseInt(m)-1, Integer.parseInt(d));
+					        result=c1.compareTo(c2);
 			            }catch(ParseException exception){
 			            	convertionSuccess=false;
 			            }
 
-					    if(convertionSuccess){
+			             if(convertionSuccess&&result>=0){//输入的日期合法
 					    	ArrayList<OrderVO> orders=(ArrayList<OrderVO>) controller.findAbnormalOrderList(formated);
 					        showAbnormalOrders(orders);//调用显示abnormalOrder的方法
+		    	         }else{//输入的日期不合法
+		    	        	 ((ProcessMarketingView)view).setHint("请重新输入日期。");
 		    	         }
 		    	    }
 		    	}
@@ -194,14 +202,22 @@ public class ProcessMarketingAbnormalView extends JPanel{
 
    public void showAbnormalOrders(ArrayList<OrderVO> orders){
 	   orders=OrderDataTool.list1;
+	   orders.add(OrderDataTool.orderVO7);
+	   orders.add(OrderDataTool.orderVO6);
+	   orders.add(OrderDataTool.orderVO5);
+	   orders.add(OrderDataTool.orderVO4);
+	   orders.add(OrderDataTool.orderVO3);
+	   orders.add(OrderDataTool.orderVO2);
+	   orders.add(OrderDataTool.orderVO1);
+
 	   removeOrderPanel();
-	   if(orders==null||orders.size()==0)return;
+	   if(orders.size()==0)return;//order个数为0时返回
 	   //设置放置Order信息的JPanel
        orderPanel=new MJPanel(0, 0, 702, 3520);
        orderPanel.setPreferredSize(new Dimension(680,+30+150*orders.size()));
 
        //放置showAbnormalOrderPanel的JScrollPanel
-       JScrollPane showAbnormalScroll = new MJScrollPane(20, 150, 699, 365,orderPanel);
+       showAbnormalScroll = new MJScrollPane(20, 150, 699, 365,orderPanel);
        int num=0;
 
        Image image=new ImageIcon("./src/main/resource/picture/marketing/orderBackground.png").getImage();
@@ -241,41 +257,33 @@ public class ProcessMarketingAbnormalView extends JPanel{
 
 	        //对撤销订单label加监听
 	        checkButton.addActionListener(new ActionListener(){
-	        	boolean ifSuccess=false,ifSet=false;
-				@Override
+	        	@Override
 				public void actionPerformed(ActionEvent e) {
-					if (!checkButton.isEnabled())return ;
-					String log=MarketingID+" 撤销异常订单 "+order.orderId;
+					StringBuilder log=new StringBuilder(MarketingID+" 撤销异常订单 "+order.orderId);
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-					if(fullButton.isSelected()){
-						if(controller.setCredit(order.getClientId(),order.getPrice())){
-							ifSet=true;
-						    log=log+" 全额："+order.getPrice()+" ";
-						}
-					}else if(halfButton.isSelected()){
-						if(controller.setCredit(order.getClientId(),order.getPrice()*0.5)){
-							ifSet=true;
-						    log=log+" 半额:"+order.getPrice()*0.5+" ";
-						}
-					}
-					if (ifSet){
-						order.setOrderStatus(OrderType.ABNORMALCANCEL);
-						if(controller.saveOrder(order)==ResultMessage.SUCCESS){
-							log=log+df.format(new Date((System.currentTimeMillis())));
-							controller.addLog(log);
-							ifSuccess=true;
-						}
-					}
+					double price=0;
 
-					//分情况讨论ifSuccess是否成功
-					if(ifSuccess){
-						checkButton.setEnabled(false);
-					    fullButton.setEnabled(false);
-					    halfButton.setEnabled(false);
-						//进行成功提示显示
+					if(fullButton.isSelected()){
+						log.append(" 全额："+order.getPrice()+" "+df.format(new Date((System.currentTimeMillis()))));
+						price=order.getPrice();
+					}else if(halfButton.isSelected()){
+						log.append(" 半额："+order.getPrice()*0.5+" "+df.format(new Date((System.currentTimeMillis()))));
+						price=order.getPrice()*0.5;
 					}else{
-						//进行失败提示
+						return;
 					}
+					order.setOrderStatus(OrderType.ABNORMALCANCEL);
+					ResultMessage result=controller.operateOnAbnormalOrder(order,price,log);//设置客户信用值恢复和记录日志
+                    if(result==ResultMessage.SUCCESS){
+                    	fullButton.setEnabled(false);
+                    	halfButton.setEnabled(false);
+                    	checkButton.setEnabled(false);
+                    	((ProcessMarketingView)view).setHint("该异常订单已撤销。");
+                    }else if(result==ResultMessage.FAIL){
+                    	((ProcessMarketingView)view).setHint("该异常订单撤销失败。");
+                    }else if(result==ResultMessage.FAULT){
+                    	((ProcessMarketingView)view).setHint("系统故障。。。");
+                    }
 				}
 	        });
 	        panel.add(checkButton);
@@ -299,6 +307,11 @@ public class ProcessMarketingAbnormalView extends JPanel{
     		orderPanel.removeAll();
     	}
     	orderPanel=null;
+    	if(showAbnormalScroll!=null){
+    		showAbnormalScroll.setVisible(false);
+    		showAbnormalScroll.removeAll();
+    	}
+    	showAbnormalScroll=null;
     }
 
 

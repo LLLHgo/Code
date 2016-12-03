@@ -3,6 +3,7 @@ package businesslogic.marketingbl;
 import java.util.Date;
 import java.util.List;
 
+import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
@@ -87,14 +88,8 @@ public class MarketingBLController implements MarketingBLControllerService{
 
 	@Override
 	public List<OrderVO> findAbnormalOrderList(String date) {
-		return null;//this.orderBL.findAbnormalOrderList(date);
+		return this.orderBL.findAbnormalOrderList(date);
 	}
-
-	@Override
-	public ResultMessage saveOrderPO(OrderVO order) {
-		return this.orderBL.saveOrderPO(order);
-	}
-
 
 
 	@Override
@@ -118,11 +113,6 @@ public class MarketingBLController implements MarketingBLControllerService{
 	}
 
 	@Override
-	public void addLog(String log) {
-		this.logBL.addLog(log);
-	}
-
-	@Override
 	public List<AreaVO> getDistricts() {
 		return AreaDataTool.vos;
 	}
@@ -130,6 +120,27 @@ public class MarketingBLController implements MarketingBLControllerService{
 	@Override
 	public List<String> getDistrictNames() {
 		return AreaDataTool.list1;
+	}
+
+	@Override
+	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log) {
+		ResultMessage result=this.orderBL.saveOrderPO(order);
+		if(result==ResultMessage.SUCCESS){//保存订单状态成功
+			if(this.clientBL.setCredit(order.getClientId(),(int)price)){//设置客户信用值成功
+				//！！！！！！应该是double型的！！！
+			    this.logBL.addLog(log.toString());
+			    return ResultMessage.SUCCESS;
+			}else{//设置用户信用值失败
+				order.setOrderStatus(OrderType.ABNORMAL);//将订单状态重新设为异常
+				if(this.orderBL.saveOrderPO(order)==ResultMessage.SUCCESS){//将订单状态重新设为异常成功
+					return ResultMessage.SUCCESS;
+				}else{//将订单状态重新设为异常失败
+					return ResultMessage.FAULT;
+				}
+			}
+		}else{//保存订单状态失败
+            return ResultMessage.FAIL;
+		}
 	}
 
 }

@@ -42,8 +42,6 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 		return this.MarketingBLControllerService.findAllLevel();
 	}
 
-
-
 	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO marketing) {
 		return this.MarketingBLControllerService.MarketingAccountAdd(marketing);
@@ -91,11 +89,6 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 
 	@Override
-	public ResultMessage saveOrder(OrderVO order) {
-		return this.MarketingBLControllerService.saveOrderPO(order);
-	}
-
-	@Override
 	public List<OrderVO> findAbnormalOrderList(String date) {
 		return this.MarketingBLControllerService.findAbnormalOrderList(date);
 	}
@@ -124,15 +117,15 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	public List<AreaVO> getDistricts() {
 		return this.MarketingBLControllerService.getDistricts();
 	}
+
 	@Override
 	public List<String> getDistrictNames() {
 		return this.MarketingBLControllerService.getDistrictNames();
 	}
 
 	@Override
-	public void addLog(String log) {
-		this.MarketingBLControllerService.addLog(log);
-
+	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log) {
+		return this.MarketingBLControllerService.operateOnAbnormalOrder(order,price,log);
 	}
 
 
@@ -202,6 +195,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 			creditView.hideCredit();
 		creditView=null;
 	}
+
 
 
 }
