@@ -65,7 +65,7 @@ public class EvaluatePanel extends JPanel{
 		    Panel.setOpaque(false);
 
 
-		   this.setBounds(370, 170, 920, 400);
+		   this.setBounds(320, 170, 920, 400);
 		   this.setOpaque(false);
 		   this.getViewport().setOpaque(false);
 		   this.getVerticalScrollBar().setVisible(false);

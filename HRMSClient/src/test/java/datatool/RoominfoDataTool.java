@@ -7,7 +7,7 @@ import Enum.RoomState;
 import vo.hotelinfoVO.RoominfoVO;
 
 public class RoominfoDataTool {
-	static RoominfoVO roominfo1 = new RoominfoVO("标准间","8304",200, RoomState.Usable);
+	public static RoominfoVO roominfo1 = new RoominfoVO("标准间","8304",200, RoomState.Usable);
 	static RoominfoVO roominfo2 = new RoominfoVO("标准间","8305",200, RoomState.Usable);
 	static RoominfoVO roominfo3 = new RoominfoVO("大床房","8306",200, RoomState.Usable);
 	static RoominfoVO roominfo4 = new RoominfoVO("标准间","8307",200, RoomState.Usable);

@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import datatool.HotelinfoDataTool;
+
 public class SearchPanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private JTextField searchField;
@@ -80,11 +82,11 @@ public class SearchPanel extends JPanel{
 		   this.setBorder(new EmptyBorder(0,0,0,0));
 		   this.setVisible(false);
 		    for(int i=0;i<6;i++){
-		    	HotelSearchItemPanel p=new HotelSearchItemPanel(0, i*100,frame);
+		    	HotelSearchItemPanel p=new HotelSearchItemPanel(0, i*100,HotelinfoDataTool.hotelinfoVO1);
 		    	 //p.setBounds(0,i*100,600,100);
 		    	p.vb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
-		    			new HotelDetailFrame();
+		    			new HotelDetailFrame(HotelinfoDataTool.hotelinfoVO1);
 		    		}
 		    		});
 		    	 Panel.add(p);

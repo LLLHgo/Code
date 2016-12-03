@@ -1,26 +1,53 @@
 package presentation.client.compoment;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import presentation.client.compoment.OrderCreateFrame.OrderCreatePanel.chooseRoomListPane;
+
+
 
 
 public class OrderCreateFrame extends JFrame{
 	private OrderCreatePanel hdp;
+	private  JPanel Panel;
+	private DateChooser begin;
+	private DateChooser end;
 	public OrderCreateFrame(){
+		this.setLayout(null);
+		begin=new DateChooser();
+		end=new DateChooser();
+		this.add(begin);
+		begin.setOpaque(false);
+		begin.setBorder(new EmptyBorder(0,0,0,0));
+		begin.setBounds(150,187,100,25);
+		this.add(end);
+		end.setOpaque(false);
+		end.setBorder(new EmptyBorder(0,0,0,0));
+		end.setBounds(330,187,100,25);
+		this.pack();
 
+		Panel=new JPanel();
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-		hdp=new OrderCreatePanel();
+		hdp=new OrderCreatePanel(this);
 		this.add(hdp);
 		this.setLocationRelativeTo(null);
-		this.setLayout(null);
+
+
+
+
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setSize(591, 433);
@@ -32,7 +59,10 @@ public class OrderCreateFrame extends JFrame{
 		private Label totalMoneyLabel;
 		private Label actualMoneyLabel;
 		private Field nameField;
-		public OrderCreatePanel(){
+		private chooseRoomListPane crlp;
+		public OrderCreatePanel(JFrame frame){
+			crlp=new chooseRoomListPane();
+			frame.add(crlp);
 		imageIcon = new ImageIcon("image/OrderCreatePanel.png");
 		hotelNameLabel=new Label("test",90,13,300,30);
 		totalMoneyLabel=new Label("test",117,240,300,30);
@@ -69,6 +99,32 @@ public class OrderCreateFrame extends JFrame{
 				this.setBounds(x,y,w,h);
 				this.setOpaque(false);
 				this.setFocusable(true);
+
+			}
+		}
+		  class chooseRoomListPane extends JScrollPane{
+
+			public chooseRoomListPane(){
+				super(Panel);
+				Panel.setLayout(null);
+			    Panel.setPreferredSize(new Dimension(200,105));
+			    Panel.setBounds(0,0,1000,4000);
+			    Panel.setOpaque(false);
+
+
+			   this.setBounds(150, 134, 720, 50);
+			   this.setOpaque(false);
+			   this.getViewport().setOpaque(false);
+			   this.getVerticalScrollBar().setVisible(false);
+			   this.setBorder(new EmptyBorder(0,0,0,0));
+			   this.setVisible(true);
+			    for(int i=0;i<3;i++){
+			    	chooseRoomPanel p=new chooseRoomPanel(0, i*35,"标准间");
+			    	 //p.setBounds(0,i*100,600,100);
+
+			    	 Panel.add(p);
+			    }
+			    this.getVerticalScrollBar().setVisible(false);
 
 			}
 		}
