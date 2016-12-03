@@ -332,5 +332,10 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		return controller.searchOrderFromHotelUI(hotelID, text);
 	}
 
+	@Override
+	public boolean addLog(String s) {
+		return controller.addLog(s);
+	}
+
 
 }

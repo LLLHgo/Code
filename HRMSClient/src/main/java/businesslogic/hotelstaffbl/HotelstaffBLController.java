@@ -6,8 +6,10 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.hoteinfobl.RoominfoManage;
+import businesslogic.logbl.LogManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffControllerBLService;
+import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.orderblservice.OrderBLService_Stub;
 import businesslogicservice.orderblservice.OrderFindBLService;
@@ -50,6 +52,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	OrderFindBLService orderFind;
 	OrderOperatorBLService orderOperator;
 	HotelstaffBLService hotelstaff;
+	LogBLService log;
 	
 	public HotelstaffBLController(){
 		hotelinfo = new HotelinfoManage();
@@ -58,13 +61,14 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 //		orderOperator=new OrderOperator();
 //		strategy = new StrategyManage();
 		hotelstaff = new HotelstaffManage();
-		
+		log = new LogManage();
 		
 //		hotelinfo = new HotelinfoBLService_stub();
 		strategy = new StrategyBLService_Stub();
 		orderFind = new OrderBLService_Stub();
 		orderOperator=new OrderBLService_Stub();
 //		hotelstaff = new HotelstaffBLService_stub();
+
 	}
 	
 	@Override
@@ -223,5 +227,14 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 				list.add(orderFind.findSpecificOrder(hotelID, text));
 			}
 		return list;
+	}
+	
+	@Override
+	public boolean addLog(String s){
+		ResultMessage result= log.addLog(s);
+		if(result == ResultMessage.SUCCESS){
+			return true;
+		}
+		return false;
 	}
 }

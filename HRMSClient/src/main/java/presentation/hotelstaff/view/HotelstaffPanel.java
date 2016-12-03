@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -132,6 +133,7 @@ public class HotelstaffPanel extends JPanel{
 				jbCancle.setVisible(false);
 				jbModify.setVisible(true);
 				jtfPassword.setEditable(false);
+				controller.addLog(hotelID+" "+getPresentTime()+" 修改密码为 "+password+"\n");
 				showMessage("保存成功");
 			}else if(result==ResultMessage.REMOTEEXCEPTION){
 				showMessage("联网失败");
@@ -171,5 +173,17 @@ public class HotelstaffPanel extends JPanel{
 	            resultLabel.setText("");
 			}
 		}).start();
+	}
+	
+	public String getPresentTime(){
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		int minute = cal.get(Calendar.MINUTE);
+		int second = cal.get(Calendar.SECOND);
+		String time = year+" "+month+" "+day+" "+hour+":"+minute+":"+second;
+		return time;
 	}
 }

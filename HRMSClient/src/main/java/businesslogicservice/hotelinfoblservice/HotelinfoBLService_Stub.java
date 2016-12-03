@@ -239,8 +239,6 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		return null;
 	}
 
-
-
 //	/**
 //	 * 删除酒店策略
 //	 * @param hotelID

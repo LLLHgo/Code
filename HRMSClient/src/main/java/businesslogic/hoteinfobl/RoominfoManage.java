@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import Enum.ResultMessage;
@@ -63,9 +64,40 @@ public class RoominfoManage extends HotelinfoAbstract{
 	}
 	
 	@Override
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
 			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
-		// TODO Auto-generated method stub
+		//获得当前时间
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		int minute = cal.get(Calendar.MINUTE);
+		int second = cal.get(Calendar.SECOND);
+		String time = year+month+day+hour+minute+second+"";
+		cal.set(year, month, day, hour, minute, second);
+		
+		double discount = 1;
+		ArrayList<String> strategyName = new ArrayList<String>();
+	
+		for(HotelStrategyVO hotelStrategy:hotelStrategyList){
+		//TODO
+			if(vo.getType()==hotelStrategy.getViptype()&&
+					cal.compareTo(hotelStrategy.getEndTime())<0&&
+					cal.compareTo(hotelStrategy.getStartTime())>0&&
+					(vo.getLevel()>hotelStrategy.getLevel()||vo.getLevel()==hotelStrategy.getLevel())
+					){
+				discount = discount*hotelStrategy.getDiscount();
+				strategyName.add(hotelStrategy.getName());
+			}
+		}
+		
+		for(HotelStrategyVO hotelStrategy:hotelStrategyList){
+			if(vo.getType()==hotelStrategy.getViptype()){
+				discount = discount*hotelStrategy.getDiscount();
+				strategyName.add(hotelStrategy.getName());
+			}
+		}
 		return 0;
 	}
 

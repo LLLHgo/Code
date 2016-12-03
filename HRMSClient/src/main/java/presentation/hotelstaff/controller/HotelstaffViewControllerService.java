@@ -209,4 +209,11 @@ public interface HotelstaffViewControllerService {
 	 * @return
 	 */
 	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text);
+	
+	/**
+	 * 添加日志
+	 * @param s
+	 * @return boolean
+	 */
+	public boolean addLog(String s);
 }
