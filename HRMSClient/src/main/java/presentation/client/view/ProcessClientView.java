@@ -17,7 +17,6 @@ import javax.swing.border.EmptyBorder;
 
 import presentation.DialogCreator;
 import presentation.client.compoment.EvaluatePanel;
-import presentation.client.compoment.HotelListPane;
 import presentation.client.compoment.PersonalPanel;
 import presentation.client.compoment.RegisterPanel;
 import presentation.client.compoment.SearchPanel;

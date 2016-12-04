@@ -25,6 +25,7 @@ public class OrderCreateFrame extends JFrame{
 	private  JPanel Panel;
 	private DateChooser begin;
 	private DateChooser end;
+
 	public OrderCreateFrame(){
 		this.setLayout(null);
 		begin=new DateChooser();
@@ -38,6 +39,7 @@ public class OrderCreateFrame extends JFrame{
 		end.setBorder(new EmptyBorder(0,0,0,0));
 		end.setBounds(330,187,100,25);
 		this.pack();
+
 
 		Panel=new JPanel();
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -60,6 +62,8 @@ public class OrderCreateFrame extends JFrame{
 		private Label actualMoneyLabel;
 		private Field nameField;
 		private chooseRoomListPane crlp;
+		private deleteButton delete;
+		private okButton ok;
 		public OrderCreatePanel(JFrame frame){
 			crlp=new chooseRoomListPane();
 			frame.add(crlp);
@@ -68,6 +72,12 @@ public class OrderCreateFrame extends JFrame{
 		totalMoneyLabel=new Label("test",117,240,300,30);
 		actualMoneyLabel=new Label("test",374,238,300,30);
 		nameField=new Field("test",123,70,92,30,20);
+
+		delete=new deleteButton(300,310);
+		ok=new okButton(400,290);
+		this.add(delete);
+		this.add(ok);
+
 		this.add(hotelNameLabel);
 		this.add(nameField);
 		this.add(totalMoneyLabel);

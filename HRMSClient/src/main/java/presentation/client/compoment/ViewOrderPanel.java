@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import datatool.OrderDataTool;
+
 public class ViewOrderPanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private SearchButton searchButton;
@@ -100,11 +102,11 @@ private class OrderListPane extends JScrollPane{
 	   this.setBorder(new EmptyBorder(0,0,0,0));
 	   this.setVisible(false);
 	    for(int i=0;i<6;i++){
-	    	OrderItemPanel p=new OrderItemPanel(0, i*100);
+	    	OrderItemPanel p=new OrderItemPanel(0, i*100,OrderDataTool.orderVO1);
 	    	 //p.setBounds(0,i*100,600,100);
 	    	p.vb.addActionListener(new ActionListener(){
 	    		public void actionPerformed(ActionEvent e) {
-	    			new OrderDetailFrame();
+	    			new OrderDetailFrame(OrderDataTool.orderVO1);
 	    		}
 	    		});
 	    	 Panel.add(p);
