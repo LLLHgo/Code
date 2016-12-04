@@ -46,16 +46,6 @@ public abstract class HotelinfoAbstract implements HotelinfoBLService{
 	public ResultMessage updateBassicinfo(HotelinfoVO VO){
 		return null;
 	}
-	
-
-	/**
-	 * 获得酒店基本信息
-	 * @param vo
-	 * @return 酒店信息
-	 */
-	public HotelinfoVO gethotelinfoVO(String hotelID){
-		return null;
-	}
 	/**
 	 * 获得系统内所有商圈名
 	 * @return String[]
@@ -132,10 +122,9 @@ public abstract class HotelinfoAbstract implements HotelinfoBLService{
 	 * 计算打折后的价格
 	 * @return 最终价格
 	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice){
-			
-		return originalPrice;
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num){
+		return 0;
 	}
 	/**
 	 * 根据酒店界面输入订单ID或客户ID搜索订单

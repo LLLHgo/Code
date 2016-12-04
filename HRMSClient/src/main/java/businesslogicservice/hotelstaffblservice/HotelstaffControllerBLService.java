@@ -49,7 +49,7 @@ public interface HotelstaffControllerBLService {
 	 * @return 最终价格
 	 */
 	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
+			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,String hotelID,RoominfoVO roomVO,int num);
 
 	
 	/**
@@ -71,12 +71,6 @@ public interface HotelstaffControllerBLService {
 	 * @return 是否删除酒店策略
 	 */
 	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy);
-	/**
-	 * 获得酒店基本信息
-	 * @param vo
-	 * @return 酒店信息
-	 */
-	public HotelinfoVO gethotelinfoVO(String hotelID);
 	/**
 	 * 获得房间信息
 	 * @param roomID

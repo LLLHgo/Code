@@ -138,22 +138,6 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		ResultMessage result  = hotelstaff.saveSitemanagerUpdate(hotelstaffVO);
 		return result;
 	}
-	
-	@Override
-	public HotelinfoVO gethotelinfoVO(String hotelID) {
-		HotelinfoPO po = null;
-		try {
-			po = data.findhotelinfo(hotelID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		if(po==null){
-			return null;
-		}
-		return PO2VO(po);
-	}
-
-	
 
 	@Override
 	public String[] getArea() {
@@ -176,6 +160,9 @@ public class HotelinfoManage extends HotelinfoAbstract{
 
 	@Override
 	public boolean addArea(String area) {
+		if(area==null||area.equals("")){
+			return false;
+		}
 		String[] areas = getArea();
 		int flag = 0;
 		for(int i=0;i<areas.length;i++){
@@ -207,22 +194,27 @@ public class HotelinfoManage extends HotelinfoAbstract{
 	public List<AreaVO> getAreaHotels() {
 		String[] areas = getArea();
 		ArrayList<HotelinfoPO> hotelinfoPOList = new ArrayList<HotelinfoPO>();
-		ArrayList<String> hotels = new ArrayList<String>();
+		ArrayList<String> hotels;
 		ArrayList<AreaVO> areaVOList= new ArrayList<AreaVO>();
 		try {
 			for(int i=0;i<areas.length;i++){
 				hotelinfoPOList = data.findHotelinfoList(areas[i]);
-				for(int j=0;j<hotelinfoPOList.size();j++){
-					hotels.add(hotelinfoPOList.get(j).getName());
+				if(hotelinfoPOList!=null){
+					hotels = new ArrayList<String>();
+					for(int j=0;j<hotelinfoPOList.size();j++){
+						hotels.add(hotelinfoPOList.get(j).getName());
+					}
+					if(!hotels.isEmpty()){
+						AreaVO vo = new AreaVO(areas[i],hotels);
+						areaVOList.add(vo);
+					}
 				}
-				AreaVO vo = new AreaVO(areas[i],hotels);
-				areaVOList.add(vo);
 			}				
 			} catch (RemoteException e) {
 				e.printStackTrace();
 				return null;
 		}
-		return null;
+		return areaVOList;
 	}
 
 }

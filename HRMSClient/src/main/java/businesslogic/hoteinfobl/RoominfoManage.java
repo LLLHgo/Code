@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import Enum.HotelStrategy;
 import Enum.ResultMessage;
+import Enum.VIPType;
 import businesslogicservice.hotelinfoblservice.HotelinfoAbstract;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
@@ -52,19 +54,20 @@ public class RoominfoManage extends HotelinfoAbstract{
 	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
 		RoominfoPO po = new RoominfoPO(
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
+		boolean result = false;
 		try {
-			data.updateroominfo(po);
+			result = data.updateroominfo(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return false;
 		}
 		
-		return false;
+		return result;
 	}
 	
 	@Override
 	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num) {
 		//获得当前时间
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
@@ -73,33 +76,84 @@ public class RoominfoManage extends HotelinfoAbstract{
 		int hour = cal.get(Calendar.HOUR_OF_DAY);
 		int minute = cal.get(Calendar.MINUTE);
 		int second = cal.get(Calendar.SECOND);
-		String time = year+month+day+hour+minute+second+"";
+		//String time = year+month+day+hour+minute+second+"";
 		cal.set(year, month, day, hour, minute, second);
 		
+		double originalPrice = roomVO.getPrice()*num;
 		double discount = 1;
 		ArrayList<String> strategyName = new ArrayList<String>();
 	
 		for(HotelStrategyVO hotelStrategy:hotelStrategyList){
-		//TODO
-			if(vo.getType()==hotelStrategy.getViptype()&&
+			//生日特惠折扣
+			if(hotelStrategy.getType()==HotelStrategy.BIRTHDAY){
+				//客户是否是普通会员
+				if(vo.getType()==VIPType.ORDINARYVIP){
+					String birthday = vo.getBirth();
+					String[] arraybirthday = birthday.split("-");
+					if(cal.compareTo(hotelStrategy.getEndTime())<0&&
+							cal.compareTo(hotelStrategy.getStartTime())>0&&
+							month == Integer.parseInt(arraybirthday[1])&&
+							day == Integer.parseInt(arraybirthday[2])){
+						discount = discount*hotelStrategy.getDiscount();
+						strategyName.add(hotelStrategy.getName());
+					}
+				}
+				
+			}
+			
+			//合作企业优惠折扣
+			if(hotelStrategy.getType()==HotelStrategy.COMPANY){
+				//客户是否是合作企业
+				if(cal.compareTo(hotelStrategy.getEndTime())<0&&
+						cal.compareTo(hotelStrategy.getStartTime())>0&&
+						vo.getType()==VIPType.ENTERPRISEVIP){
+					discount = discount*hotelStrategy.getDiscount();
+					strategyName.add(hotelStrategy.getName());
+				}
+			}
+			
+			
+			//特定期间优惠折扣
+			if(hotelStrategy.getType()==HotelStrategy.SPECIALDAY){
+				if(cal.compareTo(hotelStrategy.getEndTime())<0&&
+						cal.compareTo(hotelStrategy.getStartTime())>0){
+					discount = discount*hotelStrategy.getDiscount();
+					strategyName.add(hotelStrategy.getName());
+				}
+			}
+			
+			//三间及以上房间优惠
+			if(hotelStrategy.getType()==HotelStrategy.OVERTHREEROOMS){
+				if(cal.compareTo(hotelStrategy.getEndTime())<0&&
+						cal.compareTo(hotelStrategy.getStartTime())>0&&
+						num>=3){
+					discount = discount*hotelStrategy.getDiscount();
+					strategyName.add(hotelStrategy.getName());
+				}
+			}
+			
+			//新策略
+			if(hotelStrategy.getType()==HotelStrategy.CREATED){
+				if(hotelStrategy.getVipKinds().contains(vo.getType())&&
 					cal.compareTo(hotelStrategy.getEndTime())<0&&
 					cal.compareTo(hotelStrategy.getStartTime())>0&&
-					(vo.getLevel()>hotelStrategy.getLevel()||vo.getLevel()==hotelStrategy.getLevel())
-					){
-				discount = discount*hotelStrategy.getDiscount();
-				strategyName.add(hotelStrategy.getName());
+					(vo.getLevel()>hotelStrategy.getLevel()||vo.getLevel()==hotelStrategy.getLevel()&&
+					num>=hotelStrategy.getMinRooms()&&
+					originalPrice>=hotelStrategy.getMinSum())
+				){
+					discount = discount*hotelStrategy.getDiscount();
+					strategyName.add(hotelStrategy.getName());
+				}
 			}
 		}
 		
-		for(HotelStrategyVO hotelStrategy:hotelStrategyList){
-			if(vo.getType()==hotelStrategy.getViptype()){
-				discount = discount*hotelStrategy.getDiscount();
-				strategyName.add(hotelStrategy.getName());
-			}
-		}
+		
+//		for(MarketingStrategyVO marketingStrategy:marketingStrategyList){
+//			marketingStrategy.getType()
+//		}
 		return 0;
 	}
-
+	
 	@Override
 	public String[] getRoomType() {
 		BufferedReader br = null;
@@ -121,6 +175,9 @@ public class RoominfoManage extends HotelinfoAbstract{
 
 	@Override
 	public boolean addRoomType(String type) {
+		if(type==null||type.equals("")){
+			return false;
+		}
 		String[] roomtypes = getRoomType();
 		int flag = 0;
 		for(int i=0;i<roomtypes.length;i++){

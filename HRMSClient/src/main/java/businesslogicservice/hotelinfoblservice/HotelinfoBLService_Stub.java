@@ -91,8 +91,8 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * 计算打折后的价格
 	 * @return 最终价格
 	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num){
 		return 666;
 	}
 
@@ -237,6 +237,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 //	/**
 //	 * 删除酒店策略

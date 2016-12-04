@@ -97,8 +97,9 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	@Override
 	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
-		return roominfo.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
+			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,String hotelID,RoominfoVO roomVO,int num) {
+		
+		return roominfo.calculatePrice(hotelStrategylist,marketingStrategyList,vo,hotelID,roomVO,num);
 	}
 
 
@@ -121,11 +122,6 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 		else{
 			return ResultMessage.FAIL;
 		}
-	}
-
-	@Override
-	public HotelinfoVO gethotelinfoVO(String hotelID) {
-		return hotelinfo.gethotelinfoVO(hotelID);
 	}
 
 	@Override

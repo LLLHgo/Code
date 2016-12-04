@@ -49,8 +49,8 @@ public interface HotelstaffViewControllerService {
 	 * 计算打折后的价格
 	 * @return 最终价格
 	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num);
 
 	
 	/**

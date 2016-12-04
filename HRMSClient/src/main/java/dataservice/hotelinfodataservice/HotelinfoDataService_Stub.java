@@ -119,14 +119,43 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 
 	@Override
 	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException {
+		if(area.equals("山西路商圈"))
 		return (ArrayList<HotelinfoPO>) HotelinfoDataTool.listPO;
+		return new ArrayList<HotelinfoPO>();
 	}
 
 	@Override
 	public RoominfoPO getRoominfo(String hotelID, String roomID) throws RemoteException {
-		// TODO Auto-generated method stub
+		RoominfoPO roominfo1 = new RoominfoPO("标准间","8304",200, RoomState.Usable);
+		RoominfoPO roominfo2 = new RoominfoPO("标准间","8305",200, RoomState.Usable);
+		RoominfoPO roominfo3 = new RoominfoPO("大床房","8306",200, RoomState.Usable);
+		RoominfoPO roominfo4 = new RoominfoPO("标准间","8307",200, RoomState.Usable);
+		RoominfoPO roominfo5 = new RoominfoPO("标准间","8308",200, RoomState.Unusable);
+		RoominfoPO roominfo6 = new RoominfoPO("大床房","8309",200, RoomState.Unusable);
+		if(!hotelID.equals("H00000001")){
+			return null;
+		}
+		if(roomID.equals(roominfo1.getRoomNum())){
+			return roominfo1;
+		}
+		if(roomID.equals(roominfo2.getRoomNum())){
+			return roominfo2;
+		}
+		if(roomID.equals(roominfo3.getRoomNum())){
+			return roominfo3;
+		}
+		if(roomID.equals(roominfo4.getRoomNum())){
+			return roominfo4;
+		}
+		if(roomID.equals(roominfo5.getRoomNum())){
+			return roominfo5;
+		}
+		if(roomID.equals(roominfo6.getRoomNum())){
+			return roominfo6;
+		}
 		return null;
 	}
+	
 	@Override
 	public String addhotelinfofromsitemanager(HotelinfoPO po) throws RemoteException {
 		if(po.getName().equals("LLLH酒店")){

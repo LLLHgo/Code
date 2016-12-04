@@ -85,9 +85,9 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo, double originalPrice) {
-		return controller.calculatePrice(hotelStrategylist, marketingStrategyList, vo, originalPrice);
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num) {
+		return controller.calculatePrice(hotelStrategyList, marketingStrategyList, vo, hotelID,roomVO,num);
 	}
 
 
@@ -108,7 +108,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 
 	@Override
 	public HotelinfoVO gethotelinfoVO(String hotelID) {
-		return controller.gethotelinfoVO(hotelID);
+		return controller.getHotelBasicinfo(hotelID);
 	}
 
 	@Override

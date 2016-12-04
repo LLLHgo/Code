@@ -34,14 +34,6 @@ public interface HotelinfoBLService {
 	 * @return 保存成功或失败
 	 */
 	public ResultMessage updateBassicinfo(HotelinfoVO VO);
-	
-
-	/**
-	 * 获得酒店基本信息
-	 * @param vo
-	 * @return 酒店信息
-	 */
-	public HotelinfoVO gethotelinfoVO(String hotelID);	
 	/**
 	 * 获得系统内所有商圈名
 	 * @return String[]
@@ -98,10 +90,12 @@ public interface HotelinfoBLService {
 	ArrayList<RoominfoVO> getRoominfoList(String hotelID);
 	/**
 	 * 计算打折后的价格
+	 * @param roomVO 
+	 * @param hotelID 
 	 * @return 最终价格
 	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,double originalPrice);
+	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
+			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num);
 
 	/**
 	 * 根据酒店界面输入订单ID或客户ID搜索订单

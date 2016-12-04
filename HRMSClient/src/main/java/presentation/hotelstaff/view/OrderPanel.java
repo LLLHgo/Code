@@ -329,8 +329,7 @@ public class OrderPanel extends JPanel{
 					order.setOrderStatus(OrderType.NORMALEXEC);
 					ResultMessage result = controller.updateOrderState(order);
 					if(result == ResultMessage.SUCCESS){
-						showMessage("修改成功");
-						controller.JBOrderClicked();
+						controller.JBRoomClicked("订单状态已置为已执行，请选择房间");
 						//showAllOrderList();
 					}else{
 						showMessage("修改失败");

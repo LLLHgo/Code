@@ -18,11 +18,11 @@ public class getBasicinfoListTest {
 	String area = "山西路商圈";
 	@Test
 	public void test1(){
-		assertEquals(hotelinfoVO1.getAddress(),hotelinfo.getBasicinfoList(area));	
-		assertEquals(hotelinfoVO1.getArea(),hotelinfo.getBasicinfoList(area));
-		assertEquals(hotelinfoVO1.getFacility(),hotelinfo.getBasicinfoList(area));
-		assertEquals(hotelinfoVO1.getIntroduction(),hotelinfo.getBasicinfoList(area));
-		assertEquals(hotelinfoVO1.getName(),hotelinfo.getBasicinfoList(area));
-		assertEquals(hotelinfoVO1.getTel(),hotelinfo.getBasicinfoList(area));
+		assertEquals(hotelinfoVO1.getAddress(),hotelinfo.getBasicinfoList(area).get(0).getAddress());	
+		assertEquals(hotelinfoVO1.getArea(),hotelinfo.getBasicinfoList(area).get(0).getArea());
+		assertEquals(hotelinfoVO1.getFacility(),hotelinfo.getBasicinfoList(area).get(0).getFacility());
+		assertEquals(hotelinfoVO1.getIntroduction(),hotelinfo.getBasicinfoList(area).get(0).getIntroduction());
+		assertEquals(hotelinfoVO1.getName(),hotelinfo.getBasicinfoList(area).get(0).getName());
+		assertEquals(hotelinfoVO1.getTel(),hotelinfo.getBasicinfoList(area).get(0).getTel());
 	}
 }

@@ -78,14 +78,14 @@ public class HotelinfoBLService_Driver{
 			System.out.println("更新成功！");
 		else
 			System.out.println("更新失败==");
-		//计算房间价格
-		System.out.println("计算使用促销策略后的房间价格价格...");
-		double price = hotelinfoBLService.calculatePrice(new ArrayList<HotelStrategyVO>(), new ArrayList<MarketingStrategyVO>(),
-				new ClientVO(), 666.6);
-		System.out.println("使用策略后的价格为： "+price);
+//		//计算房间价格
+//		System.out.println("计算使用促销策略后的房间价格价格...");
+//		double price = hotelinfoBLService.calculatePrice(new ArrayList<HotelStrategyVO>(), new ArrayList<MarketingStrategyVO>(),
+//				new ClientVO(), 666.6);
+//		System.out.println("使用策略后的价格为： "+price);
 		
 		//获得酒店基本信息
-		HotelinfoVO HVO=hotelinfoBLService.gethotelinfoVO("H00000000");
+		HotelinfoVO HVO=hotelinfoBLService.getBasicinfo("H00000000");
 		if(HVO!=null)System.out.println("获得酒店基本信息成功！");
 
 		//获得房间信息
