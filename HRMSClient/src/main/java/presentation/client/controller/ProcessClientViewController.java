@@ -10,7 +10,6 @@ import Enum.ResultMessage;
 import datatool.ClientDataTool;
 import presentation.client.view.ProcessClientViewControllerService;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
@@ -83,7 +82,7 @@ public class ProcessClientViewController implements ProcessClientViewControllerS
 	 * @param vo
 	 * @return符合关键词的酒店列表
 	 */
-	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo){
+	public List<HotelinfoVO> getSearchHotel(String str){
 		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
 		return hotel;
 	}

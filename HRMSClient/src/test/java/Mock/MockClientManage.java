@@ -11,7 +11,6 @@ import datatool.ClientDataTool;
 import datatool.OrderDataTool;
 import datatool.SitemanagerDataTool;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;

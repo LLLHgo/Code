@@ -8,7 +8,6 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import datatool.ClientDataTool;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
@@ -51,7 +50,7 @@ public interface ProcessClientViewControllerService {
 	 * @param vo
 	 * @return符合关键词的酒店列表
 	 */
-	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo);
+	public List<HotelinfoVO> getSearchHotel(String str);
 	/**
 	 *得到具体日期的客户订单
 	 * @param clientID

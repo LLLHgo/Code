@@ -7,7 +7,7 @@ import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.orderbl.OrderOperator;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
-import vo.hotelinfoVO.ClientRequirementVO;
+
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.orderVO.OrderVO;
 
@@ -17,8 +17,8 @@ OrderOperatorBLService order=new OrderOperator();
 	public HotelinfoVO getBasicinfo(String hotelID) {
 	return hotelInfo.getBasicinfo(hotelID);
 }
-	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO clientvo) {
-		return hotelInfo.getBasicinfoList(new ClientRequirementVO());
+	public ArrayList<HotelinfoVO> getBasicinfoList(String str) {
+		return hotelInfo.getBasicinfoList(str);
 	}
 	public ResultMessage createOrderPO(OrderVO orderVO) {
 		return order.createOrderPO(orderVO);

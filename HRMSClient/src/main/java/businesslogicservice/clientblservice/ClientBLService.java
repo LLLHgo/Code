@@ -11,7 +11,6 @@ import vo.*;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.orderVO.OrderVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.levelVO.*;
 
 public interface ClientBLService {

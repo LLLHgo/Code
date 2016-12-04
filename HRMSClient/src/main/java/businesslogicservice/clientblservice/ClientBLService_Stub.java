@@ -8,7 +8,6 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.clientVO.ClientVO;
 import vo.orderVO.OrderVO;
 
@@ -111,7 +110,7 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @param vo
 	 * @return符合关键词的酒店列表
 	 */
-	public List<HotelinfoVO> getSearchHotel(ClientRequirementVO vo){
+	public List<HotelinfoVO> getSearchHotel(String str){
 		List<HotelinfoVO> hotel=new ArrayList<HotelinfoVO>();
 		return hotel;
 	}

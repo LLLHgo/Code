@@ -13,7 +13,6 @@ import dataservice.clientdataservice.ClientDataService;
 import datatool.ClientDataTool;
 import po.ClientPO;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
