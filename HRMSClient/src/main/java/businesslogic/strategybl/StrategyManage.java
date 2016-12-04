@@ -6,6 +6,8 @@ import Enum.ResultMessage;
 import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.hoteinfobl.Roominfo;
 import businesslogicservice.strategyblservice.StrategyBLService;
+import dataservice.strategydataservice.StrategyDataService;
+import dataservice.strategydataservice.StrategyDataService_Stub;
 import vo.clientVO.ClientVO;
 import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
@@ -13,9 +15,11 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class StrategyManage implements StrategyBLService{
 
+	private StrategyDataService strategyDataService=new StrategyDataService_Stub();
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
-		return ResultMessage.SUCCESS;
+
+		return null;//null、、this.strategyDataService.addMarketingStrategy(po);
 	}
 
 	@Override

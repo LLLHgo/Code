@@ -63,9 +63,9 @@ public class StrategyDataService_Stub implements StrategyDataService{
      * @return 返回策略列表
      */
     public List<MarketingStrategyPO> getMarketingStrategy (String id) {
-    	MarketingStrategyPO po=new MarketingStrategyPO();
+    	//MarketingStrategyPO po=new MarketingStrategyPO();
     	List<MarketingStrategyPO> list=new ArrayList<MarketingStrategyPO>();
-    	list.add(po);
+    	//list.add(po);
 		return list;
 	}
 

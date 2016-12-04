@@ -23,18 +23,18 @@ public class StrategyDataService_Driver {
     	boolean deletePrivilegeBool=strategyDataService.deletePrivilege(Ppo);
     	if(deletePrivilegeBool)System.out.println("删除会员福利成功");
 
-      	//增加网站营销人员促销策略
+      /*	//增加网站营销人员促销策略
     	MarketingStrategyPO Mpo=new MarketingStrategyPO();
     	boolean addMarketingStrategyBool=strategyDataService.addMarketingStrategy(Mpo);
-    	if(addMarketingStrategyBool)System.out.println("增加网站营销人员促销策略成功");
+    	if(addMarketingStrategyBool)System.out.println("增加网站营销人员促销策略成功");*/
 
         //返回网站营销人员促销策略列表
     	List<MarketingStrategyPO> marketingStrategyList=strategyDataService.getMarketingStrategy ("M00010001");
     	if(marketingStrategyList.size()>0)System.out.println("返回网站营销人员促销策略列表成功");
 
-    	//删除网站营销人员促销策略
+    /*	//删除网站营销人员促销策略
     	boolean deleteMarketingStrategyBool=strategyDataService.deleteMarketingStrategy (Mpo);
-    	if(deleteMarketingStrategyBool)System.out.println("删除网站营销人员促销策略成功");
+    	if(deleteMarketingStrategyBool)System.out.println("删除网站营销人员促销策略成功");*/
 
     	//获取酒店工作人员促销策略列表
     	List<HotelStrategyPO> hotelStrategyList=strategyDataService.getHotelStrategy("H00010002");
