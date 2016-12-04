@@ -52,6 +52,18 @@ public class ClientVO {
 				this.creditRecord=creditRecord;
 				this.credit=credit;
 			}
+				public ClientVO(String id,String password){
+					this.client_id=id;
+					this.password=password;
+					this.client_name="";
+					this.client_tel="";
+					this.vip_type=null;
+					this.client_birth="";
+					this.vip_level=0;
+					this.client_firm="";
+					this.creditRecord=null;
+					this.credit=0;
+				}
 				/*public ClientVO(Client c){
 					this.client_id=c.client_id;
 					this.password=c.password;

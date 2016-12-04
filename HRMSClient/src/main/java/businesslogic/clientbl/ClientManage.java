@@ -28,11 +28,15 @@ public class ClientManage implements ClientBLService{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return null;*/return ClientDataTool.clientVO1;
+		return null;*/
+		if(clientID!=null&&clientID!=""&&clientID.equals("C00000001"))
+		return ClientDataTool.clientVO1;
+		else return null;
 	}
 
 	@Override
 	public ResultMessage createClient(ClientVO vo) {
+		
 		// TODO Auto-generated method stub
 		/*try{
 			boolean res=clientdata.createClient(vo);
@@ -41,7 +45,9 @@ public class ClientManage implements ClientBLService{
 			}catch(Exception e){
 				e.printStackTrace();
 			}*/
-		return null;
+		if(vo.getID()=="C00000001"||vo.getPassword()==""||vo.getID().charAt(0)!='C')
+		return ResultMessage.FAIL;
+		else return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -110,8 +116,8 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public boolean checkAccount(String clientID, String password) {
 		// TODO Auto-generated method stub
-		if(clientID!=null&&password!=null)
-		//if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
+		//if(clientID!=null&&password!=null)
+		if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
 		return true;
 		else return false;
 	}
