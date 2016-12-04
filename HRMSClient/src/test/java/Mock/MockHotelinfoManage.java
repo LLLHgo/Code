@@ -11,7 +11,6 @@ import Enum.RoomState;
 import Enum.Star;
 import Enum.VIPType;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
@@ -99,7 +98,7 @@ public class MockHotelinfoManage {
 	}
 
 
-	public List<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo) {
+	public List<HotelinfoVO> getBasicinfoList(String area) {
 		HotelinfoVO hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","GuLouArea","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
 				new ArrayList<String>(),"Brief Introduction","H00000001");
 		
