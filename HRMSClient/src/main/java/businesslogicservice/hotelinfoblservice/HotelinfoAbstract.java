@@ -119,14 +119,6 @@ public abstract class HotelinfoAbstract implements HotelinfoBLService{
 		return null;
 	}
 	/**
-	 * 计算打折后的价格
-	 * @return 最终价格
-	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num){
-		return 0;
-	}
-	/**
 	 * 根据酒店界面输入订单ID或客户ID搜索订单
 	 * @param hotelID
 	 * @param text

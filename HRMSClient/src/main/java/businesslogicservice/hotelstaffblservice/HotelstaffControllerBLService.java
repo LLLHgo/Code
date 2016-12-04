@@ -43,15 +43,7 @@ public interface HotelstaffControllerBLService {
 	 * @param hotelID
 	 * @return 房间信息列表
 	 */
-	public ArrayList<RoominfoVO> getRoominfoList(String hotelID);
-	/**
-	 * 计算打折后的价格
-	 * @return 最终价格
-	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,String hotelID,RoominfoVO roomVO,int num);
-
-	
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID);	
 	/**
 	 * 将酒店促销策略持久化保存
 	 * @param vo

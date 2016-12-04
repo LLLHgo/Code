@@ -96,14 +96,6 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	}
 
 	@Override
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategylist,
-			ArrayList<MarketingStrategyVO> marketingStrategyList,ClientVO vo,String hotelID,RoominfoVO roomVO,int num) {
-		
-		return roominfo.calculatePrice(hotelStrategylist,marketingStrategyList,vo,hotelID,roomVO,num);
-	}
-
-
-	@Override
 	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
 		 return strategy.updateHotelStrategy(vo);
 	}

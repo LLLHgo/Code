@@ -88,14 +88,6 @@ public interface HotelinfoBLService {
 	 * @return
 	 */
 	ArrayList<RoominfoVO> getRoominfoList(String hotelID);
-	/**
-	 * 计算打折后的价格
-	 * @param roomVO 
-	 * @param hotelID 
-	 * @return 最终价格
-	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num);
 
 	/**
 	 * 根据酒店界面输入订单ID或客户ID搜索订单

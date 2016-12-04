@@ -83,14 +83,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
 		return controller.getRoominfoList(hotelID);
 	}
-
-	@Override
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num) {
-		return controller.calculatePrice(hotelStrategyList, marketingStrategyList, vo, hotelID,roomVO,num);
-	}
-
-
 	@Override
 	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
 		 return controller.updatehotelStrategy(vo);
