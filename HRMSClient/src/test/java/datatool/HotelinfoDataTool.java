@@ -21,15 +21,14 @@ public class HotelinfoDataTool {
 
 	public static HotelinfoPO hotelinfoPO1 = new HotelinfoPO("HanTing","BeijingDongRode","山西路商圈","12345678",new ArrayList<RoominfoPO>(),Star.FOUR,
 			new ArrayList<String>(),"Brief Introduction","H00000001");
-
-	public static List<HotelinfoPO> listPO = new ArrayList<HotelinfoPO>();
 	
+	public static ArrayList<HotelinfoPO> listPO = new ArrayList<HotelinfoPO>();
 	static{
 		listPO.add(hotelinfoPO1);
 	}
 	
+	public static List<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
 	static{
-		List<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
 		HotelinfoVO hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","GuLouArea","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
 				new ArrayList<String>(),"Brief Introduction","H00000001");
 		HotelinfoVO hotelinfoVO2 = new HotelinfoVO("RuJia","LongPanRode","GuLouArea","12345679",new ArrayList<RoominfoVO>(),Star.FOUR,

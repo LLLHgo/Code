@@ -6,7 +6,6 @@ import java.util.List;
 import Enum.ResultMessage;
 import Enum.Star;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
@@ -36,8 +35,6 @@ public class HotelinfoBLService_Driver{
 		String introduction;
 		//酒店ＩＤ
 		String hotelID;
-		//客户输入的酒店ID或商圈
-		ClientRequirementVO clientRequirementVO = new ClientRequirementVO("","栖霞区");
 
 		//查找酒店基本信息
 		System.out.println("查找ID为H00000000的酒店信息...");
@@ -56,7 +53,7 @@ public class HotelinfoBLService_Driver{
 
 		//查找酒店信息列表
 		System.out.println("查找客户需要的酒店信息列表...");
-		List<HotelinfoVO> hotellist = hotelinfoBLService.getBasicinfoList(clientRequirementVO);
+		List<HotelinfoVO> hotellist = hotelinfoBLService.getBasicinfoList("栖霞区商圈");
 		if(hotellist.size()>0)System.out.println("查找成功");
 
 		//查找某酒店某类型的房间信息

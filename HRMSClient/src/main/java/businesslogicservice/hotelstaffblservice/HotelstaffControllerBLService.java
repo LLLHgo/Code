@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
@@ -25,7 +24,7 @@ public interface HotelstaffControllerBLService {
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public ArrayList<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo);
+	public ArrayList<HotelinfoVO> getHotelBasicinfoList(String area);
 	/**
 	 * 持久化保存酒店信息
 	 * @param VO

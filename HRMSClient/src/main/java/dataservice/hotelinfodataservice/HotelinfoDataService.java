@@ -64,6 +64,13 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public boolean delete(RoominfoPO po) throws RemoteException;
 	/**
+	 * 网站管理人员新建酒店，如果新建成功，返回hotelID，如果已经存在,返回"R",表示重复
+	 * @param po
+	 * @return String
+	 */
+	public String addhotelinfofromsitemanager(HotelinfoPO po) throws RemoteException;
+	
+	/**
 	 * 结束持久化数据库的使用
 	 * @throws RemoteException
 	 */

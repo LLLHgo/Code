@@ -6,7 +6,6 @@ import java.util.List;
 import Enum.ResultMessage;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
@@ -36,7 +35,7 @@ public abstract class HotelinfoAbstract implements HotelinfoBLService{
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo){
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area){
 		return null;
 	};
 	/**

@@ -7,7 +7,6 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
@@ -28,7 +27,7 @@ public interface HotelinfoBLService {
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo);
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area);
 	/**
 	 * 持久化保存酒店信息
 	 * @param VO

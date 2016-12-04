@@ -9,7 +9,6 @@ import Enum.RoomState;
 import Enum.Star;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
@@ -52,7 +51,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO vo) {
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area) {
 		ArrayList<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
 		list.add(hotelinfovo);
 		return list;

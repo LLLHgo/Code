@@ -15,14 +15,15 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoAbstract;
+import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
@@ -55,11 +56,12 @@ public class HotelinfoManage extends HotelinfoAbstract{
 	}
 
 	@Override
-	public ArrayList<HotelinfoVO> getBasicinfoList(ClientRequirementVO clientvo) {
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area) {
 		ArrayList<HotelinfoPO> listPO;
 		ArrayList<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
 		try {
-			listPO = data.findHotelinfoList(clientvo.getArea());
+			listPO = data.findHotelinfoList(area);
+			
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
 				if(vo == null){
@@ -76,19 +78,29 @@ public class HotelinfoManage extends HotelinfoAbstract{
 	}
 
 	private HotelinfoVO PO2VO(HotelinfoPO po){
-		try{
 			HotelinfoVO vo = new HotelinfoVO(po.getName(),po.getAddress(),po.getArea(),
 			po.getTel(),null,po.getStar(),po.getRemark(),po.getIntroduction(),
 			po.getHotelID());
-		}catch(NullPointerException e){
-			e.printStackTrace();
-			return null;
-		}
-		return vo;
+//			HotelinfoVO vo = new HotelinfoVO();
+//			vo.setName(po.getName());
+//			vo.setAddress(po.getAddress());
+//			vo.setArea(po.getArea());
+//			vo.setTel(po.getTel());
+//			vo.setStar(po.getStar());
+//			vo.setRemark(po.getRemark());
+//			vo.setIntroduction(po.getIntroduction());
+//			vo.setFacility(po.getFacility());
+//			vo.setHotelID(po.getHotelID());
+			return vo;
 	}
 	
 	@Override
 	public ResultMessage updateBassicinfo(HotelinfoVO VO) {
+		if(VO==null||VO.getAddress()==null||VO.getArea()==null||VO.getFacility()==null||
+		VO.getHotelID()==null||VO.getIntroduction()==null||VO.getStar()==null||
+		VO.getTel()==null||VO.getRemark()==null){
+			return ResultMessage.VOIDINFO;
+		}
 		boolean result = false;
 		try {
 			result = data.updatehotelinfo(po);
@@ -101,11 +113,32 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		else return ResultMessage.FAIL;
 			
 	}
+	
 	@Override
 	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
-		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
+		String hotelname = sitemanagerAddVO.getName();
+		if(hotelname==null||hotelname.equals("")){
+			return ResultMessage.VOIDINFO;
+		}
+		po = new HotelinfoPO();
+		po.setName(hotelname);
+		String hotelID = null;
+		try {
+			hotelID = data.addhotelinfofromsitemanager(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.REMOTEEXCEPTION;
+		}
+		if(hotelID.equals("R")){
+			return ResultMessage.DUPLICATENAME;
+		}
+		HotelstaffBLService hotelstaff = new HotelstaffManage();
+		hotelstaffVO.setHotelID(hotelID);
+		//TODO 理论上没有同层调用了，怎么解决？
+		ResultMessage result  = hotelstaff.saveSitemanagerUpdate(hotelstaffVO);
+		return result;
 	}
+	
 	@Override
 	public HotelinfoVO gethotelinfoVO(String hotelID) {
 		HotelinfoPO po = null;

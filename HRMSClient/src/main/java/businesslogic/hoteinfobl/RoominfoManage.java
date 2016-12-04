@@ -19,7 +19,6 @@ import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.RoominfoPO;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;

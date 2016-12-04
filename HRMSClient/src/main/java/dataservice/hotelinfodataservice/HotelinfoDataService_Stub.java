@@ -127,5 +127,13 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public String addhotelinfofromsitemanager(HotelinfoPO po) throws RemoteException {
+		if(po.getName().equals("LLLH酒店")){
+			return "R";//代表Repeated;
+		}else{
+			return "H00000002";
+		}
+	}
 
 }

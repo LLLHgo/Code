@@ -30,7 +30,6 @@ import presentation.hotelstaff.view.PeriodStrategy;
 import presentation.hotelstaff.view.RoomStrategyPanel;
 import presentation.hotelstaff.view.StrategyPanel;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.ClientRequirementVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
@@ -77,8 +76,8 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	}
 
 	@Override
-	public ArrayList<HotelinfoVO> getHotelBasicinfoList(ClientRequirementVO vo) {
-		return hotelinfo.getBasicinfoList(vo);
+	public ArrayList<HotelinfoVO> getHotelBasicinfoList(String area) {
+		return hotelinfo.getBasicinfoList(area);
 	}
 
 	@Override
