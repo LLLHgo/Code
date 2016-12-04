@@ -85,8 +85,14 @@ public interface ProcessSitemanagerViewControllerService {
 	 * @param findInfo
 	 * @return 酒店工作人员账户
 	 */
-	public  HotelstaffVO HotelStaffAccountFind(String findInfo);
-		
+	public  HotelstaffVO HotelStaffAccountFind(String hotelId);
+	
+	/**
+	 * 管理界面得到酒店信息
+	 * @param hotelId
+	 * @return 酒店信息账户
+	 */
+	public HotelinfoVO HotelinfoAccountFind(String hotelId);
 	/**
 	 * 修改酒店工作人员账户
 	 * @param hotelId

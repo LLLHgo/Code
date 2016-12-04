@@ -127,7 +127,10 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	public HotelstaffVO HotelStaffAccountFind(String id) {
 		return hotelstaffblservice.returnSitemanagerAccount(id);
 	}
-
+	@Override
+	public HotelinfoVO HotelinfoAccountFind(String hotelId){
+		return hotelblservice.getBasicinfo(hotelId);
+	}
 	@Override
 	public ResultMessage HotelStaffAccountUpdate(HotelstaffVO hotelstaffVO) {
 		return hotelstaffblservice.saveSitemanagerUpdate(hotelstaffVO);

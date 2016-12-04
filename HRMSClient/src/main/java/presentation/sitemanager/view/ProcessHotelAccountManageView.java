@@ -19,6 +19,7 @@ import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
 import presentation.sitemanager.component.MyTextField;
 import presentation.sitemanager.component.SearchButton;
+import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 
@@ -33,6 +34,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 	HotelstaffVO addHotelstaffVO;
 	HotelstaffVO modifyHotelstaffVO;
 	HotelstaffVO hotelstaffVO;
+	HotelinfoVO hotelinfoVO;
 	SitemanagerAddVO sitemanagerAddVO;
 	
 	// 背景图片
@@ -181,15 +183,17 @@ public class ProcessHotelAccountManageView extends JPanel{
 			// TODO Auto-generated method stub
 			searchId=searchText.getText();
 			hotelstaffVO=controller.HotelStaffAccountFind(searchId);
+			hotelinfoVO=controller.HotelinfoAccountFind(searchId);
 			if(hotelstaffVO==null){
 				conditionLabel.setText("找不到账户！");
 			}
 			else{
 				conditionLabel.setText("找到匹配账户");
+				nameTextField.setText(hotelinfoVO.getName());
 				idLabel.setText(hotelstaffVO.getHotelID());
 				telTextField.setText(hotelstaffVO.getPassword());
 				passwordField.setText(hotelstaffVO.getPassword());
-				nameTextField.setText("");
+				//nameTextField.setText("");
 				modifyButton.setEnabled(true);
 				checkAddButton.setVisible(false);
 			}
