@@ -3,13 +3,10 @@ package Mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import Enum.VIPType;
 import datatool.HotelStrategyDataTool;
 import datatool.MarketingStrategyDataTool;
-import datatool.PrivilegeDataTool;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public class MockStrategyManage {
 
@@ -93,43 +90,6 @@ public class MockStrategyManage {
 		else
 			return false;
 
-	}
-    /**
-     * 增加福利信息
-     * @param vo
-     * @return 是否增加成功
-     */
-	public boolean addPrivilege(PrivilegeVO vo) {
-		if(vo!=null)
-		    return true;
-		else
-			return false;
-	}
-
-    /**
-     * 查找福利信息
-     * @param type
-     * @return 福利信息列表
-     */
-	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
-		List<PrivilegeVO> list=new ArrayList<PrivilegeVO>();
-		if(type==VIPType.ORDINARYVIP)
-		    list.add(PrivilegeDataTool.p1);
-		else if(type==VIPType.ENTERPRISEVIP)
-		    list.add(PrivilegeDataTool.p2);
-		return list;
-	}
-
-    /**
-     * 删除福利信息
-     * @param vo
-     * @return 是否删除成功
-     */
-	public boolean deletePrivilege(PrivilegeVO vo) {
-		if(vo!=null)
-		    return true;
-		else
-			return false;
 	}
 
 }

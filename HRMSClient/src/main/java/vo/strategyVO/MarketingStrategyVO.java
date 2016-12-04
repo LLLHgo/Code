@@ -51,9 +51,6 @@ public class MarketingStrategyVO {
      * @param startTime 活动开始时间
      * @param endTime 活动结束时间
      * @param discount 活动折扣
-     * @param hotels 参加活动的酒店
-     * @param poster 活动海报
-     * @param position 活动海报显示在客户界面的位置
      */
     public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,
     		Calendar endTime,double discount){
@@ -65,15 +62,14 @@ public class MarketingStrategyVO {
     }
 
     /**
-     * 网站营销人员制定的VIP特定商圈折扣
-     *
-     * @param type  网站营销人员制定的策略的种类，这里为VIPSPECIAL
+     * 网站营销人员制定特定导航犬专属折扣
+     * @param name
+     * @param type
      * @param startTime
      * @param endTime
-     * @param discount
-     * @param poster
-     * @param businessArea
-     * @param position
+     * @param businessDistrict
+     * @param levels
+     * @param discounts
      */
     public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,
     		Calendar endTime,String businessDistrict,int[] levels,double[] discounts){
@@ -88,19 +84,17 @@ public class MarketingStrategyVO {
     }
 
     /**
-     *
-     * @param type    网站营销人员制定的策略的种类，这里为CREATED
+     * 网站营销人员制定的新的促销策略
+     * @param name
+     * @param type
      * @param startTime
      * @param endTime
      * @param discount
      * @param hotels
-     * @param businessArea
-     * @param poster
-     * @param position
      * @param minSum
      * @param minRooms
      * @param levels
-     * @param vipKinds
+     * @param viptypes
      */
     public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,Calendar endTime,double discount,List<String> hotels,
     		double minSum,int minRooms,int levels,List<VIPType> viptypes){

@@ -3,11 +3,13 @@ package businesslogic.strategybl;
 import java.util.List;
 
 import Enum.ResultMessage;
-import Enum.VIPType;
+import businesslogic.hoteinfobl.Hotelinfo;
+import businesslogic.hoteinfobl.Roominfo;
 import businesslogicservice.strategyblservice.StrategyBLService;
+import vo.clientVO.ClientVO;
+import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public class StrategyManage implements StrategyBLService{
 
@@ -42,18 +44,9 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public ResultMessage addPrivilege(PrivilegeVO vo) {
-		return ResultMessage.SUCCESS;
-	}
-
-	@Override
-	public List<PrivilegeVO> findAllPrivilege(VIPType type) {
+	public PriceVO calculatePrice(ClientVO clientVO, Roominfo roomInfoVO, Hotelinfo hotelInfoVO, int num) {
+		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public ResultMessage deletePrivilege(PrivilegeVO vo) {
-		return ResultMessage.SUCCESS;
 	}
 
 

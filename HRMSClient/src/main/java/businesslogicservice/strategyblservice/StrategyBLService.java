@@ -3,10 +3,12 @@ package businesslogicservice.strategyblservice;
 import java.util.List;
 
 import Enum.ResultMessage;
-import Enum.VIPType;
+import businesslogic.hoteinfobl.Hotelinfo;
+import businesslogic.hoteinfobl.Roominfo;
+import vo.clientVO.ClientVO;
+import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
-import vo.strategyVO.PrivilegeVO;
 
 public interface StrategyBLService {
 	/**
@@ -50,24 +52,14 @@ public interface StrategyBLService {
     public ResultMessage updateHotelStrategy(HotelStrategyVO vo);
 
     /**
-     * 增加会员福利信息
-     * @param vo
-     * @return 返回是否增加成功
+     * 计算价格
+     * @param clientVO
+     * @param roomInfoVO
+     * @param hotelInfoVO
+     * @param num
+     * @return 价格
      */
-    public  ResultMessage addPrivilege(PrivilegeVO vo);
+    public PriceVO calculatePrice(ClientVO clientVO,Roominfo roomInfoVO,Hotelinfo hotelInfoVO,int num);
 
-    /**
-     * 根据VIPType返回该类型VIP的福利优惠信息
-     * @param VIPType
-     * @return 返回福利信息列表
-     */
-    public List<PrivilegeVO> findAllPrivilege(VIPType type);
-
-    /**
-     * 删除会员福利信息
-     * @param vo
-     * @return 返回是否删除成功
-     */
-    public ResultMessage deletePrivilege(PrivilegeVO vo);
 
 }
