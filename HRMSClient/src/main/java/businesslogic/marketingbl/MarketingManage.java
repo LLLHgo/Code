@@ -53,6 +53,8 @@ public class MarketingManage implements MarketingBLService{
 
 	@Override
 	public ResultMessage MarketingAccountUpdate(MarketingVO vo) {
+		if(vo==null)
+			return ResultMessage.FAIL;
         MarketingPO po=new MarketingPO(vo.getName(),vo.getPassword(),vo.getMarketingID(),vo.getTelephone());
 		try {
 			if(this.marketingDataService.MarketingAccountUpdate(po)){//更新账户成功
@@ -87,7 +89,9 @@ public class MarketingManage implements MarketingBLService{
 		} catch (RemoteException e) {
 			return null;//出现故障则返回null
 		}
-	    vo=new MarketingVO(po.getPassword(),po.getPassword(),po.getTelephone());//可以返回初始默认值的vo,但不能是null；
+	    if(po==null)
+	    	return null;//返回的是null 初始化失败
+	    vo=new MarketingVO(po.getName(),po.getPassword(),po.getMarketingID(),po.getTelephone());//可以返回初始默认值的vo,但不能是null；
 		return vo;
 	}
 

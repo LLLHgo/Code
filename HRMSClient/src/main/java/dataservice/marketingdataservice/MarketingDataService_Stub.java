@@ -42,8 +42,11 @@ public class MarketingDataService_Stub implements MarketingDataService{
      * @throws RemoteException
      */
     public MarketingPO getInfo(String id) throws RemoteException {
-		MarketingPO po=new MarketingPO("网站营销人员","password","M0001","13477778888");
-		return po;
+		MarketingPO po=new MarketingPO("网站营销人员","password","M00000001","13477778888");
+		if(id.charAt(0)!='M')
+			return null;
+		else
+			return po;
 
 	}
 
@@ -88,7 +91,9 @@ public class MarketingDataService_Stub implements MarketingDataService{
 
 	@Override
 	public boolean checkAccount(String ID, String password) throws RemoteException {
-		if(ID.charAt(0)=='M')
+		if(ID.equals("M00000001")&&password.equals("password"))
+			return true;
+		else if(ID.equals("M00000004")&&password.equals("passwordfor04"))
 			return true;
 		else
 		 return false;
