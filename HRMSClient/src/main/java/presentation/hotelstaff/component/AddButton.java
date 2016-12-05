@@ -22,4 +22,18 @@ public class AddButton extends JButton{
 		this.setBorderPainted(false);
 		this.setVisible(true);
 	}
+	
+	public AddButton(int x,int y,int w,int h){
+		super();
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.setBounds(this.x,this.y,this.w,this.h);
+		this.icon = new ImageIcon("./src/main/resource/picture/hotelinfo/add.png");
+		this.setIcon(this.icon);
+		this.setContentAreaFilled(false);
+		this.setBorderPainted(false);
+		this.setVisible(true);
+	}
 }

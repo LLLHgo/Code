@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -15,6 +16,7 @@ import Enum.ResultMessage;
 import Enum.Star;
 import presentation.common.ModifyButton;
 import presentation.common.MyLabel;
+import presentation.hotelstaff.component.AddButton;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.ReviewButton;
@@ -31,6 +33,7 @@ import vo.hotelinfoVO.HotelinfoVO;
 public class HotelinfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private HotelstaffViewController controller;
+	private HotelinfoVO vo;
 	private String hotelID;
 	private String name;
 	private String address;
@@ -39,6 +42,9 @@ public class HotelinfoPanel extends JPanel{
 	private String facility;
 	private String tel;
 	private Star star;
+	private JLabel jlcompany;
+	private ArrayList<String> companyList;
+	private String company;
 	private ReviewTextArea jtaAddress;
 	//private ReviewTextArea jtaArea;
 	private JComboBox jcbArea;
@@ -47,6 +53,7 @@ public class HotelinfoPanel extends JPanel{
 	private ReviewTextArea jtaTEL;
 //	private ReviewTextArea jtaStar;
 	private JComboBox jcbStar;
+	private JComboBox jcbCompany;
 	private ImageIcon init_image;
 	private ModifyButton jbModify;
 	private ConfirmButton jbConfirm;
@@ -73,13 +80,15 @@ public class HotelinfoPanel extends JPanel{
 		jbModify.addActionListener(new ModifyButtonActionListener());
 		this.add(jbModify);
 		
-		this.name = controller.getHotelBasicinfo(hotelID).getName();
-		this.address = controller.getHotelBasicinfo(hotelID).getAddress();
-		this.area = controller.getHotelBasicinfo(hotelID).getArea();
-		this.intro = controller.getHotelBasicinfo(hotelID).getIntroduction();
-		this.facility = controller.getHotelBasicinfo(hotelID).getFacility();
-		this.tel = controller.getHotelBasicinfo(hotelID).getTel();
-		this.star = controller.getHotelBasicinfo(hotelID).getStar();
+		this.vo = controller.getHotelBasicinfo(hotelID);
+		this.name = vo.getName();
+		this.address = vo.getAddress();
+		this.area = vo.getArea();
+		this.intro = vo.getIntroduction();
+		this.facility = vo.getFacility();
+		this.tel = vo.getTel();
+		this.star = vo.getStar();
+		this.companyList = vo.getCompany();
 		
 		jtaAddress = new ReviewTextArea(345,135,580,25,address);
 		//jtaArea= new ReviewTextArea(345,186,580,25,area);
@@ -108,13 +117,36 @@ public class HotelinfoPanel extends JPanel{
 		
 		String [] stars = {"ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN"};
 		jcbStar = new JComboBox(stars);
-		jcbStar.setBounds(345,451,580,25);
+		jcbStar.setBounds(345,451,200,25);
 		jcbStar.setOpaque(false);
 		jcbStar.setBorder(null);
 		jcbStar.setSelectedItem(star.toString());
 		jcbStar.setFont(new Font("微软雅黑",Font.PLAIN,20));
 		jcbStar.setEnabled(false);
 		this.add(jcbStar);
+		
+		jlcompany = new JLabel("合作企业");
+		jlcompany.setFont(new Font("微软雅黑",Font.PLAIN,20));
+		jlcompany.setBounds(600, 451, 100, 25);
+		jlcompany.setForeground(Color.white);
+		this.add(jlcompany);
+		
+		String[] companies = {""};
+		if(companyList!=null){
+			companies = new String[companyList.size()];
+			for(int i=0;i<companyList.size();i++){
+				companies[i] = companyList.get(i);
+			}
+		}
+		jcbCompany = new JComboBox(companies);
+		jcbCompany.setBounds(700,451,220,25);
+		jcbCompany.setOpaque(false);
+		jcbCompany.setBorder(null);
+		jcbCompany.setSelectedItem(area);
+		jcbCompany.setFont(new Font("微软雅黑",Font.PLAIN,20));
+		jcbCompany.setEnabled(false);
+		this.add(jcbCompany);
+		
 		//确认按钮，点击后hotelinfo属性变成不可编辑，向bl层传数据
 		jbConfirm = new ConfirmButton(695,485);
 		jbConfirm.addActionListener(new ConfirmButtonActionListener());
@@ -153,6 +185,8 @@ public class HotelinfoPanel extends JPanel{
 			jtaFacility.setEditable(true);
 			jtaTEL.setEditable(true);
 			jcbStar.setEnabled(true);
+			jcbCompany.setEnabled(true);
+			jcbCompany.setEditable(true);//合作企业也可以自己添加
 			
 			jbModify.setVisible(false);
 			jbCancle.setVisible(true);
@@ -173,6 +207,7 @@ public class HotelinfoPanel extends JPanel{
 			jtaFacility.setEditable(false);
 			jtaTEL.setEditable(false);
 			jcbStar.setEnabled(false);
+			jcbCompany.setEnabled(false);
 			
 			jbModify.setVisible(true);
 			jbCancle.setVisible(false);
@@ -183,6 +218,8 @@ public class HotelinfoPanel extends JPanel{
 			intro = jtaIntro.getText();
 			facility = jtaFacility.getText();
 			tel = jtaTEL.getText();
+			company = jcbCompany.getSelectedItem().toString();
+			
 			String sStar = jcbStar.getSelectedItem().toString();
 			String[] arrayString = {"ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN"};
 			Star[] arrayStar = {Star.ONE,Star.TWO,Star.THREE,Star.FOUR,Star.FIVE,Star.SIX,Star.SEVEN};
@@ -210,9 +247,19 @@ public class HotelinfoPanel extends JPanel{
 				if(result == ResultMessage.SUCCESS){
 					showMessage("添加商圈成功");
 				}
-					
+				
+				int flag = 0;
+				for(int i=0;i<companyList.size();i++){
+					if(companyList.get(i).equals(company)){
+						flag = 1;
+					}
+				}
+				if(flag == 0){
+					companyList.add(company);
+				}
+				
 				result = controller.updateBassicinfo(new HotelinfoVO(
-					name,address,area,intro,facility,tel,star,hotelID));
+					name,address,area,intro,facility,tel,star,hotelID,companyList));
 				if(result == ResultMessage.SUCCESS){
 					showMessage("保存成功");
 				}else if(result == ResultMessage.FAIL){
@@ -238,6 +285,7 @@ public class HotelinfoPanel extends JPanel{
 			jtaIntro.setText(intro);
 			jtaFacility.setText(facility);
 			jtaTEL.setText(tel);
+			jcbCompany.setSelectedItem("");
 			
 			jcbStar.setSelectedItem(star.toString());
 			
@@ -247,6 +295,7 @@ public class HotelinfoPanel extends JPanel{
 			jtaFacility.setEditable(false);
 			jtaTEL.setEditable(false);
 			jcbStar.setEnabled(false);
+			jcbCompany.setEnabled(false);
 			
 			showMessage("操作取消");
 		}

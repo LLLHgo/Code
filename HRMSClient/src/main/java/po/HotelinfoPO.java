@@ -25,13 +25,15 @@ public class HotelinfoPO {
 	private String hotelID;
 	//酒店设施
 	private String facility;
+	//合作企业
+	private ArrayList<String> companyList;
 	
 	public HotelinfoPO(){
 		
 	}
 	
 	public HotelinfoPO(String address,String area,String introduction,String facility
-			,String tel,Star star,String hotelID){
+			,String tel,Star star,String hotelID,ArrayList<String> companyList){
 		this.address = address;
 		this.area = area;
 		this.introduction = introduction;
@@ -39,6 +41,7 @@ public class HotelinfoPO {
 		this.tel = tel;
 		this.star = star;
 		this.hotelID = hotelID;
+		this.companyList = companyList;
 	}
 	
 	public HotelinfoPO(String name,String address,String area,
@@ -134,6 +137,14 @@ public class HotelinfoPO {
 
 	public void setFacility(String facility) {
 		this.facility = facility;
+	}
+
+	public ArrayList<String> getCompanyList() {
+		return companyList;
+	}
+
+	public void setCompanyList(ArrayList<String> companyList) {
+		this.companyList = companyList;
 	}
 	
 }

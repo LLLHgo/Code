@@ -29,7 +29,7 @@ import presentation.marketing.compoment.newPanel;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public class DetailedStrategy extends JPanel{
+public class DetailedStrategyPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
@@ -60,7 +60,7 @@ public class DetailedStrategy extends JPanel{
 	private int minSum;
 	private int minRooms;
 	
-	public DetailedStrategy(HotelstaffViewController controller,HotelStrategyVO vo){
+	public DetailedStrategyPanel(HotelstaffViewController controller,HotelStrategyVO vo){
 		this.controller=controller;
 		this.hotelID=controller.gethotelID();
 		this.name = vo.getName();
@@ -70,6 +70,9 @@ public class DetailedStrategy extends JPanel{
 		this.level = vo.getLevel();
 		this.startTime = vo.getStartTime();
 		this.endTime = vo.getEndTime();
+		this.vipKinds = vo.getVipKinds();
+		this.minRooms = vo.getMinRooms();
+		this.minSum = vo.getMinSum();
 		Iinit = new ImageIcon("./src/main/resource/picture/hotelstrategy/newstrategy.png");
 		init();
 	}
@@ -100,20 +103,26 @@ public class DetailedStrategy extends JPanel{
 		jtfname = new TextField(name,460,90,400,35,4);
 		this.add(jtfname);
 		
-		jtfdiscount = new TextField(String.valueOf(discount),460,234,50,35,4);
+		jtfdiscount = new TextField(String.valueOf(discount),460,235,50,35,4);
 		this.add(jtfdiscount);
 		
 		jtfroom = new TextField(String.valueOf(minRooms),460,401,50,35,4);
 		this.add(jtfroom);
 		
-		jtfmoney = new TextField(String.valueOf(minSum),460,453,50,35,4);
+		jtfmoney = new TextField(String.valueOf(minSum),460,455,50,35,4);
 		this.add(jtfmoney);
 		
 		jtflevel = new TextField(String.valueOf(level),460,347,50,35,4);
 		this.add(jtflevel);
 		
-		jrbClient = new MJRadioButton("普通会员",true,455,295,200,35);
-		jrbBusiness = new MJRadioButton("企业会员",true,620,295,200,35);
+		jrbClient = new MJRadioButton("普通会员",true,455,295,120,35);
+		jrbBusiness = new MJRadioButton("企业会员",true,620,295,120,35);
+		if(vipKinds.contains(VIPType.ORDINARYVIP)){
+			jrbClient.setSelected(true);
+		}
+		if(vipKinds.contains(VIPType.ENTERPRISEVIP)){
+			jrbBusiness.setSelected(true);
+		}
 		this.add(jrbClient);
 		this.add(jrbBusiness);
 		
@@ -123,7 +132,7 @@ public class DetailedStrategy extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			//try{	
+			try{	
 				name = jtfname.getText();
 				discount = Double.parseDouble(jtfdiscount.getText());
 				minRooms = Integer.parseInt(jtfroom.getText());
@@ -138,9 +147,6 @@ public class DetailedStrategy extends JPanel{
 				}
 				startTime = tpStart.getTime();
 				endTime = tpEnd.getTime();
-			//}catch(){
-				
-			//}
 				vo = new HotelStrategyVO(name,hotelID,HotelStrategy.CREATED,vipKinds,
 						startTime,endTime,discount,minRooms,minSum,level);
 				ResultMessage result = controller.updatehotelStrategy(vo);
@@ -149,6 +155,9 @@ public class DetailedStrategy extends JPanel{
 				}else{
 					showMessage(result.toString());
 				}
+			}catch(NumberFormatException e1){
+				showMessage("数字格式错误或信息不完整，请重新填写");
+			}
 				
 			}
 			
@@ -177,7 +186,7 @@ public class DetailedStrategy extends JPanel{
 			public void run() {
 					resultLabel.setText(message);
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 	            }catch(InterruptedException ex){
 	                    ex.printStackTrace();
 	            }

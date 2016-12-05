@@ -30,6 +30,8 @@ public class HotelStrategyVO {
     private  List<VIPType> vipKinds;
     //会员等级
     private int level;
+    //酒店的合作企业列表
+    private ArrayList<String> companyList;
 
     public int getLevel() {
 		return level;
@@ -43,7 +45,7 @@ public class HotelStrategyVO {
     }
 
     /**
-     * 酒店工作人员制定会员生日特惠折扣/合作企业特惠折扣
+     * 酒店工作人员制定会员生日特惠折扣
      * @param hotelID
      * @param type
      * @param viptype
@@ -60,11 +62,31 @@ public class HotelStrategyVO {
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
-    	this.name=name;
-
+    	this.name = name;
+    }
+    /**
+     * 酒店工作人员制定合作企业折扣
+     * @param name
+     * @param hotelID
+     * @param companyList
+     * @param type
+     * @param viptype
+     * @param startTime
+     * @param endTime
+     * @param discount
+     */
+    public HotelStrategyVO(String name,String hotelID,ArrayList<String> companyList,HotelStrategy type,VIPType viptype,Calendar startTime,Calendar endTime,double discount){
+    	this.hotelID=hotelID;
+    	this.type=type;
+    	this.viptype=viptype;
+    	this.startTime=startTime;
+    	this.endTime=endTime;
+    	this.discount=discount;
+    	this.name = name;
     }
 
-    /**
+
+	/**
      * 酒店工作人员制定特定期间优惠
      * @param hotelID
      * @param type
@@ -81,7 +103,6 @@ public class HotelStrategyVO {
     	this.endTime=endTime;
     	this.discount=discount;
     	this.name=name;
-
     }
 
     /**
@@ -102,7 +123,6 @@ public class HotelStrategyVO {
     	this.startTime=startTime;
     	this.endTime=endTime;
     	this.discount=discount;
-
     	this.minRooms = minRooms;
     	this.name=name;
     }
@@ -201,5 +221,11 @@ public class HotelStrategyVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+    public ArrayList<String> getCompanyList() {
+		return companyList;
+	}
+
+	public void setCompanyList(ArrayList<String> companyList) {
+		this.companyList = companyList;
+	}
 }

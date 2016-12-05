@@ -10,14 +10,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import presentation.hotelstaff.component.TextField;
+import presentation.hotelstaff.component.TextLabel;
 import presentation.marketing.compoment.MJLabel;
 /**
- * 制订新策略panel使用
+ * 双十一折扣使用
  * @author liuyu
  * @since 16.12.5
  *
  */
-public class TimePanel extends JPanel{
+public class TimePanel2 extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,20 +35,49 @@ public class TimePanel extends JPanel{
 	private TextField minuteField=new TextField(
 			String.valueOf(c.get(Calendar.MINUTE)),272,0,38,40,2);
 
-	public TimePanel(int x,int y,int w,int h){
+	public TimePanel2(int x,int y,int w,int h){
 		this.setLayout(null);
 		this.setBounds(x, y, w, h);
 		this.setOpaque(false);
+		Font font = new Font("微软雅黑",Font.BOLD,20);
+		yearField.setForeground(Color.lightGray);
+		monthField.setForeground(Color.lightGray);
+		dateField.setForeground(Color.lightGray);
+		hourField.setForeground(Color.lightGray);
+		minuteField.setForeground(Color.lightGray);
+		yearField.setFont(font);
+		monthField.setFont(font);
+		dateField.setFont(font);
+		hourField.setFont(font);
+		minuteField.setFont(font);
+		yearField.setEditable(false);
+		monthField.setEditable(false);
+		dateField.setEditable(false);
+		hourField.setEditable(false);
+		minuteField.setEditable(false);
 		this.add(yearField);
 		this.add(monthField);
 		this.add(dateField);
 		this.add(hourField);
 		this.add(minuteField);
+		
+		JLabel bridge1=new TextLabel(70,8,50,20,"-");
+		bridge1.setForeground(Color.lightGray);
+		bridge1.setFont(font);
+		JLabel bridge2=new TextLabel(130,8,50,20,"-");
+		bridge2.setForeground(Color.lightGray);
+		bridge2.setFont(font);
+		JLabel colon=new TextLabel(250,8,50,20,":");
+		colon.setForeground(Color.lightGray);
+		colon.setFont(font);
+		this.add(bridge1);
+		this.add(bridge2);
+		this.add(colon);
 	}
 
 	public void setTime(int year,int month,int date,int hour,int minute){
 		this.yearField.setText(""+year);
-		this.monthField.setText(""+(month+1));
+		this.monthField.setText(""+month);
 		this.dateField.setText(""+date);
 		this.hourField.setText(""+hour);
 		this.minuteField.setText(""+minute);
@@ -62,28 +93,3 @@ public class TimePanel extends JPanel{
 		return c;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

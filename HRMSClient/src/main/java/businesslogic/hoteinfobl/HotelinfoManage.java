@@ -51,7 +51,7 @@ public class HotelinfoManage extends HotelinfoAbstract{
 			return null;
 		}
 		vo = new HotelinfoVO(po.getName(),po.getAddress(),po.getArea(),po.getIntroduction(),
-				po.getFacility(),po.getTel(),po.getStar(),po.getHotelID());
+				po.getFacility(),po.getTel(),po.getStar(),po.getHotelID(),po.getCompanyList());
 		return vo;
 	}
 

@@ -246,7 +246,7 @@ public class NewRoominfoPanel extends JPanel{
 			public void run() {
 					resultLabel.setText(message);
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 	            }catch(InterruptedException ex){
 	                    ex.printStackTrace();
 	            }

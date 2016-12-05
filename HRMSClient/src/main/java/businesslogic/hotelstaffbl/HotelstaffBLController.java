@@ -20,7 +20,7 @@ import presentation.hotelstaff.controller.HotelstaffViewController;
 import presentation.hotelstaff.view.AddRoomPanel;
 import presentation.hotelstaff.view.BirthdayStrategyPanel;
 import presentation.hotelstaff.view.BusinessStrategyPanel;
-import presentation.hotelstaff.view.DetailedStrategy;
+import presentation.hotelstaff.view.DetailedStrategyPanel;
 import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffPanel;
 import presentation.hotelstaff.view.NewRoominfoPanel;

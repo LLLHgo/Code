@@ -12,7 +12,7 @@ import businesslogicservice.hotelstaffblservice.HotelstaffControllerBLService;
 import presentation.hotelstaff.view.AddRoomPanel;
 import presentation.hotelstaff.view.BirthdayStrategyPanel;
 import presentation.hotelstaff.view.BusinessStrategyPanel;
-import presentation.hotelstaff.view.DetailedStrategy;
+import presentation.hotelstaff.view.DetailedStrategyPanel;
 import presentation.hotelstaff.view.PeriodStrategy;
 import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffPanel;
@@ -295,7 +295,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		}else if(vo.getName().equals("双十一活动折扣")){
 			panel = new PeriodStrategy(panelcontroller,vo);
 		}else{
-			panel = new DetailedStrategy(panelcontroller,vo);
+			panel = new DetailedStrategyPanel(panelcontroller,vo);
 		}
 		
 		view.add(panel);
