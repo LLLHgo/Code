@@ -77,8 +77,8 @@ public class StrategyManage implements StrategyBLService{
 		}
 
 		double tem;
-		for(StrategyPO strt:strategys){//对读出来的策略遍历
-			/*if(strt.getMakerType().equals(StrategyMaker.MARKTING)){//该策略是网站营销人员制定的
+		/*for(StrategyPO strt:strategys){//对读出来的策略遍历
+			if(strt.getMakerType().equals(StrategyMaker.MARKTING)){//该策略是网站营销人员制定的
 				if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.PERIOD)){//特定时间促销策略
 					tem=((MarketingPeriod) strategy[0]).calDis(strt);
 					if(tem<1.0){
@@ -106,7 +106,7 @@ public class StrategyManage implements StrategyBLService{
 						strategyUsed.add(strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.COMPANY)){//企业会员专属折扣
-					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getName(),hotelInfoVO.);
+					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getName(),hotelInfoVO.getCompanyList());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
@@ -130,9 +130,9 @@ public class StrategyManage implements StrategyBLService{
 						strategyUsed.add(strt.getName());
 					}
 				}
-			}*/
+			}
 		}
-
+*/
 		price=price*roomInfoVO.getPrice()*num;
 		return new PriceVO(price,strategyUsed);
 	}

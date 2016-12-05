@@ -6,9 +6,9 @@ import Enum.HotelStrategy;
 
 public class HotelSpecialdayPO extends HotelStrategyPO{
 
-	public HotelSpecialdayPO(String name, Calendar startTime, Calendar endTime, HotelStrategy hotelStrategyType,
+	public HotelSpecialdayPO(String name, Calendar startTime, Calendar endTime,
 			String hotelID, double discount) {
-		super(name, startTime, endTime, hotelStrategyType, hotelID, discount);
+		super(name, startTime, endTime, HotelStrategy.SPECIALDAY, hotelID, discount);
 
 	}
 
