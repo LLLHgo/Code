@@ -3,7 +3,6 @@ package businesslogicservice.strategyblservice;
 import java.util.List;
 
 import Enum.ResultMessage;
-import Enum.VIPType;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 

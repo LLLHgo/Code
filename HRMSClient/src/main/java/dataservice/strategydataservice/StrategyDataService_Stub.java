@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Enum.VIPType;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;

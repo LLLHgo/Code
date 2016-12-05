@@ -1,12 +1,8 @@
 package businesslogicservice.strategyblservice;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Enum.ResultMessage;
-import Enum.VIPType;
-import businesslogic.hoteinfobl.Hotelinfo;
-import businesslogic.hoteinfobl.Roominfo;
 import datatool.HotelStrategyDataTool;
 import datatool.MarketingStrategyDataTool;
 import vo.clientVO.ClientVO;

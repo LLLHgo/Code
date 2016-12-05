@@ -1,14 +1,14 @@
 package businesslogic.strategybl;
 
 
-import businesslogic.hoteinfobl.Hotelinfo;
 import po.StrategyPO.MarketingSpecialPO;
 import po.StrategyPO.StrategyPO;
 import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.HotelinfoVO;
 
 public class MarketingSpecial extends Strategy {
 
-	public double calDis(StrategyPO strt, ClientVO clientvo,Hotelinfo hotelInfoVO) {
+	public double calDis(StrategyPO strt, ClientVO clientvo,HotelinfoVO hotelInfoVO) {
 		double res=1;
 		if(super.isavailable(strt.getStartTime(),strt.getEndTime())&&
 				hotelInfoVO.getName().equals(((MarketingSpecialPO) strt).getBusinessDistrict())){

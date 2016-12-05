@@ -3,8 +3,6 @@ package businesslogicservice.strategyblservice;
 import java.util.List;
 
 import Enum.ResultMessage;
-import businesslogic.hoteinfobl.Hotelinfo;
-import businesslogic.hoteinfobl.Roominfo;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;

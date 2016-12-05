@@ -8,8 +8,6 @@ import Enum.HotelStrategy;
 import Enum.MarketingStrategy;
 import Enum.ResultMessage;
 import Enum.StrategyMaker;
-import businesslogic.hoteinfobl.Hotelinfo;
-import businesslogic.hoteinfobl.Roominfo;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import dataservice.strategydataservice.StrategyDataService;
 import dataservice.strategydataservice.StrategyDataService_Stub;
@@ -61,7 +59,6 @@ public class StrategyManage implements StrategyBLService{
 	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num) {
 		List<String> strategyUsed=new ArrayList<String>();
 		List<StrategyPO> strategys=new ArrayList<StrategyPO>();
-		double price=1;
 		Strategy[] strategy=new Strategy[8];
 		strategy[0]=new MarketingPeriod();
 		strategy[1]=new MarketingSpecial();
@@ -78,8 +75,8 @@ public class StrategyManage implements StrategyBLService{
 			return null;//从数据库中调策略的时候出现故障
 		}
 
-		double tem;
-		/*for(StrategyPO strt:strategys){//对读出来的策略遍历
+		double tem,price=1;
+		for(StrategyPO strt:strategys){//对读出来的策略遍历
 			if(strt.getMakerType().equals(StrategyMaker.MARKTING)){//该策略是网站营销人员制定的
 				if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.PERIOD)){//特定时间促销策略
 					tem=((MarketingPeriod) strategy[0]).calDis(strt);
@@ -87,13 +84,13 @@ public class StrategyManage implements StrategyBLService{
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
-				}else if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.VIPSPECIAL)){
+				}else if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.VIPSPECIAL)){//专属商圈
 					tem=((MarketingSpecial) strategy[1]).calDis(strt,clientVO,hotelInfoVO);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
-				}else if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.CREATED)){
+				}else if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.CREATED)){//新增策略
 					tem=((MarketingCreated) strategy[2]).calDis(strt,clientVO,hotelInfoVO.getName(),num,roomInfoVO.getPrice()*num);
 					if(tem<1.0){
 						price=price*tem;
@@ -108,25 +105,25 @@ public class StrategyManage implements StrategyBLService{
 						strategyUsed.add(strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.COMPANY)){//企业会员专属折扣
-					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getName(),hotelInfoVO.getCompanyList());
+					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getName(),hotelInfoVO.getCompany());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
-				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.SPECIALDAY)){
-					tem=strategy[5].calDis(strt,clientVO,hotelInfoVO.getName());
+				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.SPECIALDAY)){//特定日期专属折扣
+					tem=((HotelSpecialday) strategy[5]).calDis(strt,hotelInfoVO.getName());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
-				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.OVERTHREEROOMS)){
-					tem=strategy[6].calDis(strt,clientVO,hotelInfoVO.getName());
+				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.OVERTHREEROOMS)){//超过或等于三间
+					tem=((HotelOverThreeRooms) strategy[6]).calDis(strt,hotelInfoVO.getName(),num);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
-				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.CREATED)){
-					tem=strategy[7].calDis(strt,clientVO,hotelInfoVO,num);
+				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.CREATED)){//新增促销策略
+					tem=((HotelCreated) strategy[7]).calDis(strt,clientVO,hotelInfoVO,num,roomInfoVO.getPrice()*num);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
@@ -134,7 +131,7 @@ public class StrategyManage implements StrategyBLService{
 				}
 			}
 		}
-*/
+
 		price=price*roomInfoVO.getPrice()*num;
 		return new PriceVO(price,strategyUsed);
 	}
