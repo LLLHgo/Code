@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import Enum.marketingStrategy;
+import Enum.MarketingStrategy;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class specialPanel extends MJPanel{
@@ -115,7 +115,7 @@ public class specialPanel extends MJPanel{
         if(name.length()==0||c.compareTo(start)>=0||start.compareTo(end)>=0||districtName==null)
         	return null;
 
-        MarketingStrategyVO vo= new MarketingStrategyVO(name,marketingStrategy.VIPSPECIAL,start,end,districtName,levels,discounts);
+        MarketingStrategyVO vo= new MarketingStrategyVO(name,MarketingStrategy.VIPSPECIAL,start,end,districtName,levels,discounts);
 		return vo;
 	}
 

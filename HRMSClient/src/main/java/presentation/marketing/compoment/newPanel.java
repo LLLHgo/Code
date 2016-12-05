@@ -13,7 +13,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
 import Enum.VIPType;
-import Enum.marketingStrategy;
+import Enum.MarketingStrategy;
 import vo.areaVO.AreaVO;
 import vo.strategyVO.MarketingStrategyVO;
 
@@ -129,7 +129,7 @@ public class newPanel extends MJPanel{
         	 return null;
          if(c.compareTo(start)>=0||start.compareTo(end)>=0)//输入的日期不符
         	 return null;
-         setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.CREATED,
+         setCreatedVO(new MarketingStrategyVO(name,MarketingStrategy.CREATED,
               start,end,discount,hotelSelected,minExpenditure,minRoom,minLevel,VIPSelected));
 		 return createdVO;
 	}

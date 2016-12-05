@@ -1,49 +1,18 @@
 package dataservice.strategydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
 import Enum.VIPType;
-import po.HotelStrategyPO;
-import po.MarketingStrategyPO;
-import po.PrivilegePO;
+import po.StrategyPO.HotelStrategyPO;
+import po.StrategyPO.MarketingStrategyPO;
+import po.StrategyPO.StrategyPO;
 
 public class StrategyDataService_Stub implements StrategyDataService{
-	/**
-	 * 增加会员福利信息
-	 * @param po
-	 * @return 是否增加成功
-	 */
-    public boolean addPrivilege(PrivilegePO po) {
-		if(po!=null)
-			return true;
-		else
-			return false;
-	}
 
-    /**
-     * 根据VIPtype返回已制定的会员福利信息
-     * @param type
-     * @return 返回该种类会员的福利信息列表
-     */
-    public List<PrivilegePO> findAllPrivilege(VIPType type) {
-		PrivilegePO po=new PrivilegePO();
-		List<PrivilegePO> list=new ArrayList<PrivilegePO>();
-		list.add(po);
-		return list;
-	}
 
-    /**
-     * 删除会员福利信息
-     * @param po
-     * @return 返回是否删除成功
-     */
-    public boolean deletePrivilege(PrivilegePO po) {
-    	if(po!=null)
-			return true;
-		else
-			return false;
-	}
+
 
     /**
      * 增加网站营销人员促销策略
@@ -86,10 +55,10 @@ public class StrategyDataService_Stub implements StrategyDataService{
      * @param hotelID
      * @return 返回策略列表
      */
-    public List<HotelStrategyPO> getHotelStrategy(String hotelID) {
-    	HotelStrategyPO po=new HotelStrategyPO();
-    	List<HotelStrategyPO> list=new ArrayList<HotelStrategyPO>();
-    	list.add(po);
+    public List<StrategyPO> getHotelStrategy(String hotelID) {
+    	//HotelStrategyPO po=new HotelStrategyPO();
+    	List<StrategyPO> list=new ArrayList<StrategyPO>();
+    	//list.add(po);
 		return list;
 	}
 
@@ -103,5 +72,11 @@ public class StrategyDataService_Stub implements StrategyDataService{
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	public List<StrategyPO> getMarketingStrategy() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

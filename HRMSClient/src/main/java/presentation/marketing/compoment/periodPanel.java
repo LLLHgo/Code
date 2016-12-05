@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import javax.swing.JPanel;
 
-import Enum.marketingStrategy;
+import Enum.MarketingStrategy;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class periodPanel extends MJPanel{
@@ -38,7 +38,7 @@ public class periodPanel extends MJPanel{
         if(name.length()==0||c.compareTo(start)>=0||start.compareTo(end)>=0||discount<0)
         	return null;
 
-        setCreatedVO(new MarketingStrategyVO(name,marketingStrategy.PERIOD,start,end,discount));
+        setCreatedVO(new MarketingStrategyVO(name,MarketingStrategy.PERIOD,start,end,discount));
 		 return createdVO;
 	}
 
