@@ -1,4 +1,4 @@
-package data.marketingdata;
+package impl.mysql;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -9,6 +9,9 @@ import po.LevelPO;
 import po.MarketingPO;
 
 public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implements MarketingDataService{
+
+	private static final long serialVersionUID = 1L;
+
 
 	public MarketingDataServiceMySqlImpl() throws RemoteException {
 		super();

@@ -1,4 +1,4 @@
-package data.hotelstaffdata;
+package impl.mysql;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

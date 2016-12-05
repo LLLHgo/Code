@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import po.SitemanagerPO;
 import presentation.MainFrame;
 import rmi.RemoteHelper;
 
@@ -28,20 +29,22 @@ public class ClientRunner {
 		System.out.println("linked");
 	}
 	private void initGUI() {
+		@SuppressWarnings("unused")
 		MainFrame mainFrame = new MainFrame();
 	}
 	
-	/*public void test(){
+	public void test(){
+		SitemanagerPO po=new SitemanagerPO("S00000001","025-88888882","HRMS");
 		try {
-			System.out.println(remoteHelper.getUserService().login("admin", "123456a"));
-			System.out.println(remoteHelper.getIOService().writeFile("2", "admin", "testFile"));
+			System.out.println(remoteHelper.getSitemanagerDataService().SitemanagerAccountUpdate(po));
+			//System.out.println(remoteHelper.getIOService().writeFile("2", "admin", "testFile"));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 	
 	public static void main(String[] args){
 		ClientRunner clientRunner = new ClientRunner();
-		//cr.test();
+		clientRunner.test();
 	}
 }

@@ -5,14 +5,6 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import data.clientdata.ClientDataServiceMySqlImpl;
-import data.hotelinfodata.HotelinfoDataServiceTxtImpl;
-import data.hotelstaffdata.HotelstaffDataServiceMySqlImpl;
-import data.logdata.LogDataServiceTxtImpl;
-import data.marketingdata.MarketingDataServiceMySqlImpl;
-import data.orderdata.OrderDataServiceMySqlImpl;
-import data.sitemanagerdata.SitemanagerDataServiceMySqlImpl;
-import data.strategydata.StrategyDataServiceMySqlImpl;
 import dataservice.clientdataservice.ClientDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelstaffdataservice.HotelstaffDataService;
@@ -21,6 +13,14 @@ import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
+import impl.mysql.ClientDataServiceMySqlImpl;
+import impl.mysql.HotelstaffDataServiceMySqlImpl;
+import impl.mysql.MarketingDataServiceMySqlImpl;
+import impl.mysql.OrderDataServiceMySqlImpl;
+import impl.mysql.SitemanagerDataServiceMySqlImpl;
+import impl.mysql.StrategyDataServiceMySqlImpl;
+import impl.txt.HotelinfoDataServiceTxtImpl;
+import impl.txt.LogDataServiceTxtImpl;
 
 public class RemoteHelper {
 	static final String host = "rmi://localhost:8888/";

@@ -1,4 +1,4 @@
-package data.hotelinfodata;
+package impl.txt;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
