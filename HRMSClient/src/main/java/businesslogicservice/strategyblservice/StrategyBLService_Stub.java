@@ -10,6 +10,8 @@ import businesslogic.hoteinfobl.Roominfo;
 import datatool.HotelStrategyDataTool;
 import datatool.MarketingStrategyDataTool;
 import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.RoominfoVO;
 import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -84,7 +86,7 @@ public class StrategyBLService_Stub implements StrategyBLService{
 	}
 
 	@Override
-	public PriceVO calculatePrice(ClientVO clientVO, Roominfo roomInfoVO, Hotelinfo hotelInfoVO, int num) {
+	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -6,6 +6,8 @@ import Enum.ResultMessage;
 import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.hoteinfobl.Roominfo;
 import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.RoominfoVO;
 import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -59,7 +61,7 @@ public interface StrategyBLService {
      * @param num
      * @return 价格
      */
-    public PriceVO calculatePrice(ClientVO clientVO,Roominfo roomInfoVO,Hotelinfo hotelInfoVO,int num);
+    public PriceVO calculatePrice(ClientVO clientVO,RoominfoVO roomInfoVO,HotelinfoVO hotelInfoVO,int num);
 
 
 }

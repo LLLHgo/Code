@@ -17,6 +17,8 @@ import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
 import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.RoominfoVO;
 import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -56,7 +58,7 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public PriceVO calculatePrice(ClientVO clientVO, Roominfo roomInfoVO, Hotelinfo hotelInfoVO, int num) {
+	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num) {
 		List<String> strategyUsed=new ArrayList<String>();
 		List<StrategyPO> strategys=new ArrayList<StrategyPO>();
 		double price=1;
