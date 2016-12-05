@@ -4,4 +4,7 @@ public enum MarketingStrategy {
     PERIOD,
     VIPSPECIAL,
     CREATED;
+
+
+
 }

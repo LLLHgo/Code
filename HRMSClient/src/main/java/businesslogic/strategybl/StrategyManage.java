@@ -70,7 +70,9 @@ public class StrategyManage implements StrategyBLService{
 			return null;//从数据库中调策略的时候出现故障
 		}
 
+		for(StrategyPO strt:strategys){
 
+		}
 
 		return null;
 	}
