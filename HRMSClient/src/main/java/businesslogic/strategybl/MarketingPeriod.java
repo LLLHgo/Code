@@ -1,11 +1,15 @@
 package businesslogic.strategybl;
 
-public  class MarketingPeriod extends Strategy{
+import po.StrategyPO.MarketingPeriodPO;
+import po.StrategyPO.StrategyPO;
 
-	@Override
-	public double calDis(CalculateMaterial material) {
-		// TODO Auto-generated method stub
-		return 0;
+public  class MarketingPeriod extends Strategy{
+	public double calDis(StrategyPO strt) {
+		if(super.isavailable(strt.getStartTime(),strt.getEndTime())){
+			return ( (MarketingPeriodPO) strt).getDiscount();
+		}else{
+			return 1;
+		}
 	}
 
 }

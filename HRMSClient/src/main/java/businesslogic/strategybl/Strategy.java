@@ -2,6 +2,9 @@ package businesslogic.strategybl;
 
 import java.util.Calendar;
 
+import businesslogic.hoteinfobl.Hotelinfo;
+import po.StrategyPO.StrategyPO;
+
 public abstract  class Strategy {
 	public boolean isavailable(Calendar startTime,Calendar endTime){
 		Calendar c=Calendar.getInstance();
@@ -12,5 +15,5 @@ public abstract  class Strategy {
 		}
 	}
 
-	public abstract double calDis(CalculateMaterial material);
+
 }
