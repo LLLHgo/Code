@@ -4,12 +4,15 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Enum.MarketingStrategy;
 import Enum.ResultMessage;
+import Enum.StrategyMaker;
 import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.hoteinfobl.Roominfo;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import dataservice.strategydataservice.StrategyDataService;
 import dataservice.strategydataservice.StrategyDataService_Stub;
+import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
 import vo.clientVO.ClientVO;
 import vo.priceVO.PriceVO;
@@ -54,6 +57,7 @@ public class StrategyManage implements StrategyBLService{
 	public PriceVO calculatePrice(ClientVO clientVO, Roominfo roomInfoVO, Hotelinfo hotelInfoVO, int num) {
 		List<String> strategyUsed=new ArrayList<String>();
 		List<StrategyPO> strategys=new ArrayList<StrategyPO>();
+		List<Double> discounts=new ArrayList<Double>();
 		Strategy[] strategy=new Strategy[8];
 		strategy[0]=new MarketingPeriod();
 		strategy[1]=new MarketingSpecial();
@@ -70,8 +74,16 @@ public class StrategyManage implements StrategyBLService{
 			return null;//从数据库中调策略的时候出现故障
 		}
 
-		for(StrategyPO strt:strategys){
+		CalculateMaterial material;
+		for(StrategyPO strt:strategys){//对读出来的策略遍历
+			if(strt.getMakerType().equals(StrategyMaker.MARKTING)){//该策略是网站营销人员制定的
+				if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.PERIOD)){//特定时间促销策略
+		//	material=new CalculateMaterial(strt.getStartTime());
+					//discounts.add(strategy[0].calDis(material))
+				}
+			}else if(strt.getMakerType().equals(StrategyMaker.HOTEL)){//该策略是酒店工作人员制定的
 
+			}
 		}
 
 		return null;
