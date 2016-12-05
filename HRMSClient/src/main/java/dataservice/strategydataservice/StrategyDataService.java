@@ -7,6 +7,7 @@ import java.util.List;
 import Enum.VIPType;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
+import po.StrategyPO.StrategyPO;
 
 public interface StrategyDataService extends Remote{
 
@@ -23,7 +24,7 @@ public interface StrategyDataService extends Remote{
      * @param id
      * @return 返回策略列表
      */
-    public List<MarketingStrategyPO> getMarketingStrategy (String id)throws RemoteException;
+    public List<StrategyPO> getMarketingStrategy ()throws RemoteException;
 
     /**
      * 删除网站营销人员制定的策略
@@ -37,7 +38,7 @@ public interface StrategyDataService extends Remote{
      * @param hotelID
      * @return 返回策略列表
      */
-    public List<HotelStrategyPO> getHotelStrategy(String hotelID)throws RemoteException;
+    public List<StrategyPO> getHotelStrategy(String hotelID)throws RemoteException;
 
     /**
      * 更新酒店策略

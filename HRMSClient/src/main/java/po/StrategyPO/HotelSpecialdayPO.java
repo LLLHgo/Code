@@ -9,7 +9,7 @@ public class HotelSpecialdayPO extends HotelStrategyPO{
 	public HotelSpecialdayPO(String name, Calendar startTime, Calendar endTime, HotelStrategy hotelStrategyType,
 			String hotelID, double discount) {
 		super(name, startTime, endTime, hotelStrategyType, hotelID, discount);
-		// TODO Auto-generated constructor stub
+
 	}
 
 }

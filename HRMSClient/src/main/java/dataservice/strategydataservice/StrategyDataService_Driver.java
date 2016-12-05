@@ -6,6 +6,7 @@ import java.util.List;
 import Enum.VIPType;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
+import po.StrategyPO.StrategyPO;
 
 public class StrategyDataService_Driver {
     public void drive(StrategyDataService strategyDataService) throws RemoteException{
@@ -16,7 +17,7 @@ public class StrategyDataService_Driver {
     	if(addMarketingStrategyBool)System.out.println("增加网站营销人员促销策略成功");*/
 
         //返回网站营销人员促销策略列表
-    	List<MarketingStrategyPO> marketingStrategyList=strategyDataService.getMarketingStrategy ("M00010001");
+    	List<StrategyPO> marketingStrategyList=strategyDataService.getMarketingStrategy ();
     	if(marketingStrategyList.size()>0)System.out.println("返回网站营销人员促销策略列表成功");
 
     /*	//删除网站营销人员促销策略

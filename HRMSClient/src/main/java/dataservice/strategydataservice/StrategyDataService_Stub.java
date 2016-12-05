@@ -1,11 +1,13 @@
 package dataservice.strategydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
 import Enum.VIPType;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
+import po.StrategyPO.StrategyPO;
 
 public class StrategyDataService_Stub implements StrategyDataService{
 
@@ -53,9 +55,9 @@ public class StrategyDataService_Stub implements StrategyDataService{
      * @param hotelID
      * @return 返回策略列表
      */
-    public List<HotelStrategyPO> getHotelStrategy(String hotelID) {
+    public List<StrategyPO> getHotelStrategy(String hotelID) {
     	//HotelStrategyPO po=new HotelStrategyPO();
-    	List<HotelStrategyPO> list=new ArrayList<HotelStrategyPO>();
+    	List<StrategyPO> list=new ArrayList<StrategyPO>();
     	//list.add(po);
 		return list;
 	}
@@ -70,5 +72,11 @@ public class StrategyDataService_Stub implements StrategyDataService{
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	public List<StrategyPO> getMarketingStrategy() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
