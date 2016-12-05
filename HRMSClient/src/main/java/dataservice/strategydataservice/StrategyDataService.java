@@ -5,31 +5,11 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import Enum.VIPType;
-import po.HotelStrategyPO;
-import po.MarketingStrategyPO;
-import po.PrivilegePO;
+import po.StrategyPO.HotelStrategyPO;
+import po.StrategyPO.MarketingStrategyPO;
 
 public interface StrategyDataService extends Remote{
-	/**
-	 * 增加会员福利信息
-	 * @param po
-	 * @return 是否增加成功
-	 */
-    public boolean addPrivilege(PrivilegePO po) throws RemoteException;
 
-    /**
-     * 根据VIPtype返回已制定的会员福利信息
-     * @param type
-     * @return 返回该种类会员的福利信息列表
-     */
-    public List<PrivilegePO> findAllPrivilege(VIPType type) throws RemoteException;
-
-    /**
-     * 删除会员福利信息
-     * @param po
-     * @return 返回是否删除成功
-     */
-    public boolean deletePrivilege(PrivilegePO po) throws RemoteException;
 
     /**
      * 增加网站营销人员促销策略

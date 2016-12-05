@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import Enum.VIPType;
-import Enum.marketingStrategy;
+import Enum.MarketingStrategy;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class MarketingStrategyDataTool {
@@ -36,11 +36,11 @@ public class MarketingStrategyDataTool {
 		viplist.add(VIPType.ENTERPRISEVIP);
 	}
     public static MarketingStrategyVO V0=new  MarketingStrategyVO();
-    public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",marketingStrategy.PERIOD,
+    public static MarketingStrategyVO V1=new MarketingStrategyVO("2016双十一",MarketingStrategy.PERIOD,
     		begin1,end1,0.75);
-    public static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",marketingStrategy.VIPSPECIAL,
+    public static MarketingStrategyVO V2=new MarketingStrategyVO("VIP专属商圈特惠",MarketingStrategy.VIPSPECIAL,
     		begin2,end2,"仙林大学城",levels,discounts);
-    public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",marketingStrategy.CREATED,
+    public static MarketingStrategyVO V3=new MarketingStrategyVO("2017元旦特惠",MarketingStrategy.CREATED,
     		begin1,end2,0.85,hlist,678,2,2,viplist);
 
     static{

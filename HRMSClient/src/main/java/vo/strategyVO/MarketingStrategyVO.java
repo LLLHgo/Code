@@ -10,7 +10,7 @@ public class MarketingStrategyVO {
 	//活动名称
 	private String name;
 	//网站营销人员制定的策略的种类，有enum：marketingStrategy{DOUBLE11,VIPSPECIAL,CRATEDE;}
-    private marketingStrategy type;
+    private MarketingStrategy type;
     //活动开始时间
     private Calendar startTime;
     //活动结束时间
@@ -47,12 +47,12 @@ public class MarketingStrategyVO {
     /**
      * 营销人员制定特定时间促销策略
      *
-     * @param type  网站营销人员制定的策略的种类，这里为DOUBLE11
+     * @param type  网站营销人员制定的策略的种类，这里为PERIOD
      * @param startTime 活动开始时间
      * @param endTime 活动结束时间
      * @param discount 活动折扣
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,
+    public MarketingStrategyVO(String name,MarketingStrategy type,Calendar startTime,
     		Calendar endTime,double discount){
     	this.name=name;
     	this.type=type;
@@ -62,7 +62,7 @@ public class MarketingStrategyVO {
     }
 
     /**
-     * 网站营销人员制定特定导航犬专属折扣
+     * 网站营销人员制定特定商圈专属折扣
      * @param name
      * @param type
      * @param startTime
@@ -71,7 +71,7 @@ public class MarketingStrategyVO {
      * @param levels
      * @param discounts
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,
+    public MarketingStrategyVO(String name,MarketingStrategy type,Calendar startTime,
     		Calendar endTime,String businessDistrict,int[] levels,double[] discounts){
     	this.name=name;
     	this.type=type;
@@ -96,7 +96,7 @@ public class MarketingStrategyVO {
      * @param levels
      * @param viptypes
      */
-    public MarketingStrategyVO(String name,marketingStrategy type,Calendar startTime,Calendar endTime,double discount,List<String> hotels,
+    public MarketingStrategyVO(String name,MarketingStrategy type,Calendar startTime,Calendar endTime,double discount,List<String> hotels,
     		double minSum,int minRooms,int levels,List<VIPType> viptypes){
     	this.name=name;
     	this.type=type;
@@ -109,10 +109,10 @@ public class MarketingStrategyVO {
     	this.setMinLevel(levels);
     	this.vipKinds=viptypes;
     }
-	public marketingStrategy getType() {
+	public MarketingStrategy getType() {
 		return type;
 	}
-	public void setType(marketingStrategy type) {
+	public void setType(MarketingStrategy type) {
 		this.type = type;
 	}
 

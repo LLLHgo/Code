@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import Enum.marketingStrategy;
+import Enum.MarketingStrategy;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class browsePanel extends MJScrollPane{
@@ -35,11 +35,11 @@ public class browsePanel extends MJScrollPane{
 		panel.removeAll();
 		int period=0,special=0,others=0;
 		for(MarketingStrategyVO vo:list){
-			if(vo.getType()==(marketingStrategy.CREATED))
+			if(vo.getType()==(MarketingStrategy.CREATED))
 				others++;
-			else if(vo.getType()==(marketingStrategy.PERIOD))
+			else if(vo.getType()==(MarketingStrategy.PERIOD))
 				period++;
-			else if(vo.getType()==(marketingStrategy.VIPSPECIAL))
+			else if(vo.getType()==(MarketingStrategy.VIPSPECIAL))
 			    special++;
 		}
         panel.setPreferredSize(new Dimension(690,height[0]*period+height[1]*special+height[2]*others+30));
@@ -49,7 +49,7 @@ public class browsePanel extends MJScrollPane{
         	Calendar start = vo.getStartTime();
         	Calendar end=vo.getEndTime();
     		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:MM");// 设置Calendar的格式
-            if(vo.getType()==marketingStrategy.PERIOD){
+            if(vo.getType()==MarketingStrategy.PERIOD){
             	JPanel showPeriod=new showPeriod(vo.getName(),"开始时间："+df.format(start.getTime()),"结束时间："+df.format(end.getTime()),
         				vo.getDiscount(),60,position,600,height[0]);
             	position+=height[0];
@@ -64,7 +64,7 @@ public class browsePanel extends MJScrollPane{
                  });
                 showPeriod.add(delete);
             	panel.add(showPeriod);
-            }else if(vo.getType()==marketingStrategy.VIPSPECIAL){
+            }else if(vo.getType()==MarketingStrategy.VIPSPECIAL){
             	JPanel showSpecial=new showSpecial(vo.getName(),"开始时间："+df.format(start.getTime()),"结束时间："+df.format(end.getTime()),
         				vo.getBusinessDistrict(),vo.getLevels(),vo.getDiscounts(),60,position,600,height[1]);
             	position+=height[1];
@@ -80,7 +80,7 @@ public class browsePanel extends MJScrollPane{
                 showSpecial.add(delete);
             	panel.add(showSpecial);
 
-            }else if (vo.getType()==marketingStrategy.CREATED){
+            }else if (vo.getType()==MarketingStrategy.CREATED){
             	JPanel showNew=new showNew(vo.getName(),"开始时间："+df.format(start.getTime()),"结束时间："+df.format(end.getTime()),
         				vo.getVipKinds(),vo.getDiscount(),vo.getMinLevel(),vo.getMinRooms(),vo.getMinSum(),vo.getHotels(),60,position,600,height[2]);
             	position+=height[2];
