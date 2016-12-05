@@ -1,7 +1,10 @@
 package Enum;
 
-public enum marketingStrategy {
+public enum MarketingStrategy {
     PERIOD,
     VIPSPECIAL,
     CREATED;
+
+
+
 }
