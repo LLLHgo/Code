@@ -8,9 +8,9 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 
-public class HotelinfoData extends UnicastRemoteObject implements HotelinfoDataService{
+public class HotelinfoDataServiceTxtImpl extends UnicastRemoteObject implements HotelinfoDataService{
 
-	public HotelinfoData() throws RemoteException {
+	public HotelinfoDataServiceTxtImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -10,9 +10,9 @@ import po.HotelStrategyPO;
 import po.MarketingStrategyPO;
 import po.PrivilegePO;
 
-public class StrategyData extends UnicastRemoteObject implements StrategyDataService{
+public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements StrategyDataService{
 
-	public StrategyData() throws RemoteException {
+	public StrategyDataServiceMySqlImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

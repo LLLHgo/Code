@@ -6,9 +6,9 @@ import java.rmi.server.UnicastRemoteObject;
 import dataservice.hotelstaffdataservice.HotelstaffDataService;
 import po.HotelstaffPO;
 
-public class HotelStaffData extends UnicastRemoteObject implements HotelstaffDataService{
+public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implements HotelstaffDataService{
 
-	public HotelStaffData() throws RemoteException {
+	public HotelstaffDataServiceMySqlImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

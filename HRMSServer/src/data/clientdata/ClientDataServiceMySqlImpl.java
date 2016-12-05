@@ -9,9 +9,11 @@ import dataservice.clientdataservice.ClientDataService;
 import po.ClientPO;
 import po.LevelPO;
 
-public class ClientData extends UnicastRemoteObject implements ClientDataService{
+public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements ClientDataService{
 
-	public ClientData() throws RemoteException {
+	private static final long serialVersionUID = 1L;
+
+	public ClientDataServiceMySqlImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

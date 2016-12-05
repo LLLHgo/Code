@@ -6,9 +6,12 @@ import java.rmi.server.UnicastRemoteObject;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import po.SitemanagerPO;
 
-public class SiteManagerData extends UnicastRemoteObject implements SitemanagerDataService{
+public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject implements SitemanagerDataService{
 
-	public SiteManagerData() throws RemoteException {
+	private static final long serialVersionUID = 1L;
+
+
+	public SitemanagerDataServiceMySqlImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

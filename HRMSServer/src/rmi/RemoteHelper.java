@@ -4,16 +4,15 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.server.ExportException;
 
-import data.clientdata.ClientData;
-import data.hotelinfodata.HotelinfoData;
-import data.hotelstaffdata.HotelStaffData;
-import data.logdata.LogData;
-import data.marketingdata.MarketingData;
-import data.orderdata.OrderData;
-import data.sitemanagerdata.SiteManagerData;
-import data.strategydata.StrategyData;
+import data.clientdata.ClientDataServiceMySqlImpl;
+import data.hotelinfodata.HotelinfoDataServiceTxtImpl;
+import data.hotelstaffdata.HotelstaffDataServiceMySqlImpl;
+import data.logdata.LogDataServiceTxtImpl;
+import data.marketingdata.MarketingDataServiceMySqlImpl;
+import data.orderdata.OrderDataServiceMySqlImpl;
+import data.sitemanagerdata.SitemanagerDataServiceMySqlImpl;
+import data.strategydata.StrategyDataServiceMySqlImpl;
 import dataservice.clientdataservice.ClientDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelstaffdataservice.HotelstaffDataService;
@@ -25,33 +24,36 @@ import dataservice.strategydataservice.StrategyDataService;
 
 public class RemoteHelper {
 	static final String host = "rmi://localhost:8888/";
+	public RemoteHelper(){
+		initServer();
+	}
 	
-	public static void main(String[] args) throws ExportException{
+	public void initServer(){
 		try {
 			LocateRegistry.createRegistry(8888);
 			
-			ClientDataService client = new ClientData();
+			ClientDataService client = new ClientDataServiceMySqlImpl();
 			Naming.rebind(host+"ClientService", client);
 			
-			HotelstaffDataService hotelstaff = new HotelStaffData();
+			HotelstaffDataService hotelstaff = new HotelstaffDataServiceMySqlImpl();
 			Naming.rebind(host+"HotelstaffService", hotelstaff);
 
-			HotelinfoDataService hotelinfo = new HotelinfoData();
+			HotelinfoDataService hotelinfo = new HotelinfoDataServiceTxtImpl();
 			Naming.rebind(host+"HotelinfoService", hotelinfo);
 		
-			LogDataService log = new LogData();
+			LogDataService log = new LogDataServiceTxtImpl();
 			Naming.rebind(host+"LogService", log);
 			
-			MarketingDataService marketing = new MarketingData();
+			MarketingDataService marketing = new MarketingDataServiceMySqlImpl();
 			Naming.rebind(host+"MarketingService", marketing);
 			
-			OrderDataService order = new OrderData();
+			OrderDataService order = new OrderDataServiceMySqlImpl();
 			Naming.rebind(host+"OrderService", order);
 			
-			SitemanagerDataService sitemanager = new SiteManagerData();
+			SitemanagerDataService sitemanager = new SitemanagerDataServiceMySqlImpl();
 			Naming.rebind(host+"SitemanagerService", sitemanager);
 			
-			StrategyDataService strategy = new StrategyData();
+			StrategyDataService strategy = new StrategyDataServiceMySqlImpl();
 			Naming.rebind(host+"StrategyService", strategy);
 			
 			System.out.println("Server is running...");

@@ -7,9 +7,9 @@ import java.util.List;
 import dataservice.logdataservice.LogDataService;
 import po.LogPO;
 
-public class LogData extends UnicastRemoteObject implements LogDataService{
+public class LogDataServiceTxtImpl extends UnicastRemoteObject implements LogDataService{
 
-	public LogData() throws RemoteException {
+	public LogDataServiceTxtImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

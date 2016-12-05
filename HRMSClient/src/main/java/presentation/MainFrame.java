@@ -13,7 +13,7 @@ import presentation.login.view.ProcessLoginView;
 
 public class MainFrame {
 	//private static ProcessLoginControllerService controller;
-	public static void main(String[] args){
+	public MainFrame(){
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(new ProcessLoginView(frame, new ProcessLoginViewController()));

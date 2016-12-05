@@ -10,9 +10,9 @@ import Enum.UserType;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 
-public class OrderData extends UnicastRemoteObject implements OrderDataService{
+public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements OrderDataService{
 
-	public OrderData() throws RemoteException {
+	public OrderDataServiceMySqlImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

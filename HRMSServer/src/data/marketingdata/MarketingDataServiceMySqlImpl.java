@@ -8,9 +8,9 @@ import dataservice.marketingdataservice.MarketingDataService;
 import po.LevelPO;
 import po.MarketingPO;
 
-public class MarketingData extends UnicastRemoteObject implements MarketingDataService{
+public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implements MarketingDataService{
 
-	public MarketingData() throws RemoteException {
+	public MarketingDataServiceMySqlImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
