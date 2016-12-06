@@ -40,7 +40,7 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
     	try {
 			stmt = conn.createStatement();
 			resultSet = stmt.executeQuery(sql);
-			if(resultSet!=null){
+			while(resultSet.next()){
 				id  = resultSet.getString("id");
 				tel = resultSet.getString("tel");
 				password = resultSet.getString("password");
