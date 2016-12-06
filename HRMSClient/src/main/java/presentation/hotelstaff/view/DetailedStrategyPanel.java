@@ -57,9 +57,9 @@ public class DetailedStrategyPanel extends JPanel{
 	private List<VIPType> vipKinds;
 	private double discount;
 	private int level;
-	private int minSum;
+	private double minSum;
 	private int minRooms;
-	
+
 	public DetailedStrategyPanel(HotelstaffViewController controller,HotelStrategyVO vo){
 		this.controller=controller;
 		this.hotelID=controller.gethotelID();
@@ -76,21 +76,21 @@ public class DetailedStrategyPanel extends JPanel{
 		Iinit = new ImageIcon("./src/main/resource/picture/hotelstrategy/newstrategy.png");
 		init();
 	}
-	
+
 	public void init(){
 		this.setLayout(null);
 		this.setLocation(0, 0);
 		this.setSize(1000, 618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		//显示结果
 		resultLabel = new JLabel();
 		resultLabel.setForeground(Color.BLACK);
 		resultLabel.setFont(new Font("微软雅黑",Font.PLAIN,20));
 		resultLabel.setBounds(290, 50, 500, 20);
-		this.add(resultLabel);	
-		
+		this.add(resultLabel);
+
 		tpStart = new TimePanel(458,129,308,37);
 		tpEnd = new TimePanel(458,182,308,37);
 		tpStart.setTime(startTime.get(Calendar.YEAR), startTime.get(Calendar.MONTH),
@@ -99,22 +99,22 @@ public class DetailedStrategyPanel extends JPanel{
 				startTime.get(Calendar.DATE), startTime.get(Calendar.HOUR), startTime.get(Calendar.MINUTE));
 		this.add(tpStart);
 		this.add(tpEnd);
-		
+
 		jtfname = new TextField(name,460,90,400,35,4);
 		this.add(jtfname);
-		
+
 		jtfdiscount = new TextField(String.valueOf(discount),460,235,50,35,4);
 		this.add(jtfdiscount);
-		
+
 		jtfroom = new TextField(String.valueOf(minRooms),460,401,50,35,4);
 		this.add(jtfroom);
-		
+
 		jtfmoney = new TextField(String.valueOf(minSum),460,455,50,35,4);
 		this.add(jtfmoney);
-		
+
 		jtflevel = new TextField(String.valueOf(level),460,347,50,35,4);
 		this.add(jtflevel);
-		
+
 		jrbClient = new MJRadioButton("普通会员",true,455,295,120,35);
 		jrbBusiness = new MJRadioButton("企业会员",true,620,295,120,35);
 		if(vipKinds.contains(VIPType.ORDINARYVIP)){
@@ -125,14 +125,14 @@ public class DetailedStrategyPanel extends JPanel{
 		}
 		this.add(jrbClient);
 		this.add(jrbBusiness);
-		
+
 		confirm = new ConfirmButton(840,480);
 		this.add(confirm);
 		confirm.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			try{	
+			try{
 				name = jtfname.getText();
 				discount = Double.parseDouble(jtfdiscount.getText());
 				minRooms = Integer.parseInt(jtfroom.getText());
@@ -158,27 +158,27 @@ public class DetailedStrategyPanel extends JPanel{
 			}catch(NumberFormatException e1){
 				showMessage("数字格式错误或信息不完整，请重新填写");
 			}
-				
+
 			}
-			
+
 		});
-		
+
 		cancle = new CancleButton(690,480);
 		this.add(cancle);
 		cancle.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.JBStrategyClicked("取消操作成功");	
+				controller.JBStrategyClicked("取消操作成功");
 			}
-			
+
 		});
 	}
-	
+
 	protected void paintComponent(Graphics g) {
 		g.drawImage(Iinit.getImage(), 305,90,464,404,this);
     }
-	
+
 	public void showMessage(String message){
 	 	//提示信息
 		new Thread(new Runnable(){
