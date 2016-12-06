@@ -77,8 +77,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
-		return this.MarketingBLControllerService.getMarketingStrategy(id);
+	public List<MarketingStrategyVO> getMarketingStrategy() {
+		return this.MarketingBLControllerService.getMarketingStrategy();
 	}
 
 	@Override

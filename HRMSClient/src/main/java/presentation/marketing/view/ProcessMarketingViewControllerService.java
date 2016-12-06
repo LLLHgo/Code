@@ -87,7 +87,7 @@ public interface ProcessMarketingViewControllerService {
      * @param id
      * @return 返回策略信息列表
      */
-    public List<MarketingStrategyVO> getMarketingStrategy(String id);
+    public List<MarketingStrategyVO> getMarketingStrategy();
 
     /**
      * 删除网站营销人员制定的促销策略

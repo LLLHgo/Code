@@ -2,15 +2,18 @@ package businesslogic.strategybl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import Enum.HotelStrategy;
 import Enum.MarketingStrategy;
 import Enum.ResultMessage;
 import Enum.StrategyMaker;
+import Enum.VIPType;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import dataservice.strategydataservice.StrategyDataService;
 import dataservice.strategydataservice.StrategyDataService_Stub;
+import po.StrategyPO.HotelCompanyPO;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingCreatedPO;
 import po.StrategyPO.MarketingPeriodPO;
@@ -29,15 +32,7 @@ public class StrategyManage implements StrategyBLService{
 	private StrategyDataService strategyDataService=new StrategyDataService_Stub();
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
-		MarketingStrategyPO po = null;
-		if(vo.getType().equals(MarketingStrategy.PERIOD))
-			po=new MarketingPeriodPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getDiscount());
-		else if(vo.getType().equals(MarketingStrategy.VIPSPECIAL))
-			po=new MarketingSpecialPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getBusinessDistrict(),
-					vo.getLevels(),vo.getDiscounts());
-		else if(vo.getType().equals(MarketingStrategy.CREATED))
-			po=new MarketingCreatedPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getDiscount(),
-					vo.getHotels(),vo.getMinSum(),vo.getMinRooms(),vo.getMinLevel(),vo.getVipKinds());
+		MarketingStrategyPO po=vo2po(vo);
 		try {
 			if(this.strategyDataService.addMarketingStrategy(po))
 				return ResultMessage.SUCCESS;
@@ -49,31 +44,46 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
-		List<StrategyPO> po;
+	public List<MarketingStrategyVO> getMarketingStrategy() {
+		List<StrategyPO> pos;
 		try {
-			po=this.strategyDataService.getMarketingStrategy();
+			pos=this.strategyDataService.getMarketingStrategy();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
-
-		return null;
+		List<MarketingStrategyVO> vos=new ArrayList<MarketingStrategyVO>();
+		for(StrategyPO po:pos){
+			MarketingStrategyVO vo = po2vo((MarketingStrategyPO) po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
 	@Override
 	public ResultMessage deleteMarketingStrategy(String vo) {
-		return ResultMessage.SUCCESS;
-	}
-
-	@Override
-	public boolean deletehotelStrategy(HotelStrategyVO vo) {
-		return false;
+		try {
+			if(this.strategyDataService.deleteMarketingStrategy(vo))
+				return ResultMessage.SUCCESS;//删除成功
+			else
+				return ResultMessage.FAIL;//删除失败
+		} catch (RemoteException e) {
+			return ResultMessage.FAULT;//删除出现故障
+		}
 	}
 
 	@Override
 	public List<HotelStrategyVO> getHotelStrategy(String hotelID) {
-		return null;
+		List<StrategyPO> pos;
+		List<HotelStrategyVO> vos = null;
+		try {
+			pos=this.strategyDataService.getHotelStrategy(hotelID);
+		} catch (RemoteException e) {
+			return null;
+		}
+		for(StrategyPO po:pos){
+			vos.add(Hpo2vo((HotelStrategyPO) po));
+		}
+		return vos;
 	}
 
 	@Override
@@ -131,7 +141,7 @@ public class StrategyManage implements StrategyBLService{
 						strategyUsed.add(strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.COMPANY)){//企业会员专属折扣
-					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getHotelID(),hotelInfoVO.getCompany());
+					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getHotelID());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
@@ -162,6 +172,66 @@ public class StrategyManage implements StrategyBLService{
 		return new PriceVO(price,strategyUsed);
 	}
 
+	private MarketingStrategyPO vo2po(MarketingStrategyVO vo){
+		MarketingStrategyPO po = null;
+		if(vo.getType().equals(MarketingStrategy.PERIOD))
+			po=new MarketingPeriodPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getDiscount());
+		else if(vo.getType().equals(MarketingStrategy.VIPSPECIAL))
+			po=new MarketingSpecialPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getBusinessDistrict(),
+					vo.getLevels(),vo.getDiscounts());
+		else if(vo.getType().equals(MarketingStrategy.CREATED))
+			po=new MarketingCreatedPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getDiscount(),
+					vo.getHotels(),vo.getMinSum(),vo.getMinRooms(),vo.getMinLevel(),vo.getVipKinds());
+		return po;
+	}
 
+	private MarketingStrategyVO po2vo(MarketingStrategyPO po){
+		MarketingStrategyVO vo = null;
+		if(po.getMarketingStrategyType().equals(MarketingStrategy.PERIOD))
+			vo=new MarketingStrategyVO(po.getName(),MarketingStrategy.PERIOD,po.getStartTime(),po.getEndTime(),((MarketingPeriodPO) po).getDiscount());
+		else if(po.getMarketingStrategyType().equals(MarketingStrategy.VIPSPECIAL))
+			vo=new MarketingStrategyVO(po.getName(),MarketingStrategy.VIPSPECIAL,po.getStartTime(),po.getEndTime(),
+					((MarketingSpecialPO) po).getBusinessDistrict(),((MarketingSpecialPO) po).getLevels(),((MarketingSpecialPO) po).getDiscounts());
+		else if(po.getMarketingStrategyType().equals(MarketingStrategy.CREATED))
+			vo=new MarketingStrategyVO(po.getName(),MarketingStrategy.CREATED,po.getStartTime(),po.getEndTime(),((MarketingCreatedPO) po).getDiscount(),
+					((MarketingCreatedPO) po).getHotels(),((MarketingCreatedPO) po).getMinSum(),((MarketingCreatedPO) po).getMinRooms(),
+					((MarketingCreatedPO) po).getLevels(),((MarketingCreatedPO) po).getViptypes());
+		return vo;
+	}
+
+
+	private HotelStrategyVO Hpo2vo(HotelStrategyPO po){
+		HotelStrategyVO vo=null;
+		if(po.getHotelStrategy().equals(HotelStrategy.BIRTHDAY))
+			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.BIRTHDAY,po.getStartTime(),po.getEndTime(),po.getDiscount());
+		else if(po.getHotelStrategy().equals(HotelStrategy.COMPANY))
+			//vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.COMPANY,po.getStartTime(),po.getEndTime(),);
+		;else if(po.getHotelStrategy().equals(HotelStrategy.SPECIALDAY))
+			vo=new HotelStrategyVO();
+		else if(po.getHotelStrategy().equals(HotelStrategy.OVERTHREEROOMS))
+			vo=new HotelStrategyVO();
+		else if(po.getHotelStrategy().equals(HotelStrategy.CREATED))
+			vo=new HotelStrategyVO();
+		return vo;
+	}
 
 }
+/*HotelStrategyVO(String name,String hotelID,HotelStrategy type,VIPType viptype,Calendar startTime,Calendar endTime,double discount)
+ *(String name,String hotelID,ArrayList<String> companyList,HotelStrategy type,VIPType viptype,Calendar startTime,Calendar endTime,double discount)
+ *(String name,String hotelID,HotelStrategy type,Calendar startTime,Calendar endTime,double discount){
+
+ *(String name,String hotelID,HotelStrategy type,Calendar startTime,Calendar endTime,double discount,
+    		int minRooms){
+ *(String name,String hotelID,HotelStrategy type,List<VIPType> vipKinds,Calendar startTime,Calendar endTime,double discount,
+    		int minRooms,int minSum,int level)
+ *
+ *
+ *
+ * MarketingStrategyVO(String name,MarketingStrategy type,Calendar startTime,
+Calendar endTime,double discount)
+ * (String name,MarketingStrategy type,Calendar startTime,
+Calendar endTime,String businessDistrict,int[] levels,double[] discounts)
+ * (String name,MarketingStrategy type,Calendar startTime,Calendar endTime,double discount,List<String> hotels,
+double minSum,int minRooms,int levels,List<VIPType> viptypes)
+ *
+ * */

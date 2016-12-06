@@ -8,7 +8,6 @@ import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
-import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.logblservice.LogBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLControllerService;
@@ -17,7 +16,6 @@ import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.orderblservice.*;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import businesslogicservice.strategyblservice.StrategyBLService_Stub;
-import datatool.AreaDataTool;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
@@ -111,8 +109,8 @@ public class MarketingBLController implements MarketingBLControllerService{
 	}
 
 	@Override
-	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
-		return this.strategyBL.getMarketingStrategy(id);
+	public List<MarketingStrategyVO> getMarketingStrategy() {
+		return this.strategyBL.getMarketingStrategy();
 	}
 
 	@Override

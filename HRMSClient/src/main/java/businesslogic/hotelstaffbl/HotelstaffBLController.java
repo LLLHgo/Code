@@ -16,25 +16,10 @@ import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import businesslogicservice.strategyblservice.StrategyBLService_Stub;
-import presentation.hotelstaff.controller.HotelstaffViewController;
-import presentation.hotelstaff.view.AddRoomPanel;
-import presentation.hotelstaff.view.BirthdayStrategyPanel;
-import presentation.hotelstaff.view.BusinessStrategyPanel;
-import presentation.hotelstaff.view.DetailedStrategyPanel;
-import presentation.hotelstaff.view.HotelinfoPanel;
-import presentation.hotelstaff.view.HotelstaffPanel;
-import presentation.hotelstaff.view.NewRoominfoPanel;
-import presentation.hotelstaff.view.NewStrategyPanel;
-import presentation.hotelstaff.view.OrderPanel;
-import presentation.hotelstaff.view.PeriodStrategy;
-import presentation.hotelstaff.view.RoomStrategyPanel;
-import presentation.hotelstaff.view.StrategyPanel;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 /**
  * 这是酒店工作人员在BL层的一个controller，负责将方法分派给BL层中的其他类。由于lq老师上课介绍说View层的controller是不可以知道
  * BL层的逻辑的，但是当时我在View层的controller已经写好了，所以就保留了view层的controller，但具体逻辑实现还是在现在的这个controller里
@@ -44,7 +29,7 @@ import vo.strategyVO.MarketingStrategyVO;
  *
  */
 public class HotelstaffBLController implements HotelstaffControllerBLService{
-	
+
 	HotelinfoBLService hotelinfo;
 	HotelinfoBLService roominfo;
 	StrategyBLService strategy;
@@ -52,7 +37,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	OrderOperatorBLService orderOperator;
 	HotelstaffBLService hotelstaff;
 	LogBLService log;
-	
+
 	public HotelstaffBLController(){
 		hotelinfo = new HotelinfoManage();
 		roominfo = new RoominfoManage();
@@ -61,7 +46,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 //		strategy = new StrategyManage();
 		hotelstaff = new HotelstaffManage();
 		log = new LogManage();
-		
+
 //		hotelinfo = new HotelinfoBLService_stub();
 		strategy = new StrategyBLService_Stub();
 		orderFind = new OrderBLService_Stub();
@@ -69,7 +54,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 //		hotelstaff = new HotelstaffBLService_stub();
 
 	}
-	
+
 	@Override
 	public HotelinfoVO getHotelBasicinfo(String hotelID) {
 		return hotelinfo.getBasicinfo(hotelID);
@@ -103,17 +88,6 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	@Override
 	public ArrayList<HotelStrategyVO> gethotelStrategy(String hotelID) {
 		return (ArrayList<HotelStrategyVO>) strategy.getHotelStrategy(hotelID);
-	}
-
-	@Override
-	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy) {
-		boolean result = strategy.deletehotelStrategy(hotelStrategy);
-		if(result == true){
-			return ResultMessage.SUCCESS;
-		}
-		else{
-			return ResultMessage.FAIL;
-		}
 	}
 
 	@Override
@@ -153,12 +127,12 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	public ArrayList<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
 		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
 	}
-	
+
 	@Override
 	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
 		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ABNORMALCANCEL, hotelID);
 	}
-	
+
 	@Override
 	public String getHotelstaffBasicinfo(String hotelID) {
 		return hotelstaff.getBasicinfo(hotelID);
@@ -173,7 +147,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	public boolean checkAccount(String hotelID, String password) {
 		return hotelstaff.checkAccount(hotelID, password);
 	}
-	
+
 	@Override
 	public ResultMessage addArea(String area) {
 		if(hotelinfo.addArea(area)==true){
@@ -186,7 +160,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	public String[] getArea() {
 		return hotelinfo.getArea();
 	}
-	
+
 
 	@Override
 	public ResultMessage addRoomType(String type) {
@@ -197,7 +171,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	public String[] getRoomType() {
 		return hotelinfo.getRoomType();
 	}
-	
+
 	@Override
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
 		ArrayList<OrderVO> list = (ArrayList<OrderVO>) orderFind.findSpecificHotelClientOrderList(clientID, hotelID);
@@ -207,7 +181,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	@Override
 	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text){
 		//TODO orderFind里面提供的方法可能会改
-		ArrayList<OrderVO> list = 
+		ArrayList<OrderVO> list =
 		(ArrayList<OrderVO>)orderFind.findSpecificHotelClientOrderList(text, hotelID) ;
 			if(list == null){
 				list = new ArrayList<OrderVO>();
@@ -215,7 +189,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 			}
 		return list;
 	}
-	
+
 	@Override
 	public boolean addLog(String s){
 		ResultMessage result= log.addLog(s);

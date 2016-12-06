@@ -23,7 +23,7 @@ public interface StrategyBLService {
      * @param id
      * @return 返回策略信息列表
      */
-    public List<MarketingStrategyVO> getMarketingStrategy(String id);
+    public List<MarketingStrategyVO> getMarketingStrategy();
 
     /**
      * 删除网站营销人员制定的促销策略
@@ -31,12 +31,6 @@ public interface StrategyBLService {
      * @return 返回是否删除成功
      */
     public ResultMessage deleteMarketingStrategy(String vo);
-    /**
-     * 删除酒店工作人员制定的促销策略
-     * @param vo
-     * @return 返回是否删除成功
-     */
-    public boolean deletehotelStrategy(HotelStrategyVO vo);
     /**
      * 根据酒店ID返回该酒店的促销策略
      * @param hotelID

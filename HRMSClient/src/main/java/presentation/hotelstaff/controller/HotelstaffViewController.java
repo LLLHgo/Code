@@ -1,7 +1,6 @@
 package presentation.hotelstaff.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -21,24 +20,21 @@ import presentation.hotelstaff.view.NewStrategyPanel;
 import presentation.hotelstaff.view.OrderPanel;
 import presentation.hotelstaff.view.RoomStrategyPanel;
 import presentation.hotelstaff.view.StrategyPanel;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelstaffViewController implements HotelstaffViewControllerService{
-	
+
 	private static HotelstaffViewController viewcontroller;
-	
+
 	private String hotelID;
 	public JPanel view;
 	public JPanel panel;
 
 	HotelstaffControllerBLService controller;
-	
+
 	public String gethotelID(){
 		return hotelID;
 	}
@@ -54,11 +50,11 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		}
 		return viewcontroller;
 	}
-	
+
 	public void setView(JPanel view){
 		this.view = view;
 	}
-	
+
 	@Override
 	public HotelinfoVO getHotelBasicinfo(String hotelID) {
 		return controller.getHotelBasicinfo(hotelID);
@@ -91,11 +87,6 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	@Override
 	public ArrayList<HotelStrategyVO> gethotelStrategy(String hotelID) {
 		return (ArrayList<HotelStrategyVO>) controller.gethotelStrategy(hotelID);
-	}
-
-	@Override
-	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy) {
-		return controller.deletehotelStrategy(hotelStrategy);
 	}
 
 	@Override
@@ -137,12 +128,12 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public ArrayList<OrderVO> getAbnormalHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
 		return (ArrayList<OrderVO>) controller.getAbnormalHotelOrderList(hotelID,ABNORMALCANCEL);
 	}
-	
+
 	@Override
 	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID, OrderType ABNORMALCANCEL) {
 		return (ArrayList<OrderVO>) controller.getCancleHotelOrderList(hotelID,ABNORMALCANCEL);
 	}
-	
+
 	@Override
 	public String getHotelstaffBasicinfo(String hotelID) {
 		return controller.getHotelstaffBasicinfo(hotelID);
@@ -167,7 +158,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public String[] getArea() {
 		return controller.getArea();
 	}
-	
+
 
 	@Override
 	public ResultMessage addRoomType(String type) {
@@ -184,7 +175,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
 		return (ArrayList<OrderVO>) controller.getExecutedHotelOrderList( hotelID,clientID);
 	}
-	
+
 	public void JBHotelinfoClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -195,7 +186,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
+
 	public void JBRoominfoClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -206,7 +197,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
+
 	public void JBOrderClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -217,7 +208,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
+
 	public void JBPersonalinfoClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -244,7 +235,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
+
 	public void JBStrategyClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -255,7 +246,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
+
 	public void JBStrategyClicked(String message){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -267,7 +258,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
-	
+
 	public void JBRoomClicked(String message){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -297,13 +288,13 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		}else{
 			panel = new DetailedStrategyPanel(panelcontroller,vo);
 		}
-		
+
 		view.add(panel);
 		//TODO
 //		((NewRoominfoPanel)panel).showMessage(message);
 		panel.revalidate();
 		panel.repaint();
-		
+
 	}
 
 	@Override

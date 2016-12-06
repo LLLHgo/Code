@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.plaf.ComboBoxUI;
 
 import Enum.HotelStrategy;
 import Enum.ResultMessage;
@@ -33,7 +32,7 @@ public class BusinessStrategyPanel extends JPanel{
 	private ImageIcon image;
 	private TextField jftdiscount;
 	private TimePanel1 tpStart;
-	private TimePanel1 tpEnd; 
+	private TimePanel1 tpEnd;
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;
 	private TextLabel discountLabel;
@@ -46,34 +45,34 @@ public class BusinessStrategyPanel extends JPanel{
 	private Calendar endTime;
 	private JComboBox jcbCompany;
 	private ArrayList<String> companyList;
-	
+
 	public BusinessStrategyPanel(HotelstaffViewController controller,HotelStrategyVO vo){
 		this.controller = controller;
 		this.hotelID = controller.gethotelID();
 		this.vo = vo;
-		init();		
+		init();
 		showMessage("合作企业客户折扣");
 	}
-	
-	
+
+
 	private void init(){
 		this.setLayout(null);
 		this.setBounds(0,0,1000,618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		startLabel = new TextLabel(350,135,100,30,"开始时间 ");
 		this.add(startLabel);
-		
+
 		endLabel = new TextLabel(350,185,100,30,"结束时间");
 		this.add(endLabel);
-		
+
 		discountLabel = new TextLabel(350,235,50,30,"折扣");
 		this.add(discountLabel);
-		
+
 		companyLabel = new TextLabel(350,285,150,30,"合作企业列表");
 		this.add(companyLabel);
-		
+
 		String[] companies = {""};
 		HotelinfoVO hotelinfoVO = controller.gethotelinfoVO(hotelID);
 		companyList = hotelinfoVO.getCompany();
@@ -91,18 +90,18 @@ public class BusinessStrategyPanel extends JPanel{
 		jcbCompany.setEditable(false);
 		jcbCompany.setSelectedItem(null);
 		this.add(jcbCompany);
-		
+
 		jftdiscount = new TextField("",460,234,80,30,4);
 		jftdiscount.setText(String.valueOf(vo.getDiscount()));
 		jftdiscount.setForeground(Color.white);
 		jftdiscount.setFont(new Font("微软雅黑",Font.BOLD,20));
 		this.add(jftdiscount);
-		
+
 		tpStart = new TimePanel1(458,129,308,37);
 		tpEnd = new TimePanel1(458,182,308,37);
 		this.add(tpStart);
 		this.add(tpEnd);
-		
+
 		jbConfirm = new ConfirmButton(670,470);
 		this.add(jbConfirm);
 		jbConfirm.addActionListener(new ActionListener(){
@@ -130,33 +129,33 @@ public class BusinessStrategyPanel extends JPanel{
 				}catch(NumberFormatException e1){
 					showMessage("未正确填写数字");
 				}
-			
+
 			}
-			
+
 		});
-		
+
 		jbCancle = new CancleButton(520,470);
 		this.add(jbCancle);
 		jbCancle.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+
 				controller.JBStrategyClicked("取消操作成功");
-			
+
 			}
-			
+
 		});
-		
+
 		//显示结果
 		resultLabel = new JLabel();
 		resultLabel.setForeground(Color.BLACK);
 		resultLabel.setFont(new Font("微软雅黑",Font.PLAIN,15));
 		resultLabel.setBounds(290, 50, 500, 20);
 		this.add(resultLabel);
-		
+
 	}
-	
+
 	public void showMessage(String message){
 	 	//提示信息
 		new Thread(new Runnable(){
@@ -171,6 +170,6 @@ public class BusinessStrategyPanel extends JPanel{
 	            resultLabel.setText("");
 			}
 		}).start();
-		
+
 	}
 }

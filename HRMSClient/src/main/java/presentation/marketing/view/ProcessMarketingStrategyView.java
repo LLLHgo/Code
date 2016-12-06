@@ -230,7 +230,7 @@ public class ProcessMarketingStrategyView extends JPanel{
 
 	public void browseButtonClicked(){
 		hideGroup();
-		List<MarketingStrategyVO> strategys=controller.getMarketingStrategy(controller.getMarketingID());
+		List<MarketingStrategyVO> strategys=controller.getMarketingStrategy();
 		JPanel panel=new MJPanel(0,0,200,200);
         panel.setPreferredSize(new Dimension(690,690));
 		browsePanel=new browsePanel(80,0,820,500,strategys,panel);

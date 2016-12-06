@@ -26,8 +26,8 @@ public class StrategyDataService_Stub implements StrategyDataService{
      * @param po
      * @return 返回是否删除成功
      */
-    public boolean deleteMarketingStrategy (MarketingStrategyPO po) {
-    	if(po!=null)
+    public boolean deleteMarketingStrategy (String marketingStrategy) {
+    	if(marketingStrategy.length()!=0)
 			return true;
 		else
 			return false;

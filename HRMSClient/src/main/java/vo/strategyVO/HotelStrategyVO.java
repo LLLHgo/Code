@@ -83,19 +83,19 @@ public class HotelStrategyVO {
     	this.endTime=endTime;
     	this.discount=discount;
     	this.name = name;
+    	this.companyList=companyList;
     }
 
 
 	/**
      * 酒店工作人员制定特定期间优惠
+     * @param name
      * @param hotelID
      * @param type
      * @param startTime
      * @param endTime
      * @param discount
-     * @param poster
-     * @param position
-     */
+    */
     public HotelStrategyVO(String name,String hotelID,HotelStrategy type,Calendar startTime,Calendar endTime,double discount){
     	this.hotelID=hotelID;
     	this.type=type;
@@ -126,7 +126,7 @@ public class HotelStrategyVO {
     	this.minRooms = minRooms;
     	this.name=name;
     }
-    
+
     public HotelStrategyVO(String name,String hotelID,HotelStrategy type,List<VIPType> vipKinds,Calendar startTime,Calendar endTime,double discount,
     		int minRooms,int minSum,int level){
     	this.hotelID=hotelID;

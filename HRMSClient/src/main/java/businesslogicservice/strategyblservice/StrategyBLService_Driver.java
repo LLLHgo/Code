@@ -14,7 +14,7 @@ public class StrategyBLService_Driver {
     	if(addMarketingStrategyBool==ResultMessage.SUCCESS)System.out.println("增加网站营销人员促销策略信息成功。");
 
     	//返回网站营销人员制定的促销策略信息列表
-    	List<MarketingStrategyVO> marketingStrategyList=strategyBLService.getMarketingStrategy("M00010001");
+    	List<MarketingStrategyVO> marketingStrategyList=strategyBLService.getMarketingStrategy();
     	if(marketingStrategyList.size()>0)System.out.println("返回网站营销人员制定的促销策略信息列表成功。");
 
     	//删除网站营销人员促销策略信息

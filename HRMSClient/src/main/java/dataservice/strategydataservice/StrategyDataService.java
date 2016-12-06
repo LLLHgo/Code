@@ -30,7 +30,7 @@ public interface StrategyDataService extends Remote{
      * @param po
      * @return 返回是否删除成功
      */
-    public boolean deleteMarketingStrategy (MarketingStrategyPO po)throws RemoteException;
+    public boolean deleteMarketingStrategy (String marketingStrategy)throws RemoteException;
 
     /**
      * 根据hotelID返回该酒店制定的策略

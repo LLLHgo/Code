@@ -34,7 +34,7 @@ public class StrategyBLService_Stub implements StrategyBLService{
      * @param id
      * @return 返回策略信息列表
      */
-    public List<MarketingStrategyVO> getMarketingStrategy(String id) {
+    public List<MarketingStrategyVO> getMarketingStrategy() {
 		return MarketingStrategyDataTool.list;
 	}
 
@@ -70,15 +70,6 @@ public class StrategyBLService_Stub implements StrategyBLService{
     		return ResultMessage.SUCCESS;
 		else
 			return ResultMessage.FAIL;
-	}
-
-
-	@Override
-	public boolean deletehotelStrategy(HotelStrategyVO vo) {
-		if(vo!=null)
-			return true;
-		else
-			return false;
 	}
 
 	@Override

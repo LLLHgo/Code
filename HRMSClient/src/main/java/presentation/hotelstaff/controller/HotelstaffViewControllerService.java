@@ -1,17 +1,13 @@
 package presentation.hotelstaff.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelstaffVO.HotelstaffVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 
 public interface HotelstaffViewControllerService {
 	/**
@@ -44,7 +40,7 @@ public interface HotelstaffViewControllerService {
 	 * @param hotelID
 	 * @return 房间信息列表
 	 */
-	public ArrayList<RoominfoVO> getRoominfoList(String hotelID);	
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID);
 	/**
 	 * 将酒店促销策略持久化保存
 	 * @param vo
@@ -57,13 +53,6 @@ public interface HotelstaffViewControllerService {
 	 * @return 酒店促销策略信息
 	 */
 	public ArrayList<HotelStrategyVO> gethotelStrategy(String hotelID);
-	/**
-	 * 删除酒店策略
-	 * @param hotelID
-	 * @param StrategyID
-	 * @return 是否删除酒店策略
-	 */
-	public ResultMessage deletehotelStrategy(HotelStrategyVO hotelStrategy);
 	/**
 	 * 获得酒店基本信息
 	 * @param vo
@@ -88,28 +77,28 @@ public interface HotelstaffViewControllerService {
 	 * @return 酒店订单列表
 	 */
 	public ArrayList<OrderVO> getALLHotelOrderList(String hotelID,OrderType ALL);
-	
+
 	/**
 	 * 获得酒店已入住订单列表
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
 	public ArrayList<OrderVO> getUnexecutedHotelOrderList(String hotelID,OrderType NORMALEXEC);
-	
+
 	/**
 	 * 获得酒店未入住订单列表
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID,OrderType NORMALNONEXEC);
-	
+
 	/**
 	 * 获得酒店取消订单列表
 	 * @param hotelID,OrderType
 	 * @return 酒店订单列表
 	 */
 	public ArrayList<OrderVO> getCancleHotelOrderList(String hotelID,OrderType ABNORMALCANCEL);
-	
+
 	/**
 	 * 获得酒店异常订单列表
 	 * @param hotelID,OrderType
@@ -129,7 +118,7 @@ public interface HotelstaffViewControllerService {
 	 * @return 是否将订单状态持久化保存
 	 */
 	public ResultMessage updateOrderState(OrderVO vo);
-	
+
 	/**
 	 * 获得酒店工作人员信息
 	 * @param hotelID
@@ -150,57 +139,57 @@ public interface HotelstaffViewControllerService {
 	 * @return 账号密码是否匹配
 	 */
 	public boolean checkAccount(String hotelID,String password);
-	
-	
+
+
 	/**
 	 * 新增商圈
 	 * @param area
 	 * @return ResultMessage
 	 */
 	public ResultMessage addArea(String area);
-	
+
 	/**
 	 * 获得所有商圈名
 	 * @return String[]
 	 */
 	public String[] getArea();
-	
+
 	/**
 	 * 增加房间类型
 	 * @param type
 	 * @return ResultMessage
 	 */
 	public ResultMessage addRoomType(String type);
-	
+
 	/**
 	 * 获得所有房间类型
 	 * @return String[]
 	 */
 	public String[] getRoomType();
-	
+
 	/**
-	 * 
+	 *
 	 * 获得详细策略信息
 	 * @param vo
 	 */
 	public void detailedStrategy(HotelStrategyVO vo);
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 * 新建策略
 	 * @param vo
 	 */
 	public void newStrategy();
-	
+
 	/**
-	 * 
+	 *
 	 * @param hotelID
 	 * @param text
 	 * @return
 	 */
 	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text);
-	
+
 	/**
 	 * 添加日志
 	 * @param s

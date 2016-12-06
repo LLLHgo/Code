@@ -40,7 +40,7 @@ public interface MarketingBLControllerService {
 
 	public ResultMessage deleteMarketingStrategy(String vo);
 
-	public List<MarketingStrategyVO> getMarketingStrategy(String id);
+	public List<MarketingStrategyVO> getMarketingStrategy();
 
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo);
 
