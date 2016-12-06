@@ -88,16 +88,8 @@ public interface HotelinfoBLService {
 	 * @return
 	 */
 	ArrayList<RoominfoVO> getRoominfoList(String hotelID);
-
 	/**
-	 * 根据酒店界面输入订单ID或客户ID搜索订单
-	 * @param hotelID
-	 * @param text
-	 * @return
-	 */
-	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text);
-	/**
-	 * 
+	 * 获得当前酒店的可用房间类型和数量，中间已逗号作为分隔符，例“标准间，3”
 	 * @param hotelID
 	 * @return ArrayList<String>
 	 */

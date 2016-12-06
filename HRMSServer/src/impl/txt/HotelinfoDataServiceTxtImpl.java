@@ -8,7 +8,7 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 
-public class HotelinfoDataServiceTxtImpl implements HotelinfoDataService{
+public class HotelinfoDataServiceTxtImpl{
 
 	public HotelinfoDataServiceTxtImpl() throws RemoteException {
 		super();
@@ -20,28 +20,23 @@ public class HotelinfoDataServiceTxtImpl implements HotelinfoDataService{
 		
 	}
 
-	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
+	public String[] getArea() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public boolean addArea(String area) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String[] getRoomType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public boolean updatehotelinfo(HotelinfoPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean updateroominfo(RoominfoPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean delete(RoominfoPO po) throws RemoteException {
+	public boolean addRoomType(String type) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -50,5 +45,4 @@ public class HotelinfoDataServiceTxtImpl implements HotelinfoDataService{
 		// TODO Auto-generated method stub
 		
 	}
-
 }

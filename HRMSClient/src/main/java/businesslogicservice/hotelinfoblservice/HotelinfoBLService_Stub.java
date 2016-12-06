@@ -233,12 +233,6 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	}
 
 	@Override
-	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID, String text) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<String> getAvailableRooms(String hotelID) {
 		// TODO Auto-generated method stub
 		return null;

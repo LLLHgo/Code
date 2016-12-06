@@ -1,117 +1,135 @@
 package businesslogic.hoteinfobl;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import Enum.Star;
+import Enum.ResultMessage;
+import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
+import vo.areaVO.AreaVO;
+import vo.clientVO.ClientVO;
+import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-
-public class Hotelinfo {
-	//酒店名称
-	private String name;
-	//酒店地址
-	private String address;
-	//酒店所在商圈
-	private String area;
-	//酒店电话
-	private String tel;
-	//酒店所包含的房间
-	private ArrayList<RoominfoVO> roominfoList;
-	//酒店星级 ，ONE，TOW...SEVEN表示一星级到七星级
-	private Star star;
-	//酒店评价
-	private ArrayList<String> remark;
-	//酒店简介
-	private String introduction;
-	//酒店ＩＤ
-	private String hotelID;
+import vo.hotelinfoVO.SitemanagerAddVO;
+import vo.hotelstaffVO.HotelstaffVO;
+import vo.orderVO.OrderVO;
+import vo.strategyVO.HotelStrategyVO;
+import vo.strategyVO.MarketingStrategyVO;
+/**
+ * 
+ * 因为hotelinfoBLService接口定义得比较大，而实现类分为Hotelinfo和Roominfo时并不都需要，所以使用了接口适配器模式
+ * @version 1
+ * @since 16.12.3
+ * @author liuyu
+ *
+ */
+public class Hotelinfo implements HotelinfoBLService{
 	
-	public Hotelinfo(){
-		
+	HotelinfoManage hotel;
+	RoominfoManage room;
+	
+	/**
+	 * 请求获得hotelID对应的酒店信息
+	 * @param hotelID
+	 * @return 酒店信息
+	 */
+	public HotelinfoVO getBasicinfo(String hotelID){
+		return hotel.getBasicinfo(hotelID);
+	}
+	/**
+	 * 获得符合客户条件的酒店列表信息
+	 * @param vo
+	 * @return 酒店信息列表
+	 */
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area){
+		return hotel.getBasicinfoList(area);
+	};
+	/**
+	 * 持久化保存酒店信息
+	 * @param VO
+	 * @return 保存成功或失败
+	 */
+	public ResultMessage updateBassicinfo(HotelinfoVO VO){
+		return hotel.updateBassicinfo(VO);
+	}
+	/**
+	 * 获得系统内所有商圈名
+	 * @return String[]
+	 */
+	public String[] getArea(){
+		return hotel.getArea();
 	}
 	
-	public Hotelinfo(String name,String address,String area,
-			String tel,ArrayList<RoominfoVO> roominfoList,Star star,ArrayList<String> remark,
-			String introduciton,String hotelID){
-		this.name = name;
-		this.address = address;
-		this.area = area;
-		this.tel = tel;
-		this.roominfoList = roominfoList;
-		this.star = star;
-		this.remark = remark;
-		this.introduction = introduciton;
-		this.hotelID = hotelID;
+	/**
+	 *添加商圈名 
+	 * @return boolean
+	 */
+	public boolean addArea(String area){
+		return hotel.addArea(area);
 	}
-
-	public String getName() {
-		return name;
+	/**
+	 * 请求持久化保存网站管理人员添加的酒店信息
+	 * @param sitemanagerAddVO
+	 * @param hotelstaffVO
+	 * @return 保存成功或失败
+	 */
+	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO){
+		return hotel.saveSitemanagerAdd(sitemanagerAddVO, hotelstaffVO);
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	
+	/**
+	 * 获得商圈里面的酒店列表
+	 * @return ArrayList<AreaVO>
+	 */
+	public List<AreaVO> getAreaHotels(){
+		return hotel.getAreaHotels();
 	}
-
-	public String getAddress() {
-		return address;
+	/**
+	 * 获得房间信息
+	 * @param roomID
+	 * @return 房间信息
+	 */
+	public RoominfoVO getroominfo(String hotelID,String roomID){
+		return room.getroominfo(hotelID, roomID);
 	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	/**
+	 * 将房间信息持久化保存
+	 * @param vo
+	 * @return 是否将房间信息持久化保存
+	 */
+	public boolean updateroominfo(RoominfoVO vo,String hotelID){
+		return room.updateroominfo(vo, hotelID);
 	}
-
-	public String getArea() {
-		return area;
+	
+	/**
+	 * 获得系统内所有房间类型
+	 * @return String[]
+	 */
+	public String[] getRoomType(){
+		return room.getRoomType();
 	}
-
-	public void setArea(String area) {
-		this.area = area;
+	
+	/**
+	 *添加房间类型
+	 * @return boolean
+	 */
+	public boolean addRoomType(String type){
+		return room.addRoomType(type);
 	}
-
-	public String getTel() {
-		return tel;
+	/**
+	 * 获得酒店所包含的所有房间列表
+	 * @param hotelID
+	 * @return
+	 */
+	public ArrayList<RoominfoVO> getRoominfoList(String hotelID){
+		return room.getRoominfoList(hotelID);
 	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
+	
+	/**
+	 * 根据酒店ID获得可用的房间类型和数量
+	 * @param hotelID
+	 * @return ArrayList<String>
+	 */
+	public  ArrayList<String> getAvailableRooms(String hotelID){
+		return room.getAvailableRooms(hotelID);
 	}
-
-	public ArrayList<RoominfoVO> getRoominfoList() {
-		return roominfoList;
-	}
-
-	public void setRoominfoList(ArrayList<RoominfoVO> roominfoList) {
-		this.roominfoList = roominfoList;
-	}
-
-	public Star getStar() {
-		return star;
-	}
-
-	public void setStar(Star star) {
-		this.star = star;
-	}
-
-	public ArrayList<String> getRemark() {
-		return remark;
-	}
-
-	public void setRemark(ArrayList<String> remark) {
-		this.remark = remark;
-	}
-
-	public String getIntroduction() {
-		return introduction;
-	}
-
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction;
-	}
-
-	public String getHotelID() {
-		return hotelID;
-	}
-
-	public void setHotelID(String hotelID) {
-		this.hotelID = hotelID;
-	}	
 }

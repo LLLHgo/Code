@@ -14,19 +14,19 @@ public class AddRoomTypeTest {
 	@Test
 	public void test1(){
 		//重复，不添加
-		assertEquals(false,roominfo.addArea("标准间"));
+		assertEquals(false,roominfo.addRoomType("标准间"));
 	}
 	
 	@Test
 	public void test2(){
 		//无内容，不添加
-		assertEquals(false,roominfo.addArea(""));
+		assertEquals(false,roominfo.addRoomType(""));
 	}
 
 	
 	@Test
 	public void test3(){
 		//无内容，不添加
-		assertEquals(false,roominfo.addArea(null));
+		assertEquals(false,roominfo.addRoomType(null));
 	}
 }

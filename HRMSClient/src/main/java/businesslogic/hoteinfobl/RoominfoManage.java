@@ -14,8 +14,8 @@ import java.util.List;
 
 import Enum.HotelStrategy;
 import Enum.ResultMessage;
+import Enum.RoomState;
 import Enum.VIPType;
-import businesslogicservice.hotelinfoblservice.HotelinfoAbstract;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.RoominfoPO;
@@ -28,7 +28,7 @@ import vo.hotelstaffVO.HotelstaffVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public class RoominfoManage extends HotelinfoAbstract{
+public class RoominfoManage{
 	
 	HotelinfoDataService data;
 	
@@ -36,7 +36,7 @@ public class RoominfoManage extends HotelinfoAbstract{
 		data = new HotelinfoDataService_Stub();
 	}
 	
-	@Override
+	
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
 		RoominfoPO po = null;
 		try {
@@ -50,7 +50,6 @@ public class RoominfoManage extends HotelinfoAbstract{
 		return po2vo(po);
 	}
 
-	@Override
 	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
 		RoominfoPO po = new RoominfoPO(
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
@@ -66,7 +65,6 @@ public class RoominfoManage extends HotelinfoAbstract{
 	}
 
 	
-	@Override
 	public String[] getRoomType() {
 		BufferedReader br = null;
 		String data = "";
@@ -85,7 +83,7 @@ public class RoominfoManage extends HotelinfoAbstract{
 		return roomtypes;
 	}
 
-	@Override
+	
 	public boolean addRoomType(String type) {
 		if(type==null||type.equals("")){
 			return false;
@@ -117,7 +115,7 @@ public class RoominfoManage extends HotelinfoAbstract{
 	}
 	
 
-	@Override
+	
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
 		ArrayList<RoominfoPO> listPO;
 		ArrayList<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
@@ -144,5 +142,23 @@ public class RoominfoManage extends HotelinfoAbstract{
 			return null;
 		}
 		return vo;
+	}
+	
+
+	public  ArrayList<String> getAvailableRooms(String hotelID){
+//		try {
+//			ArrayList<RoominfoPO> list = data.getRoominfoList(hotelID);
+//			
+//			for(int i=0;i<list.size();i++){
+//				if(list.get(i).getRoomState()== RoomState.Usable
+//						&&list.get(i).getType().equals()){
+//					
+//				}
+//			}
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+		return null;
 	}
 }

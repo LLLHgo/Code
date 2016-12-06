@@ -40,6 +40,27 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public boolean updateroominfo(RoominfoPO po) throws RemoteException;
 	/**
+	 * 获得系统内所有商圈名
+	 * @return String[]
+	 */
+	public String[] getArea();
+	/**
+	 *添加商圈名 
+	 * @return boolean
+	 */
+	public boolean addArea(String area);
+	
+	/**
+	 * 获得系统内所有房间类型
+	 * @return String[]
+	 */
+	public String[] getRoomType();
+	/**
+	 *添加房间类型
+	 * @return boolean
+	 */
+	public boolean addRoomType(String type);
+	/**
 	 * 删除持久化数据
 	 * @param po
 	 * @throws RemoteException

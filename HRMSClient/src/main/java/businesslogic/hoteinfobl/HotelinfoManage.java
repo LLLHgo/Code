@@ -16,7 +16,6 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.hotelstaffbl.HotelstaffManage;
-import businesslogicservice.hotelinfoblservice.HotelinfoAbstract;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
@@ -32,14 +31,13 @@ import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
-public class HotelinfoManage extends HotelinfoAbstract{
+public class HotelinfoManage{
 
 	//桩测试
 	HotelinfoDataService data = new HotelinfoDataService_Stub();
 	HotelinfoPO po;
 	HotelinfoVO vo;
 	
-	@Override
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		try {
 			po = data.findhotelinfo(hotelID);
@@ -55,7 +53,6 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		return vo;
 	}
 
-	@Override
 	public ArrayList<HotelinfoVO> getBasicinfoList(String area) {
 		ArrayList<HotelinfoPO> listPO;
 		ArrayList<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
@@ -94,7 +91,6 @@ public class HotelinfoManage extends HotelinfoAbstract{
 			return vo;
 	}
 	
-	@Override
 	public ResultMessage updateBassicinfo(HotelinfoVO VO) {
 		if(VO==null||VO.getAddress()==null||VO.getArea()==null||VO.getFacility()==null||
 		VO.getHotelID()==null||VO.getIntroduction()==null||VO.getStar()==null||
@@ -114,7 +110,6 @@ public class HotelinfoManage extends HotelinfoAbstract{
 			
 	}
 	
-	@Override
 	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
 		String hotelname = sitemanagerAddVO.getName();
 		if(hotelname==null||hotelname.equals("")){
@@ -139,7 +134,6 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		return result;
 	}
 
-	@Override
 	public String[] getArea() {
 		BufferedReader br = null;
 		String data = "";
@@ -157,8 +151,8 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		}
 		return areas;
 	}
-
-	@Override
+	
+	
 	public boolean addArea(String area) {
 		if(area==null||area.equals("")){
 			return false;
@@ -190,7 +184,6 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		return true;
 	}
 
-	@Override
 	public List<AreaVO> getAreaHotels() {
 		String[] areas = getArea();
 		ArrayList<HotelinfoPO> hotelinfoPOList = new ArrayList<HotelinfoPO>();
@@ -217,9 +210,4 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		return areaVOList;
 	}
 
-
-	public  ArrayList<String> getAvailableRooms(String hotelID){
-		return null;
-		//TODO
-	}
 }

@@ -26,33 +26,48 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 	}
 
 	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return mysql.getRoominfoList(hotelID);
 	}
 
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return mysql.findhotelinfo(hotelID);
 	}
 
 	public boolean updatehotelinfo(HotelinfoPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		return mysql.updatehotelinfo(po);
 	}
 
 	public boolean updateroominfo(RoominfoPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		return mysql.updateroominfo(po);
 	}
 
 	public boolean delete(RoominfoPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		return mysql.delete(po);
 	}
 
 	public void finish() throws RemoteException {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public String[] getArea() {
+		return txt.getArea();
+	}
+
+
+	public boolean addArea(String area) {
+		return txt.addArea(area);
+	}
+
+
+	public String[] getRoomType() {
+		return txt.getRoomType();
+	}
+
+
+	public boolean addRoomType(String type) {
+		return txt.addRoomType(type);
 	}
 
 	

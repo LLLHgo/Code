@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.logdataservice.LogDataService;
+import impl.mysql.HotelinfoDataServiceImpl;
 import impl.txt.HotelinfoDataServiceTxtImpl;
 import impl.txt.LogDataServiceTxtImpl;
 
@@ -14,7 +15,7 @@ public class DataFactoryTxtImpl extends AdapterTxt implements DataFactory{
 	
 	public DataFactoryTxtImpl() throws RemoteException{
 		 logDataService=new LogDataServiceTxtImpl();
-		 hotelinfoDataService=new HotelinfoDataServiceTxtImpl();
+		 hotelinfoDataService=new HotelinfoDataServiceImpl();
 	}
 
 	@Override

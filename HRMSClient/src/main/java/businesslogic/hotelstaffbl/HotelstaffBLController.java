@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.hoteinfobl.RoominfoManage;
 import businesslogic.logbl.LogManage;
@@ -31,7 +32,6 @@ import vo.strategyVO.HotelStrategyVO;
 public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	HotelinfoBLService hotelinfo;
-	HotelinfoBLService roominfo;
 	StrategyBLService strategy;
 	OrderFindBLService orderFind;
 	OrderOperatorBLService orderOperator;
@@ -39,8 +39,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	LogBLService log;
 
 	public HotelstaffBLController(){
-		hotelinfo = new HotelinfoManage();
-		roominfo = new RoominfoManage();
+		hotelinfo = new Hotelinfo();
 //		orderFind = new OrderFind();
 //		orderOperator=new OrderOperator();
 //		strategy = new StrategyManage();
@@ -72,12 +71,12 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	@Override
 	public RoominfoVO getRoominfo(String hotelID, String roomID) {
-		return roominfo.getroominfo(hotelID, roomID);
+		return hotelinfo.getroominfo(hotelID, roomID);
 	}
 
 	@Override
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
-		return roominfo.getRoominfoList(hotelID);
+		return hotelinfo.getRoominfoList(hotelID);
 	}
 
 	@Override
@@ -92,12 +91,12 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	@Override
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
-		return roominfo.getroominfo(hotelID, roomID);
+		return hotelinfo.getroominfo(hotelID, roomID);
 	}
 
 	@Override
 	public ResultMessage updateroominfo(RoominfoVO vo,String hotelID) {
-		if(roominfo.updateroominfo(vo,hotelID)==true){
+		if(hotelinfo.updateroominfo(vo,hotelID)==true){
 			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.FAIL;

@@ -90,4 +90,24 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 
 	}
 
+	public String[] getArea() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean addArea(String area) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String[] getRoomType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean addRoomType(String type) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
