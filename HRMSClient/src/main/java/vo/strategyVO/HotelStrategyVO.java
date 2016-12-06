@@ -23,7 +23,7 @@ public class HotelStrategyVO {
     //设置策略的酒店ID
     private String hotelID;
     //享受折扣的最低消费金额
-    private int minSum;
+    private double minSum;
     //享受折扣的最少房间数
     private int minRooms;
     //参加活动的会员种类
@@ -128,7 +128,7 @@ public class HotelStrategyVO {
     }
 
     public HotelStrategyVO(String name,String hotelID,HotelStrategy type,List<VIPType> vipKinds,Calendar startTime,Calendar endTime,double discount,
-    		int minRooms,int minSum,int level){
+    		int minRooms,double minSum,int level){
     	this.hotelID=hotelID;
     	this.type=type;
     	this.vipKinds=vipKinds;
@@ -190,11 +190,11 @@ public class HotelStrategyVO {
 	}
 
 
-	public int getMinSum() {
+	public double getMinSum() {
 		return minSum;
 	}
 
-	public void setMinSum(int minSum) {
+	public void setMinSum(double minSum) {
 		this.minSum = minSum;
 	}
 
