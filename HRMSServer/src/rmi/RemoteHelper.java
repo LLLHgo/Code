@@ -24,14 +24,14 @@ import impl.txt.HotelinfoDataServiceTxtImpl;
 import impl.txt.LogDataServiceTxtImpl;
 
 public class RemoteHelper {
-	static final String host = "rmi://localhost:8888/";
+	static final String host = "rmi://localhost:8889/";
 	public RemoteHelper(){
 		initServer();
 	}
 	
 	public void initServer(){
 		try {
-			LocateRegistry.createRegistry(8888);
+			LocateRegistry.createRegistry(8889);
 			
 			ClientDataService client = new ClientDataServiceMySqlImpl();
 			Naming.rebind(host+"ClientService", client);

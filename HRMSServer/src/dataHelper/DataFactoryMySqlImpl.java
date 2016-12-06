@@ -1,12 +1,6 @@
 package dataHelper;
 
 import java.rmi.RemoteException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import Enum.ResultMessage;
 import dataservice.clientdataservice.ClientDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelstaffdataservice.HotelstaffDataService;
@@ -23,7 +17,6 @@ import impl.mysql.OrderDataServiceMySqlImpl;
 import impl.mysql.SitemanagerDataServiceMySqlImpl;
 import impl.mysql.StrategyDataServiceMySqlImpl;
 
-//public class DataFactoryMySqlImpl extends UnicastRemoteObject implements DataFactory{
 public class DataFactoryMySqlImpl extends AdapterSql implements DataFactory{
 	
 	ClientDataService clientDataService;
@@ -34,9 +27,9 @@ public class DataFactoryMySqlImpl extends AdapterSql implements DataFactory{
 	SitemanagerDataService sitemanagerDataService;
 	StrategyDataService strategyDataService;
 
+
 	public DataFactoryMySqlImpl() throws RemoteException {
 		super();
-		//this.conn = DataBaseInit.getConnection();
 		
 		clientDataService=new ClientDataServiceMySqlImpl();
 		hotelstaffDataService=new HotelstaffDataServiceMySqlImpl();
@@ -54,16 +47,16 @@ public class DataFactoryMySqlImpl extends AdapterSql implements DataFactory{
 	 * @return
 	 */
 	// 这里感觉用ResultSet更好诶
-	public ResultMessage getDoResult(PreparedStatement tempPreState){
+	/*public ResultSet getDoResult(String sql){
 		try {
-			if(tempPreState.execute()){
-				return ResultMessage.SUCCESS;
-			}
+			stmt = conn.createStatement();
+			resultSet = stmt.executeQuery(sql);
+			return resultSet;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.FAIL;
-	}
+		return null;
+	}*/
 
 	public ClientDataService getClientDatabase() {
 		// TODO Auto-generated method stub
