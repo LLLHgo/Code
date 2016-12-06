@@ -119,7 +119,6 @@ public class BusinessStrategyPanel extends JPanel{
 					vo.setType(HotelStrategy.COMPANY);
 					vo.setHotelID(hotelID);
 					vo.setDiscount(Double.parseDouble(discount));
-					vo.setCompanyList(companyList);
 					ResultMessage result = controller.updatehotelStrategy(vo);
 					if(result == ResultMessage.SUCCESS){
 						controller.JBStrategyClicked("合作企业客户折扣修改成功");
