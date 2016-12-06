@@ -142,40 +142,17 @@ public class HotelinfoManage{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		String[] temp = {""};
-		return temp;
+		return null;
 	}
 	
 	
 	public boolean addArea(String area) {
-		if(area==null||area.equals("")){
-			return false;
-		}
-		String[] areas = getArea();
-		int flag = 0;
-		for(int i=0;i<areas.length;i++){
-			if(area.equals(areas[i])){
-				flag = 1;
-			}
-		}
-		if(flag == 1){
-			return false;
-		}
-		BufferedWriter bw;
-		String data = "";
 		try {
-			bw = new BufferedWriter(new FileWriter(
-					new File("./src/main/resource/txt/Area.txt"),true));
-			bw.write(","+area);	
-			bw.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		} catch (IOException e) {
+			return data.addArea(area);
+		} catch (RemoteException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 
 	public List<AreaVO> getAreaHotels() {

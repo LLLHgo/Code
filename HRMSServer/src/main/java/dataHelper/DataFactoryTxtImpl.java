@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.logdataservice.LogDataService;
-import impl.mysql.HotelinfoDataServiceImpl;
+import impl.hotelinfo.HotelinfoDataServiceImpl;
 import impl.txt.HotelinfoDataServiceTxtImpl;
 import impl.txt.LogDataServiceTxtImpl;
 

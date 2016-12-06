@@ -1,10 +1,11 @@
-package impl.mysql;
+package impl.hotelinfo;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import dataservice.hotelinfodataservice.HotelinfoDataService;
+import impl.mysql.HotelinfoDataServiceMySqlImpl;
 import impl.txt.HotelinfoDataServiceTxtImpl;
 import po.HotelinfoPO;
 import po.RoominfoPO;

@@ -19,6 +19,7 @@ import Enum.VIPType;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.RoominfoPO;
+import rmi.RemoteHelper;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -30,11 +31,9 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class RoominfoManage{
 	
-	HotelinfoDataService data;
-	
-	public RoominfoManage(){
-		data = new HotelinfoDataService_Stub();
-	}
+	HotelinfoDataService data = RemoteHelper.getInstance().hotelinfoDataService();
+
+//		data = new HotelinfoDataService_Stub();
 	
 	
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
@@ -66,52 +65,22 @@ public class RoominfoManage{
 
 	
 	public String[] getRoomType() {
-		BufferedReader br = null;
-		String data = "";
-		String[] roomtypes = null;
 		try {
-			br = new BufferedReader(new FileReader(new File("./src/main/resource/txt/RoomType.txt")));
-			while((data = br.readLine())!=null)
-			{
-				roomtypes = data.split(",");
-			}
-		} catch (FileNotFoundException e) {
+			return data.getRoomType();
+		} catch (RemoteException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			return null;
 		}
-		return roomtypes;
 	}
 
 	
 	public boolean addRoomType(String type) {
-		if(type==null||type.equals("")){
-			return false;
-		}
-		String[] roomtypes = getRoomType();
-		int flag = 0;
-		for(int i=0;i<roomtypes.length;i++){
-			if(type.equals(roomtypes[i])){
-				flag = 1;
-			}
-		}
-		if(flag == 1){
-			return false;
-		}
-		BufferedWriter bw;
 		try {
-			bw = new BufferedWriter(new FileWriter(
-					new File("./src/main/resource/txt/RoomType.txt"),true));
-			bw.write(","+type);	
-			bw.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		} catch (IOException e) {
+			return data.addRoomType(type);
+		} catch (RemoteException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 	
 

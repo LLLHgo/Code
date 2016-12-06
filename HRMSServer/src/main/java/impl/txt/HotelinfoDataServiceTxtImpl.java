@@ -1,5 +1,12 @@
 package impl.txt;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
@@ -8,7 +15,7 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 
-public class HotelinfoDataServiceTxtImpl{
+public class HotelinfoDataServiceTxtImpl implements HotelinfoDataService{
 
 	public HotelinfoDataServiceTxtImpl() throws RemoteException {
 		super();
@@ -21,28 +28,130 @@ public class HotelinfoDataServiceTxtImpl{
 	}
 
 	public String[] getArea() {
-		// TODO Auto-generated method stub
-		return null;
+		BufferedReader br = null;
+		String data = "";
+		String[] areas = null;
+		try {
+			br = new BufferedReader(new FileReader(new File("./src/main/resource/txt/Area.txt")));
+			while((data = br.readLine())!=null)
+			{
+				areas = data.split(",");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return areas;
 	}
 
 	public boolean addArea(String area) {
-		// TODO Auto-generated method stub
-		return false;
+		if(area==null||area.equals("")){
+			return false;
+		}
+		String[] areas = getArea();
+		int flag = 0;
+		for(int i=0;i<areas.length;i++){
+			if(area.equals(areas[i])){
+				flag = 1;
+			}
+		}
+		if(flag == 1){
+			return false;
+		}
+		BufferedWriter bw;
+		String data = "";
+		try {
+			bw = new BufferedWriter(new FileWriter(
+					new File("./src/main/resource/txt/Area.txt"),true));
+			bw.write(","+area);	
+			bw.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	public String[] getRoomType() {
-		// TODO Auto-generated method stub
-		return null;
+		BufferedReader br = null;
+		String data = "";
+		String[] roomtypes = null;
+		try {
+			br = new BufferedReader(new FileReader(new File("./src/main/resource/txt/RoomType.txt")));
+			while((data = br.readLine())!=null)
+			{
+				roomtypes = data.split(",");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return roomtypes;
 	}
 	
 
 	public boolean addRoomType(String type) {
-		// TODO Auto-generated method stub
-		return false;
+		if(type==null||type.equals("")){
+			return false;
+		}
+		String[] roomtypes = getRoomType();
+		int flag = 0;
+		for(int i=0;i<roomtypes.length;i++){
+			if(type.equals(roomtypes[i])){
+				flag = 1;
+			}
+		}
+		if(flag == 1){
+			return false;
+		}
+		BufferedWriter bw;
+		try {
+			bw = new BufferedWriter(new FileWriter(
+					new File("./src/main/resource/txt/RoomType.txt"),true));
+			bw.write(","+type);	
+			bw.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	public void finish() throws RemoteException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean updatehotelinfo(HotelinfoPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean updateroominfo(RoominfoPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean delete(RoominfoPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
