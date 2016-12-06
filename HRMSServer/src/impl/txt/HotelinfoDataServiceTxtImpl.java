@@ -8,7 +8,7 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 
-public class HotelinfoDataServiceTxtImpl extends UnicastRemoteObject implements HotelinfoDataService{
+public class HotelinfoDataServiceTxtImpl implements HotelinfoDataService{
 
 	public HotelinfoDataServiceTxtImpl() throws RemoteException {
 		super();

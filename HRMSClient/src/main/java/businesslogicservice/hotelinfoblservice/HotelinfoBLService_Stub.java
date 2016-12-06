@@ -238,6 +238,12 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<String> getAvailableRooms(String hotelID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 //	/**
 //	 * 删除酒店策略

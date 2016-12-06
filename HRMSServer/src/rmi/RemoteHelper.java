@@ -14,6 +14,7 @@ import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
 import impl.mysql.ClientDataServiceMySqlImpl;
+import impl.mysql.HotelinfoDataServiceImpl;
 import impl.mysql.HotelstaffDataServiceMySqlImpl;
 import impl.mysql.MarketingDataServiceMySqlImpl;
 import impl.mysql.OrderDataServiceMySqlImpl;
@@ -37,8 +38,8 @@ public class RemoteHelper {
 			
 			HotelstaffDataService hotelstaff = new HotelstaffDataServiceMySqlImpl();
 			Naming.rebind(host+"HotelstaffService", hotelstaff);
-
-			HotelinfoDataService hotelinfo = new HotelinfoDataServiceTxtImpl();
+			
+			HotelinfoDataService hotelinfo = new HotelinfoDataServiceImpl();
 			Naming.rebind(host+"HotelinfoService", hotelinfo);
 		
 			LogDataService log = new LogDataServiceTxtImpl();

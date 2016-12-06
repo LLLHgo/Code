@@ -96,5 +96,10 @@ public interface HotelinfoBLService {
 	 * @return
 	 */
 	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text);
-
+	/**
+	 * 
+	 * @param hotelID
+	 * @return ArrayList<String>
+	 */
+	public  ArrayList<String> getAvailableRooms(String hotelID);
 }

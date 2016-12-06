@@ -15,6 +15,7 @@ import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
 import impl.mysql.ClientDataServiceMySqlImpl;
+import impl.mysql.HotelinfoDataServiceImpl;
 import impl.mysql.HotelinfoDataServiceMySqlImpl;
 import impl.mysql.HotelstaffDataServiceMySqlImpl;
 import impl.mysql.MarketingDataServiceMySqlImpl;
@@ -39,7 +40,7 @@ public class DataFactoryMySqlImpl extends AdapterSql implements DataFactory{
 		
 		clientDataService=new ClientDataServiceMySqlImpl();
 		hotelstaffDataService=new HotelstaffDataServiceMySqlImpl();
-		hotelinfoDataService=new HotelinfoDataServiceMySqlImpl();
+		hotelinfoDataService=new HotelinfoDataServiceImpl();
 		marketingDataService=new MarketingDataServiceMySqlImpl();
 		orderDataService=new OrderDataServiceMySqlImpl();
 		sitemanagerDataService=new SitemanagerDataServiceMySqlImpl();

@@ -217,4 +217,9 @@ public class HotelinfoManage extends HotelinfoAbstract{
 		return areaVOList;
 	}
 
+
+	public  ArrayList<String> getAvailableRooms(String hotelID){
+		return null;
+		//TODO
+	}
 }

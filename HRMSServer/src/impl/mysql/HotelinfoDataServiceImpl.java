@@ -1,14 +1,25 @@
 package impl.mysql;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import dataservice.hotelinfodataservice.HotelinfoDataService;
+import impl.txt.HotelinfoDataServiceTxtImpl;
 import po.HotelinfoPO;
 import po.RoominfoPO;
 
-public class HotelinfoDataServiceMySqlImpl{
+public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements HotelinfoDataService{
+	
+	private static final long serialVersionUID = 1L;
+	HotelinfoDataServiceMySqlImpl mysql = new HotelinfoDataServiceMySqlImpl();
+	HotelinfoDataServiceTxtImpl txt = new HotelinfoDataServiceTxtImpl();
 
+	public HotelinfoDataServiceImpl() throws RemoteException {
+		super();
+	}
+
+	
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
 		
@@ -44,4 +55,5 @@ public class HotelinfoDataServiceMySqlImpl{
 		
 	}
 
+	
 }

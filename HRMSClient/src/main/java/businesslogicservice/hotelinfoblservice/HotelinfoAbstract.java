@@ -127,4 +127,13 @@ public abstract class HotelinfoAbstract implements HotelinfoBLService{
 	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text) {
 		return null;
 	}
+	
+	/**
+	 * 根据酒店ID获得可用的房间类型和数量
+	 * @param hotelID
+	 * @return ArrayList<String>
+	 */
+	public  ArrayList<String> getAvailableRooms(String hotelID){
+		return null;
+	}
 }
