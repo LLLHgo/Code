@@ -49,7 +49,7 @@ public class StrategyPODataTool {
     public static MarketingSpecialPO V2=new MarketingSpecialPO("VIP专属商圈特惠",begin2,end2,"仙林大学城",levels,discounts);
     public static MarketingCreatedPO V3=new MarketingCreatedPO("2017元旦特惠",begin3,end3,0.55,hlist,400,2,1,viplist);
     public static HotelBirthdayPO V11=new HotelBirthdayPO("生日特惠折扣",begin1,end1,"H00000001",0.6);
-    public static HotelCompanyPO V22=new HotelCompanyPO("合作企业特惠",begin2,end2,"H00000001",0.65,clist);
+    public static HotelCompanyPO V22=new HotelCompanyPO("合作企业特惠",begin2,end2,"H00000001",0.65);
     public static HotelCreatedPO V33=new HotelCreatedPO("新增折扣",begin3,end3,"H00000001",0.7,viplist,2,400,3);
     public static HotelOverThreeRoomsPO V44=new HotelOverThreeRoomsPO("超过三间折扣",begin4,end4,"H00000001",0.75,4);
     public static HotelSpecialdayPO V55=new HotelSpecialdayPO("hotel特定时间",begin4,end4,"H00000001",0.8);
