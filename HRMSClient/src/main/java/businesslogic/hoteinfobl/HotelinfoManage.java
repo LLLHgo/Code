@@ -21,6 +21,7 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.HotelinfoPO;
 import po.RoominfoPO;
+import rmi.RemoteHelper;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -33,8 +34,9 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelinfoManage{
 
-	//桩测试
-	HotelinfoDataService data = new HotelinfoDataService_Stub();
+//	//桩测试
+//	HotelinfoDataService data = new HotelinfoDataService_Stub();
+	HotelinfoDataService data = RemoteHelper.getInstance().hotelinfoDataService();
 	HotelinfoPO po;
 	HotelinfoVO vo;
 	
@@ -135,21 +137,13 @@ public class HotelinfoManage{
 	}
 
 	public String[] getArea() {
-		BufferedReader br = null;
-		String data = "";
-		String[] areas = null;
 		try {
-			br = new BufferedReader(new FileReader(new File("./src/main/resource/txt/Area.txt")));
-			while((data = br.readLine())!=null)
-			{
-				areas = data.split(",");
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+			return data.getArea();
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return areas;
+		String[] temp = {""};
+		return temp;
 	}
 	
 	

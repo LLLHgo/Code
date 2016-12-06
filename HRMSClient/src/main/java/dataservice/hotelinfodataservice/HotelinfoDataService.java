@@ -69,7 +69,27 @@ public interface HotelinfoDataService extends Remote{
 	 * @return String
 	 */
 	public String addhotelinfofromsitemanager(HotelinfoPO po) throws RemoteException;
+	/**
+	 * 获得系统内所有商圈名
+	 * @return String[]
+	 */
+	public String[] getArea() throws RemoteException;
+	/**
+	 *添加商圈名 
+	 * @return boolean
+	 */
+	public boolean addArea(String area) throws RemoteException;
 	
+	/**
+	 * 获得系统内所有房间类型
+	 * @return String[]
+	 */
+	public String[] getRoomType() throws RemoteException;
+	/**
+	 *添加房间类型
+	 * @return boolean
+	 */
+	public boolean addRoomType(String type) throws RemoteException;
 	/**
 	 * 结束持久化数据库的使用
 	 * @throws RemoteException

@@ -43,23 +43,23 @@ public interface HotelinfoDataService extends Remote{
 	 * 获得系统内所有商圈名
 	 * @return String[]
 	 */
-	public String[] getArea();
+	public String[] getArea() throws RemoteException;
 	/**
 	 *添加商圈名 
 	 * @return boolean
 	 */
-	public boolean addArea(String area);
+	public boolean addArea(String area) throws RemoteException;
 	
 	/**
 	 * 获得系统内所有房间类型
 	 * @return String[]
 	 */
-	public String[] getRoomType();
+	public String[] getRoomType() throws RemoteException;
 	/**
 	 *添加房间类型
 	 * @return boolean
 	 */
-	public boolean addRoomType(String type);
+	public boolean addRoomType(String type) throws RemoteException;
 	/**
 	 * 删除持久化数据
 	 * @param po

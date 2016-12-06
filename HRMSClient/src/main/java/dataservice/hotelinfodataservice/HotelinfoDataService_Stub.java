@@ -164,5 +164,25 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 			return "H00000002";
 		}
 	}
+	@Override
+	public String[] getArea() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean addArea(String area) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public String[] getRoomType() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean addRoomType(String type) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
