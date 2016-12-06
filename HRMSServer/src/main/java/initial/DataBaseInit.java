@@ -33,16 +33,16 @@ public class DataBaseInit {
 			// 处理 Class.forName 错误
 			e.printStackTrace();
 		}finally{
-			// 关闭资源
-			/*try{
+			//关闭资源
+			try{
 				if(stmt!=null) stmt.close();
 			}catch(SQLException se2){
 			}// 什么都不做
-			/*try{
+			try{
 				if(conn!=null) conn.close();
 			}catch(SQLException se){
 				se.printStackTrace();
-			}*/
+			}
 		}
 		System.out.println("Goodbye!");
 	}
