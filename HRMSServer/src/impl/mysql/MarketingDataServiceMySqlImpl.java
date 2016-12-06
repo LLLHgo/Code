@@ -29,8 +29,8 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 	}
 
 	public boolean checkAccount(String ID, String password) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println(ID+"   "+password);
+		return true;
 	}
 
 
