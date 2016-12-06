@@ -12,6 +12,9 @@ import businesslogicservice.strategyblservice.StrategyBLService;
 import dataservice.strategydataservice.StrategyDataService;
 import dataservice.strategydataservice.StrategyDataService_Stub;
 import po.StrategyPO.HotelStrategyPO;
+import po.StrategyPO.MarketingCreatedPO;
+import po.StrategyPO.MarketingPeriodPO;
+import po.StrategyPO.MarketingSpecialPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
 import vo.clientVO.ClientVO;
@@ -26,12 +29,35 @@ public class StrategyManage implements StrategyBLService{
 	private StrategyDataService strategyDataService=new StrategyDataService_Stub();
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
-
-		return null;//null、、this.strategyDataService.addMarketingStrategy(po);
+		MarketingStrategyPO po = null;
+		if(vo.getType().equals(MarketingStrategy.PERIOD))
+			po=new MarketingPeriodPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getDiscount());
+		else if(vo.getType().equals(MarketingStrategy.VIPSPECIAL))
+			po=new MarketingSpecialPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getBusinessDistrict(),
+					vo.getLevels(),vo.getDiscounts());
+		else if(vo.getType().equals(MarketingStrategy.CREATED))
+			po=new MarketingCreatedPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getDiscount(),
+					vo.getHotels(),vo.getMinSum(),vo.getMinRooms(),vo.getMinLevel(),vo.getVipKinds());
+		try {
+			if(this.strategyDataService.addMarketingStrategy(po))
+				return ResultMessage.SUCCESS;
+			else
+				return ResultMessage.FAIL;
+		} catch (RemoteException e) {
+			return ResultMessage.FAIL;
+		}
 	}
 
 	@Override
 	public List<MarketingStrategyVO> getMarketingStrategy(String id) {
+		List<StrategyPO> po;
+		try {
+			po=this.strategyDataService.getMarketingStrategy();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return null;
 	}
 
@@ -99,25 +125,25 @@ public class StrategyManage implements StrategyBLService{
 				}
 			}else if(strt.getMakerType().equals(StrategyMaker.HOTEL)){//该策略是酒店工作人员制定的
 				if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.BIRTHDAY)){//生日会员专属特惠
-					tem=((HotelBirthday) strategy[3]).calDis(strt,clientVO,hotelInfoVO.getName());
+					tem=((HotelBirthday) strategy[3]).calDis(strt,clientVO,hotelInfoVO.getHotelID());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.COMPANY)){//企业会员专属折扣
-					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getName(),hotelInfoVO.getCompany());
+					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getHotelID(),hotelInfoVO.getCompany());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.SPECIALDAY)){//特定日期专属折扣
-					tem=((HotelSpecialday) strategy[5]).calDis(strt,hotelInfoVO.getName());
+					tem=((HotelSpecialday) strategy[5]).calDis(strt,hotelInfoVO.getHotelID());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.OVERTHREEROOMS)){//超过或等于三间
-					tem=((HotelOverThreeRooms) strategy[6]).calDis(strt,hotelInfoVO.getName(),num);
+					tem=((HotelOverThreeRooms) strategy[6]).calDis(strt,hotelInfoVO.getHotelID(),num);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());

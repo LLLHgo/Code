@@ -9,17 +9,23 @@ import vo.clientVO.ClientVO;
 
 public class MarketingCreated extends Strategy{
 
-	public double calDis(StrategyPO strt, ClientVO clientVO, String hotel,int minRooms,double minSum) {
+	public double calDis(StrategyPO strt, ClientVO clientvo, String hotel,int minRooms,double minSum) {
 		MarketingCreatedPO po=(MarketingCreatedPO) strt;
 		if(super.isavailable(strt.getStartTime(), strt.getEndTime())&&minRooms>=po.getMinRooms()&&
-				minSum>=po.getMinSum()&&clientVO.getLevel()>=po.getLevels()){
+				minSum>=po.getMinSum()&&clientvo.getLevel()>=po.getLevels()){
 			//时间,最少房间数,最少消费金额,最低会员等级
 			List<VIPType> viptypes=po.getViptypes();
 			boolean isVIP=false,isArea=false;
-			for(VIPType vip:viptypes){//该用户是否为某种会员
-				if(vip.equals(clientVO.getType())){
-					isVIP=true;
-					break;
+			if(viptypes.size()==0)
+				isVIP=true;
+			else if(viptypes.size()>0&&clientvo.getType()==null)
+				return 1;
+			else if(viptypes.size()>0&&clientvo.getType()!=null){
+				for(VIPType vip:viptypes){//该用户是否为某种会员
+					if(vip.equals(clientvo.getType())){
+						isVIP=true;
+						break;
+					}
 				}
 			}
 			for(String area:po.getHotels()){

@@ -10,9 +10,9 @@ public class HotelCompanyPO extends HotelStrategyPO{
 
 	private VIPType viptype;
 	public HotelCompanyPO(String name, Calendar startTime, Calendar endTime,String hotelID,
-			double discount,VIPType viptype,ArrayList<String> companys) {
+			double discount,ArrayList<String> companys) {
 		super(name, startTime, endTime,HotelStrategy.COMPANY,hotelID,discount);
-		this.setViptype(viptype);
+		this.setViptype(VIPType.ENTERPRISEVIP);
 
 	}
 

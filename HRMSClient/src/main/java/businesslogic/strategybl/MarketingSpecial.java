@@ -11,7 +11,7 @@ public class MarketingSpecial extends Strategy {
 	public double calDis(StrategyPO strt, ClientVO clientvo,HotelinfoVO hotelInfoVO) {
 		double res=1;
 		if(super.isavailable(strt.getStartTime(),strt.getEndTime())&&
-				hotelInfoVO.getName().equals(((MarketingSpecialPO) strt).getBusinessDistrict())){
+				hotelInfoVO.getArea().equals(((MarketingSpecialPO) strt).getBusinessDistrict())){
 			int[] levels=((MarketingSpecialPO) strt).getLevels();
 			double[] discounts=((MarketingSpecialPO) strt).getDiscounts();
 			for(int i=0;i<levels.length;i++){
