@@ -8,17 +8,6 @@ import po.LevelPO;
 import po.MarketingPO;
 
 public class MarketingDataService_Stub implements MarketingDataService{
-    /**
-	 * 增加LevelPO
-	 * @param po
-	 * @return 增加是否成功
-	 */
-    public boolean addLevel(LevelPO po) throws RemoteException {
-	    if(po!=null)
-		    return true;
-	    else
-		    return false;
-    }
 
     /**
      * 返回已制定的Level信息列表
@@ -30,19 +19,6 @@ public class MarketingDataService_Stub implements MarketingDataService{
 		List<LevelPO> list=new ArrayList<LevelPO>();
 		list.add(po);
 		return list;
-	}
-
-    /**
-     * 删除已制定的Level信息
-     * @param po
-     * @return 返回是否删除成功
-     * @throws RemoteException
-     */
-    public boolean deleteLevel(LevelPO po) throws RemoteException {
-    	if(po!=null)
-		    return true;
-	    else
-		    return false;
 	}
 
     /**
@@ -63,7 +39,7 @@ public class MarketingDataService_Stub implements MarketingDataService{
      * @return 返回是否更新成功
      * @throws RemoteException
      */
-    public boolean updateAndAdd(MarketingPO po) throws RemoteException {
+    public boolean MarketingAccountUpdate(MarketingPO po) throws RemoteException {
     	if(po!=null)
 		    return true;
 	    else
@@ -76,10 +52,36 @@ public class MarketingDataService_Stub implements MarketingDataService{
      * @return 返回是否删除成功
      * @throws RemoteException
      */
-	public boolean delete(MarketingPO po) throws RemoteException {
+	public boolean MarketingAccountDelete(MarketingPO po) throws RemoteException {
     	if(po!=null)
     		return true;
 		else
 		    return false;
 	}
+
+	/**
+	 *
+	 */
+	public boolean checkAccount(String ID, String password) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	/**
+	 *
+	 */
+	public boolean updateLevel(List<LevelPO> pos) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	/**
+	 *
+	 */
+	public boolean MarketingAccountAdd(MarketingPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

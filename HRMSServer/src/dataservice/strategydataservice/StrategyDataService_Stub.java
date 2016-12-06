@@ -19,7 +19,7 @@ public class StrategyDataService_Stub implements StrategyDataService{
 		return null;
 	}
 
-	public boolean deleteMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
+	public boolean deleteMarketingStrategy(String marketingStrategy) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -33,6 +33,7 @@ public class StrategyDataService_Stub implements StrategyDataService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 
 

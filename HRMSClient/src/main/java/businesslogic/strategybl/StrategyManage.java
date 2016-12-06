@@ -152,7 +152,7 @@ public class StrategyManage implements StrategyBLService{
 						strategyUsed.add(strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.COMPANY)){//企业会员专属折扣
-					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getHotelID());
+					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getHotelID(),hotelInfoVO.getCompany());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
@@ -215,7 +215,7 @@ public class StrategyManage implements StrategyBLService{
 		if(vo.getType().equals(HotelStrategy.BIRTHDAY))
 			po=new HotelBirthdayPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getHotelID(),vo.getDiscount());
 		else if(vo.getType().equals(HotelStrategy.COMPANY))
-			po=new HotelCompanyPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getHotelID(),vo.getDiscount(),vo.getCompanyList());
+			po=new HotelCompanyPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getHotelID(),vo.getDiscount());
 		else if(vo.getType().equals(HotelStrategy.SPECIALDAY))
 			po=new HotelSpecialdayPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getHotelID(),vo.getDiscount());
 		else if(vo.getType().equals(HotelStrategy.OVERTHREEROOMS))
@@ -230,7 +230,7 @@ public class StrategyManage implements StrategyBLService{
 		if(po.getHotelStrategy().equals(HotelStrategy.BIRTHDAY))
 			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.BIRTHDAY,((HotelBirthdayPO) po).getViptype(),po.getStartTime(),po.getEndTime(),po.getDiscount());
 		else if(po.getHotelStrategy().equals(HotelStrategy.COMPANY))
-			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),((HotelCompanyPO) po).getCompanys(),HotelStrategy.COMPANY,((HotelCompanyPO) po).getViptype(),po.getStartTime(),po.getEndTime(),po.getDiscount());
+			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.COMPANY,((HotelCompanyPO) po).getViptype(),po.getStartTime(),po.getEndTime(),po.getDiscount());
 		else if(po.getHotelStrategy().equals(HotelStrategy.SPECIALDAY))
 			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.SPECIALDAY,po.getStartTime(),po.getEndTime(),po.getDiscount());
 		else if(po.getHotelStrategy().equals(HotelStrategy.OVERTHREEROOMS))

@@ -8,7 +8,7 @@ import po.MarketingPO;
 
 public class MarketingDataService_Driver {
     public void drive(MarketingDataService marketingDataService) throws RemoteException{
-    	//在数据库中增加一个Level等级信息
+    	/*//在数据库中增加一个Level等级信息
     	LevelPO po=new LevelPO(0,"铜牌",0,0);
     	boolean addLevelBool=marketingDataService.addLevel(po);
     	if(addLevelBool)System.out.println("增加Level信息成功");
@@ -31,7 +31,7 @@ public class MarketingDataService_Driver {
 
     	//删除网站营销人员信息
     	boolean deleteBool=marketingDataService.delete(Mpo);
-    	if(deleteBool)System.out.println("删除网站营销人员信息成功");
+    	if(deleteBool)System.out.println("删除网站营销人员信息成功");*/
 
     }
 

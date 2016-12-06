@@ -1,6 +1,5 @@
 package po.StrategyPO;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import Enum.HotelStrategy;
@@ -9,12 +8,10 @@ import Enum.VIPType;
 public class HotelCompanyPO extends HotelStrategyPO{
 
 	private VIPType viptype;
-	private ArrayList<String> companys;
 	public HotelCompanyPO(String name, Calendar startTime, Calendar endTime,String hotelID,
-			double discount,ArrayList<String> companys) {
+			double discount) {
 		super(name, startTime, endTime,HotelStrategy.COMPANY,hotelID,discount);
 		this.setViptype(VIPType.ENTERPRISEVIP);
-		this.setCompanys(companys);
 	}
 
 	public VIPType getViptype() {
@@ -24,11 +21,5 @@ public class HotelCompanyPO extends HotelStrategyPO{
 		this.viptype = viptype;
 	}
 
-	public ArrayList<String> getCompanys() {
-		return companys;
-	}
 
-	public void setCompanys(ArrayList<String> companys) {
-		this.companys = companys;
-	}
 }

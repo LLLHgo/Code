@@ -18,38 +18,41 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public boolean addLevel(LevelPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
 	public List<LevelPO> findAllLevel() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	public boolean deleteLevel(LevelPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
 	public MarketingPO getInfo(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	public boolean updateAndAdd(MarketingPO po) throws RemoteException {
+	public boolean checkAccount(String ID, String password) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 
-	public boolean delete(MarketingPO po) throws RemoteException {
+	public boolean updateLevel(List<LevelPO> pos) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public boolean MarketingAccountUpdate(MarketingPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public boolean MarketingAccountAdd(MarketingPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public boolean MarketingAccountDelete(MarketingPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -10,12 +10,12 @@ import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
 
 public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements StrategyDataService{
-	private static final long serialVersionUID = 1L;
-
 	public StrategyDataServiceMySqlImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	private static final long serialVersionUID = 1L;
 
 	public boolean addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -27,7 +27,7 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	public boolean deleteMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
+	public boolean deleteMarketingStrategy(String marketingStrategy) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -41,6 +41,7 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 
 }
