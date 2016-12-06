@@ -5,8 +5,10 @@ public class LevelPO {
     private int level;
     //等级名称
     private String name;
-    //从上一等级上升到此等级所需的信用值
-    private int creditNeeded;
+    //上升到该等级所需的信用值
+    private double creditNeeded;
+    //该等级享受的折扣
+    private double discount;
 
     /**
      * LevelVO的构造函数
@@ -14,10 +16,11 @@ public class LevelPO {
      * @param name
      * @param creditNeeded
      */
-    public LevelPO(int level,String name,int creditNeeded){
+    public LevelPO(int level,String name,double creditNeeded,double discount){
     	this.setLevel(level);
     	this.setName(name);
     	this.setCreditNeeded(creditNeeded);
+    	this.discount=discount;
     }
 	public int getLevel() {
 		return level;
@@ -31,10 +34,16 @@ public class LevelPO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCreditNeeded() {
+	public double getCreditNeeded() {
 		return creditNeeded;
 	}
-	public void setCreditNeeded(int creditNeeded) {
+	public void setCreditNeeded(double creditNeeded) {
 		this.creditNeeded = creditNeeded;
+	}
+	public double getDiscount() {
+		return discount;
+	}
+	public void setDiscount(double discount) {
+		this.discount = discount;
 	}
 }

@@ -26,7 +26,7 @@ public class MarketingDataService_Stub implements MarketingDataService{
      * @throws RemoteException
      */
     public List<LevelPO> findAllLevel() throws RemoteException {
-    	LevelPO po=new LevelPO(1,"金牌",2000);
+    	LevelPO po=new LevelPO(1,"金牌",2000,0);
 		List<LevelPO> list=new ArrayList<LevelPO>();
 		list.add(po);
 		return list;

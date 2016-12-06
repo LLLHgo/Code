@@ -9,7 +9,7 @@ import po.MarketingPO;
 public class MarketingDataService_Driver {
     public void drive(MarketingDataService marketingDataService) throws RemoteException{
     	//在数据库中增加一个Level等级信息
-    	LevelPO po=new LevelPO(0,"铜牌",0);
+    	LevelPO po=new LevelPO(0,"铜牌",0,0);
     	boolean addLevelBool=marketingDataService.addLevel(po);
     	if(addLevelBool)System.out.println("增加Level信息成功");
 
