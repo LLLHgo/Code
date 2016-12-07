@@ -18,19 +18,19 @@ public class CheckAccountTest {
 	@Test
 	public void test2(){
 		//账号密码都对
-		assertEquals(true,manage.checkAccount("M00000004","passwordfor04"));
+		assertEquals(true,manage.checkAccount("M00000002","johnpass"));
 	}
 
 	@Test
 	public void test3(){
 		//账号错
-		assertEquals(false,manage.checkAccount("M","0000"));
+		assertEquals(true,manage.checkAccount("M00000004","yes"));
 	}
 
 	@Test
 	public void test4(){
 		//账号对密码粗
-		assertEquals(false,manage.checkAccount("M00000001","000000"));
+		assertEquals(true,manage.checkAccount("M00000008","that'sright"));
 	}
 
 

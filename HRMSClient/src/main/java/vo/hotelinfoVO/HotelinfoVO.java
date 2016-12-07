@@ -6,7 +6,7 @@ import Enum.Star;
 
 public class HotelinfoVO {
 	//酒店名称
-	private String name="name";
+	private String name;
 	//酒店地址
 	private String address;
 	//酒店所在商圈

@@ -1,9 +1,11 @@
 package po;
 
+import java.io.Serializable;
+
 import Enum.RoomState;
 
-public class RoominfoPO {
-
+public class RoominfoPO implements Serializable{
+	private static final long serialVersionUID = 1L;
 		String type;
 	String roomNum;
 	double price;

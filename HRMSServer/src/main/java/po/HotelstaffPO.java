@@ -1,6 +1,9 @@
 package po;
 
-public class HotelstaffPO {
+import java.io.Serializable;
+
+public class HotelstaffPO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	String hotelID;
 	String password;
 	//酒店工作人员电话，用于网站工作人员与酒店工作人员联系（不同于酒店电话）
@@ -10,9 +13,10 @@ public class HotelstaffPO {
 		
 	}
 	
-	public HotelstaffPO(String hotelID,String password){
+	public HotelstaffPO(String hotelID,String password,String tel){
 		this.hotelID = hotelID;
 		this.password = password;
+		this.tel = tel;
 	}
 
 	public String getTel() {

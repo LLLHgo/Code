@@ -10,12 +10,19 @@ import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.marketingdataservice.MarketingDataService_Stub;
 import po.LevelPO;
 import po.MarketingPO;
+import rmi.RemoteHelper;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 
 public class MarketingManage implements MarketingBLService{
 
-	public MarketingDataService marketingDataService=new MarketingDataService_Stub();
+	public MarketingDataService marketingDataService;
+
+	public MarketingManage(){
+		RemoteHelper helper=RemoteHelper.getInstance();
+		marketingDataService=helper.marketingDataService();
+	}
+
 
 	@Override
 	public ResultMessage updateLevel(List<LevelVO> vos) {
@@ -76,6 +83,7 @@ public class MarketingManage implements MarketingBLService{
 				return false;
 			}
 		} catch (RemoteException e) {//检查用户登录信息出故障
+			e.printStackTrace();
 			return false;
 		}
 	}

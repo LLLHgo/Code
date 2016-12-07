@@ -35,7 +35,7 @@ public class RemoteHelper {
 	}
 	
 	public void init(){
-		String host = "rmi://127.0.0.1:8888/";
+		String host = "rmi://localhost:8888/";
 		try {
 			clientService = (ClientDataService) Naming.lookup(host+"ClientService");
 			hotelstaffService = (HotelstaffDataService) Naming.lookup(host+"HotelstaffService");
@@ -53,35 +53,40 @@ public class RemoteHelper {
 	}
 	
 	public SitemanagerDataService getSitemanagerDataService(){
-		return (SitemanagerDataService)remote;
+		return siteManagerService;
 	}
 	
 	public OrderDataService getOrderDataService(){
-		return (OrderDataService)remote;
+		return orderService;
 	}
 	
+<<<<<<< HEAD
 	public LogDataService getLogDataService(){
 		return (LogDataService)remote;
+=======
+	public LogDataService logDataService(){
+		return logService;
+>>>>>>> origin/master
 	} 
 	
 	public ClientDataService clientDataService(){
-		return (ClientDataService)remote;
+		return clientService;
 	}
 	
 	public HotelstaffDataService hotelstaffDataService(){
-		return (HotelstaffDataService)remote;
+		return hotelstaffService;
 	}
 	
 	public HotelinfoDataService hotelinfoDataService(){
-		return (HotelinfoDataService)remote;
+		return hotelinfoService;
 	}
 	
 	public MarketingDataService marketingDataService(){
-		return (MarketingDataService)remote;
+		return marketingService;
 	}
 	
 	public StrategyDataService strategyDataService(){
-		return (StrategyDataService)remote;
+		return strategyService;
 	}
 	
 	

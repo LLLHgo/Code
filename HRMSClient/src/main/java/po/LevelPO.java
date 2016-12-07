@@ -1,6 +1,9 @@
 package po;
 
-public class LevelPO {
+import java.io.Serializable;
+
+public class LevelPO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	//等级层次
     private int level;
     //等级名称

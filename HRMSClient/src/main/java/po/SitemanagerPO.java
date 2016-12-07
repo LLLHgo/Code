@@ -1,7 +1,10 @@
 package po;
 
-public class SitemanagerPO {
-	    // 网站管理人员帐号
+import java.io.Serializable;
+
+public class SitemanagerPO implements Serializable{
+	private static final long serialVersionUID = 1L;
+		// 网站管理人员帐号
 		private String sitemanagerId;
 		// 网站管理人员手机号
 		private String servicePhoneNumber;

@@ -25,7 +25,10 @@ public class ClientRunner {
 	
 	private void linkToServer() throws MalformedURLException, NotBoundException {
 		remoteHelper = RemoteHelper.getInstance();
+<<<<<<< HEAD
 		//remoteHelper.init();
+=======
+>>>>>>> origin/master
 		System.out.println("linked");
 	}
 	private void initGUI() {

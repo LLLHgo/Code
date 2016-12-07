@@ -1,6 +1,9 @@
 package po;
 
-public class LogPO {
+import java.io.Serializable;
+
+public class LogPO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	// 日志信息
 	private String logInfo;
 	

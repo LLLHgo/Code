@@ -12,24 +12,26 @@ public interface HotelstaffDataService extends Remote{
 	 */
 	public void init() throws RemoteException;
 	/**
-	 *返回酒店工作人员信息
+	 * 增
+	 * @param po
+	 * @return boolean
+	 * @throws RemoteException
+	 */
+	public boolean insert(HotelstaffPO po) throws RemoteException;  
+	/**
+	 *查
 	 * @param hotelStaffID
-	 * @return
+	 * @return HotelstaffPO
 	 */
-	public HotelstaffPO findBasicInfo(String hotelStaffID) throws RemoteException;
+	public HotelstaffPO find(String hotelStaffID)throws RemoteException;
 	/**
-	 * 更新密码
+	 * 改
 	 * @param po
 	 * @throws RemoteException
+	 * @return boolean
 	 */
-	public boolean updatePassword(HotelstaffPO po) throws RemoteException;
-	/**
-	 * 检查酒店工作人员账户密码
-	 * @param po
-	 * @return
-	 * @throws RemoteException
-	 */
-	public boolean checkAccount(HotelstaffPO po) throws RemoteException;
+	public boolean update(HotelstaffPO po) throws RemoteException;
+
 	/**
 	 * 结束持久化数据库的使用
 	 * @throws RemoteException
