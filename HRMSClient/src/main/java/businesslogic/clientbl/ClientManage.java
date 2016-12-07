@@ -12,6 +12,7 @@ import businesslogicservice.clientblservice.ClientBLService;
 import dataservice.clientdataservice.ClientDataService;
 import datatool.ClientDataTool;
 import po.ClientPO;
+import rmi.RemoteHelper;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
@@ -114,12 +115,18 @@ public class ClientManage implements ClientBLService{
 	}
 
 	@Override
-	public boolean checkAccount(String clientID, String password) {
+	public boolean checkAccount(String clientID, String password)  {
 		// TODO Auto-generated method stub
 		//if(clientID!=null&&password!=null)
-		if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
-		return true;
-		else return false;
+		//if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
+		try{
+		if(RemoteHelper.getInstance().clientDataService().checkAccount("C","0"))
+			return true;
+		}catch(RemoteException e){
+			e.printStackTrace();
+			
+		}
+		 return false;
 	}
 
 

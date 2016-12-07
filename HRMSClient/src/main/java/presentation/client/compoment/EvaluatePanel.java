@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,6 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import datatool.OrderDataTool;
+import presentation.client.controller.EvaluatePanelController;
+import vo.hotelinfoVO.HotelinfoVO;
+import vo.orderVO.OrderVO;
 
 
 public class EvaluatePanel extends JPanel{
@@ -22,9 +26,13 @@ public class EvaluatePanel extends JPanel{
 	private JTextField searchField;
 	private HotelListPane hlp;
 	private JPanel Panel;
-	public EvaluatePanel(JFrame frame){
+	private EvaluatePanelController controller;
+	private String id;
+	public EvaluatePanel(JFrame frame,EvaluatePanelController controller,String id){
+		this.controller=controller;
+		this.id=id;
 		Panel=new JPanel();
-		hlp=new HotelListPane();
+		hlp=new HotelListPane(controller.findClientFinOrderList(id));
 		frame.add(hlp);
 	imageIcon = new ImageIcon("image/searchPanel.png");
 	searchField=new JTextField();
@@ -59,10 +67,10 @@ public class EvaluatePanel extends JPanel{
 	class HotelListPane extends JScrollPane{
 
 		private JScrollPane scrollpanel;
-		public HotelListPane(){
+		public HotelListPane(ArrayList<OrderVO> list){
 			super(Panel);
 			Panel.setLayout(null);
-		    Panel.setPreferredSize(new Dimension(600,600));
+		    Panel.setPreferredSize(new Dimension(600,100*list.size()));
 		    Panel.setBounds(0,0,1000,4000);
 		    Panel.setOpaque(false);
 
@@ -73,12 +81,12 @@ public class EvaluatePanel extends JPanel{
 		   this.getVerticalScrollBar().setVisible(false);
 		   this.setBorder(new EmptyBorder(0,0,0,0));
 		   this.setVisible(false);
-		    for(int i=0;i<6;i++){
-		    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,OrderDataTool.orderVO1);
-		    	 //p.setBounds(0,i*100,600,100);
+		    for(int i=0;i<list.size();i++){
+		    	OrderVO order=list.get(i);
+		    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order);
 		    	p.vb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
-		    			new OrderDetailFrame(OrderDataTool.orderVO1);
+		    			new OrderDetailFrame(order);
 		    		}
 		    		});
 		    	 Panel.add(p);

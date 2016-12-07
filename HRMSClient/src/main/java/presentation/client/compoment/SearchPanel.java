@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import datatool.HotelinfoDataTool;
+import presentation.client.controller.SearchPanelController;
+import vo.hotelinfoVO.HotelinfoVO;
 
 public class SearchPanel extends JPanel{
 	private ImageIcon imageIcon = null;
@@ -23,12 +26,14 @@ public class SearchPanel extends JPanel{
 	private JPanel Panel;
 	private JPanel temp;
 	private JFrame frame;
-	public SearchPanel(JFrame frame){
+	private SearchPanelController controller;
+	public SearchPanel(JFrame frame,SearchPanelController controller){
 
 		Panel=new JPanel();
 		this.frame=frame;
-		hslp=new HotelSearchListPane(frame);
+		hslp=new HotelSearchListPane(frame,null);
 		frame.add(hslp);
+
 		imageIcon = new ImageIcon("image/searchPanel.png");
 		searchField=new JTextField();
 		searchButton=new SearchButton();
@@ -59,6 +64,9 @@ public class SearchPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			String info=searchField.getText();
+			frame.remove(hslp);
+			hslp=new HotelSearchListPane(frame,controller.getBasicinfoList(info));
+			frame.add(hslp);
 			hslp.setVisible(true);
 		}
 
@@ -66,11 +74,12 @@ public class SearchPanel extends JPanel{
 	private class HotelSearchListPane extends JScrollPane{
 		private JFrame frame;
 		private JScrollPane scrollpanel;
-		public HotelSearchListPane(JFrame frame){
+		public HotelSearchListPane(JFrame frame,ArrayList<HotelinfoVO> list){
 			super(Panel);
 			this.frame=frame;
+			if(list!=null){
 			Panel.setLayout(null);
-		    Panel.setPreferredSize(new Dimension(600,600));
+		    Panel.setPreferredSize(new Dimension(600,list.size()));
 		    Panel.setBounds(0,0,1000,4000);
 		    Panel.setOpaque(false);
 
@@ -81,18 +90,20 @@ public class SearchPanel extends JPanel{
 		   this.getVerticalScrollBar().setVisible(false);
 		   this.setBorder(new EmptyBorder(0,0,0,0));
 		   this.setVisible(false);
-		    for(int i=0;i<6;i++){
-		    	HotelSearchItemPanel p=new HotelSearchItemPanel(0, i*100,HotelinfoDataTool.hotelinfoVO1);
+		    for(int i=0;i<list.size();i++){
+		    	HotelinfoVO vo=list.get(i);
+		    	HotelSearchItemPanel p=new HotelSearchItemPanel(0, i*100,vo);
 		    	 //p.setBounds(0,i*100,600,100);
 		    	p.vb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
-		    			new HotelDetailFrame(HotelinfoDataTool.hotelinfoVO1);
+		    			new HotelDetailFrame(vo);
 		    		}
 		    		});
 		    	 Panel.add(p);
 		    }
 		    this.getVerticalScrollBar().setVisible(false);
 		    scrollpanel=this;
+		}
 		}
 	}
 	@Override

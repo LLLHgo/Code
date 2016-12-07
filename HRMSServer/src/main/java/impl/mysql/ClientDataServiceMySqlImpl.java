@@ -17,10 +17,10 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public File findCreditRecord(String clientID) throws RemoteException {
@@ -45,6 +45,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 
 	public boolean checkAccount(String client_id, String password) throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println("OK!");
 		return false;
 	}
 
