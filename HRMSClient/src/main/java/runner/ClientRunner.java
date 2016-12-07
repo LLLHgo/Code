@@ -36,7 +36,7 @@ public class ClientRunner {
 	public void test(){
 		SitemanagerPO po=new SitemanagerPO("S00000001","025-88888882","HRMS");
 		try {
-			System.out.println(remoteHelper.getSitemanagerDataService().SitemanagerAccountUpdate(po));
+			System.out.println(remoteHelper.getSitemanagerDataService().getAccount().getSitemanagerId());
 			//System.out.println(remoteHelper.getIOService().writeFile("2", "admin", "testFile"));
 		} catch (RemoteException e) {
 			e.printStackTrace();

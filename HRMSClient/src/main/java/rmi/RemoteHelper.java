@@ -61,7 +61,7 @@ public class RemoteHelper {
 	}
 	
 	public LogDataService getLogDataService(){
-		return (LogDataService)remote;
+		return logService;
 	}
 	
 	public LogDataService logDataService(){

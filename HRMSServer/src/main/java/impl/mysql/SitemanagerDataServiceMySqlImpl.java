@@ -39,6 +39,9 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
     	
     	sql="SELECT id, tel, password FROM sitemanager_account";
     	try {
+    		if(conn==null){
+    			System.out.println("null!");
+    		}
 			stmt = conn.createStatement();
 			resultSet = stmt.executeQuery(sql);
 			while(resultSet.next()){
@@ -62,6 +65,8 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 		int row1=0;
 		int row2=0;
 		 try {
+			 if(conn==null)
+				 System.out.println("!");
 			preStatement = conn.prepareStatement(sql1);
 			preStatement.setObject(1, sitemanagerPO.getSitemanagerPhoneNumber());
 			preStatement.setObject(2, sitemanagerPO.getSitemanagerId());
