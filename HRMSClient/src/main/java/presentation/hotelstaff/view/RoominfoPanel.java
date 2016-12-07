@@ -214,9 +214,9 @@ public class RoominfoPanel extends JPanel{
 			price = jtaPrice.getText();
 			state = jtaPrice.getText();
 			if(state.equals("Unusable")){
-				controller.updateroominfo(new RoominfoVO(type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
+				controller.updateroominfo(new RoominfoVO(hotelID,type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
 			}else if(state.equals("Unusable")){
-				controller.updateroominfo(new RoominfoVO(type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
+				controller.updateroominfo(new RoominfoVO(hotelID,type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
 			}else{
 				//TODO
 			}

@@ -6,7 +6,8 @@ import Enum.RoomState;
 
 public class RoominfoPO implements Serializable{
 	private static final long serialVersionUID = 1L;
-		String type;
+	String hotelID;
+	String type;
 	String roomNum;
 	double price;
 	RoomState roomState;
@@ -15,8 +16,9 @@ public class RoominfoPO implements Serializable{
 		
 	}
 	
-	public RoominfoPO(String type, String roomNum, double price, RoomState roomState) {
+	public RoominfoPO(String hotelID,String type, String roomNum, double price, RoomState roomState) {
 		super();
+		this.hotelID = hotelID;
 		this.type = type;
 		this.roomNum = roomNum;
 		this.price = price;
@@ -46,6 +48,17 @@ public class RoominfoPO implements Serializable{
 	public void setRoomState(RoomState roomState) {
 		this.roomState = roomState;
 	}
-	
+
+	public String getHotelID() {
+		return hotelID;
+	}
+
+	public void setHotelID(String hotelID) {
+		this.hotelID = hotelID;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }

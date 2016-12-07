@@ -3,6 +3,8 @@ package vo.hotelinfoVO;
 import Enum.RoomState;
 
 public class RoominfoVO {
+	//酒店id
+	String hotelID;
 	//房间类型
 	String type;
 	//房间号
@@ -16,13 +18,30 @@ public class RoominfoVO {
 		
 	}
 	
-	public RoominfoVO(String type, String roomID, double price, RoomState roomState) {
+	public RoominfoVO(String hotelID,String type, String roomID, double price, RoomState roomState) {
 		super();
+		this.hotelID = hotelID;
 		this.type = type;
 		this.roomID = roomID;
 		this.price = price;
 		this.roomState = roomState;
 	}
+	public String getHotelID() {
+		return hotelID;
+	}
+
+	public void setHotelID(String hotelID) {
+		this.hotelID = hotelID;
+	}
+
+	public String getRoomID() {
+		return roomID;
+	}
+
+	public void setRoomID(String roomID) {
+		this.roomID = roomID;
+	}
+
 	public String getType() {
 		return type;
 	}

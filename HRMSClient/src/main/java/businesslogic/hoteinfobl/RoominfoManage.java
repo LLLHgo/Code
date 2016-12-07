@@ -50,7 +50,7 @@ public class RoominfoManage{
 	}
 
 	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
-		RoominfoPO po = new RoominfoPO(
+		RoominfoPO po = new RoominfoPO(vo.getHotelID(),
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
 		boolean result = false;
 		try {
@@ -104,7 +104,7 @@ public class RoominfoManage{
 	private RoominfoVO po2vo(RoominfoPO po){
 		RoominfoVO vo;
 		try{
-			vo = new RoominfoVO(po.getType(),po.getRoomNum(),
+			vo = new RoominfoVO(po.getHotelID(),po.getType(),po.getRoomNum(),
 					po.getPrice(),po.getRoomState());
 		}catch(NullPointerException e){
 			e.printStackTrace();

@@ -18,7 +18,7 @@ public class CalculatePriceTester {
 	private StrategyManage manage=new StrategyManage();
 	private ClientVO clientvo=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
 			VIPType.ENTERPRISEVIP,2,"1996-02-29","南京大学",100,new ArrayList<String>());
-	private RoominfoVO roominfo1 = new RoominfoVO("标准间","8304",200, RoomState.Usable);
+	private RoominfoVO roominfo1 = new RoominfoVO("H00000001","标准间","8304",200, RoomState.Usable);
 	public  HotelinfoVO hotelinfoVO1 = new HotelinfoVO("凯撒大酒店","BeijingDongRode","仙林大学城",
 			"12345678",new ArrayList<RoominfoVO>(),Star.FOUR,new ArrayList<String>(),"Brief Introduction","H00000001");
 

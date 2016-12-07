@@ -34,12 +34,12 @@ public class MockHotelinfoManage {
 	ArrayList<String> strategy;
 	HotelStrategyVO V1;
 	public MockHotelinfoManage(){
-		roominfo1 = new RoominfoVO("标准间","8304",200, RoomState.Usable);
-		roominfo2 = new RoominfoVO("标准间","8305",200, RoomState.Usable);
-		roominfo3 = new RoominfoVO("大床房","8306",200, RoomState.Usable);
-		roominfo4 = new RoominfoVO("标准间","8307",200, RoomState.Usable);
-		roominfo5 = new RoominfoVO("标准间","8308",200, RoomState.Unusable);
-		roominfo6 = new RoominfoVO("大床房","8309",200, RoomState.Unusable);
+		roominfo1 = new RoominfoVO("H00000001","标准间","8304",200, RoomState.Usable);
+		roominfo2 = new RoominfoVO("H00000001","标准间","8305",200, RoomState.Usable);
+		roominfo3 = new RoominfoVO("H00000001","大床房","8306",200, RoomState.Usable);
+		roominfo4 = new RoominfoVO("H00000001","标准间","8307",200, RoomState.Usable);
+		roominfo5 = new RoominfoVO("H00000001","标准间","8308",200, RoomState.Unusable);
+		roominfo6 = new RoominfoVO("H00000001","大床房","8309",200, RoomState.Unusable);
 		roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfo1);
 		roominfoList.add(roominfo2);

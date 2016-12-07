@@ -11,7 +11,7 @@ import vo.hotelinfoVO.RoominfoVO;
 public class UpdateroominfoTest {
 
 	RoominfoManage roominfo= new RoominfoManage();
-	RoominfoVO roominfo1 = new RoominfoVO("标准间","8304",200, RoomState.Usable);
+	RoominfoVO roominfo1 = new RoominfoVO("H00000001","标准间","8304",200, RoomState.Usable);
 	
 	@Test
 	public void test1(){

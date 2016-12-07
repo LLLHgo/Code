@@ -20,7 +20,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	 * @throws RemoteException
 	 */
 	public void init() throws RemoteException {
-		roominfoPO = new RoominfoPO("四人间","413-3",666.6,RoomState.Usable);
+		roominfoPO = new RoominfoPO("H00000001","四人间","413-3",666.6,RoomState.Usable);
 
 		ArrayList<RoominfoPO> roominfoList = new ArrayList<RoominfoPO>();
 		roominfoList.add(roominfoPO);

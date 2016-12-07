@@ -14,12 +14,12 @@ import po.RoominfoPO;
 public class GetRoominfoListTest {
 
 	RoominfoManage roominfo = new RoominfoManage();
-	RoominfoPO roominfo1 = new RoominfoPO("标准间","8304",200, RoomState.Usable);
-	RoominfoPO roominfo2 = new RoominfoPO("标准间","8305",200, RoomState.Usable);
-	RoominfoPO roominfo3 = new RoominfoPO("大床房","8306",200, RoomState.Usable);
-	RoominfoPO roominfo4 = new RoominfoPO("标准间","8307",200, RoomState.Usable);
-	RoominfoPO roominfo5 = new RoominfoPO("标准间","8308",200, RoomState.Unusable);
-	RoominfoPO roominfo6 = new RoominfoPO("大床房","8309",200, RoomState.Unusable);
+	RoominfoPO roominfo1 = new RoominfoPO("H00000001","标准间","8304",200, RoomState.Usable);
+	RoominfoPO roominfo2 = new RoominfoPO("H00000001","标准间","8305",200, RoomState.Usable);
+	RoominfoPO roominfo3 = new RoominfoPO("H00000001","大床房","8306",200, RoomState.Usable);
+	RoominfoPO roominfo4 = new RoominfoPO("H00000001","标准间","8307",200, RoomState.Usable);
+	RoominfoPO roominfo5 = new RoominfoPO("H00000001","标准间","8308",200, RoomState.Unusable);
+	RoominfoPO roominfo6 = new RoominfoPO("H00000001","大床房","8309",200, RoomState.Unusable);
 	ArrayList<RoominfoPO> roominfoList = new ArrayList<RoominfoPO>();
 	
 	@Before
