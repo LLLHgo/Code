@@ -31,6 +31,7 @@ public class RemoteHelper {
 		return remoteHelper;
 	}
 	private RemoteHelper() {
+		init();
 	}
 	
 	public void init(){
