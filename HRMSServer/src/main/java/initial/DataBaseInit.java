@@ -12,7 +12,7 @@ public class DataBaseInit {
 
 	// 数据库的用户名与密码，需要根据自己的设置
 	static final String USER = "root";
-	static final String PASS = "ilovesubway0826";  //enter your password.
+	static final String PASS = "HRMS";  //enter your password.
 
 	static Connection conn;
 

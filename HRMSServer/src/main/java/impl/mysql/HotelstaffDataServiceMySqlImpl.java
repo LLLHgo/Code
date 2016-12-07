@@ -19,13 +19,13 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 	private static final long serialVersionUID = 1L;
 
 	Connection conn;
-	
+
 	public HotelstaffDataServiceMySqlImpl() throws RemoteException {
 		super();
-		init();
+		//init();
 	}
 
-	
+
 //	public void init() throws RemoteException {
 //		conn = DataBaseInit.getConnection();
 //	}
@@ -38,7 +38,7 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		String url= "jdbc:mysql://127.0.0.1:3306/test_xampp";
 		String user = "root";
 		String password = "DNc38XPbZnD8fDQU";
@@ -48,10 +48,10 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+
+
 	}
-	
+
 
 	public boolean insert(HotelstaffPO po) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -77,7 +77,7 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		}
 		return false;
 	}
-	
+
 	//查
 	public HotelstaffPO find(String hotelStaffID) {
 		hotelStaffID = hotelStaffID.substring(1);
@@ -123,7 +123,7 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 
 	public void finish() throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
