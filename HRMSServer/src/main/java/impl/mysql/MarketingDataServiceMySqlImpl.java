@@ -2,16 +2,20 @@ package impl.mysql;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import dataservice.marketingdataservice.MarketingDataService;
+import initial.DataBaseInit;
 import po.LevelPO;
 import po.MarketingPO;
 
 public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implements MarketingDataService{
 
 	private static final long serialVersionUID = 1L;
-
 
 	public MarketingDataServiceMySqlImpl() throws RemoteException {
 		super();
@@ -29,8 +33,29 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 	}
 
 	public boolean checkAccount(String ID, String password) throws RemoteException {
-		System.out.println(ID+"   "+password);
-		return true;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		boolean res = false;
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			sql = "SELECT * FROM MarketingProfile WHERE MarketingID='"+ID+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+				// 展开结果集数据库
+				String passwordInDataBase  = rs.getString("password");
+				if(passwordInDataBase.equals(password))
+					res=true;
+			}
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 
