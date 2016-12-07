@@ -3,9 +3,11 @@ package impl.mysql;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import dataservice.marketingdataservice.MarketingDataService;
@@ -19,17 +21,61 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 
 	public MarketingDataServiceMySqlImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public List<LevelPO> findAllLevel() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		List<LevelPO> pos=new ArrayList<LevelPO>();
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			sql = "SELECT * FROM Level ORDER BY level";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+				// 展开结果集数据库
+				int level=rs.getInt("level");
+				String name= rs.getString("name");
+				int credit=rs.getInt("credit");
+				double discount=rs.getDouble("discount");
+				LevelPO po=new LevelPO(level,name,credit,discount);
+				pos.add(po);
+			}
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+		}
+		return pos;
 	}
 
 	public MarketingPO getInfo(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		MarketingPO po=null;
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			sql = "SELECT * FROM MarketingProfile WHERE MarketingID='"+id+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				// 展开结果集数据库
+				String name=rs.getString("name");
+				String password  = rs.getString("password");
+				String tel=rs.getString("tel");
+				po=new MarketingPO(name,password,id,tel);
+			}
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+		}
+		return po;
 	}
 
 	public boolean checkAccount(String ID, String password) throws RemoteException {
@@ -60,8 +106,27 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 
 
 	public boolean updateLevel(List<LevelPO> pos) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		boolean res = true;
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			//插入新的level数据
+			for(LevelPO po:pos){
+				sql="INSERT INTO test (level,name,credit,discount)VALUES ('"+po.getLevel()+"','"+po.getName()+"','"+po.getCreditNeeded()+"','"+po.getDiscount()+"')";
+				stmt.executeUpdate(sql);
+			}
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return false;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return false;
+		}
+		return res;
 	}
 
 
