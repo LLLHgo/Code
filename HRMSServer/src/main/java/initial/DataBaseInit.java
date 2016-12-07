@@ -24,6 +24,7 @@ public class DataBaseInit {
     		// 打开链接
 			System.out.println("连接数据库...");
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			System.out.println("^^^^^^"+conn);
 		}catch(SQLException se){
 			// 处理 JDBC 错误
 			se.printStackTrace();
