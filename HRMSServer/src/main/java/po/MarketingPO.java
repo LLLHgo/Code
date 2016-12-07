@@ -1,6 +1,10 @@
 package po;
 
-public class MarketingPO {
+import java.io.Serializable;
+
+public class MarketingPO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	//网站营销人员姓名
     private String name;
     //网站营销人员登录密码

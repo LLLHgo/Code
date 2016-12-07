@@ -1,13 +1,16 @@
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.OrderType;
 import Enum.VIPType;
 
-public class OrderPO {
-	  // 订单号
+public class OrderPO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	// 订单号
 	 private String orderId;
 	 // 客户帐号
 	 private String clientId;
