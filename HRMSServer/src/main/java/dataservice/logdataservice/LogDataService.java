@@ -2,6 +2,7 @@ package dataservice.logdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import po.LogPO;
@@ -12,7 +13,7 @@ public interface LogDataService extends Remote{
 	 * 从数据库中得到所有日志
 	 * @return 日志PO
 	 */
-	public List<LogPO> getLogList() throws RemoteException;
+	public ArrayList<LogPO> getLogList() throws RemoteException;
 	/**
 	 * 在数据库中增加一条日志记录
 	 * @param logPo

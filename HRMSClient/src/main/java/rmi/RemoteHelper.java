@@ -30,7 +30,7 @@ public class RemoteHelper {
 	public static RemoteHelper getInstance(){
 		return remoteHelper;
 	}
-	private RemoteHelper() {
+	public RemoteHelper() {
 		init();
 	}
 	
@@ -60,7 +60,7 @@ public class RemoteHelper {
 		return (OrderDataService)remote;
 	}
 	
-	public LogDataService logDataService(){
+	public LogDataService getLogDataService(){
 		return (LogDataService)remote;
 	} 
 	

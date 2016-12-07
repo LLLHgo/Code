@@ -1,6 +1,7 @@
 package dataservice.orderdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +14,7 @@ public class OrderDataService_Driver {
 	public void driver( OrderDataService orderDataService) throws RemoteException{
 		boolean result;
 		OrderPO orderPO = null;
-		List<OrderPO> orderPOList=null;
+		ArrayList<OrderPO> orderPOList=null;
 		Iterator<OrderPO> it;
 		
 		// 在数据库中增加一个订单记录
@@ -45,7 +46,7 @@ public class OrderDataService_Driver {
 		
 		// 查找某用户的具体订单
 		System.out.println("查找某用户的具体订单");
-		orderPO=orderDataService.findSpecificUserOrder(UserType.CLIENT,"20160823131207");
+		orderPO=orderDataService.findSpecificUserOrder("20160823131207");
 		System.out.println("显示该订单");
 		System.out.println(orderPO.getClientId()+" "+orderPO.getHotelName()+" "+orderPO.getPrice());
 		System.out.println("这里是该订单的详细信息");
@@ -63,7 +64,7 @@ public class OrderDataService_Driver {
 		
 		// 查找数据库中某客户的某个种类（正常未执行、正常已执行、取消、异常）的订单
 		System.out.println("查找数据库中某客户的某个种类（正常未执行、正常已执行、取消、异常）的订单");
-		orderPOList=orderDataService.findClientTypeOrder(OrderType.ABNORMAL,"C00000008");
+		orderPOList=orderDataService.findClientTypeOrderList(OrderType.ABNORMAL,"C00000008");
 		System.out.println("显示该客户该种类的所有订单");
 		it=orderPOList.iterator();
 		/*while(it.hasNext()){
@@ -74,7 +75,7 @@ public class OrderDataService_Driver {
 		
 		// 查找数据库中某天的异常订单
 		System.out.println("查找数据库中某天的异常订单");
-		orderPOList=orderDataService.findAbnormalOrderList(new Date());
+		orderPOList=orderDataService.findAbnormalOrderList("");
 		System.out.println("显示数据库中某天的异常订单");
 		it=orderPOList.iterator();
 		/*while(it.hasNext()){
@@ -85,7 +86,7 @@ public class OrderDataService_Driver {
 		
 		// 根据时间，在数据库中将超时订单置为异常状态
 		System.out.println("根据时间，在数据库中将超时订单置为异常状态");
-		orderDataService.checkTime("20160823131207");
+		//orderDataService.checkTime("20160823131207");
 		
 		
 	}

@@ -3,11 +3,11 @@ package impl.mysql;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import dataHelper.DataFactoryMySqlImpl;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import initial.DataBaseInit;
 import po.SitemanagerPO;
@@ -26,6 +26,7 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 	
 	Connection conn;
 	Statement stmt;
+	PreparedStatement preStatement;
 
 	public SitemanagerDataServiceMySqlImpl() throws RemoteException{
 		super();
@@ -56,7 +57,28 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 
 	public boolean SitemanagerAccountUpdate(SitemanagerPO sitemanagerPO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		String sql1="update sitemanager_account set tel=? where id=?";
+		String sql2="update sitemanager_account set password=? where id=?";
+		int row1=0;
+		int row2=0;
+		 try {
+			preStatement = conn.prepareStatement(sql1);
+			preStatement.setObject(1, sitemanagerPO.getSitemanagerPhoneNumber());
+			preStatement.setObject(2, sitemanagerPO.getSitemanagerId());
+			row1=preStatement.executeUpdate();
+			
+			preStatement = conn.prepareStatement(sql2);
+			preStatement.setObject(1, sitemanagerPO.getPassword());
+			preStatement.setObject(2, sitemanagerPO.getSitemanagerId());
+			row2=preStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(row1!=0&&row2!=0)
+			return true;
+		else
+			return false;
 	}
 
 }

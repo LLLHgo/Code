@@ -1,6 +1,7 @@
 package dataservice.orderdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,8 +11,8 @@ import po.OrderPO;
 
 public class OrderDataService_Stub implements OrderDataService{
 	OrderPO orderPO;
-	List<OrderPO> orderPOList;
-	public OrderDataService_Stub(OrderPO orderPO,List<OrderPO> orderPOList){
+	ArrayList<OrderPO> orderPOList;
+	public OrderDataService_Stub(OrderPO orderPO,ArrayList<OrderPO> orderPOList){
 		this.orderPO=orderPO;
 		this.orderPOList=orderPOList;
 		
@@ -67,7 +68,7 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @return
 	 */
 	
-	public List<OrderPO> findUserOrderList(String userId)throws RemoteException {
+	public ArrayList<OrderPO> findUserOrderList(String userId)throws RemoteException {
 		// TODO Auto-generated method stub
 		return orderPOList;
 	}
@@ -98,6 +99,39 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param orderId
 	 */
 	public void checkTime(String orderId) throws RemoteException{
+		// TODO Auto-generated method stub
+		
+	}
+	public int lookIdValid() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public OrderPO findSpecificUserOrder(String orderId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ArrayList<OrderPO> findSpecificDayClientOrderList(String clientId, String date) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<OrderPO> findClientTypeOrderList(OrderType orderType, String clientId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ArrayList<OrderPO> findHotelTypeOrderList(OrderType orderType, String hotelId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ArrayList<OrderPO> findClientInHotelAllOrderList(String clientId, String hotelId) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public ArrayList<OrderPO> findAbnormalOrderList(String date) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void checkTimeOperateAbnormal(String orderId) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}
