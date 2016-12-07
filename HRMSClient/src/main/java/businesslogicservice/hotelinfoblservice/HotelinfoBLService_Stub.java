@@ -23,7 +23,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	RoominfoVO roominfovo;
 
 	public HotelinfoBLService_Stub(){
-		roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
+		roominfovo = new RoominfoVO("H00000001","四人间","413-3",666.6,RoomState.Usable);
 
 		ArrayList<RoominfoVO> roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfovo);
@@ -137,7 +137,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	 * @return 房间信息
 	 */
 	public RoominfoVO getroominfo(String hotelID,String roomID) {
-		RoominfoVO roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
+		RoominfoVO roominfovo = new RoominfoVO("H00000001","四人间","413-3",666.6,RoomState.Usable);
 		return roominfovo;
 	}
 	/**

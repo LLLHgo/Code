@@ -26,7 +26,7 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 
 	public HotelstaffBLService_Stub(){
 		hotelstaffvo = new HotelstaffVO("H00000001","000000","025-12345678");
-		roominfovo = new RoominfoVO("四人间","413-3",666.6,RoomState.Usable);
+		roominfovo = new RoominfoVO("H00000001","四人间","413-3",666.6,RoomState.Usable);
 		ArrayList<RoominfoVO> roominfoList = new ArrayList<RoominfoVO>();
 		roominfoList.add(roominfovo);
 		ArrayList<String> remark = new ArrayList<String>();

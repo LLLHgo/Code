@@ -19,7 +19,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 
 	
 	public HotelinfoDataService_Stub(){
-		roominfoPO = new RoominfoPO("四人间","413-3",666.6,RoomState.Usable);
+		roominfoPO = new RoominfoPO("H00000001","四人间","413-3",666.6,RoomState.Usable);
 
 		ArrayList<RoominfoPO> roominfoList = new ArrayList<RoominfoPO>();
 		roominfoList.add(roominfoPO);
@@ -36,7 +36,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	 * @throws RemoteException
 	 */
 	public void init() throws RemoteException {
-		roominfoPO = new RoominfoPO("四人间","413-3",666.6,RoomState.Usable);
+		roominfoPO = new RoominfoPO("H00000001","四人间","413-3",666.6,RoomState.Usable);
 
 		ArrayList<RoominfoPO> roominfoList = new ArrayList<RoominfoPO>();
 		roominfoList.add(roominfoPO);
@@ -56,12 +56,12 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	 * @throws RemoteException
 	 */
 	public ArrayList<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
-		RoominfoPO roominfo1 = new RoominfoPO("标准间","8304",200, RoomState.Usable);
-		RoominfoPO roominfo2 = new RoominfoPO("标准间","8305",200, RoomState.Usable);
-		RoominfoPO roominfo3 = new RoominfoPO("大床房","8306",200, RoomState.Usable);
-		RoominfoPO roominfo4 = new RoominfoPO("标准间","8307",200, RoomState.Usable);
-		RoominfoPO roominfo5 = new RoominfoPO("标准间","8308",200, RoomState.Unusable);
-		RoominfoPO roominfo6 = new RoominfoPO("大床房","8309",200, RoomState.Unusable);
+		RoominfoPO roominfo1 = new RoominfoPO("H00000001","标准间","8304",200, RoomState.Usable);
+		RoominfoPO roominfo2 = new RoominfoPO("H00000001","标准间","8305",200, RoomState.Usable);
+		RoominfoPO roominfo3 = new RoominfoPO("H00000001","大床房","8306",200, RoomState.Usable);
+		RoominfoPO roominfo4 = new RoominfoPO("H00000001","标准间","8307",200, RoomState.Usable);
+		RoominfoPO roominfo5 = new RoominfoPO("H00000001","标准间","8308",200, RoomState.Unusable);
+		RoominfoPO roominfo6 = new RoominfoPO("H00000001","大床房","8309",200, RoomState.Unusable);
 		ArrayList<RoominfoPO> roominfoList = new ArrayList<RoominfoPO>();
 		roominfoList.add(roominfo1);
 		roominfoList.add(roominfo2);
@@ -126,12 +126,12 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 
 	@Override
 	public RoominfoPO getRoominfo(String hotelID, String roomID) throws RemoteException {
-		RoominfoPO roominfo1 = new RoominfoPO("标准间","8304",200, RoomState.Usable);
-		RoominfoPO roominfo2 = new RoominfoPO("标准间","8305",200, RoomState.Usable);
-		RoominfoPO roominfo3 = new RoominfoPO("大床房","8306",200, RoomState.Usable);
-		RoominfoPO roominfo4 = new RoominfoPO("标准间","8307",200, RoomState.Usable);
-		RoominfoPO roominfo5 = new RoominfoPO("标准间","8308",200, RoomState.Unusable);
-		RoominfoPO roominfo6 = new RoominfoPO("大床房","8309",200, RoomState.Unusable);
+		RoominfoPO roominfo1 = new RoominfoPO("H00000001","标准间","8304",200, RoomState.Usable);
+		RoominfoPO roominfo2 = new RoominfoPO("H00000001","标准间","8305",200, RoomState.Usable);
+		RoominfoPO roominfo3 = new RoominfoPO("H00000001","大床房","8306",200, RoomState.Usable);
+		RoominfoPO roominfo4 = new RoominfoPO("H00000001","标准间","8307",200, RoomState.Usable);
+		RoominfoPO roominfo5 = new RoominfoPO("H00000001","标准间","8308",200, RoomState.Unusable);
+		RoominfoPO roominfo6 = new RoominfoPO("H00000001","大床房","8309",200, RoomState.Unusable);
 		if(!hotelID.equals("H00000001")){
 			return null;
 		}
