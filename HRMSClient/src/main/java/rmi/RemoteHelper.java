@@ -60,13 +60,12 @@ public class RemoteHelper {
 		return orderService;
 	}
 	
-<<<<<<< HEAD
 	public LogDataService getLogDataService(){
 		return (LogDataService)remote;
-=======
+	}
+	
 	public LogDataService logDataService(){
 		return logService;
->>>>>>> origin/master
 	} 
 	
 	public ClientDataService clientDataService(){
