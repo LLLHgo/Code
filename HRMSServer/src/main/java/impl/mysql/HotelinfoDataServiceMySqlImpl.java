@@ -19,7 +19,6 @@ public class HotelinfoDataServiceMySqlImpl implements HotelinfoDataService{
 	}
 
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 

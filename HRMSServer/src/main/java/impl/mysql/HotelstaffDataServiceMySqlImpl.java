@@ -22,39 +22,37 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 
 	public HotelstaffDataServiceMySqlImpl() throws RemoteException {
 		super();
-		//init();
+		init();
 	}
 
 
-//	public void init() throws RemoteException {
-//		conn = DataBaseInit.getConnection();
+	public void init() throws RemoteException {
+		conn = DataBaseInit.getConnection();
+	}
+
+//	public void init(){
+//		String driver = "com.mysql.jdbc.Driver";
+//		try {
+//			Class.forName(driver);
+//			System.out.println("驱动加载成功");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//		String url= "jdbc:mysql://127.0.0.1:3306/test_xampp";
+//		String user = "root";
+//		String password = "DNc38XPbZnD8fDQU";
+//		try {
+//			conn = DriverManager.getConnection(url, user, password);
+//			System.out.println("连接成功");
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 //	}
-
-	public void init(){
-		String driver = "com.mysql.jdbc.Driver";
-		try {
-			Class.forName(driver);
-			System.out.println("驱动加载成功");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		String url= "jdbc:mysql://127.0.0.1:3306/test_xampp";
-		String user = "root";
-		String password = "DNc38XPbZnD8fDQU";
-		try {
-			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("连接成功");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-
-	}
 
 
 	public boolean insert(HotelstaffPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
