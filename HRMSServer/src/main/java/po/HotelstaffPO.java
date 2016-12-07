@@ -10,9 +10,10 @@ public class HotelstaffPO {
 		
 	}
 	
-	public HotelstaffPO(String hotelID,String password){
+	public HotelstaffPO(String hotelID,String password,String tel){
 		this.hotelID = hotelID;
 		this.password = password;
+		this.tel = tel;
 	}
 
 	public String getTel() {

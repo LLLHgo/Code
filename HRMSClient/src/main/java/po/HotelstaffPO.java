@@ -10,11 +10,6 @@ public class HotelstaffPO {
 		
 	}
 	
-	public HotelstaffPO(String hotelID,String password){
-		this.hotelID = hotelID;
-		this.password = password;
-	}
-	
 	public HotelstaffPO(String hotelID,String password,String tel){
 		this.hotelID = hotelID;
 		this.password = password;

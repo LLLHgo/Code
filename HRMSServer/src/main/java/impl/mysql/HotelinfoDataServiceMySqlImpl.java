@@ -12,6 +12,8 @@ public class HotelinfoDataServiceMySqlImpl implements HotelinfoDataService{
 
 	private static final long serialVersionUID = 1L;
 
+	
+	
 	public HotelinfoDataServiceMySqlImpl() throws RemoteException {
 		super();
 	}

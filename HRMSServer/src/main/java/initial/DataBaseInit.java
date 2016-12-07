@@ -15,7 +15,6 @@ public class DataBaseInit {
 	static final String PASS = "password";  //enter your password.
 
 	static Connection conn;
-	Statement stmt;
 
 	public DataBaseInit(){
 	// 注册 JDBC 驱动
@@ -36,7 +35,6 @@ public class DataBaseInit {
 
 	public static Connection getConnection(){
 		return conn;
-
 	}
 
 }
