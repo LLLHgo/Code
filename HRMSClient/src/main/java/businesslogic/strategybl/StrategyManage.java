@@ -8,6 +8,8 @@ import Enum.HotelStrategy;
 import Enum.MarketingStrategy;
 import Enum.ResultMessage;
 import Enum.StrategyMaker;
+import businesslogic.marketingbl.MarketingManage;
+import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import dataservice.strategydataservice.StrategyDataService;
 import dataservice.strategydataservice.StrategyDataService_Stub;
@@ -25,6 +27,7 @@ import po.StrategyPO.StrategyPO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
+import vo.levelVO.LevelVO;
 import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
@@ -32,6 +35,7 @@ import vo.strategyVO.MarketingStrategyVO;
 public class StrategyManage implements StrategyBLService{
 
 	private StrategyDataService strategyDataService=new StrategyDataService_Stub();
+	private MarketingBLService marketingblservice=new MarketingManage();
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
 		MarketingStrategyPO po=Mvo2po(vo);
@@ -179,7 +183,15 @@ public class StrategyManage implements StrategyBLService{
 			}
 		}
 
-		price=price*roomInfoVO.getPrice()*num;
+		price=price*roomInfoVO.getPrice()*num;//计算各种策略的价格
+
+		List<LevelVO> levels=marketingblservice.findAllLevel();//计算出用户等级所享受的折扣
+		for(LevelVO level:levels){
+			if(clientVO.vip_level==level.getLevel()){
+				price*=level.getDiscount();
+				break;
+			}
+		}
 		return new PriceVO(price,strategyUsed);
 	}
 

@@ -13,6 +13,7 @@ import Enum.ResultMessage;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJTextField;
 import presentation.marketing.compoment.MJLabel;
+import presentation.marketing.compoment.MJPasswordField;
 import vo.marketingVO.MarketingVO;
 
 public class ProcessMarketingProfileView extends JPanel{
@@ -34,7 +35,7 @@ public class ProcessMarketingProfileView extends JPanel{
     private MJTextField nameField=new MJTextField(250, 46, 200, 48,font2);
     private MJTextField accountField =new MJTextField(250, 126, 200, 48,font2);
     private MJTextField TELField=new MJTextField(250, 206, 200, 48,font2);
-    private MJTextField passwordField=new MJTextField(250, 286, 200, 48,font2);
+    private MJPasswordField passwordField=new MJPasswordField(250, 286, 200, 48,font2);
 
     public ProcessMarketingProfileView(ProcessMarketingViewControllerService controller,ProcessMarketingView view){
      	this.MarketingID=controller.getMarketingID();
@@ -75,7 +76,9 @@ public class ProcessMarketingProfileView extends JPanel{
         ensureButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String newTEL=TELField.getText(),newPassword=passwordField.getText();
+				String newTEL=TELField.getText();
+				char[] pass=passwordField.getPassword();
+				String newPassword=new String(pass);
 				if(newTEL.length()!=0&&newPassword.length()!=0){//电话和密码都不为空时才进行分析
 					if(newTEL.matches("^[0-9]*$")){  //密码可以自由设置，电话必须全部为数字
   						Mvo.setTelephone(newTEL);
