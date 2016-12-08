@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import Enum.RoomState;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import impl.hotelinfo.HotelinfoDataServiceImpl;
 import initial.DataBaseInit;
@@ -42,7 +43,17 @@ public class HotelinfoDataServiceMySqlImpl implements HotelinfoDataService{
 			while(myRS.next()){
 				if(id==(Integer)myRS.getObject("hotelID")){
 					po = new RoominfoPO();
-					//TODO
+					po.setHotelID(hotelID);
+					po.setPrice((Double)myRS.getObject("price"));
+					po.setRoomNum((String)myRS.getObject("roomID"));
+					int state = (Integer)myRS.getObject("roomState");
+					//0可用，1不可用
+					if(state == 0){
+						po.setRoomState(RoomState.Usable);
+					}else{
+						po.setRoomState(RoomState.Unusable);
+					}
+					list.add(po);
 				}
 			}
 		} catch (SQLException e) {
