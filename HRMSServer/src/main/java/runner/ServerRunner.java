@@ -10,11 +10,9 @@ public class ServerRunner {
 
 	public static void main(String[] args) {
 		new DataBaseInit();
-		ServerRunner s=new ServerRunner();
+		new ServerRunner();
 	}
 
-	void test5(){
-
-	}
+	
 
 }

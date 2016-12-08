@@ -45,6 +45,6 @@ public class ClientRunner {
 	
 	public static void main(String[] args){
 		ClientRunner clientRunner = new ClientRunner();
-		clientRunner.test();
+		//clientRunner.test();
 	}
 }
