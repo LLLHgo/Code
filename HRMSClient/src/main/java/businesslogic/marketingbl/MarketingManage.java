@@ -7,7 +7,6 @@ import java.util.List;
 import Enum.ResultMessage;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import dataservice.marketingdataservice.MarketingDataService;
-import dataservice.marketingdataservice.MarketingDataService_Stub;
 import po.LevelPO;
 import po.MarketingPO;
 import rmi.RemoteHelper;
@@ -106,6 +105,8 @@ public class MarketingManage implements MarketingBLService{
 
 	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO vo) {
+		if(vo==null)
+		    return ResultMessage.FAIL;
 		MarketingPO po=new MarketingPO(vo.getName(),vo.getPassword(),vo.getMarketingID(),vo.getTelephone());
 		try {
 			if(this.marketingDataService.MarketingAccountAdd(po)){//增加账户成功

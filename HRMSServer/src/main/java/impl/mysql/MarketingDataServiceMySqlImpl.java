@@ -137,8 +137,33 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 
 
 	public boolean MarketingAccountAdd(MarketingPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		boolean res = true;
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			sql="SELECT  MAX(id) FROM MarketingProfile";
+			ResultSet rs=stmt.executeQuery(sql);
+			int max=0;
+			while(rs.next()){
+				max=rs.getInt(1);
+			}
+			max++;
+			String MarketingID="M"+String.format("%08d", max);
+			sql="INSERT INTO MarketingProfile (id,name,MarketingID,password,tel)VALUES ('"+max+"','"+po.getName()+"','"+MarketingID+"','"+po.getPassword()+"','"+po.getTelephone()+"')";
+			stmt.executeUpdate(sql);
+
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return false;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return false;
+		}
+		return res;
 	}
 
 
