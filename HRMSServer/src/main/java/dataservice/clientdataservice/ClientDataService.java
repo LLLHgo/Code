@@ -3,6 +3,7 @@ package dataservice.clientdataservice;
 import java.io.File;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import po.ClientPO;
@@ -19,7 +20,7 @@ public interface ClientDataService extends Remote{
 	 * @param clientID
 	 * @return信用记录文件
 	 */
-	public File findCreditRecord(String clientID)throws RemoteException;
+	public ArrayList<String> findCreditRecord(String clientID)throws RemoteException;
 	/**
 	 * 修改客户信用值
 	 * @param clientID

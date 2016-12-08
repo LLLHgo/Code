@@ -3,12 +3,13 @@ package po;
 import java.io.File;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import Enum.VIPType;
 
 public class ClientPO implements Serializable{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	//用户编号
@@ -24,17 +25,17 @@ public class ClientPO implements Serializable{
 //用户会员等级
 	private int vip_level;
 //用户生日
-	private Date client_birth;
+	private String client_birth;
 //用户所属企业
 	private String client_firm;
 //用户信用记录
-	private File creditRecord;
-		
+	private ArrayList<String> creditRecord;
+
 		public ClientPO(){
 	}
 
 		public ClientPO(String client_id,String password,String client_name,String client_tel,
-		 VIPType vip_type,int vip_level,Date client_birth,String client_firm,File creditRecord){
+		 VIPType vip_type,int vip_level,String client_birth,String client_firm,ArrayList<String> creditRecord){
 		this.client_id=client_id;
 		this.password=password;
 		this.client_name=client_name;
@@ -60,7 +61,7 @@ public class ClientPO implements Serializable{
 		public VIPType getType(){
 			return vip_type;
 		}
-		public Date getBirth(){
+		public String getBirth(){
 			return client_birth;
 		}
 		public int getLevel(){
@@ -70,7 +71,7 @@ public class ClientPO implements Serializable{
 		public String getFirm(){
 			return client_firm;
 		}
-		public File getCreditRecord(){
+		public ArrayList<String> getCreditRecord(){
 			return creditRecord;
 		}
 		public void setID(String id){
@@ -88,7 +89,7 @@ public class ClientPO implements Serializable{
 		public void setType(VIPType vip_type){
 			this.vip_type=vip_type;
 		}
-		public void setBirth(Date birth){
+		public void setBirth(String birth){
 			this.client_birth=birth;
 		}
 		public void setLevel(int level){
@@ -98,7 +99,7 @@ public class ClientPO implements Serializable{
 		public void setFirm(String firm){
 			this.client_firm=firm;
 		}
-		public void setFirm(File record){
+		public void setRecord(ArrayList<String> record){
 			this.creditRecord=record;
 		}
 }

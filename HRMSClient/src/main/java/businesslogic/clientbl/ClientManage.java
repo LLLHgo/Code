@@ -37,7 +37,7 @@ public class ClientManage implements ClientBLService{
 
 	@Override
 	public ResultMessage createClient(ClientVO vo) {
-		
+
 		// TODO Auto-generated method stub
 		/*try{
 			boolean res=clientdata.createClient(vo);
@@ -69,13 +69,15 @@ public class ClientManage implements ClientBLService{
 	public boolean setCredit(String clientID, int recharge) {
 		// TODO Auto-generated method stub
 		try{
-			boolean res=clientdata.setCredit(clientID,recharge);
-			return res;
-			}catch(Exception e){
+			if(RemoteHelper.getInstance().clientDataService().setCredit(clientID, recharge))
+				return true;
+			}catch(RemoteException e){
 				e.printStackTrace();
+
 			}
-		return false;
+			 return false;
 	}
+
 
 	@Override
 	public boolean setAllClientLevel(LevelVO vo) {
@@ -120,11 +122,11 @@ public class ClientManage implements ClientBLService{
 		//if(clientID!=null&&password!=null)
 		//if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
 		try{
-		if(RemoteHelper.getInstance().clientDataService().checkAccount("C","0"))
+		if(RemoteHelper.getInstance().clientDataService().checkAccount(clientID,password))
 			return true;
 		}catch(RemoteException e){
 			e.printStackTrace();
-			
+
 		}
 		 return false;
 	}

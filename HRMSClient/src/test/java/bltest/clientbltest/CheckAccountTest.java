@@ -29,7 +29,7 @@ ClientManage Manage = new ClientManage();
 	@Test
 	//账号密码都错
 	public void test4(){
-		//密码错
+
 		assertEquals(false,Manage.checkAccount("C00000002","justfunny"));
 	}
 }

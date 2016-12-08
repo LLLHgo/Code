@@ -2,6 +2,7 @@ package dataservice.clientdataservice;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import dataservice.clientdataservice.ClientDataService;
@@ -15,15 +16,15 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @throws RemoteException
 	 */
 	public void init() throws RemoteException{
-		
+
 	}
 	/**
 	 * 查询信用记录
 	 * @param clientID
 	 * @return信用记录文件
 	 */
-	public File findCreditRecord(String clientID)throws RemoteException{
-		return new File(clientID);
+	public ArrayList<String> findCreditRecord(String clientID)throws RemoteException{
+		return new ArrayList<String>();
 	}
 	/**
 	 * 修改客户信用值
@@ -77,7 +78,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	public boolean setAllLevel(LevelPO po)throws RemoteException{
 		if(po!=null)
 			return true;
-		else 
+		else
 			return false;
 	}
 	/**
@@ -88,7 +89,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	public boolean createClient(ClientPO po)throws RemoteException{
 		if(po!=null)
 			return true;
-		else 
+		else
 			return false;
 	}
 

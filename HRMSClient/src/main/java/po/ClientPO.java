@@ -21,17 +21,17 @@ public class ClientPO implements Serializable{
 //用户会员等级
 	private int vip_level;
 //用户生日
-	private Date client_birth;
+	private String client_birth;
 //用户所属企业
 	private String client_firm;
 //用户信用记录
 	private File creditRecord;
-		
+
 		public ClientPO(){
 	}
 
 		public ClientPO(String client_id,String password,String client_name,String client_tel,
-		 VIPType vip_type,int vip_level,Date client_birth,String client_firm,File creditRecord){
+		 VIPType vip_type,int vip_level,String client_birth,String client_firm,File creditRecord){
 		this.client_id=client_id;
 		this.password=password;
 		this.client_name=client_name;
@@ -57,7 +57,7 @@ public class ClientPO implements Serializable{
 		public VIPType getType(){
 			return vip_type;
 		}
-		public Date getBirth(){
+		public String getBirth(){
 			return client_birth;
 		}
 		public int getLevel(){
@@ -85,7 +85,7 @@ public class ClientPO implements Serializable{
 		public void setType(VIPType vip_type){
 			this.vip_type=vip_type;
 		}
-		public void setBirth(Date birth){
+		public void setBirth(String birth){
 			this.client_birth=birth;
 		}
 		public void setLevel(int level){
