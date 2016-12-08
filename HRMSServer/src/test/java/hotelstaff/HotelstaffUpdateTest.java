@@ -9,11 +9,11 @@ import org.junit.Test;
 import impl.mysql.HotelstaffDataServiceMySqlImpl;
 import po.HotelstaffPO;
 
-public class UpdatePasswordTest {
+public class HotelstaffUpdateTest {
 	
 	HotelstaffDataServiceMySqlImpl hotelstaff;
 	
-	public UpdatePasswordTest(){
+	public HotelstaffUpdateTest(){
 		try {
 			hotelstaff = new HotelstaffDataServiceMySqlImpl();
 		} catch (RemoteException e) {
@@ -28,7 +28,7 @@ public class UpdatePasswordTest {
 		po.setHotelID("H00000001");
 		po.setPassword("111111");
 		po.setTel("123456");
-		assertEquals(true,hotelstaff.update(po));
+		assertEquals(true,hotelstaff.hotelstaffUpdate(po));
 	}
 	
 	@Test
@@ -38,7 +38,7 @@ public class UpdatePasswordTest {
 		po.setHotelID("H00000002");
 		po.setPassword("111111");
 		po.setTel("123456");
-		assertEquals(false,hotelstaff.update(po));
+		assertEquals(false,hotelstaff.hotelstaffUpdate(po));
 	}
 	
 	@Test
@@ -48,6 +48,6 @@ public class UpdatePasswordTest {
 		po.setHotelID("H00000001");
 		po.setPassword("000000");
 		po.setTel("123456");
-		assertEquals(true,hotelstaff.update(po));
+		assertEquals(true,hotelstaff.hotelstaffUpdate(po));
 	}
 }

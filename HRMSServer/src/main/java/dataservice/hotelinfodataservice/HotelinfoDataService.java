@@ -28,17 +28,35 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException;
 	/**
-	 * 更新酒店信息
+	 * 酒店工作人员更新酒店信息
 	 * @param po
 	 * @throws RemoteException
 	 */
-	public boolean updatehotelinfo(HotelinfoPO po) throws RemoteException;
+	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException;
+	/**
+	 * 用户更新酒店信息
+	 * @param po
+	 * @throws RemoteException
+	 */
+	public boolean clientUpdatehotelinfo(HotelinfoPO po) throws RemoteException;
 	/**
 	 * 更新房间信息
 	 * @param po
 	 * @throws RemoteException
 	 */
 	public boolean updateroominfo(RoominfoPO po) throws RemoteException;
+	/**
+	 * 新建房间信息
+	 * @param po
+	 * @throws RemoteException
+	 */
+	public boolean insertroominfo(RoominfoPO po) throws RemoteException;
+	/**
+	 * 新建房间信息
+	 * @param po
+	 * @throws RemoteException
+	 */
+	public String inserthotelinfo(String hotelName) throws RemoteException;
 	/**
 	 * 获得系统内所有商圈名
 	 * @return String[]
@@ -60,12 +78,6 @@ public interface HotelinfoDataService extends Remote{
 	 * @return boolean
 	 */
 	public boolean addRoomType(String type) throws RemoteException;
-	/**
-	 * 删除持久化数据
-	 * @param po
-	 * @throws RemoteException
-	 */
-	public boolean delete(RoominfoPO po) throws RemoteException;
 	/**
 	 * 结束持久化数据库的使用
 	 * @throws RemoteException

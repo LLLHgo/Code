@@ -34,20 +34,15 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 		return mysql.findhotelinfo(hotelID);
 	}
 
-	public boolean updatehotelinfo(HotelinfoPO po) throws RemoteException {
-		return mysql.updatehotelinfo(po);
+	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
+		return mysql.hotelstaffUpdatehotelinfo(po);
 	}
 
 	public boolean updateroominfo(RoominfoPO po) throws RemoteException {
 		return mysql.updateroominfo(po);
 	}
 
-	public boolean delete(RoominfoPO po) throws RemoteException {
-		return mysql.delete(po);
-	}
-
 	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -69,6 +64,21 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 
 	public boolean addRoomType(String type) {
 		return txt.addRoomType(type);
+	}
+
+
+	public boolean clientUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
+		return mysql.clientupdatehotelinfo(po);
+	}
+
+
+	public boolean insertroominfo(RoominfoPO po) throws RemoteException {
+		return mysql.insertRoominfo(po);
+	}
+
+
+	public String inserthotelinfo(String hotelName) throws RemoteException {
+		return mysql.insertHotelinfo(hotelName);
 	}
 
 	

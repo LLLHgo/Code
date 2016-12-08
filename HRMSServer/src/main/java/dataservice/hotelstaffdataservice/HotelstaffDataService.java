@@ -25,12 +25,19 @@ public interface HotelstaffDataService extends Remote{
 	 */
 	public HotelstaffPO find(String hotelStaffID)throws RemoteException;
 	/**
-	 * 改
+	 * 酒店工作人员改
 	 * @param po
 	 * @throws RemoteException
 	 * @return boolean
 	 */
-	public boolean update(HotelstaffPO po) throws RemoteException;
+	public boolean hotelstaffUpdate(HotelstaffPO po) throws RemoteException;
+	/**
+	 * 网站营销人员改
+	 * @param po
+	 * @throws RemoteException
+	 * @return boolean
+	 */
+	public boolean sitemanagerUpdate(HotelstaffPO po) throws RemoteException;
 
 	/**
 	 * 结束持久化数据库的使用

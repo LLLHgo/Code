@@ -34,8 +34,9 @@ public class HotelinfoPO implements Serializable{
 		
 	}
 	
-	public HotelinfoPO(String address,String area,String introduction,String facility
+	public HotelinfoPO(String name,String address,String area,String introduction,String facility
 			,String tel,Star star,String hotelID,ArrayList<String> companyList){
+		this.name = name;
 		this.address = address;
 		this.area = area;
 		this.introduction = introduction;

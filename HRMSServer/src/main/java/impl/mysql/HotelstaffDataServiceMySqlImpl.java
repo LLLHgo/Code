@@ -39,7 +39,7 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 //			e.printStackTrace();
 //		}
 //
-//		String url= "jdbc:mysql://127.0.0.1:3306/test_xampp";
+//		String url= "jdbc:mysql://127.0.0.1:3306/hrms";
 //		String user = "root";
 //		String password = "DNc38XPbZnD8fDQU";
 //		try {
@@ -51,22 +51,24 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 //	}
 
 
+	//增
 	public boolean insert(HotelstaffPO po) throws RemoteException {
-		
-		return false;
-	}
-
-
-	public boolean update(HotelstaffPO po) throws RemoteException {
-		String hotelStaffID = po.getHotelID().substring(1);
-		int id = Integer.parseInt(hotelStaffID);
 		try {
-			String sql = "update hotelstaff set password=? where hotelID=?";
+//			Statement st = conn.createStatement();
+//			String sql = "select count(*) from hotelstaff";
+//			ResultSet myRS = st.executeQuery(sql);
+//			myRS.next();
+//			int count = myRS.getInt(1);
+			
+			String sql = "insert into hotelstaff values(?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, po.getPassword());
-			ps.setInt(2, id);
+			String hotelID = po.getHotelID();
+			String password = po.getPassword();
+			String tel = po.getTel();
+			ps.setString(1, hotelID);
+			ps.setString(2, password);
+			ps.setString(3, tel);
 			int result = ps.executeUpdate();
-			System.out.println(result);
 			if(result>0){
 				return true;
 			}
@@ -76,17 +78,51 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		return false;
 	}
 
+
+	//酒店工作人员改
+	public boolean hotelstaffUpdate(HotelstaffPO po) throws RemoteException {
+		try {
+			String sql = "update hotelstaff set password=? where hotelID=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, po.getPassword());
+			ps.setString(2, po.getHotelID());
+			int result = ps.executeUpdate();
+			if(result>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	//网站营销人员改
+	public boolean sitemanagerUpdate(HotelstaffPO po) throws RemoteException {
+		try {
+			String sql = "update hotelstaff set password=? , tel=? where hotelID=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, po.getPassword());
+			ps.setString(2, po.getTel());
+			ps.setString(3, po.getHotelID());
+			int result = ps.executeUpdate();
+			if(result>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	//查
 	public HotelstaffPO find(String hotelStaffID) {
-		hotelStaffID = hotelStaffID.substring(1);
-		int id = Integer.parseInt(hotelStaffID);
 		HotelstaffPO po = null;
 		try {
 			Statement st = conn.createStatement();
 			String sql = "select * from hotelstaff";
 			ResultSet myRS = st.executeQuery(sql);
 			while(myRS.next()){
-				if(id==(Integer)myRS.getObject("hotelID")){
+				if(hotelStaffID.equals((String)myRS.getObject("hotelID"))){
 					po = new HotelstaffPO();
 					po.setHotelID(hotelStaffID);
 					po.setPassword((String)myRS.getObject("password"));
@@ -98,32 +134,14 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		}
 		return po;
 	}
-
-
-	public boolean checkAccount(HotelstaffPO po) throws RemoteException {
-		int id = Integer.parseInt(po.getHotelID().substring(1));
-		String password = po.getPassword();
+	
+	
+	public void finish() throws RemoteException {
 		try {
-			Statement st = conn.createStatement();
-			String sql = "select * from hotelstaff";
-			ResultSet myRS = st.executeQuery(sql);
-			while(myRS.next()){
-				if(id==(Integer)myRS.getObject("hotelID")&&password.equals(myRS.getObject("password"))){
-					return true;
-				}
-			}
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
 	}
-
-
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-
-	}
-
-
 
 }
