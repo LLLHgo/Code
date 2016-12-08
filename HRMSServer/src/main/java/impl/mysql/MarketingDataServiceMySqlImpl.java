@@ -3,7 +3,6 @@ package impl.mysql;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -131,8 +130,26 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 
 
 	public boolean MarketingAccountUpdate(MarketingPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			sql="UPDATE MarketingProfile SET name='"+po.getName()+"',password='"+po.getPassword()+"',tel='"+po.getTelephone()+"' WHERE MarketingID='"+po.getMarketingID()+"'";
+			int rs=stmt.executeUpdate(sql);
+			if(rs>0)
+				return true;
+			else
+				return false;
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return false;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 
@@ -168,8 +185,26 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 
 
 	public boolean MarketingAccountDelete(MarketingPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			sql="DELETE FROM MarketingProfile WHERE MarketingID='"+po.getMarketingID()+"'";
+			int rs=stmt.executeUpdate(sql);
+			if(rs>0)
+				return true;
+			else
+				return false;
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return false;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
