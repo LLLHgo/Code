@@ -39,8 +39,8 @@ public class InitTester {
 		assertEquals(vo.getMarketingID(),voFromBase.getMarketingID());
 		assertEquals(vo.getTelephone(),voFromBase.getTelephone());
 	}
-	
-	@Test
+
+	/*@Test
 	public void test5(){
 		MarketingVO vo=new MarketingVO("beauty","yes","M00000004","32");
 		MarketingVO voFromBase=manage.init("M00000004");
@@ -48,8 +48,8 @@ public class InitTester {
 		assertEquals(vo.getPassword(),voFromBase.getPassword());
 		assertEquals(vo.getMarketingID(),voFromBase.getMarketingID());
 		assertEquals(vo.getTelephone(),voFromBase.getTelephone());
-	}
-	
+	}*/
+
 	@Test
 	public void test6(){
 		MarketingVO vo=new MarketingVO("handsome","that'sright","M00000008","387");
