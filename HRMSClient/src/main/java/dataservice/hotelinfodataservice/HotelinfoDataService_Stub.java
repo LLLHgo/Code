@@ -125,7 +125,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	}
 
 	@Override
-	public RoominfoPO getRoominfo(String hotelID, String roomID) throws RemoteException {
+	public RoominfoPO findroominfo(String hotelID, String roomID) throws RemoteException {
 		RoominfoPO roominfo1 = new RoominfoPO("H00000001","标准间","8304",200, RoomState.Usable);
 		RoominfoPO roominfo2 = new RoominfoPO("H00000001","标准间","8305",200, RoomState.Usable);
 		RoominfoPO roominfo3 = new RoominfoPO("H00000001","大床房","8306",200, RoomState.Usable);
@@ -157,8 +157,8 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	}
 	
 	@Override
-	public String addhotelinfofromsitemanager(HotelinfoPO po) throws RemoteException {
-		if(po.getName().equals("LLLH酒店")){
+	public String inserthotelinfo(String hotelName) throws RemoteException {
+		if(hotelName.equals("LLLH酒店")){
 			return "R";//代表Repeated;
 		}else{
 			return "H00000002";
@@ -183,6 +183,26 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	public boolean addRoomType(String type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean clientUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean insertroominfo(RoominfoPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public List<RoominfoPO> findRoominfoList(String hotelID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

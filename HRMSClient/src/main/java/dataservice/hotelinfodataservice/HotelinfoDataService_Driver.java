@@ -15,13 +15,13 @@ public class HotelinfoDataService_Driver {
 		System.out.println("初始化数据库...");
 		hotelinfoDataService.init();
 		
-		//删除房间信息
-		System.out.println("删除房间信息...");
-		result = hotelinfoDataService.delete(new RoominfoPO());
-		if(result == true){
-			System.out.println("成功");
-		}else
-			System.out.println("失败");
+//		//删除房间信息
+//		System.out.println("删除房间信息...");
+//		result = hotelinfoDataService.delete(new RoominfoPO());
+//		if(result == true){
+//			System.out.println("成功");
+//		}else
+//			System.out.println("失败");
 		
 		//查找酒店信息
 		System.out.println("查询H00000000酒店基本信息");
@@ -32,7 +32,7 @@ public class HotelinfoDataService_Driver {
 		
 		//获得H00000000酒店信息列表
 		System.out.println("获得H00000000酒店信息列表");
-		List<RoominfoPO> list = hotelinfoDataService.getRoominfoList("H0000000");
+		List<RoominfoPO> list = hotelinfoDataService.findRoominfoList("H0000000");
 		for(int i=0;i<list.size();i++){
 			System.out.println("房间类型： "+list.get(i).getType()+
 					" 房间价格："+list.get(i).getPrice());
@@ -40,7 +40,7 @@ public class HotelinfoDataService_Driver {
 		
 		//更新酒店信息
 		System.out.println("更新酒店信息");
-		result = hotelinfoDataService.updatehotelinfo(new HotelinfoPO());
+		result = hotelinfoDataService.hotelstaffUpdatehotelinfo(new HotelinfoPO());
 		if(result == true){
 			System.out.println("成功");
 		}else
@@ -54,9 +54,9 @@ public class HotelinfoDataService_Driver {
 		}else
 			System.out.println("失败");
 		
-		//结束数据库使用
-		System.out.println("结束数据库使用");
-		hotelinfoDataService.delete(new RoominfoPO());
+//		//结束数据库使用
+//		System.out.println("结束数据库使用");
+//		hotelinfoDataService.delete(new RoominfoPO());
 
 		//获得酒店信息
 		System.out.println("获得H00000000酒店信息");
@@ -65,12 +65,12 @@ public class HotelinfoDataService_Driver {
 			System.out.println("获得酒店信息成功");
 
 		//获得酒店房间信息列表
-		List<RoominfoPO> roominfolist=hotelinfoDataService.getRoominfoList("H0000000");
+		List<RoominfoPO> roominfolist=hotelinfoDataService.findRoominfoList("H0000000");
 		if(roominfolist.size()>0)System.out.println("获得酒店房间信息列表成功");
 		
 		//更新酒店信息
 		System.out.println("更新酒店信息");
-		result = hotelinfoDataService.updatehotelinfo(new HotelinfoPO());
+		result = hotelinfoDataService.hotelstaffUpdatehotelinfo(new HotelinfoPO());
 		if(result == true){
 			System.out.println("成功");
 		}else

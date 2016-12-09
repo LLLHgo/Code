@@ -101,7 +101,7 @@ public class HotelinfoManage{
 		}
 		boolean result = false;
 		try {
-			result = data.updatehotelinfo(po);
+			result = data.hotelstaffUpdatehotelinfo(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.REMOTEEXCEPTION;
@@ -117,11 +117,9 @@ public class HotelinfoManage{
 		if(hotelname==null||hotelname.equals("")){
 			return ResultMessage.VOIDINFO;
 		}
-		po = new HotelinfoPO();
-		po.setName(hotelname);
 		String hotelID = null;
 		try {
-			hotelID = data.addhotelinfofromsitemanager(po);
+			hotelID = data.inserthotelinfo(hotelname);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.REMOTEEXCEPTION;

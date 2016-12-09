@@ -15,42 +15,46 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public void init() throws RemoteException;
 	/**
-	 * 获得某个具体房间的信息
-	 * @param hotelID
-	 * @param roomID
-	 * @return RoominfoPO
-	 * @throws RemoteException
-	 */
-	public RoominfoPO getRoominfo(String hotelID,String roomID) throws RemoteException;
-	/**
 	 * 获得房间信息列表
 	 * @param hotelID
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ArrayList<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException;
-	
-	/**
-	 * 获得某商圈的酒店信息列表
-	 * @param hotelID
-	 * @return
-	 * @throws RemoteException
-	 */
-	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException;
-	
+	public List<RoominfoPO> findRoominfoList(String hotelID) throws RemoteException;
 	/**
 	 * 获得房间信息
 	 * @param hotelID
 	 * @return
 	 * @throws RemoteException
 	 */
+	public RoominfoPO findroominfo(String hotelID,String roomID) throws RemoteException;
+	/**
+	 * 获得酒店信息
+	 * @param hotelID
+	 * @return
+	 * @throws RemoteException
+	 */
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException;
 	/**
-	 * 更新酒店信息
+	 * 获得某商圈内的所有酒店信息
+	 * @param area
+	 * @return
+	 * @throws RemoteException
+	 */
+	
+	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException;
+	/**
+	 * 酒店工作人员更新酒店信息
 	 * @param po
 	 * @throws RemoteException
 	 */
-	public boolean updatehotelinfo(HotelinfoPO po) throws RemoteException;
+	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException;
+	/**
+	 * 用户更新酒店信息
+	 * @param po
+	 * @throws RemoteException
+	 */
+	public boolean clientUpdatehotelinfo(HotelinfoPO po) throws RemoteException;
 	/**
 	 * 更新房间信息
 	 * @param po
@@ -58,17 +62,17 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public boolean updateroominfo(RoominfoPO po) throws RemoteException;
 	/**
-	 * 删除持久化数据
+	 * 新建房间信息
 	 * @param po
 	 * @throws RemoteException
 	 */
-	public boolean delete(RoominfoPO po) throws RemoteException;
+	public boolean insertroominfo(RoominfoPO po) throws RemoteException;
 	/**
-	 * 网站管理人员新建酒店，如果新建成功，返回hotelID，如果已经存在,返回"R",表示重复
+	 * 新建房间信息
 	 * @param po
-	 * @return String
+	 * @throws RemoteException
 	 */
-	public String addhotelinfofromsitemanager(HotelinfoPO po) throws RemoteException;
+	public String inserthotelinfo(String hotelName) throws RemoteException;
 	/**
 	 * 获得系统内所有商圈名
 	 * @return String[]
@@ -96,3 +100,5 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public void finish() throws RemoteException;
 }
+
+

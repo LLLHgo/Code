@@ -55,8 +55,7 @@ public class HotelinfoDataServiceMySqlImpl{
 //}
 
 	//如果查找失败，返回null
-	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
-		int id = Integer.parseInt(hotelID.substring(1));
+	public List<RoominfoPO> findRoominfoList(String hotelID) throws RemoteException {
 		RoominfoPO po = null;
 		ArrayList<RoominfoPO> list = new ArrayList<RoominfoPO>();
 		try {
@@ -64,7 +63,7 @@ public class HotelinfoDataServiceMySqlImpl{
 			String sql = "select * from roominfo";
 			ResultSet myRS = st.executeQuery(sql);
 			while(myRS.next()){
-				if(id==(Integer)myRS.getObject("hotelID")){
+				if(hotelID.equals((String)myRS.getObject("hotelID"))){
 					po = new RoominfoPO();
 					po.setHotelID(hotelID);
 					po.setPrice((Double)myRS.getObject("price"));
@@ -233,16 +232,32 @@ public class HotelinfoDataServiceMySqlImpl{
 	}
 
 	public boolean insertRoominfo(RoominfoPO po){
-		
-		
-		
+		try {	
+			String sql = "insert into roominfo values (?,?,?,?,?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, po.getHotelID());
+			ps.setString(2, po.getType());
+			ps.setString(3, po.getRoomNum());
+			ps.setDouble(4, po.getPrice());
+			int state = 1;
+			if(po.getRoomState()==RoomState.Usable){
+				state = 0;
+			}
+			ps.setInt(5, state);
+			int result = ps.executeUpdate();
+			if(result>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 	
 	public String insertHotelinfo(String hotelName){
 		try {
 			Statement st = conn.createStatement();
-			String sql = "select count(*) from hotelstaff";
+			String sql = "select count(*) from hotelinfo";
 			ResultSet myRS = st.executeQuery(sql);
 			myRS.next();
 			int count = myRS.getInt(1);
@@ -268,8 +283,100 @@ public class HotelinfoDataServiceMySqlImpl{
 		return "";
 	}
 
+	public RoominfoPO findroominfo(String hotelID,String roomID) throws RemoteException{
+		RoominfoPO po = null;
+		try {
+			Statement st = conn.createStatement();
+			String sql = "select * from roominfo";
+			ResultSet myRS = st.executeQuery(sql);
+			while(myRS.next()){
+				if(hotelID.equals((String)myRS.getObject("hotelID"))
+						&&roomID.equals((String)myRS.getObject("roomID"))){
+					po = new RoominfoPO();
+					po.setHotelID(hotelID);
+					po.setRoomNum(roomID);
+					po.setPrice((Double)myRS.getObject("price"));
+					po.setType((String)myRS.getObject("type"));
+					RoomState state = RoomState.Usable;
+					if((Integer)myRS.getObject("state")==1){
+						state = RoomState.Unusable;
+					}
+					po.setRoomState(state);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return po;
+	}
+	
+	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException{
+		HotelinfoPO po = null;
+		ArrayList<HotelinfoPO> list = new ArrayList<HotelinfoPO>();
+		try {
+			Statement st = conn.createStatement();
+			String sql = "select * from hotelinfo";
+			ResultSet myRS = st.executeQuery(sql);
+			while(myRS.next()){
+				if(area.equals((String)myRS.getObject("area"))){
+					po = new HotelinfoPO();
+					int star = (Integer)myRS.getObject("star");
+					Star[] starList = {Star.ONE,Star.TWO,Star.THREE,Star.FOUR,Star.FIVE,
+							Star.SIX,Star.SEVEN};
+					for(int i=0;i<starList.length;i++){
+						if(i==star){
+							po.setStar(starList[i]);
+							break;
+						}
+					}
+					
+					ArrayList<String> companyList = new ArrayList<String>();
+					String company =(String)myRS.getObject("company");
+					String[] companyArray = company.split("&");
+					for(int i=0;i<companyArray.length;i++){
+						companyList.add(companyArray[i]);
+					}
+					ArrayList<String> remarkList = new ArrayList<String>();
+					String remark =(String)myRS.getObject("remark");
+					String[] remarkArray = remark.split("&");
+					for(int i=0;i<remarkArray.length;i++){
+						remarkList.add(remarkArray[i]);
+					}
+					
+					int id = (Integer)myRS.getObject("hotelID");
+					String hotelID = String.valueOf(id);
+					while(hotelID.length()<8){
+						hotelID = "0"+hotelID;
+					}
+					hotelID = "H"+hotelID;
+					
+					po.setHotelID(hotelID);
+					po.setName((String)myRS.getObject("name"));
+					po.setAddress((String)myRS.getObject("address"));
+					po.setArea((String)myRS.getObject("area"));
+					po.setTel((String)myRS.getObject("tel"));
+					po.setCompanyList(companyList);
+					po.setIntroduction((String)myRS.getObject("introduction"));
+					po.setFacility((String)myRS.getObject("facility"));
+					po.setRemark(remarkList);
+					
+					list.add(po);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(!list.isEmpty())
+		return list;
+		return null;
+	}
+	
 	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 

@@ -2,6 +2,7 @@ package impl.hotelinfo;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 import dataservice.hotelinfodataservice.HotelinfoDataService;
@@ -26,8 +27,8 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 		
 	}
 
-	public List<RoominfoPO> getRoominfoList(String hotelID) throws RemoteException {
-		return mysql.getRoominfoList(hotelID);
+	public List<RoominfoPO> findRoominfoList(String hotelID) throws RemoteException {
+		return mysql.findRoominfoList(hotelID);
 	}
 
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
@@ -81,5 +82,11 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 		return mysql.insertHotelinfo(hotelName);
 	}
 
+	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException{
+		return mysql.findHotelinfoList(area);
+	}
 	
+	public RoominfoPO findroominfo(String hotelID,String roomID) throws RemoteException{
+		return mysql.findroominfo(hotelID,roomID);
+	}
 }

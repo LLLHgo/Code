@@ -39,7 +39,7 @@ public class RoominfoManage{
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
 		RoominfoPO po = null;
 		try {
-			po = data.getRoominfo(hotelID, roomID);
+			po = data.findroominfo(hotelID, roomID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -89,7 +89,7 @@ public class RoominfoManage{
 		ArrayList<RoominfoPO> listPO;
 		ArrayList<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
 		try {
-			listPO = data.getRoominfoList(hotelID);
+			listPO = (ArrayList<RoominfoPO>) data.findRoominfoList(hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
@@ -116,11 +116,10 @@ public class RoominfoManage{
 
 	public  ArrayList<String> getAvailableRooms(String hotelID){
 //		try {
-//			ArrayList<RoominfoPO> list = data.getRoominfoList(hotelID);
+//			ArrayList<RoominfoPO> list = (ArrayList<RoominfoPO>) data.findRoominfoList(hotelID);
 //			
 //			for(int i=0;i<list.size();i++){
-//				if(list.get(i).getRoomState()== RoomState.Usable
-//						&&list.get(i).getType().equals()){
+//				if(list.get(i).getRoomState()== RoomState.Usable){
 //					
 //				}
 //			}

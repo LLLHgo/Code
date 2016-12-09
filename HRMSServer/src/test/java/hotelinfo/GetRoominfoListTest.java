@@ -40,10 +40,10 @@ public class GetRoominfoListTest {
 	public void test1(){
 		//正确
 		try {
-			assertEquals("H00000001",mysql.getRoominfoList("H00000001").get(0).getHotelID());
-			assertEquals("8304",mysql.getRoominfoList("H00000001").get(0).getRoomNum());
-			assertEquals(200,mysql.getRoominfoList("H00000001").get(0).getPrice(),1);
-			assertEquals(RoomState.Usable,mysql.getRoominfoList("H00000001").get(0).getRoomState());
+			assertEquals("H00000001",mysql.findRoominfoList("H00000001").get(0).getHotelID());
+			assertEquals("8304",mysql.findRoominfoList("H00000001").get(0).getRoomNum());
+			assertEquals(200,mysql.findRoominfoList("H00000001").get(0).getPrice(),1);
+			assertEquals(RoomState.Usable,mysql.findRoominfoList("H00000001").get(0).getRoomState());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -53,7 +53,7 @@ public class GetRoominfoListTest {
 	public void test2(){
 		//查找不到任何信息
 		try {
-			assertEquals(null,mysql.getRoominfoList("H00000002"));
+			assertEquals(null,mysql.findRoominfoList("H00000002"));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
