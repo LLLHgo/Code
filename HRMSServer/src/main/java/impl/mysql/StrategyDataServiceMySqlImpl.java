@@ -8,13 +8,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import Enum.MarketingStrategy;
 import Enum.VIPType;
 import dataservice.strategydataservice.StrategyDataService;
 import initial.DataBaseInit;
-import po.LevelPO;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingCreatedPO;
 import po.StrategyPO.MarketingPeriodPO;
@@ -31,7 +32,7 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 
 	public boolean addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
 		Connection conn=DataBaseInit.getConnection();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String start=sdf.format(po.getStartTime().getTime());
 		String end=sdf.format(po.getEndTime().getTime());
 		Statement stmt;
@@ -83,13 +84,102 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 	}
 
 	public List<StrategyPO> getMarketingStrategy() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		List<StrategyPO> list=new ArrayList<StrategyPO>();
+		try{
+			stmt=conn.createStatement();
+			String sql="";
+
+			sql="SELECT * FROM MarketingStrategy";
+			ResultSet rs=stmt.executeQuery(sql);
+
+			while(rs.next()){
+				String name=rs.getString("name");
+				String type=rs.getString("type");
+				String st=rs.getString("starttime");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date date=sdf.parse(st);
+				Calendar start=Calendar.getInstance();
+				start.setTime(date);
+
+				String en=rs.getString("endtime");
+				date=sdf.parse(en);
+				Calendar end=Calendar.getInstance();
+				end.setTime(date);
+
+				if(type.equals("PERIOD")){
+					MarketingPeriodPO po=new MarketingPeriodPO(name,start,end,rs.getDouble("discount"));
+					list.add(po);
+				}else if(type.equals("VIPSPECIAL")){
+					String[] l=rs.getString("levels").split("-");
+					int[] levels=new int[l.length];
+					int index=0;
+					for(String s:l){
+						levels[index++]=Integer.parseInt(s);
+					}
+
+					String[] d=rs.getString("discounts").split("-");
+					double[] discounts=new double[d.length];
+					index=0;
+					for(String s:d){
+						discounts[index++]=Double.parseDouble(s);
+					}
+
+					MarketingSpecialPO po=new MarketingSpecialPO(name,start,end,rs.getString("area"),levels,discounts);
+					list.add(po);
+				}else if(type.equals("CREATED")){
+					String[] h=rs.getString("hotels").split("-");
+					List<String> hotels=new ArrayList<String>();
+					for(String s:h){
+						hotels.add(s);
+					}
+
+					String[] v=rs.getString("viptypes").split("-");
+					List<VIPType> viptypes=new ArrayList<VIPType>();
+					for(String s:v){
+						if(s.equals("ENTERPRISEVIP"))
+							viptypes.add(VIPType.ENTERPRISEVIP);
+						else if(s.equals("ORDINARYVIP"))
+							viptypes.add(VIPType.ORDINARYVIP);
+					}
+					MarketingCreatedPO po=new MarketingCreatedPO(name,start,end,rs.getDouble("discount"),hotels,rs.getDouble("minSum"),rs.getInt("minRooms"),rs.getInt("minLevel"),viptypes);
+					list.add(po);
+				}
+			}
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return null;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return null;
+		}
+		return list;
 	}
 
+
 	public boolean deleteMarketingStrategy(String marketingStrategy) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		try{
+			stmt=conn.createStatement();
+			String sql="DELETE FROM MarketingStrategy WHERE name='" +marketingStrategy+ "'";
+		    int rs=stmt.executeUpdate(sql);
+		    if(rs>0)
+		    	return true;
+		    else
+		    	return false;
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return false;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public List<StrategyPO> getHotelStrategy(String hotelID) throws RemoteException {
@@ -98,8 +188,26 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 	}
 
 	public boolean updateHotelStrategy(HotelStrategyPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=DataBaseInit.getConnection();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String start=sdf.format(po.getStartTime().getTime());
+		String end=sdf.format(po.getEndTime().getTime());
+		String name=po.getName();
+		Statement stmt;
+		try{
+			stmt=conn.createStatement();
+			String sql="DELETE  FROME ";
+
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return false;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }

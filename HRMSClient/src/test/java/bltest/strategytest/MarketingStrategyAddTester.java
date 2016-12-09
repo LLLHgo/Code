@@ -25,12 +25,12 @@ public class MarketingStrategyAddTester {
 	    Calendar end2=Calendar.getInstance();
 		Calendar begin3=Calendar.getInstance();
 		Calendar end3=Calendar.getInstance();
-		begin1.set(2016,11,31,23,59,00);
+		begin1.set(2016,11,30,23,59,00);
 		end1.set(2017,0,1,23,59,00);
-		begin2.set(2016,12,24,00,00,00);
-		end2.set(2016,11,11,00,00,00);
-		begin3.set(2016,12,31,00,00,00);
-		end3.set(2016,12,31,23,59,00);
+		begin2.set(2016,11,24,00,00,00);
+		end2.set(2016,11,25,00,00,00);
+		begin3.set(2016,11,31,00,00,00);
+		end3.set(2017,0,30,23,59,00);
 
 		int[] levels={1,2,3,4};
 		double[] discounts={0.9,0.85,0.8,0.75};
