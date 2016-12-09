@@ -11,6 +11,7 @@ import Enum.StrategyMaker;
 import businesslogic.marketingbl.MarketingManage;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
+import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.strategydataservice.StrategyDataService;
 import dataservice.strategydataservice.StrategyDataService_Stub;
 import po.StrategyPO.HotelBirthdayPO;
@@ -24,6 +25,7 @@ import po.StrategyPO.MarketingPeriodPO;
 import po.StrategyPO.MarketingSpecialPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
+import rmi.RemoteHelper;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
@@ -34,8 +36,14 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class StrategyManage implements StrategyBLService{
 
-	private StrategyDataService strategyDataService=new StrategyDataService_Stub();
+
 	private MarketingBLService marketingblservice=new MarketingManage();
+	public StrategyDataService strategyDataService;
+
+	public StrategyManage(){
+		RemoteHelper helper=RemoteHelper.getInstance();
+		strategyDataService=helper.strategyDataService();
+	}
 	@Override
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
 		MarketingStrategyPO po=Mvo2po(vo);

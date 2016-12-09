@@ -1,9 +1,12 @@
 package po.StrategyPO;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import Enum.MarketingStrategy;
 
-public class MarketingSpecialPO extends MarketingStrategyPO{
+public class MarketingSpecialPO extends MarketingStrategyPO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private String businessDistrict;
 	private int[] levels;

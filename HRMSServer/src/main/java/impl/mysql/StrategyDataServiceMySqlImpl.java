@@ -2,24 +2,61 @@ package impl.mysql;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
+import Enum.MarketingStrategy;
 import dataservice.strategydataservice.StrategyDataService;
+import initial.DataBaseInit;
+import po.LevelPO;
 import po.StrategyPO.HotelStrategyPO;
+import po.StrategyPO.MarketingPeriodPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
 
 public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements StrategyDataService{
 	public StrategyDataServiceMySqlImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	private static final long serialVersionUID = 1L;
 
 	public boolean addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=DataBaseInit.getConnection();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String start=sdf.format(po.getStartTime());
+		String end=sdf.format(po.getEndTime());
+
+		Statement stmt;
+		try{
+			stmt=conn.createStatement();
+			String sql="";
+
+			//"INSERT INTO test (level,name,credit,discount)VALUES ('"+po.getLevel()+"','"+po.getName()+"','
+			if(po.getMarketingStrategyType().equals(MarketingStrategy.PERIOD))
+				sql="INSERT INTO MarketingStrategy(name,type,starttime,endtime,discount)VALUES('"+po.getName()+"','"+po.getMarketingStrategyType()+"','"+start+"','"+end+"','"+((MarketingPeriodPO)po).getDiscount()+"')";
+			else
+				return false;
+			int rs = stmt.executeUpdate(sql);
+			if(rs>0)
+				return true;
+			else
+				return false;
+
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return false;
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public List<StrategyPO> getMarketingStrategy() throws RemoteException {
@@ -42,6 +79,27 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 		return false;
 	}
 
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

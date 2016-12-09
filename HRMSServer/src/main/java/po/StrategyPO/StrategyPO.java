@@ -1,10 +1,13 @@
 package po.StrategyPO;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import Enum.StrategyMaker;
 
-public class  StrategyPO {
+public class  StrategyPO  implements Serializable{
+
+	private static final long serialVersionUID = 1L;
     private String name;
     private Calendar startTime;
     private Calendar endTime;

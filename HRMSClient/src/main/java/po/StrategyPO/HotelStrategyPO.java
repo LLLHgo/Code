@@ -1,11 +1,14 @@
 package po.StrategyPO;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import Enum.HotelStrategy;
 import Enum.StrategyMaker;
 
-public class HotelStrategyPO extends StrategyPO{
+public class HotelStrategyPO extends StrategyPO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private HotelStrategy hotelStrategy;
 	private String hotelID;
 	private double discount;

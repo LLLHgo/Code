@@ -1,12 +1,15 @@
 package po.StrategyPO;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
 import Enum.MarketingStrategy;
 import Enum.VIPType;
 
-public class MarketingCreatedPO extends MarketingStrategyPO{
+public class MarketingCreatedPO extends MarketingStrategyPO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private double discount;
 	private List<String> hotels;

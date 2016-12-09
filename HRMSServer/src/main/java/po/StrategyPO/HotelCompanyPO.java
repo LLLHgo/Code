@@ -1,13 +1,15 @@
 package po.StrategyPO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import Enum.HotelStrategy;
 import Enum.VIPType;
 
-public class HotelCompanyPO extends HotelStrategyPO{
+public class HotelCompanyPO extends HotelStrategyPO implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private VIPType viptype;
 	public HotelCompanyPO(String name, Calendar startTime, Calendar endTime,String hotelID,
 			double discount,ArrayList<String> companys) {
