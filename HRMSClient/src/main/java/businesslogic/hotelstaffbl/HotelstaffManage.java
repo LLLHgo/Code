@@ -9,12 +9,13 @@ import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import dataservice.hotelstaffdataservice.HotelstaffDataService;
 import dataservice.hotelstaffdataservice.HotelstaffDataService_Stub;
 import po.HotelstaffPO;
+import rmi.RemoteHelper;
 import vo.hotelstaffVO.HotelstaffVO;
 
 public class HotelstaffManage implements HotelstaffBLService{
 	//桩测试
-	HotelstaffDataService data = new HotelstaffDataService_Stub();
-	
+	//HotelstaffDataService data = new HotelstaffDataService_Stub();
+	HotelstaffDataService data = RemoteHelper.getInstance().hotelstaffDataService();
 	@Override
 	public String getBasicinfo(String hotelID) {
 		try {

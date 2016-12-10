@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -59,6 +60,7 @@ public class ProcessShowLogView extends JPanel{
 	String currentMonth;
 	String currentDay;
 	
+	@SuppressWarnings("deprecation")
 	public ProcessShowLogView(ProcessSitemanagerViewControllerService controller,
 			ProcessSitemanagerView processSitemanagerView){
 		this.controller=controller;
@@ -73,17 +75,20 @@ public class ProcessShowLogView extends JPanel{
 		refreshButton=new RefreshButton(320,443);
 		refreshButton.addMouseListener(new refreshButtonListener());
 		// 选择日期
-		 Calendar ca = Calendar.getInstance();
+		 Date dateNow=new Date();
+		 String yearNow=dateNow.getYear()+1900+"";
+		 String monthNow=dateNow.getMonth()+1+"";
+		 String dayNow=dateNow.getDate()+"";
 		 
 		chooseDate=new MyLabel(200,30,100,30,"选择日期");
 		yearLabel=new MyLabel(370,30,30,30,"年");
-		yearField=new MyTextField(300,30,70,30, ca.get(Calendar.YEAR)+"");
+		yearField=new MyTextField(300,30,70,30, yearNow);
 		yearField.setEditable(true);
 		monthLabel=new MyLabel(440,30,30,30,"月");
-		monthField=new MyTextField(400,30,40,30,ca.get(Calendar.MONTH)+"");
+		monthField=new MyTextField(400,30,40,30,monthNow);
 		monthField.setEditable(true);
 		dayLabel=new MyLabel(510,30,30,30,"日");
-		dayField=new MyTextField(470,30,40,30,ca.get(Calendar.DATE)+"");
+		dayField=new MyTextField(470,30,40,30,dayNow);
 		dayField.setEditable(true);
 		// 搜索按钮
 		searchButton=new SearchButton(550,27,40,40);
@@ -139,26 +144,30 @@ public class ProcessShowLogView extends JPanel{
 		this.repaint();
 		view.add(this);
 		
-		listVO=controller.findLog(ca.get(Calendar.YEAR)+"",ca.get(Calendar.MONTH+1)+"", ca.get(Calendar.DATE)+"");
-		showLog(listVO);
+		listVO=controller.findLog(yearNow,monthNow,dayNow);
+		if(listVO!=null)
+			showLog(listVO);
 		
 	}
 	public void showLog(ArrayList<LogVO> list){
 		
+		logArea.setText("");
 		listShow=new ArrayList<String>();
-		for(int i=listVO.size()-1;i>=0;i--){
-			listShow.add(listVO.get(i).getLogInfo());
+		for(int i=list.size()-1;i>=0;i--){
+			listShow.add(list.get(i).getLogInfo());
 		}
 		for(int i=0;i<listShow.size();i++){
 			logArea.append(listShow.get(i)+'\n');
 		}
 		logArea.setEditable(false);
+		
 	}
 	
 	class refreshButtonListener implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
 			logArea.setText("");
+			listVO.clear();
 			listVO=controller.findLog(year, month, day);
 			showLog(listVO);	
 		}
@@ -183,14 +192,15 @@ public class ProcessShowLogView extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			logArea.setText("");
 			year=yearField.getText();
-			month=monthField.getText()+1;
+			month=monthField.getText();
 			day=dayField.getText();
 			currentYear=year;
 			currentMonth=month;
 			currentDay=day;
+			listVO.clear();
 			listVO=controller.findLog(year, month, day);
+			logArea.setText("");
 			showLog(listVO);
 		}
 

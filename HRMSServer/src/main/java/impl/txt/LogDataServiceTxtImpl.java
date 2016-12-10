@@ -29,7 +29,7 @@ public class LogDataServiceTxtImpl extends UnicastRemoteObject implements LogDat
 	public LogDataServiceTxtImpl() throws RemoteException {
 		super();
 		listPO=new ArrayList<LogPO>();
-		fileName="src/main/source/txt/Log.txt";
+		fileName="src/main/resources/txt/Log.txt";
 		try {
 			bfReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
 		} catch (FileNotFoundException e) {

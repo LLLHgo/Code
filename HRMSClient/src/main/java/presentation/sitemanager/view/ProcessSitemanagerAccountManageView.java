@@ -120,14 +120,27 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 			result=controller.sitemanagerAccountUpdate(newSitemanagerVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalLabel.setText("保存成功！");
+				telField.setEditable(false);
+				passWordField.setEditable(false);
 				date = new Date();
 				addLog("S00000001 "+date.toString()+" 修改网站管理人员账户");
 			}
-			else{
+			else if(result==ResultMessage.SAMEINFO){
 				conditionalLabel.setText("信息并未发生修改，不再进行保存！");
 			}
-			telField.setEditable(false);
-			passWordField.setEditable(false);
+			else if(result==ResultMessage.VOIDINFO){
+				conditionalLabel.setText("电话和密码为空，请填写后再确认！");
+			}
+			else if(result==ResultMessage.VOIDPASSWORD){
+				conditionalLabel.setText("密码为空，请填写后再确认！");
+			}
+			else if(result==ResultMessage.VOIDTEL){
+				conditionalLabel.setText("电话为空，请填写后再确认！");
+			}
+			else{
+				conditionalLabel.setText("数据库保存失败，请联系服务人员！");
+			}
+			
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}

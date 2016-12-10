@@ -8,10 +8,12 @@ import businesslogicservice.logblservice.LogBLService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.logdataservice.LogDataService_Stub;
 import po.LogPO;
+import rmi.RemoteHelper;
 import vo.logVO.LogVO;
 
 public class LogManage implements LogBLService{
 	
+	RemoteHelper remote;
 	LogDataService dateService;
 	LogPO logPO;
 	boolean dateBaseSave;
@@ -19,13 +21,9 @@ public class LogManage implements LogBLService{
 	ArrayList<LogPO> listPO;
 	
 	public LogManage(){
-		try {
-			dateService=new LogDataService_Stub();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		listVO=new ArrayList<LogVO>();
+		remote=RemoteHelper.getInstance();
+		dateService=remote.getLogDataService();
 	}
 	/**
 	 * 界面得到添加日志成功或失败信息
@@ -96,6 +94,7 @@ public class LogManage implements LogBLService{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		// S00000001 Fri Dec 09 20:23:48 CST 2016 修改网站管理人员账户
 		// arr数组中放logPO内logInfo以空格分开的字符串
 		String[] arr;
 		for(int i=0;i<listPO.size();i++){
@@ -114,6 +113,7 @@ public class LogManage implements LogBLService{
 	// 月份相符
 	boolean monthMatch(String arrMonth,String month){
 		String[] monthArr={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
+		//System.out.println(month);
 		if(arrMonth.equals(monthArr[Integer.parseInt(month)-1]))
 			return true;
 		else
@@ -121,7 +121,10 @@ public class LogManage implements LogBLService{
 	}
 	// 天 相符
 	boolean dayMatch(String arrDay,String day){
-		return arrDay.equals(day);
+		if(Integer.parseInt(arrDay)==Integer.parseInt(day))
+			return true;
+		else
+			return false;
 	}
 
 }

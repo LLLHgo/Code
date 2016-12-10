@@ -66,7 +66,7 @@ public class HotelinfoDataServiceMySqlImpl{
 				if(hotelID.equals((String)myRS.getObject("hotelID"))){
 					po = new RoominfoPO();
 					po.setHotelID(hotelID);
-					po.setPrice((Double)myRS.getObject("price"));
+					po.setPrice(myRS.getDouble("price"));
 					po.setType(String.valueOf(myRS.getObject("type")));
 					po.setRoomNum((String)myRS.getObject("roomID"));
 					int state = (Integer)myRS.getObject("roomState");

@@ -7,10 +7,12 @@ import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService_Stub;
 import po.SitemanagerPO;
+import rmi.RemoteHelper;
 import vo.sitemanager.SitemanagerVO;
 
 public class SitemanagerManage implements SitemanagerBLService {
-	SitemanagerDataService SitemanagerDataService;
+	RemoteHelper remote;
+	SitemanagerDataService sitemanagerDataService;
 	SitemanagerVO sitemanagerVO;
 	SitemanagerPO sitemanagerPO;
 	String currentTel,updateTel;
@@ -18,12 +20,9 @@ public class SitemanagerManage implements SitemanagerBLService {
 	boolean result;
 	
 	public SitemanagerManage(){
-		try {
-			SitemanagerDataService=new SitemanagerDataService_Stub();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		remote=RemoteHelper.getInstance();
+		sitemanagerDataService=remote.getSitemanagerDataService();
+		
 	}
 	/**
 	 * 管理界面得到网站管理人员账户信息
@@ -31,7 +30,7 @@ public class SitemanagerManage implements SitemanagerBLService {
 	 */
 	public SitemanagerVO sitemanagerAcountShow(){
 		try {
-			sitemanagerPO=SitemanagerDataService.getAccount();
+			sitemanagerPO=sitemanagerDataService.getAccount();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +61,7 @@ public class SitemanagerManage implements SitemanagerBLService {
 			sitemanagerPO=new SitemanagerPO(updateVO.getSitemanagerId(),updateTel,updatePassword);
 			// 将更新的账户信息保存到数据层
 			try {
-				result=SitemanagerDataService.SitemanagerAccountUpdate(sitemanagerPO);
+				result=sitemanagerDataService.SitemanagerAccountUpdate(sitemanagerPO);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
@@ -93,7 +92,7 @@ public class SitemanagerManage implements SitemanagerBLService {
 	 */
 	public ResultMessage checkAccount (SitemanagerVO accountVO){
 		try {
-			sitemanagerPO=SitemanagerDataService.getAccount();
+			sitemanagerPO=sitemanagerDataService.getAccount();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
