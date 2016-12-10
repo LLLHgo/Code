@@ -11,7 +11,7 @@ public class marketinglogin {
         mframe.setSize(1000, 640);
 		mframe.setLocation(150, 75);
 		mframe.setLayout(null);
-		String marketingID="M00010001";
+		String marketingID="M00000001";
         ProcessMarketingViewControllerService controller=new ProcessMarketingViewController(marketingID);
         ProcessMarketingView view=new ProcessMarketingView(controller);
         controller.setView(view);

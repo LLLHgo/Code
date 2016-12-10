@@ -103,8 +103,8 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public boolean setCredit(String clientID, double amount) {//改为double
-		return this.MarketingBLControllerService.setCredit(clientID, (int)amount);
+	public boolean setCredit(String clientID, int amount) {//改为double
+		return this.MarketingBLControllerService.setCredit(clientID, amount);
 	}
 
 
@@ -123,13 +123,6 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log) {
 		return this.MarketingBLControllerService.operateOnAbnormalOrder(order,price,log);
 	}
-
-
-
-
-
-
-
 
 	@Override
 	public void setView(ProcessMarketingView view) {

@@ -79,7 +79,7 @@ public class TimePanel2 extends JPanel{
 
 	public void setTime(int year,int month,int date,int hour,int minute){
 		this.yearField.setText(""+year);
-		this.monthField.setText(""+month);
+		this.monthField.setText(""+(month+1));
 		this.dateField.setText(""+date);
 		this.hourField.setText(""+hour);
 		this.minuteField.setText(""+minute);
@@ -100,7 +100,7 @@ public class TimePanel2 extends JPanel{
         Calendar c;
 		try{
 			year=Integer.parseInt(y);
-			month=Integer.parseInt(m);
+			month=Integer.parseInt(m)-1;
 			date=Integer.parseInt(d);
 			hour=Integer.parseInt(h);
 			minute=Integer.parseInt(mi);

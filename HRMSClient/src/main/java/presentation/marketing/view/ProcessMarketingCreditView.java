@@ -116,9 +116,9 @@ public class ProcessMarketingCreditView extends JPanel{
 	private void test(String clientID){
 		String text=this.creditField.getText();
 		boolean convertion=true;
-		double credit=0;
+		int credit=0;
 		try{
-			credit=Double.parseDouble(text);
+			credit=Integer.parseInt(text);
 		}catch(NumberFormatException e){
 			convertion=false;
 		}

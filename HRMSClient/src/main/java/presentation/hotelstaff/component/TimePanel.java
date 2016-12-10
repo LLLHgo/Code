@@ -16,7 +16,6 @@ import presentation.marketing.compoment.MJLabel;
 /**
  * 制订新策略panel使用
  * @author liuyu
- * @since 16.12.5
  *
  */
 public class TimePanel extends JPanel{
@@ -69,7 +68,7 @@ public class TimePanel extends JPanel{
         Calendar c;
 		try{
 			year=Integer.parseInt(y);
-			month=Integer.parseInt(m);
+			month=Integer.parseInt(m)-1;
 			date=Integer.parseInt(d);
 			hour=Integer.parseInt(h);
 			minute=Integer.parseInt(mi);

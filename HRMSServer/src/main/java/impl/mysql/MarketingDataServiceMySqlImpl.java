@@ -43,10 +43,10 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 			}
 		}catch(SQLException se){
 			// 处理 JDBC 错误
-			se.printStackTrace();
+			return null;
 		}catch(Exception e){
 			// 处理 Class.forName 错误
-			e.printStackTrace();
+			return null;
 		}
 		return pos;
 	}

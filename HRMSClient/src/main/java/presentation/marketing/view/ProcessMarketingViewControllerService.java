@@ -125,7 +125,7 @@ public interface ProcessMarketingViewControllerService {
 	 * @return 修改信用值成功与否
 	 */
 
-	public boolean setCredit(String clientID,double amount);
+	public boolean setCredit(String clientID,int amount);
 
 
 	/**
