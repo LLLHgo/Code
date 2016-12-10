@@ -3,16 +3,13 @@ package presentation.sitemanager.controller;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
-
+import businesslogic.clientbl.ClientManage;
+import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.logbl.LogManage;
 import businesslogic.sitemanagerbl.SitemanagerManage;
-
 import businesslogic.marketingbl.MarketingManage;
-
 import businesslogicservice.clientblservice.ClientBLService;
-import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
-import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService_Stub;
 import businesslogicservice.logblservice.LogBLService;
@@ -59,10 +56,9 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		sitemanagerblservice=new SitemanagerManage();
 		marketingblservice=new MarketingManage();
 
-		sitemanagerblservice=new SitemanagerBLService_Stub();
 		marketingblservice=new MarketingManage();
-		clientblservice=new ClientBLService_Stub();
-		hotelblservice=new HotelinfoBLService_Stub();
+		clientblservice=new ClientManage();
+		hotelblservice=new Hotelinfo();
 		hotelstaffblservice=new HotelstaffBLService_Stub();
 		logblservice=new LogManage();
 		sitemanagerVO=init();
@@ -151,6 +147,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 	@Override
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO) {
+		System.out.println("In processSitemanagerView:"+accountVO.getPassword());
 		return sitemanagerblservice.sitemanagerAccountUpdatePO(accountVO);
 	}
 

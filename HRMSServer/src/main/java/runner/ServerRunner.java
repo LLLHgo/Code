@@ -10,9 +10,6 @@ public class ServerRunner {
 
 	public static void main(String[] args) {
 		new DataBaseInit();
-		new ServerRunner();
+		ServerRunner s=new ServerRunner();
 	}
-
-
-
 }

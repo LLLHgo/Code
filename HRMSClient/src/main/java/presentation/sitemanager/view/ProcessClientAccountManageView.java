@@ -168,6 +168,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		birthLabel.setText(clientVO.getBirth());
 		creditLabel.setText(clientVO.getCredit()+"");
 		passwordText.setText(clientVO.getPassword());
+		creditIconButton.setEnabled(true);
 		deleteButton.setEnabled(true);
 		modifyButton.setEnabled(true);
 	}
@@ -210,7 +211,20 @@ public class ProcessClientAccountManageView extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			deleteButton.setEnabled(false);
+			checkButton.setEnabled(false);
+			modifyButton.setEnabled(false);
+			passwordText.setEditable(false);
+			clientIdLabel.setText("");
+			nameText.setText("");
+			telText.setText("");
+			vipgradeLabel.setText("");
+			birthLabel.setText("");
+			firmLabel.setText("");
+			creditLabel.setText("");
+			passwordText.setText("");
 			id=searchText.getText();
+			creditIconButton.setEnabled(false);
 			clientVO=controller.clientAccountFind(id);
 			if(clientVO==null){
 				conditionLabel.setText("无匹配的账户，请确认客户帐号后重新输入！");
@@ -218,6 +232,9 @@ public class ProcessClientAccountManageView extends JPanel{
 			else{
 				conditionLabel.setText("找到匹配账户");
 				showSpecificAccountInfo(clientVO);
+				deleteButton.setEnabled(true);
+				modifyButton.setEnabled(true);
+				creditIconButton.setEnabled(true);
 			}
 		}
 
@@ -259,6 +276,16 @@ public class ProcessClientAccountManageView extends JPanel{
 				checkButton.setEnabled(false);
 				modifyButton.setEnabled(false);
 				passwordText.setEditable(false);
+				clientIdLabel.setText("");
+				nameText.setText("");
+				telText.setText("");
+				vipgradeLabel.setText("");
+				birthLabel.setText("");
+				firmLabel.setText("");
+				creditLabel.setText("");
+				passwordText.setText("");
+				creditIconButton.setEnabled(false);
+				
 			}
 			else if(result==ResultMessage.FAIL){
 				conditionLabel.setText("删除失败！");

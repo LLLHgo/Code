@@ -49,6 +49,9 @@ public class SitemanagerManage implements SitemanagerBLService {
 		currentPassword=sitemanagerVO.getPassword();
 		updateTel=updateVO.getSitemanagerPhoneNumber();
 		updatePassword=updateVO.getPassword();
+		
+		System.out.println("InSitemanagerManage:"+updateVO.getPassword());
+		
 		if(sameTel()&&samePassword())
 			return ResultMessage.SAMEINFO;
 		else if(voidTel()&&voidPassword())
