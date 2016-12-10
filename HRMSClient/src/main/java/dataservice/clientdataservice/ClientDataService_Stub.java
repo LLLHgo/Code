@@ -25,8 +25,8 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param clientID
 	 * @return信用记录文件
 	 */
-	public File findCreditRecord(String clientID)throws RemoteException{
-		return new File(clientID);
+	public ArrayList<String> findCreditRecord(String clientID)throws RemoteException{
+		return new ArrayList<String>();
 	}
 	/**
 	 * 修改客户信用值
@@ -45,8 +45,8 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param clientID
 	 * @return 客户PO
 	 */
-	public ClientVO  findPersonalInfo (String clientID)throws RemoteException{
-		return new ClientVO();
+	public ClientPO  findPersonalInfo (String clientID)throws RemoteException{
+		return new ClientPO();
 	}
 	/**
 	 * 修改客户个人基本信息
@@ -54,7 +54,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (ClientVO vo)throws RemoteException{
+	public ResultMessage modifyPersonalInfo (ClientPO po)throws RemoteException{
 		if(clientId!=null)
 			return ResultMessage.SUCCESS;
 		else
@@ -77,10 +77,8 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 是否设置成功
 	 */
-	public boolean setAllLevel(LevelVO vo)throws RemoteException{
-		if(vo!=null)
-			return true;
-		else
+	public boolean setAllLevel()throws RemoteException{
+
 			return false;
 	}
 	/**
@@ -88,8 +86,8 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 创建是否成功
 	 */
-	public boolean createClient(ClientVO vo)throws RemoteException{
-		if(vo!=null)
+	public boolean createClient(ClientPO po)throws RemoteException{
+		if(po!=null)
 			return true;
 		else
 			return false;
@@ -105,10 +103,6 @@ public class ClientDataService_Stub implements ClientDataService{
 		else
 			return false;
 	}
-	@Override
-	public ArrayList<String> getCreditRecord(String clientID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

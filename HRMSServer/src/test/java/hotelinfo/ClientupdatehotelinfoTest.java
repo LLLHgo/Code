@@ -1,5 +1,5 @@
-package hotelinfo;
-
-public class ClientupdatehotelinfoTest {
-//TODO
-}
+//package hotelinfo;
+//
+//public class ClientupdatehotelinfoTest {
+////TODO
+//}

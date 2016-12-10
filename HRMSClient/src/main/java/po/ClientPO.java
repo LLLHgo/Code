@@ -3,6 +3,7 @@ package po;
 import java.io.File;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import Enum.VIPType;
 
@@ -25,13 +26,15 @@ public class ClientPO implements Serializable{
 //用户所属企业
 	private String client_firm;
 //用户信用记录
-	private File creditRecord;
+	private ArrayList<String> creditRecord;
+	//用户信用值
+		private int credit;
 
 		public ClientPO(){
 	}
 
 		public ClientPO(String client_id,String password,String client_name,String client_tel,
-		 VIPType vip_type,int vip_level,String client_birth,String client_firm,File creditRecord){
+		 VIPType vip_type,int vip_level,String client_birth,String client_firm,ArrayList<String> creditRecord,int credit){
 		this.client_id=client_id;
 		this.password=password;
 		this.client_name=client_name;
@@ -41,6 +44,7 @@ public class ClientPO implements Serializable{
 		this.vip_level=vip_level;
 		this.client_firm=client_firm;
 		this.creditRecord=creditRecord;
+		this.credit=credit;
 	}
 		public String getID(){
 			return client_id;
@@ -67,8 +71,11 @@ public class ClientPO implements Serializable{
 		public String getFirm(){
 			return client_firm;
 		}
-		public File getCreditRecord(){
+		public ArrayList<String> getRecord(){
 			return creditRecord;
+		}
+		public int getCredit(){
+			return credit;
 		}
 		public void setID(String id){
 			this.client_id=id;
@@ -95,7 +102,10 @@ public class ClientPO implements Serializable{
 		public void setFirm(String firm){
 			this.client_firm=firm;
 		}
-		public void setFirm(File record){
+		public void setRecord(ArrayList<String> record){
 			this.creditRecord=record;
+		}
+		public void setCredit(int credit){
+			this.credit=credit;
 		}
 }

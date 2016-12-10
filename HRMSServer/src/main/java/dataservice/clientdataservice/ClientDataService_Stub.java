@@ -75,11 +75,10 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param po
 	 * @return 是否设置成功
 	 */
-	public boolean setAllLevel(LevelPO po)throws RemoteException{
-		if(po!=null)
+	public boolean setAllLevel()throws RemoteException{
+
 			return true;
-		else
-			return false;
+
 	}
 	/**
 	 * 创建新客户
@@ -91,6 +90,9 @@ public class ClientDataService_Stub implements ClientDataService{
 			return true;
 		else
 			return false;
+	}
+	public boolean deleteClient(String clientId)throws RemoteException{
+		return false;
 	}
 
 }

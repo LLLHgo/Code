@@ -17,12 +17,12 @@ public class GetClientTest {
 
 	}
 
-	@Test
+	/*@Test
 	public void test2() {
 		//传入账号为null值
 		assertEquals(null,Manage.getclient(null));
 
-	}
+	}*/
 	@Test
 	public void test3() {
 		//传入账号不属于客户
@@ -36,6 +36,8 @@ public class GetClientTest {
 	@Test
 	public void test5() {
 		//传入账号格式正确且该用户存在，返回相应客户的VO
-		assertEquals(ClientDataTool.clientVO1,Manage.getclient("C00000001"));
+	assertEquals(ClientDataTool.clientVO1.getFirm(),Manage.getclient("C00000001").getFirm());
+	assertEquals(ClientDataTool.clientVO1.getName(),Manage.getclient("C00000001").getName());
+	assertEquals(ClientDataTool.clientVO1.getTel(),Manage.getclient("C00000001").getTel());
 	}
 }

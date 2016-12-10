@@ -23,32 +23,44 @@ public class ClientManage implements ClientBLService{
 	static ClientDataService clientdata;
 	@Override
 	public ClientVO getclient(String clientID) {
-		// TODO Auto-generated method stub
-		/*try{
-		return clientdata.findPersonalInfo (clientID);
-		}catch(Exception e){
-			e.printStackTrace();
+		if(clientID.equals("")||clientID==null)
+			return null;
+		else if(clientID.charAt(0)=='C'&&clientID.length()==9){
+		try{
+			ClientPO po=RemoteHelper.getInstance().clientDataService().findPersonalInfo(clientID);
+			if(po!=null){
+			ClientVO vo=new ClientVO(po.getID(),po.getPassword(),po.getName(),po.getTel(),po.getType(),po.getLevel(),po.getBirth(),po.getFirm(),po.getCredit(),po.getRecord());
+			return vo;
+			}
+		}catch(RemoteException e){
+				e.printStackTrace();
+			}
+
 		}
-		return null;*/
-		if(clientID!=null&&clientID!=""&&clientID.equals("C00000001"))
-		return ClientDataTool.clientVO1;
-		else return null;
+	return null;
+
 	}
 
 	@Override
 	public ResultMessage createClient(ClientVO vo) {
 
 		// TODO Auto-generated method stub
-		/*try{
-			boolean res=clientdata.createClient(vo);
-			if(res)return ResultMessage.SUCCESS;
-			else 	return ResultMessage.FAIL;
-			}catch(Exception e){
+		if(vo.getID().equals("")||vo.getID()==null)
+			return ResultMessage.FAIL;
+		else if(vo.getID().charAt(0)=='C'&&vo.getID().length()==9){
+		try{
+			ClientPO po=new ClientPO(vo.getID(),vo.getPassword(),vo.getName(),vo.getTel(),vo.getType(),vo.getLevel(),vo.getBirth(),vo.getFirm(),vo.getCreditRecord(),vo.getCredit());
+			boolean rs=RemoteHelper.getInstance().clientDataService().createClient(po);
+			if(rs)
+				return ResultMessage.SUCCESS;
+		}catch(RemoteException e){
 				e.printStackTrace();
-			}*/
-		if(vo.getID()=="C00000001"||vo.getPassword()==""||vo.getID().charAt(0)!='C')
+			}
+
+		}
+
 		return ResultMessage.FAIL;
-		else return ResultMessage.SUCCESS;
+
 	}
 
 	@Override
@@ -83,7 +95,7 @@ public class ClientManage implements ClientBLService{
 	public boolean setAllClientLevel(LevelVO vo) {
 		// TODO Auto-generated method stub
 		try{
-			boolean res=clientdata. setAllLevel(vo);
+			boolean res=clientdata. setAllLevel();
 			return res;
 			}catch(Exception e){
 				e.printStackTrace();
@@ -108,11 +120,17 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public ArrayList<String> getCreditRecord(String clientID) {
 		// TODO Auto-generated method stub
+		if(clientID==""||clientID==null)
+			return null;
+		else if(clientID.charAt(0)=='C'&&clientID.length()==9){
 		try{
-			return clientdata.getCreditRecord(clientID);
+			ArrayList<String> list=RemoteHelper.getInstance().clientDataService().findCreditRecord(clientID);
+			if(list!=null)
+			return list;
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}
 		return null;
 	}
 

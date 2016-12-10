@@ -53,11 +53,17 @@ public interface ClientDataService extends Remote{
 	 * @param po
 	 * @return 是否设置成功
 	 */
-	public boolean setAllLevel(LevelPO po)throws RemoteException;
+	public boolean setAllLevel()throws RemoteException;
 	/**
 	 * 创建新客户
 	 * @param po
 	 * @return 创建是否成功
 	 */
 	public boolean createClient(ClientPO po)throws RemoteException;
+	/**
+	 * 删除客户
+	 * @param po
+	 * @return 删除是否成功
+	 */
+	public boolean deleteClient(String clientId)throws RemoteException;
 }

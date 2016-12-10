@@ -11,9 +11,7 @@ import Enum.StrategyMaker;
 import businesslogic.marketingbl.MarketingManage;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
-import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.strategydataservice.StrategyDataService;
-import dataservice.strategydataservice.StrategyDataService_Stub;
 import po.StrategyPO.HotelBirthdayPO;
 import po.StrategyPO.HotelCompanyPO;
 import po.StrategyPO.HotelCreatedPO;
@@ -254,7 +252,7 @@ public class StrategyManage implements StrategyBLService{
 		else if(po.getHotelStrategy().equals(HotelStrategy.SPECIALDAY))
 			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.SPECIALDAY,po.getStartTime(),po.getEndTime(),po.getDiscount());
 		else if(po.getHotelStrategy().equals(HotelStrategy.OVERTHREEROOMS))
-			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.OVERTHREEROOMS,po.getStartTime(),po.getEndTime(),((HotelOverThreeRoomsPO) po).getMinRooms());
+			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.OVERTHREEROOMS,po.getStartTime(),po.getEndTime(),po.getDiscount(),((HotelOverThreeRoomsPO) po).getMinRooms());
 		else if(po.getHotelStrategy().equals(HotelStrategy.CREATED))
 			vo=new HotelStrategyVO(po.getName(),po.getHotelID(),HotelStrategy.CREATED,((HotelCreatedPO) po).getViptypes(),po.getStartTime(),po.getEndTime(),po.getDiscount(),
 					((HotelCreatedPO) po).getMinRooms(),((HotelCreatedPO) po).getMinSum(),((HotelCreatedPO) po).getLevels());

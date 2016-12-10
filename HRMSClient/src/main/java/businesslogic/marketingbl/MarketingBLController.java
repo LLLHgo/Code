@@ -4,6 +4,7 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
@@ -12,10 +13,8 @@ import businesslogicservice.logblservice.LogBLService;
 import businesslogicservice.logblservice.LogBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
-import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.orderblservice.*;
 import businesslogicservice.strategyblservice.StrategyBLService;
-import businesslogicservice.strategyblservice.StrategyBLService_Stub;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
@@ -25,9 +24,9 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public class MarketingBLController implements MarketingBLControllerService{
 
-	private MarketingBLService marketingBL=new MarketingBLService_Stub();
+	private MarketingBLService marketingBL=new MarketingManage();
 	private ClientBLService clientBL=new ClientBLService_Stub();
-	private StrategyBLService strategyBL=new StrategyBLService_Stub();
+	private StrategyBLService strategyBL=new StrategyManage();
 	private OrderBLService_Stub orderBL=new OrderBLService_Stub();
 	private LogBLService logBL=new LogBLService_Stub();
     private HotelinfoBLService hotelBL=new HotelinfoBLService_Stub();

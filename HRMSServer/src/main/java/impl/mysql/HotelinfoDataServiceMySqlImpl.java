@@ -134,7 +134,8 @@ public class HotelinfoDataServiceMySqlImpl{
 		}
 		return po;
 	}
-
+	
+	
 	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
 		int id = Integer.parseInt(po.getHotelID().substring(1));
 		try {

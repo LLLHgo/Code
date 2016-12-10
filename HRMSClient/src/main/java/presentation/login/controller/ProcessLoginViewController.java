@@ -2,12 +2,12 @@ package presentation.login.controller;
 
 import Enum.ResultMessage;
 import businesslogic.clientbl.ClientManage;
+import businesslogic.marketingbl.MarketingManage;
 import businesslogic.sitemanagerbl.SitemanagerManage;
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLService;
-import businesslogicservice.marketinblservice.MarketingBLService_Stub;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import presentation.login.view.ProcessLoginControllerService;
 import vo.clientVO.ClientVO;
@@ -23,7 +23,7 @@ public class ProcessLoginViewController implements ProcessLoginControllerService
 	ClientBLService client=new ClientManage();
 	SitemanagerBLService sitemanager=new SitemanagerManage();
 	HotelstaffBLService hotelstaff=new HotelstaffBLService_Stub();
-	MarketingBLService marketing=new MarketingBLService_Stub();
+	MarketingBLService marketing=new MarketingManage();
 		public char login(String user_id,String password) {
 
 		if(user_id.charAt(0)=='C'){

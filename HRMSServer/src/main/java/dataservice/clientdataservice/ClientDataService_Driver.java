@@ -22,7 +22,7 @@ public class ClientDataService_Driver {
 		boolean sc=clientDataService.setCredit("000001", 2);
 		if(sc)System.out.println("Update Credit!");
 		//测试设置会员等级
-		boolean sal=clientDataService.setAllLevel(new LevelPO(0, null, 0,0));
+		boolean sal=clientDataService.setAllLevel();
 		if(sal)System.out.println("Set Level!");
 		//测试修改个人基本信息
 		if(clientDataService.modifyPersonalInfo( po)==ResultMessage.SUCCESS)System.out.println("Update Info!");

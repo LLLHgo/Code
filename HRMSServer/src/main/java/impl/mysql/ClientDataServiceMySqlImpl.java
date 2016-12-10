@@ -36,6 +36,8 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		Connection conn=DataBaseInit.getConnection();
 		try{
 			 Statement stat = conn.createStatement();
+			 ResultSet count = stat.executeQuery("select * from client  where  clientID='"+clientID+"'");
+			 if(count.next()){
 	            ResultSet count1 = stat.executeQuery("select * from "+clientID);
 
 	              //如果用户名存在,开始进行信用记录提取
@@ -47,7 +49,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 	                      list.add(str);
 	                  }
 	            	  return list;
-			} catch(SQLException se){
+			}} catch(SQLException se){
 			// 处理 JDBC 错误
 			se.printStackTrace();
 		}catch(Exception e){
@@ -94,7 +96,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		Connection conn=DataBaseInit.getConnection();
 		try{
 			 Statement stat = conn.createStatement();
-	            ResultSet count1 = stat.executeQuery("select * from client  where  clientID='"+clientID+"'");
+	         ResultSet count1 = stat.executeQuery("select * from client  where  clientID='"+clientID+"'");
 
 	              //如果用户名存在,开始进行信息提取
 	              if(count1.next()){
@@ -106,15 +108,14 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 	            	  po.setTel(count1.getString("tel"));
 	            	  switch(count1.getString("type").charAt(0)){
 	            	  case 'n':po.setType(null);break;
-	            	  case 'o':po.setType(VIPType.ORDINARYVIP);break;
-	            	  case 'e':po.setType(VIPType.ENTERPRISEVIP);break;
+	            	  case 'O':po.setType(VIPType.ORDINARYVIP);break;
+	            	  case 'E':po.setType(VIPType.ENTERPRISEVIP);break;
 	            	  default:po.setType(null);break;
 	            	  }
 	            	  po.setBirth(count1.getString("birth"));
 	            	  po.setLevel(count1.getInt("level"));
 	            	  po.setFirm(count1.getString("firm"));
 	            	  po.setRecord(findCreditRecord(clientID));
-
 	            	  return po;
 	              }
 		}catch(SQLException se){
@@ -131,13 +132,38 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 
 	public ResultMessage modifyPersonalInfo(ClientPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		Connection conn=DataBaseInit.getConnection();
+		try{
+			 Statement stat = conn.createStatement();
+	            ResultSet count1 = stat.executeQuery("select credit from client  where  clientID='"+po.getID()+"'");
+
+	              //如果用户名存在,开始进行信息修改
+	              if(count1.next()){
+	            	  int i= stat.executeUpdate("UPDATE `HRMS`.`client` SET `name`='"+po.getName()+"', `tel`='"+po.getTel()+"', `level`='"+po.getLevel()+"', `type`='"+po.getType().toString()+"', `birth`='"+po.getBirth()+"', `password`='"+po.getPassword()+"', `credit`='"+po.getCredit()+"', `firm`='"+po.getFirm()+"' WHERE `clientID`='"+po.getID()+"'" );
+
+                 if(i==1){
+                 //如果该更新操作成功，返回true
+                  System.out.println("SUCCESS UPDATE CREDIT");
+                  return ResultMessage.SUCCESS;
+                  }
+
+              }
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+		}
+		System.out.println("OK!");
+		return ResultMessage.FAIL;
 	}
 
 	public boolean checkAccount(String client_id, String password) throws RemoteException {
 		// TODO Auto-generated method stub
 
 		Connection conn=DataBaseInit.getConnection();
+
 		try{
 			Statement stat = conn.createStatement();
             ResultSet count1 = stat.executeQuery("select clientID from client  where  clientID='"+client_id+"'");
@@ -165,8 +191,8 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		System.out.println("OK!");
 		return false;
 	}
-
-	public boolean setAllLevel(LevelPO po) throws RemoteException {
+	//先等弄清楚
+	public boolean setAllLevel() throws RemoteException {
 		// TODO Auto-generated method stub
 
 		return false;
@@ -174,7 +200,47 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 
 	public boolean createClient(ClientPO po) throws RemoteException {
 		// TODO Auto-generated method stub
+		Connection conn=DataBaseInit.getConnection();
+		try{
+			Statement stat = conn.createStatement();
+            ResultSet count= stat.executeQuery("select clientID from client  where  clientID='"+po.getID()+"'");
+            //用户没重名就注册
+            if(!count.next()){
+            int res = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`clientID`, `password`) VALUES ('"+po.getID()+"', '"+po.getPassword()+"')");
+            if(res==1)
+            	return true;
+            System.out.println("OK");
+            }
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+		}
+		System.out.println("OK!");
 		return false;
 	}
-
+	public boolean deleteClient(String clientId)throws RemoteException{
+		Connection conn=DataBaseInit.getConnection();
+		try{
+			Statement stat = conn.createStatement();
+            ResultSet count= stat.executeQuery("select clientID from client  where  clientID='"+clientId+"'");
+            //用户存在就进行删除
+            if(count.next()){
+            boolean res = stat.execute("DELETE FROM `HRMS`.`client` WHERE `clientID`='"+clientId+"'");
+            if(res)
+            	return true;
+            System.out.println("OK");
+            }
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+		}
+		System.out.println("OK!");
+		return false;
+	}
 }
