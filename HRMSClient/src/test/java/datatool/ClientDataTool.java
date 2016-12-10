@@ -11,7 +11,7 @@ public class ClientDataTool {
 	static Date day1=new Date(1996,2,29);
 	static File file=new File("credit");
 	static Date day3=new Date(1992,5,29);
-	static ArrayList<String> recordlist=new ArrayList<String>(){{add("World"); add("Hello");}};
+	static ArrayList<String> recordlist=new ArrayList<String>(){{add("2016-12-8 finish order 100"); add("2016-12-9 finish order 200");}};
 public static ClientVO clientVO1=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
 				 VIPType.ORDINARYVIP,2,"1996-02-29","",100,recordlist);
 public static ClientVO clientVO2=new ClientVO("C00000002","actullyjustfun","sangouWang","13747474742",

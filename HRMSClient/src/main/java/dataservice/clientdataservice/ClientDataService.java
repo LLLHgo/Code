@@ -22,7 +22,7 @@ public interface ClientDataService extends Remote{
 	 * @param clientID
 	 * @return信用记录文件
 	 */
-	public File findCreditRecord(String clientID)throws RemoteException;
+	public ArrayList<String> findCreditRecord(String clientID)throws RemoteException;
 	/**
 	 * 修改客户信用值
 	 * @param clientID
@@ -35,13 +35,13 @@ public interface ClientDataService extends Remote{
 	 * @param clientID
 	 * @return 客户PO
 	 */
-	public ClientVO  findPersonalInfo (String clientID)throws RemoteException;
+	public ClientPO  findPersonalInfo (String clientID)throws RemoteException;
 	/**
 	 * 修改客户个人基本信息
 	 * @param po
 	 * @return 修改是否成功
 	 */
-	public ResultMessage modifyPersonalInfo (ClientVO vo)throws RemoteException;
+	public ResultMessage modifyPersonalInfo (ClientPO po)throws RemoteException;
 	/**
 	 * 查找客户账户
 	 * @param client_id
@@ -54,20 +54,15 @@ public interface ClientDataService extends Remote{
 	 * @param po
 	 * @return 是否设置成功
 	 */
-	public boolean setAllLevel(LevelVO vo)throws RemoteException;
-	/**
-	 *得到客户的信用记录
-	 * @param clientID
-	 * @return 信用记录
-	 */
-	public ArrayList<String> getCreditRecord(String clientID);
+	public boolean setAllLevel()throws RemoteException;
+
 	/**
 	 * 创建新客户
 	 * @param po
 	 * @return 创建是否成功
 	 */
 
-	public boolean createClient(ClientVO vo)throws RemoteException;
+	public boolean createClient(ClientPO po)throws RemoteException;
 	/**
 	 * 删除客户
 	 * @param po
