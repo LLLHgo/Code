@@ -115,6 +115,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 	            	  po.setBirth(count1.getString("birth"));
 	            	  po.setLevel(count1.getInt("level"));
 	            	  po.setFirm(count1.getString("firm"));
+	            	  po.setCredit(count1.getInt("credit"));
 	            	  po.setRecord(findCreditRecord(clientID));
 	            	  return po;
 	              }
@@ -207,10 +208,12 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
             //用户没重名就注册
             if(!count.next()){
             int res = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`clientID`, `password`) VALUES ('"+po.getID()+"', '"+po.getPassword()+"')");
+            boolean res0=stat.execute("CREATE TABLE `HRMS`.`"+po.getID()+"` (`ID` INT NOT NULL AUTO_INCREMENT,`date` VARCHAR(45) NULL,`reason` VARCHAR(45) NULL,`recharge` INT NULL,PRIMARY KEY (`ID`))");
             if(res==1)
             	return true;
             System.out.println("OK");
             }
+
 		}catch(SQLException se){
 			// 处理 JDBC 错误
 			se.printStackTrace();

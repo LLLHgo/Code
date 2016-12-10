@@ -66,14 +66,17 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public ResultMessage saveSitemanagerDelete(String clientId) {
 		// TODO Auto-generated method stub
+		if(clientId==""||clientId==null)
+			return ResultMessage.FAIL;
+		else if(clientId.charAt(0)=='C'&&clientId.length()==9){
 		try{
-			boolean res=clientdata.deleteClient(clientId);
-			if(res)return ResultMessage.SUCCESS;
-			else 	return ResultMessage.FAIL;
-			}catch(Exception e){
+			if(RemoteHelper.getInstance().clientDataService().deleteClient(clientId))
+				return ResultMessage.SUCCESS;
+			}catch(RemoteException e){
 				e.printStackTrace();
-			}
-		return null;
+
+			}}
+		return ResultMessage.FAIL;
 
 	}
 
@@ -107,12 +110,15 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public ResultMessage updateInfo(ClientVO vo) {
 		// TODO Auto-generated method stub
-		/*try{
-			return clientdata.modifyPersonalInfo(vo);
-			}catch(Exception e){
+		try{
+			ClientPO po=new ClientPO(vo.getID(),vo.getPassword(),vo.getName(),vo.getTel(),vo.getType(),vo.getLevel(),vo.getBirth(),vo.getFirm(),vo.getCreditRecord(),vo.getCredit());
+			ResultMessage rs=RemoteHelper.getInstance().clientDataService().modifyPersonalInfo(po);
+				return rs;
+			}catch(RemoteException e){
 				e.printStackTrace();
-			}*/
-		return null;
+
+			}
+		return ResultMessage.FAIL;
 	}
 
 
@@ -137,8 +143,6 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public boolean checkAccount(String clientID, String password)  {
 		// TODO Auto-generated method stub
-		//if(clientID!=null&&password!=null)
-		//if(clientID.equals(ClientDataTool.clientVO1.getID())&&password.equals(ClientDataTool.clientVO1.getPassword()))
 		try{
 		if(RemoteHelper.getInstance().clientDataService().checkAccount(clientID,password))
 			return true;

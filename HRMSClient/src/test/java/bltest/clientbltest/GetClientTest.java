@@ -39,5 +39,6 @@ public class GetClientTest {
 	assertEquals(ClientDataTool.clientVO1.getFirm(),Manage.getclient("C00000001").getFirm());
 	assertEquals(ClientDataTool.clientVO1.getName(),Manage.getclient("C00000001").getName());
 	assertEquals(ClientDataTool.clientVO1.getTel(),Manage.getclient("C00000001").getTel());
+	assertEquals(ClientDataTool.clientVO1.getCredit(),Manage.getclient("C00000001").getCredit());
 	}
 }

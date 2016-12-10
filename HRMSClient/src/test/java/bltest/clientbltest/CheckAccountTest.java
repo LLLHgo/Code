@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import businesslogic.clientbl.ClientManage;
-import businesslogic.hotelstaffbl.HotelstaffManage;
 public class CheckAccountTest {
 ClientManage Manage = new ClientManage();
 

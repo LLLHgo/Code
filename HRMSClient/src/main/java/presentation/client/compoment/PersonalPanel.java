@@ -46,7 +46,7 @@ public class PersonalPanel extends JPanel{
 		imageIcon = new ImageIcon("image/personalPanel.png");
 		idLabel=new Label("ID:"+clientID);
 		idLabel.setBounds(250,170,200,30);
-		nameField=new Field(vo.getName(),200,220,100,35);
+		nameField=new Field(vo.getName(),200,220,200,35);
 		telField=new Field(vo.getTel(),200,270,200,35);
 		nameLabel=new Label("姓名：");
 		nameLabel.setBounds(120,220,100,30);
@@ -54,7 +54,7 @@ public class PersonalPanel extends JPanel{
 		ok.addActionListener(new okButtonListener());
 		delete=new deleteButton(520,270);
 		delete.addActionListener(new deleteButtonListener());
-		editName=new editButton(320,220);
+		editName=new editButton(420,220);
 		editName.addActionListener(new editNameButtonListener());
 		telLabel=new Label("电话：");
 		telLabel.setBounds(120,270,100,30);

@@ -32,7 +32,8 @@ public class EvaluatePanel extends JPanel{
 		this.controller=controller;
 		this.id=id;
 		Panel=new JPanel();
-		hlp=new HotelListPane(controller.findClientFinOrderList(id));
+		//hlp=new HotelListPane(controller.findClientFinOrderList(id));
+		hlp=new HotelListPane(new ArrayList<OrderVO>());
 		frame.add(hlp);
 	imageIcon = new ImageIcon("image/searchPanel.png");
 	searchField=new JTextField();

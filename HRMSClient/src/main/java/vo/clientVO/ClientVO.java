@@ -57,11 +57,11 @@ public class ClientVO {
 					this.password=password;
 					this.client_name="";
 					this.client_tel="";
-					this.vip_type=null;
+					this.vip_type=VIPType.NONVIP;
 					this.client_birth="";
 					this.vip_level=0;
 					this.client_firm="";
-					this.creditRecord=null;
+					this.creditRecord=new ArrayList<String>();
 					this.credit=0;
 				}
 				/*public ClientVO(Client c){
