@@ -4,13 +4,15 @@ import java.util.List;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.clientbl.ClientManage;
+import businesslogic.hoteinfobl.Hotelinfo;
+import businesslogic.logbl.LogManage;
+import businesslogic.orderbl.OrderFind;
+import businesslogic.orderbl.OrderOperator;
 import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.clientblservice.ClientBLService;
-import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
-import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
 import businesslogicservice.logblservice.LogBLService;
-import businesslogicservice.logblservice.LogBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLControllerService;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.orderblservice.*;
@@ -25,11 +27,12 @@ import vo.strategyVO.MarketingStrategyVO;
 public class MarketingBLController implements MarketingBLControllerService{
 
 	private MarketingBLService marketingBL=new MarketingManage();
-	private ClientBLService clientBL=new ClientBLService_Stub();
+	private ClientBLService clientBL=new ClientManage();
 	private StrategyBLService strategyBL=new StrategyManage();
-	private OrderBLService_Stub orderBL=new OrderBLService_Stub();
-	private LogBLService logBL=new LogBLService_Stub();
-    private HotelinfoBLService hotelBL=new HotelinfoBLService_Stub();
+	private OrderFindBLService orderFind=new OrderFind();
+	private OrderOperatorBLService orderOperator=new OrderOperator();
+	private LogBLService logBL=new LogManage();
+    private HotelinfoBLService hotelBL=new Hotelinfo();
 
 	@Override
 	public ResultMessage updateLevel(List<LevelVO> vos) {
@@ -88,12 +91,12 @@ public class MarketingBLController implements MarketingBLControllerService{
 
 	@Override
 	public OrderVO findSpecificOrder(String marketingID, String orderID) {
-		return this.orderBL.findSpecificOrder(marketingID, orderID);
+		return this.orderFind.findSpecificOrder(marketingID, orderID);
 	}
 
 	@Override
 	public List<OrderVO> findAbnormalOrderList(String date) {
-		return this.orderBL.findAbnormalOrderList(date);
+		return this.orderFind.findAbnormalOrderList(date);
 	}
 
 
@@ -129,7 +132,7 @@ public class MarketingBLController implements MarketingBLControllerService{
 
 	@Override
 	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log) {
-		ResultMessage result=this.orderBL.saveOrderPO(order);
+		ResultMessage result=this.orderOperator.saveOrderPO(order);
 		if(result==ResultMessage.SUCCESS){//保存订单状态成功
 			if(this.clientBL.setCredit(order.getClientId(),(int)price)){//设置客户信用值成功
 				//！！！！！！应该是double型的！！！
@@ -137,7 +140,7 @@ public class MarketingBLController implements MarketingBLControllerService{
 			    return ResultMessage.SUCCESS;
 			}else{//设置用户信用值失败
 				order.setOrderStatus(OrderType.ABNORMAL);//将订单状态重新设为异常
-				if(this.orderBL.saveOrderPO(order)==ResultMessage.SUCCESS){//将订单状态重新设为异常成功
+				if(this.orderOperator.saveOrderPO(order)==ResultMessage.SUCCESS){//将订单状态重新设为异常成功
 					return ResultMessage.SUCCESS;
 				}else{//将订单状态重新设为异常失败
 					return ResultMessage.FAULT;
