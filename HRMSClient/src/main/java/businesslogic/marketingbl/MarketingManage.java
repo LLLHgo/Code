@@ -107,6 +107,8 @@ public class MarketingManage implements MarketingBLService{
 	public ResultMessage MarketingAccountAdd(MarketingVO vo) {
 		if(vo==null)
 		    return ResultMessage.FAIL;
+		if(vo.getPassword().length()==0)
+			return ResultMessage.VOIDPASSWORD;
 		MarketingPO po=new MarketingPO(vo.getName(),vo.getPassword(),vo.getMarketingID(),vo.getTelephone());
 		try {
 			if(this.marketingDataService.MarketingAccountAdd(po)){//增加账户成功
