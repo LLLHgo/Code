@@ -84,7 +84,7 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 		try{
 			stmt=conn.createStatement();
 			String sql;
-			sql = "SELECT * FROM MarketingProfile WHERE MarketingID='"+ID+"'";
+			sql = "SELECT * FROM MarketingProfile WHERE MarketingID='"+ID+"' AND password='"+password+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while(rs.next()){
