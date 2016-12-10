@@ -8,6 +8,9 @@ import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogic.hoteinfobl.RoominfoManage;
 import businesslogic.logbl.LogManage;
+import businesslogic.orderbl.OrderFind;
+import businesslogic.orderbl.OrderOperator;
+import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffControllerBLService;
 import businesslogicservice.logblservice.LogBLService;
@@ -40,16 +43,16 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	public HotelstaffBLController(){
 		hotelinfo = new Hotelinfo();
-//		orderFind = new OrderFind();
-//		orderOperator=new OrderOperator();
-//		strategy = new StrategyManage();
 		hotelstaff = new HotelstaffManage();
 		log = new LogManage();
+		orderFind = new OrderFind();
+		orderOperator=new OrderOperator();
+		strategy = new StrategyManage();
 
 //		hotelinfo = new HotelinfoBLService_stub();
-		strategy = new StrategyBLService_Stub();
-		orderFind = new OrderBLService_Stub();
-		orderOperator=new OrderBLService_Stub();
+//		strategy = new StrategyBLService_Stub();
+//		orderFind = new OrderBLService_Stub();
+//		orderOperator=new OrderBLService_Stub();
 //		hotelstaff = new HotelstaffBLService_stub();
 
 	}

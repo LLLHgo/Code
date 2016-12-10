@@ -18,14 +18,13 @@ import vo.strategyVO.MarketingStrategyVO;
  * 
  * 因为hotelinfoBLService接口定义得比较大，而实现类分为Hotelinfo和Roominfo时并不都需要，所以使用了接口适配器模式
  * @version 1
- * @since 16.12.3
  * @author liuyu
  *
  */
 public class Hotelinfo implements HotelinfoBLService{
 	
-	HotelinfoManage hotel;
-	RoominfoManage room;
+	HotelinfoManage hotel = new HotelinfoManage();
+	RoominfoManage room = new RoominfoManage();
 	
 	/**
 	 * 请求获得hotelID对应的酒店信息

@@ -34,7 +34,7 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
 		return mysql.findhotelinfo(hotelID);
 	}
-
+	
 	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
 		return mysql.hotelstaffUpdatehotelinfo(po);
 	}

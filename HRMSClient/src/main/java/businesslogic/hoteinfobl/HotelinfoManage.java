@@ -73,7 +73,30 @@ public class HotelinfoManage{
 			return null;
 		}
 		return listVO;
-		
+	}
+	
+	
+	public HotelinfoVO clientgetBasicinfo(String hotelID){
+		try {
+			po = data.findhotelinfo(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+		if(po == null){
+			return null;
+		}
+		vo = new HotelinfoVO(po.getName(),po.getAddress(),po.getArea(),po.getIntroduction(),
+				po.getFacility(),po.getTel(),po.getStar(),po.getHotelID(),po.getCompanyList());
+		ArrayList<String> remark = po.getRemark();
+		if(remark!=null){
+			vo.setRemark(remark);
+		}
+		ArrayList<RoominfoVO> roominfoList = new RoominfoManage().getRoominfoList(hotelID);
+		if(roominfoList!=null){
+			vo.setRoominfoList(roominfoList);
+		}
+		return vo;
 	}
 
 	private HotelinfoVO PO2VO(HotelinfoPO po){

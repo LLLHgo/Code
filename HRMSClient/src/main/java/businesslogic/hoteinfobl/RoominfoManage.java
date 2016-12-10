@@ -112,7 +112,6 @@ public class RoominfoManage{
 		}
 		return vo;
 	}
-	
 
 	public  ArrayList<String> getAvailableRooms(String hotelID){
 //		try {
