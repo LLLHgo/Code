@@ -3,12 +3,12 @@ package presentation.sitemanager.controller;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
-<<<<<<< HEAD
+
 import businesslogic.logbl.LogManage;
 import businesslogic.sitemanagerbl.SitemanagerManage;
-=======
+
 import businesslogic.marketingbl.MarketingManage;
->>>>>>> origin/master
+
 import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.clientblservice.ClientBLService_Stub;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
@@ -16,7 +16,6 @@ import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService_Stub;
 import businesslogicservice.logblservice.LogBLService;
-import businesslogicservice.logblservice.LogBLService_Stub;
 import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService_Stub;
@@ -56,13 +55,12 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 	public ProcessSitemanagerViewController(String sitemanagerId){
 		this.sitemanagerId=sitemanagerId;
-<<<<<<< HEAD
+
 		sitemanagerblservice=new SitemanagerManage();
-		marketingblservice=new MarketingBLService_Stub();
-=======
+		marketingblservice=new MarketingManage();
+
 		sitemanagerblservice=new SitemanagerBLService_Stub();
 		marketingblservice=new MarketingManage();
->>>>>>> origin/master
 		clientblservice=new ClientBLService_Stub();
 		hotelblservice=new HotelinfoBLService_Stub();
 		hotelstaffblservice=new HotelstaffBLService_Stub();
