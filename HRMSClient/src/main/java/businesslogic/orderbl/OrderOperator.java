@@ -10,6 +10,7 @@ import businesslogicservice.orderblservice.OrderOperatorBLService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.orderdataservice.OrderDataService_Stub;
 import po.OrderPO;
+import rmi.RemoteHelper;
 import vo.orderVO.OrderVO;
 
 public class OrderOperator implements OrderOperatorBLService{
@@ -22,13 +23,12 @@ public class OrderOperator implements OrderOperatorBLService{
 	ArrayList<OrderPO> orderPOList;
 	ArrayList<OrderVO> orderVOList;
 	
+	RemoteHelper remote;
+	
 	
 	public OrderOperator(){
-		try {
-			orderDateService=new OrderDataService_Stub();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}	
+		remote=RemoteHelper.getInstance();
+		orderDateService=remote.getOrderDataService();
 		packageTrans=new PackageTransform();
 		orderPOList=new ArrayList<OrderPO>();
 		orderVOList=new ArrayList<OrderVO>();
