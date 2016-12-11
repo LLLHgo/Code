@@ -297,7 +297,6 @@ public class OrderPanel extends JPanel{
 	    	}
 	        JLabel stateLabel = new JLabel(stateLabelText);
 
-
 	        orderIDLabel.setBounds(5, 18, 220, 16);
 	        nameLabel.setBounds(400,18,200,16);
 	        priceLabel.setBounds(265,48,120,16);
