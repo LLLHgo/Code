@@ -101,7 +101,14 @@ public class ClientVO {
 					return client_firm;
 				}
 				public ArrayList<String> getCreditRecord(){
+					 ArrayList<String> list=new ArrayList<String>();
+	            	  list.add(" ");
+					if(creditRecord!=null)
 					return creditRecord;
+					else
+						return list;
+
+
 				}
 				public void setID(String id){
 					this.client_id=id;

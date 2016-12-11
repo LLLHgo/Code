@@ -107,7 +107,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 	            	  po.setName(count1.getString("name"));
 	            	  po.setTel(count1.getString("tel"));
 	            	  switch(count1.getString("type").charAt(0)){
-	            	  case 'n':po.setType(null);break;
+	            	  case 'N':po.setType(null);break;
 	            	  case 'O':po.setType(VIPType.ORDINARYVIP);break;
 	            	  case 'E':po.setType(VIPType.ENTERPRISEVIP);break;
 	            	  default:po.setType(null);break;
@@ -116,7 +116,12 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 	            	  po.setLevel(count1.getInt("level"));
 	            	  po.setFirm(count1.getString("firm"));
 	            	  po.setCredit(count1.getInt("credit"));
+	            	  ArrayList<String> list=new ArrayList<String>();
+	            	  list.add(" ");
+	            	  if(findCreditRecord(clientID)!=null)
 	            	  po.setRecord(findCreditRecord(clientID));
+	            	  else
+	            		  po.setRecord(list);
 	            	  return po;
 	              }
 		}catch(SQLException se){
@@ -207,7 +212,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
             ResultSet count= stat.executeQuery("select clientID from client  where  clientID='"+po.getID()+"'");
             //用户没重名就注册
             if(!count.next()){
-            int res = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`clientID`, `password`) VALUES ('"+po.getID()+"', '"+po.getPassword()+"')");
+            int res = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`clientID`, `password`,`type`) VALUES ('"+po.getID()+"', '"+po.getPassword()+"', '"+"NONVIP"+"')");
             boolean res0=stat.execute("CREATE TABLE `HRMS`.`"+po.getID()+"` (`ID` INT NOT NULL AUTO_INCREMENT,`date` VARCHAR(45) NULL,`reason` VARCHAR(45) NULL,`recharge` INT NULL,PRIMARY KEY (`ID`))");
             if(res==1)
             	return true;
@@ -232,7 +237,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
             //用户存在就进行删除
             if(count.next()){
             boolean res = stat.execute("DELETE FROM `HRMS`.`client` WHERE `clientID`='"+clientId+"'");
-            if(res)
+            if(!res)
             	return true;
             System.out.println("OK");
             }

@@ -14,9 +14,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Enum.OrderType;
 import datatool.HotelinfoDataTool;
 import presentation.client.controller.SearchPanelController;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.orderVO.OrderVO;
 
 public class SearchPanel extends JPanel{
 	private ImageIcon imageIcon = null;
@@ -31,6 +33,7 @@ public class SearchPanel extends JPanel{
 
 		Panel=new JPanel();
 		this.frame=frame;
+		this.controller=controller;
 		hslp=new HotelSearchListPane(frame,null);
 		frame.add(hslp);
 
@@ -64,9 +67,7 @@ public class SearchPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			String info=searchField.getText();
-			frame.remove(hslp);
-			hslp=new HotelSearchListPane(frame,controller.getBasicinfoList(info));
-			frame.add(hslp);
+			hslp.change(controller.getBasicinfoList(info));
 			hslp.setVisible(true);
 		}
 
@@ -105,10 +106,29 @@ public class SearchPanel extends JPanel{
 		    scrollpanel=this;
 		}
 		}
+	public void change(ArrayList<HotelinfoVO> list){
+		Panel.removeAll();
+		if(list!=null)
+			 for(int i=0;i<list.size();i++){
+			    	HotelinfoVO vo=list.get(i);
+			    	HotelSearchItemPanel p=new HotelSearchItemPanel(0, i*100,vo);
+			    	 //p.setBounds(0,i*100,600,100);
+			    	p.vb.addActionListener(new ActionListener(){
+			    		public void actionPerformed(ActionEvent e) {
+			    			new HotelDetailFrame(vo);
+			    		}
+			    		});
+			    	 Panel.add(p);
+			    }
+			    this.getVerticalScrollBar().setVisible(false);
+
+			    this.repaint();
+	}
 	}
 	@Override
 	public void paintComponent(Graphics g) {
 		    g.drawImage(imageIcon.getImage(), 0, 0, this);
 		    super.paintComponents(g);
 		   }
+
 }

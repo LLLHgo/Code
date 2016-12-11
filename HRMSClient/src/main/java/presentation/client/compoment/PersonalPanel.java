@@ -39,7 +39,7 @@ public class PersonalPanel extends JPanel{
 	public PersonalPanel(String clientID,PersonalPanelController controller){
 		this.controller=controller;
 		vo=controller.getclient(clientID);
-		credits=vo.getCreditRecord();
+
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
 		cb=new creditButton();
 		cb.addActionListener(new creditButtonListener());
@@ -181,6 +181,10 @@ public class PersonalPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(vo.getCreditRecord()!=null)
+					credits=vo.getCreditRecord();
+					else
+						credits=new ArrayList<String>();
 				new CreditFrame(credits);
 
 

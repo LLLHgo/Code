@@ -7,12 +7,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Enum.OrderType;
+import Enum.VIPType;
 import presentation.client.compoment.HotelEvaluateItemPanel.Label;
 import vo.orderVO.OrderVO;
 
 public class OrderItemPanel extends JPanel{
 	private ImageIcon imageIcon = null;
-	private minideleteButton db;
+	minideleteButton db;
 	 viewButton vb;
 	 private Label hotelName;
 		private Label orderNum;
@@ -21,7 +23,10 @@ public class OrderItemPanel extends JPanel{
 public OrderItemPanel(int x,int y,OrderVO vo){
 	this.vo=vo;
 	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");
+	if(vo.getOrderStatus().equals(OrderType.NORMALNONEXEC)){
 	db=new minideleteButton(500, 7);
+	this.add(db);
+	}
 	vb=new viewButton(450, 30);
 	hotelName=new Label(vo.getHotelName(),10,5,200,30,25);
 	orderNum=new Label(vo.getOrderId(),90,45,240,30,20);
@@ -33,7 +38,7 @@ public OrderItemPanel(int x,int y,OrderVO vo){
     this.setLayout(null);
 	this.setBounds(x,y,600,100);
 	this.add(vb);
-	this.add(db);
+
 	this.setOpaque(false);
 	this.setVisible(true);
 }
