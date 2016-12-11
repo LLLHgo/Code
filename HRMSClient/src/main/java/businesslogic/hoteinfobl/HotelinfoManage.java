@@ -60,7 +60,7 @@ public class HotelinfoManage{
 		ArrayList<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
 		try {
 			listPO = data.findHotelinfoList(area);
-
+			System.out.println(area+"...........................");
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
 				if(vo == null){

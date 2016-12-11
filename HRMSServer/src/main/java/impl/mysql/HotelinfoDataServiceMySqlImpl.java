@@ -319,6 +319,7 @@ public class HotelinfoDataServiceMySqlImpl{
 			Statement st = conn.createStatement();
 			String sql = "select * from hotelinfo";
 			ResultSet myRS = st.executeQuery(sql);
+			System.out.println(area+".............");
 			while(myRS.next()){
 				if(area.equals((String)myRS.getObject("area"))){
 					po = new HotelinfoPO();
