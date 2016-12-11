@@ -27,7 +27,7 @@ public class CheckAccountTest {
 		assertEquals(true,manage.checkAccount("M00000004","yes"));
 	}*/
 
-	@Test
+	/*@Test
 	public void test4(){
 		//账号对密码粗
 		assertEquals(true,manage.checkAccount("M00000008","that'sright"));
