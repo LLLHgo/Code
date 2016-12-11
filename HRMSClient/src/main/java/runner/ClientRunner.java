@@ -50,6 +50,6 @@ public class ClientRunner {
 	
 	public static void main(String[] args){
 		ClientRunner clientRunner = new ClientRunner();
-		clientRunner.test2();
+		//clientRunner.test2();
 	}
 }

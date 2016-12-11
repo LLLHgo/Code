@@ -219,6 +219,7 @@ public class ProcessClientAccountManageView extends JPanel{
 			nameText.setText("");
 			telText.setText("");
 			vipgradeLabel.setText("");
+			viptypeLabel.setText("");
 			birthLabel.setText("");
 			firmLabel.setText("");
 			creditLabel.setText("");
@@ -280,6 +281,7 @@ public class ProcessClientAccountManageView extends JPanel{
 				nameText.setText("");
 				telText.setText("");
 				vipgradeLabel.setText("");
+				viptypeLabel.setText("");
 				birthLabel.setText("");
 				firmLabel.setText("");
 				creditLabel.setText("");
