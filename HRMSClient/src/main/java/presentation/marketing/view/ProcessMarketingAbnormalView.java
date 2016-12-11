@@ -24,7 +24,6 @@ import javax.swing.JTextField;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
-import datatool.OrderDataTool;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJLabel;
 import presentation.marketing.compoment.MJPanel;
@@ -201,19 +200,9 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	}
 
    public void showAbnormalOrders(ArrayList<OrderVO> orders){
-	   orders=new ArrayList<OrderVO>();
-	   orders.add( OrderDataTool.orderVO5);
-	   orders.add( OrderDataTool.orderVO4);
-	   orders.add( OrderDataTool.orderVO3);
-	   orders.add( OrderDataTool.orderVO2);
-	   orders.add( OrderDataTool.orderVO5);
 	   removeOrderPanel();
 	   if(orders==null||orders.size()==0)return;//order个数为0时返回
 	   //设置放置Order信息的JPanel
-	  /* if(orderPanel!=null){
-		   orderPanel.setVisible(false);
-		   orderPanel=null;
-	   }*/
 
        orderPanel=new MJPanel(0, 0, 702, 3520);
        orderPanel.setPreferredSize(new Dimension(680,+30+150*orders.size()));
