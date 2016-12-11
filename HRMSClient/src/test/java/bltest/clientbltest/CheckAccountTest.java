@@ -5,9 +5,10 @@ import org.junit.Test;
 
 import businesslogic.clientbl.ClientManage;
 public class CheckAccountTest {
-ClientManage Manage = new ClientManage();
 
-	@Test
+
+	/*@Test
+	 * ClientManage Manage = new ClientManage();
 	public void test1(){
 		//账号密码都对
 		assertEquals(true,Manage.checkAccount("C00000001","justfun"));
@@ -30,5 +31,5 @@ ClientManage Manage = new ClientManage();
 	public void test4(){
 
 		assertEquals(false,Manage.checkAccount("C00000002","justfunny"));
-	}
+	}*/
 }
