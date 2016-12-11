@@ -30,12 +30,12 @@ import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class RoominfoManage{
-	
+
 	HotelinfoDataService data = RemoteHelper.getInstance().hotelinfoDataService();
 
 //		data = new HotelinfoDataService_Stub();
-	
-	
+
+
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
 		RoominfoPO po = null;
 		try {
@@ -54,16 +54,16 @@ public class RoominfoManage{
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
 		boolean result = false;
 		try {
-			result = data.insertroominfo(po);
+			result = data.updateroominfo(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return false;
 		}
-		
+
 		return result;
 	}
 
-	
+
 	public String[] getRoomType() {
 		try {
 			return data.getRoomType();
@@ -73,7 +73,7 @@ public class RoominfoManage{
 		}
 	}
 
-	
+
 	public boolean addRoomType(String type) {
 		try {
 			return data.addRoomType(type);
@@ -82,9 +82,9 @@ public class RoominfoManage{
 			return false;
 		}
 	}
-	
 
-	
+
+
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
 		ArrayList<RoominfoPO> listPO;
 		ArrayList<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
@@ -116,10 +116,10 @@ public class RoominfoManage{
 	public  ArrayList<String> getAvailableRooms(String hotelID){
 //		try {
 //			ArrayList<RoominfoPO> list = (ArrayList<RoominfoPO>) data.findRoominfoList(hotelID);
-//			
+//
 //			for(int i=0;i<list.size();i++){
 //				if(list.get(i).getRoomState()== RoomState.Usable){
-//					
+//
 //				}
 //			}
 //		} catch (RemoteException e) {

@@ -248,7 +248,7 @@ public class OrderPanel extends JPanel{
 			showMessage("未找到订单");
 			return;
 		}
-		
+
 		//设置放置Order信息的JPanel
 	    orderPanel=new JPanel();
 	    orderPanel.setLayout(null);
@@ -372,6 +372,7 @@ public class OrderPanel extends JPanel{
 			this.remove(scrollPane);
 		}
 		showOrderList((ArrayList<OrderVO>)controller.getALLHotelOrderList(hotelID,OrderType.ALL));
+
 	}
 
 	private void showUnexecutedOrderList(){

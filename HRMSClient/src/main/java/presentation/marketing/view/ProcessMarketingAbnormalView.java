@@ -177,7 +177,7 @@ public class ProcessMarketingAbnormalView extends JPanel{
 
 			             if(convertionSuccess&&result>=0){//输入的日期合法
 					    	ArrayList<OrderVO> orders=(ArrayList<OrderVO>) controller.findAbnormalOrderList(formated);
-					        showAbnormalOrders(orders);//调用显示abnormalOrder的方法
+					    	showAbnormalOrders(orders);//调用显示abnormalOrder的方法
 		    	         }else{//输入的日期不合法
 		    	        	 ((ProcessMarketingView)view).setHint("请重新输入日期。");
 		    	         }
@@ -201,18 +201,20 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	}
 
    public void showAbnormalOrders(ArrayList<OrderVO> orders){
-	   orders=OrderDataTool.list1;
-	   orders.add(OrderDataTool.orderVO7);
-	   orders.add(OrderDataTool.orderVO6);
-	   orders.add(OrderDataTool.orderVO5);
-	   orders.add(OrderDataTool.orderVO4);
-	   orders.add(OrderDataTool.orderVO3);
-	   orders.add(OrderDataTool.orderVO2);
-	   orders.add(OrderDataTool.orderVO1);
-
+	   orders=new ArrayList<OrderVO>();
+	   orders.add( OrderDataTool.orderVO5);
+	   orders.add( OrderDataTool.orderVO4);
+	   orders.add( OrderDataTool.orderVO3);
+	   orders.add( OrderDataTool.orderVO2);
+	   orders.add( OrderDataTool.orderVO5);
 	   removeOrderPanel();
-	   if(orders.size()==0)return;//order个数为0时返回
+	   if(orders==null||orders.size()==0)return;//order个数为0时返回
 	   //设置放置Order信息的JPanel
+	  /* if(orderPanel!=null){
+		   orderPanel.setVisible(false);
+		   orderPanel=null;
+	   }*/
+
        orderPanel=new MJPanel(0, 0, 702, 3520);
        orderPanel.setPreferredSize(new Dimension(680,+30+150*orders.size()));
 
