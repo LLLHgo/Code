@@ -23,12 +23,19 @@ public interface HotelstaffBLService {
 	 * @return 是否将新密码持久化保存
 	 */
 	public ResultMessage setPassword(String hotelID,String password);
-	/**
+	/**（修改）
 	 * (网站管理人员请求)将酒店工作人员信息的修改持久化保存
 	 * @param vo
 	 * @return 是否将酒店工作人员信息的修改持久化保存
 	 */
 	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo);
+
+	/**(新增)
+	 ** (网站管理人员请求)将酒店工作人员信息的新增的信息持久化保存
+	 * @param vo
+	 * @return 是否将酒店工作人员信息的新增的信息持久化保存
+	 */
+	public ResultMessage saveSitemanagerAdd(HotelstaffVO vo);
 	/**
 	 *  (网站管理人员)请求返回酒店工作人员信息
 	 * @param hotelID

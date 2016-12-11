@@ -54,4 +54,11 @@ public class MockHotelstaffManage implements HotelstaffBLService{
 	public boolean checkAccount(String hotelID, String password) {
 		return true;
 	}
+
+
+	@Override
+	public ResultMessage saveSitemanagerAdd(HotelstaffVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

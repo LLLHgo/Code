@@ -92,4 +92,9 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 			return false;
 		}
 	}
+	@Override
+	public ResultMessage saveSitemanagerAdd(HotelstaffVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

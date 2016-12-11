@@ -69,6 +69,22 @@ public class HotelstaffManage implements HotelstaffBLService{
 		}
 	}
 
+	public ResultMessage saveSitemanagerAdd(HotelstaffVO vo) {
+		HotelstaffPO po = new HotelstaffPO(vo.getHotelID(),vo.getPassword(),vo.getTel());
+		boolean result = false;
+		try {
+			result = data.insert(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.REMOTEEXCEPTION;
+		}
+		if(result==true){
+			return ResultMessage.SUCCESS;
+		}else{
+			return ResultMessage.FAIL;
+		}
+	}
+	
 	@Override
 	public HotelstaffVO returnSitemanagerAccount(String hotelID) {
 		HotelstaffPO po;
