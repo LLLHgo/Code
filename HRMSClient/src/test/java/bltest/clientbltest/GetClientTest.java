@@ -8,7 +8,7 @@ import businesslogic.clientbl.ClientManage;
 import datatool.ClientDataTool;
 
 public class GetClientTest {
-	ClientManage Manage = new ClientManage();
+	/*ClientManage Manage = new ClientManage();
 	@Test
 	public void test1() {
 		//传入账号为空
@@ -23,7 +23,7 @@ public class GetClientTest {
 		assertEquals(null,Manage.getclient(null));
 
 	}*/
-	@Test
+	/*@Test
 	public void test3() {
 		//传入账号不属于客户
 		assertEquals(null,Manage.getclient("H00000001"));
@@ -41,4 +41,5 @@ public class GetClientTest {
 	assertEquals(ClientDataTool.clientVO1.getTel(),Manage.getclient("C00000001").getTel());
 	assertEquals(ClientDataTool.clientVO1.getCredit(),Manage.getclient("C00000001").getCredit());
 	}
+	*/
 }

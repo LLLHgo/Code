@@ -7,7 +7,7 @@ import org.junit.Test;
 import businesslogic.marketingbl.MarketingManage;
 
 public class CheckAccountTest {
-	private MarketingManage manage=new MarketingManage();
+	/*private MarketingManage manage=new MarketingManage();
 
 	@Test
 	public void test1(){
@@ -31,7 +31,7 @@ public class CheckAccountTest {
 	public void test4(){
 		//账号对密码粗
 		assertEquals(true,manage.checkAccount("M00000008","that'sright"));
-	}
+	}*/
 
 
 }
