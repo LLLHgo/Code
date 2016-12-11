@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Enum.ResultMessage;
 import businesslogic.clientbl.ClientManage;
 import businesslogic.hoteinfobl.Hotelinfo;
+import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogic.logbl.LogManage;
 import businesslogic.sitemanagerbl.SitemanagerManage;
 import businesslogic.marketingbl.MarketingManage;
@@ -59,7 +60,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		marketingblservice=new MarketingManage();
 		clientblservice=new ClientManage();
 		hotelblservice=new Hotelinfo();
-		hotelstaffblservice=new HotelstaffBLService_Stub();
+		hotelstaffblservice=new HotelstaffManage();
 		logblservice=new LogManage();
 		sitemanagerVO=init();
 	}

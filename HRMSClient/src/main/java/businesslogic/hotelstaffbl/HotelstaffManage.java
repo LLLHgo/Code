@@ -57,7 +57,7 @@ public class HotelstaffManage implements HotelstaffBLService{
 		HotelstaffPO po = new HotelstaffPO(vo.getHotelID(),vo.getPassword(),vo.getTel());
 		boolean result = false;
 		try {
-			result = data.insert(po);
+			result = data.sitemanagerUpdate(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.REMOTEEXCEPTION;
