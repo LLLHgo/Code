@@ -74,7 +74,6 @@ public class HotelinfoManage{
 			e.printStackTrace();
 			return null;
 		}
-		System.out.println(listVO.get(0).getTel());
 		return listVO;
 	}
 
