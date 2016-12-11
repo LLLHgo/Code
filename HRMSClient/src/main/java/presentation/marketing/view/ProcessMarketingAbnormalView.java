@@ -160,7 +160,10 @@ public class ProcessMarketingAbnormalView extends JPanel{
 		    	if(y.length()!=0&&m.length()!=0&&d.length()!=0){//输入的年月日都不为空才行
 		    	    if(y.matches("^[0-9]*$")&&m.matches("^[0-9]*$")&&d.matches("^[0-9]*$")){//输入的年月日都为数
 			    	    boolean convertionSuccess=true;
-			    	    String formated=""+y+"-"+m+"-"+d;
+			    	    String month=String.format("%2d", m);
+			    	    String day=String.format("%2d", d);
+			    	    System.out.println(month+"  "+day);
+			    	    String formated=""+y+"-"+month+"-"+day;
 			            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 			            int result=-1;
 			            try{//对日期进行判断 是否合法
@@ -175,6 +178,7 @@ public class ProcessMarketingAbnormalView extends JPanel{
 			            }
 
 			             if(convertionSuccess&&result>=0){//输入的日期合法
+			            	 
 					    	ArrayList<OrderVO> orders=(ArrayList<OrderVO>) controller.findAbnormalOrderList(formated);
 					    	showAbnormalOrders(orders);//调用显示abnormalOrder的方法
 		    	         }else{//输入的日期不合法
