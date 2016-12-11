@@ -59,7 +59,7 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 //			ResultSet myRS = st.executeQuery(sql);
 //			myRS.next();
 //			int count = myRS.getInt(1);
-			
+
 			String sql = "insert into hotelstaff values(?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			String hotelID = po.getHotelID();
@@ -113,7 +113,7 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		}
 		return false;
 	}
-	
+
 	//查
 	public HotelstaffPO find(String hotelStaffID) {
 		HotelstaffPO po = null;
@@ -134,8 +134,8 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		}
 		return po;
 	}
-	
-	
+
+
 	public void finish() throws RemoteException {
 		try {
 			conn.close();

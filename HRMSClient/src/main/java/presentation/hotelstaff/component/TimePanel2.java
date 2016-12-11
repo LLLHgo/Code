@@ -62,7 +62,7 @@ public class TimePanel2 extends JPanel{
 		this.add(dateField);
 		this.add(hourField);
 		this.add(minuteField);
-		
+
 		JLabel bridge1=new TextLabel(70,8,50,20,"-");
 		bridge1.setForeground(Color.lightGray);
 		bridge1.setFont(font);
@@ -100,7 +100,7 @@ public class TimePanel2 extends JPanel{
         Calendar c;
 		try{
 			year=Integer.parseInt(y);
-			month=Integer.parseInt(m)-1;
+			month=Integer.parseInt(m);
 			date=Integer.parseInt(d);
 			hour=Integer.parseInt(h);
 			minute=Integer.parseInt(mi);

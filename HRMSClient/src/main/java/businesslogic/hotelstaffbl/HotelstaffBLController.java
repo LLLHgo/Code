@@ -108,7 +108,8 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	@Override
 	public ArrayList<OrderVO> getALLHotelOrderList(String hotelID, OrderType ALL) {
-		return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ALL, hotelID);
+	//	return (ArrayList<OrderVO>) orderFind.findHotelTypeOrderList(ALL, hotelID);
+		return orderFind.findUserOrderList(hotelID);
 	}
 
 	@Override

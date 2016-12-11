@@ -68,7 +68,7 @@ public class TimePanel extends JPanel{
         Calendar c;
 		try{
 			year=Integer.parseInt(y);
-			month=Integer.parseInt(m)-1;
+			month=Integer.parseInt(m);
 			date=Integer.parseInt(d);
 			hour=Integer.parseInt(h);
 			minute=Integer.parseInt(mi);

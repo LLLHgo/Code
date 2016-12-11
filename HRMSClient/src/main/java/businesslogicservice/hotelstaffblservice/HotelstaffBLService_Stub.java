@@ -56,7 +56,7 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	public ResultMessage setPassword(String hotelD,String password) {
 		return ResultMessage.SUCCESS;
 	}
-	
+
 	/**
 	 * (网站管理人员请求)将酒店工作人员信息的修改持久化保存
 	 * @param vo
@@ -64,9 +64,11 @@ public class HotelstaffBLService_Stub implements HotelstaffBLService{
 	 */
 	@Override
 	public ResultMessage saveSitemanagerUpdate(HotelstaffVO vo) {
+		if(vo.getHotelID().equals("H00000002"))
 		return ResultMessage.SUCCESS;
+		return ResultMessage.FAIL;
 	}
-	
+
 	/**
 	 *  (网站管理人员)请求返回酒店工作人员信息
 	 * @param hotelID

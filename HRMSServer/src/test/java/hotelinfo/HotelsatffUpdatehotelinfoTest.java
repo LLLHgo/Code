@@ -12,9 +12,9 @@
 //import po.HotelinfoPO;
 //
 //public class HotelsatffUpdatehotelinfoTest {
-//	
+//
 //HotelinfoDataServiceMySqlImpl mysql;
-//	
+//
 //	public HotelsatffUpdatehotelinfoTest(){
 //		try {
 //			mysql = new HotelinfoDataServiceMySqlImpl();
@@ -22,7 +22,7 @@
 //			e.printStackTrace();
 //		}
 //	}
-//	
+//
 //	@Test
 //	public void test1(){
 //		//改变电话
@@ -42,7 +42,7 @@
 //			e.printStackTrace();
 //		}
 //	}
-//	
+//
 //	@Test
 //	public void test2(){
 //		//数据库里没有对应的酒店信息
@@ -62,7 +62,7 @@
 //			e.printStackTrace();
 //		}
 //	}
-//	
+//
 //	@Test
 //	public void test3(){
 //		//将酒店信息改回来以免影响别的测试

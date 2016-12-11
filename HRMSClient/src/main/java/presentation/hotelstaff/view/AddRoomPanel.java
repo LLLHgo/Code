@@ -107,8 +107,11 @@ public class AddRoomPanel extends JPanel{
 			vo = getRoominfoVO();
 			if(vo!=null){
 				ResultMessage result = controller.updateroominfo(vo, hotelID);
+
 				if(result == ResultMessage.SUCCESS){
 					controller.JBRoomClicked("新增成功");
+				}else{
+					showMessage(result.toString());
 				}
 			}
 				
@@ -134,6 +137,7 @@ public class AddRoomPanel extends JPanel{
 		num = jtfroomNum.getText();
 		price = jtfroomPrice.getText();
 			state = jcbState.getSelectedItem().toString();type = jcbType.getSelectedItem().toString();
+			RoominfoVO vo1 = null;
 	
 		//如果没有填写完整，返回null
 		if(num.equals("")||price.equals("")||type.equals("")||state.equals("")){
@@ -142,16 +146,22 @@ public class AddRoomPanel extends JPanel{
 		}
 		//如果填写完整，返回vo包
 		else{
-			vo.setPrice(Double.parseDouble(price));
-			vo.setRoomNum(num);
-			vo.setType(type);
+			vo1 = new RoominfoVO();
+			vo1.setHotelID(hotelID);
+			try{
+				vo1.setPrice(Double.parseDouble(price));
+			}catch(NumberFormatException e){
+				showMessage("数字格式错误");
+			}
+			vo1.setRoomNum(num);
+			vo1.setType(type);
 			if(state.equals("可用")){
-				vo.setRoomState(RoomState.Usable);
+				vo1.setRoomState(RoomState.Usable);
 			}else{
-				vo.setRoomState(RoomState.Unusable);
+				vo1.setRoomState(RoomState.Unusable);
 			}
 		}
-		return vo;
+		return vo1;
 	}
 	
 	public void showMessage(String message){

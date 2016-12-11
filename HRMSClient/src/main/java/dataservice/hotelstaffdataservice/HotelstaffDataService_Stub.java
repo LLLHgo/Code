@@ -55,4 +55,16 @@ public class HotelstaffDataService_Stub implements HotelstaffDataService{
 		return null;
 	}
 
+	@Override
+	public boolean hotelstaffUpdate(HotelstaffPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean sitemanagerUpdate(HotelstaffPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

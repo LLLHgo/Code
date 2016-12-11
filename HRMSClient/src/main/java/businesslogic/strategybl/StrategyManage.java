@@ -230,9 +230,9 @@ public class StrategyManage implements StrategyBLService{
 
 	private HotelStrategyPO Hvo2po(HotelStrategyVO vo){
 		HotelStrategyPO po = null;
-		if(vo.getType().equals(HotelStrategy.BIRTHDAY))
+		if(vo.getType().equals(HotelStrategy.BIRTHDAY)){
 			po=new HotelBirthdayPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getHotelID(),vo.getDiscount());
-		else if(vo.getType().equals(HotelStrategy.COMPANY))
+		}else if(vo.getType().equals(HotelStrategy.COMPANY))
 			po=new HotelCompanyPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getHotelID(),vo.getDiscount());
 		else if(vo.getType().equals(HotelStrategy.SPECIALDAY))
 			po=new HotelSpecialdayPO(vo.getName(),vo.getStartTime(),vo.getEndTime(),vo.getHotelID(),vo.getDiscount());

@@ -54,7 +54,7 @@ public class RoominfoManage{
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
 		boolean result = false;
 		try {
-			result = data.updateroominfo(po);
+			result = data.insertroominfo(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return false;

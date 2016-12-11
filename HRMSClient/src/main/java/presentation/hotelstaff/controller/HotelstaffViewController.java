@@ -79,6 +79,7 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
 		return controller.getRoominfoList(hotelID);
 	}
+
 	@Override
 	public ResultMessage updatehotelStrategy(HotelStrategyVO vo) {
 		 return controller.updatehotelStrategy(vo);

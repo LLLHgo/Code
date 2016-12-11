@@ -35,13 +35,11 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import datatool.OrderDataTool;
 /**
- * 
+ *
  * @version 1
- * @since 16.11.27
  * @author liuyu
- * 
+ *
  * @version 2
- * @since 16.12.2
  * @author liuyu
  *
  */
@@ -55,7 +53,7 @@ public class OrderPanel extends JPanel{
 	private ImageIcon Icheckbox;
 	private Font font;
 	private ArrayList<OrderVO> orderList;
-	private JScrollPane scrollPane;
+	private JScrollPane scrollPane=null;
 	private ImageIcon orderBackground;
 	private JLabel jlSearch;
 	private OrderTypeButton jbAll;
@@ -70,24 +68,24 @@ public class OrderPanel extends JPanel{
 	private JPanel orderPanel;
 	private JLabel resultLabel;
 	private SearchButton jbSearch;
-	
+
 	public OrderPanel(HotelstaffViewController controller){
 		this.controller = controller;
 		this.hotelID = controller.gethotelID();
 		init();
 	}
-	
+
 	private void init(){
 		this.setLayout(null);
 		this.setBounds(0,0,1000,618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		buttonFlag = true;
-		
+
 		Icheckbox = new ImageIcon("./src/main/resource/picture/hotelorder/checkbox.png");
 		IDetailedSearch = new ImageIcon("./src/main/resource/picture/hotelorder/searchbackground.png");
-	
+
 		jlSearch = new JLabel();
 		jlSearch.setBounds(330, 90, 180, 25);
 		jlSearch.setForeground(Color.white);
@@ -97,14 +95,14 @@ public class OrderPanel extends JPanel{
 		jlSearch.setBorder(null);
 		this.add(jlSearch);
 		jlSearch.setText("所有订单");
-		
+
 		//下拉框背景
 		jlDetailedSearch = new JLabel();
 		jlDetailedSearch.setBounds(320, 100, 180, 200);
 		jlDetailedSearch.setIcon(IDetailedSearch);
 		jlDetailedSearch.setVisible(false);
 		this.add(jlDetailedSearch);
-	
+
 		jbAll = new OrderTypeButton(315,120,"所有订单");
 		jbUnexecuted = new OrderTypeButton(315,153,"未执行");
 		jbExecuted = new OrderTypeButton(315,188,"已执行");
@@ -116,11 +114,11 @@ public class OrderPanel extends JPanel{
 		jbAbnormal.addActionListener(new SearchButtonActionListener());
 		jbCancle.addActionListener(new SearchButtonActionListener());
 		this.add(jbAll);
-		this.add(jbUnexecuted); 
-		this.add(jbExecuted); 
+		this.add(jbUnexecuted);
+		this.add(jbExecuted);
 		this.add(jbAbnormal);
 		this.add(jbCancle);
-		
+
 		jbDrag = new JButton();
 		jbDrag.setIcon(new ImageIcon("./src/main/resource/picture/hotelorder/triangle.png"));
 		jbDrag.setBounds(480,90,25,25);
@@ -138,11 +136,11 @@ public class OrderPanel extends JPanel{
 			@Override
 			public void focusLost(FocusEvent e) {
 			}
-			
+
 		});
 
 		showAllOrderList();
-		
+
 		//搜索框
 		checkbox = new JTextField();
 		checkbox.setBounds(555,88,330,32);
@@ -159,9 +157,9 @@ public class OrderPanel extends JPanel{
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				
+
 			}
-			
+
 		});
 		//搜索按钮
 		jbSearch = new SearchButton(890,79);
@@ -178,9 +176,9 @@ public class OrderPanel extends JPanel{
 					showOrderList(orderList);
 				}
 			}
-			
+
 		});
-		
+
 		//显示结果
 		resultLabel = new JLabel();
 		resultLabel.setForeground(Color.BLACK);
@@ -188,7 +186,7 @@ public class OrderPanel extends JPanel{
 		resultLabel.setBounds(290, 50, 500, 20);
 		this.add(resultLabel);
 	}
-	
+
 	private class DragButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -214,7 +212,7 @@ public class OrderPanel extends JPanel{
 //			}
 		}
 	}
-	
+
 	private class SearchButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -243,13 +241,14 @@ public class OrderPanel extends JPanel{
 			scrollPane.setVisible(true);
 		}
 	}
-	
-	
-	private void showOrderList(ArrayList<OrderVO> orders){ 
+
+
+	private void showOrderList(ArrayList<OrderVO> orders){
 		if(orders==null){
 			showMessage("未找到订单");
 			return;
 		}
+		
 		//设置放置Order信息的JPanel
 	    orderPanel=new JPanel();
 	    orderPanel.setLayout(null);
@@ -297,8 +296,8 @@ public class OrderPanel extends JPanel{
 	    		}
 	    	}
 	        JLabel stateLabel = new JLabel(stateLabelText);
-	      
-	        
+
+
 	        orderIDLabel.setBounds(5, 18, 220, 16);
 	        nameLabel.setBounds(400,18,200,16);
 	        priceLabel.setBounds(265,48,120,16);
@@ -308,17 +307,17 @@ public class OrderPanel extends JPanel{
 	        stateLabel.setBounds(440,80,70,16);
 	        roomTypeLabel.setBounds(265,18,96,16);
 	        roomNumLabel.setBounds(360,18,90,16);
-	        
-	        
+
+
 	        JLabel[] labelList = {orderIDLabel,nameLabel,priceLabel,entertimeLabel,
 	        		phoneLabel,stateLabel,leavetimeLabel,roomTypeLabel,roomNumLabel};
-	        
+
 	        for(int i=0;i<labelList.length;i++){
 	        	panel.add(labelList[i]);
 	        	labelList[i].setForeground(Color.white);
 	        	labelList[i].setFont(new Font("微软雅黑",Font.PLAIN,16));
 	        }
-	        
+
 	        //确认入住按钮，按钮按下后订单状态改变
 		    ConfirmButton button = new ConfirmButton(550,50);
 		    panel.add(button);
@@ -335,22 +334,22 @@ public class OrderPanel extends JPanel{
 						showMessage("修改失败");
 					}
 				}
-	        	
+
 	        });
-	        
+
 	        if(stateLabelText.equals("已执行")){
 	        	stateLabel.setForeground(Color.black);
 	        	button.setVisible(false);
 	        }else if(stateLabelText.equals("异常")){
 	        	stateLabel.setForeground(Color.red);
 	        }
-	        
+
 	        orderPanel.add(panel);
-	        
+
 	    };
-	
+
 	}
-	
+
 	public void showMessage(String message){
 	 	//提示信息
 		new Thread(new Runnable(){
@@ -365,31 +364,31 @@ public class OrderPanel extends JPanel{
 	            resultLabel.setText("");
 			}
 		}).start();
-		
+
 	}
-	
+
 	private void showAllOrderList(){
 		if(scrollPane!=null){
 			this.remove(scrollPane);
 		}
 		showOrderList((ArrayList<OrderVO>)controller.getALLHotelOrderList(hotelID,OrderType.ALL));
 	}
-	
+
 	private void showUnexecutedOrderList(){
 		if(scrollPane!=null){
 			this.remove(scrollPane);
 		}
 		showOrderList((ArrayList<OrderVO>)controller.getUnexecutedHotelOrderList(hotelID,OrderType.NORMALNONEXEC));
 	}
-	
-	
+
+
 	private void showExecutedOrderList(){
 		if(scrollPane!=null){
 			this.remove(scrollPane);
 		}
 		showOrderList((ArrayList<OrderVO>)controller.getExecutedHotelOrderList(hotelID,OrderType.NORMALEXEC));
 	}
-	
+
 	private void showAbnormalOrderList(){
 		if(scrollPane!=null){
 			this.remove(scrollPane);
@@ -403,7 +402,7 @@ public class OrderPanel extends JPanel{
 		}
 		showOrderList((ArrayList<OrderVO>)controller.getCancleHotelOrderList(hotelID, OrderType.CANCEL));
 	}
-	
+
 	protected void paintComponent(Graphics g) {
 		g.drawImage(Icheckbox.getImage(),310,90,200,25,this);
 		g.drawImage(Icheckbox.getImage(),535,88,350,32,this);

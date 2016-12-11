@@ -23,8 +23,8 @@ public class OrderFind implements OrderFindBLService{
 	ArrayList<OrderPO> orderPOList;
 	ArrayList<OrderVO> orderVOList;
 	RemoteHelper remote;
-	
-	
+
+
 	public OrderFind(){
 		remote=RemoteHelper.getInstance();
 		orderDateService=remote.getOrderDataService();
@@ -32,7 +32,7 @@ public class OrderFind implements OrderFindBLService{
 		orderPOList=new ArrayList<OrderPO>();
 		orderVOList=new ArrayList<OrderVO>();
 	}
-	
+
 	// 找到某用户的某个具体订单
 	@Override
 	public OrderVO findSpecificOrder(String userId, String orderID) {
@@ -68,7 +68,7 @@ public class OrderFind implements OrderFindBLService{
 		else
 			return null;
 	}
-			
+
 	@Override
 	public ArrayList<OrderVO> findUserOrderList(String userID) {
 
@@ -94,7 +94,7 @@ public class OrderFind implements OrderFindBLService{
 			// TODO Auto-generated method stub
 			String findDate=date+" 12:00:00";
 			if(validId(clientId)&&clientId.charAt(0)=='C'&&validDate(date)){
-				
+
 			try {
 				orderPOList=orderDateService.findSpecificDayClientOrderList(clientId, findDate);
 			} catch (RemoteException e) {
@@ -106,7 +106,7 @@ public class OrderFind implements OrderFindBLService{
 				}
 				return orderVOList;
 			}
-			else 
+			else
 				return null;
 			}
 			return null;
@@ -161,7 +161,7 @@ public class OrderFind implements OrderFindBLService{
 				}
 				if(orderPOList!=null){
 					for(int i=0;i<orderPOList.size();i++){
-						orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));	
+						orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));
 					}
 					return orderVOList;
 				}

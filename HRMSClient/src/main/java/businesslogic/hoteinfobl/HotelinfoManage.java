@@ -39,7 +39,7 @@ public class HotelinfoManage{
 	HotelinfoDataService data = RemoteHelper.getInstance().hotelinfoDataService();
 	HotelinfoPO po;
 	HotelinfoVO vo;
-	
+
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		try {
 			po = data.findhotelinfo(hotelID);
@@ -60,7 +60,7 @@ public class HotelinfoManage{
 		ArrayList<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
 		try {
 			listPO = data.findHotelinfoList(area);
-			
+
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
 				if(vo == null){
@@ -74,8 +74,8 @@ public class HotelinfoManage{
 		}
 		return listVO;
 	}
-	
-	
+
+
 	public HotelinfoVO clientgetBasicinfo(String hotelID){
 		try {
 			po = data.findhotelinfo(hotelID);
@@ -115,15 +115,27 @@ public class HotelinfoManage{
 //			vo.setHotelID(po.getHotelID());
 			return vo;
 	}
-	
+//hotelstaff update hotelinfo
 	public ResultMessage updateBassicinfo(HotelinfoVO VO) {
 		if(VO==null||VO.getAddress()==null||VO.getArea()==null||VO.getFacility()==null||
 		VO.getHotelID()==null||VO.getIntroduction()==null||VO.getStar()==null||
-		VO.getTel()==null||VO.getRemark()==null){
+		VO.getTel()==null){
+			System.out.println("null error");
 			return ResultMessage.VOIDINFO;
 		}
+
 		boolean result = false;
 		try {
+			po = new HotelinfoPO();
+			po.setHotelID(VO.getHotelID());
+			po.setAddress(VO.getAddress());
+			po.setArea(VO.getArea());
+			po.setCompanyList(VO.getCompany());
+			po.setFacility(VO.getFacility());
+			po.setIntroduction(VO.getIntroduction());
+			po.setName(VO.getName());
+			po.setTel(VO.getTel());
+			po.setStar(VO.getStar());
 			result = data.hotelstaffUpdatehotelinfo(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -132,9 +144,9 @@ public class HotelinfoManage{
 		if(result == true)
 			return ResultMessage.SUCCESS;
 		else return ResultMessage.FAIL;
-			
+
 	}
-	
+
 	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
 		String hotelname = sitemanagerAddVO.getName();
 		if(hotelname==null||hotelname.equals("")){
@@ -165,8 +177,8 @@ public class HotelinfoManage{
 		}
 		return null;
 	}
-	
-	
+
+
 	public boolean addArea(String area) {
 		try {
 			return data.addArea(area);
@@ -194,7 +206,7 @@ public class HotelinfoManage{
 						areaVOList.add(vo);
 					}
 				}
-			}				
+			}
 			} catch (RemoteException e) {
 				e.printStackTrace();
 				return null;

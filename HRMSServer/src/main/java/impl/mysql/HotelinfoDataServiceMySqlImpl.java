@@ -23,8 +23,8 @@ public class HotelinfoDataServiceMySqlImpl{
 
 	private static final long serialVersionUID = 1L;
 	Connection conn;
-	
-	
+
+
 	public HotelinfoDataServiceMySqlImpl() throws RemoteException {
 		super();
 		init();
@@ -134,8 +134,8 @@ public class HotelinfoDataServiceMySqlImpl{
 		}
 		return po;
 	}
-	
-	
+
+
 	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
 		int id = Integer.parseInt(po.getHotelID().substring(1));
 		try {
@@ -205,7 +205,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return false;
 	}
 
-	
+
 	public boolean updateroominfo(RoominfoPO po) throws RemoteException {
 		try {
 			String sql = "update roominfo set "
@@ -233,10 +233,11 @@ public class HotelinfoDataServiceMySqlImpl{
 	}
 
 	public boolean insertRoominfo(RoominfoPO po){
-		try {	
-			String sql = "insert into roominfo values (?,?,?,?,?)";
+		try {
+			String sql = "insert into roominfo (hotelID,type,roomID,price,roomState)values (?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, po.getHotelID());
+			System.out.println(po.getHotelID());
 			ps.setString(2, po.getType());
 			ps.setString(3, po.getRoomNum());
 			ps.setDouble(4, po.getPrice());
@@ -254,7 +255,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		}
 		return false;
 	}
-	
+
 	public String insertHotelinfo(String hotelName){
 		try {
 			Statement st = conn.createStatement();
@@ -262,14 +263,14 @@ public class HotelinfoDataServiceMySqlImpl{
 			ResultSet myRS = st.executeQuery(sql);
 			myRS.next();
 			int count = myRS.getInt(1);
-			
+
 			int id = count+1;
 			String hotelID = String.valueOf(id);
 			while(hotelID.length()<8){
 				hotelID = "0"+hotelID;
 			}
 			hotelID = "H"+hotelID;
-			
+
 			sql = "insert into hotelinfo (hotelID,name) values (?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -310,7 +311,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		}
 		return po;
 	}
-	
+
 	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException{
 		HotelinfoPO po = null;
 		ArrayList<HotelinfoPO> list = new ArrayList<HotelinfoPO>();
@@ -330,7 +331,7 @@ public class HotelinfoDataServiceMySqlImpl{
 							break;
 						}
 					}
-					
+
 					ArrayList<String> companyList = new ArrayList<String>();
 					String company =(String)myRS.getObject("company");
 					String[] companyArray = company.split("&");
@@ -343,14 +344,14 @@ public class HotelinfoDataServiceMySqlImpl{
 					for(int i=0;i<remarkArray.length;i++){
 						remarkList.add(remarkArray[i]);
 					}
-					
+
 					int id = (Integer)myRS.getObject("hotelID");
 					String hotelID = String.valueOf(id);
 					while(hotelID.length()<8){
 						hotelID = "0"+hotelID;
 					}
 					hotelID = "H"+hotelID;
-					
+
 					po.setHotelID(hotelID);
 					po.setName((String)myRS.getObject("name"));
 					po.setAddress((String)myRS.getObject("address"));
@@ -360,7 +361,7 @@ public class HotelinfoDataServiceMySqlImpl{
 					po.setIntroduction((String)myRS.getObject("introduction"));
 					po.setFacility((String)myRS.getObject("facility"));
 					po.setRemark(remarkList);
-					
+
 					list.add(po);
 				}
 			}
@@ -371,14 +372,14 @@ public class HotelinfoDataServiceMySqlImpl{
 		return list;
 		return null;
 	}
-	
+
 	public void finish() throws RemoteException {
 		try {
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 

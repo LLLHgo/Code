@@ -28,7 +28,7 @@ public class HotelstaffManage implements HotelstaffBLService{
 			e.printStackTrace();
 			return null;
 		}
-	
+
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class HotelstaffManage implements HotelstaffBLService{
 			}
 			po.setPassword(password);
 			boolean result = false;
-			result = data.update(po);
+			result = data.hotelstaffUpdate(po);
 			if(result==true){
 				return ResultMessage.SUCCESS;
 			}else{
@@ -57,7 +57,7 @@ public class HotelstaffManage implements HotelstaffBLService{
 		HotelstaffPO po = new HotelstaffPO(vo.getHotelID(),vo.getPassword(),vo.getTel());
 		boolean result = false;
 		try {
-			result = data.update(po);
+			result = data.insert(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.REMOTEEXCEPTION;
