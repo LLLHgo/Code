@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import Enum.OrderType;
 import po.OrderPO;
+import vo.orderVO.OrderVO;
 
 public interface OrderDataService extends Remote{
 	/**

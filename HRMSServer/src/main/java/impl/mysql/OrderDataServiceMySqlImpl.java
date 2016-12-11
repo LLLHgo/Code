@@ -178,18 +178,18 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 			actual_arrived_time="";
 		}
 		// 处理ordertype的enum值
-		if(order_type=="NORMALNONEXEC")
+		if(order_type.equals("NORMALNONEXEC"))
 			orderTypeEnum=OrderType.NORMALNONEXEC;
-		else if(order_type=="NORMALEXEC")
+		else if(order_type.equals("NORMALEXEC"))
 			orderTypeEnum=OrderType.NORMALEXEC;
-		else if(order_type=="CANCEL")
+		else if(order_type.equals("CANCEL"))
 			orderTypeEnum=OrderType.CANCEL;
-		else if(order_type=="ABNORMAL")
+		else if(order_type.equals("ABNORMAL"))
 			orderTypeEnum=OrderType.ABNORMAL;
 		// 处理viptype的enum值
-		if(vip_type=="ORDINARYVIP")
+		if(vip_type.equals("ORDINARYVIP"))
 			vipTypeEnum=VIPType.ORDINARYVIP;
-		else if(vip_type=="ENTERPRISEVIP")
+		else if(vip_type.equals("ENTERPRISEVIP"))
 			vipTypeEnum=VIPType.ENTERPRISEVIP;
 		// 生成po
 		try {

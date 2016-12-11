@@ -1,11 +1,14 @@
 package businesslogic.orderbl;
 
+import Enum.OrderType;
+import Enum.VIPType;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
 
 public class PackageTransform {
 	// 将orderVO解包，制作orderPO包
 		public OrderPO VOToPO(OrderVO vo){
+
 			OrderPO po=new OrderPO(vo.getOrderId(),vo.getClientId(),vo.getClientName(),vo.getClientPhone(),
 					vo.getVipType(),vo.getOrderDate(),vo.getOrderType(),vo.getHotelName(),vo.getHotelId(),
 					vo.getPrice(),vo.getStrategies(),vo.getRoomType(),vo.getRoomNum(),vo.getDays(),
@@ -20,5 +23,5 @@ public class PackageTransform {
 						po.getAnticipateArrivedTime(),po.getActualArrivedTime(),po.getAnticipateLeaveTime());
 				return vo;
 		}
-		
+
 }

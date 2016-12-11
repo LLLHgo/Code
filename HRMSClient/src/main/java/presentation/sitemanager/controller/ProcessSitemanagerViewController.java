@@ -43,12 +43,12 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	private ProcessHotelAccountManageView hotelAccountManageView;
 	private ProcessShowLogView showLogView;
 
-	SitemanagerBLService sitemanagerblservice; // 以stub调用
-	MarketingBLService marketingblservice; // 以stub调用
-	ClientBLService clientblservice; // 以stub调用
+	SitemanagerBLService sitemanagerblservice; 
+	MarketingBLService marketingblservice; 
+	ClientBLService clientblservice; 
 	HotelstaffBLService hotelstaffblservice;// 以stub调用
 	HotelinfoBLService hotelblservice; // 以stub调用
-	LogBLService logblservice; // 以stub调用
+	LogBLService logblservice; 
 
 	public ProcessSitemanagerViewController(String sitemanagerId){
 		this.sitemanagerId=sitemanagerId;

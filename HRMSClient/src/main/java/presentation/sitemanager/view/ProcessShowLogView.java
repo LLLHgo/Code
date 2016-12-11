@@ -166,8 +166,11 @@ public class ProcessShowLogView extends JPanel{
 	class refreshButtonListener implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
-			logArea.setText("");
+			//logArea.setText("");
 			listVO.clear();
+			year=yearField.getText();
+			month=monthField.getText();
+			day=dayField.getText();
 			listVO=controller.findLog(year, month, day);
 			showLog(listVO);	
 		}
