@@ -52,6 +52,7 @@ public class OrderFind implements OrderFindBLService{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
 		OrderVO orderfindVO=packageTrans.POToVO(orderfindPO);
 		// 用户是否有权限查看该订单
 		// 客户请求，订单是否属于这个客户
@@ -75,11 +76,13 @@ public class OrderFind implements OrderFindBLService{
 		if(validId(userID)){
 			// 调用数据层的数据得到用户的所有订单
 			try {
+				orderPOList.clear();
 				orderPOList=orderDateService.findUserOrderList(userID);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 			if(orderPOList!=null){
+				orderVOList.clear();
 				for(int i=0;i<orderPOList.size();i++){
 					orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));
 				}
@@ -96,11 +99,13 @@ public class OrderFind implements OrderFindBLService{
 			if(validId(clientId)&&clientId.charAt(0)=='C'&&validDate(date)){
 
 			try {
+				orderPOList.clear();
 				orderPOList=orderDateService.findSpecificDayClientOrderList(clientId, findDate);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 			if(orderPOList!=null){
+				orderVOList.clear();
 				for(int i=0;i<orderPOList.size();i++){
 					orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));
 				}
@@ -117,11 +122,13 @@ public class OrderFind implements OrderFindBLService{
 			// 如果帐号格式合法，则去数据库中查找
 			if(validId(clientId)&&validId(hotelId)&&clientId.charAt(0)=='C'&&hotelId.charAt(0)=='H'){
 				try {
+					orderPOList.clear();
 					orderPOList=orderDateService.findClientInHotelAllOrderList(clientId, hotelId);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
 				if(orderPOList!=null){
+					orderVOList.clear();
 					for(int i=0;i<orderPOList.size();i++){
 						orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));
 					}
@@ -135,12 +142,14 @@ public class OrderFind implements OrderFindBLService{
 		public ArrayList<OrderVO> findClientTypeOrderList(OrderType type, String clientId) {
 			// 如果帐号格式合法，则去数据库中查找
 			if(validId(clientId)&&clientId.charAt(0)=='C'){
+				orderPOList.clear();
 				try {
 					orderPOList=orderDateService.findClientTypeOrderList(type, clientId);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
 				if(orderPOList!=null){
+					orderVOList.clear();
 					for(int i=0;i<orderPOList.size();i++){
 						orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));
 					}
@@ -154,12 +163,14 @@ public class OrderFind implements OrderFindBLService{
 		public ArrayList<OrderVO> findHotelTypeOrderList(OrderType type, String hotelId) {
 			// 如果酒店帐号合法，则去数据库中查找
 			if(validId(hotelId)&&hotelId.charAt(0)=='H'){
+				orderPOList.clear();
 				try {
 					orderPOList=orderDateService.findHotelTypeOrderList(type, hotelId);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
 				if(orderPOList!=null){
+					orderVOList.clear();
 					for(int i=0;i<orderPOList.size();i++){
 						orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));
 					}
@@ -176,11 +187,13 @@ public class OrderFind implements OrderFindBLService{
 			if(validDate(date)){
 				String findDate=date+" 12:00:00";
 				try {
+					orderPOList.clear();
 					orderPOList=orderDateService.findAbnormalOrderList(findDate);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
 				if(orderPOList!=null){
+					orderVOList.clear();
 					for(int i=0;i<orderPOList.size();i++){
 						orderVOList.add(packageTrans.POToVO(orderPOList.get(i)));
 					}
