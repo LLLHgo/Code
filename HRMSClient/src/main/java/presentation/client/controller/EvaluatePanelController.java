@@ -19,4 +19,7 @@ public class EvaluatePanelController {
 	public ArrayList<OrderVO> findClientFinOrderList( String clientId){
 		return orderfind.findClientTypeOrderList(OrderType.NORMALEXEC,clientId);
 	}
+	public ArrayList<OrderVO> findClientTypeOrderList(OrderType type, String clientId){
+		return orderfind.findClientTypeOrderList(type, clientId);
+	}
 }

@@ -26,6 +26,7 @@ import presentation.client.controller.EvaluatePanelController;
 import presentation.client.controller.PersonalPanelController;
 import presentation.client.controller.RegisterPanelController;
 import presentation.client.controller.SearchPanelController;
+import presentation.client.controller.ViewOrderPanelController;
 import presentation.common.GuideBoardButton;
 
 public class ProcessClientView extends JPanel {
@@ -62,7 +63,7 @@ public class ProcessClientView extends JPanel {
 
 			wp=new WelPanel();
 			sp=new SearchPanel(frame,new SearchPanelController());
-			vp=new ViewOrderPanel(frame);
+			vp=new ViewOrderPanel(frame,id,new ViewOrderPanelController());
 			pp=new PersonalPanel(id,new PersonalPanelController());
 			rp=new RegisterPanel(id,new RegisterPanelController());
 			ep=new EvaluatePanel(frame,new EvaluatePanelController(),id);

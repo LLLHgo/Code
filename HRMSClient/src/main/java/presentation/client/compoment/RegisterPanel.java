@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Enum.VIPType;
 import presentation.DialogCreator;
 import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.PersonalPanelController;
@@ -97,9 +98,14 @@ public class RegisterPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if((String)combobox.getSelectedItem()=="普通会员")
+				if((String)combobox.getSelectedItem()=="普通会员"){
 					vo.setBirth(yearField.getText()+"-"+monthField.getText()+"-"+dayField.getText());
-				else vo.setFirm(firmField.getText());
+					vo.setType(VIPType.ORDINARYVIP);
+				}
+				else {
+					vo.setFirm(firmField.getText());
+					vo.setType(VIPType.ENTERPRISEVIP);
+				}
 				boolean k=controller.updateInfo(vo);
 				if(k)DialogCreator.successDialog("suceess");
 				else DialogCreator.failDialog("fail");

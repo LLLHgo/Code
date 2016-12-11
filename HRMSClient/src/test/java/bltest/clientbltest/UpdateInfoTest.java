@@ -7,7 +7,7 @@ import Enum.ResultMessage;
 import businesslogic.clientbl.ClientManage;
 import vo.clientVO.ClientVO;
 public class UpdateInfoTest {
-	ClientManage Manage = new ClientManage();
+	/*ClientManage Manage = new ClientManage();
 
 	@Test
 	public void test1(){
@@ -25,7 +25,7 @@ public class UpdateInfoTest {
 	public void test3(){
 		//账号正确
 		assertEquals(ResultMessage.SUCCESS,Manage.updateInfo(new ClientVO("C00000001","notfun")));
-	}
+	}*/
 
 
 }

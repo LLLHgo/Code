@@ -135,11 +135,11 @@ public class ProcessLoginView extends JPanel {
 			signUpButton.setFocusPainted(false);
 			signUpButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					ClientVO vo=new ClientVO(IdField.getText(),KeyField.getPassword().toString(),"","",null,0,"","",0,null);
+					ClientVO vo=new ClientVO(IdField.getText(),new String(KeyField.getPassword()),"","",null,0,"","",0,null);
 					if(controller.addclient(vo)==ResultMessage.SUCCESS)
-					DialogCreator.successDialog("Success");
+					DialogCreator.successDialog0("Success");
 					else
-						DialogCreator.failDialog("Fail");
+						DialogCreator.failDialog0("Fail");
 				}
 				});
 			this.add(loginButton);

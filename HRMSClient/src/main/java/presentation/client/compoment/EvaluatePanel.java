@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Enum.OrderType;
 import datatool.OrderDataTool;
 import presentation.client.controller.EvaluatePanelController;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -32,7 +33,7 @@ public class EvaluatePanel extends JPanel{
 		this.controller=controller;
 		this.id=id;
 		Panel=new JPanel();
-		//hlp=new HotelListPane(controller.findClientFinOrderList(id));
+		hlp=new HotelListPane(controller.findClientTypeOrderList(OrderType.NORMALEXEC,id));
 		hlp=new HotelListPane(new ArrayList<OrderVO>());
 		frame.add(hlp);
 	imageIcon = new ImageIcon("image/searchPanel.png");

@@ -7,7 +7,7 @@ import org.junit.Test;
 import businesslogic.clientbl.ClientManage;
 
 public class SetCreditTest {
-	ClientManage Manage = new ClientManage();
+	/*ClientManage Manage = new ClientManage();
 	@Test
 	public void test1(){
 		//不存在此用户
@@ -24,5 +24,5 @@ public class SetCreditTest {
 	public void test3(){
 		//正确的客户账户
 		assertEquals(true,Manage.setCredit("C00000001",100));
-	}
+	}*/
 }
