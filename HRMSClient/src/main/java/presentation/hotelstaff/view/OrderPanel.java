@@ -173,7 +173,7 @@ public class OrderPanel extends JPanel{
 					showMessage("搜索内容不能为空");
 				}else{
 					orderList = controller.searchOrderFromHotelUI(hotelID,text);
-					showOrderList(orderList);
+					showSepcificOrder(orderList);
 				}
 			}
 
@@ -299,7 +299,7 @@ public class OrderPanel extends JPanel{
 
 	        orderIDLabel.setBounds(5, 18, 220, 16);
 	        nameLabel.setBounds(400,18,200,16);
-	        priceLabel.setBounds(265,48,120,16);
+	        priceLabel.setBounds(290,48,120,16);
 	        entertimeLabel.setBounds(5,48,294,16);
 	        leavetimeLabel.setBounds(5,77,295,16);
 	        phoneLabel.setBounds(400,48,200,16);
@@ -403,6 +403,14 @@ public class OrderPanel extends JPanel{
 		showOrderList((ArrayList<OrderVO>)controller.getCancleHotelOrderList(hotelID, OrderType.CANCEL));
 	}
 
+	private void showSepcificOrder(ArrayList<OrderVO> list){
+		if(scrollPane!=null){
+			this.remove(scrollPane);
+		}
+		showOrderList(list);
+		this.revalidate();
+	}
+	
 	protected void paintComponent(Graphics g) {
 		g.drawImage(Icheckbox.getImage(),310,90,200,25,this);
 		g.drawImage(Icheckbox.getImage(),535,88,350,32,this);

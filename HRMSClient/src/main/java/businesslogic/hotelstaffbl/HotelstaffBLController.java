@@ -24,7 +24,6 @@ import vo.strategyVO.HotelStrategyVO;
  * 这是酒店工作人员在BL层的一个controller，负责将方法分派给BL层中的其他类。由于lq老师上课介绍说View层的controller是不可以知道
  * BL层的逻辑的，但是当时我在View层的controller已经写好了，所以就保留了view层的controller，但具体逻辑实现还是在现在的这个controller里
  * @version 1
- * @since 16.12.3
  * @author liuyu
  *
  */
@@ -180,13 +179,19 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	@Override
 	public ArrayList<OrderVO> searchOrderFromHotelUI(String hotelID,String text){
 		//TODO orderFind里面提供的方法可能会改
-		ArrayList<OrderVO> list =
-		(ArrayList<OrderVO>)orderFind.findSpecificHotelClientOrderList(text, hotelID) ;
-			if(list == null){
-				list = new ArrayList<OrderVO>();
-				list.add(orderFind.findSpecificOrder(hotelID, text));
+		ArrayList<OrderVO> list;
+		if(text.charAt(0)=='C'){
+			list =(ArrayList<OrderVO>)orderFind.findSpecificHotelClientOrderList(text, hotelID) ;
+		}else{
+			list = new ArrayList<OrderVO>();
+			OrderVO vo = orderFind.findSpecificOrder(hotelID, text);
+			if(vo!=null){
+				list.add(vo);
+			}else{
+				return null;
 			}
-		return list;
+		}
+			return list;
 	}
 
 	@Override
