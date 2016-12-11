@@ -193,6 +193,8 @@ public class ProcessHotelAccountManageView extends JPanel{
 				idLabel.setText(hotelstaffVO.getHotelID());
 				telTextField.setText(hotelstaffVO.getPassword());
 				passwordField.setText(hotelstaffVO.getPassword());
+				telTextField.setEditable(false);
+				passwordField.setEditable(false);
 				//nameTextField.setText("");
 				modifyButton.setEnabled(true);
 				checkAddButton.setVisible(false);
@@ -236,6 +238,8 @@ public class ProcessHotelAccountManageView extends JPanel{
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("修改成功！");
 				date=new Date();
+				telTextField.setEditable(false);
+				passwordField.setEditable(false);
 				addLog("S00000001 "+date.toString()+" 修改"+idLabel.getText()+"账户");
 			}
 			else if(result==ResultMessage.DATEBASEFAIL){
@@ -322,6 +326,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 				conditionLabel.setText("添加成功！");
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 添加酒店"+addName+"账户");
+				checkAddButton.setEnabled(false);
 			}
 			else{
 				conditionLabel.setText("添加失败！ "+result);

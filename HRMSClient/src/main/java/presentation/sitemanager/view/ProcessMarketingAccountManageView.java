@@ -181,6 +181,10 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	// 搜索按钮的监听
 	class SearchListener implements MouseListener{
 		public void mouseClicked(MouseEvent e) {
+			marketingIdLabel.setText("");
+			marketingName.setText("");
+			marketingPassword.setText("");
+			marketingTel.setText("");
 			id=searchBarText.getText();
 			marketingVO=controller.MarketingAccountFind(id);
 			if(marketingVO==null){
@@ -230,6 +234,10 @@ public class ProcessMarketingAccountManageView extends JPanel{
 				conditionalText.setText("修改成功！");
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 修改"+id+"账户");
+				checkModifyButton.setVisible(false);
+				modifyButton.setEnabled(true);
+				marketingTel.setEditable(false);
+				marketingPassword.setEditable(false);
 			}else{
 				conditionalText.setText("信息未做更改，不再进行保存！");
 			}
@@ -252,7 +260,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			addName=marketingName.getText();
 			addTel=marketingTel.getText();
 			addPassword=marketingPassword.getText();
-			addMarketingVO=new MarketingVO(addName,addPassword,addTel);
+			addMarketingVO=new MarketingVO(addName,addPassword,"",addTel);
 			result=controller.MarketingAccountAdd(addMarketingVO);
 			
 			if(result==ResultMessage.SUCCESS){
@@ -260,6 +268,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 添加网站营销人员"+addName+"账户");
 				deleteButton.setEnabled(true);
+				checkAddButton.setVisible(false);
 			}
 			else{
 				conditionalText.setText("添加账户失败! "+result);
@@ -284,7 +293,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			marketingPassword.setEditable(true);
 			checkAddButton.setVisible(true);
 			checkModifyButton.setVisible(false);
-			
+
 		}
 		public void mousePressed(MouseEvent e) {
 		
@@ -303,9 +312,16 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	class MarketingDeleteListener implements MouseListener{
 		public void mouseClicked(MouseEvent e) {
 			id=marketingIdLabel.getText();
-			result=controller.marketingAccountDelete(new MarketingVO("","",id));
+			result=controller.marketingAccountDelete(new MarketingVO("","",id,""));
 			if(result==ResultMessage.SUCCESS){
+				marketingIdLabel.setText("");
+				marketingName.setText("");
+				marketingPassword.setText("");
+				marketingTel.setText("");
 				conditionalText.setText("删除成功");
+				modifyButton.setEnabled(false);
+				checkModifyButton.setEnabled(false);
+				checkAddButton.setVisible(false);
 			}
 			else{
 				conditionalText.setText("删除失败！"+result);
