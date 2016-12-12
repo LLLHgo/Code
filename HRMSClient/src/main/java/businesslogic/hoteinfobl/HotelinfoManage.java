@@ -40,6 +40,16 @@ public class HotelinfoManage{
 	HotelinfoPO po;
 	HotelinfoVO vo;
 
+	public boolean SetEvaluate(int star,String str,String hotelID){
+		String remark = star+" "+str;
+		try {
+			return data.clientUpdatehotelinfo(remark,hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		try {
 			po = data.findhotelinfo(hotelID);

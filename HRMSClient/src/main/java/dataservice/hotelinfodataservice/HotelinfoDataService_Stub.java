@@ -189,11 +189,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	@Override
-	public boolean clientUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 	@Override
 	public boolean insertroominfo(RoominfoPO po) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -203,6 +199,11 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	public List<RoominfoPO> findRoominfoList(String hotelID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public boolean clientUpdatehotelinfo(String remark, String hotelID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

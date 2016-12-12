@@ -67,9 +67,8 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 		return txt.addRoomType(type);
 	}
 
-
-	public boolean clientUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
-		return mysql.clientupdatehotelinfo(po);
+	public boolean clientUpdatehotelinfo(String remark,String hotelID) throws RemoteException {
+		return mysql.clientupdatehotelinfo(remark,hotelID);
 	}
 
 

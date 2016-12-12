@@ -131,4 +131,12 @@ public class Hotelinfo implements HotelinfoBLService{
 	public  ArrayList<String> getAvailableRooms(String hotelID){
 		return room.getAvailableRooms(hotelID);
 	}
+	@Override
+	public boolean setEvaluate(int star, String remark, String hotelID) {
+		return hotel.SetEvaluate(star, remark, hotelID);
+	}
+	@Override
+	public HotelinfoVO clientgetBasicinfo(String hotelID) {
+		return hotel.clientgetBasicinfo(hotelID);
+	}
 }

@@ -238,6 +238,18 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		return null;
 	}
 
+	@Override
+	public boolean setEvaluate(int star, String remark, String hotelID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public HotelinfoVO clientgetBasicinfo(String hotelID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 //	/**
 //	 * 删除酒店策略

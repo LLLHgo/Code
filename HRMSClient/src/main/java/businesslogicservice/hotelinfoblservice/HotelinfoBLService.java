@@ -17,6 +17,20 @@ import vo.strategyVO.MarketingStrategyVO;
 
 public interface HotelinfoBLService {
 	/**
+	 * 客户获取酒店信息，其中包括房间信息
+	 * @param hotelID
+	 * @return
+	 */
+	public HotelinfoVO clientgetBasicinfo(String hotelID);	
+	/**
+	 * 客户评价酒店
+	 * @param star
+	 * @param remark
+	 * @param hotelID
+	 * @return
+	 */
+	public boolean setEvaluate(int star,String remark,String hotelID);
+	/**
 	 * 请求获得hotelID对应的酒店信息
 	 * @param hotelID
 	 * @return 酒店信息

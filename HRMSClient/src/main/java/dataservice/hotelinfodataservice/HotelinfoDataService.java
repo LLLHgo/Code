@@ -54,7 +54,7 @@ public interface HotelinfoDataService extends Remote{
 	 * @param po
 	 * @throws RemoteException
 	 */
-	public boolean clientUpdatehotelinfo(HotelinfoPO po) throws RemoteException;
+	public boolean clientUpdatehotelinfo(String remark,String hotelID) throws RemoteException;
 	/**
 	 * 更新房间信息
 	 * @param po

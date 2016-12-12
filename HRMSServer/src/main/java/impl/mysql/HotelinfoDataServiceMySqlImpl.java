@@ -178,21 +178,25 @@ public class HotelinfoDataServiceMySqlImpl{
 		return false;
 	}
 
-	public boolean clientupdatehotelinfo(HotelinfoPO po) throws RemoteException {
-		int id = Integer.parseInt(po.getHotelID().substring(1));
+	public boolean clientupdatehotelinfo(String remark,String hotelID) throws RemoteException {
+		int id = Integer.parseInt(hotelID.substring(1));
 		try {
-			String sql = "update hotelinfo set "
+			Statement st = conn.createStatement();
+			String sql = "select * from hotelinfo";
+			ResultSet myRS = st.executeQuery(sql);
+			String str = "";
+			while(myRS.next()){
+				if(id==(Integer)myRS.getObject("hotelID")){
+					str =(String)myRS.getObject("remark");
+					}
+				}
+			if(!str.equals(""))
+				remark = str+"&"+remark;
+		
+			sql = "update hotelinfo set "
 					+ "remark=?"
 					+ " where hotelID=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			String remark="";
-			ArrayList<String> remarkList = new ArrayList<String>();
-			if(remarkList.size()>=1){
-				for(int i=0;i<remarkList.size()-1;i++){
-					remark=remark+remarkList.get(i)+"&";
-				}
-				remark=remark+remarkList.get(remarkList.size()-1);
-			}
 			ps.setString(1, remark);
 			ps.setInt(2,id);
 			int result = ps.executeUpdate();
