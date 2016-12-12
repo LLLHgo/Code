@@ -10,22 +10,17 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import Enum.RoomState;
-import Enum.Star;
 import presentation.common.ModifyButton;
-import presentation.common.MyLabel;
 import presentation.hotelstaff.component.AddButton;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
-import presentation.hotelstaff.component.DetailedRoominfo;
 import presentation.hotelstaff.component.LeftButton;
 import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.component.RightButton;
 import presentation.hotelstaff.component.RoominfoLabel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 
 public class RoominfoPanel extends JPanel{

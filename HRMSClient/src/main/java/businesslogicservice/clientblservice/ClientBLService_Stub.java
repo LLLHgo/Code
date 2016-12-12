@@ -6,9 +6,9 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
-import vo.clientVO.ClientVO;
 import vo.orderVO.OrderVO;
 
 public class ClientBLService_Stub implements ClientBLService {

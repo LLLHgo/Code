@@ -1,18 +1,10 @@
 package presentation.hotelstaff.component;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import presentation.marketing.compoment.MJLabel;
 /**
  * 制订新策略panel使用
  * @author liuyu

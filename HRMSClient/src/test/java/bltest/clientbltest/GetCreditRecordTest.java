@@ -1,11 +1,5 @@
 package bltest.clientbltest;
-import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
-import org.junit.Test;
-
-import businesslogic.clientbl.ClientManage;
 public class GetCreditRecordTest {
 	/*ClientManage Manage = new ClientManage();
 	@Test

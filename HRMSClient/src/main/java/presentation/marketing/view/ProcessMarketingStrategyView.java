@@ -4,7 +4,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,7 +16,10 @@ import javax.swing.JPanel;
 import Enum.ResultMessage;
 import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJPanel;
-import presentation.marketing.compoment.*;
+import presentation.marketing.compoment.browsePanel;
+import presentation.marketing.compoment.newPanel;
+import presentation.marketing.compoment.periodPanel;
+import presentation.marketing.compoment.specialPanel;
 import vo.areaVO.AreaVO;
 import vo.strategyVO.MarketingStrategyVO;;
 

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import Enum.ResultMessage;
 import businesslogicservice.logblservice.LogBLService;
 import dataservice.logdataservice.LogDataService;
-import dataservice.logdataservice.LogDataService_Stub;
 import po.LogPO;
 import rmi.RemoteHelper;
 import vo.logVO.LogVO;

@@ -1,14 +1,5 @@
 package bltest.clientbltest;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import Enum.ResultMessage;
-import businesslogic.clientbl.ClientManage;
-import datatool.ClientDataTool;
-import vo.clientVO.ClientVO;
-
 public class CreateClientTest {
 	/*ClientManage Manage = new ClientManage();
 	@Test

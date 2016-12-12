@@ -1,17 +1,10 @@
 package businesslogicservice.clientblservice;
 
-import java.io.File;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
-import Enum.OrderType;
 import Enum.ResultMessage;
-import vo.*;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.HotelinfoVO;
-import vo.orderVO.OrderVO;
-import vo.levelVO.*;
+import vo.levelVO.LevelVO;
 
 public interface ClientBLService {
 	/**

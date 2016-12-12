@@ -6,14 +6,10 @@ import java.util.List;
 import Enum.ResultMessage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import vo.areaVO.AreaVO;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
-import vo.orderVO.OrderVO;
-import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 /**
  * 
  * 因为hotelinfoBLService接口定义得比较大，而实现类分为Hotelinfo和Roominfo时并不都需要，所以使用了接口适配器模式

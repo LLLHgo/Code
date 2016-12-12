@@ -3,7 +3,6 @@ package presentation.hotelstaff.component;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
 public class ReviewTextArea extends JTextArea{

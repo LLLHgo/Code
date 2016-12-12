@@ -6,15 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import presentation.hotelstaff.component.TextField;
-import presentation.hotelstaff.component.TextLabel;
-import presentation.marketing.compoment.MJLabel;
 /**
  * 双十一折扣使用
  * @author liuyu

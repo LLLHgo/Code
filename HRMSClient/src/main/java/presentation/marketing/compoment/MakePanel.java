@@ -1,7 +1,6 @@
 package presentation.marketing.compoment;
 
 import java.awt.Font;
-import java.text.ParseException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

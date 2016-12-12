@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import Enum.VIPType;
 import Enum.MarketingStrategy;
+import Enum.VIPType;
 import vo.strategyVO.MarketingStrategyVO;
 
 public class MarketingStrategyDataTool {

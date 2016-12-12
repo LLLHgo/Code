@@ -1,13 +1,13 @@
 package maven;
 
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
+
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.Gauge;
 import com.codahale.metrics.JmxReporter;
 import com.codahale.metrics.MetricRegistry;
-
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.TimeUnit;
 
 /**
  * User: hzwangxx

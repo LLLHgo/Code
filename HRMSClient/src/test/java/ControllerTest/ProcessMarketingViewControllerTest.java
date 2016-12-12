@@ -1,6 +1,6 @@
 package ControllerTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.Date;
 import java.util.List;
@@ -9,8 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Enum.ResultMessage;
-import Enum.VIPType;
-import Mock.*;
+import Mock.MockClientManage;
+import Mock.MockLogManage;
+import Mock.MockOrderManage;
+import Mock.MockStrategyManage;
 import datatool.ClientDataTool;
 import datatool.LevelDataTool;
 import datatool.MarketingStrategyDataTool;

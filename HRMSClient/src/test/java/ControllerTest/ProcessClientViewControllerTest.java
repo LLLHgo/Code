@@ -1,6 +1,6 @@
 package ControllerTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.sql.Date;
@@ -22,7 +22,6 @@ import datatool.OrderDataTool;
 import presentation.client.controller.ProcessClientViewController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
-import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
 
 public class ProcessClientViewControllerTest {

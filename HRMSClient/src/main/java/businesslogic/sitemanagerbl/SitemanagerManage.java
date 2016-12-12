@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import Enum.ResultMessage;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
-import dataservice.sitemanagerdataservice.SitemanagerDataService_Stub;
 import po.SitemanagerPO;
 import rmi.RemoteHelper;
 import vo.sitemanager.SitemanagerVO;

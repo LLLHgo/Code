@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.logdataservice.LogDataService;
 import impl.hotelinfo.HotelinfoDataServiceImpl;
-import impl.txt.HotelinfoDataServiceTxtImpl;
 import impl.txt.LogDataServiceTxtImpl;
 
 public class DataFactoryTxtImpl extends AdapterTxt implements DataFactory{

@@ -1,13 +1,11 @@
 package dataservice.clientdataservice;
 
-import java.io.File;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import po.ClientPO;
-import po.LevelPO;
 
 public interface ClientDataService extends Remote{
 	/**

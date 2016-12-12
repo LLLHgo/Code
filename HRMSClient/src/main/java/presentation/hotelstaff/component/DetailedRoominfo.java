@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -51,6 +50,8 @@ public class DetailedRoominfo extends JFrame{
 	
 	private void init(){ 
 		panel = new JPanel(){
+			private static final long serialVersionUID = 1L;
+
 			protected void paintComponent(Graphics g) {
 				g.drawImage(init_image.getImage(),0,0,300,380,panel);
 		    }

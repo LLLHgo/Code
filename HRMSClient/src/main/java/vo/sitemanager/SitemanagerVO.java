@@ -1,7 +1,5 @@
 package vo.sitemanager;
 
-import javax.swing.ImageIcon;
-
 public class SitemanagerVO {
 	    // 网站管理人员帐号
 		private String sitemanagerId;

@@ -7,7 +7,6 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.ImageIcon;

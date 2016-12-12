@@ -5,14 +5,10 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.Star;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
-import vo.orderVO.OrderVO;
-import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelinfoBLService_Driver{
 

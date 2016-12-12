@@ -2,20 +2,16 @@ package presentation.hotelstaff.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import presentation.common.GuideBoardButton;
 import presentation.hotelstaff.component.UserImageLabel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import presentation.login.view.ProcessLoginView;
 
 public class HotelstaffView extends JPanel{
 	

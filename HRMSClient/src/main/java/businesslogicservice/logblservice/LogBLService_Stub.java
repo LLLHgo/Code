@@ -3,7 +3,6 @@ package businesslogicservice.logblservice;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
-import businesslogicservice.logblservice.LogBLService;
 import vo.logVO.LogVO;
 
 public class LogBLService_Stub implements LogBLService {

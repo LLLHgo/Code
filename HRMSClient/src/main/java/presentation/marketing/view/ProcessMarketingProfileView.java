@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 
 import Enum.ResultMessage;
 import presentation.marketing.compoment.MJButton;
-import presentation.marketing.compoment.MJTextField;
 import presentation.marketing.compoment.MJLabel;
 import presentation.marketing.compoment.MJPasswordField;
+import presentation.marketing.compoment.MJTextField;
 import vo.marketingVO.MarketingVO;
 
 public class ProcessMarketingProfileView extends JPanel{

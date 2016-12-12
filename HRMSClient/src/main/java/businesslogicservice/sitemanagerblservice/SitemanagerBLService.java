@@ -1,8 +1,6 @@
 package businesslogicservice.sitemanagerblservice;
-import vo.sitemanager.SitemanagerVO;
-
-
 import Enum.ResultMessage;
+import vo.sitemanager.SitemanagerVO;
 
 public interface SitemanagerBLService {
 	/**

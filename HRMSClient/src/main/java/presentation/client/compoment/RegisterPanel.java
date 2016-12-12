@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -16,8 +15,6 @@ import javax.swing.border.EmptyBorder;
 
 import Enum.VIPType;
 import presentation.DialogCreator;
-import presentation.client.compoment.PersonalPanel.Label;
-import presentation.client.controller.PersonalPanelController;
 import presentation.client.controller.RegisterPanelController;
 import vo.clientVO.ClientVO;
 

@@ -1,6 +1,5 @@
 package impl.mysql;
 
-import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -14,7 +13,6 @@ import Enum.VIPType;
 import dataservice.clientdataservice.ClientDataService;
 import initial.DataBaseInit;
 import po.ClientPO;
-import po.LevelPO;
 
 public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements ClientDataService{
 

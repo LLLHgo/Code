@@ -8,7 +8,6 @@ import businesslogic.orderbl.OrderFind;
 import businesslogic.orderbl.OrderOperator;
 import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
-import vo.hotelinfoVO.HotelinfoVO;
 import vo.orderVO.OrderVO;
 
 public class ViewOrderPanelController {

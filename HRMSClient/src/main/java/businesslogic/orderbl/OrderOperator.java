@@ -8,7 +8,6 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import dataservice.orderdataservice.OrderDataService;
-import dataservice.orderdataservice.OrderDataService_Stub;
 import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.orderVO.OrderVO;

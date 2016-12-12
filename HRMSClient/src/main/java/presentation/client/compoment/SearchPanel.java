@@ -14,11 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Enum.OrderType;
-import datatool.HotelinfoDataTool;
 import presentation.client.controller.SearchPanelController;
 import vo.hotelinfoVO.HotelinfoVO;
-import vo.orderVO.OrderVO;
 
 public class SearchPanel extends JPanel{
 	private ImageIcon imageIcon = null;

@@ -1,10 +1,6 @@
 package dataservice.marketingdataservice;
 
 import java.rmi.RemoteException;
-import java.util.List;
-
-import po.LevelPO;
-import po.MarketingPO;
 
 public class MarketingDataService_Driver {
     public void drive(MarketingDataService marketingDataService) throws RemoteException{

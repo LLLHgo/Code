@@ -1,6 +1,5 @@
 package dataservice.hotelinfodataservice;
 
-import java.rmi.RemoteException;
 import java.util.List;
 
 import po.HotelinfoPO;

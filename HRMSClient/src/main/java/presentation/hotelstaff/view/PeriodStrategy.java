@@ -2,7 +2,6 @@ package presentation.hotelstaff.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -13,12 +12,10 @@ import javax.swing.JPanel;
 
 import Enum.HotelStrategy;
 import Enum.ResultMessage;
-import Enum.VIPType;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.TextField;
 import presentation.hotelstaff.component.TextLabel;
-import presentation.hotelstaff.component.TimePanel1;
 import presentation.hotelstaff.component.TimePanel2;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.strategyVO.HotelStrategyVO;

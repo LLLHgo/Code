@@ -2,8 +2,6 @@ package businesslogic.orderbl;
 
 import java.util.Calendar;
 
-import javax.script.ScriptContext;
-
 public class MyTask {
 	private  static  final  int  C_SCHEDULE_HOUR      =  0;    
 	private  static  boolean  isRunning  =  false;    

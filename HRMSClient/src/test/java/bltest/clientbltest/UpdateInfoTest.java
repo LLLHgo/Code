@@ -1,11 +1,5 @@
 package bltest.clientbltest;
-import static org.junit.Assert.assertEquals;
 
-	import org.junit.Test;
-
-import Enum.ResultMessage;
-import businesslogic.clientbl.ClientManage;
-import vo.clientVO.ClientVO;
 public class UpdateInfoTest {
 	/*ClientManage Manage = new ClientManage();
 

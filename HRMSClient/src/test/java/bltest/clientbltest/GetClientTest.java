@@ -1,12 +1,5 @@
 package bltest.clientbltest;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import businesslogic.clientbl.ClientManage;
-import datatool.ClientDataTool;
-
 public class GetClientTest {
 	/*ClientManage Manage = new ClientManage();
 	@Test

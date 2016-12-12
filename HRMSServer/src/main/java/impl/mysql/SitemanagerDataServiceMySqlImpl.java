@@ -11,7 +11,6 @@ import java.sql.Statement;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import initial.DataBaseInit;
 import po.SitemanagerPO;
-import rmi.RemoteHelper;
 
 public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject implements SitemanagerDataService{
 	

@@ -1,7 +1,5 @@
 package businesslogic.orderbl;
 
-import Enum.OrderType;
-import Enum.VIPType;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
 

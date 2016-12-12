@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
-import Enum.VIPType;
 import Enum.MarketingStrategy;
+import Enum.VIPType;
 import vo.areaVO.AreaVO;
 import vo.strategyVO.MarketingStrategyVO;
 

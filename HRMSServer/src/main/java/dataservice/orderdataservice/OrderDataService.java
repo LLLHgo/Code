@@ -3,11 +3,8 @@ package dataservice.orderdataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import Enum.OrderType;
-import Enum.UserType;
 import po.OrderPO;
 
 public interface OrderDataService extends Remote{

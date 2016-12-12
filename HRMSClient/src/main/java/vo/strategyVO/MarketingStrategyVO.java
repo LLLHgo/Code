@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import Enum.*;
+import Enum.MarketingStrategy;
+import Enum.VIPType;
 
 public class MarketingStrategyVO {
 	//活动名称

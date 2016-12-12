@@ -2,16 +2,22 @@ package presentation.marketing.controller;
 
 import java.util.List;
 
-import Enum.*;
+import Enum.ResultMessage;
 import businesslogic.marketingbl.MarketingBLController;
-import presentation.marketing.view.*;
-import businesslogicservice.marketinblservice.*;
+import businesslogicservice.marketinblservice.MarketingBLControllerService;
+import presentation.marketing.view.ProcessMarketingAbnormalView;
+import presentation.marketing.view.ProcessMarketingCreditView;
+import presentation.marketing.view.ProcessMarketingProfileView;
+import presentation.marketing.view.ProcessMarketingStrategyView;
+import presentation.marketing.view.ProcessMarketingVIPView;
+import presentation.marketing.view.ProcessMarketingView;
+import presentation.marketing.view.ProcessMarketingViewControllerService;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
-import vo.strategyVO.*;
+import vo.strategyVO.MarketingStrategyVO;
 
 public class ProcessMarketingViewController implements ProcessMarketingViewControllerService{
     private MarketingBLControllerService MarketingBLControllerService=new MarketingBLController();

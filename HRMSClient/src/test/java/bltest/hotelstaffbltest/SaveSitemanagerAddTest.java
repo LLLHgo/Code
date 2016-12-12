@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import Enum.ResultMessage;
-import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService_Stub;
 import vo.hotelstaffVO.HotelstaffVO;

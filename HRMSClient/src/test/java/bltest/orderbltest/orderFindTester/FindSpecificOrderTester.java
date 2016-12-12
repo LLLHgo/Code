@@ -1,6 +1,6 @@
 package bltest.orderbltest.orderFindTester;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.rmi.RemoteException;
 

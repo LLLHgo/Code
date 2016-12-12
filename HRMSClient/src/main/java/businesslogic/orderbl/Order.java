@@ -30,10 +30,10 @@ public class Order {
 	private ArrayList <String> strategies;
 	// 实际离开时间
 	private String actualLeaveTime;
-	// 预计到达时间
-	private String scheduleArriveTime;
-	// 实际到达时间
-	private String scheduleLeaveTime;
+//	// 预计到达时间
+//	private String scheduleArriveTime;
+//	// 实际到达时间
+//	private String scheduleLeaveTime;
 	
 	public Order(){
 		

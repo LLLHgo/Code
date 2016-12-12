@@ -1,7 +1,5 @@
 package businesslogicservice.orderblservice;
 
-import java.util.Date;
-
 import vo.orderVO.OrderVO;
 
 public interface OrderCheckTimeBLService {

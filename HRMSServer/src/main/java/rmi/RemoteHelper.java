@@ -20,7 +20,6 @@ import impl.mysql.MarketingDataServiceMySqlImpl;
 import impl.mysql.OrderDataServiceMySqlImpl;
 import impl.mysql.SitemanagerDataServiceMySqlImpl;
 import impl.mysql.StrategyDataServiceMySqlImpl;
-import impl.txt.HotelinfoDataServiceTxtImpl;
 import impl.txt.LogDataServiceTxtImpl;
 
 public class RemoteHelper {

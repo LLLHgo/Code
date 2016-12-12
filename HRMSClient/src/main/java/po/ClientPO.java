@@ -1,8 +1,6 @@
 package po;
 
-import java.io.File;
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import Enum.VIPType;

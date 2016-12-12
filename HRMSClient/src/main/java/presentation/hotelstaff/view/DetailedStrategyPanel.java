@@ -10,8 +10,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -24,10 +22,7 @@ import presentation.hotelstaff.component.MJRadioButton;
 import presentation.hotelstaff.component.TextField;
 import presentation.hotelstaff.component.TimePanel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import presentation.marketing.compoment.MJButton;
-import presentation.marketing.compoment.newPanel;
 import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 
 public class DetailedStrategyPanel extends JPanel{
 

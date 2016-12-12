@@ -8,8 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Enum.OrderType;
-import Enum.VIPType;
-import presentation.client.compoment.HotelEvaluateItemPanel.Label;
 import vo.orderVO.OrderVO;
 
 public class OrderItemPanel extends JPanel{

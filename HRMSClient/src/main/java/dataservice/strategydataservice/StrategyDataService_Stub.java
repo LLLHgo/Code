@@ -2,6 +2,7 @@ package dataservice.strategydataservice;
 
 import java.rmi.RemoteException;
 import java.util.List;
+
 import datatool.StrategyPODataTool;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;

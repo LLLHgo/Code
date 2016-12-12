@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
-
 import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
-import vo.orderVO.OrderVO;
 import datatool.LogDataTool;
 import datatool.OrderDataTool;
+import vo.orderVO.OrderVO;
 
 public class MockOrderManage {
 	// 订单号

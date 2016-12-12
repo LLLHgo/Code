@@ -1,33 +1,12 @@
 package businesslogic.hoteinfobl;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
-import Enum.HotelStrategy;
-import Enum.ResultMessage;
-import Enum.RoomState;
-import Enum.VIPType;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
-import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.RoominfoPO;
 import rmi.RemoteHelper;
-import vo.areaVO.AreaVO;
-import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.hotelinfoVO.SitemanagerAddVO;
-import vo.hotelstaffVO.HotelstaffVO;
-import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 
 public class RoominfoManage{
 

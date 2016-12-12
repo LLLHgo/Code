@@ -3,18 +3,12 @@ package Mock;
 import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
-import Enum.OrderType;
+
 import Enum.ResultMessage;
 import Enum.VIPType;
 import datatool.ClientDataTool;
-import datatool.OrderDataTool;
-import datatool.SitemanagerDataTool;
 import vo.clientVO.ClientVO;
-import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
-import vo.orderVO.OrderVO;
-import vo.sitemanager.SitemanagerVO;
 
 public class MockClientManage {
 	//用户编号

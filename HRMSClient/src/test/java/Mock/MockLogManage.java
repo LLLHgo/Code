@@ -1,7 +1,6 @@
 package Mock;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Enum.ResultMessage;
 import datatool.LogDataTool;

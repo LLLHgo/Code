@@ -1,11 +1,5 @@
 package bltest.clientbltest;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import businesslogic.clientbl.ClientManage;
-
 public class SetCreditTest {
 	/*ClientManage Manage = new ClientManage();
 	@Test

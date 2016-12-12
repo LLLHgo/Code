@@ -9,7 +9,6 @@ import Enum.Star;
 import datatool.HotelinfoDataTool;
 import po.HotelinfoPO;
 import po.RoominfoPO;
-import vo.hotelinfoVO.RoominfoVO;
 
 
 public class HotelinfoDataService_Stub implements HotelinfoDataService{

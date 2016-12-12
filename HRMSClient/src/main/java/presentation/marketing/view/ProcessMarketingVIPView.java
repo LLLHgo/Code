@@ -12,9 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Enum.ResultMessage;
+import presentation.marketing.compoment.MJButton;
 import presentation.marketing.compoment.MJPanel;
+import presentation.marketing.compoment.levelPanel;
 import presentation.marketing.controller.ProcessMarketingViewController;
-import presentation.marketing.compoment.*;
 import vo.levelVO.LevelVO;
 
 public class ProcessMarketingVIPView extends JPanel{

@@ -3,7 +3,6 @@ package rmi;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import dataservice.clientdataservice.ClientDataService;
@@ -16,7 +15,7 @@ import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
 
 public class RemoteHelper {
-	private Remote remote;
+//	private Remote remote;
 	private static RemoteHelper remoteHelper = new RemoteHelper();
 	ClientDataService clientService;
 	HotelstaffDataService hotelstaffService;

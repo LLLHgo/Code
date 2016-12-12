@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 import vo.hotelinfoVO.RoominfoVO;
 
 public class roomItemPanel extends JPanel{

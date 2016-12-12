@@ -1,13 +1,10 @@
 package dataservice.clientdataservice;
 
-import java.io.File;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Enum.ResultMessage;
-import dataservice.clientdataservice.ClientDataService;
 import po.ClientPO;
-import po.LevelPO;
 
 public class ClientDataService_Stub implements ClientDataService{
 	String clientId;

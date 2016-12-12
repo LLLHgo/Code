@@ -1,32 +1,20 @@
 package presentation.login.view;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.CaretEvent;
-import javax.swing.text.Caret;
 
 import Enum.ResultMessage;
 import presentation.DialogCreator;
-import presentation.client.controller.PersonalPanelController;
-import presentation.client.view.ProcessClientView;
 import presentation.client.view.ProcessClientView;
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import presentation.hotelstaff.view.HotelinfoPanel;
 import presentation.hotelstaff.view.HotelstaffView;
 import presentation.login.controller.ProcessLoginViewController;
 import presentation.marketing.controller.ProcessMarketingViewController;

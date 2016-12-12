@@ -15,13 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import Enum.OrderType;
-import Enum.ResultMessage;
 import presentation.hotelstaff.component.AddButton;
-import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.ViewButton;
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import vo.orderVO.OrderVO;
 import vo.strategyVO.HotelStrategyVO;
 
 public class StrategyPanel extends JPanel{

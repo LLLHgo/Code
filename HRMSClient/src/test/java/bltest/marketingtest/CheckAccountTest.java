@@ -1,11 +1,5 @@
 package bltest.marketingtest;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import businesslogic.marketingbl.MarketingManage;
-
 public class CheckAccountTest {
 	/*private MarketingManage manage=new MarketingManage();
 

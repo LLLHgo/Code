@@ -2,6 +2,7 @@ package po.StrategyPO;
 
 import java.io.Serializable;
 import java.util.Calendar;
+
 import Enum.MarketingStrategy;
 
 public class MarketingSpecialPO extends MarketingStrategyPO implements Serializable{

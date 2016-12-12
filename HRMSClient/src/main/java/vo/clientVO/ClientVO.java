@@ -1,11 +1,8 @@
 package vo.clientVO;
 
-import java.io.File;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import Enum.VIPType;
-import businesslogic.clientbl.Client;
 
 public class ClientVO {
 		//用户编号

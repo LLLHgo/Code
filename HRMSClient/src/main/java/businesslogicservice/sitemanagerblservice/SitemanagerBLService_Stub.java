@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 import Enum.ResultMessage;
-import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import vo.logVO.LogVO;
 import vo.sitemanager.SitemanagerVO;
 

@@ -10,19 +10,14 @@ import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Enum.ResultMessage;
-import Enum.Star;
 import presentation.common.ModifyButton;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
-import presentation.hotelstaff.component.ReviewImageButton;
-import presentation.hotelstaff.component.ReviewTextArea;
 import presentation.hotelstaff.component.UserImageLabel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
-import vo.hotelinfoVO.HotelinfoVO;
 /**
  * 
  * @version 1

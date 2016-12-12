@@ -11,32 +11,23 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.RoomState;
 import presentation.common.ModifyButton;
 import presentation.hotelstaff.component.AddButton;
 import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
-import presentation.hotelstaff.component.LeftButton;
-import presentation.hotelstaff.component.ReviewTextArea;
-import presentation.hotelstaff.component.RightButton;
 import presentation.hotelstaff.component.RoominfoLabel;
-import presentation.hotelstaff.component.RoominfoTextField;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.RoominfoVO;
-import vo.orderVO.OrderVO;
 
 public class NewRoominfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;

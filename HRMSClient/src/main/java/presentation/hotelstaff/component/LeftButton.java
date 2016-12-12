@@ -1,7 +1,5 @@
 package presentation.hotelstaff.component;
 
-import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
