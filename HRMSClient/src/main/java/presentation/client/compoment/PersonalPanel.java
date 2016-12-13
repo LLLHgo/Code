@@ -60,8 +60,8 @@ public class PersonalPanel extends JPanel{
 		telLabel.setBounds(120,270,100,30);
 		editTel=new editButton(420,270);
 		editTel.addActionListener(new editTelButtonListener());
-		vipLabel=new Label("会员类型：非会员");
-		vipLabel.setBounds(120,320,200,30);
+		vipLabel=new Label("会员类型："+vo.getType());
+		vipLabel.setBounds(120,320,400,30);
 		creditLabel=new Label("信用值："+vo.getCredit());
 		creditLabel.setBounds(120,370,150,30);
 		this.add(idLabel);

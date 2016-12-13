@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import datatool.HotelinfoDataTool;
 import presentation.client.controller.SearchPanelController;
 import vo.hotelinfoVO.HotelinfoVO;
 
@@ -31,8 +32,10 @@ public class SearchPanel extends JPanel{
 		Panel=new JPanel();
 		this.frame=frame;
 		this.controller=controller;
-		hslp=new HotelSearchListPane(frame,null);
+		ArrayList<HotelinfoVO>list=new ArrayList<HotelinfoVO>();
+		hslp=new HotelSearchListPane(frame,list);
 		frame.add(hslp);
+
 
 		imageIcon = new ImageIcon("image/searchPanel.png");
 		searchField=new JTextField();
@@ -64,8 +67,15 @@ public class SearchPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			String info=searchField.getText();
+			//ArrayList<HotelinfoVO>list=new ArrayList<HotelinfoVO>();
+			//list.add(HotelinfoDataTool.hotelinfoVO1);
+			//hslp.change(list);
 			hslp.change(controller.getBasicinfoList(info));
 			hslp.setVisible(true);
+			hslp.repaint();
+			hslp.revalidate();
+			frame.repaint();
+			frame.revalidate();
 		}
 
 	}
@@ -118,7 +128,7 @@ public class SearchPanel extends JPanel{
 			    	 Panel.add(p);
 			    }
 			    this.getVerticalScrollBar().setVisible(false);
-
+			    scrollpanel=this;
 			    this.repaint();
 	}
 	}

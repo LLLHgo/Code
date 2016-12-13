@@ -48,13 +48,16 @@ public class OrderDetailFrame extends JFrame{
 		private Label totalMoneyLabel;
 		private Label actualMoneyLabel;
 		private Label orderTimeLabel;
-
+		private Label orderTypeLabel;
+		private Label roomTypeLabel;
 		public OrderDetailPanel(){
 		imageIcon = new ImageIcon("image/OrderDetailPanel.png");
 		orderNumLabel=new Label(vo.getOrderId(),110,13,300,30);
+		orderTypeLabel=new Label(vo.getOrderType().toString(),310,13,250,30);
 		hotelNameLabel=new Label(vo.getHotelName(),90,63,300,30);
 		personLabel=new Label(vo.getClientName(),110,118,300,30);
-		liveTimeLabel=new Label("test",133,233,300,30);
+		roomTypeLabel=new Label(vo.getRoomType()+" X"+vo.getRoomNum(),143,180,300,30);
+		liveTimeLabel=new Label(vo.getAnticipateArrivedTime().substring(0,9)+" 至 "+vo.getAnticipateLeaveTime().substring(0,9),133,233,400,30);
 		totalMoneyLabel=new Label("test",117,290,300,30);
 		actualMoneyLabel=new Label(""+vo.getPrice(),375,290,300,30);
 		orderTimeLabel=new Label(vo.getOrderDate(),180,345,300,30);
@@ -65,6 +68,8 @@ public class OrderDetailFrame extends JFrame{
 		this.add(totalMoneyLabel);
 		this.add(actualMoneyLabel);
 		this.add(orderTimeLabel);
+		this.add(orderTypeLabel);
+		this.add(roomTypeLabel);
 
 		this.setVisible(true);
 	    this.setLayout(null);

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -27,6 +28,8 @@ public class ViewOrderPanel extends JPanel{
 	private Button fin;
 	private Button abnormal;
 	private Button repeal;
+	private Button confirmdelete;
+	private Button nodelete;
 	private OrderListPane olp;
 	private JPanel Panel;
 	private String clientID;
@@ -50,17 +53,25 @@ public ViewOrderPanel(JFrame frame,String clientID,ViewOrderPanelController cont
 	searchField.setForeground(Color.WHITE);
 	searchField.setOpaque(false);
 	searchField.setFocusable(true);
-		unfin=new Button(icon,10,100);
+
+		unfin=new Button(icon,10,100,80,80);
 		icon=new ImageIcon("image/finButton.png");
 		unfin.addActionListener(new unfinButtonListener());
-		fin=new Button(icon,10,190);
+		fin=new Button(icon,10,190,80,80);
 		fin.addActionListener(new finButtonListener());
 		icon=new ImageIcon("image/abnormalButton.png");
-		abnormal=new Button(icon,10,280);
+		abnormal=new Button(icon,10,280,80,80);
 		abnormal.addActionListener(new abnormalButtonListener());
 		icon=new ImageIcon("image/repealButton.png");
-		repeal=new Button(icon,10,370);
+		repeal=new Button(icon,10,370,80,80);
 		repeal.addActionListener(new repealButtonListener());
+		icon=new ImageIcon("image/confirmdelete.png");
+		confirmdelete=new Button(icon,610,15,75,26);
+		confirmdelete.setVisible(false);
+		icon=new ImageIcon("image/nodelete.png");
+		nodelete=new Button(icon,610,45,75,26);
+		nodelete.setVisible(false);
+
 		this.setLayout(null);
 	    this.setSize(704, 502);
 	    this.setOpaque(false);
@@ -70,6 +81,8 @@ public ViewOrderPanel(JFrame frame,String clientID,ViewOrderPanelController cont
 	    this.add(fin);
 	    this.add(abnormal);
 	    this.add(repeal);
+	    this.add(confirmdelete);
+	    this.add(nodelete);
 	    this.setVisible(false);
 }
 @Override
@@ -88,14 +101,14 @@ public void setvisible(boolean flag){
 class Button extends JButton{
 
 	ImageIcon icon;
-	public Button(ImageIcon icon,int x,int y){
+	public Button(ImageIcon icon,int x,int y,int w,int h){
 
 	this.setIcon(icon);
 	this.setOpaque(true);
 	this.setContentAreaFilled(false);
 	this.setBorderPainted(false);
 	this.setFocusPainted(false);
-	this.setBounds(x,y,80,80);
+	this.setBounds(x,y,w,h);
 	}
 }
 private class searchButtonListener implements ActionListener{
@@ -206,12 +219,27 @@ private class OrderListPane extends JScrollPane{
 	    	if(order.getOrderStatus().equals(OrderType.NORMALNONEXEC))
 	    	p.db.addActionListener(new ActionListener(){
 	    		public void actionPerformed(ActionEvent e) {
-	    			controller.cancelOrderPO(order.getOrderId());
-	    			olp.change(controller.findClientTypeOrderList(OrderType.CANCEL,clientID));
+	    			confirmdelete.setVisible(true);
+	    			nodelete.setVisible(true);
+	    			confirmdelete.addActionListener(new ActionListener(){
+	    	    		public void actionPerformed(ActionEvent e) {
+	    	    			controller.cancelOrderPO(order.getOrderId());
+	    	    			confirmdelete.setVisible(false);
+	    	    			nodelete.setVisible(false);
+	    	    			olp.change(controller.findClientTypeOrderList(OrderType.NORMALNONEXEC,clientID));
 	    			olp.repaint();
 	    			olp.revalidate();
 	    			frame.repaint();
 	    			frame.revalidate();
+	    	    		}
+	    	    		});
+	    			nodelete.addActionListener(new ActionListener(){
+	    	    		public void actionPerformed(ActionEvent e) {
+	    	    			confirmdelete.setVisible(false);
+	    	    			nodelete.setVisible(false);
+	    	    		}
+	    	    		});
+
 	    		}
 	    		});
 	    	 Panel.add(p);
@@ -236,12 +264,27 @@ private class OrderListPane extends JScrollPane{
 			    	if(order.getOrderStatus().equals(OrderType.NORMALNONEXEC))
 				    	p.db.addActionListener(new ActionListener(){
 				    		public void actionPerformed(ActionEvent e) {
-				    			controller.cancelOrderPO(order.getOrderId());
-				    			olp.change(controller.findClientTypeOrderList(OrderType.CANCEL,clientID));
+				    			confirmdelete.setVisible(true);
+				    			nodelete.setVisible(true);
+				    			confirmdelete.addActionListener(new ActionListener(){
+				    	    		public void actionPerformed(ActionEvent e) {
+				    	    			controller.cancelOrderPO(order.getOrderId());
+				    	    			confirmdelete.setVisible(false);
+				    	    			nodelete.setVisible(false);
+				    	    			olp.change(controller.findClientTypeOrderList(OrderType.NORMALNONEXEC,clientID));
 				    			olp.repaint();
 				    			olp.revalidate();
 				    			frame.repaint();
 				    			frame.revalidate();
+				    	    		}
+				    	    		});
+				    			nodelete.addActionListener(new ActionListener(){
+				    	    		public void actionPerformed(ActionEvent e) {
+				    	    			confirmdelete.setVisible(false);
+				    	    			nodelete.setVisible(false);
+				    	    		}
+				    	    		});
+
 				    		}
 				    		});
 			    	 Panel.add(p);

@@ -22,6 +22,42 @@ import javax.swing.JTextField;
 public class DialogCreator {
 	static JDialog dialog = new JDialog();
 	static JOptionPane dialogPane;
+	public static void confirmDialog(String name){
+		boolean res=false;
+		JButton okButton;
+		ImageIcon dialogBgIcon = new ImageIcon("image/confirmdialogBg.png");
+		ImageIcon okIcon = new ImageIcon("image/ok.png");
+		dialogPane = new JOptionPane();
+		dialogPane.setLayout(null);
+		JLabel imageLabel = new JLabel(dialogBgIcon);
+		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
+
+		okButton = new JButton();
+		okButton.setIcon(okIcon);
+		okButton.setBounds(170,180,okIcon.getIconWidth(),okIcon.getIconHeight());
+		okButton.setOpaque(true);
+		okButton.setContentAreaFilled(false);
+		okButton.setBorderPainted(false);
+		okButton.setFocusPainted(false);
+		okButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				dialog.dispose();
+
+			}
+
+		});
+
+		dialogPane.add(okButton);
+		dialogPane.add(imageLabel);
+		dialogPane.setOpaque(false);
+
+		dialogPane.setPreferredSize(new Dimension(400,250));
+		dialog = dialogPane.createDialog(okButton,name);
+	    dialog.setVisible(true);
+		dialog.add(dialogPane);
+		dialog.getRootPane().setDefaultButton(okButton);
+
+	}
 	public static void successDialog(String name){
 		JButton okButton;
 		ImageIcon dialogBgIcon = new ImageIcon("image/dialogBg.png");
