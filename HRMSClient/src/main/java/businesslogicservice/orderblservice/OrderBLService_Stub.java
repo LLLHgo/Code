@@ -133,7 +133,7 @@ public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTim
 		// TODO Auto-generated method stub
 		return false;
 	}
-	@Override
+	//@Override
 	public ArrayList<OrderVO> findHotelTypeOrderList(OrderType type, String hotelId) {
 		OrderVO orderVO4=new OrderVO("20161016092301","C00000010","Lily","17887780990"
 		,VIPType.ORDINARYVIP,"2016-10-16 09:23",OrderType.NORMALNONEXEC,"LLLHH","H00000002",998,null);

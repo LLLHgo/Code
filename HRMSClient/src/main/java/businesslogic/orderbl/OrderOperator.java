@@ -48,9 +48,9 @@ public class OrderOperator implements OrderOperatorBLService{
 			return ResultMessage.STARTDAYNOTALLOWED;
 		}
 		// 判断包中的信息是否有空的，如果空，则返回ResultMessage.HASVOID
-		if(hasVoidInfo(orderVO)){
+		/*if(hasVoidInfo(orderVO)){
 			return ResultMessage.HASVOID;
-		};
+		};*/
 		// 判断订单中订单状态是否为正常未执行，如果状态不是正常未执行状态，则返回ResultMessage.WORNGORDERTYPEWHENCREATE
 		if(!(orderVO.getOrderType()+"").equals(OrderType.NORMALNONEXEC+"")){
 			return ResultMessage.WORNGORDERTYPEWHENCREATE;
@@ -97,7 +97,7 @@ public class OrderOperator implements OrderOperatorBLService{
 	boolean hasVoidInfo(OrderVO vo){
 		this.orderVO=vo;
 		if(voidClientId()||voidClientName()||voidClientPhone()||voidcVIPType()||voidOrderDate()||voidcOrderType()||
-				voidHotelName()||voidHotelId()||voidPrice()||voidRoomType()||voidRoomNum()||voidRoomNum()||voidDays()
+				voidHotelName()||voidHotelId()||voidPrice()||voidRoomType()||voidRoomNum()||voidDays()
 				||voidAnticipateArrivedTime()||voidAnticipateLeaveTime())
 			return true;
 		else

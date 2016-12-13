@@ -134,7 +134,7 @@ public class OrderCreateFrame extends JFrame{
 				order.setVipType(client.getType());
 				order.setRoomType("标准间");
 				order.setRoomNum(2);
-				order.setOrderStatus(OrderType.NORMALNONEXEC);
+				order.setOrderType(OrderType.NORMALNONEXEC);
 				order.setAnticipateArrivedTime(begin.getChooseDate());
 				order.setAnticipateLeaveTime(end.getChooseDate());
 				order.setActualArrivedTime("");
