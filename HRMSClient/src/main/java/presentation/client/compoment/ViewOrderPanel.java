@@ -118,7 +118,7 @@ private class searchButtonListener implements ActionListener{
 		// TODO Auto-generated method stub
 
 
-		olp.change(controller.findSpecificDayClientOrderList(searchField.getText(),clientID));
+		olp.change(controller.findSpecificDayClientOrderList(clientID,searchField.getText()));
 		olp.repaint();
 		olp.revalidate();
 		frame.repaint();
