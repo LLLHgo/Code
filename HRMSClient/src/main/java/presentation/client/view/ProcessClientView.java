@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import businesslogic.clientbl.ClientManage;
+import businesslogicservice.clientblservice.ClientBLService;
 import presentation.client.compoment.EvaluatePanel;
 import presentation.client.compoment.PersonalPanel;
 import presentation.client.compoment.RegisterPanel;
@@ -56,7 +58,8 @@ public class ProcessClientView extends JPanel {
 			idLabel.setForeground(Color.WHITE);
 
 			wp=new WelPanel();
-			sp=new SearchPanel(frame,new SearchPanelController());
+			ClientBLService client=new ClientManage();
+			sp=new SearchPanel(client.getclient(id),frame,new SearchPanelController());
 			vp=new ViewOrderPanel(frame,id,new ViewOrderPanelController());
 			pp=new PersonalPanel(id,new PersonalPanelController());
 			rp=new RegisterPanel(id,new RegisterPanelController());

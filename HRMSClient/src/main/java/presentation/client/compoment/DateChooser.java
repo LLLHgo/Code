@@ -56,7 +56,7 @@ public class DateChooser extends JPanel{
     private Font font=new Font("宋体",Font.PLAIN,12);
     private final LabelManager lm=new LabelManager();
     private JLabel showDate; //,toSelect;
-    private SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日");
+    public SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日");
     private boolean isShow=false;
     private Popup pop;
 
@@ -169,6 +169,10 @@ public class DateChooser extends JPanel{
         jp1.updateDate();
         jp3.updateDate();
         SwingUtilities.updateComponentTreeUI(this);
+    }
+    public String getChooseDate(){
+    	return sdf.format(select.getTime()).substring(0,4)+"-"+sdf.format(select.getTime()).substring(5,7)+"-"+sdf.format(select.getTime()).substring(8,10);
+
     }
     //提交日期
     private void commit(){

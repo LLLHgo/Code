@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import datatool.HotelinfoDataTool;
 import presentation.client.controller.SearchPanelController;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class SearchPanel extends JPanel{
@@ -26,9 +27,10 @@ public class SearchPanel extends JPanel{
 	private JPanel Panel;
 	private JPanel temp;
 	private JFrame frame;
+	ClientVO client;
 	private SearchPanelController controller;
-	public SearchPanel(JFrame frame,SearchPanelController controller){
-
+	public SearchPanel(ClientVO client,JFrame frame,SearchPanelController controller){
+		this.client=client;
 		Panel=new JPanel();
 		this.frame=frame;
 		this.controller=controller;
@@ -104,7 +106,7 @@ public class SearchPanel extends JPanel{
 		    	 //p.setBounds(0,i*100,600,100);
 		    	p.vb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
-		    			new HotelDetailFrame(vo);
+		    			new HotelDetailFrame(client,controller,vo);
 		    		}
 		    		});
 		    	 Panel.add(p);
@@ -122,7 +124,7 @@ public class SearchPanel extends JPanel{
 			    	 //p.setBounds(0,i*100,600,100);
 			    	p.vb.addActionListener(new ActionListener(){
 			    		public void actionPerformed(ActionEvent e) {
-			    			new HotelDetailFrame(vo);
+			    			new HotelDetailFrame(client,controller,vo);
 			    		}
 			    		});
 			    	 Panel.add(p);

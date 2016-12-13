@@ -16,6 +16,8 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import datatool.RoominfoDataTool;
+import presentation.client.controller.SearchPanelController;
+import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 
 
@@ -27,11 +29,12 @@ public class HotelDetailFrame extends JFrame{
 	HotelDetailPanel hdp;
 	private HotelinfoVO vo;
 	private JPanel Panel;
+	private SearchPanelController controller;
+	ClientVO client;
+	public HotelDetailFrame(ClientVO client,SearchPanelController controller,HotelinfoVO vo){
 
-
-	public HotelDetailFrame(HotelinfoVO vo){
-
-
+		this.controller=controller;
+		this.client=client;
 		Panel=new JPanel();
 		this.vo=vo;
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -119,7 +122,7 @@ public class HotelDetailFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new OrderCreateFrame();
+				new OrderCreateFrame(client,controller,vo);
 			}
 
 		}
