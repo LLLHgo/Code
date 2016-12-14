@@ -127,7 +127,7 @@ public class OrderCreateFrame extends JFrame{
 				System.out.println(client.getTel());
 				order.setHotelId(hotelVO.getHotelID());
 				//以后补上
-				order.setPrice(0);
+				order.setPrice(400);
 				ArrayList<String> str=new ArrayList<String>() ;
 				str.add("fuck");
 				order.setStrategies(str );

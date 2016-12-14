@@ -21,10 +21,10 @@ public class OrderOperator implements OrderOperatorBLService{
 	boolean resultB;
 	ArrayList<OrderPO> orderPOList;
 	ArrayList<OrderVO> orderVOList;
-	
+
 	RemoteHelper remote;
-	
-	
+
+
 	public OrderOperator(){
 		remote=RemoteHelper.getInstance();
 		orderDateService=remote.getOrderDataService();
@@ -48,9 +48,9 @@ public class OrderOperator implements OrderOperatorBLService{
 			return ResultMessage.STARTDAYNOTALLOWED;
 		}
 		// 判断包中的信息是否有空的，如果空，则返回ResultMessage.HASVOID
-		/*if(hasVoidInfo(orderVO)){
+		if(hasVoidInfo(orderVO)){
 			return ResultMessage.HASVOID;
-		};*/
+		};
 		// 判断订单中订单状态是否为正常未执行，如果状态不是正常未执行状态，则返回ResultMessage.WORNGORDERTYPEWHENCREATE
 		if(!(orderVO.getOrderType()+"").equals(OrderType.NORMALNONEXEC+"")){
 			return ResultMessage.WORNGORDERTYPEWHENCREATE;
@@ -148,7 +148,7 @@ public class OrderOperator implements OrderOperatorBLService{
 	boolean voidAnticipateLeaveTime(){
 		return orderVO.getAnticipateLeaveTime()==null||orderVO.getAnticipateLeaveTime().equals("");
 	}
-	
+
 	// 查看当前可用的最新id帐号
 	public String lookUpIdinDatabase(){
 		int id=0;
@@ -169,7 +169,7 @@ public class OrderOperator implements OrderOperatorBLService{
 		}
 		return idValid;
 	}
-	
+
 	// 保存订单
 	@Override
 	public ResultMessage saveOrderPO(OrderVO orderVO) {
@@ -182,7 +182,7 @@ public class OrderOperator implements OrderOperatorBLService{
 		if(Integer.parseInt(lastOrderIdString)-1<=Integer.parseInt(orderVO.getOrderId())){
 			return ResultMessage.IDINVALID;
 		}
-	
+
 		OrderPO preOrderPO = null;
 		try {
 			preOrderPO=orderDateService.findSpecificUserOrder(orderVO.getOrderId());
@@ -198,7 +198,7 @@ public class OrderOperator implements OrderOperatorBLService{
 		if((preOrderPO.getOrderType()+"").equals(orderVO.getOrderType()+"")){
 			return ResultMessage.SAMEINFO;
 		}
-		
+
 		// 转换为po保存到数据库中
 		OrderPO orderPO=packageTrans.VOToPO(orderVO);
 		try {
@@ -215,10 +215,10 @@ public class OrderOperator implements OrderOperatorBLService{
 	// 将订单置为撤销状态
 	@Override
 	public ResultMessage cancelOrderPO(String orderId) {
-		
+
 		OrderPO preOrderPO = null;
 		String lastOrderIdString=lookUpIdinDatabase();
-		
+
 		// 判断是否存在该帐号
 		if(Integer.parseInt(lastOrderIdString)-1>=Integer.parseInt(orderId)){
 			// 存在该帐号，则调用data层的方法，看原订单是否为撤销状态，如果是，则返回已经撤销的信息
@@ -230,7 +230,7 @@ public class OrderOperator implements OrderOperatorBLService{
 			}
 			if((preOrderPO.getOrderType()+"").equals(OrderType.CANCEL))
 				return ResultMessage.CANCELANDCANNOTMODIFY;
-			
+
 			// 存在该帐号，则调用data层方法，在数据库中将帐号的订单状态置为撤销状态
 			try {
 				resultB=orderDateService.cancel(orderId);
@@ -247,5 +247,5 @@ public class OrderOperator implements OrderOperatorBLService{
 			return ResultMessage.IDINVALID;
 	}
 
-	
+
 }
