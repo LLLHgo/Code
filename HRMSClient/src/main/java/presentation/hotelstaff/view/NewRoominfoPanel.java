@@ -27,6 +27,7 @@ import presentation.hotelstaff.component.CancleButton;
 import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.RoominfoLabel;
 import presentation.hotelstaff.controller.HotelstaffViewController;
+import presentation.sitemanager.component.DeleteButton;
 import vo.hotelinfoVO.RoominfoVO;
 
 public class NewRoominfoPanel extends JPanel{
@@ -38,8 +39,8 @@ public class NewRoominfoPanel extends JPanel{
 	private JScrollPane scrollPane;
 	private JLabel resultLabel;
 	private String state;
-	
-	
+
+
 	public NewRoominfoPanel(HotelstaffViewController controller){
 		this.controller = controller;
 		this.hotelID = controller.gethotelID();
@@ -53,24 +54,27 @@ public class NewRoominfoPanel extends JPanel{
 		this.setBounds(0,0,1000,618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		//新增房间信息
 		jbAdd = new AddButton(800,490);
 		jbAdd.addActionListener(new AddButtonActionListener());
 		jbAdd.setVisible(true);
 		this.add(jbAdd);
-		
+
 		//显示结果
 		resultLabel = new JLabel();
 		resultLabel.setForeground(Color.BLACK);
 		resultLabel.setFont(new Font("微软雅黑",Font.PLAIN,20));
 		resultLabel.setBounds(290, 50, 500, 20);
 		this.add(resultLabel);
-		
+
 		showRoomList((ArrayList<RoominfoVO>)controller.getRoominfoList(hotelID));
 	}
-	
+
 	private void showRoomList(ArrayList<RoominfoVO> rooms){
+		if(rooms == null){
+			return;
+		}
 		//设置放置room信息的JPanel
 	    roominfoPanel=new JPanel();
 	    roominfoPanel.setLayout(null);
@@ -86,9 +90,9 @@ public class NewRoominfoPanel extends JPanel{
 	    scrollPane.getVerticalScrollBar().setVisible(false);
 	    scrollPane.setBorder(new EmptyBorder(0,0,0,0));
 	    this.add(scrollPane);
-	  
+
 	    int num=0;
-	    
+
 	    Image image=new ImageIcon("./src/main/resource/picture/hotelinfo/newroominfo.png").getImage();
 	    for(RoominfoVO room:rooms){
 	    	//制作roominfo背景
@@ -103,7 +107,7 @@ public class NewRoominfoPanel extends JPanel{
 	        num++;
 
 	        String price = String.valueOf(room.getPrice());
-	        
+
 	        //制作roominfo需要的组件
 	        RoominfoLabel roomIDLabel=new RoominfoLabel(20,10,180,25,"房间号："+room.getRoomNum());
 	        RoominfoLabel typeLabel=new RoominfoLabel(190,10,180,25,"类型："+room.getType());
@@ -118,8 +122,8 @@ public class NewRoominfoPanel extends JPanel{
 	        }
 	        jcbState.setEnabled(false);
 	        jcbState.setBounds(250,78,90,30);
-	        
-	        
+
+
 	        JTextField jtfPrice = new JTextField(String.valueOf(price));
 	        jtfPrice.setBounds(250,45,100,25);
 	        jtfPrice.setFont(new Font("微软雅黑",Font.PLAIN,20));
@@ -127,22 +131,23 @@ public class NewRoominfoPanel extends JPanel{
 	        jtfPrice.setOpaque(false);
 	        jtfPrice.setForeground(Color.white);
 	        jtfPrice.setEditable(false);
-	        
+
 	        panel.add(jtfPrice);
-	        
+
 	        panel.add(jcbState);
-	        
+
 	        JLabel[] labelList = {roomIDLabel,typeLabel,priceLabel,stateLabel};
-	        
+
 	        for(int i=0;i<labelList.length;i++){
 	        	panel.add(labelList[i]);
 	        }
-	        
 
-			ConfirmButton jbConfirm= new ConfirmButton(550,40);
-			CancleButton jbCancle = new CancleButton(450,40);
+
+			ConfirmButton jbConfirm= new ConfirmButton(495,40);
+			CancleButton jbCancle = new CancleButton(400,40);
 			ModifyButton jbModify = new ModifyButton(500,40,60,60);
-			 
+			DeleteButton jbDelete = new DeleteButton(590,40,50,50);
+
 			jbConfirm.setVisible(false);
 			jbConfirm.addActionListener(new ActionListener(){
 				@Override
@@ -166,22 +171,22 @@ public class NewRoominfoPanel extends JPanel{
 							showMessage("修改成功");
 							jbConfirm.setVisible(false);
 							jbCancle.setVisible(false);
+							jbDelete.setVisible(true);
 							jbModify.setVisible(true);
 							jtfPrice.setEditable(false);
 						}
 						else{
-							//TODO 
 							jcbState.setSelectedItem(originState);
 							showMessage("修改失败");
 						}
 						jcbState.setEnabled(false);
 					}
 				}
-				
+
 			});
-			panel.add(jbConfirm);
-			
-			
+			panel.add(jbDelete);
+
+
 			jbCancle.setVisible(false);
 			jbCancle.addActionListener(new ActionListener(){
 
@@ -189,6 +194,7 @@ public class NewRoominfoPanel extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 					jbConfirm.setVisible(false);
 					jbCancle.setVisible(false);
+					jbDelete.setVisible(false);
 					jbModify.setVisible(true);
 					jcbState.setSelectedItem(state);
 					jcbState.setEnabled(false);
@@ -196,40 +202,56 @@ public class NewRoominfoPanel extends JPanel{
 					jtfPrice.setEditable(false);
 					showMessage("取消成功");
 				}
-				
+
 			});
 			panel.add(jbCancle);
-	        
-	       
+
+
+			jbDelete.setVisible(false);
+			jbDelete.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					boolean result = controller.deleteroominfo(hotelID,room.getRoomID());
+					if(result == true){
+						controller.JBRoominfoClicked();
+					}else{
+						showMessage("删除失败");
+					}
+				}
+
+			});
+			panel.add(jbConfirm);
+
 			jbModify.addActionListener(new ActionListener(){
-			
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					jtfPrice.setEditable(true);
 					state = jcbState.getSelectedItem().toString();
 					jbConfirm.setVisible(true);
 					jbCancle.setVisible(true);
+					jbDelete.setVisible(true);
 					jbModify.setVisible(false);
 					jcbState.setEnabled(true);
 					showMessage("修改房间信息");
 				}
-				
+
 			});
 			panel.add(jbModify);
-	        
-			
+
+
 	        roominfoPanel.add(panel);
 
 	}
 }
-	
+
 	private class AddButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			controller.JBAddRoomClicked();
 		}
 	}
-	
+
 	public void showMessage(String message){
 	 	//提示信息
 		new Thread(new Runnable(){
@@ -244,15 +266,15 @@ public class NewRoominfoPanel extends JPanel{
 	            resultLabel.setText("");
 			}
 		}).start();
-		
+
 	}
-	
-	public boolean isNumeric(String str){ 
-		   Pattern pattern = Pattern.compile("-?[0-9]+.?[0-9]+"); 
+
+	public boolean isNumeric(String str){
+		   Pattern pattern = Pattern.compile("-?[0-9]+.?[0-9]+");
 		   Matcher isNum = pattern.matcher(str);
 		   if( !isNum.matches() ){
-		       return false; 
-		   } 
-		   return true; 
+		       return false;
+		   }
+		   return true;
 	}
 }

@@ -12,7 +12,7 @@ import po.HotelinfoPO;
 import po.RoominfoPO;
 
 public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements HotelinfoDataService{
-	
+
 	private static final long serialVersionUID = 1L;
 	HotelinfoDataServiceMySqlImpl mysql = new HotelinfoDataServiceMySqlImpl();
 	HotelinfoDataServiceTxtImpl txt = new HotelinfoDataServiceTxtImpl();
@@ -21,10 +21,10 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 		super();
 	}
 
-	
+
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public List<RoominfoPO> findRoominfoList(String hotelID) throws RemoteException {
@@ -34,7 +34,7 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
 		return mysql.findhotelinfo(hotelID);
 	}
-	
+
 	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
 		return mysql.hotelstaffUpdatehotelinfo(po);
 	}
@@ -44,7 +44,7 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 	}
 
 	public void finish() throws RemoteException {
-		
+
 	}
 
 
@@ -84,8 +84,14 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException{
 		return mysql.findHotelinfoList(area);
 	}
-	
+
 	public RoominfoPO findroominfo(String hotelID,String roomID) throws RemoteException{
 		return mysql.findroominfo(hotelID,roomID);
 	}
+
+
+	public boolean deleteroom(String hotelID, String roomID) throws RemoteException {
+		return mysql.deleteroom(hotelID,roomID);
+	}
+
 }

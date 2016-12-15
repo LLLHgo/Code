@@ -16,7 +16,7 @@ public interface HotelinfoBLService {
 	 * @param hotelID
 	 * @return
 	 */
-	public HotelinfoVO clientgetBasicinfo(String hotelID);	
+	public HotelinfoVO clientgetBasicinfo(String hotelID);
 	/**
 	 * 客户评价酒店
 	 * @param star
@@ -48,9 +48,9 @@ public interface HotelinfoBLService {
 	 * @return String[]
 	 */
 	public String[] getArea();
-	
+
 	/**
-	 *添加商圈名 
+	 *添加商圈名
 	 * @return boolean
 	 */
 	public boolean addArea(String area);
@@ -61,7 +61,7 @@ public interface HotelinfoBLService {
 	 * @return 保存成功或失败
 	 */
 	ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO);
-	
+
 	/**
 	 * 获得商圈里面的酒店列表
 	 * @return ArrayList<AreaVO>
@@ -79,13 +79,13 @@ public interface HotelinfoBLService {
 	 * @return 是否将房间信息持久化保存
 	 */
 	public boolean updateroominfo(RoominfoVO vo,String hotelID);
-	
+
 	/**
 	 * 获得系统内所有房间类型
 	 * @return String[]
 	 */
 	public String[] getRoomType();
-	
+
 	/**
 	 *添加房间类型
 	 * @return boolean
@@ -103,4 +103,17 @@ public interface HotelinfoBLService {
 	 * @return ArrayList<String>
 	 */
 	public  ArrayList<String> getAvailableRooms(String hotelID);
+	/**
+	 * 新增房间
+	 * @param vo
+	 * @return 布尔值表示是否新增房间成功
+	 */
+	boolean addroominfo(RoominfoVO vo);
+	/**
+	 * 删除房间信息
+	 * @param hotelID
+	 * @param roomID
+	 * @return 布尔值
+	 */
+	boolean deleteroom(String hotelID,String roomID);
 }

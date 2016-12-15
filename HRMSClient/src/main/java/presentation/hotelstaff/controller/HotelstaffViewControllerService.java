@@ -196,4 +196,11 @@ public interface HotelstaffViewControllerService {
 	 * @return boolean
 	 */
 	public boolean addLog(String s);
+
+	/**
+	 * 删除房间
+	 * @param roomID
+	 * @return
+	 */
+	boolean deleteroominfo(String hotelID,String roomID);
 }

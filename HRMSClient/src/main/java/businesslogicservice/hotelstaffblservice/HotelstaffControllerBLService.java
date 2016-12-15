@@ -175,4 +175,18 @@ public interface HotelstaffControllerBLService {
 	 * @return boolean
 	 */
 	public boolean addLog(String s);
+	/**
+	 * 新增房间信息
+	 * @param vo
+	 * @return 布尔值
+	 */
+	public boolean addroominfo(RoominfoVO vo);
+
+	/**
+	 * 删除房间信息
+	 * @param hotelID
+	 * @param roomID
+	 * @return 布尔值
+	 */
+	public boolean deleteroom(String hotelID,String roomID);
 }

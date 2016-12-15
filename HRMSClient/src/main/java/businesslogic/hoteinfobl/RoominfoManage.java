@@ -28,6 +28,20 @@ public class RoominfoManage{
 		return po2vo(po);
 	}
 
+	public boolean addroominfo(RoominfoVO vo){
+		RoominfoPO po = new RoominfoPO(vo.getHotelID(),
+				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
+		boolean result = false;
+		try {
+			result = data.insertroominfo(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		return result;
+	}
+
 	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
 		RoominfoPO po = new RoominfoPO(vo.getHotelID(),
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
@@ -73,6 +87,9 @@ public class RoominfoManage{
 			e.printStackTrace();
 			return null;
 		}
+		if(listPO == null){
+			return null;
+		}
 		for(int i=0;i<listPO.size();i++){
 			listVO.add(po2vo(listPO.get(i)));
 		}
@@ -92,6 +109,15 @@ public class RoominfoManage{
 		return vo;
 	}
 
+	public boolean deleteroom(String hotelID,String roomID){
+		try {
+			return data.deleteroom(hotelID,roomID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 	public  ArrayList<String> getAvailableRooms(String hotelID){
 //		try {
 //			ArrayList<RoominfoPO> list = (ArrayList<RoominfoPO>) data.findRoominfoList(hotelID);
@@ -107,4 +133,6 @@ public class RoominfoManage{
 //		}
 		return null;
 	}
+
+
 }

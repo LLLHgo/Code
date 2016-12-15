@@ -213,18 +213,18 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	public List<AreaVO> getAreaHotels() {
 
 		ArrayList<AreaVO> areas = new ArrayList<AreaVO>();
-		
+
 		ArrayList<String> list1 = new ArrayList<String>();
 		list1.add("HanTing");
 		list1.add("RuJia");
 		list1.add("LvZhou");
 		AreaVO vo1 = new AreaVO("新街口商圈",list1);
-		
+
 		ArrayList<String> list2 = new ArrayList<String>();
 		list2.add("LLLH酒店");
 		list2.add("王二狗酒店");
 		AreaVO vo2 = new AreaVO("山西路商圈",list1);
-		
+
 		areas.add(vo1);
 		areas.add(vo2);
 		return areas;
@@ -246,6 +246,18 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	public HotelinfoVO clientgetBasicinfo(String hotelID) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean addroominfo(RoominfoVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteroom(String hotelID, String roomID) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

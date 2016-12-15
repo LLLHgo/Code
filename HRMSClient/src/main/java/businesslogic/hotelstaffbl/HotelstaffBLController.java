@@ -202,4 +202,14 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 		}
 		return false;
 	}
+
+	@Override
+	public boolean addroominfo(RoominfoVO vo) {
+		return hotelinfo.addroominfo(vo);
+	}
+
+	@Override
+	public boolean deleteroom(String hotelID, String roomID) {
+		return hotelinfo.deleteroom(hotelID,roomID);
+	}
 }

@@ -41,7 +41,7 @@ public interface HotelinfoDataService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	
+
 	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException;
 	/**
 	 * 酒店工作人员更新酒店信息
@@ -79,11 +79,11 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public String[] getArea() throws RemoteException;
 	/**
-	 *添加商圈名 
+	 *添加商圈名
 	 * @return boolean
 	 */
 	public boolean addArea(String area) throws RemoteException;
-	
+
 	/**
 	 * 获得系统内所有房间类型
 	 * @return String[]
@@ -95,9 +95,16 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public boolean addRoomType(String type) throws RemoteException;
 	/**
+	 * 删除房间
+	 * @param hotelID
+	 * @return
+	 */
+	public boolean deleteroom(String hotelID,String roomID) throws RemoteException;
+	/**
 	 * 结束持久化数据库的使用
 	 * @throws RemoteException
 	 */
+
 	public void finish() throws RemoteException;
 }
 

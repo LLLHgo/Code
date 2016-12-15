@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import Enum.HotelStrategy;
 import Enum.OrderType;
 import Enum.ResultMessage;
 import businesslogic.hotelstaffbl.HotelstaffBLController;
@@ -171,6 +172,9 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		return controller.getRoomType();
 	}
 
+	public boolean addroominfo(RoominfoVO vo){
+		return controller.addroominfo(vo);
+	}
 
 	@Override
 	public ArrayList<OrderVO> getExecutedHotelOrderList(String hotelID, String clientID) {
@@ -278,13 +282,13 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		if(panel!=null){
 			view.remove(panel);
 		}
-		if(vo.getName().equals("生日特惠折扣")){
+		if(vo.getName().equals("生日特惠折扣")||vo.getType()==HotelStrategy.BIRTHDAY){
 			panel = new BirthdayStrategyPanel(panelcontroller,vo);
-		}else if(vo.getName().equals("三间及以上预订特惠")){
+		}else if(vo.getName().equals("三间及以上预订特惠")||vo.getType()==HotelStrategy.OVERTHREEROOMS){
 			panel = new RoomStrategyPanel(panelcontroller,vo);
-		}else if(vo.getName().equals("合作企业客户折扣")){
+		}else if(vo.getName().equals("合作企业客户折扣")||vo.getType()==HotelStrategy.COMPANY){
 			panel = new BusinessStrategyPanel(panelcontroller,vo);
-		}else if(vo.getName().equals("双十一活动折扣")){
+		}else if(vo.getName().equals("双十一活动折扣")||vo.getType()==HotelStrategy.SPECIALDAY){
 			panel = new PeriodStrategy(panelcontroller,vo);
 		}else{
 			panel = new DetailedStrategyPanel(panelcontroller,vo);
@@ -318,6 +322,11 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	@Override
 	public boolean addLog(String s) {
 		return controller.addLog(s);
+	}
+
+	@Override
+	public boolean deleteroominfo(String hotelID , String roomID) {
+		return controller.deleteroom(hotelID,roomID);
 	}
 
 

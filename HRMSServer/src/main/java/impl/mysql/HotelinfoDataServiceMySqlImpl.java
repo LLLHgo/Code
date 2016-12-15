@@ -104,15 +104,19 @@ public class HotelinfoDataServiceMySqlImpl{
 					}
 					ArrayList<String> companyList = new ArrayList<String>();
 					String company =(String)myRS.getObject("company");
+					if(company!=null){
 					String[] companyArray = company.split("&");
 					for(int i=0;i<companyArray.length;i++){
 						companyList.add(companyArray[i]);
 					}
+					}
 					ArrayList<String> remarkList = new ArrayList<String>();
 					String remark =(String)myRS.getObject("remark");
+					if(remark!=null){
 					String[] remarkArray = remark.split("&");
 					for(int i=0;i<remarkArray.length;i++){
 						remarkList.add(remarkArray[i]);
+					}
 					}
 					po.setHotelID(hotelID);
 					po.setName((String)myRS.getObject("name"));
@@ -188,7 +192,7 @@ public class HotelinfoDataServiceMySqlImpl{
 				}
 			if(!str.equals(""))
 				remark = str+"&"+remark;
-		
+
 			sql = "update hotelinfo set "
 					+ "remark=?"
 					+ " where hotelID=?";
@@ -372,6 +376,22 @@ public class HotelinfoDataServiceMySqlImpl{
 		return list;
 		return null;
 	}
+
+	public boolean deleteroom(String hotelID,String roomID) throws RemoteException{
+		Statement st;
+		try {
+			st = conn.createStatement();
+			String sql = "delete from roominfo where hotelID="+"'"+hotelID+"'"+" and roomID="+"'"+roomID+"'";
+			int result = st.executeUpdate(sql);
+			if(result>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 
 	public void finish() throws RemoteException {
 		try {

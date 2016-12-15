@@ -11,17 +11,17 @@ import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 /**
- * 
+ *
  * 因为hotelinfoBLService接口定义得比较大，而实现类分为Hotelinfo和Roominfo时并不都需要，所以使用了接口适配器模式
  * @version 1
  * @author liuyu
  *
  */
 public class Hotelinfo implements HotelinfoBLService{
-	
+
 	HotelinfoManage hotel = new HotelinfoManage();
 	RoominfoManage room = new RoominfoManage();
-	
+
 	/**
 	 * 请求获得hotelID对应的酒店信息
 	 * @param hotelID
@@ -53,9 +53,9 @@ public class Hotelinfo implements HotelinfoBLService{
 	public String[] getArea(){
 		return hotel.getArea();
 	}
-	
+
 	/**
-	 *添加商圈名 
+	 *添加商圈名
 	 * @return boolean
 	 */
 	public boolean addArea(String area){
@@ -70,7 +70,7 @@ public class Hotelinfo implements HotelinfoBLService{
 	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO){
 		return hotel.saveSitemanagerAdd(sitemanagerAddVO, hotelstaffVO);
 	}
-	
+
 	/**
 	 * 获得商圈里面的酒店列表
 	 * @return ArrayList<AreaVO>
@@ -94,7 +94,7 @@ public class Hotelinfo implements HotelinfoBLService{
 	public boolean updateroominfo(RoominfoVO vo,String hotelID){
 		return room.updateroominfo(vo, hotelID);
 	}
-	
+
 	/**
 	 * 获得系统内所有房间类型
 	 * @return String[]
@@ -102,7 +102,7 @@ public class Hotelinfo implements HotelinfoBLService{
 	public String[] getRoomType(){
 		return room.getRoomType();
 	}
-	
+
 	/**
 	 *添加房间类型
 	 * @return boolean
@@ -118,7 +118,7 @@ public class Hotelinfo implements HotelinfoBLService{
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID){
 		return room.getRoominfoList(hotelID);
 	}
-	
+
 	/**
 	 * 根据酒店ID获得可用的房间类型和数量
 	 * @param hotelID
@@ -135,4 +135,13 @@ public class Hotelinfo implements HotelinfoBLService{
 	public HotelinfoVO clientgetBasicinfo(String hotelID) {
 		return hotel.clientgetBasicinfo(hotelID);
 	}
+	@Override
+	public boolean addroominfo(RoominfoVO vo) {
+		return room.addroominfo(vo);
+	}
+	@Override
+	public boolean deleteroom(String hotelID, String roomID) {
+		return room.deleteroom(hotelID,roomID);
+	}
+
 }

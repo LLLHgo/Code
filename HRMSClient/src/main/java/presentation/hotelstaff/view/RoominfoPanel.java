@@ -52,7 +52,7 @@ public class RoominfoPanel extends JPanel{
 	private RoominfoLabel arrayState[]=new RoominfoLabel[3];
 	private int page=1;
 	private int maxPage;
-	
+
 	private JFrame frame;
 	private String roomID="";
 	private String type="";
@@ -72,43 +72,43 @@ public class RoominfoPanel extends JPanel{
 		this.hotelID = controller.gethotelID();
 		initHotelinfoPanel();
 	}
-	
+
 	private void initHotelinfoPanel(){
 		page=1;
-		
+
 		this.setLayout(null);
 		this.setBounds(0,0,1000,618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		init_image = new ImageIcon("./src/main/resource/picture/hotelinfo/roominfo.png");
-	
+
 		jbLeft = new LeftButton(295,480);
 		jbRight = new RightButton(888,480);
 		jbLeft.addActionListener(new LeftButtonActionListener());
 		jbRight.addActionListener(new RightButtonActionListener());
 		jbLeft.setEnabled(false);
-		
+
 		this.add(jbLeft);
 		this.add(jbRight);
-		
+
 		jbModify1 = new ModifyButton(880,150,60,60);
 		jbModify1.addActionListener(new ModifyButtonActionListener());
 		this.add(jbModify1);
-		
+
 		jbModify2 = new ModifyButton(880,270,60,60);
 		jbModify2.addActionListener(new ModifyButtonActionListener());
 		this.add(jbModify2);
-		
+
 		jbModify3 = new ModifyButton(880,390,60,60);
 		jbModify3.addActionListener(new ModifyButtonActionListener());
 		this.add(jbModify3);
-		
+
 		jbAdd = new AddButton(590,488);
 		jbAdd.addActionListener(new AddButtonActionListener());
 		jbAdd.setVisible(true);
 		this.add(jbAdd);
-		
+
 		arrayRoomNO[0]=label1_roomNO = new RoominfoLabel(320,122,180,25,"房间号：");
 		arrayType[0]=label1_type = new RoominfoLabel(540,122,180,25,"类型：");
 		arrayPrice[0]=label1_price = new RoominfoLabel(540,160,180,25,"价格：");
@@ -121,16 +121,16 @@ public class RoominfoPanel extends JPanel{
 		arrayType[2]=label3_type = new RoominfoLabel(540,370,180,25,"类型：");
 		arrayPrice[2]=label3_price = new RoominfoLabel(540,408,180,25,"价格：");
 		arrayState[2]=label3_state = new RoominfoLabel(540,446,180,25,"状态：");
-		
+
 		if(controller.getRoominfoList(hotelID)!=null){
 			maxPage = (controller.getRoominfoList(hotelID).size()-1)/3+1;
 		}
 		if(page==maxPage){
 			jbRight.setEnabled(false);
 		}
-		
+
 		if(controller.getRoominfoList(hotelID)==null){
-			
+
 		}else if(controller.getRoominfoList(hotelID).size()<=3){
 			for(int i=0;i<controller.getRoominfoList(hotelID).size();i++){
 				arrayRoomNO[i].setText("房间号:"+controller.getRoominfoList(hotelID).get(i).getRoomNum());
@@ -159,7 +159,7 @@ public class RoominfoPanel extends JPanel{
 		this.add(label2_state);
 		this.add(label3_state);
 	}
-	
+
 	protected void paintComponent(Graphics g) {
 		g.drawImage(init_image.getImage(), 290,120,650,360,this);
     }
@@ -169,26 +169,26 @@ public class RoominfoPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==jbModify1){
-				
+
 				roomID = label1_roomNO.getText().substring(4);
 				type = label1_type.getText().substring(3);
 				price = label1_price.getText().substring(3);
 				state = label1_state.getText().substring(3);
-				
+
 			}else if(e.getSource()==jbModify2){
-				
+
 				roomID = label2_roomNO.getText().substring(4);
 				type = label2_type.getText().substring(3);
 				price = label2_price.getText().substring(3);
 				state = label2_state.getText().substring(3);
-				
+
 			}else if(e.getSource()==jbModify3){
-				
+
 				roomID = label3_roomNO.getText().substring(4);
 				type = label3_type.getText().substring(3);
 				price = label3_price.getText().substring(3);
 				state = label3_state.getText().substring(3);
-				
+
 			}
 			initDetailedRoominfo();
 			jtaRoomID.setEditable(false);
@@ -197,9 +197,9 @@ public class RoominfoPanel extends JPanel{
 			jtaState.setEditable(true);
 			setPanelUnEditable();
 		}
-		
+
 	}
-	
+
 	private class ConfirmButtonActionListener implements ActionListener{
 
 		@Override
@@ -212,8 +212,6 @@ public class RoominfoPanel extends JPanel{
 				controller.updateroominfo(new RoominfoVO(hotelID,type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
 			}else if(state.equals("Unusable")){
 				controller.updateroominfo(new RoominfoVO(hotelID,type,roomID,Double.parseDouble(price),RoomState.Unusable),hotelID);
-			}else{
-				//TODO
 			}
 			frame.dispose();
 			refreshPanel();
@@ -226,14 +224,14 @@ public class RoominfoPanel extends JPanel{
 			refreshPanel();
 		}
 	}
-	
+
 	private void setPanelUnEditable(){
 		this.removeAll();
 	}
 	private void refreshPanel(){
 		this.initHotelinfoPanel();
 	}
-	
+
 	private class AddButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -249,14 +247,14 @@ public class RoominfoPanel extends JPanel{
 			setPanelUnEditable();
 		}
 	}
-	
+
 	public void initDetailedRoominfo(){
 		frame = new JFrame();
 		frame.setSize(300,380);
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		frame.setUndecorated(true);
 		frame.setVisible(true);
-		
+
 		Toolkit kit = Toolkit.getDefaultToolkit();    // 定义工具包
 	    Dimension screenSize = kit.getScreenSize();   // 获取屏幕的尺寸
 	    int screenWidth = screenSize.width/2;         // 获取屏幕的宽
@@ -264,9 +262,9 @@ public class RoominfoPanel extends JPanel{
 	    int height = frame.getHeight();
 	    int width = frame.getWidth();
 	    frame.setLocation(screenWidth-width/2, screenHeight-height/2);
-	    
+
 	    init_detailedroominfo_image = new ImageIcon("C:/Users/1/Documents/GitHub/Code/HRMSClient/src/main/resource/picture/hotelinfo/detailedroominfo.png");
-	    
+
 	    panel = new JPanel(){
 			protected void paintComponent(Graphics g) {
 				g.drawImage(init_detailedroominfo_image.getImage(),0,0,300,380,panel);
@@ -277,7 +275,7 @@ public class RoominfoPanel extends JPanel{
 	    panel.setVisible(true);
 	    panel.setOpaque(false);
 		frame.getContentPane().add(panel);
-		
+
 		jtaRoomID = new ReviewTextArea(83,54,200,30,roomID);
 		jtaType = new ReviewTextArea(83,104,200,30,type);
 		jtaPrice = new ReviewTextArea(83,157,200,30,price);
@@ -295,16 +293,16 @@ public class RoominfoPanel extends JPanel{
 		panel.add(jtaType);
 		panel.add(jtaPrice);
 		panel.add(jtaState);
-		
+
 		jbDetailedConfirm = new ConfirmButton(230,300);
 		jbDetailedConfirm.addActionListener(new ConfirmButtonActionListener());
 		panel.add(jbDetailedConfirm);
-		
+
 		jbDetailedCancle = new CancleButton(20,300);
 		jbDetailedCancle.addActionListener(new CancleButtonActionListener());
 		panel.add(jbDetailedCancle);
 	}
-	
+
 	private class LeftButtonActionListener  implements ActionListener{
 
 		@Override
@@ -337,9 +335,9 @@ public class RoominfoPanel extends JPanel{
 				index++;
 			}
 		}
-		
+
 	}
-	
+
 	private class RightButtonActionListener  implements ActionListener{
 
 		@Override
@@ -372,6 +370,6 @@ public class RoominfoPanel extends JPanel{
 				index++;
 			}
 		}
-		
+
 	}
 }

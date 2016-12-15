@@ -16,7 +16,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	RoominfoPO roominfoPO;
 	HotelinfoPO hotelinfoPO;
 
-	
+
 	public HotelinfoDataService_Stub(){
 		roominfoPO = new RoominfoPO("H00000001","四人间","413-3",666.6,RoomState.Usable);
 
@@ -154,7 +154,7 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 		}
 		return null;
 	}
-	
+
 	@Override
 	public String inserthotelinfo(String hotelName) throws RemoteException {
 		if(hotelName.equals("LLLH酒店")){
@@ -201,6 +201,11 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 	}
 	@Override
 	public boolean clientUpdatehotelinfo(String remark, String hotelID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean deleteroom(String hotelID, String roomID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
 	}
