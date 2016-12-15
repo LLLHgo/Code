@@ -50,7 +50,7 @@ public class TimePanel1 extends JPanel{
 		this.add(dateField);
 		this.add(hourField);
 		this.add(minuteField);
-		
+
 		JLabel bridge1=new TextLabel(70,8,50,20,"-");
 		bridge1.setForeground(Color.lightGray);
 		bridge1.setFont(font);
@@ -72,6 +72,11 @@ public class TimePanel1 extends JPanel{
 		this.hourField.setText(""+hour);
 		this.minuteField.setText(""+minute);
 	}
+
+	public void setTime(Calendar c){
+		setTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE));
+	}
+
 	public Calendar getTime(){
 //		int year=Integer.parseInt(yearField.getText());
 //		int month=Integer.parseInt(monthField.getText())-1;
@@ -93,7 +98,7 @@ public class TimePanel1 extends JPanel{
 			hour=Integer.parseInt(h);
 			minute=Integer.parseInt(mi);
 			c=Calendar.getInstance();
-			c.set(year,month-1,date,hour,minute);
+			c.set(year,month,date,hour,minute);
 			format.setLenient(false);
 			format.parse(f);
 		}catch(NumberFormatException e){

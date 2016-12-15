@@ -22,7 +22,7 @@ import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.strategyVO.HotelStrategyVO;
 
 public class BirthdayStrategyPanel extends JPanel{
-	
+
 	private static final long serialVersionUID = 1L;
 	private HotelstaffViewController controller;
 	private String hotelID;
@@ -30,7 +30,7 @@ public class BirthdayStrategyPanel extends JPanel{
 	private ImageIcon image;
 	private TextField jftdiscount;
 	private TimePanel1 tpStart;
-	private TimePanel1 tpEnd; 
+	private TimePanel1 tpEnd;
 	private ConfirmButton jbConfirm;
 	private CancleButton jbCancle;
 	private TextLabel discountLabel;
@@ -40,42 +40,44 @@ public class BirthdayStrategyPanel extends JPanel{
 	private JLabel resultLabel;
 	private Calendar startTime;
 	private Calendar endTime;
-	
+
 	public BirthdayStrategyPanel(HotelstaffViewController controller,HotelStrategyVO vo){
 		this.controller = controller;
 		this.hotelID = controller.gethotelID();
 		this.vo = vo;
-		init();		
+		init();
 		showMessage("生日特惠折扣");
 	}
-	
-	
+
+
 	private void init(){
 		this.setLayout(null);
 		this.setBounds(0,0,1000,618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		discountLabel = new TextLabel(350,235,50,30,"折扣");
 		this.add(discountLabel);
-		
+
 		startLabel = new TextLabel(350,135,100,30,"开始时间 ");
 		this.add(startLabel);
-		
+
 		endLabel = new TextLabel(350,185,100,30,"结束时间");
 		this.add(endLabel);
-		
+
 		jftdiscount = new TextField("",460,234,80,30,4);
 		jftdiscount.setText(String.valueOf(vo.getDiscount()));
 		jftdiscount.setForeground(Color.white);
 		jftdiscount.setFont(new Font("微软雅黑",Font.BOLD,20));
 		this.add(jftdiscount);
-		
+
 		tpStart = new TimePanel1(458,129,308,37);
+		tpStart.setTime(vo.getStartTime());
 		tpEnd = new TimePanel1(458,182,308,37);
+		tpEnd.setTime(vo.getEndTime());
 		this.add(tpStart);
 		this.add(tpEnd);
-		
+
 		jbConfirm = new ConfirmButton(670,470);
 		this.add(jbConfirm);
 		jbConfirm.addActionListener(new ActionListener(){
@@ -84,7 +86,8 @@ public class BirthdayStrategyPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				discount = jftdiscount.getText();
 				startTime = tpStart.getTime();
-				endTime = tpStart.getTime();
+				endTime = tpEnd.getTime();
+
 				try{
 					vo.setName("生日特惠折扣");
 					vo.setStartTime(startTime);
@@ -102,33 +105,33 @@ public class BirthdayStrategyPanel extends JPanel{
 				}catch(NumberFormatException e1){
 					showMessage("未正确填写数字");
 				}
-			
+
 			}
-			
+
 		});
-		
+
 		jbCancle = new CancleButton(520,470);
 		this.add(jbCancle);
 		jbCancle.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+
 				controller.JBStrategyClicked("取消操作成功");
-			
+
 			}
-			
+
 		});
-		
+
 		//显示结果
 		resultLabel = new JLabel();
 		resultLabel.setForeground(Color.BLACK);
 		resultLabel.setFont(new Font("微软雅黑",Font.PLAIN,15));
 		resultLabel.setBounds(290, 50, 500, 20);
 		this.add(resultLabel);
-		
+
 	}
-	
+
 	public void showMessage(String message){
 	 	//提示信息
 		new Thread(new Runnable(){
@@ -143,6 +146,6 @@ public class BirthdayStrategyPanel extends JPanel{
 	            resultLabel.setText("");
 			}
 		}).start();
-		
+
 	}
 }

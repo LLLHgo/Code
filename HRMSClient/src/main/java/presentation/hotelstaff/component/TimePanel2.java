@@ -77,6 +77,9 @@ public class TimePanel2 extends JPanel{
 		this.hourField.setText(""+hour);
 		this.minuteField.setText(""+minute);
 	}
+	public void setTime(Calendar c){
+		setTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DATE),c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE));
+	}
 	public Calendar getTime(){
 //		int year=Integer.parseInt(yearField.getText());
 //		int month=Integer.parseInt(monthField.getText())-1;
@@ -98,7 +101,7 @@ public class TimePanel2 extends JPanel{
 			hour=Integer.parseInt(h);
 			minute=Integer.parseInt(mi);
 			c=Calendar.getInstance();
-			c.set(year,month-1,date,hour,minute);
+			c.set(year,month,date,hour,minute);
 			format.setLenient(false);
 			format.parse(f);
 		}catch(NumberFormatException e){

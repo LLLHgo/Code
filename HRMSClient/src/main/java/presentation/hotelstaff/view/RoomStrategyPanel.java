@@ -73,6 +73,8 @@ public class RoomStrategyPanel extends JPanel{
 		
 		tpStart = new TimePanel1(458,129,308,37);
 		tpEnd = new TimePanel1(458,182,308,37);
+		tpStart.setTime(vo.getStartTime());
+		tpEnd.setTime(vo.getEndTime());
 		this.add(tpStart);
 		this.add(tpEnd);
 		
