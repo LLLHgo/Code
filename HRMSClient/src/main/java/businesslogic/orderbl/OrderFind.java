@@ -62,7 +62,7 @@ public class OrderFind implements OrderFindBLService{
 			return orderfindVO;
 		}
 		// 网站营销人员请求，该订单是否是异常的
-		else if(orderfindVO.getOrderType().equals(OrderType.ABNORMAL)&&orderID.charAt(0)=='M')
+		else if(orderfindVO.getOrderType().equals(OrderType.ABNORMAL)&&userId.charAt(0)=='M')
 			return orderfindVO;
 		else
 			return null;
