@@ -186,6 +186,8 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 			orderTypeEnum=OrderType.CANCEL;
 		else if(order_type.equals("ABNORMAL"))
 			orderTypeEnum=OrderType.ABNORMAL;
+		else if(order_type.equals("ABNORMALCANCEL"))
+			orderTypeEnum=OrderType.ABNORMALCANCEL;
 		// 处理viptype的enum值
 		if(vip_type.equals("ORDINARYVIP"))
 			vipTypeEnum=VIPType.ORDINARYVIP;
