@@ -29,7 +29,7 @@ public class ClientDataService_Stub implements ClientDataService{
 	 * @param recharge
 	 * @return 修改是否成功
 	 */
-	public boolean setCredit(String clientID,int recharge)throws RemoteException{
+	public boolean setCredit(String clientID,int recharge,String date,String reason)throws RemoteException{
 		if(recharge==0)
 			return false;
 		else

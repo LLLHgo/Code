@@ -74,10 +74,10 @@ public class ClientManage implements ClientBLService{
 	}
 
 	@Override
-	public boolean setCredit(String clientID, int recharge) {
+	public boolean setCredit(String clientID, int recharge,String date,String reason) {
 		// TODO Auto-generated method stub
 		try{
-			if(RemoteHelper.getInstance().clientDataService().setCredit(clientID, recharge))
+			if(RemoteHelper.getInstance().clientDataService().setCredit(clientID, recharge, date, reason))
 				return true;
 			}catch(RemoteException e){
 				e.printStackTrace();

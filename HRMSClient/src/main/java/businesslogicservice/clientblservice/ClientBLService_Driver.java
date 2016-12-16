@@ -15,7 +15,7 @@ public class ClientBLService_Driver {
 		ResultMessage cc=clientBLService.createClient(vo);
 		if(cc==ResultMessage.SUCCESS)System.out.println("New Client!ERROR!");
 		//测试设置信用值
-		boolean sc=clientBLService.setCredit("000001", 2);
+		boolean sc=clientBLService.setCredit("000001", 2,"no","no");
 		if(sc)System.out.println("Update Credit!");
 		//测试设置会员等级
 		boolean sal=clientBLService.setAllClientLevel(new LevelVO(0, null, 0,0));

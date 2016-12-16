@@ -38,7 +38,7 @@ public interface ClientBLService {
 	 * @return 修改信用值成功与否
 	 */
 
-	public boolean setCredit(String clientID,int recharge);
+	public boolean setCredit(String clientID,int recharge,String date,String reason);
 	/**
 	 * 根据新的会员等级制度修改所有客户的会员等级
 	 * @param vo

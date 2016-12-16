@@ -88,7 +88,7 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @param recharge
 	 * @return 修改信用值成功与否
 	 */
-	public boolean setCredit(String clientID,int recharge){
+	public boolean setCredit(String clientID,int recharge,String date,String reason){
 		if(recharge==0)
 			return false;
 		else

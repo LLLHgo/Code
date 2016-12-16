@@ -57,7 +57,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		return null;
 	}
 
-	public boolean setCredit(String clientID, int recharge) throws RemoteException {
+	public boolean setCredit(String clientID, int recharge,String date,String reason) throws RemoteException {
 		// TODO Auto-generated method stub
 		Connection conn=DataBaseInit.getConnection();
 		try{
@@ -74,10 +74,15 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
                  if(i==1){
                  //如果该更新操作成功，返回true
                   System.out.println("SUCCESS UPDATE CREDIT");
-                  return true;
+                 
                   }
-
-              }
+                 int ress = stat.executeUpdate("INSERT INTO `HRMS`.`"+clientID+"` (`date`, `reason`,`recharge`) VALUES ('"+date+"', '"+reason+"', '"+recharge+"')");
+                 if(ress==1){
+                     //如果该更新操作成功，返回true
+                      System.out.println("SUCCESS INCREATE CREDIT RECORD");
+                       return true;
+                 }
+                   }
 		}catch(SQLException se){
 			// 处理 JDBC 错误
 			se.printStackTrace();
@@ -155,6 +160,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		}catch(SQLException se){
 			// 处理 JDBC 错误
 			se.printStackTrace();
+			return ResultMessage.DATEBASEFAIL;
 		}catch(Exception e){
 			// 处理 Class.forName 错误
 			e.printStackTrace();
@@ -216,6 +222,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
             	return true;
             System.out.println("OK");
             }
+            
 
 		}catch(SQLException se){
 			// 处理 JDBC 错误

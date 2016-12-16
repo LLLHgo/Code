@@ -25,7 +25,7 @@ public interface ClientDataService extends Remote{
 	 * @param recharge
 	 * @return 修改是否成功
 	 */
-	public boolean setCredit(String clientID,int recharge)throws RemoteException;
+	public boolean setCredit(String clientID,int recharge,String date,String reason)throws RemoteException;
 	/**
 	 * 查询客户个人基本信息
 	 * @param clientID
@@ -58,10 +58,12 @@ public interface ClientDataService extends Remote{
 	 * @return 创建是否成功
 	 */
 	public boolean createClient(ClientPO po)throws RemoteException;
+
 	/**
 	 * 删除客户
 	 * @param po
 	 * @return 删除是否成功
 	 */
 	public boolean deleteClient(String clientId)throws RemoteException;
+
 }

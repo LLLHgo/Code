@@ -12,7 +12,7 @@ public class ClientDataService_Driver {
 		//boolean cc=clientDataService.createClient(vo);
 		//if(cc)System.out.println("New Client!ERROR!");
 		//测试设置信用值
-		boolean sc=clientDataService.setCredit("000001", 2);
+		boolean sc=clientDataService.setCredit("000001", 2,"no","no");
 		if(sc)System.out.println("Update Credit!");
 		//测试设置会员等级
 		//boolean sal=clientDataService.setAllLevel(new LevelVO(0, null, 0,0));
