@@ -28,7 +28,7 @@ public interface MarketingBLControllerService {
 
 	public MarketingVO init(String id);
 
-	public boolean setCredit(String clientID, int amount);
+	public boolean setCredit(String clientID, int amount,String reason);
 
 
 	public OrderVO findSpecificOrder(String marketingID, String orderID);
@@ -48,6 +48,6 @@ public interface MarketingBLControllerService {
 
 	public String[] getDistrictNames();
 
-	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log);
+	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log,String reason);
 
 }

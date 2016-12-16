@@ -1,5 +1,8 @@
 package businesslogic.marketingbl;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import Enum.OrderType;
@@ -86,8 +89,11 @@ public class MarketingBLController implements MarketingBLControllerService{
 
 
 	@Override
-	public boolean setCredit(String clientID, int amount) {
-		return this.clientBL.setCredit(clientID,amount);
+	public boolean setCredit(String clientID, int amount,String reason) {
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+		Date d=new Date();
+        String date=format.format(d.getTime());
+		return this.clientBL.setCredit(clientID,amount,date,reason);
 	}
 
 	@Override
@@ -132,10 +138,13 @@ public class MarketingBLController implements MarketingBLControllerService{
 	}
 
 	@Override
-	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log) {
+	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log,String reason) {
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+		Calendar c=Calendar.getInstance();
+		String date=format.format(c);
 		ResultMessage result=this.orderOperator.saveOrderPO(order);
 		if(result==ResultMessage.SUCCESS){//保存订单状态成功
-			if(this.clientBL.setCredit(order.getClientId(),(int)price)){//设置客户信用值成功
+			if(this.clientBL.setCredit(order.getClientId(),(int)price,date,reason)){//设置客户信用值成功
 				this.logBL.addLog(log.toString());
 			    return ResultMessage.SUCCESS;
 			}else{//设置用户信用值失败
