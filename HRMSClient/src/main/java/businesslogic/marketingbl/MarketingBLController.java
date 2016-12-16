@@ -136,19 +136,15 @@ public class MarketingBLController implements MarketingBLControllerService{
 		ResultMessage result=this.orderOperator.saveOrderPO(order);
 		if(result==ResultMessage.SUCCESS){//保存订单状态成功
 			if(this.clientBL.setCredit(order.getClientId(),(int)price)){//设置客户信用值成功
-				//！！！！！！应该是double型的！！！
-			    this.logBL.addLog(log.toString());
+				this.logBL.addLog(log.toString());
 			    return ResultMessage.SUCCESS;
 			}else{//设置用户信用值失败
 				order.setOrderStatus(OrderType.ABNORMAL);//将订单状态重新设为异常
-				if(this.orderOperator.saveOrderPO(order)==ResultMessage.SUCCESS){//将订单状态重新设为异常成功
-					return ResultMessage.SUCCESS;
-				}else{//将订单状态重新设为异常失败
-					return ResultMessage.FAULT;
-				}
+				this.orderOperator.saveOrderPO(order);
+				return ResultMessage.SETCREDITEXCEPTION;
 			}
 		}else{//保存订单状态失败
-            return ResultMessage.FAIL;
+            return ResultMessage.SETORDERTYPEEXCEPTION;
 		}
 	}
 

@@ -274,10 +274,10 @@ public class ProcessMarketingAbnormalView extends JPanel{
                     	halfButton.setEnabled(false);
                     	checkButton.setEnabled(false);
                     	((ProcessMarketingView)view).setHint("该异常订单已撤销。");
-                    }else if(result==ResultMessage.FAIL){
-                    	((ProcessMarketingView)view).setHint("该异常订单撤销失败。");
-                    }else if(result==ResultMessage.FAULT){
-                    	((ProcessMarketingView)view).setHint("系统故障。。。");
+                    }else if(result==ResultMessage.SETCREDITEXCEPTION){
+                    	((ProcessMarketingView)view).setHint("恢复信用值失败。");
+                    }else if(result==ResultMessage.SETORDERTYPEEXCEPTION){
+                    	((ProcessMarketingView)view).setHint("修改订单状态失败。");
                     }
 				}
 	        });
