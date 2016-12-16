@@ -338,9 +338,12 @@ public class HotelinfoDataServiceMySqlImpl{
 
 					ArrayList<String> companyList = new ArrayList<String>();
 					String company =(String)myRS.getObject("company");
-					String[] companyArray = company.split("&");
-					for(int i=0;i<companyArray.length;i++){
-						companyList.add(companyArray[i]);
+					//TODO
+					if(company!=null){
+						String[] companyArray = company.split("&");
+						for(int i=0;i<companyArray.length;i++){
+							companyList.add(companyArray[i]);
+						}
 					}
 					ArrayList<String> remarkList = new ArrayList<String>();
 					String remark =(String)myRS.getObject("remark");

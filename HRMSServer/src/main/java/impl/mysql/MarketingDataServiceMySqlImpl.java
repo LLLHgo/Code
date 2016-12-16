@@ -84,6 +84,7 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 		try{
 			stmt=conn.createStatement();
 			String sql;
+
 			sql = "SELECT * FROM MarketingProfile WHERE MarketingID='"+ID+"' AND password='"+password+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 
@@ -111,9 +112,12 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 		try{
 			stmt=conn.createStatement();
 			String sql;
+			//先删除原先的数据
+			sql="DELETE FROM Level";
+			stmt.executeUpdate(sql);
 			//插入新的level数据
 			for(LevelPO po:pos){
-				sql="INSERT INTO test (level,name,credit,discount)VALUES ('"+po.getLevel()+"','"+po.getName()+"','"+po.getCreditNeeded()+"','"+po.getDiscount()+"')";
+				sql="INSERT INTO  Level(level,name,credit,discount)VALUES ('"+po.getLevel()+"','"+po.getName()+"','"+po.getCreditNeeded()+"','"+po.getDiscount()+"')";
 				stmt.executeUpdate(sql);
 			}
 		}catch(SQLException se){

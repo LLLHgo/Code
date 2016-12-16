@@ -45,15 +45,16 @@ public class ProcessMarketingVIPView extends JPanel{
 			public void actionPerformed(ActionEvent e) {
                 levelsPos=((levelPanel) levelPanel).getLevels();
                 if(levelsPos==null){
-                	view.setHint("请重新填写等级信息。");
+                	view.setHint("请重新填写等级信息，请注意数据格式。");
                 	return;
                 }else{
+                	ResultMessage right=check();
 	                if(controller.updateLevel(levelsPos)==ResultMessage.SUCCESS){
 	                	view.setHint("等级信息保存成功!客户数据更新成功！");
 	                }else if(controller.updateLevel(levelsPos)==ResultMessage.FAIL){
 	                	view.setHint("等级信息保存失败。");
 	                }else if(controller.updateLevel(levelsPos)==ResultMessage.FAULT){
-	                	view.setHint("好消息：等级信息已保存成功！坏消息：客户数据更新失败。。。");
+	                	view.setHint("等级信息已保存成功，氮素。。客户数据更新失败。。。");
 	                }
                 }
 			}
@@ -70,6 +71,14 @@ public class ProcessMarketingVIPView extends JPanel{
 		this.setVisible(false);
 	}
 
-
+	public ResultMessage check(){
+		int size=this.levelsPos.size();
+		int[] num=new  int[size];
+		for(int n:num)n=0;
+		for(LevelVO level:levelsPos){
+			//if(level.getLevel())
+		}
+		return null;
+	}
 
 }
