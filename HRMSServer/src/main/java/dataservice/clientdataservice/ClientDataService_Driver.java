@@ -11,8 +11,8 @@ public class ClientDataService_Driver {
 	public void drive(ClientDataService clientDataService) throws RemoteException{
 		ClientPO po=new ClientPO();
 		//测试创建新客户
-		boolean cc=clientDataService.createClient(po);
-		if(cc)System.out.println("New Client!ERROR!");
+		//boolean cc=clientDataService.createClient(po);
+		//if(cc)System.out.println("New Client!ERROR!");
 		//测试设置信用值
 		boolean sc=clientDataService.setCredit("000001", 2,"no","no");
 		if(sc)System.out.println("Update Credit!");

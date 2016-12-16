@@ -125,14 +125,17 @@ public class DialogCreator {
 		dialog.add(dialogPane);
 		dialog.getRootPane().setDefaultButton(okButton);
 	}
-	public static void successDialog0(String name){
+	public static void successDialog0(String name,String id){
 		JButton okButton;
 		ImageIcon dialogBgIcon = new ImageIcon("image/dialogBg1.png");
 		ImageIcon okIcon = new ImageIcon("image/ok.png");
 		dialogPane = new JOptionPane();
 		dialogPane.setLayout(null);
 		JLabel imageLabel = new JLabel(dialogBgIcon);
+
 		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
+		JLabel hint=new JLabel("您的登录账号为："+id);
+		hint.setBounds(100,100,100,30);
 
 		okButton = new JButton();
 		okButton.setIcon(okIcon);
@@ -150,6 +153,7 @@ public class DialogCreator {
 
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
+		dialogPane.add(hint);
 		dialogPane.setOpaque(false);
 
 		dialogPane.setPreferredSize(new Dimension(400,250));

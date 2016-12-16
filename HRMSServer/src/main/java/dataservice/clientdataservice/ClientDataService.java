@@ -57,7 +57,7 @@ public interface ClientDataService extends Remote{
 	 * @param po
 	 * @return 创建是否成功
 	 */
-	public boolean createClient(ClientPO po)throws RemoteException;
+	public String createClient(ClientPO po)throws RemoteException;
 
 	/**
 	 * 删除客户

@@ -74,7 +74,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
                  if(i==1){
                  //如果该更新操作成功，返回true
                   System.out.println("SUCCESS UPDATE CREDIT");
-                 
+
                   }
                  int ress = stat.executeUpdate("INSERT INTO `HRMS`.`"+clientID+"` (`date`, `reason`,`recharge`) VALUES ('"+date+"', '"+reason+"', '"+recharge+"')");
                  if(ress==1){
@@ -208,21 +208,35 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		return false;
 	}
 
-	public boolean createClient(ClientPO po) throws RemoteException {
+	public String createClient(ClientPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		Connection conn=DataBaseInit.getConnection();
 		try{
 			Statement stat = conn.createStatement();
-            ResultSet count= stat.executeQuery("select clientID from client  where  clientID='"+po.getID()+"'");
+            ResultSet count= stat.executeQuery("select clientID from client  where  tel='"+po.getTel()+"'");
             //用户没重名就注册
             if(!count.next()){
-            int res = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`clientID`, `password`,`type`) VALUES ('"+po.getID()+"', '"+po.getPassword()+"', '"+"NONVIP"+"')");
-            boolean res0=stat.execute("CREATE TABLE `HRMS`.`"+po.getID()+"` (`ID` INT NOT NULL AUTO_INCREMENT,`date` VARCHAR(45) NULL,`reason` VARCHAR(45) NULL,`recharge` INT NULL,PRIMARY KEY (`ID`))");
-            if(res==1)
-            	return true;
+            int ress = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`tel`, `password`,`type`) VALUES ('"+po.getTel()+"', '"+po.getPassword()+"', '"+"NONVIP"+"')");
+            int id=0;
+            ResultSet count1= stat.executeQuery("select * from client  where  tel='"+po.getTel()+"'");
+            if(count1.next())
+             id=count1.getInt("ID");
+            int i=0;
+            for(;;i++)
+            	if(id<Math.pow(10,i))
+            		break;
+            String clientID="C";
+            for(int k=0;k<8-i;k++)
+            	clientID+="0";
+            	clientID+=id;
+            	int c= stat.executeUpdate("UPDATE `HRMS`.`client` SET `clientID`='"+clientID+"' WHERE `ID`='"+id+"'");
+            boolean res0=stat.execute("CREATE TABLE `HRMS`.`"+clientID+"` (`ID` INT NOT NULL AUTO_INCREMENT,`date` VARCHAR(45) NULL,`reason` VARCHAR(45) NULL,`recharge` INT NULL,PRIMARY KEY (`ID`))");
+            if(ress==1)
+
             System.out.println("OK");
+            return clientID;
             }
-            
+
 
 		}catch(SQLException se){
 			// 处理 JDBC 错误
@@ -231,8 +245,8 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 			// 处理 Class.forName 错误
 			e.printStackTrace();
 		}
-		System.out.println("OK!");
-		return false;
+		System.out.println("Create OK!");
+		return "Fail";
 	}
 	public boolean deleteClient(String clientId)throws RemoteException{
 		Connection conn=DataBaseInit.getConnection();

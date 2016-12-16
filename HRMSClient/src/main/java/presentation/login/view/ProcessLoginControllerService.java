@@ -14,5 +14,5 @@ public interface ProcessLoginControllerService {
 	/**
 	 * 注册新用户
 	 */
-	public ResultMessage addclient(ClientVO vo);
+	public String addclient(ClientVO vo);
 }

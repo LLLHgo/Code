@@ -65,11 +65,11 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @param vo
 	 * @return 增加新用户成功与否
 	 */
-	public ResultMessage createClient(ClientVO vo){
+	public String createClient(ClientVO vo){
 		if(vo.getID() != null)
-			return ResultMessage.SUCCESS;
+			return "SUCCESS";
 		else
-			return ResultMessage.FAIL;
+			return "FAIL";
 	}
 	/**
 	 *删除客户

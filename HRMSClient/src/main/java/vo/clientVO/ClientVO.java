@@ -49,11 +49,11 @@ public class ClientVO {
 				this.creditRecord=creditRecord;
 				this.credit=credit;
 			}
-				public ClientVO(String id,String password){
-					this.client_id=id;
+				public ClientVO(String tel,String password){
+					this.client_id="";
 					this.password=password;
 					this.client_name="";
-					this.client_tel="";
+					this.client_tel=tel;
 					this.vip_type=VIPType.NONVIP;
 					this.client_birth="";
 					this.vip_level=0;

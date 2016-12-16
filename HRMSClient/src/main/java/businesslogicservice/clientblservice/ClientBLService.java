@@ -24,7 +24,7 @@ public interface ClientBLService {
 	 * @param vo
 	 * @return 增加新用户成功与否
 	 */
-	public ResultMessage createClient(ClientVO vo);
+	public String createClient(ClientVO vo);
 	/**
 	 *删除客户
 	 * @param vo

@@ -35,24 +35,24 @@ public class ClientManage implements ClientBLService{
 	}
 
 	@Override
-	public ResultMessage createClient(ClientVO vo) {
+	public String  createClient(ClientVO vo) {
 
 		// TODO Auto-generated method stub
-		if(vo.getID().equals("")||vo.getID()==null)
-			return ResultMessage.FAIL;
-		else if(vo.getID().charAt(0)=='C'&&vo.getID().length()==9){
+		if(vo.getTel()==null||vo.getTel()=="")
+			return "FAIL";
+		else if(vo.getTel().length()==11){
 		try{
 			ClientPO po=new ClientPO(vo.getID(),vo.getPassword(),vo.getName(),vo.getTel(),vo.getType(),vo.getLevel(),vo.getBirth(),vo.getFirm(),vo.getCreditRecord(),vo.getCredit());
-			boolean rs=RemoteHelper.getInstance().clientDataService().createClient(po);
-			if(rs)
-				return ResultMessage.SUCCESS;
+			String res=RemoteHelper.getInstance().clientDataService().createClient(po);
+			if(res.charAt(0)=='C')
+				return res;
 		}catch(RemoteException e){
 				e.printStackTrace();
 			}
 
 		}
 
-		return ResultMessage.FAIL;
+		return "FAIL";
 
 	}
 
