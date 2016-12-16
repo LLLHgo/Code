@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 
 
@@ -134,8 +135,14 @@ public class DialogCreator {
 		JLabel imageLabel = new JLabel(dialogBgIcon);
 
 		imageLabel.setBounds(0,0,dialogBgIcon.getIconWidth(),dialogBgIcon.getIconHeight());
-		JLabel hint=new JLabel("您的登录账号为："+id);
-		hint.setBounds(100,100,100,30);
+		JTextField inputField = new JTextField("您的登陆账号是："+id);
+		inputField.setFont(new java.awt.Font("微软雅黑", 4,  20));
+		inputField.setBounds(55, 100, 300, 60);
+		inputField.setBorder(new EmptyBorder(0,0,0,0));
+		//inputField.setOpaque(false);
+		inputField.setFocusable(false);
+
+		dialogPane.add(inputField);
 
 		okButton = new JButton();
 		okButton.setIcon(okIcon);
@@ -153,7 +160,7 @@ public class DialogCreator {
 
 		dialogPane.add(okButton);
 		dialogPane.add(imageLabel);
-		dialogPane.add(hint);
+
 		dialogPane.setOpaque(false);
 
 		dialogPane.setPreferredSize(new Dimension(400,250));
