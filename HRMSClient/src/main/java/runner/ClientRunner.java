@@ -2,9 +2,12 @@ package runner;
 
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderCheck;
 import businesslogic.orderbl.OrderFind;
+import dataservice.orderdataservice.OrderDataService;
 import presentation.MainFrame;
 import rmi.RemoteHelper;
 import vo.orderVO.OrderVO;
@@ -35,14 +38,10 @@ public class ClientRunner {
 	}
 	
 	public void test2(){
-		ArrayList<OrderVO>list=new ArrayList<OrderVO>();
-		OrderFind f=new OrderFind();
-		list=f.findUserOrderList("H00000001");
-		if(list!=null){
-			for(int i=0;i<list.size();i++){
-				System.out.println(list.get(i).getOrderType());
-			}
-		}
+		OrderCheck o=new OrderCheck();
+		boolean result = false;
+			result=o.checkTimeOperateAbnormal();
+		System.out.println(result);
 	}
 	
 	public static void main(String[] args){

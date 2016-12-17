@@ -131,7 +131,8 @@ public class OrderDataService_Stub implements OrderDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public void checkTimeOperateAbnormal(String orderId) throws RemoteException {
+	public boolean checkTimeOperateAbnormal() throws RemoteException {
+		return false;
 		// TODO Auto-generated method stub
 		
 	}

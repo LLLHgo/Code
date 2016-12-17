@@ -83,7 +83,7 @@ public class OrderDataService_Driver {
 		
 		// 根据时间，在数据库中将超时订单置为异常状态
 		System.out.println("根据时间，在数据库中将超时订单置为异常状态");
-		orderDataService.checkTimeOperateAbnormal("20160823131207");
+		orderDataService.checkTimeOperateAbnormal();
 		
 		
 	}

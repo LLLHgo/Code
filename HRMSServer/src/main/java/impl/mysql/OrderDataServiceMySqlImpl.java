@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import Enum.OrderType;
 import Enum.VIPType;
@@ -220,10 +222,21 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 		}
 		return null;
 	}
-
-	public void checkTimeOperateAbnormal(String orderId) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+	// 将数据库中超时订单置为异常
+	public boolean checkTimeOperateAbnormal() throws RemoteException {
+		boolean result=false;
+		Calendar calendar = Calendar.getInstance();//此时打印它获取的是系统当前时间
+        calendar.add(Calendar.DATE, -1);    //得到前一天
+        String  yestedayDate= new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
+        yestedayDate=yestedayDate+" 12:00:00";
+        String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE anticipate_arrived_time='"+yestedayDate+"'";
+		ArrayList<OrderPO> list=getCommandList(sql);
+		for(int i=0;i<list.size();i++){
+			list.get(i).setOrderType(OrderType.ABNORMAL);
+			result=save(list.get(i));
+		}
+    
+        return result;
 	}
 
 

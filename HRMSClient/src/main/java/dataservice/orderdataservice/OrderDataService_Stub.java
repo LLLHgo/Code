@@ -101,9 +101,9 @@ public class OrderDataService_Stub implements OrderDataService{
 	 * @param orderId
 	 */
 	@Override
-	public void checkTimeOperateAbnormal(String orderId) throws RemoteException{
+	public boolean checkTimeOperateAbnormal() throws RemoteException{
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 	@Override
 	public int lookIdValid() throws RemoteException {

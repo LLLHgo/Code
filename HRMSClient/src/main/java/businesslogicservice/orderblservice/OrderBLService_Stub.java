@@ -129,7 +129,7 @@ public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTim
 	 * @return 判断订单置为异常状态（true）或不修改状态（false）的布尔值
 	 */
 	@Override
-	public boolean checkTimeOperateAbnormal(OrderVO order, String date) {
+	public boolean checkTimeOperateAbnormal() {
 		// TODO Auto-generated method stub
 		return false;
 	}

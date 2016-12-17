@@ -90,5 +90,5 @@ public interface OrderDataService extends Remote{
 	 * 根据时间，在数据库中将超时订单置为异常状态
 	 * @param orderId
 	 */
-	public void checkTimeOperateAbnormal (String orderId) throws RemoteException;
+	public boolean checkTimeOperateAbnormal () throws RemoteException;
 }
