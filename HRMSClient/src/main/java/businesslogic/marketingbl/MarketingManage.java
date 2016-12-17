@@ -59,14 +59,12 @@ public class MarketingManage implements MarketingBLService{
 
 	@Override
 	public ResultMessage MarketingAccountUpdate(MarketingVO vo) {
-		if(vo==null)
-			return ResultMessage.FAIL;
         MarketingPO po=new MarketingPO(vo.getName(),vo.getPassword(),vo.getMarketingID(),vo.getTelephone());
 		try {
 			if(this.marketingDataService.MarketingAccountUpdate(po)){//更新账户成功
 				return ResultMessage.SUCCESS;
 			}else{//更新账户失败
-				return ResultMessage.FAIL;
+				return ResultMessage.DATEBASEFAIL;
 			}
 		} catch (RemoteException e) {//更新账户有故障
 			return ResultMessage.FAULT;
@@ -105,16 +103,12 @@ public class MarketingManage implements MarketingBLService{
 
 	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO vo) {
-		if(vo==null)
-		    return ResultMessage.FAIL;
-		if(vo.getPassword().length()==0)
-			return ResultMessage.VOIDPASSWORD;
 		MarketingPO po=new MarketingPO(vo.getName(),vo.getPassword(),vo.getMarketingID(),vo.getTelephone());
 		try {
 			if(this.marketingDataService.MarketingAccountAdd(po)){//增加账户成功
 				return ResultMessage.SUCCESS;
 			}else{//增加账户失败
-				return ResultMessage.FAIL;
+				return ResultMessage.DATEBASEFAIL;
 			}
 		} catch (RemoteException e) {//增加账户有故障
 			return ResultMessage.FAULT;
@@ -128,7 +122,7 @@ public class MarketingManage implements MarketingBLService{
 			if(this.marketingDataService.MarketingAccountDelete(po)){//删除账户成功
 				return ResultMessage.SUCCESS;
 			}else{//删除账户失败
-				return ResultMessage.FAIL;
+				return ResultMessage.DATEBASEFAIL;
 			}
 		} catch (RemoteException e) {//删除账户有故障
 			return ResultMessage.FAULT;
@@ -144,6 +138,8 @@ public class MarketingManage implements MarketingBLService{
 		} catch (RemoteException e) {
 			return null;//出现数据库或链接故障，返回null
 		}
+		if(po==null)
+			return null;
 		vo=new MarketingVO(po.getName(),po.getPassword(),po.getMarketingID(),po.getTelephone());
 		return vo;//可以返回初始默认值的vo,但不能是null
 	}

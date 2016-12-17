@@ -66,15 +66,19 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 				String password  = rs.getString("password");
 				String tel=rs.getString("tel");
 				po=new MarketingPO(name,password,id,tel);
+				return po;
 			}
+			return null;
 		}catch(SQLException se){
 			// 处理 JDBC 错误
 			se.printStackTrace();
+			return null;
 		}catch(Exception e){
 			// 处理 Class.forName 错误
 			e.printStackTrace();
+			return null;
 		}
-		return po;
+
 	}
 
 	public boolean checkAccount(String ID, String password) throws RemoteException {
