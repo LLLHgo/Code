@@ -203,4 +203,9 @@ public interface HotelstaffViewControllerService {
 	 * @return
 	 */
 	boolean deleteroominfo(String hotelID,String roomID);
+	/**
+	 * 更新酒店房间状态
+	 * @return
+	 */
+	boolean refreshroomstate();
 }

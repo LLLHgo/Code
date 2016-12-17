@@ -198,4 +198,9 @@ public interface HotelstaffControllerBLService {
 	 * @return布尔值
 	 */
 	public boolean reviewCrediet(String clientID,int recharge,String date,String reason);
+	/**
+	 * 刷新酒店房间状态
+	 * @return
+	 */
+	public boolean refreshroomstate();
 }

@@ -361,5 +361,10 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		return controller.deleteroom(hotelID,roomID);
 	}
 
+	@Override
+	public boolean refreshroomstate() {
+		return controller.refreshroomstate();
+	}
+
 
 }

@@ -9,6 +9,8 @@ import Enum.ResultMessage;
 import businesslogic.clientbl.ClientManage;
 import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.logbl.LogManage;
+import businesslogic.orderbl.Order;
+import businesslogic.orderbl.OrderCheck;
 import businesslogic.orderbl.OrderFind;
 import businesslogic.orderbl.OrderOperator;
 import businesslogic.strategybl.StrategyManage;
@@ -37,9 +39,11 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	StrategyBLService strategy;
 	OrderFindBLService orderFind;
 	OrderOperatorBLService orderOperator;
+	OrderCheck orderCheck;
 	HotelstaffBLService hotelstaff;
 	LogBLService log;
 	ClientBLService client;
+	
 
 	public HotelstaffBLController(){
 		hotelinfo = new Hotelinfo();
@@ -49,6 +53,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 		orderOperator=new OrderOperator();
 		strategy = new StrategyManage();
 		client = new ClientManage();
+		orderCheck = new OrderCheck();
 //		hotelinfo = new HotelinfoBLService_stub();
 //		strategy = new StrategyBLService_Stub();
 //		orderFind = new OrderBLService_Stub();
@@ -230,5 +235,10 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	@Override
 	public boolean reviewCrediet(String clientID, int recharge, String date, String reason) {
 		return client.setCredit(clientID, recharge, date, reason);
+	}
+
+	@Override
+	public boolean refreshroomstate() {
+		return orderCheck.checkTimeOperateAbnormal();
 	}
 }
