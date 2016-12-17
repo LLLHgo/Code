@@ -33,7 +33,7 @@ public class HotelinfoManage{
 			return false;
 		}
 	}
-	
+
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		try {
 			po = data.findhotelinfo(hotelID);
@@ -59,6 +59,7 @@ public class HotelinfoManage{
 			}
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
+
 				if(vo == null){
 					return null;
 				}
@@ -107,7 +108,7 @@ public class HotelinfoManage{
 //			vo.setStar(po.getStar());
 //			vo.setRemark(po.getRemark());
 //			vo.setIntroduction(po.getIntroduction());
-//			vo.setFacility(po.getFacility());
+			vo.setFacility(po.getFacility());
 //			vo.setHotelID(po.getHotelID());
 			return vo;
 	}
