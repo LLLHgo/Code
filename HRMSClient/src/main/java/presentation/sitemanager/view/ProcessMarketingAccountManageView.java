@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -230,7 +232,22 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			newPassword=marketingPassword.getText();
 			newMarketingVO=new MarketingVO(name,newPassword,id,newTel);
 			result=controller.MarketingAccountUpdate(newMarketingVO);
-			if(result==ResultMessage.SUCCESS){
+			if((newTel==""||newTel.equals(""))&&(newPassword==""||newPassword.equals(""))){
+				conditionalText.setText("信息为空，请输入修改的电话和密码");
+			}
+			else if(newTel==""||newTel.equals("")){
+				conditionalText.setText("电话为空，请输入电话");
+			}
+			else if(newPassword==""||newPassword.equals("")){
+				conditionalText.setText("密码为空，请输入密码");
+			}
+			else if(newTel.length()!=11){
+				conditionalText.setText("电话位数不对，请重新输入电话");
+			}
+			else if(!isNumeric(newTel)){
+				conditionalText.setText("电话请确认是否全为数字，重新输入电话");	
+			}
+			else if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("修改成功！");
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 修改"+id+"账户");
@@ -238,8 +255,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 				modifyButton.setEnabled(true);
 				marketingTel.setEditable(false);
 				marketingPassword.setEditable(false);
-			}else{
-				conditionalText.setText("信息未做更改，不再进行保存！");
+			}else if(result==ResultMessage.DATEBASEFAIL){
+				conditionalText.setText("数据库保存失败！");
 			}
 		}
 		public void mousePressed(MouseEvent e) {
@@ -263,6 +280,16 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			addMarketingVO=new MarketingVO(addName,addPassword,"",addTel);
 			result=controller.MarketingAccountAdd(addMarketingVO);
 			
+			if((addTel==""||addTel.equals(""))&&(addPassword==""||addPassword.equals(""))&&(addName==""||addName.equals(""))){
+				conditionalText.setText("请将信息填写完整");
+			}
+			else if(addTel.length()!=11){
+				conditionalText.setText("电话位数不对，请重新输入电话");
+			}
+			else if(!isNumeric(addTel)){
+				conditionalText.setText("电话请确认是否全为数字，重新输入电话");	
+			}
+			
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("添加账户成功！");
 				date=new Date();
@@ -270,8 +297,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 				deleteButton.setEnabled(true);
 				checkAddButton.setVisible(false);
 			}
-			else{
-				conditionalText.setText("添加账户失败! "+result);
+			else if(result==ResultMessage.DATEBASEFAIL){
+				conditionalText.setText("数据库保存失败！");
 			}
 		}
 		public void mousePressed(MouseEvent e) {}
@@ -323,8 +350,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 				checkModifyButton.setEnabled(false);
 				checkAddButton.setVisible(false);
 			}
-			else{
-				conditionalText.setText("删除失败！"+result);
+			else if(result==ResultMessage.DATEBASEFAIL){
+				conditionalText.setText("数据库删除失败！");
 			}
 		}
 		public void mousePressed(MouseEvent e) {}
@@ -339,5 +366,13 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	void addLog(String info){
 		controller.addLog(info);
 	}
-	
+	// 判断字符串是不是全为数字，如果全为数字，返回true
+	public boolean isNumeric(String str){ 
+		Pattern pattern = Pattern.compile("[0-9]*"); 
+	    Matcher isNum = pattern.matcher(str);
+	   if( !isNum.matches() ){
+		   return false; 
+		} 
+		   return true; 
+		}
 }

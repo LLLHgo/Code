@@ -288,7 +288,7 @@ public class ProcessClientAccountManageView extends JPanel{
 				creditIconButton.setEnabled(false);
 				
 			}
-			else if(result==ResultMessage.FAIL){
+			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionLabel.setText("删除失败！");
 			}
 		}
@@ -326,6 +326,11 @@ public class ProcessClientAccountManageView extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			newPassword=passwordText.getText();
+			if(newPassword.equals("")||(newPassword==null)){
+				conditionLabel.setText("密码为空，请输入密码！");
+			}
+			else{
+				
 			newClientVO=new ClientVO(clientVO.getID(),newPassword,clientVO.getName(),clientVO.getTel()
 					,clientVO.getType(),clientVO.getLevel(),clientVO.getBirth(),clientVO.getFirm(),
 					clientVO.getCredit(),clientVO.getCreditRecord());
@@ -338,8 +343,7 @@ public class ProcessClientAccountManageView extends JPanel{
 			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionLabel.setText("数据库存储失败！");
 			}
-			else if(result==ResultMessage.SAMEPASSWORD){
-				conditionLabel.setText("密码未做更改，不进行更新！");
+			
 			}
 		}
 
