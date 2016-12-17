@@ -203,6 +203,18 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.repaint();
 	}
 
+	public void JBRoominfoClicked(String message){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new NewRoominfoPanel(panelcontroller);
+		((NewRoominfoPanel)panel).showMessage(message);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
+
 	public void JBOrderClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
 		if(panel!=null){
@@ -276,6 +288,26 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.repaint();
 	}
 
+	public void JBRoomClicked(String message,OrderVO vo){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		String type = vo.getRoomType();
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new NewRoominfoPanel(panelcontroller);
+		view.add(panel);
+			ArrayList<RoominfoVO> preList = getRoominfoList(hotelID);
+			ArrayList<RoominfoVO> afterList = new ArrayList<RoominfoVO>();
+			for(int i=0;i<preList.size();i++){
+				if(preList.get(i).getType().equals(type)){
+					afterList.add(preList.get(i));
+				}
+			}
+		((NewRoominfoPanel)panel).showSpecificType(afterList);
+		((NewRoominfoPanel)panel).showMessage(message);
+		panel.revalidate();
+		panel.repaint();
+	}
 
 	public void detailedStrategy(HotelStrategyVO vo) {
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);

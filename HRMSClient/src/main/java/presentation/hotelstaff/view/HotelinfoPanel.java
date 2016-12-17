@@ -198,17 +198,6 @@ public class HotelinfoPanel extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			jtaAddress.setEditable(false);
-			jcbArea.setEnabled(false);
-			jtaIntro.setEditable(false);
-			jtaFacility.setEditable(false);
-			jtaTEL.setEditable(false);
-			jcbStar.setEnabled(false);
-			jcbCompany.setEnabled(false);
-
-			jbModify.setVisible(true);
-			jbCancle.setVisible(false);
-			jbConfirm.setVisible(false);
 
 			address = jtaAddress.getText();
 			area = jcbArea.getSelectedItem().toString();
@@ -239,6 +228,17 @@ public class HotelinfoPanel extends JPanel{
 			}else if(sStar.equals("")){
 				showMessage("星级不能为空");
 			}else{
+				jtaAddress.setEditable(false);
+				jcbArea.setEnabled(false);
+				jtaIntro.setEditable(false);
+				jtaFacility.setEditable(false);
+				jtaTEL.setEditable(false);
+				jcbStar.setEnabled(false);
+				jcbCompany.setEnabled(false);
+
+				jbModify.setVisible(true);
+				jbCancle.setVisible(false);
+				jbConfirm.setVisible(false);
 				ResultMessage result = controller.addArea(area);
 				//提示信息
 				if(result == ResultMessage.SUCCESS){

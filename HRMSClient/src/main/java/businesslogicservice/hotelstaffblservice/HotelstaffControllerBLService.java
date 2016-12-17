@@ -189,4 +189,13 @@ public interface HotelstaffControllerBLService {
 	 * @return 布尔值
 	 */
 	public boolean deleteroom(String hotelID,String roomID);
+	/**
+	 * 将异常订单执行后自动恢复信用值
+	 * @param clientID
+	 * @param recharge
+	 * @param date
+	 * @param reason
+	 * @return布尔值
+	 */
+	public boolean reviewCrediet(String clientID,int recharge,String date,String reason);
 }

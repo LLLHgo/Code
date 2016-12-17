@@ -213,7 +213,7 @@ public class NewRoominfoPanel extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 					boolean result = controller.deleteroominfo(hotelID,room.getRoomID());
 					if(result == true){
-						controller.JBRoominfoClicked();
+						controller.JBRoominfoClicked("删除成功");
 					}else{
 						showMessage("删除失败");
 					}
@@ -267,6 +267,11 @@ public class NewRoominfoPanel extends JPanel{
 			}
 		}).start();
 
+	}
+
+	public void showSpecificType(ArrayList<RoominfoVO> list){
+		this.removeAll();
+		showRoomList(list);
 	}
 
 	public boolean isNumeric(String str){

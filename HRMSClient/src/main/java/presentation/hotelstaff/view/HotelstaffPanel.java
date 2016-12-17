@@ -121,6 +121,10 @@ public class HotelstaffPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			password = jtfPassword.getText();
+			if(password.equals("")){
+				showMessage("密码不能为空");
+				return;
+			}
 			ResultMessage result = controller.setPassword(hotelID, password);
 			//提示信息
 			if(result==ResultMessage.SUCCESS){

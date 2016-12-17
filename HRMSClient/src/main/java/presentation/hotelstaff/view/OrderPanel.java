@@ -25,13 +25,9 @@ import presentation.hotelstaff.component.ConfirmButton;
 import presentation.hotelstaff.component.OrderTypeButton;
 import presentation.hotelstaff.component.SearchButton;
 import presentation.hotelstaff.controller.HotelstaffViewController;
+import presentation.sitemanager.component.RefreshButton;
 import vo.orderVO.OrderVO;
 /**
- *
- * @version 1
- * @author liuyu
- *
- * @version 2
  * @author liuyu
  *
  */
@@ -170,6 +166,19 @@ public class OrderPanel extends JPanel{
 			}
 
 		});
+
+		//更新酒店订单状态
+		RefreshButton jbRefresh = new RefreshButton(890,560);
+		jbRefresh.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//TODO
+
+			}
+
+		});
+		this.add(jbRefresh);
 
 		//显示结果
 		resultLabel = new JLabel();
@@ -319,7 +328,7 @@ public class OrderPanel extends JPanel{
 					order.setOrderStatus(OrderType.NORMALEXEC);
 					ResultMessage result = controller.updateOrderState(order);
 					if(result == ResultMessage.SUCCESS){
-						controller.JBRoomClicked("订单状态已置为已执行，请选择房间");
+						controller.JBRoomClicked("订单状态已置为已执行，请选择房间",order);
 						//showAllOrderList();
 					}else{
 						showMessage("修改失败");
@@ -402,7 +411,7 @@ public class OrderPanel extends JPanel{
 		showOrderList(list);
 		this.revalidate();
 	}
-	
+
 	protected void paintComponent(Graphics g) {
 		g.drawImage(Icheckbox.getImage(),310,90,200,25,this);
 		g.drawImage(Icheckbox.getImage(),535,88,350,32,this);

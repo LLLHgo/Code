@@ -54,66 +54,66 @@ public class NewStrategyPanel extends JPanel{
 	private int level;
 	private int minSum;
 	private int minRooms;
-	
+
 	public NewStrategyPanel(HotelstaffViewController controller){
 		this.controller=controller;
 		this.hotelID=controller.gethotelID();
 		Iinit = new ImageIcon("./src/main/resource/picture/hotelstrategy/newstrategy.png");
 		init();
 	}
-	
+
 	public void init(){
 		this.setLayout(null);
 		this.setLocation(0, 0);
 		this.setSize(1000, 618);
 		this.setVisible(true);
 		setOpaque(false);
-		
+
 		//显示结果
 		resultLabel = new JLabel();
 		resultLabel.setForeground(Color.BLACK);
 		resultLabel.setFont(new Font("微软雅黑",Font.PLAIN,20));
 		resultLabel.setBounds(290, 50, 500, 20);
-		this.add(resultLabel);	
-		
+		this.add(resultLabel);
+
 		tpStart = new TimePanel(458,129,308,37);
 		tpEnd = new TimePanel(458,182,308,37);
 		this.add(tpStart);
 		this.add(tpEnd);
-		
+
 		jtfname = new TextField("",460,92,400,35,4);
 		this.add(jtfname);
-		
+
 		jtfdiscount = new TextField("",460,237,50,35,4);
 		this.add(jtfdiscount);
-		
+
 		jtfroom = new TextField("",460,401,50,35,4);
 		this.add(jtfroom);
-		
+
 		jtfmoney = new TextField("",460,455,50,35,4);
 		this.add(jtfmoney);
-		
+
 		jtflevel = new TextField("",460,347,50,35,4);
 		this.add(jtflevel);
-		
+
 		jrbClient = new MJRadioButton("普通会员",true,455,295,120,35);
 		jrbBusiness = new MJRadioButton("企业会员",true,620,295,120,35);
 		this.add(jrbClient);
 		this.add(jrbBusiness);
-		
+
 		confirm = new ConfirmButton(840,480);
 		this.add(confirm);
 		confirm.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			try{	
+			try{
 				name = jtfname.getText();
 				discount = Double.parseDouble(jtfdiscount.getText());
 				if(discount>1||discount<=0){
 					showMessage("折扣必须在0到1之间");
 				}else{
-					//TODO　对必须要大于0的判断 
+					//TODO　对必须要大于0的判断
 					minRooms = Integer.parseInt(jtfroom.getText());
 					minSum = Integer.parseInt(jtfmoney.getText());
 					level = Integer.parseInt(jtflevel.getText());
@@ -126,7 +126,15 @@ public class NewStrategyPanel extends JPanel{
 					}
 					startTime = tpStart.getTime();
 					endTime = tpEnd.getTime();
-			
+					Calendar now = Calendar.getInstance();
+					if(now.compareTo(endTime)<0){
+						showMessage("结束时间不能晚与当前时间，请重新填写");
+						return;
+					}
+					if(startTime.compareTo(endTime)>0){
+						showMessage("开始时间不能晚于当前时间，请重新填写");
+						return;
+					}
 					vo = new HotelStrategyVO(name,hotelID,HotelStrategy.CREATED,vipKinds,
 						startTime,endTime,discount,minRooms,minSum,level);
 					ResultMessage result = controller.updatehotelStrategy(vo);
@@ -137,28 +145,28 @@ public class NewStrategyPanel extends JPanel{
 					}
 				}
 				}catch(NumberFormatException e1){
-					showMessage("数字格式错误或信息不完整，请重新填写");
+					showMessage("数字格式错误，请重新填写");
 				}
 		}
-			
+
 		});
-		
+
 		cancle = new CancleButton(690,480);
 		this.add(cancle);
 		cancle.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.JBStrategyClicked("取消操作成功");	
+				controller.JBStrategyClicked("取消操作成功");
 			}
-			
+
 		});
 	}
-	
+
 	protected void paintComponent(Graphics g) {
 		g.drawImage(Iinit.getImage(), 305,90,464,404,this);
     }
-	
+
 	public void showMessage(String message){
 	 	//提示信息
 		new Thread(new Runnable(){

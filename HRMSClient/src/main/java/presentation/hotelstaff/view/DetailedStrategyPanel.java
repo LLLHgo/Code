@@ -142,6 +142,7 @@ public class DetailedStrategyPanel extends JPanel{
 				}
 				startTime = tpStart.getTime();
 				endTime = tpEnd.getTime();
+
 				vo = new HotelStrategyVO(name,hotelID,HotelStrategy.CREATED,vipKinds,
 						startTime,endTime,discount,minRooms,minSum,level);
 				ResultMessage result = controller.updatehotelStrategy(vo);
@@ -151,7 +152,7 @@ public class DetailedStrategyPanel extends JPanel{
 					showMessage(result.toString());
 				}
 			}catch(NumberFormatException e1){
-				showMessage("数字格式错误或信息不完整，请重新填写");
+				showMessage("数字格式错误，请重新填写");
 			}
 
 			}

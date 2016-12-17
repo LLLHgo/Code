@@ -1,14 +1,18 @@
 package businesslogic.hotelstaffbl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.clientbl.ClientManage;
 import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.logbl.LogManage;
 import businesslogic.orderbl.OrderFind;
 import businesslogic.orderbl.OrderOperator;
 import businesslogic.strategybl.StrategyManage;
+import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.hotelstaffblservice.HotelstaffControllerBLService;
@@ -35,6 +39,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	OrderOperatorBLService orderOperator;
 	HotelstaffBLService hotelstaff;
 	LogBLService log;
+	ClientBLService client;
 
 	public HotelstaffBLController(){
 		hotelinfo = new Hotelinfo();
@@ -43,7 +48,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 		orderFind = new OrderFind();
 		orderOperator=new OrderOperator();
 		strategy = new StrategyManage();
-
+		client = new ClientManage();
 //		hotelinfo = new HotelinfoBLService_stub();
 //		strategy = new StrategyBLService_Stub();
 //		orderFind = new OrderBLService_Stub();
@@ -102,6 +107,15 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	@Override
 	public ResultMessage updateOrderState(OrderVO vo) {
+		if(vo.getOrderType()==OrderType.ABNORMAL){
+			Date date = new Date();
+			SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+			String stringdate = format.format(date.getTime());
+			boolean setcrediet = client.setCredit(vo.getClientId(), (int)vo.getPrice(), stringdate, "客户入住，酒店工作人员将异常订单置为正常");
+			if(setcrediet == false){
+				return ResultMessage.FAIL;
+			}
+		}
 		return orderOperator.saveOrderPO(vo);
 	}
 
@@ -211,5 +225,10 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	@Override
 	public boolean deleteroom(String hotelID, String roomID) {
 		return hotelinfo.deleteroom(hotelID,roomID);
+	}
+
+	@Override
+	public boolean reviewCrediet(String clientID, int recharge, String date, String reason) {
+		return client.setCredit(clientID, recharge, date, reason);
 	}
 }
