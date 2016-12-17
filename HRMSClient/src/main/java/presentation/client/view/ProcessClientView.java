@@ -5,7 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -65,6 +69,8 @@ public class ProcessClientView extends JPanel {
 			rp=new RegisterPanel(id,new RegisterPanelController());
 			ep=new EvaluatePanel(frame,new EvaluatePanelController(),id);
 			imageIcon = new ImageIcon("image/clientPanel.png");
+
+
 			searchHotel=new GuideBoardButton(240,"查询酒店");
 			searchHotel.addActionListener( new searchButtonListener());
 			viewOrder=new GuideBoardButton(290,"浏览订单");
@@ -81,6 +87,8 @@ public class ProcessClientView extends JPanel {
 					System.exit(0);
 				}
 				});
+
+
 			this.add(searchHotel);
 			this.add(viewOrder);
 			this.add(personal);
@@ -109,6 +117,7 @@ public class ProcessClientView extends JPanel {
 		    this.setSize(1000, 618);
 		    this.setVisible(true);
 	}
+
 	private class searchButtonListener implements ActionListener{
 
 		@Override

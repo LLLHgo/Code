@@ -89,6 +89,7 @@ class Panel extends JPanel{
 		box.add(s3);
 		box.add(s2);
 		box.add(s1);
+
 		this.add(s5);
 		this.add(s4);
 		this.add(s3);

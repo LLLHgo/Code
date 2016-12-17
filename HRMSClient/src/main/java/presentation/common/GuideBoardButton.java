@@ -1,7 +1,12 @@
 package presentation.common;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class GuideBoardButton extends JButton{
@@ -12,13 +17,15 @@ public class GuideBoardButton extends JButton{
 	int w=194;
 	int h=46;
 	String name;
+	JButton button;
 
 	public GuideBoardButton(int y,String name){
 		super();
 
 		this.y=y;
 		this.name=name;
-
+		button=this;
+		this.addMouseListener(new mouseListener());
 		setOthers();
 	}
 
@@ -32,4 +39,38 @@ public class GuideBoardButton extends JButton{
 		this.setVisible(true);
 
 	}
+private class mouseListener implements MouseListener{
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		button.setBorder(BorderFactory.createLoweredBevelBorder());
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		button.setBorder(BorderFactory.createLoweredBevelBorder());
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		button.setForeground(Color.GRAY);
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		button.setForeground(Color.WHITE);
+	}
+
+}
 }

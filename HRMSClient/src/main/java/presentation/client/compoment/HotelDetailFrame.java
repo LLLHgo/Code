@@ -80,6 +80,7 @@ public class HotelDetailFrame extends JFrame{
 		hotelLevelLabel=new Label(vo.getStar().toString(),90,65,300,30);
 		hotelAddressLabel=new Label(vo.getAddress(),90,130,400,30);
 		hotelFacilityLabel=new Label(vo.getFacility(),140,182,300,30);
+		System.out.println(vo.getFacility());
 		hotelTelLabel=new Label(vo.getTel(),140,356,300,30);
 		this.add(hotelNameLabel);
 		this.add(hotelLevelLabel);
