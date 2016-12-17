@@ -173,9 +173,7 @@ public class OrderPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-
+				controller.refreshroomstate();
 			}
 
 		});
@@ -283,8 +281,8 @@ public class OrderPanel extends JPanel{
 	        JLabel orderIDLabel=new JLabel("订单号："+order.getOrderId());
 	        JLabel nameLabel=new JLabel("客户姓名："+order.getClientName());
 	        JLabel priceLabel=new JLabel("价格："+String.valueOf(order.getPrice()));
-	        JLabel entertimeLabel = new JLabel("计划入住时间："+order.getOrderDate());
-	        JLabel leavetimeLabel = new JLabel("计划离开时间："+order.getLeaveDate());
+	        JLabel entertimeLabel = new JLabel("计划入住时间："+order.getAnticipateArrivedTime());
+	        JLabel leavetimeLabel = new JLabel("计划离开时间："+order.getAnticipateLeaveTime());
 	        JLabel phoneLabel = new JLabel("客户电话："+order.getClientPhone());
 	        JLabel roomTypeLabel = new JLabel(order.getRoomType());
 	        JLabel roomNumLabel = new JLabel("* "+String.valueOf(order.getRoomNum()));
