@@ -56,7 +56,20 @@ public class HotelinfoManage{
 		try {
 			listPO = data.findHotelinfoList(area);
 			if(listPO == null){
-				return null;
+				try {
+					HotelinfoPO	newPO = data.findhotelinfo(area);
+					if(newPO!=null){
+						HotelinfoVO newVO = PO2VO(newPO);
+						ArrayList<RoominfoVO> newlist = new RoominfoManage().getRoominfoList(newVO.getHotelID());
+						if(newlist!=null){
+							newVO.setRoominfoList(newlist);
+						}
+						listVO.add(newVO);
+						return listVO;
+					}
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				}
 			}
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
@@ -95,7 +108,8 @@ public class HotelinfoManage{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
-		}
+		}	
+		
 		return listVO;
 	}
 

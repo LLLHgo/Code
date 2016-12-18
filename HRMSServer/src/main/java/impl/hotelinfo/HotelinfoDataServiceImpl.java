@@ -23,8 +23,6 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 
 
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public List<RoominfoPO> findRoominfoList(String hotelID) throws RemoteException {
