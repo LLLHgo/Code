@@ -44,18 +44,19 @@ private class mouseListener implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		button.setBorder(BorderFactory.createLoweredBevelBorder());
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		button.setBorder(BorderFactory.createLoweredBevelBorder());
+		button.setBounds(x+3,y+3,w,h);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+		button.setBounds(x,y,w,h);
 
 	}
 

@@ -2,6 +2,8 @@ package presentation.client.compoment;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,17 +11,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import presentation.client.compoment.EvaluateFrame.Panel.mouseListener;
+
 public class chooseRoomPanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private Label roomNameLabel;
-	private Field numField;
-	public chooseRoomPanel(int x,int y,String roomName){
+	Field numField;
+	String name;
+	boolean flag=true;
+	public chooseRoomPanel(int x,int y,String roomName,int num){
 		this.setLayout(null);
+		name=roomName;
 		imageIcon = new ImageIcon("image/chooseRoom.png");
 		roomNameLabel=new Label(roomName,0,0,80,30,20);
 		this.add(roomNameLabel);
 
-		numField=new Field("0",138,4,25,20,15);
+		numField=new Field("<"+num,138,4,25,20,15);
+		numField.addMouseListener(new mouseListener());
 		this.add(numField);
 
 		this.setVisible(true);
@@ -47,6 +55,37 @@ public class chooseRoomPanel extends JPanel{
 			this.setForeground(Color.WHITE);
 			this.setBounds(x,y,w,h);
 		}
+	}
+	class mouseListener implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+		if(flag)
+			numField.setText("");
+		flag=false;
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+		}
+
 	}
 	@Override
 	public void paintComponent(Graphics g) {
