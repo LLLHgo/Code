@@ -118,7 +118,7 @@ public class OrderCreateFrame extends JFrame{
 
 			  RoominfoVO room=hotelVO.getRoominfoList().get(i);
 			 double beforeprice=num*days*room.getPrice();
-					 pricevo=controller.calculatePrice(client,room,hotelVO,days);
+					 pricevo=controller.calculatePrice(client,room,hotelVO,num,days);
 			  hdp.actualMoneyLabel.setText(Double.toString(pricevo.getPrice()));
 			  hdp.totalMoneyLabel.setText(Double.toString(beforeprice));
 		}
@@ -195,7 +195,7 @@ public class OrderCreateFrame extends JFrame{
 				  int days=calTime(begin.getChooseDate(),end.getChooseDate());
 				  int num=Integer.parseInt(crlp.rooms.get(i).numField.getText());
 				  RoominfoVO room=hotelVO.getRoominfoList().get(i);
-				  pricevo=controller.calculatePrice(client,room,hotelVO,days);
+				  pricevo=controller.calculatePrice(client,room,hotelVO,num,days);
 				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),pricevo.getStrategys(),room.getType(),num,days);
 				ResultMessage rs=controller.createOrderPO(order);
 				System.out.println(rs);

@@ -27,8 +27,8 @@ public class CalculatePriceTester {
 		ArrayList<String> l=new ArrayList<String>();
 		l.add("南京大学");
 		hotelinfoVO1.setCompany(l);
-		System.out.println(((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2)).getStrategys().size()));
-		System.out.println(((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2)).getStrategys().get(0)));
+		System.out.println(((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2,3)).getStrategys().size()));
+		System.out.println(((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2,3)).getStrategys().get(0)));
 		//assertEquals(40.04,((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2)).getPrice()),0.000001);
 	}
 }

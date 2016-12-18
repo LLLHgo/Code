@@ -113,7 +113,7 @@ public class StrategyManage implements StrategyBLService{
 	}
 
 	@Override
-	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num) {
+	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num,int days) {
 		ArrayList<String> strategyUsed=new ArrayList<String>();
 		List<StrategyPO> strategys=new ArrayList<StrategyPO>();
 		Strategy[] strategy=new Strategy[8];
@@ -140,21 +140,18 @@ public class StrategyManage implements StrategyBLService{
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
 					}
 				}else if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.VIPSPECIAL)){//专属商圈
 					tem=((MarketingSpecial) strategy[1]).calDis(strt,clientVO,hotelInfoVO);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
 					}
 				}else if(((MarketingStrategyPO) strt).getMarketingStrategyType().equals(MarketingStrategy.CREATED)){//新增策略
 					tem=((MarketingCreated) strategy[2]).calDis(strt,clientVO,hotelInfoVO.getName(),num,roomInfoVO.getPrice()*num);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
 					}
 				}
 			}else if(strt.getMakerType().equals(StrategyMaker.HOTEL)){//该策略是酒店工作人员制定的
@@ -163,42 +160,38 @@ public class StrategyManage implements StrategyBLService{
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.COMPANY)){//企业会员专属折扣
 					tem=((HotelCompany) strategy[4]).calDis(strt,clientVO,hotelInfoVO.getHotelID(),hotelInfoVO.getCompany());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.SPECIALDAY)){//特定日期专属折扣
 					tem=((HotelSpecialday) strategy[5]).calDis(strt,hotelInfoVO.getHotelID());
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
+
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.OVERTHREEROOMS)){//超过或等于三间
 					tem=((HotelOverThreeRooms) strategy[6]).calDis(strt,hotelInfoVO.getHotelID(),num);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
+
 					}
 				}else if(((HotelStrategyPO) strt).getHotelStrategy().equals(HotelStrategy.CREATED)){//新增促销策略
 					tem=((HotelCreated) strategy[7]).calDis(strt,clientVO,hotelInfoVO,num,roomInfoVO.getPrice()*num);
 					if(tem<1.0){
 						price=price*tem;
 						strategyUsed.add(strt.getName());
-						System.out.println(price+"##"+strt.getName());
+
 					}
 				}
 			}
 		}
-		System.out.println(price+"^^");
-		price=price*roomInfoVO.getPrice()*num;//计算各种策略的价格
-		System.out.println(price+"^^");
+		price=price*roomInfoVO.getPrice()*num*days;//计算各种策略的价格
 		List<LevelVO> levels=marketingblservice.findAllLevel();//计算出用户等级所享受的折扣
 		for(LevelVO level:levels){
 			if(clientVO.vip_level==level.getLevel()){
@@ -206,8 +199,6 @@ public class StrategyManage implements StrategyBLService{
 				break;
 			}
 		}
-		System.out.println(price+"^^"+strategyUsed.size());
-
 		return new PriceVO(price,strategyUsed);
 	}
 

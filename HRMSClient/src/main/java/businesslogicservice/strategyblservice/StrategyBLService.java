@@ -53,7 +53,7 @@ public interface StrategyBLService {
      * @param num
      * @return 价格
      */
-    public PriceVO calculatePrice(ClientVO clientVO,RoominfoVO roomInfoVO,HotelinfoVO hotelInfoVO,int num);
+    public PriceVO calculatePrice(ClientVO clientVO,RoominfoVO roomInfoVO,HotelinfoVO hotelInfoVO,int num,int days);
 
 
 }

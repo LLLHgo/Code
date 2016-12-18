@@ -28,7 +28,7 @@ StrategyBLService strategy=new StrategyManage();
 	public ResultMessage createOrderPO(OrderVO orderVO) {
 		return order.createOrderPO(orderVO);
 	}
-	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num){
-		return strategy.calculatePrice(clientVO,roomInfoVO,hotelInfoVO,num);
+	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num,int days){
+		return strategy.calculatePrice(clientVO,roomInfoVO,hotelInfoVO,num,days);
 	}
 }
