@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.hoteinfobl.Hotelinfo;
 import businesslogic.orderbl.OrderCheck;
 import businesslogic.orderbl.OrderFind;
 import dataservice.orderdataservice.OrderDataService;

@@ -57,7 +57,8 @@ public class HotelinfoManage{
 			listPO = data.findHotelinfoList(area);
 			if(listPO == null){
 				try {
-					HotelinfoPO	newPO = data.findhotelinfo(area);
+					HotelinfoPO	newPO = data.clientfindhotelinfo(area);
+					System.out.println(newPO.getHotelID());
 					if(newPO!=null){
 						HotelinfoVO newVO = PO2VO(newPO);
 						ArrayList<RoominfoVO> newlist = new RoominfoManage().getRoominfoList(newVO.getHotelID());
@@ -130,7 +131,7 @@ public class HotelinfoManage{
 		if(remark!=null){
 			vo.setRemark(remark);
 		}
-		ArrayList<RoominfoVO> roominfoList = new RoominfoManage().getRoominfoList(hotelID);
+		ArrayList<RoominfoVO> roominfoList = new RoominfoManage().getRoominfoList(po.getHotelID());
 		if(roominfoList!=null){
 			vo.setRoominfoList(roominfoList);
 		}
