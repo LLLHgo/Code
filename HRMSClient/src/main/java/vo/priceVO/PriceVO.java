@@ -1,12 +1,12 @@
 package vo.priceVO;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PriceVO {
 	private double price;
-	private List<String> strategys;
+	private ArrayList<String> strategys;
 
-	public PriceVO(double price,List<String> strategys){
+	public PriceVO(double price,ArrayList<String> strategys){
 		this.price=price;
 		this.strategys=strategys;
 	}
@@ -17,10 +17,10 @@ public class PriceVO {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public List<String> getStrategys() {
+	public ArrayList<String> getStrategys() {
 		return strategys;
 	}
-	public void setStrategys(List<String> strategys) {
+	public void setStrategys(ArrayList<String> strategys) {
 		this.strategys = strategys;
 	}
 

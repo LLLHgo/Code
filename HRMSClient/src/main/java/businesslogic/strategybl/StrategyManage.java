@@ -114,7 +114,7 @@ public class StrategyManage implements StrategyBLService{
 
 	@Override
 	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num) {
-		List<String> strategyUsed=new ArrayList<String>();
+		ArrayList<String> strategyUsed=new ArrayList<String>();
 		List<StrategyPO> strategys=new ArrayList<StrategyPO>();
 		Strategy[] strategy=new Strategy[8];
 		strategy[0]=new MarketingPeriod();
