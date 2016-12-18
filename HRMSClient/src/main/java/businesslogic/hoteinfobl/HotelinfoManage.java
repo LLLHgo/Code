@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enum.ResultMessage;
+import Enum.RoomState;
 import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
@@ -63,8 +64,31 @@ public class HotelinfoManage{
 					return null;
 				}
 				ArrayList<RoominfoVO> roominfoList = new RoominfoManage().getRoominfoList(listPO.get(i).getHotelID());
+				String[] roomtype = new RoominfoManage().getRoomType();
+				int[] availablenum = new int[roomtype.length];
 				if(roominfoList!=null){
-					vo.setRoominfoList(roominfoList);
+					ArrayList<RoominfoVO> selected = new ArrayList<RoominfoVO>();
+					for(int m=0;m<roomtype.length;m++){
+						for(int n=0;n<roominfoList.size();n++){
+							RoominfoVO roominfovo = roominfoList.get(n);
+							if(roominfovo.getType().equals(roomtype[m])&&
+								roominfovo.getRoomState()==RoomState.Usable){
+								availablenum[m]++;
+								if(availablenum[m]==1){
+									selected.add(roominfovo);
+								}
+							}
+						}
+					}
+					ArrayList<Integer> selectedArray = new ArrayList<Integer>();
+					for(int p=0;p<availablenum.length;p++){
+						int tempnum = availablenum[p];
+						if(tempnum>0){
+							selectedArray.add(tempnum);
+						}
+					}
+					vo.setAvailableNum(selectedArray);
+					vo.setRoominfoList(selected);
 				}
 				listVO.add(vo);
 			}

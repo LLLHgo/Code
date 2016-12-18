@@ -27,6 +27,8 @@ public class HotelinfoVO {
 	private String facility;
 	//合作企业
 	private ArrayList<String> company;
+	//每种类型对应的数量
+	private ArrayList<Integer> availableNum;
 	
 	public HotelinfoVO(){
 
@@ -147,5 +149,10 @@ public class HotelinfoVO {
 	public void setCompany(ArrayList<String> company) {
 		this.company = company;
 	}
-
+	public ArrayList<Integer> getAvailableNum() {
+		return availableNum;
+	}
+	public void setAvailableNum(ArrayList<Integer> availableNum) {
+		this.availableNum = availableNum;
+	}
 }
