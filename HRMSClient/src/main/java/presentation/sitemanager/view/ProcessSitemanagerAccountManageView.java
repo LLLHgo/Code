@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -117,6 +119,13 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 			newTel=telField.getText();
 			newPassword=passWordField.getText();
 			newSitemanagerVO=new SitemanagerVO(id,newTel,newPassword);
+			if(newTel.length()!=11){
+				conditionalLabel.setText("电话位数不对，请重新输入电话！");
+			}
+			else if(isNumeric(newTel)){
+				conditionalLabel.setText("请确认电话中是否全为数字，重新输入电话！");
+			}
+			else{
 			result=controller.sitemanagerAccountUpdate(newSitemanagerVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalLabel.setText("保存成功！");
@@ -141,6 +150,8 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 				conditionalLabel.setText("数据库保存失败，请联系服务人员！");
 			}
 			
+			}
+			
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
@@ -155,4 +166,13 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 	public void hideSitemanagerAccountManageView(){
 		this.setVisible(false);
 	}
+	// 判断字符串是不是全为数字，如果全为数字，返回true
+		public boolean isNumeric(String str){ 
+			Pattern pattern = Pattern.compile("[0-9]*"); 
+		    Matcher isNum = pattern.matcher(str);
+		   if( !isNum.matches() ){
+			   return false; 
+			} 
+			   return true; 
+			}
 }

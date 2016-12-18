@@ -15,12 +15,12 @@ public class MarketingAccountTester {
 	public void test1(){
 		MarketingVO vo=new MarketingVO("网站营销人员","marketingpassword","","13477778888");
 		assertEquals(ResultMessage.SUCCESS,manage.MarketingAccountAdd(vo));
-	}*/
+	}
 	@Test
 	public void test2(){
 		MarketingVO vo = null;
 		assertEquals(ResultMessage.FAIL,manage.MarketingAccountAdd(vo));
-	}
+	}*/
 
 	@Test
 	public void test3(){
@@ -28,9 +28,9 @@ public class MarketingAccountTester {
 		assertEquals(ResultMessage.SUCCESS,manage.MarketingAccountUpdate(vo));
 	}
 
-	@Test
+/*	@Test
 	public void test4(){
 		MarketingVO vo=new MarketingVO("beauty","yes","M00000004","32");
 		assertEquals(ResultMessage.SUCCESS,manage.MarketingAccountDelete(vo));
-	}
+	}*/
 }

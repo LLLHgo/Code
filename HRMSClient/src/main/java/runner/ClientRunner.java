@@ -14,19 +14,19 @@ import vo.orderVO.OrderVO;
 
 public class ClientRunner {
 	private RemoteHelper remoteHelper;
-	
+
 	public ClientRunner() {
-		
+
 		try {
 			linkToServer();
 		} catch (MalformedURLException e) {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		initGUI();
 	}
-	
+
 	private void linkToServer() throws MalformedURLException, NotBoundException {
 		remoteHelper = RemoteHelper.getInstance();
 		//remoteHelper.init();
@@ -36,14 +36,14 @@ public class ClientRunner {
 		@SuppressWarnings("unused")
 		MainFrame mainFrame = new MainFrame();
 	}
-	
+
 	public void test2(){
 		OrderCheck o=new OrderCheck();
 		boolean result = false;
 			result=o.checkTimeOperateAbnormal();
 		System.out.println(result);
 	}
-	
+
 	public static void main(String[] args){
 		ClientRunner clientRunner = new ClientRunner();
 		//clientRunner.test2();
