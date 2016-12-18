@@ -257,7 +257,7 @@ public class HotelinfoPanel extends JPanel{
 				result = controller.updateBassicinfo(new HotelinfoVO(
 					name,address,area,intro,facility,tel,star,hotelID,companyList));
 				if(result == ResultMessage.SUCCESS){
-					showMessage("保存成功");
+					controller.JBHotelinfoClicked("保存成功");
 				}else if(result == ResultMessage.FAIL){
 					showMessage("保存失败");
 				}else if(result == ResultMessage.REMOTEEXCEPTION){

@@ -174,6 +174,7 @@ public class OrderPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.refreshroomstate();
+				controller.JBOrderClicked("刷新成功");
 			}
 
 		});

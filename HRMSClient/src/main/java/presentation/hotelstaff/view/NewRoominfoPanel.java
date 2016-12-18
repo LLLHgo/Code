@@ -171,7 +171,7 @@ public class NewRoominfoPanel extends JPanel{
 							showMessage("修改成功");
 							jbConfirm.setVisible(false);
 							jbCancle.setVisible(false);
-							jbDelete.setVisible(true);
+							jbDelete.setVisible(false);
 							jbModify.setVisible(true);
 							jtfPrice.setEditable(false);
 						}

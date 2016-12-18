@@ -191,6 +191,17 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 		panel.revalidate();
 		panel.repaint();
 	}
+	public void JBHotelinfoClicked(String message){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new HotelinfoPanel(panelcontroller);
+		((HotelinfoPanel)panel).showMessage(message);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
 
 	public void JBRoominfoClicked(){
 		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
@@ -221,6 +232,17 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 			view.remove(panel);
 		}
 		panel = new OrderPanel(panelcontroller);
+		view.add(panel);
+		panel.revalidate();
+		panel.repaint();
+	}
+	public void JBOrderClicked(String message){
+		HotelstaffViewController panelcontroller=HotelstaffViewController.getInstance(hotelID);
+		if(panel!=null){
+			view.remove(panel);
+		}
+		panel = new OrderPanel(panelcontroller);
+		((OrderPanel)panel).showMessage(message);
 		view.add(panel);
 		panel.revalidate();
 		panel.repaint();
