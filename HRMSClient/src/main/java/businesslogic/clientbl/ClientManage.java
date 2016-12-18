@@ -2,9 +2,12 @@ package businesslogic.clientbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import Enum.ResultMessage;
+import businesslogic.marketingbl.MarketingManage;
 import businesslogicservice.clientblservice.ClientBLService;
+import businesslogicservice.marketinblservice.MarketingBLService;
 import dataservice.clientdataservice.ClientDataService;
 import po.ClientPO;
 import rmi.RemoteHelper;
@@ -14,6 +17,7 @@ import vo.levelVO.LevelVO;
 
 public class ClientManage implements ClientBLService{
 	static ClientDataService clientdata;
+	MarketingBLService marketing=new MarketingManage();
 	@Override
 	public ClientVO getclient(String clientID) {
 		if(clientID.equals("")||clientID==null)
@@ -76,17 +80,34 @@ public class ClientManage implements ClientBLService{
 	@Override
 	public boolean setCredit(String clientID, int recharge,String date,String reason) {
 		// TODO Auto-generated method stub
+		List<LevelVO> level=marketing.findAllLevel();
+		boolean flag=true;
 		try{
-			if(RemoteHelper.getInstance().clientDataService().setCredit(clientID, recharge, date, reason))
-				return true;
+			if(!RemoteHelper.getInstance().clientDataService().setCredit(clientID, recharge, date, reason))
+				flag=false;
+			if(flag)
+			for(int i=0;i<level.size();i++){
+				if(getclient(clientID).getCredit()<level.get(i).getCreditNeeded()){
+				flag=setClientLevel(clientID,level.get(i).getLevel()-1);
+				break;
+				}
+			}
+			return flag;
 			}catch(RemoteException e){
 				e.printStackTrace();
 
 			}
 			 return false;
 	}
+	@Override
+	public boolean setClientLevel(String clientID,int level) {
+		ClientVO client=getclient(clientID);
+		client.setLevel(level);
+		if(updateInfo(client)==ResultMessage.SUCCESS)
+		return true;
+		else return false;
 
-
+	}
 	@Override
 	public boolean setAllClientLevel(LevelVO vo) {
 		// TODO Auto-generated method stub

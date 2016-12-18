@@ -46,6 +46,12 @@ public interface ClientBLService {
 	 */
 	public boolean setAllClientLevel(LevelVO vo);
 	/**
+	 * 根据会员等级制度修改某一客户的会员等级
+	 * @param vo
+	 * @return 修改会员等级成功与否
+	 */
+	public boolean setClientLevel(String clientID,int level);
+	/**
 	 * 通过完整正确的酒店关键词得到相关酒店列表
 	 * @param vo
 	 * @return符合关键词的酒店列表

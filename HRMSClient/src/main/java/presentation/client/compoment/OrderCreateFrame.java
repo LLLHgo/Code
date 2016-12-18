@@ -44,6 +44,7 @@ public class OrderCreateFrame extends JFrame{
 	private SearchPanelController controller;
 	private ClientVO client;
 	PriceVO pricevo;
+	JFrame frame;
 	public OrderCreateFrame(ClientVO client,SearchPanelController controller,HotelinfoVO hotelVO){
 		pricevo=new PriceVO(0,null);
 		this.controller=controller;
@@ -78,6 +79,7 @@ public class OrderCreateFrame extends JFrame{
 		this.setResizable(false);
 		this.setSize(591, 433);
 		this.setLocation(400,200);
+		frame=this;
 	}
 	class mouseListener implements MouseListener{
 
@@ -119,7 +121,6 @@ public class OrderCreateFrame extends JFrame{
 					 pricevo=controller.calculatePrice(client,room,hotelVO,days);
 			  hdp.actualMoneyLabel.setText(Double.toString(pricevo.getPrice()));
 			  hdp.totalMoneyLabel.setText(Double.toString(beforeprice));
-
 		}
 
 		@Override
@@ -195,9 +196,11 @@ public class OrderCreateFrame extends JFrame{
 				  int num=Integer.parseInt(crlp.rooms.get(i).numField.getText());
 				  RoominfoVO room=hotelVO.getRoominfoList().get(i);
 				  pricevo=controller.calculatePrice(client,room,hotelVO,days);
-				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),(ArrayList<String>)pricevo.getStrategys(),room.getType(),num,days);
+				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),pricevo.getStrategys(),room.getType(),num,days);
 				ResultMessage rs=controller.createOrderPO(order);
 				System.out.println(rs);
+				frame.dispose();
+
 
 			}
 

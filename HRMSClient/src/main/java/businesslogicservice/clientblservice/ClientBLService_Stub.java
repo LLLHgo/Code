@@ -213,5 +213,11 @@ public class ClientBLService_Stub implements ClientBLService {
 		return true;
 	}
 
+	@Override
+	public boolean setClientLevel(String clientID, int level) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }

@@ -208,7 +208,7 @@ private class OrderListPane extends JScrollPane{
 	   if(list!=null)
 	   for(int i=0;i<list.size();i++){
 	    	OrderVO order=list.get(i);
-	    	System.out.println(order.getPrice());
+
 	    	OrderItemPanel p=new OrderItemPanel(0, i*100,order);
 	    	 //p.setBounds(0,i*100,600,100);
 	    	p.vb.addActionListener(new ActionListener(){
@@ -253,7 +253,7 @@ private class OrderListPane extends JScrollPane{
 		if(list!=null)
 			   for(int i=0;i<list.size();i++){
 			    	OrderVO order=list.get(i);
-			    	System.out.println(order.getPrice());
+
 			    	OrderItemPanel p=new OrderItemPanel(0, i*100,order);
 			    	 //p.setBounds(0,i*100,600,100);
 			    	p.vb.addActionListener(new ActionListener(){
