@@ -5,6 +5,8 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -148,6 +150,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 			telTextField.setEditable(true);
 			passwordField.setEditable(true);
 			checkAddButton.setVisible(true);
+			checkAddButton.setEnabled(true);
 		}
 
 		@Override
@@ -226,6 +229,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		}
 		
 	}
+	// 确认修改的按钮
 	class CheckModifyListener implements MouseListener{
 
 		@Override
@@ -233,6 +237,23 @@ public class ProcessHotelAccountManageView extends JPanel{
 			// TODO Auto-generated method stub
 			modifyTel=telTextField.getText();
 			modifyPassword=passwordField.getText();
+			if((modifyTel==""||modifyTel.equals(""))&&(modifyPassword==""||modifyPassword.equals(""))){
+				conditionLabel.setText("请输入修改后的电话和密码！");
+			}
+			else if(modifyTel==""||modifyTel.equals("")){
+				conditionLabel.setText("请输入修改后的电话！");
+			}
+			else if(modifyPassword==""||modifyPassword.equals("")){
+				conditionLabel.setText("请输入修改后的密码！");
+			}
+			if(modifyTel.length()!=11){
+				conditionLabel.setText("电话位数不对，请重新输入电话！");
+			}
+			else if(isNumeric(modifyTel)){
+				conditionLabel.setText("请确认电话中是否全为数字，重新输入电话！");
+			}
+			else {
+				
 			modifyHotelstaffVO=new HotelstaffVO(idLabel.getText(),modifyPassword,modifyTel);
 			result=controller.HotelStaffAccountUpdate(modifyHotelstaffVO);
 			if(result==ResultMessage.SUCCESS){
@@ -240,15 +261,15 @@ public class ProcessHotelAccountManageView extends JPanel{
 				date=new Date();
 				telTextField.setEditable(false);
 				passwordField.setEditable(false);
+				nameTextField.setEditable(false);
 				addLog("S00000001 "+date.toString()+" 修改"+idLabel.getText()+"账户");
+				checkModifyButton.setEnabled(true);
 			}
 			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionLabel.setText("数据库保存失败！");
 			}
-			else if(result==ResultMessage.SAMEINFO){
-				conditionLabel.setText("信息未做更改，不再进行保存！");
+			
 			}
-			checkModifyButton.setEnabled(true);
 		}
 
 		@Override
@@ -276,11 +297,13 @@ public class ProcessHotelAccountManageView extends JPanel{
 		}
 		
 	}
+	// 修改按钮
 	class ModifyListener implements MouseListener{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
+			nameTextField.setEditable(false);
 			telTextField.setEditable(true);
 			passwordField.setEditable(true);
 			checkModifyButton.setEnabled(true);
@@ -311,6 +334,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		}
 		
 	}
+	// 确认添加的按钮
 	class CheckAddListener implements MouseListener{
 
 		@Override
@@ -319,17 +343,34 @@ public class ProcessHotelAccountManageView extends JPanel{
 			addName=nameTextField.getText();
 			addTel=telTextField.getText();
 			addPassword=passwordField.getText();
+			if(addName==""||addName.equals("")||addTel==""||addTel.equals("")||addPassword==""||addPassword.equals("")){
+				conditionLabel.setText("请将信息填写完整！");
+			}
+			if(addTel.length()!=11){
+				conditionLabel.setText("电话位数不对，请重新输入电话！");
+			}
+			else if(isNumeric(addTel)){
+				conditionLabel.setText("请确认电话中是否全为数字，重新输入电话！");
+			}
+			else{
 			addHotelstaffVO=new HotelstaffVO("",addPassword,addTel);
 			sitemanagerAddVO=new SitemanagerAddVO(addName);
 			result=controller.HotelAccountAdd(sitemanagerAddVO,addHotelstaffVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("添加成功！");
+				nameTextField.setEditable(false);
+				telTextField.setEditable(false);
+				passwordField.setEditable(false);
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 添加酒店"+addName+"账户");
 				checkAddButton.setEnabled(false);
 			}
-			else{
-				conditionLabel.setText("添加失败！ "+result);
+			else if(result==ResultMessage.DUPLICATENAME){
+				conditionLabel.setText("酒店名字已存在！");
+			}
+			else if(result==ResultMessage.DATEBASEFAIL){
+				conditionLabel.setText("数据库保存失败！");
+			}
 			}
 		}
 
@@ -361,5 +402,14 @@ public class ProcessHotelAccountManageView extends JPanel{
 	void addLog(String info){
 		controller.addLog(info);
 	}
+	// 判断字符串是不是全为数字，如果全为数字，返回true
+	public boolean isNumeric(String str){ 
+		Pattern pattern = Pattern.compile("[0-9]*"); 
+	    Matcher isNum = pattern.matcher(str);
+	    if( !isNum.matches() ){
+		   return false; 
+		} 
+		return true; 
+		}
 }
 

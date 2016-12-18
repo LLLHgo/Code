@@ -227,7 +227,7 @@ public class ProcessClientAccountManageView extends JPanel{
 			creditIconButton.setEnabled(false);
 			clientVO=controller.clientAccountFind(id);
 			if(clientVO==null){
-				conditionLabel.setText("无匹配的账户，请确认客户帐号后重新输入！");
+				conditionLabel.setText("无匹配的账户，请确认帐号后重新输入！");
 			}
 			else{
 				conditionLabel.setText("找到匹配账户");
@@ -289,7 +289,7 @@ public class ProcessClientAccountManageView extends JPanel{
 				
 			}
 			else if(result==ResultMessage.DATEBASEFAIL){
-				conditionLabel.setText("删除失败！");
+				conditionLabel.setText("数据库中删除失败！");
 			}
 		}
 
@@ -337,6 +337,7 @@ public class ProcessClientAccountManageView extends JPanel{
 			result=controller.clientAccountUpdate(newClientVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("保存成功！");
+				passwordText.setEditable(false);
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 修改"+clientVO.getID()+"账户");
 			}

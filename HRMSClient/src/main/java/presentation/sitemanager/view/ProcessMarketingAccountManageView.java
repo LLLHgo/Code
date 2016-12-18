@@ -190,7 +190,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			id=searchBarText.getText();
 			marketingVO=controller.MarketingAccountFind(id);
 			if(marketingVO==null){
-				conditionalText.setText("无匹配的账户，请确认网站营销人员帐号后重新输入！");
+				conditionalText.setText("无匹配的账户，请确认帐号后重新输入！");
 			}
 			else{
 				conditionalText.setText("找到匹配账户");
