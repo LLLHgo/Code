@@ -112,15 +112,13 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 
 	@Override
 	public ResultMessage updateOrderState(OrderVO vo) {
-		if(vo.getOrderType()==OrderType.ABNORMAL){
 			Date date = new Date();
 			SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 			String stringdate = format.format(date.getTime());
-			boolean setcrediet = client.setCredit(vo.getClientId(), (int)vo.getPrice(), stringdate, "客户入住，酒店工作人员将异常订单置为正常");
+			boolean setcrediet = client.setCredit(vo.getClientId(), (int)vo.getPrice(), stringdate, "客户入住酒店");
 			if(setcrediet == false){
 				return ResultMessage.FAIL;
 			}
-		}
 		return orderOperator.saveOrderPO(vo);
 	}
 

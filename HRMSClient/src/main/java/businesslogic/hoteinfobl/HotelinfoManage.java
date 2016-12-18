@@ -188,7 +188,6 @@ public class HotelinfoManage{
 		}
 		HotelstaffBLService hotelstaff = new HotelstaffManage();
 		hotelstaffVO.setHotelID(hotelID);
-		//TODO 理论上没有同层调用了，怎么解决？
 		ResultMessage result  = hotelstaff.saveSitemanagerAdd(hotelstaffVO);
 		return result;
 	}

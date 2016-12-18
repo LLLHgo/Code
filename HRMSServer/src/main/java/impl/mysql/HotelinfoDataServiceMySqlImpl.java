@@ -93,6 +93,7 @@ public class HotelinfoDataServiceMySqlImpl{
 			while(myRS.next()){
 				if(id==(Integer)myRS.getObject("hotelID")){
 					po = new HotelinfoPO();
+					if(myRS.getObject("star")!=null){
 					int star = (Integer)myRS.getObject("star");
 					Star[] starList = {Star.ONE,Star.TWO,Star.THREE,Star.FOUR,Star.FIVE,
 							Star.SIX,Star.SEVEN};
@@ -101,6 +102,7 @@ public class HotelinfoDataServiceMySqlImpl{
 							po.setStar(starList[i]);
 							break;
 						}
+					}
 					}
 					ArrayList<String> companyList = new ArrayList<String>();
 					String company =(String)myRS.getObject("company");
