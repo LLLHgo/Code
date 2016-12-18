@@ -232,8 +232,10 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
         String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE anticipate_arrived_time='"+yestedayDate+"'";
 		ArrayList<OrderPO> list=getCommandList(sql);
 		for(int i=0;i<list.size();i++){
-			list.get(i).setOrderType(OrderType.ABNORMAL);
-			result=save(list.get(i));
+			if(list.get(i).getOrderType()==OrderType.NORMALNONEXEC){
+				list.get(i).setOrderType(OrderType.ABNORMAL);
+				result=save(list.get(i));
+			}
 		}
     
         return result;
