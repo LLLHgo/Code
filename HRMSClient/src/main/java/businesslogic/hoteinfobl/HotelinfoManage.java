@@ -59,9 +59,12 @@ public class HotelinfoManage{
 			}
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
-
 				if(vo == null){
 					return null;
+				}
+				ArrayList<RoominfoVO> roominfoList = new RoominfoManage().getRoominfoList(listPO.get(i).getHotelID());
+				if(roominfoList!=null){
+					vo.setRoominfoList(roominfoList);
 				}
 				listVO.add(vo);
 			}
