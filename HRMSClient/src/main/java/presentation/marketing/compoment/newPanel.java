@@ -112,6 +112,7 @@ public class newPanel extends MJPanel{
 
 	}
 	public MarketingStrategyVO getCreatedVO() {
+		hotelSelected=new ArrayList<String>();
 		 for(JRadioButton button:hotelButton){
          	if(button.isSelected()==true){
          		hotelSelected.add(button.getText());
@@ -126,7 +127,7 @@ public class newPanel extends MJPanel{
          double discount= ((InputPanel)discountPanel).getInput();
          int minRoom=(int) ((InputPanel)roomPanel).getInput();
          double minExpenditure=((InputPanel)expenditurePanel).getInput();
-         if(name.length()==0||start==null||end==null||minLevel==-1||minExpenditure==-1||discount==-1||minRoom==-1)
+         if(hotelSelected.size()==0||name.length()==0||start==null||end==null||minLevel==-1||minExpenditure==-1||discount==-1||minRoom==-1)
         	 return null;
          if(c.compareTo(start)>=0||start.compareTo(end)>=0)//输入的日期不符
         	 return null;
