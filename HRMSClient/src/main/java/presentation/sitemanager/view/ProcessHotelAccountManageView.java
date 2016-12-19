@@ -246,11 +246,11 @@ public class ProcessHotelAccountManageView extends JPanel{
 			else if(modifyPassword==""||modifyPassword.equals("")){
 				conditionLabel.setText("请输入修改后的密码！");
 			}
-			if(modifyTel.length()!=11){
-				conditionLabel.setText("电话位数不对，请重新输入电话！");
-			}
-			else if(isNumeric(modifyTel)){
+			else if(!isNumeric(modifyTel)){
 				conditionLabel.setText("请确认电话中是否全为数字，重新输入电话！");
+			}
+			else if(modifyTel.length()!=11){
+				conditionLabel.setText("电话位数不对，请重新输入电话！");
 			}
 			else {
 				
@@ -346,11 +346,11 @@ public class ProcessHotelAccountManageView extends JPanel{
 			if(addName==""||addName.equals("")||addTel==""||addTel.equals("")||addPassword==""||addPassword.equals("")){
 				conditionLabel.setText("请将信息填写完整！");
 			}
-			if(addTel.length()!=11){
-				conditionLabel.setText("电话位数不对，请重新输入电话！");
-			}
-			else if(isNumeric(addTel)){
+			else if(!isNumeric(addTel)){
 				conditionLabel.setText("请确认电话中是否全为数字，重新输入电话！");
+			}
+			else if(addTel.length()!=11){
+				conditionLabel.setText("电话位数不对，请重新输入电话！");
 			}
 			else{
 			addHotelstaffVO=new HotelstaffVO("",addPassword,addTel);

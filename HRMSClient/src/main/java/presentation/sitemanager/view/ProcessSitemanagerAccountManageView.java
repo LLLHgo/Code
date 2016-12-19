@@ -119,11 +119,11 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 			newTel=telField.getText();
 			newPassword=passWordField.getText();
 			newSitemanagerVO=new SitemanagerVO(id,newTel,newPassword);
-			if(newTel.length()!=11){
-				conditionalLabel.setText("电话位数不对，请重新输入电话！");
-			}
-			else if(isNumeric(newTel)){
+			if(!isNumeric(newTel)){
 				conditionalLabel.setText("请确认电话中是否全为数字，重新输入电话！");
+			}
+			else if(newTel.length()!=11){
+				conditionalLabel.setText("电话位数不对，请重新输入电话！");
 			}
 			else{
 			result=controller.sitemanagerAccountUpdate(newSitemanagerVO);
