@@ -14,8 +14,8 @@ import vo.levelVO.LevelVO;
 public class showLevel extends MJPanel{
 private static final long serialVersionUID = 1L;
 private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,20);
-private Image background=new ImageIcon("./src/main/resource/picture/marketing/showBackground.png").getImage();
-private Icon inputIcon=new ImageIcon("./src/main/resource/picture/marketing/levelIcon.png");
+private Image background=new ImageIcon(this.getClass().getResource("showBackground.png")).getImage();
+private Icon inputIcon=new ImageIcon(this.getClass().getResource("levelIcon.png"));
 private JTextField levelField;
 private JTextField nameField;
 private JTextField creditField;

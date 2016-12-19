@@ -19,8 +19,8 @@ public class TimePanel extends JPanel{
 	private Font font=new Font("楷体",Font.ITALIC,20);
 	private Font font2=new Font("楷体",Font.ITALIC,18);
 	private Font font3=new Font("楷体",Font.CENTER_BASELINE,18);
-	private Icon yearIcon=new ImageIcon("./src/main/resource/picture/marketing/yearBackground.png");
-	private Icon monthIcon=new ImageIcon("./src/main/resource/picture/marketing/monthBackground.png");
+	private Icon yearIcon=new ImageIcon(this.getClass().getResource("yearBackground.png"));
+	private Icon monthIcon=new ImageIcon(this.getClass().getResource("monthBackground.png"));
 	private JTextField yearField=new MJTextField(10,0,50,40,font2);
 	private JTextField monthField=new MJTextField(10,0,30,40,font2);
 	private JTextField dateField=new MJTextField(10,0,30,40,font2);

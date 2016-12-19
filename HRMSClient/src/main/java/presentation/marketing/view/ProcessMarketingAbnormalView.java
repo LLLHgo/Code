@@ -50,9 +50,9 @@ public class ProcessMarketingAbnormalView extends JPanel{
 	private MJButton searchButton=new MJButton("搜索订单",125, 0, 200, 80,font3);
 	private MJButton listButton=new MJButton("异常订单列表",375,0, 200, 80,font3);
 
-	private Icon searchBarIcon=new ImageIcon("./src/main/resource/picture/marketing/searchBar.png");
-	private Icon searchKeyIcon=new ImageIcon("./src/main/resource/picture/marketing/searchKey.png");
-	private Icon checkIcon=new ImageIcon("./src/main/resource/picture/marketing/littleCheck.png");
+	private ImageIcon searchBarIcon=new ImageIcon(this.getClass().getResource("searchBar.png"));
+	private ImageIcon searchKeyIcon=new ImageIcon(this.getClass().getResource("searchKey.png"));
+	private ImageIcon checkIcon=new ImageIcon(this.getClass().getResource("littleCheck.png"));
 
 	private JLabel searchBarLabel=new MJLabel(60, 5, 500, 50,searchBarIcon);
 	private JTextField searchBarField=new MJTextField(17, 0, 405,44,font2);
@@ -215,7 +215,7 @@ public class ProcessMarketingAbnormalView extends JPanel{
        showAbnormalScroll = new MJScrollPane(20, 150, 699, 365,orderPanel);
        int num=0;
 
-       Image image=new ImageIcon("./src/main/resource/picture/marketing/orderBackground.png").getImage();
+       Image image=new ImageIcon(this.getClass().getResource("orderBackground.png")).getImage();
        for(OrderVO order:orders){
     	    //制作order背景
             JPanel panel=new JPanel(){

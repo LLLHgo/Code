@@ -29,9 +29,9 @@ public class ProcessMarketingStrategyView extends JPanel{
 
 	private ProcessMarketingViewControllerService controller;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,28);
-	private Icon strategyPreIcon=new ImageIcon("./src/main/resource/picture/marketing/strategyPreIcon.png");
-	private Icon backIcon=new ImageIcon("./src/main/resource/picture/marketing/backIcon.png");
-	private Icon ensureIcon=new ImageIcon("./src/main/resource/picture/marketing/littleCheck.png");
+	private Icon strategyPreIcon=new ImageIcon(this.getClass().getResource("strategyPreIcon.png"));
+	private Icon backIcon=new ImageIcon(this.getClass().getResource("backIcon.png"));
+	private Icon ensureIcon=new ImageIcon(this.getClass().getResource("littleCheck.png"));
 
 
 	private JPanel groupPanel=new MJPanel(0,0,780,500);
