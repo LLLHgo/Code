@@ -81,7 +81,7 @@ public class RoominfoPanel extends JPanel{
 		this.setVisible(true);
 		setOpaque(false);
 
-		init_image = new ImageIcon("./src/main/resource/picture/hotelinfo/roominfo.png");
+		init_image = new ImageIcon(this.getClass().getResource("images/roominfo.png"));
 
 		jbLeft = new LeftButton(295,480);
 		jbRight = new RightButton(888,480);
@@ -263,7 +263,7 @@ public class RoominfoPanel extends JPanel{
 	    int width = frame.getWidth();
 	    frame.setLocation(screenWidth-width/2, screenHeight-height/2);
 
-	    init_detailedroominfo_image = new ImageIcon("C:/Users/1/Documents/GitHub/Code/HRMSClient/src/main/resource/picture/hotelinfo/detailedroominfo.png");
+	    init_detailedroominfo_image = new ImageIcon(this.getClass().getResource("images/detailedroominfo.png"));
 
 	    panel = new JPanel(){
 			protected void paintComponent(Graphics g) {

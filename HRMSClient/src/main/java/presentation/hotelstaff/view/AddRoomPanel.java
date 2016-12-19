@@ -20,7 +20,6 @@ import presentation.hotelstaff.controller.HotelstaffViewController;
 import vo.hotelinfoVO.RoominfoVO;
 /**
  * @version 1
- * @since 16.11.27
  * @author liuyu
  *
  */
@@ -57,7 +56,7 @@ public class AddRoomPanel extends JPanel{
 		setOpaque(false);
 
 		//初始化背景
-		image = new ImageIcon("./src/main/resource/picture/hotelinfo/room.png");
+		image = new ImageIcon(this.getClass().getResource("images/room.png"));
 
 		jtfroomNum = new RoominfoTextField(406,128,200,30);
 		jtfroomPrice = new RoominfoTextField(406,282,200,30);

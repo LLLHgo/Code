@@ -80,7 +80,7 @@ public class StrategyPanel extends JPanel{
 	    
 	    int num=0;
 
-	    Image image=new ImageIcon("./src/main/resource/picture/hotelstrategy/strategybackground.png").getImage();
+	    Image image=new ImageIcon(this.getClass().getResource("images/strategybackground.png")).getImage();
 	    for(HotelStrategyVO strategy:strategys){
 	    	//制作strategy背景
 	        JPanel panel=new JPanel(){

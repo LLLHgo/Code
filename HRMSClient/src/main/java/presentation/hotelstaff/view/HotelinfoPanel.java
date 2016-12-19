@@ -70,7 +70,7 @@ public class HotelinfoPanel extends JPanel{
 		this.setVisible(true);
 		setOpaque(false);
 
-		init_image = new ImageIcon("./src/main/resource/picture/hotelinfo/hotelinfoPanel.png");
+		init_image = new ImageIcon(this.getClass().getResource("images/hotelinfoPanel.png"));
 
 		//修改按钮，点击后hotelinfo属性变成可以编辑
 		jbModify = new ModifyButton(580,485,60,60);

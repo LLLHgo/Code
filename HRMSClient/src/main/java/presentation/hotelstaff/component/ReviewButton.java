@@ -19,7 +19,7 @@ public class ReviewButton extends JButton{
 		this.w = w;
 		this.h = h;
 		this.setBounds(this.x,this.y,this.w,this.h);
-		this.icon = new ImageIcon("./src/main/resource/picture/hotelinfo/review.png");
+		this.icon = new ImageIcon(this.getClass().getResource("images/review.png"));
 		this.setIcon(this.icon);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);

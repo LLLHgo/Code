@@ -39,7 +39,7 @@ public class DetailedRoominfo extends JFrame{
 	    int width = this.getWidth();
 	    this.setLocation(screenWidth-width/2, screenHeight-height/2);
 	    
-	    init_image = new ImageIcon("C:/Users/1/Documents/GitHub/Code/HRMSClient/src/main/resource/picture/hotelinfo/detailedroominfo.png");
+	    init_image = new ImageIcon(this.getClass().getResource("images/detailedroominfo.png"));
 	    
 		this.roomID = roomID;
 		this.type = type;

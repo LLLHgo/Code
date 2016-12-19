@@ -93,7 +93,7 @@ public class NewRoominfoPanel extends JPanel{
 
 	    int num=0;
 
-	    Image image=new ImageIcon("./src/main/resource/picture/hotelinfo/newroominfo.png").getImage();
+	    Image image=new ImageIcon(this.getClass().getResource("images/newroominfo.png")).getImage();
 	    for(RoominfoVO room:rooms){
 	    	//制作roominfo背景
 	        JPanel panel=new JPanel(){

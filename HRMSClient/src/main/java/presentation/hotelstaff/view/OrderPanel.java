@@ -71,8 +71,8 @@ public class OrderPanel extends JPanel{
 
 		buttonFlag = true;
 
-		Icheckbox = new ImageIcon("./src/main/resource/picture/hotelorder/checkbox.png");
-		IDetailedSearch = new ImageIcon("./src/main/resource/picture/hotelorder/searchbackground.png");
+		Icheckbox = new ImageIcon(this.getClass().getResource("images/checkbox.png"));
+		IDetailedSearch = new ImageIcon(this.getClass().getResource("images/searchbackground.png"));
 
 		jlSearch = new JLabel();
 		jlSearch.setBounds(330, 90, 180, 25);
@@ -108,7 +108,7 @@ public class OrderPanel extends JPanel{
 		this.add(jbCancle);
 
 		jbDrag = new JButton();
-		jbDrag.setIcon(new ImageIcon("./src/main/resource/picture/hotelorder/triangle.png"));
+		jbDrag.setIcon(new ImageIcon(this.getClass().getResource("images/triangle.png")));
 		jbDrag.setBounds(480,90,25,25);
 		jbDrag.setContentAreaFilled(false);
 		jbDrag.setBorder(null);
@@ -266,7 +266,7 @@ public class OrderPanel extends JPanel{
 	    this.add(scrollPane);
 	    int num=0;
 
-	    Image image=new ImageIcon("./src/main/resource/picture/hotelorder/hotelorder.png").getImage();
+	    Image image=new ImageIcon(this.getClass().getResource("images/hotelorder.png")).getImage();
 	    for(OrderVO order:orders){
 	    	//制作order背景
 	        JPanel panel=new JPanel(){

@@ -16,7 +16,7 @@ public class ConfirmButton extends JButton{
 		this.x = x;
 		this.y = y;
 		this.setBounds(this.x,this.y,this.w,this.h);
-		this.icon = new ImageIcon("./src/main/resource/picture/hotelinfo/confirm.png");
+		this.icon = new ImageIcon(this.getClass().getResource("images/confirm.png"));
 		this.setIcon(this.icon);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);

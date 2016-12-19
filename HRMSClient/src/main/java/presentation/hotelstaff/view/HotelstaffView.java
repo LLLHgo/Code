@@ -40,7 +40,7 @@ public class HotelstaffView extends JPanel{
 		this.setVisible(true);
 		setOpaque(false);
 		//初始化背景图
-		init_image = new ImageIcon("./src/main/resource/picture/hotelstaff/background.png");
+		init_image = new ImageIcon(this.getClass().getResource("images/background.png"));
 		//初始化按钮
 		jbHotelinfo=new GuideBoardButton(250,"酒店信息");
 		jbRoominfo=new GuideBoardButton(300,"房间信息");

@@ -54,7 +54,7 @@ public class HotelstaffPanel extends JPanel{
 		setOpaque(false);
 		
 		//修改密码的背景
-		ipassword = new ImageIcon("./src/main/resource/picture/hotelstaff/password.png");
+		ipassword = new ImageIcon(this.getClass().getResource("images/password.png"));
 	
 		password = controller.getHotelstaffBasicinfo(hotelID);
 		

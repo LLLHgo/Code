@@ -58,7 +58,7 @@ public class NewStrategyPanel extends JPanel{
 	public NewStrategyPanel(HotelstaffViewController controller){
 		this.controller=controller;
 		this.hotelID=controller.gethotelID();
-		Iinit = new ImageIcon("./src/main/resource/picture/hotelstrategy/newstrategy.png");
+		Iinit = new ImageIcon(this.getClass().getResource("images/newstrategy.png"));
 		init();
 	}
 

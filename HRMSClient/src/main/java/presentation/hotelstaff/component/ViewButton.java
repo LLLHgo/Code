@@ -16,7 +16,7 @@ public class ViewButton extends JButton{
 		this.x = x;
 		this.y = y;
 		this.setBounds(this.x,this.y,this.w,this.h);
-		this.icon = new ImageIcon("./src/main/resource/picture/hotelstrategy/view.png");
+		this.icon = new ImageIcon(this.getClass().getResource("images/view.png"));
 		this.setIcon(this.icon);
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);

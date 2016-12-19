@@ -68,7 +68,7 @@ public class DetailedStrategyPanel extends JPanel{
 		this.vipKinds = vo.getVipKinds();
 		this.minRooms = vo.getMinRooms();
 		this.minSum = vo.getMinSum();
-		Iinit = new ImageIcon("./src/main/resource/picture/hotelstrategy/newstrategy.png");
+		Iinit = new ImageIcon(this.getClass().getResource("images/newstrategy.png"));
 		init();
 	}
 
