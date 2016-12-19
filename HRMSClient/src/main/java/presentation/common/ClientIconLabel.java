@@ -17,7 +17,7 @@ public class ClientIconLabel extends JLabel{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/headIcon/client.png");
+		img=new ImageIcon(this.getClass().getResource("image/client.png"));
 		this.setIcon(img);
 		this.w=img.getIconWidth();
 		this.h=img.getIconHeight();

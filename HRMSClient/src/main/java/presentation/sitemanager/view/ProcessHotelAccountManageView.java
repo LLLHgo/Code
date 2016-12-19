@@ -79,7 +79,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		this.setBounds(276,82,702,502);
 		this.setLayout(null);
 		// 设置背景图片
-		background=new ImageIcon("src/main/resource/picture/sitemanager/hotelManageMain.png");
+		background=new ImageIcon(this.getClass().getResource("image/hotelManageMain.png"));
 		// 设置酒店工作人员头像
 		hotelIconLabel=new HotelIconLabel(160,200);
 		// 设置添加按钮

@@ -82,7 +82,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		this.view=processSitemanagerView;
 		this.setBounds(275,81,702,502);
 		this.setLayout(null);
-		background=new ImageIcon("src/main/resource/picture/sitemanager/marketingAccountManage.png");
+		background=new ImageIcon(this.getClass().getResource("image/marketingAccountManage.png"));
 		// 搜索按钮
 		searchButton=new SearchButton(530,20,40,40);
 		// 搜索区域

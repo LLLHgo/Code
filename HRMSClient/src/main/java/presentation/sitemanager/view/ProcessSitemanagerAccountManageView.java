@@ -44,7 +44,7 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 	// 主菜单界面的账户头像
 	SitemanagerIconLabel sitemanagerIconLabel;
 	
-	ImageIcon img=new ImageIcon("src/main/resource/picture/sitemanager/sitemanagerAccountShow.png");
+	ImageIcon img=new ImageIcon(this.getClass().getResource("image/sitemanagerAccountShow.png"));
 	
 	public  ProcessSitemanagerAccountManageView(ProcessSitemanagerViewControllerService controller
 		,ProcessSitemanagerView processSitemanagerView,SitemanagerVO sitemanagerVO){

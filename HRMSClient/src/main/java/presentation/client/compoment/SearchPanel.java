@@ -14,7 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import datatool.HotelinfoDataTool;
 import presentation.client.controller.SearchPanelController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;

@@ -26,7 +26,7 @@ import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
 import vo.sitemanager.SitemanagerVO;
-
+/*
 public class ProcessSiteManagerViewControllerTest {
 	MockSitemanagerManage ms;
 	MockClientManage mc;
@@ -210,4 +210,4 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 	
 
-}
+}*/

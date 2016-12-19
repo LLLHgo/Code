@@ -32,10 +32,10 @@ public class CheckAccountTest {
 		//账号对密码粗
 		assertEquals(true,manage.checkAccount("M00000008","that'sright"));
 	}*/
-	@Test
+	/*@Test
 	public void test4(){
 
 		assertEquals(null,manage.MarketingAccountFind("M000000089"));
-	}
+	}*/
 
 }

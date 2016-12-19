@@ -19,7 +19,7 @@ public class ModifyButton extends JButton{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/modifyIcon.png");
+		img=new ImageIcon(this.getClass().getResource("image/modifyIcon.png"));
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setContentAreaFilled(false);

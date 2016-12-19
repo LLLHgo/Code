@@ -19,7 +19,7 @@ public class SearchButton extends JButton {
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/search.png");
+		img=new ImageIcon(this.getClass().getResource("image/search.png"));
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setContentAreaFilled(false);

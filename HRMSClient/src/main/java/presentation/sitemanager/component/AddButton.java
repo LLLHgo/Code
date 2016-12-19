@@ -19,7 +19,7 @@ public class AddButton extends JButton{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/addIcon.png");
+		img=new ImageIcon(this.getClass().getResource("image/addIcon.png"));
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setContentAreaFilled(false);

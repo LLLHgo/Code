@@ -20,7 +20,7 @@ public class SearchBar extends JLabel{
 	}
 	
 	void setOthers(){
-		imageIcon=new ImageIcon("src/main/resource/picture/sitemanager/SearchBar.png");
+		imageIcon=new ImageIcon(this.getClass().getResource("image/SearchBar.png"));
 		this.setIcon(imageIcon);
 		this.setBounds(this.x,this.y,imageIcon.getIconWidth(),imageIcon.getIconHeight());
 		//this.setFont(new java.awt.Font("微软雅黑",  1,  20));
