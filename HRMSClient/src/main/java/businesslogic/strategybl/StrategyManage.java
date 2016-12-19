@@ -199,7 +199,7 @@ public class StrategyManage implements StrategyBLService{
 				break;
 			}
 		}
-		return new PriceVO(price,strategyUsed);
+		return new PriceVO((double)((int)price),strategyUsed);
 	}
 
 	private MarketingStrategyPO Mvo2po(MarketingStrategyVO vo){
