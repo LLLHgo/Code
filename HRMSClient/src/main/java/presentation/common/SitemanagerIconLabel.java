@@ -17,7 +17,7 @@ public class SitemanagerIconLabel extends JLabel{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/headIcon/sitemanager.png");
+		img=new ImageIcon(this.getClass().getResource("image/sitemanager.png"));
 		this.setIcon(img);
 		this.w=img.getIconWidth();
 		this.h=img.getIconHeight();

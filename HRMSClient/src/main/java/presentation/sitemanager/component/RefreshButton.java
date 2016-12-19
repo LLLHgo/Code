@@ -15,7 +15,7 @@ public class RefreshButton extends JButton{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/refreshButton.png");
+		img=new ImageIcon(this.getClass().getResource("image/refreshButton.png"));
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,img.getIconWidth(),img.getIconHeight());
 		this.setContentAreaFilled(false);

@@ -90,7 +90,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		this.setBounds(277,79,702,502);
 		this.setLayout(null);
 		// 设置背景图片
-		background=new ImageIcon("src/main/resource/picture/sitemanager/clientAccountManage.png");
+		background=new ImageIcon(this.getClass().getResource("image/clientAccountManage.png"));
 		this.setBounds(276,82,702,502);
 		// 搜索按钮
 		searchButton=new SearchButton(530,20,40,40);

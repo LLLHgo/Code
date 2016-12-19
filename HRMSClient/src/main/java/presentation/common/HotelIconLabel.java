@@ -17,7 +17,7 @@ public class HotelIconLabel extends JLabel{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/headIcon/hotel.png");
+		img=new ImageIcon(this.getClass().getResource("image/hotel.png"));
 		this.setIcon(img);
 		this.w=img.getIconWidth();
 		this.h=img.getIconHeight();

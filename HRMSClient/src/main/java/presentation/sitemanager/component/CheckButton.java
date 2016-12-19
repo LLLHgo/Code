@@ -19,7 +19,7 @@ public class CheckButton extends JButton{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/checkIcon.png");
+		img=new ImageIcon(this.getClass().getResource("image/checkIcon.png"));
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,this.w,this.h);
 		this.setContentAreaFilled(false);

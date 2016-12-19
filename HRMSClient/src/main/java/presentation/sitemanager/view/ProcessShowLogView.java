@@ -67,9 +67,9 @@ public class ProcessShowLogView extends JPanel{
 		this.setBounds(276,82,702,502);
 		this.setLayout(null);
 		// 背景图片
-		background=new ImageIcon("src/main/resource/picture/sitemanager/showLog.png");
+		background=new ImageIcon(this.getClass().getResource("image/showLog.png"));
 		// 日志背景图片
-		logJTextAreaIcon=new ImageIcon("src/main/resource/picture/sitemanager/logJTextAreaIcon.png");
+		logJTextAreaIcon=new ImageIcon(this.getClass().getResource("image/logJTextAreaIcon.png"));
 		// 刷新按钮
 		refreshButton=new RefreshButton(320,443);
 		refreshButton.addMouseListener(new refreshButtonListener());

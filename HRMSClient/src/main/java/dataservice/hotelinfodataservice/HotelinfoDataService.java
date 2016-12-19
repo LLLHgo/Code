@@ -101,6 +101,13 @@ public interface HotelinfoDataService extends Remote{
 	 */
 	public boolean deleteroom(String hotelID,String roomID) throws RemoteException;
 	/**
+	 * 客户根据酒店名字查酒店
+	 * @param hotelname
+	 * @return
+	 * @throws RemoteException
+	 */
+	public HotelinfoPO clientfindhotelinfo(String hotelname) throws RemoteException;
+	/**
 	 * 结束持久化数据库的使用
 	 * @throws RemoteException
 	 */

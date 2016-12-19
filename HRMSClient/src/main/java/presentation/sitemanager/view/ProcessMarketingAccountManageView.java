@@ -82,7 +82,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		this.view=processSitemanagerView;
 		this.setBounds(275,81,702,502);
 		this.setLayout(null);
-		background=new ImageIcon("src/main/resource/picture/sitemanager/marketingAccountManage.png");
+		background=new ImageIcon(this.getClass().getResource("image/marketingAccountManage.png"));
 		// 搜索按钮
 		searchButton=new SearchButton(530,20,40,40);
 		// 搜索区域
@@ -241,11 +241,11 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			else if(newPassword==""||newPassword.equals("")){
 				conditionalText.setText("密码为空，请输入密码");
 			}
-			else if(newTel.length()!=11){
-				conditionalText.setText("电话位数不对，请重新输入电话");
-			}
 			else if(!isNumeric(newTel)){
 				conditionalText.setText("电话请确认是否全为数字，重新输入电话");	
+			}
+			else if(newTel.length()!=11){
+				conditionalText.setText("电话位数不对，请重新输入电话");
 			}
 			else if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("修改成功！");
@@ -278,18 +278,19 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			addTel=marketingTel.getText();
 			addPassword=marketingPassword.getText();
 			addMarketingVO=new MarketingVO(addName,addPassword,"",addTel);
-			result=controller.MarketingAccountAdd(addMarketingVO);
+			
 			
 			if((addTel==""||addTel.equals(""))&&(addPassword==""||addPassword.equals(""))&&(addName==""||addName.equals(""))){
 				conditionalText.setText("请将信息填写完整");
 			}
+			else if(!isNumeric(newTel)){
+				conditionalText.setText("电话请确认是否全为数字，重新输入电话");	
+			}
 			else if(addTel.length()!=11){
 				conditionalText.setText("电话位数不对，请重新输入电话");
 			}
-			else if(!isNumeric(addTel)){
-				conditionalText.setText("电话请确认是否全为数字，重新输入电话");	
-			}
-			
+			else{
+			result=controller.MarketingAccountAdd(addMarketingVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("添加账户成功！");
 				date=new Date();
@@ -299,6 +300,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			}
 			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionalText.setText("数据库保存失败！");
+			}
 			}
 		}
 		public void mousePressed(MouseEvent e) {}

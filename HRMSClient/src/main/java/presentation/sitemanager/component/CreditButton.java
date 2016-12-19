@@ -15,7 +15,7 @@ public class CreditButton extends JLabel{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/sitemanager/creditRecordIcon.png");
+		img=new ImageIcon(this.getClass().getResource("image/creditRecordIcon.png"));
 		this.setIcon(img);
 		this.setBounds(this.x,this.y,img.getIconWidth(),img.getIconHeight());
 		this.setVisible(true);

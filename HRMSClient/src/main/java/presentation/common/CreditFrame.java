@@ -28,7 +28,7 @@ public class CreditFrame extends JFrame{
 
 	public CreditFrame(ArrayList<String> credits){
 		this.credits=credits;
-		background=new ImageIcon("src/main/resource/picture/sitemanager/creditBackground.png");
+		background=new ImageIcon(this.getClass().getResource("image/creditBackground.png"));
 		creditShowPanel=new JPanel(){
 			private static final long serialVersionUID = 1L;
 

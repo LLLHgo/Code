@@ -45,7 +45,7 @@ public class ProcessSitemanagerView extends JPanel{
 	public SitemanagerVO sitemanagerVO;
 
 	public ProcessSitemanagerView(ProcessSitemanagerViewControllerService controller){
-		backgroundImage=new ImageIcon("src/main/resource/picture/sitemanager/accountManageBackground.png");
+		backgroundImage=new ImageIcon(this.getClass().getResource("image/accountManageBackground.png"));
 		this.controller=controller;
 		this.setLayout(null);
 		this.setLocation(0, 0);
@@ -73,7 +73,7 @@ public class ProcessSitemanagerView extends JPanel{
 		welComeLabel=new JLabel();
 		//275,-19,775,800
 		welComeLabel.setBounds(276,-19,775,800);
-		welcomeIcon=new ImageIcon("src/main/resource/picture/welcomeIcon.png");
+		welcomeIcon=new ImageIcon(this.getClass().getResource("image/welcomeIcon.png"));
 		welComeLabel.setIcon(welcomeIcon);
 		
 		this.add(currentUserIdLabel);

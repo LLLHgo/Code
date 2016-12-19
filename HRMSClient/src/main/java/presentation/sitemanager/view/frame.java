@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import presentation.sitemanager.controller.ProcessSitemanagerViewController;
 
-
+/*
 public class frame {
 
 	public static void main(String[] args) {
@@ -21,4 +21,4 @@ public class frame {
 		mFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-}
+}*/

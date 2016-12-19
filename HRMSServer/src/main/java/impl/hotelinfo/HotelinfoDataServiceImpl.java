@@ -92,4 +92,9 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 		return mysql.deleteroom(hotelID,roomID);
 	}
 
+
+	public HotelinfoPO clientfindhotelinfo(String hotelname) throws RemoteException {
+		return mysql.clientfindhotelinfo(hotelname);
+	}
+
 }

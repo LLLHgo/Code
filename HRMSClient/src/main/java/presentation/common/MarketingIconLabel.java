@@ -17,7 +17,7 @@ public class MarketingIconLabel extends JLabel{
 		setOthers();
 	}
 	void setOthers(){
-		img=new ImageIcon("src/main/resource/picture/headIcon/marketing.png");
+		img=new ImageIcon(this.getClass().getResource("image/marketing.png"));
 		this.setIcon(img);
 		this.w=img.getIconWidth();
 		this.h=img.getIconHeight();

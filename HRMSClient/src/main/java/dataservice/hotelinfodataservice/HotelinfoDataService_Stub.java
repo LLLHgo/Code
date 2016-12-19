@@ -209,5 +209,10 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public HotelinfoPO clientfindhotelinfo(String hotelname) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
