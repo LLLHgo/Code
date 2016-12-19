@@ -29,8 +29,8 @@ public class ProcessMarketingProfileView extends JPanel{
 	private MJLabel TELLabel =new MJLabel("TEL",100, 200, 60, 60,font);
 	private MJLabel passwordLabel =new MJLabel("密码",100, 280, 60, 60,font);
 
-	private Icon modifyIcon=new ImageIcon("./src/main/resource/picture/marketing/modify.png");
-    private Icon ensureIcon=new ImageIcon("./src/main/resource/picture/marketing/ensure.png");
+	private Icon modifyIcon=new ImageIcon(this.getClass().getResource("modify.png"));
+    private Icon ensureIcon=new ImageIcon(this.getClass().getResource("ensure.png"));
 
     private MJTextField nameField=new MJTextField(250, 46, 200, 48,font2);
     private MJTextField accountField =new MJTextField(250, 126, 200, 48,font2);

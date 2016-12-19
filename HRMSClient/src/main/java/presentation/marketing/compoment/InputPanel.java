@@ -12,7 +12,7 @@ public class InputPanel extends MJPanel{
 	private static final long serialVersionUID = 1L;
 	private Font font=new Font("楷体",Font.ITALIC,20);
 	private Font font2=new Font("楷体",Font.ITALIC,18);
-	private Icon inputIcon=new ImageIcon("./src/main/resource/picture/marketing/yearBackground.png");
+	private Icon inputIcon=new ImageIcon(this.getClass().getResource("yearBackground.png"));
 	private JTextField valueField=new MJTextField(14,0,40,40,font2);
 
 	public InputPanel(String text,int x, int y, int w, int h) {

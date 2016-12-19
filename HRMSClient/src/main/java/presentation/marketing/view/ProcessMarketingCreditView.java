@@ -22,11 +22,11 @@ public class ProcessMarketingCreditView extends JPanel{
 	private ProcessMarketingViewController controller;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,24);
 	private Font font2=new Font("微软雅黑",Font.HANGING_BASELINE,18);
-	private Icon searchBar=new ImageIcon("./src/main/resource/picture/marketing/searchBar.png");
-	private Icon searchIcon=new ImageIcon("./src/main/resource/picture/marketing/searchKey.png");
-	private Icon inputIcon=new ImageIcon("./src/main/resource/picture/marketing/yearBackground.png");
-	private Icon checkIcon=new ImageIcon("./src/main/resource/picture/marketing/ensure.png");
-	private Image orderBackground=new ImageIcon("./src/main/resource/picture/marketing/orderBackground.png").getImage();
+	private Icon searchBar=new ImageIcon(this.getClass().getResource("searchBar.png"));
+	private Icon searchIcon=new ImageIcon(this.getClass().getResource("searchKey.png"));
+	private Icon inputIcon=new ImageIcon(this.getClass().getResource("yearBackground.png"));
+	private Icon checkIcon=new ImageIcon(this.getClass().getResource("ensure.png"));
+	private Image orderBackground=new ImageIcon(this.getClass().getResource("orderBackground.png")).getImage();
 	private JTextField idField=new MJTextField(0,0,200,40,font);
 	private JTextField creditField=new MJTextField(12,0,50,40,font2);
 	private MJPanel panel=new MJPanel(70,100,600,250,orderBackground);

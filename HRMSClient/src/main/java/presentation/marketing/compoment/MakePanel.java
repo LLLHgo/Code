@@ -11,7 +11,7 @@ public class MakePanel extends MJPanel{
 	private static final long serialVersionUID = 1L;
 	private Font font=new Font("楷体",Font.ITALIC,20);
 	private Font font2=new Font("楷体",Font.ITALIC,18);
-	private Icon valueIcon=new ImageIcon("./src/main/resource/picture/marketing/yearBackground.png");
+	private Icon valueIcon=new ImageIcon(this.getClass().getResource("yearBackground.png"));
 	private JLabel levelLabel=new MJLabel("等级",10,0,100,40,font);
 	private JLabel levelInputLabel=new MJLabel(55,4,100,43,valueIcon);
 	private JTextField levelField=new MJTextField(13,2,46,30,font2);

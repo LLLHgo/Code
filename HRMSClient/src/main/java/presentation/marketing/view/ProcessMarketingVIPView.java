@@ -22,7 +22,7 @@ public class ProcessMarketingVIPView extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private JScrollPane levelPanel;
-	private Icon checkIcon=new ImageIcon("./src/main/resource/picture/marketing/ensure.png");
+	private Icon checkIcon=new ImageIcon(this.getClass().getResource("ensure.png"));
 	private JButton checkButton=new MJButton(330,440,60,60,checkIcon);
 	private int height=220;
     private List<LevelVO> levels;

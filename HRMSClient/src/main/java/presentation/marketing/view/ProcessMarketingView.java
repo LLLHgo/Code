@@ -19,10 +19,10 @@ import presentation.marketing.compoment.MJLabel;
 public class ProcessMarketingView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private String MarketingID;
-	private Icon photo=new ImageIcon("./src/main/resource/picture/headIcon/marketing.png");
-	private Icon welcomeIcon=new ImageIcon("./src/main/resource/picture/welcomeIcon.png");
+	private Icon photo=new ImageIcon(this.getClass().getResource("marketing.png"));
+	private Icon welcomeIcon=new ImageIcon(this.getClass().getResource("welcomeIcon.png"));
 
-	private Image image=new ImageIcon("./src/main/resource/picture/marketing/marketing.png").getImage();;
+	private Image image=new ImageIcon(this.getClass().getResource("marketing.png")).getImage();
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);
 	private MJLabel ID=new MJLabel("ID:",50,185,50,30,font);
 	private MJLabel defaultLabel=new MJLabel(95,37,100,200,photo);

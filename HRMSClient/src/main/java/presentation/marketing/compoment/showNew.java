@@ -14,7 +14,7 @@ import Enum.VIPType;
 public class showNew extends MJPanel{
 	private static final long serialVersionUID = 1L;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,17);
-	private Image background=new ImageIcon("./src/main/resource/picture/marketing/showBackground.png").getImage();
+	private Image background=new ImageIcon(this.getClass().getResource("showBackground.png")).getImage();
 
 	public showNew(String name,String start,String end,List<VIPType> viptypes,double discount,int minLevel,int minRoom,double minSum,List<String> hotels,int x, int y, int w, int h) {
 		super(x, y, w, h);

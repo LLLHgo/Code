@@ -20,7 +20,7 @@ public class browsePanel extends MJScrollPane{
 	private static final long serialVersionUID = 1L;
     private List<MarketingStrategyVO> list;
     private JPanel panel;
-    private Icon deleteIcon=new ImageIcon("./src/main/resource/picture/marketing/delete.png");
+    private Icon deleteIcon=new ImageIcon(this.getClass().getResource("delete.png"));
     private List<String> deleteList=new ArrayList<String>();
 
     private static int[] height={145,200,280};

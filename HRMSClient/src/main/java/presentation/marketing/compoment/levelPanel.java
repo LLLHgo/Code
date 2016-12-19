@@ -19,9 +19,9 @@ public class levelPanel extends MJScrollPane{
 	private List<showLevel> panelList=new ArrayList<showLevel>();
 
 	private JPanel panel;
-    private Icon deleteIcon=new ImageIcon("./src/main/resource/picture/marketing/delete.png");
+    private Icon deleteIcon=new ImageIcon(this.getClass().getResource("delete.png"));
     private int height=220;
-    private Icon addIcon=new ImageIcon("./src/main/resource/picture/marketing/addIcon.png");
+    private Icon addIcon=new ImageIcon(this.getClass().getResource("addIcon.png"));
     private JButton addButton;
 
 

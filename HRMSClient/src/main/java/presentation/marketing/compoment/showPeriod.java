@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 public class showPeriod extends MJPanel{
 	private static final long serialVersionUID = 1L;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,17);
-	private Image background=new ImageIcon("./src/main/resource/picture/marketing/showBackground.png").getImage();
+	private Image background=new ImageIcon(this.getClass().getResource("showBackground.png")).getImage();
 
 	public showPeriod(String name,String start,String end,double discount,int x, int y, int w, int h) {
 		super(x, y, w, h);
