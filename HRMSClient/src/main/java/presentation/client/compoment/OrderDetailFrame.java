@@ -51,7 +51,7 @@ public class OrderDetailFrame extends JFrame{
 		private Label orderTypeLabel;
 		private Label roomTypeLabel;
 		public OrderDetailPanel(){
-		imageIcon = new ImageIcon("image/OrderDetailPanel.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/OrderDetailPanel.png"));
 		orderNumLabel=new Label(vo.getOrderId(),110,13,300,30);
 		orderTypeLabel=new Label(vo.getOrderType().toString(),310,13,250,30);
 		hotelNameLabel=new Label(vo.getHotelName(),90,63,300,30);

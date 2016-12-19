@@ -6,7 +6,7 @@ import javax.swing.JButton;
 public class deleteButton extends JButton{
 	ImageIcon icon;
 	public deleteButton(int x,int y){
-	icon=new ImageIcon("image/deleteButton.png");
+	icon=new ImageIcon(this.getClass().getResource("image/deleteButton.png"));
 	this.setIcon(icon);
 	this.setOpaque(true);
 	this.setContentAreaFilled(false);

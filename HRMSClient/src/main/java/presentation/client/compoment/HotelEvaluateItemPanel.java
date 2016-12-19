@@ -21,11 +21,11 @@ public class HotelEvaluateItemPanel extends JPanel{
 	private Label orderNum;
 	private Label money;
 	private OrderVO vo;
-	
+
 public HotelEvaluateItemPanel(int x,int y,OrderVO vo){
-	
+
 	this.vo=vo;
-	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");
+	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelEvaluatePanel.png"));
 	eb=new evaluateButton(510, 7);
 	eb.addActionListener(new evaluateButtonListener());
 	vb=new viewButton(450, 30);
@@ -37,7 +37,7 @@ public HotelEvaluateItemPanel(int x,int y,OrderVO vo){
 	this.add(orderNum);
 	this.add(money);
 
-	
+
     this.setLayout(null);
 	this.setBounds(x,y,600,100);
 	this.add(vb);

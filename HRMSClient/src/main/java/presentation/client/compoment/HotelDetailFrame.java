@@ -71,7 +71,7 @@ public class HotelDetailFrame extends JFrame{
 		private Label hotelTelLabel;
 		private orderButton order;
 		public HotelDetailPanel(){
-		imageIcon = new ImageIcon("image/HotelDetailPanel.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/HotelDetailPanel.png"));
 
 
 		order=new orderButton(470,280);

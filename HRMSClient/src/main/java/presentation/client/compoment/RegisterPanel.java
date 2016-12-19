@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Enum.VIPType;
-import presentation.DialogCreator;
 import presentation.client.controller.RegisterPanelController;
+import presentation.login.view.DialogCreator;
 import vo.clientVO.ClientVO;
 
 public class RegisterPanel extends JPanel{
@@ -38,7 +38,7 @@ public class RegisterPanel extends JPanel{
 		this.controller=controller;
 		vo=controller.getclient(id);
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
-		imageIcon = new ImageIcon("image/registerPanel.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/registerPanel.png"));
 		ok=new okButton(500,120);
 		ok.addActionListener(new okButtonListener());
 		delete=new deleteButton(510,260);

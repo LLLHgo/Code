@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Enum.ResultMessage;
-import presentation.DialogCreator;
 import presentation.client.view.ProcessClientView;
 import presentation.hotelstaff.controller.HotelstaffViewController;
 import presentation.hotelstaff.view.HotelstaffView;
@@ -39,9 +38,9 @@ public class ProcessLoginView extends JPanel {
 	private ProcessSitemanagerViewControllerService ps;
 	public ProcessLoginView(JFrame frame,ProcessLoginViewController controller){
 			this.controller=controller;
-			ImageIcon lib=new ImageIcon("image/loginButton.png");
-			ImageIcon sub=new ImageIcon("image/signUpButton.png");
-			imageIcon = new ImageIcon("image/login.png");
+			ImageIcon lib=new ImageIcon(this.getClass().getResource("image/loginButton.png"));
+			ImageIcon sub=new ImageIcon(this.getClass().getResource("image/signUpButton.png"));
+			imageIcon = new ImageIcon(this.getClass().getResource("image/login.png"));
 			this.setOpaque(true);
 		    this.setLayout(null);
 		    IdField = new JTextField();

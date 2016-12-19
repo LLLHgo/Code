@@ -6,7 +6,7 @@ import javax.swing.JButton;
 public class SearchButton extends JButton{
 	ImageIcon icon;
 	public SearchButton(){
-	icon=new ImageIcon("image/searchButton.png");
+	icon=new ImageIcon(this.getClass().getResource("image/searchButton.png"));
 	this.setIcon(icon);
 	this.setOpaque(true);
 	this.setContentAreaFilled(false);

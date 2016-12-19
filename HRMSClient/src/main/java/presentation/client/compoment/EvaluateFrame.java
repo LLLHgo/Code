@@ -52,7 +52,7 @@ class Panel extends JPanel{
 	private boolean flag=true;
 	public Panel(){
 		okButton = new JButton();
-		okButton.setIcon(new ImageIcon("image/evaluateConfirm.png"));
+		okButton.setIcon(new ImageIcon(this.getClass().getResource("image/evaluateConfirm.png")));
 		okButton.setBounds(80,250,100,24);
 		okButton.setOpaque(true);
 		okButton.setContentAreaFilled(false);
@@ -74,7 +74,7 @@ class Panel extends JPanel{
 		text.setLineWrap(true);
 		text.addMouseListener(new mouseListener());
 		this.add(text);
-		imageIcon = new ImageIcon("image/evaluateFrame.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/evaluateFrame.png"));
 		hintLabel=new Label("请为此次酒店入住体验打分～",80,20,350,30);
 
 		box=new ButtonGroup();

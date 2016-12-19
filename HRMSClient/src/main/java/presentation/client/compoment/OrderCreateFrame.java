@@ -144,7 +144,7 @@ public class OrderCreateFrame extends JFrame{
 			crlp=new chooseRoomListPane(hotelVO.getRoominfoList());
 			System.out.println(hotelVO.getRoominfoList().size());
 			frame.add(crlp);
-		imageIcon = new ImageIcon("image/OrderCreatePanel.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/OrderCreatePanel.png"));
 		hotelNameLabel=new Label(hotelVO.getName(),90,13,300,30);
 		totalMoneyLabel=new Label("0",117,240,300,30);
 		actualMoneyLabel=new Label("0",374,238,300,30);

@@ -68,7 +68,7 @@ public class ProcessClientView extends JPanel {
 			pp=new PersonalPanel(id,new PersonalPanelController());
 			rp=new RegisterPanel(id,new RegisterPanelController());
 			ep=new EvaluatePanel(frame,new EvaluatePanelController(),id);
-			imageIcon = new ImageIcon("image/clientPanel.png");
+			imageIcon = new ImageIcon(this.getClass().getResource("image/clientPanel.png"));
 
 
 			searchHotel=new GuideBoardButton(240,"查询酒店");

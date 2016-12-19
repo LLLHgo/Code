@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class WelPanel extends JPanel{
 	private ImageIcon imageIcon = null;
 public WelPanel(){
-	imageIcon = new ImageIcon("image/WelPanel.png");
+	imageIcon = new ImageIcon(this.getClass().getResource("image/WelPanel.png"));
 	this.setOpaque(false);
     //this.setLayout(null);
     this.setSize(704, 502);

@@ -20,7 +20,7 @@ public class OrderItemPanel extends JPanel{
 		private OrderVO vo;
 public OrderItemPanel(int x,int y,OrderVO vo){
 	this.vo=vo;
-	imageIcon = new ImageIcon("image/hotelEvaluatePanel.png");
+	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelEvaluatePanel.png"));
 	if(vo.getOrderStatus().equals(OrderType.NORMALNONEXEC)){
 	db=new minideleteButton(500, 7);
 	this.add(db);

@@ -17,7 +17,7 @@ public class HotelSearchItemPanel extends JPanel{
 	viewButton vb;
 	private HotelinfoVO vo;
 public HotelSearchItemPanel(int x,int y,HotelinfoVO vo){
-	imageIcon = new ImageIcon("image/hotelSearchPanel.png");
+	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelSearchPanel.png"));
 	this.vo=vo;
 	vb=new viewButton(500, 30);
 	hotelName=new Label(vo.getName(),15,7,200,30,25);

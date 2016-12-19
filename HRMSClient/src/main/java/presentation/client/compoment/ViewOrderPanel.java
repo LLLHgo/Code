@@ -42,8 +42,8 @@ public ViewOrderPanel(JFrame frame,String clientID,ViewOrderPanelController cont
 	Panel=new JPanel();
 	olp=new OrderListPane(controller.findUserOrderList(clientID));
 	frame.add(olp);
-	imageIcon = new ImageIcon("image/searchPanel.png");
-	ImageIcon icon=new ImageIcon("image/unfinButton.png");
+	imageIcon = new ImageIcon(this.getClass().getResource("image/searchPanel.png"));
+	ImageIcon icon=new ImageIcon(this.getClass().getResource("image/unfinButton.png"));
 	searchButton=new SearchButton();
 	searchButton.addActionListener(new searchButtonListener());
 	searchField=new JTextField();
@@ -55,20 +55,20 @@ public ViewOrderPanel(JFrame frame,String clientID,ViewOrderPanelController cont
 	searchField.setFocusable(true);
 
 		unfin=new Button(icon,10,100,80,80);
-		icon=new ImageIcon("image/finButton.png");
+		icon=new ImageIcon(this.getClass().getResource("image/finButton.png"));
 		unfin.addActionListener(new unfinButtonListener());
 		fin=new Button(icon,10,190,80,80);
 		fin.addActionListener(new finButtonListener());
-		icon=new ImageIcon("image/abnormalButton.png");
+		icon=new ImageIcon(this.getClass().getResource("image/abnormalButton.png"));
 		abnormal=new Button(icon,10,280,80,80);
 		abnormal.addActionListener(new abnormalButtonListener());
-		icon=new ImageIcon("image/repealButton.png");
+		icon=new ImageIcon(this.getClass().getResource("image/repealButton.png"));
 		repeal=new Button(icon,10,370,80,80);
 		repeal.addActionListener(new repealButtonListener());
-		icon=new ImageIcon("image/confirmdelete.png");
+		icon=new ImageIcon(this.getClass().getResource("image/confirmdelete.png"));
 		confirmdelete=new Button(icon,610,15,75,26);
 		confirmdelete.setVisible(false);
-		icon=new ImageIcon("image/nodelete.png");
+		icon=new ImageIcon(this.getClass().getResource("image/nodelete.png"));
 		nodelete=new Button(icon,610,45,75,26);
 		nodelete.setVisible(false);
 
@@ -250,7 +250,8 @@ private class OrderListPane extends JScrollPane{
 
 	public void change(ArrayList<OrderVO> list){
 		Panel.removeAll();
-		if(list!=null)
+		if(list!=null){
+			 Panel.setPreferredSize(new Dimension(600,list.size()*100));
 			   for(int i=0;i<list.size();i++){
 			    	OrderVO order=list.get(i);
 
@@ -289,6 +290,7 @@ private class OrderListPane extends JScrollPane{
 				    		});
 			    	 Panel.add(p);
 			    }
+		}
 			    this.getVerticalScrollBar().setVisible(false);
 			    scrollpanel=this;
 			    this.repaint();

@@ -22,7 +22,7 @@ public class chooseRoomPanel extends JPanel{
 	public chooseRoomPanel(int x,int y,String roomName,int num){
 		this.setLayout(null);
 		name=roomName;
-		imageIcon = new ImageIcon("image/chooseRoom.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/chooseRoom.png"));
 		roomNameLabel=new Label(roomName,0,0,80,30,20);
 		this.add(roomNameLabel);
 

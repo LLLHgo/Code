@@ -15,7 +15,7 @@ public class roomItemPanel extends JPanel{
 	private Label roomMoney;
 	private RoominfoVO vo;
 public roomItemPanel(int x,int y,RoominfoVO vo){
-	imageIcon = new ImageIcon("image/roomPanel.png");
+	imageIcon = new ImageIcon(this.getClass().getResource("image/roomPanel.png"));
 	this.vo=vo;
 
 	String price=""+vo.getPrice();

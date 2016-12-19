@@ -39,7 +39,7 @@ public class SearchPanel extends JPanel{
 		frame.add(hslp);
 
 
-		imageIcon = new ImageIcon("image/searchPanel.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/searchPanel.png"));
 		searchField=new JTextField();
 		searchButton=new SearchButton();
 		searchButton.addActionListener(new searchButtonListener());

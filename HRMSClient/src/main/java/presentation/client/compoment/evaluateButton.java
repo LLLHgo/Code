@@ -6,7 +6,7 @@ import javax.swing.JButton;
 public class evaluateButton extends JButton{
 	ImageIcon icon;
 	public evaluateButton(int x,int y){
-	icon=new ImageIcon("image/evaluateButton.png");
+	icon=new ImageIcon(this.getClass().getResource("image/evaluateButton.png"));
 	this.setIcon(icon);
 	this.setOpaque(true);
 	this.setContentAreaFilled(false);

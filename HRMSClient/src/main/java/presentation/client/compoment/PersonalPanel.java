@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import presentation.DialogCreator;
 import presentation.client.controller.PersonalPanelController;
 import presentation.common.CreditFrame;
+import presentation.login.view.DialogCreator;
 import vo.clientVO.ClientVO;
 
 
@@ -43,7 +43,7 @@ public class PersonalPanel extends JPanel{
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
 		cb=new creditButton();
 		cb.addActionListener(new creditButtonListener());
-		imageIcon = new ImageIcon("image/personalPanel.png");
+		imageIcon = new ImageIcon(this.getClass().getResource("image/personalPanel.png"));
 		idLabel=new Label("ID:"+clientID);
 		idLabel.setBounds(250,170,200,30);
 		nameField=new Field(vo.getName(),200,220,200,35);
@@ -106,7 +106,7 @@ public class PersonalPanel extends JPanel{
 	 class creditButton extends JButton{
 		ImageIcon icon;
 		public creditButton(){
-		icon=new ImageIcon("image/creditButton.png");
+		icon=new ImageIcon(this.getClass().getResource("image/creditButton.png"));
 		this.setIcon(icon);
 		this.setOpaque(true);
 		this.setContentAreaFilled(false);

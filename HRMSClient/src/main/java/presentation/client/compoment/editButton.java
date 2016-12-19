@@ -6,7 +6,7 @@ import javax.swing.JButton;
 public class editButton extends JButton{
 	ImageIcon icon;
 	public editButton(int x,int y){
-	icon=new ImageIcon("image/editButton.png");
+	icon=new ImageIcon(this.getClass().getResource("image/editButton.png"));
 	this.setIcon(icon);
 	this.setOpaque(true);
 	this.setContentAreaFilled(false);
