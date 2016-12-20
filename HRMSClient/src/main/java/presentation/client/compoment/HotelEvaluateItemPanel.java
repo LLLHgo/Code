@@ -28,7 +28,7 @@ public class HotelEvaluateItemPanel extends JPanel{
 	EvaluateFrame evaluateFrame;
 public HotelEvaluateItemPanel(int x,int y,OrderVO vo){
 	evaluateFrame=new EvaluateFrame();
-	evaluateFrame.setVisible(false);
+	
 	this.vo=vo;
 	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelEvaluatePanel.png"));
 	eb=new evaluateButton(510, 7);

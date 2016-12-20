@@ -38,7 +38,7 @@ public class OrderCreateFrame extends JFrame{
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	private OrderCreatePanel hdp;
+	OrderCreatePanel hdp;
 	private  JPanel Panel;
 	private DateChooser begin;
 	private DateChooser end;
@@ -141,7 +141,7 @@ public class OrderCreateFrame extends JFrame{
 		private Field nameField;
 		private chooseRoomListPane crlp;
 		private deleteButton delete;
-		private okButton ok;
+		okButton ok;
 		private JTextArea strategyArea;
 		public OrderCreatePanel(JFrame frame){
 			crlp=new chooseRoomListPane(hotelVO.getRoominfoList());

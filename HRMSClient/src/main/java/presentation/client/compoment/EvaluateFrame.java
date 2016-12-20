@@ -35,7 +35,7 @@ public EvaluateFrame(){
 	this.add(panel);
 	this.setLocationRelativeTo(null);
 	this.setLayout(null);
-	this.setVisible(true);
+	this.setVisible(false);
 	this.setResizable(false);
 	this.setSize(500, 309);
 	this.setLocation(500,200);

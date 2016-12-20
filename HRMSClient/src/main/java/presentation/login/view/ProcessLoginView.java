@@ -1,4 +1,5 @@
 package presentation.login.view;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -36,8 +38,14 @@ public class ProcessLoginView extends JPanel {
 	private ImageIcon imageIcon = null;
 	private ProcessLoginViewController controller;
 	private ProcessSitemanagerViewControllerService ps;
+	JLabel hint;
 	public ProcessLoginView(JFrame frame,ProcessLoginViewController controller){
 			this.controller=controller;
+			hint=new JLabel("");
+			hint.setBounds(350,170,300,30);
+			hint.setFont(new java.awt.Font("微软雅黑", 4,  20));
+			hint.setForeground(Color.WHITE);
+			this.add(hint);
 			ImageIcon lib=new ImageIcon(this.getClass().getResource("image/loginButton.png"));
 			ImageIcon sub=new ImageIcon(this.getClass().getResource("image/signUpButton.png"));
 			imageIcon = new ImageIcon(this.getClass().getResource("image/login.png"));
@@ -107,7 +115,7 @@ public class ProcessLoginView extends JPanel {
 
 						break;
 					case 'e':
-						DialogCreator.failDialog("Fail");
+						hint.setText("登录失败，请检查账号信息");
 						break;
 					}
 				}
@@ -122,12 +130,16 @@ public class ProcessLoginView extends JPanel {
 			signUpButton.setFocusPainted(false);
 			signUpButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
+					if(IdField.getText().length()==11&&new String(KeyField.getPassword()).length()>0){
 					ClientVO vo=new ClientVO(IdField.getText(),new String(KeyField.getPassword()));
 					String res=controller.addclient(vo);
 					if(res.charAt(0)=='C')
-					DialogCreator.successDialog0("Success",res);
+					hint.setText("您的登陆账号为："+res);
 					else
-						DialogCreator.failDialog0("Fail");
+						hint.setText("注册失败");
+				}else
+					hint.setText("请检查电话号码或是否输入密码");
+
 				}
 				});
 			this.add(loginButton);
@@ -136,6 +148,7 @@ public class ProcessLoginView extends JPanel {
 
 		    this.setVisible(true);
 	}
+
 	@Override
 	 public void paintComponent(Graphics g) {
 		    g.drawImage(imageIcon.getImage(), 0, 0, this);
