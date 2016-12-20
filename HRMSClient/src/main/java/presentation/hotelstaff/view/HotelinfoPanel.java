@@ -117,7 +117,9 @@ public class HotelinfoPanel extends JPanel{
 		jcbStar.setBounds(345,451,200,25);
 		jcbStar.setOpaque(false);
 		jcbStar.setBorder(null);
-		jcbStar.setSelectedItem(star.toString());
+		if(star!=null){
+			jcbStar.setSelectedItem(star.toString());
+		}
 		jcbStar.setFont(new Font("微软雅黑",Font.PLAIN,20));
 		jcbStar.setEnabled(false);
 		this.add(jcbStar);
@@ -204,6 +206,7 @@ public class HotelinfoPanel extends JPanel{
 			intro = jtaIntro.getText();
 			facility = jtaFacility.getText();
 			tel = jtaTEL.getText();
+			if(jcbCompany.getSelectedItem()!=null)
 			company = jcbCompany.getSelectedItem().toString();
 
 			String sStar = jcbStar.getSelectedItem().toString();
