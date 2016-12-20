@@ -342,6 +342,8 @@ public class OrderPanel extends JPanel{
 	        	button.setVisible(false);
 	        }else if(stateLabelText.equals("异常")){
 	        	stateLabel.setForeground(Color.red);
+	        }else if(stateLabelText.equals("已撤销")){
+	        	button.setVisible(false);
 	        }
 
 	        orderPanel.add(panel);

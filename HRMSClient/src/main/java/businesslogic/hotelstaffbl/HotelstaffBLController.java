@@ -115,7 +115,7 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 			Date date = new Date();
 			SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 			String stringdate = format.format(date.getTime());
-			boolean setcrediet = client.setCredit(vo.getClientId(), (int)vo.getPrice(), stringdate, "客户入住酒店");
+			boolean setcrediet = client.setCredit(vo.getClientId(), (int)vo.getPrice(), stringdate, "finish order");
 			if(setcrediet == false){
 				return ResultMessage.FAIL;
 			}
