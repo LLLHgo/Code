@@ -47,17 +47,20 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 
 
 	public String[] getArea() {
-		return txt.getArea();
+//		return txt.getArea();
+		return mysql.getArea();
 	}
 
 
 	public boolean addArea(String area) {
-		return txt.addArea(area);
+//		return txt.addArea(area);
+		return mysql.addArea(area);
 	}
 
 
 	public String[] getRoomType() {
-		return txt.getRoomType();
+//		return txt.getRoomType();
+		return mysql.getRoomType();
 	}
 
 

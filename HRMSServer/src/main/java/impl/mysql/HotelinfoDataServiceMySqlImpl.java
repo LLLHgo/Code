@@ -458,6 +458,68 @@ public class HotelinfoDataServiceMySqlImpl{
 	}
 
 
+	public String[] getArea() {
+		String data = "";
+		String[] areas = null;
+		try {
+			Statement st = conn.createStatement();
+			String sql = "select * from area";
+			ResultSet myRS = st.executeQuery(sql);
+			while(myRS.next()){
+				data =","+myRS.getString("area");
+			}
+			data = data.substring(1);
+			areas = data.split(",");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return areas;
+	}	
+
+
+	public boolean addArea(String area) {
+		Statement st;
+		try {
+			st = conn.createStatement();
+			String sql = "select * from area";
+			ResultSet myRS = st.executeQuery(sql);
+			while(myRS.next()){
+				if(myRS.getString("area").equals(area)){
+					return false;
+				}
+			}
+
+			sql = "insert into area (area) values (?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, area);
+			int result = ps.executeUpdate();
+			if(result>0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+	public String[] getRoomType() {
+		String data = "";
+		String[] rooms = null;
+		try {
+			Statement st = conn.createStatement();
+			String sql = "select * from roomType";
+			ResultSet myRS = st.executeQuery(sql);
+			while(myRS.next()){
+				data =","+myRS.getString("roomType");
+			}
+			data = data.substring(1);
+			rooms = data.split(",");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rooms;
+	}
 	
 	public void finish() throws RemoteException {
 		try {
