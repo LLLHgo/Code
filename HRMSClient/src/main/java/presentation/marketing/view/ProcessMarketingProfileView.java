@@ -79,24 +79,37 @@ public class ProcessMarketingProfileView extends JPanel{
 				String newTEL=TELField.getText();
 				char[] pass=passwordField.getPassword();
 				String newPassword=new String(pass);
-				if(newTEL.length()!=0&&newPassword.length()!=0){//电话和密码都不为空时才进行分析
-					if(newTEL.matches("^[0-9]*$")){  //密码可以自由设置，电话必须全部为数字
-  						Mvo.setTelephone(newTEL);
-                        Mvo.setPassword(newPassword);
-                        if(controller.MarketingAccountUpdate(Mvo)==ResultMessage.SUCCESS){
-                            ensureButton.setEnabled(false);
-                            TELField.setEditable(false);
-                            passwordField.setEditable(false);
-                        ((ProcessMarketingView) view).setHint("保存成功。");
-                        }else{
-                        	((ProcessMarketingView) view).setHint("保存失败。");
-                        }
-                        }else{//提示电话格式输入错误
-						((ProcessMarketingView) view).setHint("电话格式有误。");
-					}
-				}else{//提示重新填写
-					((ProcessMarketingView) view).setHint("请继续填写。");
+				if(newTEL.length()==0&&newPassword.length()==0){//电话和密码都为空
+					((ProcessMarketingView) view).setHint("密码和电话不能为空。");
+					return;
 				}
+				if(newTEL.length()==0){//电话为空
+					((ProcessMarketingView) view).setHint("电话不能为空。");
+					return;
+				}
+				if(newPassword.length()==0){//密码为空
+					((ProcessMarketingView) view).setHint("密码不能为空。");
+					return ;
+				}
+				//电话和密码都不为空时才进行分析
+				if(newTEL.matches("^[0-9]*$")){//电话必须为数字
+					if(newTEL.length()!=11){
+						((ProcessMarketingView) view).setHint("电话应为11位。");
+						return ;
+					}
+					Mvo.setTelephone(newTEL);
+                    Mvo.setPassword(newPassword);
+                    if(controller.MarketingAccountUpdate(Mvo)==ResultMessage.SUCCESS){
+                        ensureButton.setEnabled(false);
+                        TELField.setEditable(false);
+                        passwordField.setEditable(false);
+                        ((ProcessMarketingView) view).setHint("保存成功。");
+                    }else{
+                    	((ProcessMarketingView) view).setHint("保存失败。");
+                    }
+                 }else{//提示电话格式输入错误
+					((ProcessMarketingView) view).setHint("电话格式有误。");
+				 }
 			}
            });
 
