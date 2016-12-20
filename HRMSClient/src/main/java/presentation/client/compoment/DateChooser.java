@@ -216,7 +216,11 @@ public class DateChooser extends JPanel{
      * 最上面的面板用来显示月份的增减
      */
     private class JP1 extends JPanel{
-        JLabel left,right,center;
+        /**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+		JLabel left,right,center;
         public JP1(){
             super(new BorderLayout());
             this.setBackground(new Color(160,185,215));
@@ -277,7 +281,11 @@ public class DateChooser extends JPanel{
         }
     }
     private class JP2 extends JPanel{
-        public JP2(){
+        /**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+		public JP2(){
             this.setPreferredSize(new Dimension(295,20));
         }
         protected void paintComponent(Graphics g){
@@ -287,7 +295,11 @@ public class DateChooser extends JPanel{
         }
     }
     private class JP3 extends JPanel{
-        public JP3(){
+        /**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+		public JP3(){
             super(new GridLayout(6,7));
             this.setPreferredSize(new Dimension(295,100));
             initJP3();
@@ -318,7 +330,11 @@ public class DateChooser extends JPanel{
     }
     private class MyLabel extends JLabel implements Comparator<MyLabel>,
             MouseListener,MouseMotionListener{
-        private int year,month,day;
+        /**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+		private int year,month,day;
         private boolean isSelected;
         public MyLabel(int year,int month,int day){
             super(""+day,JLabel.CENTER);
@@ -440,15 +456,7 @@ public class DateChooser extends JPanel{
         public void clear(){
             list.clear();
         }
-        public void setSelect(MyLabel my, boolean b){
-            for(MyLabel m:list){
-                if(m.equals(my)){
-                    m.setSelected(true,b);
-                }else{
-                    m.setSelected(false,b);
-                }
-            }
-        }
+
         public void setSelect(Point p, boolean b){
             //如果是拖动,则要优化一下,以提高效率
             if(b){
@@ -488,7 +496,12 @@ public class DateChooser extends JPanel{
 
     }
     private class JP4 extends JPanel{
-        public JP4(){
+        /**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public JP4(){
             super(new BorderLayout());
             this.setPreferredSize(new Dimension(295,20));
             this.setBackground(new Color(160,185,215));

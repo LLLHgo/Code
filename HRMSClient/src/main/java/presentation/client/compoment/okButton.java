@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class okButton extends JButton{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	ImageIcon icon;
 	public okButton(int x,int y){
 	icon=new ImageIcon(this.getClass().getResource("image/checkButton.png"));

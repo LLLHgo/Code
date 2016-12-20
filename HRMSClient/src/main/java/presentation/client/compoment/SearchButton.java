@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class SearchButton extends JButton{
+	private static final long serialVersionUID = 1L;
 	ImageIcon icon;
 	public SearchButton(){
 	icon=new ImageIcon(this.getClass().getResource("image/searchButton.png"));

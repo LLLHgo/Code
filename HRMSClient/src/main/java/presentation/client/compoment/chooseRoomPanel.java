@@ -11,9 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import presentation.client.compoment.EvaluateFrame.Panel.mouseListener;
 
 public class chooseRoomPanel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private Label roomNameLabel;
 	Field numField;
@@ -35,6 +38,11 @@ public class chooseRoomPanel extends JPanel{
 		this.setOpaque(false);
 	}
 	class Field extends JTextField{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public Field(String str,int x,int y,int w,int h,int big){
 			super(str);
 			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  big);
@@ -48,6 +56,11 @@ public class chooseRoomPanel extends JPanel{
 		}
 	}
 	class Label extends JLabel{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public Label(String str,int x,int y,int w,int h,int big){
 			super(str);
 			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  big);

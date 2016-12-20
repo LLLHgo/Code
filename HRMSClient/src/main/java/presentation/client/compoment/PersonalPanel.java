@@ -20,6 +20,10 @@ import vo.clientVO.ClientVO;
 
 
 public class PersonalPanel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private JTextField nameField;
 	private JTextField telField;
@@ -40,7 +44,6 @@ public class PersonalPanel extends JPanel{
 		this.controller=controller;
 		vo=controller.getclient(clientID);
 
-		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
 		cb=new creditButton();
 		cb.addActionListener(new creditButtonListener());
 		imageIcon = new ImageIcon(this.getClass().getResource("image/personalPanel.png"));
@@ -82,6 +85,11 @@ public class PersonalPanel extends JPanel{
 	    this.setOpaque(false);
 	}
 	class Field extends JTextField{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public Field(String str,int x,int y,int w,int h){
 			super(str);
 			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
@@ -95,6 +103,7 @@ public class PersonalPanel extends JPanel{
 		}
 	}
 	class Label extends JLabel{
+		private static final long serialVersionUID = 1L;
 		public Label(String str){
 			super(str);
 			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
@@ -104,6 +113,7 @@ public class PersonalPanel extends JPanel{
 		}
 	}
 	 class creditButton extends JButton{
+		 private static final long serialVersionUID = 1L;
 		ImageIcon icon;
 		public creditButton(){
 		icon=new ImageIcon(this.getClass().getResource("image/creditButton.png"));

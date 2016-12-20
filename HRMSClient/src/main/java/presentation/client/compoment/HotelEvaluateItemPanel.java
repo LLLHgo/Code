@@ -14,6 +14,10 @@ import vo.orderVO.OrderVO;
 
 
 public class HotelEvaluateItemPanel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private evaluateButton eb;
 	viewButton vb;
@@ -55,6 +59,11 @@ private class evaluateButtonListener implements ActionListener{
 
 }
 class Label extends JLabel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Label(String str,int x,int y,int w,int h,int big){
 		super(str);
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4, big);

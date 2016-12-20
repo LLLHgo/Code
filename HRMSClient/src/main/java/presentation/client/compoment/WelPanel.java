@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class WelPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 public WelPanel(){
 	imageIcon = new ImageIcon(this.getClass().getResource("image/WelPanel.png"));

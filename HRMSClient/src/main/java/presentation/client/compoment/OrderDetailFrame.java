@@ -14,6 +14,10 @@ import vo.orderVO.OrderVO;
 
 
 public class OrderDetailFrame extends JFrame{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	OrderDetailPanel hdp;
 	OrderVO vo;
 	okButton ok;
@@ -40,6 +44,10 @@ public class OrderDetailFrame extends JFrame{
 		this.setLocation(500,200);
 	}
 	class OrderDetailPanel extends JPanel{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
 		private ImageIcon imageIcon = null;
 		private Label orderNumLabel;
 		private Label hotelNameLabel;
@@ -58,6 +66,7 @@ public class OrderDetailFrame extends JFrame{
 		personLabel=new Label(vo.getClientName(),110,118,300,30);
 		roomTypeLabel=new Label(vo.getRoomType()+" X"+vo.getRoomNum(),143,180,300,30);
 		liveTimeLabel=new Label(vo.getAnticipateArrivedTime().substring(0,9)+" 至 "+vo.getAnticipateLeaveTime().substring(0,9),133,233,400,30);
+		liveTimeLabel.setFont(new java.awt.Font("微软雅黑", 4,  20));
 		totalMoneyLabel=new Label("test",117,290,300,30);
 		actualMoneyLabel=new Label(""+vo.getPrice(),375,290,300,30);
 		orderTimeLabel=new Label(vo.getOrderDate(),180,345,300,30);
@@ -80,6 +89,11 @@ public class OrderDetailFrame extends JFrame{
 
 		}
 		class Label extends JLabel{
+			/**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public Label(String str,int x,int y,int w,int h){
 				super(str);
 				java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);

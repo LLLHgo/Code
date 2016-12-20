@@ -63,6 +63,10 @@ public class HotelDetailFrame extends JFrame{
 		this.setLocation(500,200);
 	}
 	class HotelDetailPanel extends JPanel{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
 		private ImageIcon imageIcon = null;
 		private Label hotelNameLabel;
 		private Label hotelLevelLabel;
@@ -98,6 +102,11 @@ public class HotelDetailFrame extends JFrame{
 
 		}
 		class Label extends JLabel{
+			/**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public Label(String str,int x,int y,int w,int h){
 				super(str);
 				java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
@@ -107,9 +116,13 @@ public class HotelDetailFrame extends JFrame{
 			}
 		}
 		class orderButton extends JButton{
+			/**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
 			ImageIcon icon;
 			public orderButton(int x,int y){
-			icon=new ImageIcon("image/orderButton.png");
+			icon=new ImageIcon(this.getClass().getResource("image/orderButton.png"));
 			this.setIcon(icon);
 			this.setOpaque(true);
 			this.setContentAreaFilled(false);
@@ -135,7 +148,11 @@ public class HotelDetailFrame extends JFrame{
 	}
 		class roomListPane extends JScrollPane{
 
-			private JScrollPane scrollpanel;
+			/**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public roomListPane(){
 				super(Panel);
 
@@ -156,7 +173,6 @@ public class HotelDetailFrame extends JFrame{
 		    	 Panel.add(p);
 			    }
 			    this.getVerticalScrollBar().setVisible(false);
-			    scrollpanel=this;
 			}
 		}
 //end scrollpane

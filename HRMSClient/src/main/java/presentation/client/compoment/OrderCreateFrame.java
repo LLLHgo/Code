@@ -3,7 +3,6 @@ package presentation.client.compoment;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -24,7 +23,6 @@ import javax.swing.border.EmptyBorder;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
-import datatool.RoominfoDataTool;
 import presentation.client.controller.SearchPanelController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -36,6 +34,10 @@ import vo.priceVO.PriceVO;
 
 
 public class OrderCreateFrame extends JFrame{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private OrderCreatePanel hdp;
 	private  JPanel Panel;
 	private DateChooser begin;
@@ -105,9 +107,6 @@ public class OrderCreateFrame extends JFrame{
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			Date date=new Date();
-			  DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			  String time=format.format(date);
 			  int i=0;
 			  for(;;i++){
 				  if(hdp.crlp.rooms.get(i).numField.getText().charAt(0)!='<')
@@ -131,6 +130,10 @@ public class OrderCreateFrame extends JFrame{
 
 	}
 	class OrderCreatePanel extends JPanel{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
 		private ImageIcon imageIcon = null;
 		private Label hotelNameLabel;
 		private Label totalMoneyLabel;
@@ -198,7 +201,7 @@ public class OrderCreateFrame extends JFrame{
 				  pricevo=controller.calculatePrice(client,room,hotelVO,num,days);
 				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),pricevo.getStrategys(),room.getType(),num,days);
 				ResultMessage rs=controller.createOrderPO(order);
-				System.out.println(rs);
+
 				frame.dispose();
 
 
@@ -209,12 +212,10 @@ public class OrderCreateFrame extends JFrame{
 			OrderVO order=new OrderVO();
 			order.setOrderId("");
 			order.setClientId(client.getID());
-			System.out.println(client.getID());
 			order.setClientName(name);
 			order.setOrderDate(time);
 			order.setHotelName(hotelVO.getName());
 			order.setClientPhone(client.getTel());
-			System.out.println(client.getTel());
 			order.setHotelId(hotelVO.getHotelID());
 			//以后补上
 			order.setPrice(price);
@@ -252,11 +253,15 @@ public class OrderCreateFrame extends JFrame{
 				nameField.setText("");
 				totalMoneyLabel.setText("");
 				actualMoneyLabel.setText("");
-				System.out.println("GET!"+begin.getChooseDate());
 			}
 
 		}
 		class Label extends JLabel{
+			/**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public Label(String str,int x,int y,int w,int h){
 				super(str);
 				java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
@@ -266,6 +271,11 @@ public class OrderCreateFrame extends JFrame{
 			}
 		}
 		class Field extends JTextField{
+			/**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public Field(String str,int x,int y,int w,int h,int big){
 				super(str);
 				java.awt.Font f=new java.awt.Font("微软雅黑", 4,  big);
@@ -279,7 +289,11 @@ public class OrderCreateFrame extends JFrame{
 			}
 		}
 		  class chooseRoomListPane extends JScrollPane{
-			  ArrayList<chooseRoomPanel> rooms;
+			  /**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+			ArrayList<chooseRoomPanel> rooms;
 			public chooseRoomListPane(ArrayList<RoominfoVO> list){
 
 				super(Panel);

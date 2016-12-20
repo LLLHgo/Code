@@ -21,6 +21,10 @@ import javax.swing.JTextArea;
 
 
 public class EvaluateFrame extends JFrame{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	Panel panel;
 	JFrame frame;
 
@@ -39,6 +43,10 @@ public EvaluateFrame(){
 
 }
 class Panel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	JTextArea text;
 	private JButton okButton;
 	private ImageIcon imageIcon = null;
@@ -136,6 +144,11 @@ class Panel extends JPanel{
 
 	}
 	class checkbutton extends JRadioButton{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public checkbutton(String str,int y){
 			super(str,true);
 			this.setBounds(30,y,350,30);
@@ -144,6 +157,11 @@ class Panel extends JPanel{
 		}
 	}
 	class Label extends JLabel{
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public Label(String str,int x,int y,int w,int h){
 			super(str);
 			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);

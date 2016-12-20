@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class minideleteButton extends JButton{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	ImageIcon icon;
 	public minideleteButton(int x,int y){
 	icon=new ImageIcon(this.getClass().getResource("image/minideleteButton.png"));

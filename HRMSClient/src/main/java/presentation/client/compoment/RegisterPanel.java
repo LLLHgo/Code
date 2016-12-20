@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -19,25 +18,24 @@ import presentation.login.view.DialogCreator;
 import vo.clientVO.ClientVO;
 
 public class RegisterPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private okButton ok;
 	private deleteButton delete;
 	private Label idLabel;
 	private Label nameLabel;
 	private Label telLabel;
-	private Label vipLabel;
 	private Field firmField;
 	private Field yearField;
 	private Field monthField;
 	private Field dayField;
-	private JScrollPane scrollPane;
-	private JComboBox combobox;
+
+	private JComboBox<String> combobox;
 	private RegisterPanelController controller;
 	private ClientVO vo;
 	public RegisterPanel(String id,RegisterPanelController controller){
 		this.controller=controller;
 		vo=controller.getclient(id);
-		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);
 		imageIcon = new ImageIcon(this.getClass().getResource("image/registerPanel.png"));
 		ok=new okButton(500,120);
 		ok.addActionListener(new okButtonListener());
@@ -51,7 +49,7 @@ public class RegisterPanel extends JPanel{
 		telLabel=new Label(vo.getTel());
 		telLabel.setBounds(150,215,300,30);
 
-		combobox=new JComboBox();
+		combobox=new JComboBox<String>();
 		combobox.addItem("普通会员");
 		combobox.addItem("企业会员");
 		combobox.setBounds(260,260,150,40);
@@ -78,6 +76,7 @@ public class RegisterPanel extends JPanel{
 	    this.setOpaque(false);
 	}
 	class Field extends JTextField{
+		private static final long serialVersionUID = 1L;
 		public Field(String str,int x,int y,int w,int h,int big){
 			super(str);
 			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  big);
@@ -125,6 +124,7 @@ public class RegisterPanel extends JPanel{
 
 		}
 	class Label extends JLabel{
+		private static final long serialVersionUID = 1L;
 		public Label(String str){
 			super(str);
 			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);

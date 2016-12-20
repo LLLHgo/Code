@@ -11,10 +11,15 @@ import Enum.OrderType;
 import vo.orderVO.OrderVO;
 
 public class OrderItemPanel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	minideleteButton db;
 	 viewButton vb;
 	 private Label hotelName;
+	 private Label orderType;
 		private Label orderNum;
 		private Label money;
 		private OrderVO vo;
@@ -27,9 +32,11 @@ public OrderItemPanel(int x,int y,OrderVO vo){
 	}
 	vb=new viewButton(450, 30);
 	hotelName=new Label(vo.getHotelName(),10,5,200,30,25);
+	orderType=new Label(vo.getOrderType().toString(),150,5,250,30,25);
 	orderNum=new Label(vo.getOrderId(),90,45,240,30,20);
 	money=new Label(""+vo.getPrice(),350,35,80,50,20);
 	this.add(hotelName);
+	this.add(orderType);
 	this.add(orderNum);
 	this.add(money);
 
@@ -41,6 +48,11 @@ public OrderItemPanel(int x,int y,OrderVO vo){
 	this.setVisible(true);
 }
 class Label extends JLabel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Label(String str,int x,int y,int w,int h,int big){
 		super(str);
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4, big);

@@ -20,6 +20,10 @@ import vo.orderVO.OrderVO;
 
 
 public class EvaluatePanel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private SearchButton searchButton;
 	private JTextField searchField;
@@ -66,7 +70,11 @@ public class EvaluatePanel extends JPanel{
 		   }
 	class HotelListPane extends JScrollPane{
 
-		private JScrollPane scrollpanel;
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public HotelListPane(ArrayList<OrderVO> list){
 			super(Panel);
 			Panel.setLayout(null);
@@ -92,7 +100,6 @@ public class EvaluatePanel extends JPanel{
 		    	 Panel.add(p);
 		    }
 		    this.getVerticalScrollBar().setVisible(false);
-		    scrollpanel=this;
 		}
 	}
 }

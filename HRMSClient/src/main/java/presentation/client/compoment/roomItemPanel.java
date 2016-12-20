@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import vo.hotelinfoVO.RoominfoVO;
 
 public class roomItemPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private Label roomName;
 	private Label roomMoney;
@@ -34,6 +35,7 @@ public roomItemPanel(int x,int y,RoominfoVO vo){
 	this.setVisible(true);
 }
 class Label extends JLabel{
+	private static final long serialVersionUID = 1L;
 	public Label(String str,int x,int y,int w,int h,int big){
 		super(str);
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);

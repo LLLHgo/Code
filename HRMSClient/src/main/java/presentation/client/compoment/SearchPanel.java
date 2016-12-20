@@ -19,12 +19,12 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class SearchPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private JTextField searchField;
 	private SearchButton searchButton;
 	private HotelSearchListPane hslp;
 	private JPanel Panel;
-	private JPanel temp;
 	private JFrame frame;
 	ClientVO client;
 	private SearchPanelController controller;
@@ -54,7 +54,7 @@ public class SearchPanel extends JPanel{
 	    this.setLayout(null);
 	    this.setSize(704, 502);
 	    this.setOpaque(false);
-	    temp=this;
+
 	}
 	public void setvisible(boolean flag){
 		this.setVisible(flag);
@@ -81,11 +81,10 @@ public class SearchPanel extends JPanel{
 
 	}
 	private class HotelSearchListPane extends JScrollPane{
-		private JFrame frame;
-		private JScrollPane scrollpanel;
+		private static final long serialVersionUID = 1L;
+
 		public HotelSearchListPane(JFrame frame,ArrayList<HotelinfoVO> list){
 			super(Panel);
-			this.frame=frame;
 			if(list!=null){
 			Panel.setLayout(null);
 		    Panel.setPreferredSize(new Dimension(600,list.size()));
@@ -111,7 +110,7 @@ public class SearchPanel extends JPanel{
 		    	 Panel.add(p);
 		    }
 		    this.getVerticalScrollBar().setVisible(false);
-		    scrollpanel=this;
+
 		}
 		}
 	public void change(ArrayList<HotelinfoVO> list){
@@ -129,7 +128,7 @@ public class SearchPanel extends JPanel{
 			    	 Panel.add(p);
 			    }
 			    this.getVerticalScrollBar().setVisible(false);
-			    scrollpanel=this;
+
 			    this.repaint();
 	}
 	}

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -21,6 +20,10 @@ import presentation.client.controller.ViewOrderPanelController;
 import vo.orderVO.OrderVO;
 
 public class ViewOrderPanel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private SearchButton searchButton;
 	private JTextField searchField;
@@ -100,6 +103,10 @@ public void setvisible(boolean flag){
 
 class Button extends JButton{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	ImageIcon icon;
 	public Button(ImageIcon icon,int x,int y,int w,int h){
 
@@ -188,7 +195,11 @@ private class repealButtonListener implements ActionListener{
 }
 private class OrderListPane extends JScrollPane{
 
-	private JScrollPane scrollpanel;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public OrderListPane(ArrayList<OrderVO> list){
 		super(Panel);
 
@@ -245,7 +256,7 @@ private class OrderListPane extends JScrollPane{
 	    	 Panel.add(p);
 	    }
 	    this.getVerticalScrollBar().setVisible(false);
-	    scrollpanel=this;
+
 	}
 
 	public void change(ArrayList<OrderVO> list){
@@ -292,7 +303,7 @@ private class OrderListPane extends JScrollPane{
 			    }
 		}
 			    this.getVerticalScrollBar().setVisible(false);
-			    scrollpanel=this;
+
 			    this.repaint();
 	}
 }

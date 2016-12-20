@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import vo.hotelinfoVO.HotelinfoVO;
 
 public class HotelSearchItemPanel extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
 	private Label hotelName;
 	private Label hotelLevel;
@@ -36,6 +40,11 @@ public HotelSearchItemPanel(int x,int y,HotelinfoVO vo){
 }
 
 class Label extends JLabel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Label(String str,int x,int y,int w,int h,int big){
 		super(str);
 		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  25);

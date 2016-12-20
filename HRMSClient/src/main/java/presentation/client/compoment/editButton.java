@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class editButton extends JButton{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	ImageIcon icon;
 	public editButton(int x,int y){
 	icon=new ImageIcon(this.getClass().getResource("image/editButton.png"));
