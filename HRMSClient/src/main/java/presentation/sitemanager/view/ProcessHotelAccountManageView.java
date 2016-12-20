@@ -364,6 +364,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 			result=controller.HotelAccountAdd(sitemanagerAddVO,addHotelstaffVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("添加成功！");
+				idLabel.setText(controller.getHotelID());
 				nameTextField.setEditable(false);
 				telTextField.setEditable(false);
 				passwordField.setEditable(false);

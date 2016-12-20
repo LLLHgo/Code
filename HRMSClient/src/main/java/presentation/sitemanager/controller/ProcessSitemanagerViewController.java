@@ -45,8 +45,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	SitemanagerBLService sitemanagerblservice; 
 	MarketingBLService marketingblservice; 
 	ClientBLService clientblservice; 
-	HotelstaffBLService hotelstaffblservice;// 以stub调用
-	HotelinfoBLService hotelblservice; // 以stub调用
+	HotelstaffBLService hotelstaffblservice;
+	HotelinfoBLService hotelblservice; 
 	LogBLService logblservice; 
 
 	public ProcessSitemanagerViewController(String sitemanagerId){
@@ -223,6 +223,22 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		hotelAccountManageView.setVisible(false);
 		showLogView.setVisible(true);
 
+	}
+
+
+	@Override
+	public String getMarketingID() {
+		
+		//return marketingblservice.getMaketingID();
+		return null;
+	}
+
+
+	@Override
+	public String getHotelID() {
+		// TODO Auto-generated method stub
+		//return hotelstaffblservice.getNewAddHotelID();
+		return null;
 	}
 
 

@@ -120,7 +120,16 @@ public interface ProcessSitemanagerViewControllerService {
 	 * @return 登录帐号或密码正确（true）或错误（false）的布尔值
 	 */
 	public ResultMessage checkAccount (SitemanagerVO accountVO);
-	
+	/**
+	 * 得到最新添加的网站营销人员帐号
+	 * @return 帐号
+	 */
+	public String getMarketingID();
+	/**
+	 * 得到最新添加的酒店工作人员帐号
+	 * @return 帐号
+	 */
+	public String getHotelID();
 	
 	/**
 	 * 添加日志

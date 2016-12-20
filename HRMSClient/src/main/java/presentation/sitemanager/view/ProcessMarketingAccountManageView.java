@@ -293,6 +293,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			result=controller.MarketingAccountAdd(addMarketingVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionalText.setText("添加账户成功！");
+				marketingIdLabel.setText(controller.getMarketingID());
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 添加网站营销人员"+addName+"账户");
 				deleteButton.setEnabled(true);
