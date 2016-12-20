@@ -52,7 +52,7 @@ public class NewStrategyPanel extends JPanel{
 	private List<VIPType> vipKinds;
 	private double discount;
 	private int level;
-	private int minSum;
+	private double minSum;
 	private int minRooms;
 
 	public NewStrategyPanel(HotelstaffViewController controller){
@@ -115,7 +115,7 @@ public class NewStrategyPanel extends JPanel{
 				}else{
 					//TODO　对必须要大于0的判断
 					minRooms = Integer.parseInt(jtfroom.getText());
-					minSum = Integer.parseInt(jtfmoney.getText());
+					minSum = Double.parseDouble(jtfmoney.getText());
 					level = Integer.parseInt(jtflevel.getText());
 					vipKinds = new ArrayList<VIPType>();
 					if(jrbClient.isSelected()){
@@ -127,14 +127,14 @@ public class NewStrategyPanel extends JPanel{
 					startTime = tpStart.getTime();
 					endTime = tpEnd.getTime();
 					Calendar now = Calendar.getInstance();
-					if(now.compareTo(endTime)<0){
-						showMessage("结束时间不能晚与当前时间，请重新填写");
+					if(now.compareTo(endTime)>0){
+						showMessage("结束时间不能早与当前时间，请重新填写");
 						return;
 					}
-					if(startTime.compareTo(endTime)>0){
-						showMessage("开始时间不能晚于当前时间，请重新填写");
-						return;
-					}
+//					if(startTime.compareTo(now)>0){
+//						showMessage("开始时间不能晚于当前时间，请重新填写");
+//						return;
+//					}
 					vo = new HotelStrategyVO(name,hotelID,HotelStrategy.CREATED,vipKinds,
 						startTime,endTime,discount,minRooms,minSum,level);
 					ResultMessage result = controller.updatehotelStrategy(vo);

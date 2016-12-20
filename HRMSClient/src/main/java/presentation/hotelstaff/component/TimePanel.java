@@ -74,8 +74,10 @@ public class TimePanel extends JPanel{
 			format.setLenient(false);
 			format.parse(f);
 		}catch(NumberFormatException e){
+	//		System.out.println("timepanelnumberformat报错");
 			return null;
 		} catch (ParseException e) {
+	//		System.out.println("timepanelparse报错");
 			return null;
 		}
 		return c;

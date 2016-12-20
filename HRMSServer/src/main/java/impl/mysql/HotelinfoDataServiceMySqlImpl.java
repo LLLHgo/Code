@@ -523,6 +523,10 @@ public class HotelinfoDataServiceMySqlImpl{
 		return rooms;
 	}
 	
+	public boolean addRoomType(String type)throws RemoteException{
+		return true;
+	}
+	
 	public void finish() throws RemoteException {
 		try {
 			conn.close();

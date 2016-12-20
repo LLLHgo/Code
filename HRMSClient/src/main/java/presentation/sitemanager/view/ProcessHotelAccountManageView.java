@@ -194,7 +194,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 				conditionLabel.setText("找到匹配账户");
 				nameTextField.setText(hotelinfoVO.getName());
 				idLabel.setText(hotelstaffVO.getHotelID());
-				telTextField.setText(hotelstaffVO.getPassword());
+				telTextField.setText(hotelstaffVO.getTel());
 				passwordField.setText(hotelstaffVO.getPassword());
 				telTextField.setEditable(false);
 				passwordField.setEditable(false);

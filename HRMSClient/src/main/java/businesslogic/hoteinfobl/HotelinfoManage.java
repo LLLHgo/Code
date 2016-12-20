@@ -53,33 +53,66 @@ public class HotelinfoManage{
 	public ArrayList<HotelinfoVO> getBasicinfoList(String area) {
 		ArrayList<HotelinfoPO> listPO;
 		ArrayList<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
+		RoominfoManage roominfoManage = new RoominfoManage();
 		try {
 			listPO = data.findHotelinfoList(area);
 			if(listPO == null){
 				try {
 					HotelinfoPO	newPO = data.clientfindhotelinfo(area);
-					System.out.println(newPO.getHotelID());
+					//System.out.println(newPO.getHotelID()+"....................");
 					if(newPO!=null){
 						HotelinfoVO newVO = PO2VO(newPO);
-						ArrayList<RoominfoVO> newlist = new RoominfoManage().getRoominfoList(newVO.getHotelID());
-						if(newlist!=null){
-							newVO.setRoominfoList(newlist);
+						ArrayList<RoominfoVO> roominfoList = roominfoManage.getRoominfoList(newPO.getHotelID());
+						String[] roomtype = roominfoManage.getRoomType();
+						int[] availablenum = new int[roomtype.length];
+						for(int m=0;m<availablenum.length;m++){
+							availablenum[m]=0;
 						}
+						if(roominfoList!=null){
+							ArrayList<RoominfoVO> selected = new ArrayList<RoominfoVO>();
+							for(int m=0;m<roomtype.length;m++){
+								for(int n=0;n<roominfoList.size();n++){
+									RoominfoVO roominfovo = roominfoList.get(n);
+									if(roominfovo.getType().equals(roomtype[m])&&
+										roominfovo.getRoomState()==RoomState.Usable){
+										availablenum[m]++;
+										if(availablenum[m]==1){
+											selected.add(roominfovo);
+										}
+									}
+								}
+							}
+							ArrayList<Integer> selectedArray = new ArrayList<Integer>();
+							for(int p=0;p<availablenum.length;p++){
+								int tempnum = availablenum[p];
+								if(tempnum>0){
+									selectedArray.add(tempnum);
+								}
+							}
+							newVO.setAvailableNum(selectedArray);
+							newVO.setRoominfoList(selected);
 						listVO.add(newVO);
 						return listVO;
+						}
 					}
 				} catch (RemoteException e) {
 					e.printStackTrace();
+					return null;
 				}
+				return null;
 			}
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
-				if(vo == null){
-					return null;
-				}
-				ArrayList<RoominfoVO> roominfoList = new RoominfoManage().getRoominfoList(listPO.get(i).getHotelID());
-				String[] roomtype = new RoominfoManage().getRoomType();
+//				if(vo == null){
+//					return null;
+//				}
+				
+				ArrayList<RoominfoVO> roominfoList = roominfoManage.getRoominfoList(listPO.get(i).getHotelID());
+				String[] roomtype = roominfoManage.getRoomType();
 				int[] availablenum = new int[roomtype.length];
+				for(int m=0;m<availablenum.length;m++){
+					availablenum[m]=0;
+				}
 				if(roominfoList!=null){
 					ArrayList<RoominfoVO> selected = new ArrayList<RoominfoVO>();
 					for(int m=0;m<roomtype.length;m++){

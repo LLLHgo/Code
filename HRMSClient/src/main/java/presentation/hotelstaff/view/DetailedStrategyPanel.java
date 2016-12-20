@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -131,7 +132,7 @@ public class DetailedStrategyPanel extends JPanel{
 				name = jtfname.getText();
 				discount = Double.parseDouble(jtfdiscount.getText());
 				minRooms = Integer.parseInt(jtfroom.getText());
-				minSum = Integer.parseInt(jtfmoney.getText());
+				minSum = Double.parseDouble(jtfmoney.getText());
 				level = Integer.parseInt(jtflevel.getText());
 				vipKinds = new ArrayList<VIPType>();
 				if(jrbClient.isSelected()){
@@ -154,7 +155,6 @@ public class DetailedStrategyPanel extends JPanel{
 			}catch(NumberFormatException e1){
 				showMessage("数字格式错误，请重新填写");
 			}
-
 			}
 
 		});

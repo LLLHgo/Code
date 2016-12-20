@@ -313,6 +313,8 @@ public class OrderCreateFrame extends JFrame{
 			   if(list!=null)
 			    for(int i=0;i<list.size();i++){
 			    	RoominfoVO vo=list.get(i);
+	//		    	System.out.println(vo.getType()+"type");
+		//	    	System.out.println(hotelVO.getAvailableNum().get(i)+"num");
 			    	chooseRoomPanel p=new chooseRoomPanel(0, i*35,vo.getType(),hotelVO.getAvailableNum().get(i)+1);
 			    	 Panel.add(p);
 			    	 rooms.add(p);
