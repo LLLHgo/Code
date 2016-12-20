@@ -237,8 +237,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	@Override
 	public String getHotelID() {
 		// TODO Auto-generated method stub
-		//return hotelstaffblservice.getNewAddHotelID();
-		return null;
+		return hotelstaffblservice.getNewAddHotelID();
 	}
 
 
