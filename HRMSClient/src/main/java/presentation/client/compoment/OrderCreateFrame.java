@@ -47,6 +47,7 @@ public class OrderCreateFrame extends JFrame{
 	private ClientVO client;
 	PriceVO pricevo;
 	JFrame frame;
+	private JTextArea strategyArea;
 	public OrderCreateFrame(ClientVO client,SearchPanelController controller,HotelinfoVO hotelVO){
 		pricevo=new PriceVO(0,null);
 		this.controller=controller;
@@ -118,7 +119,11 @@ public class OrderCreateFrame extends JFrame{
 			  RoominfoVO room=hotelVO.getRoominfoList().get(i);
 			 double beforeprice=num*days*room.getPrice();
 					 pricevo=controller.calculatePrice(client,room,hotelVO,num,days);
-			  hdp.actualMoneyLabel.setText(Double.toString(pricevo.getPrice()));
+					 String Strategy="优惠策略：";
+					 for(int k=0;k<pricevo.getStrategys().size();k++)
+						 Strategy=Strategy+pricevo.getStrategys().get(k)+"\n";
+					 strategyArea.setText(Strategy);
+			hdp.actualMoneyLabel.setText(Double.toString(pricevo.getPrice()));
 			  hdp.totalMoneyLabel.setText(Double.toString(beforeprice));
 		}
 
@@ -142,7 +147,7 @@ public class OrderCreateFrame extends JFrame{
 		private chooseRoomListPane crlp;
 		private deleteButton delete;
 		okButton ok;
-		private JTextArea strategyArea;
+
 		public OrderCreatePanel(JFrame frame){
 			crlp=new chooseRoomListPane(hotelVO.getRoominfoList());
 			System.out.println(hotelVO.getRoominfoList().size());
@@ -161,7 +166,7 @@ public class OrderCreateFrame extends JFrame{
 		this.add(ok);
 
 		strategyArea=new JTextArea();
-		strategyArea.setBounds(20,280,200,100);
+		strategyArea.setBounds(40,280,300,150);
 		strategyArea.setOpaque(false);
 		strategyArea.setForeground(Color.WHITE);
 		strategyArea.setFont(new java.awt.Font("微软雅黑", 4,  20));
