@@ -466,7 +466,7 @@ public class HotelinfoDataServiceMySqlImpl{
 			String sql = "select * from area";
 			ResultSet myRS = st.executeQuery(sql);
 			while(myRS.next()){
-				data =","+myRS.getString("area");
+				data +=","+myRS.getString("area");
 			}
 			data = data.substring(1);
 			areas = data.split(",");
@@ -478,6 +478,9 @@ public class HotelinfoDataServiceMySqlImpl{
 
 
 	public boolean addArea(String area) {
+		if(area.equals("")||area==null){
+			return false;
+		}
 		Statement st;
 		try {
 			st = conn.createStatement();
@@ -488,7 +491,6 @@ public class HotelinfoDataServiceMySqlImpl{
 					return false;
 				}
 			}
-
 			sql = "insert into area (area) values (?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, area);
@@ -511,7 +513,7 @@ public class HotelinfoDataServiceMySqlImpl{
 			String sql = "select * from roomType";
 			ResultSet myRS = st.executeQuery(sql);
 			while(myRS.next()){
-				data =","+myRS.getString("roomType");
+				data +=","+myRS.getString("roomType");
 			}
 			data = data.substring(1);
 			rooms = data.split(",");
