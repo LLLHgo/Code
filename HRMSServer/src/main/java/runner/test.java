@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import Enum.OrderType;
 import Enum.VIPType;
+import impl.mysql.LogDataServiceMySqlImpl;
 import impl.mysql.OrderDataServiceMySqlImpl;
 import impl.mysql.SitemanagerDataServiceMySqlImpl;
 import impl.txt.LogDataServiceTxtImpl;
@@ -232,5 +233,31 @@ public class test {
 				for(int i=0;i<orderPOList.size();i++)
 					System.out.println(orderPOList.get(i).getPrice());
 			}
+		}
+		// LogDataServiceMySqlImpl getLogList
+		void test16(){
+			LogDataServiceMySqlImpl li;
+			ArrayList<LogPO> list=new ArrayList<LogPO>();
+			try {
+				li=new LogDataServiceMySqlImpl();
+				list=li.getLogList();
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			System.out.println(list.size());
+			System.out.println(list.get(0).getLogInfo());
+		}
+		// LogDataServiceMySqlImpl addLog
+		void test17(){
+			LogDataServiceMySqlImpl li;
+			LogPO logPO=new LogPO("M00000010 Mon Dec 07 23:23:32 CDT 2016 修改C00000015信用值");
+			boolean result=false;
+			try {
+				li=new LogDataServiceMySqlImpl();
+				result=li.addLog(logPO);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}	
+			System.out.println(result);
 		}
 }

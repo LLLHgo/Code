@@ -24,7 +24,9 @@ abstract class AdapterTxt implements DataFactory{
 	public SitemanagerDataService getSitemanagerDataService(){
 		return null;
 	};
-	public abstract LogDataService getLogDataService();
+	public LogDataService getLogDataService(){
+		return null;
+	};
 	
 	public OrderDataService getLogDataservice(){
 		return null;
@@ -32,4 +34,5 @@ abstract class AdapterTxt implements DataFactory{
 	public StrategyDataService getStrategyDataService(){
 		return null;
 	};
+	
 }

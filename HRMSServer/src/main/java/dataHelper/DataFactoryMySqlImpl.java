@@ -13,6 +13,7 @@ import dataservice.strategydataservice.StrategyDataService;
 import impl.hotelinfo.HotelinfoDataServiceImpl;
 import impl.mysql.ClientDataServiceMySqlImpl;
 import impl.mysql.HotelstaffDataServiceMySqlImpl;
+import impl.mysql.LogDataServiceMySqlImpl;
 import impl.mysql.MarketingDataServiceMySqlImpl;
 import impl.mysql.OrderDataServiceMySqlImpl;
 import impl.mysql.SitemanagerDataServiceMySqlImpl;
@@ -40,6 +41,7 @@ public class DataFactoryMySqlImpl  implements DataFactory{
 		orderDataService=new OrderDataServiceMySqlImpl();
 		sitemanagerDataService=new SitemanagerDataServiceMySqlImpl();
 		strategyDataService=new StrategyDataServiceMySqlImpl();
+		logDataService=new LogDataServiceMySqlImpl();
 		
 	}
 	

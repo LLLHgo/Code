@@ -27,7 +27,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>runner.CLientRunner</mainClass>
+                  <mainClass>runner.ClientRunner</mainClass>
                 </transformer>
               </transformers>
             </configuration>

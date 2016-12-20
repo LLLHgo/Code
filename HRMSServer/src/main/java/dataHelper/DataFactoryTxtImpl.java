@@ -8,12 +8,10 @@ import impl.hotelinfo.HotelinfoDataServiceImpl;
 import impl.txt.LogDataServiceTxtImpl;
 
 public class DataFactoryTxtImpl extends AdapterTxt implements DataFactory{
-	
-	LogDataService logDataService;
+
 	HotelinfoDataService hotelinfoDataService;
 	
 	public DataFactoryTxtImpl() throws RemoteException{
-		 logDataService=new LogDataServiceTxtImpl();
 		 hotelinfoDataService=new HotelinfoDataServiceImpl();
 	}
 
@@ -22,14 +20,5 @@ public class DataFactoryTxtImpl extends AdapterTxt implements DataFactory{
 		// TODO Auto-generated method stub
 		return hotelinfoDataService;
 	}
-
-	@Override
-	public LogDataService getLogDataService() {
-		// TODO Auto-generated method stub
-		return logDataService;
-	}
-	
-
-	
 
 }
