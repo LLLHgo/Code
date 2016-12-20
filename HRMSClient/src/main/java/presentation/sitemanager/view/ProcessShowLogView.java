@@ -126,7 +126,7 @@ public class ProcessShowLogView extends JPanel{
 		
 		// 日志抬头
 		logUpLabel=new MyLabel(100,30,100,30,"日志");
-		logUpLabel.setFont(new java.awt.Font("华文黑体",  1,  25));
+		logUpLabel.setFont(new java.awt.Font("楷体",  1,  25));
 		
 		this.add(backdrop);
 		this.add(logUpLabel);

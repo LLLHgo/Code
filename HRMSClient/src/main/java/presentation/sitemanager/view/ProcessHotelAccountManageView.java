@@ -149,7 +149,9 @@ public class ProcessHotelAccountManageView extends JPanel{
 			nameTextField.setText("");
 			telTextField.setText("");
 			passwordField.setText("");
+			idLabel.setText("");
 			nameTextField.setText("");
+			nameTextField.setEditable(true);;
 			telTextField.setEditable(true);
 			passwordField.setEditable(true);
 			checkAddButton.setVisible(true);
