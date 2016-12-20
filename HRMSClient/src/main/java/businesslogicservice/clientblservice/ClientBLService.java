@@ -44,7 +44,7 @@ public interface ClientBLService {
 	 * @param vo
 	 * @return 修改会员等级成功与否
 	 */
-	public boolean setAllClientLevel(LevelVO vo);
+	public boolean setAllClientLevel(ArrayList<LevelVO>  vos);
 	/**
 	 * 根据会员等级制度修改某一客户的会员等级
 	 * @param vo

@@ -99,8 +99,8 @@ public class ClientBLService_Stub implements ClientBLService {
 	 * @param vo
 	 * @return 修改会员等级成功与否
 	 */
-	public boolean setAllClientLevel(LevelVO vo){
-		if(vo!=null)
+	public boolean setAllClientLevel(ArrayList<LevelVO>  vos){
+		if(vos!=null)
 			return true;
 		else
 			return false;

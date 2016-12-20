@@ -109,7 +109,7 @@ public class ClientManage implements ClientBLService{
 
 	}
 	@Override
-	public boolean setAllClientLevel(LevelVO vo) {
+	public boolean setAllClientLevel(ArrayList<LevelVO>  vos) {
 		// TODO Auto-generated method stub
 		try{
 			boolean res=clientdata. setAllLevel();
