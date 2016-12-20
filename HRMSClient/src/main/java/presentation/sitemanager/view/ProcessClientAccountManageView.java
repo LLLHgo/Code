@@ -163,8 +163,18 @@ public class ProcessClientAccountManageView extends JPanel{
 		telText.setText(clientVO.getTel());
 		viptypeLabel.setText(clientVO.getType()+"");
 		vipgradeLabel.setText(clientVO.getLevel()+"");
-		firmLabel.setText(clientVO.getFirm());
-		birthLabel.setText(clientVO.getBirth());
+		if(clientVO.getFirm()!=null||clientVO.getFirm().equals("")){
+			firmLabel.setText(clientVO.getFirm());
+		}
+		else{ 
+			firmLabel.setText("--");
+		}
+		if(clientVO.getBirth()!=null||clientVO.getBirth().equals("")){
+			birthLabel.setText(clientVO.getBirth());
+		}
+		else{ 	
+			birthLabel.setText("--");
+		}
 		creditLabel.setText(clientVO.getCredit()+"");
 		passwordText.setText(clientVO.getPassword());
 		creditIconButton.setEnabled(true);
