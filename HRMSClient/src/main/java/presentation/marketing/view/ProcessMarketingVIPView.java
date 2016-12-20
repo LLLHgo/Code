@@ -49,13 +49,22 @@ public class ProcessMarketingVIPView extends JPanel{
                 	return;
                 }else{
                 	ResultMessage right=check();
-	                if(controller.updateLevel(levelsPos)==ResultMessage.SUCCESS){
-	                	view.setHint("等级信息保存成功!客户数据更新成功！");
-	                }else if(controller.updateLevel(levelsPos)==ResultMessage.FAIL){
-	                	view.setHint("等级信息保存失败。");
-	                }else if(controller.updateLevel(levelsPos)==ResultMessage.FAULT){
-	                	view.setHint("等级信息已保存成功，氮素。。客户数据更新失败。。。");
-	                }
+                	if(right==ResultMessage.SUCCESS){//检验成功
+                		ResultMessage setCredit=controller.updateLevel(levelsPos);
+                		if(setCredit==ResultMessage.SUCCESS){//客户信用值充值成功
+                			view.setHint("客户信用值更新成功");
+                		}else{
+                			view.setHint("客户信用值更新中");
+                		}
+                 	}else if(right==ResultMessage.DUPLICATELEVELNAME){//所需信用值有重复
+                		view.setHint("等级名称不能重复");
+                	}else if(right==ResultMessage.DUPLICATECREDIT){//所需信用值有重复
+                		view.setHint("信用值不能重复");
+                	}else if(right==ResultMessage.DUPLICATELEVEL){//等级有重复
+                		view.setHint("等级层次不能重复");
+                	}else if(right==ResultMessage.WRONGLEVEL){//信用值和等级不匹配
+                		view.setHint("等级与所需信用值不匹配");
+                	}
                 }
 			}
         });
@@ -74,11 +83,56 @@ public class ProcessMarketingVIPView extends JPanel{
 	public ResultMessage check(){
 		int size=this.levelsPos.size();
 		int[] num=new  int[size];
-		for(int n:num)n=0;
+		double[] credit=new double[size];
+		String[] name=new String[size];
+		int index=0;
 		for(LevelVO level:levelsPos){
-			//if(level.getLevel())
+			num[index]=level.getLevel();
+			name[index]=level.getName();
+			credit[index++]= level.getCreditNeeded();
+
 		}
-		return null;
+		for(int i=0;i<size;i++){
+			for(int j=i+1;j<size;j++){
+				if(name[i].equals(name[j]))
+					return ResultMessage.DUPLICATELEVELNAME;
+				if(num[i]==num[j])
+					return ResultMessage.DUPLICATELEVEL;
+				if(credit[i]==credit[j])
+					return ResultMessage.DUPLICATECREDIT;
+				if((num[i]>num[j]&&credit[i]<credit[j])||(num[i]<num[j]&&credit[i]>credit[j]))
+					return ResultMessage.WRONGLEVEL;
+			}
+		}
+		return ResultMessage.SUCCESS;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
