@@ -1,11 +1,12 @@
 package presentation.sitemanager.component;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JTextField;
 
 public class MyTextField extends JTextField{
-	
+
 	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
@@ -18,12 +19,12 @@ public class MyTextField extends JTextField{
 		this.w=w;
 		this.h=h;
 		this.info=info;
-		
+
 		setOthers();
 	}
 	void setOthers(){
 		this.setBounds(this.x,this.y,this.w,this.h);
-		this.setFont(new java.awt.Font("华文黑体",  1,  20));
+		this.setFont(new java.awt.Font("楷体",Font.ITALIC,20));
 		this.setForeground(Color.DARK_GRAY);
 		this.setText(info);
 		this.setBackground(null);
