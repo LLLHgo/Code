@@ -61,7 +61,7 @@ public class RegisterPanel extends JPanel{
 		firmField=new Field(vo.getFirm(), 100,400, 300, 30,25);
 		else firmField=new Field("", 100,400, 300, 30,25);
 		firmField.setBounds(225,315,220,30);
-		if(vo.getBirth().length()==10){
+		if(vo.getBirth()!=null){
 		yearField=new Field(vo.getBirth().substring(0,4),190,365,65,30,15);
 		monthField=new Field(vo.getBirth().substring(5,7),290,365,35,30,15);
 		dayField=new Field(vo.getBirth().substring(8,10),370,365,35,30,15);

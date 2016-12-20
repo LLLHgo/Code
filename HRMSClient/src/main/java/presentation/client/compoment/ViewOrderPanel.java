@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Enum.OrderType;
+import Enum.ResultMessage;
 import presentation.client.controller.ViewOrderPanelController;
 import vo.orderVO.OrderVO;
 
@@ -36,6 +38,7 @@ public class ViewOrderPanel extends JPanel{
 	private OrderListPane olp;
 	private JPanel Panel;
 	private String clientID;
+	JLabel hint;
 	private JFrame frame;
 	private ViewOrderPanelController controller;
 public ViewOrderPanel(JFrame frame,String clientID,ViewOrderPanelController controller){
@@ -56,6 +59,12 @@ public ViewOrderPanel(JFrame frame,String clientID,ViewOrderPanelController cont
 	searchField.setForeground(Color.WHITE);
 	searchField.setOpaque(false);
 	searchField.setFocusable(true);
+
+	hint=new JLabel("");
+	hint.setBounds(250,10,300,30);
+	hint.setFont(new java.awt.Font("微软雅黑", 4,  20));
+	hint.setForeground(Color.WHITE);
+	this.add(hint);
 
 		unfin=new Button(icon,10,100,80,80);
 		icon=new ImageIcon(this.getClass().getResource("image/finButton.png"));
@@ -234,7 +243,8 @@ private class OrderListPane extends JScrollPane{
 	    			nodelete.setVisible(true);
 	    			confirmdelete.addActionListener(new ActionListener(){
 	    	    		public void actionPerformed(ActionEvent e) {
-	    	    			controller.cancelOrderPO(order.getOrderId());
+	    	    			if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS)
+	    	    				setHint("撤销成功");
 	    	    			confirmdelete.setVisible(false);
 	    	    			nodelete.setVisible(false);
 	    	    			olp.change(controller.findClientTypeOrderList(OrderType.NORMALNONEXEC,clientID));
@@ -280,11 +290,13 @@ private class OrderListPane extends JScrollPane{
 				    			nodelete.setVisible(true);
 				    			confirmdelete.addActionListener(new ActionListener(){
 				    	    		public void actionPerformed(ActionEvent e) {
-				    	    			controller.cancelOrderPO(order.getOrderId());
+				    	    			if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS)
+				    	    				setHint("撤销成功");
 				    	    			confirmdelete.setVisible(false);
 				    	    			nodelete.setVisible(false);
 				    	    			olp.change(controller.findClientTypeOrderList(OrderType.NORMALNONEXEC,clientID));
-				    			olp.repaint();
+
+				    	    	olp.repaint();
 				    			olp.revalidate();
 				    			frame.repaint();
 				    			frame.revalidate();
@@ -306,5 +318,22 @@ private class OrderListPane extends JScrollPane{
 
 			    this.repaint();
 	}
+	void setHint(String str){
+        hint.setText(str);
+    	new Thread(new Runnable(){
+			@Override
+			public void run() {
+				hint.setText(str);
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				hint.setText("");
+			}
+
+		}).start();
+
+    }
 }
 }

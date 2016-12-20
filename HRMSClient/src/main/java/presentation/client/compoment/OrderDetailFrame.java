@@ -65,7 +65,7 @@ public class OrderDetailFrame extends JFrame{
 		hotelNameLabel=new Label(vo.getHotelName(),90,63,300,30);
 		personLabel=new Label(vo.getClientName(),110,118,300,30);
 		roomTypeLabel=new Label(vo.getRoomType()+" X"+vo.getRoomNum(),143,180,300,30);
-		liveTimeLabel=new Label(vo.getAnticipateArrivedTime().substring(0,9)+" 至 "+vo.getAnticipateLeaveTime().substring(0,9),133,233,400,30);
+		liveTimeLabel=new Label(vo.getAnticipateArrivedTime().substring(0,10)+" 至 "+vo.getAnticipateLeaveTime().substring(0,10),133,233,400,30);
 		liveTimeLabel.setFont(new java.awt.Font("微软雅黑", 4,  20));
 		totalMoneyLabel=new Label(""+((int)vo.getPrice()*3/100)*100,117,290,300,30);
 		actualMoneyLabel=new Label(""+vo.getPrice(),375,290,300,30);

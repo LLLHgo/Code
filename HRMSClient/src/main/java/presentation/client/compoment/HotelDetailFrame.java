@@ -31,6 +31,8 @@ public class HotelDetailFrame extends JFrame{
 	private JPanel Panel;
 	private SearchPanelController controller;
 	ClientVO client;
+	JLabel hint;
+	JFrame frame;
 	public HotelDetailFrame(ClientVO client,SearchPanelController controller,HotelinfoVO vo){
 
 		this.controller=controller;
@@ -54,6 +56,12 @@ public class HotelDetailFrame extends JFrame{
 
 
 		hdp=new HotelDetailPanel();
+		frame=this;
+		hint=new JLabel("");
+		hint.setBounds(350,10,300,30);
+		hint.setFont(new java.awt.Font("微软雅黑", 4,  30));
+		hint.setForeground(Color.WHITE);
+		this.add(hint);
 		this.add(hdp);
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
@@ -136,10 +144,33 @@ public class HotelDetailFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new OrderCreateFrame(client,controller,vo);
+				OrderCreateFrame order=new OrderCreateFrame(client,controller,vo);
+				order.hdp.ok.addActionListener(new ActionListener(){
+		    		public void actionPerformed(ActionEvent e) {
+		    			order.dispose();
+		    			setHint("下单成功");
+		    		}
+		    		});
 			}
 
 		}
+		void setHint(String str){
+	        hint.setText(str);
+	    	new Thread(new Runnable(){
+				@Override
+				public void run() {
+					hint.setText(str);
+					try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					hint.setText("");
+				}
+
+			}).start();
+
+	    }
 		@Override
 		public void paintComponent(Graphics g) {
 			    g.drawImage(imageIcon.getImage(), 0, 0, this);
