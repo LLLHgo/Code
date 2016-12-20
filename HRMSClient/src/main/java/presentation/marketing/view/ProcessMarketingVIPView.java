@@ -54,7 +54,7 @@ public class ProcessMarketingVIPView extends JPanel{
                 		if(setCredit==ResultMessage.SUCCESS){//客户信用值充值成功
                 			view.setHint("客户信用值更新成功");
                 		}else{
-                			view.setHint("客户信用值更新中");
+                			view.setHint("数据已保存");//客户那边未更新
                 		}
                  	}else if(right==ResultMessage.DUPLICATELEVELNAME){//所需信用值有重复
                 		view.setHint("等级名称不能重复");
@@ -94,13 +94,13 @@ public class ProcessMarketingVIPView extends JPanel{
 		}
 		for(int i=0;i<size;i++){
 			for(int j=i+1;j<size;j++){
-				if(name[i].equals(name[j]))
+				if(name[i].equals(name[j]))//名字重复
 					return ResultMessage.DUPLICATELEVELNAME;
-				if(num[i]==num[j])
+				if(num[i]==num[j])//等级重复
 					return ResultMessage.DUPLICATELEVEL;
-				if(credit[i]==credit[j])
+				if(credit[i]==credit[j])//所需信用值重复
 					return ResultMessage.DUPLICATECREDIT;
-				if((num[i]>num[j]&&credit[i]<credit[j])||(num[i]<num[j]&&credit[i]>credit[j]))
+				if((num[i]>num[j]&&credit[i]<credit[j])||(num[i]<num[j]&&credit[i]>credit[j]))//等级和信用值不匹配
 					return ResultMessage.WRONGLEVEL;
 			}
 		}

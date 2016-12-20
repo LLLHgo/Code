@@ -19,7 +19,7 @@ import presentation.marketing.compoment.MJLabel;
 public class ProcessMarketingView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private String MarketingID;
-	private Icon photo=new ImageIcon(this.getClass().getResource("marketing.png"));
+	private Icon photo=new ImageIcon(this.getClass().getResource("marketer.png"));
 	private Icon welcomeIcon=new ImageIcon(this.getClass().getResource("welcomeIcon.png"));
 
 	private Image image=new ImageIcon(this.getClass().getResource("marketing.png")).getImage();
