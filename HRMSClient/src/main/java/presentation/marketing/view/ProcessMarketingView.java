@@ -19,13 +19,11 @@ import presentation.marketing.compoment.MJLabel;
 public class ProcessMarketingView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private String MarketingID;
-	private Icon photo=new ImageIcon(this.getClass().getResource("marketer.png"));
 	private Icon welcomeIcon=new ImageIcon(this.getClass().getResource("welcomeIcon.png"));
 
 	private Image image=new ImageIcon(this.getClass().getResource("marketing.png")).getImage();
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);
 	private MJLabel ID=new MJLabel("ID:",50,185,50,30,font);
-	private MJLabel defaultLabel=new MJLabel(95,37,100,200,photo);
 	private MJLabel IDLabel;
 	private GuideBoardButton profile=new GuideBoardButton(241,"个人信息");
 	private GuideBoardButton abnormal=new GuideBoardButton(301,"异常订单");
@@ -46,7 +44,6 @@ public class ProcessMarketingView extends JPanel{
 		this.add(welcome);
         this.add(ID);
        	this.add(IDLabel);
-    	this.add(defaultLabel);
 
         //给profileButton加监听
         profile.addActionListener(new ActionListener(){
