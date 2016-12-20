@@ -142,7 +142,8 @@ public class MarketingBLController implements MarketingBLControllerService{
 	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log,String reason) {
 		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 		Calendar c=Calendar.getInstance();
-		String date=format.format(c);
+		String date=format.format(c.getTime());
+		System.out.println(date+"%%%");
 		ResultMessage result=this.orderOperator.saveOrderPO(order);
 		if(result==ResultMessage.SUCCESS){//保存订单状态成功
 			if(this.clientBL.setCredit(order.getClientId(),(int)price,date,reason)){//设置客户信用值成功
