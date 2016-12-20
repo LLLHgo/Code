@@ -114,4 +114,14 @@ public class HotelstaffManage implements HotelstaffBLService{
 		return false;
 	}
 
+	@Override
+	public String getNewAddHotelID() {
+		try {
+			return data.gethotelID();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

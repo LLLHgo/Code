@@ -38,7 +38,12 @@ public interface HotelstaffDataService extends Remote{
 	 * @return boolean
 	 */
 	public boolean sitemanagerUpdate(HotelstaffPO po) throws RemoteException;
-
+	/**
+	 * 网站营销人员获得新增的酒店工作人员的账号
+	 * @return
+	 * @throws RemoteException
+	 */
+	public String gethotelID () throws RemoteException; 
 	/**
 	 * 结束持久化数据库的使用
 	 * @throws RemoteException

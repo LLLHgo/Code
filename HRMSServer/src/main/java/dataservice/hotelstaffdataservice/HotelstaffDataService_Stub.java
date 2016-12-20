@@ -51,5 +51,9 @@ public class HotelstaffDataService_Stub implements HotelstaffDataService{
 		}
 		return false;
 	}
+	public String gethotelID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

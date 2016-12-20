@@ -36,6 +36,11 @@ public interface HotelstaffBLService {
 	 */
 	public HotelstaffVO returnSitemanagerAccount(String hotelID);
 	/**
+	 * 
+	 * @return
+	 */
+	public String getNewAddHotelID();
+	/**
 	 * 登录时检测账号密码
 	 * @param hotelID
 	 * @param password

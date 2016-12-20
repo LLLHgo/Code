@@ -142,4 +142,20 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		}
 	}
 
+
+	public String gethotelID() throws RemoteException {
+		String lastID=null;
+		try {
+			Statement st = conn.createStatement();
+			String sql = "select * from hotelstaff";
+			ResultSet myRS = st.executeQuery(sql);
+			while(myRS.next()){
+				lastID = myRS.getString("hotelID");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lastID;
+	}
+
 }

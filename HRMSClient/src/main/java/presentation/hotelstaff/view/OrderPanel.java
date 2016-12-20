@@ -291,7 +291,7 @@ public class OrderPanel extends JPanel{
 	        		OrderType.ABNORMAL,OrderType.CANCEL};
 	        String stateLabelText = "";
 	    	String [] sOrderType = {"未执行","已执行","异常","已撤销"};
-	    	for(int i=0;i<3;i++){
+	    	for(int i=0;i<orderType.length;i++){
 	    		if(order.getOrderType()==orderType[i]){
 	    			stateLabelText = sOrderType[i];
 	    		}
