@@ -144,4 +144,16 @@ public class MarketingManage implements MarketingBLService{
 		return vo;//可以返回初始默认值的vo,但不能是null
 	}
 
+
+	@Override
+	public String getMarketingID()  {
+		try {
+			return this.marketingDataService.getMarketingID();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
+	}
+
 }

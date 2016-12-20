@@ -107,4 +107,10 @@ public class MarketingDataService_Stub implements MarketingDataService{
 			return false;
 		}
 	}
+
+	@Override
+	public String getMarketingID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

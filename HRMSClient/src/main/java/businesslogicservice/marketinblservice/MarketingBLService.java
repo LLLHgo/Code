@@ -62,4 +62,6 @@ public interface MarketingBLService {
      */
     public MarketingVO init(String id);
 
+	public String getMarketingID();
+
 }

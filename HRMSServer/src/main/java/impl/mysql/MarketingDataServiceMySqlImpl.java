@@ -215,4 +215,38 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 		}
 	}
 
+	public String getMarketingID() throws RemoteException{
+		Connection conn=DataBaseInit.getConnection();
+		Statement stmt;
+		String id="";
+		int max=0;
+		try{
+			stmt=conn.createStatement();
+			String sql;
+			sql="SELECT  MAX(id) FROM MarketingProfile";
+			ResultSet rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				max=rs.getInt(1);
+			}
+			sql="SELECT * FROM MarketingProfile WHERE id='"+max+"'";
+			ResultSet r=stmt.executeQuery(sql);
+			while(r.next()){
+				id=r.getString("MarketingID");
+				if(id==null)
+					return "";
+				return id;
+			}
+
+		}catch(SQLException se){
+			// 处理 JDBC 错误
+			se.printStackTrace();
+			return "";
+		}catch(Exception e){
+			// 处理 Class.forName 错误
+			e.printStackTrace();
+			return "";
+		}
+		return id;
+	}
+
 }

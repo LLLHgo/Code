@@ -90,6 +90,12 @@ public class MarketingBLController implements MarketingBLControllerService{
 
 
 	@Override
+	public String getMarketingID() {
+		return this.marketingBL.getMarketingID();
+	}
+
+
+	@Override
 	public boolean setCredit(String clientID, int amount,String reason) {
 		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 		Date d=new Date();
@@ -138,6 +144,7 @@ public class MarketingBLController implements MarketingBLControllerService{
 	    return this.hotelBL.getArea();
 	}
 
+
 	@Override
 	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log,String reason) {
 		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
@@ -158,5 +165,7 @@ public class MarketingBLController implements MarketingBLControllerService{
             return ResultMessage.SETORDERTYPEEXCEPTION;
 		}
 	}
+
+
 
 }

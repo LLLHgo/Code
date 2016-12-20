@@ -49,5 +49,6 @@ public interface MarketingBLControllerService {
 	public String[] getDistrictNames();
 
 	public ResultMessage operateOnAbnormalOrder(OrderVO order, double price, StringBuilder log,String reason);
+	public String getMarketingID();
 
 }
