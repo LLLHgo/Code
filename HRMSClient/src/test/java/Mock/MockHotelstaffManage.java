@@ -61,4 +61,11 @@ public class MockHotelstaffManage implements HotelstaffBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public String getNewAddHotelID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
