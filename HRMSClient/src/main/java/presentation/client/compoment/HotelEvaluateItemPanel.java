@@ -25,9 +25,10 @@ public class HotelEvaluateItemPanel extends JPanel{
 	private Label orderNum;
 	private Label money;
 	private OrderVO vo;
-
+	EvaluateFrame evaluateFrame;
 public HotelEvaluateItemPanel(int x,int y,OrderVO vo){
-
+	evaluateFrame=new EvaluateFrame();
+	evaluateFrame.setVisible(false);
 	this.vo=vo;
 	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelEvaluatePanel.png"));
 	eb=new evaluateButton(510, 7);
@@ -54,7 +55,7 @@ private class evaluateButtonListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		new EvaluateFrame();
+		evaluateFrame.setVisible(true);
 	}
 
 }

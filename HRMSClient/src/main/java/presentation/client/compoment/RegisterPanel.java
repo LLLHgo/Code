@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Enum.VIPType;
+import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.RegisterPanelController;
 import presentation.login.view.DialogCreator;
 import vo.clientVO.ClientVO;
@@ -25,6 +26,7 @@ public class RegisterPanel extends JPanel{
 	private Label idLabel;
 	private Label nameLabel;
 	private Label telLabel;
+	private Label hint;
 	private Field firmField;
 	private Field yearField;
 	private Field monthField;
@@ -48,21 +50,31 @@ public class RegisterPanel extends JPanel{
 
 		telLabel=new Label(vo.getTel());
 		telLabel.setBounds(150,215,300,30);
+		hint=new Label("");
+		hint.setBounds(5,5,300,30);
 
 		combobox=new JComboBox<String>();
 		combobox.addItem("普通会员");
 		combobox.addItem("企业会员");
 		combobox.setBounds(260,260,150,40);
-
+		if(vo.getFirm()!="null")
 		firmField=new Field(vo.getFirm(), 100,400, 300, 30,25);
+		else firmField=new Field("", 100,400, 300, 30,25);
 		firmField.setBounds(225,315,220,30);
-
-		yearField=new Field("",190,365,65,30,15);
-		monthField=new Field("",290,365,35,30,15);
-		dayField=new Field("",370,365,35,30,15);
+		if(vo.getBirth().length()==10){
+		yearField=new Field(vo.getBirth().substring(0,4),190,365,65,30,15);
+		monthField=new Field(vo.getBirth().substring(5,7),290,365,35,30,15);
+		dayField=new Field(vo.getBirth().substring(8,10),370,365,35,30,15);
+		}
+		else{
+			yearField=new Field("",190,365,65,30,15);
+			monthField=new Field("",290,365,35,30,15);
+			dayField=new Field("",370,365,35,30,15);
+		}
 		this.add(ok);
 		this.add(delete);
 		this.add(idLabel);
+		this.add(hint);
 		this.add(nameLabel);
 		this.add(telLabel);
 		this.add(firmField);
@@ -94,6 +106,7 @@ public class RegisterPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(vo.getType()==VIPType.NONVIP){
 				if((String)combobox.getSelectedItem()=="普通会员"){
 					vo.setBirth(yearField.getText()+"-"+monthField.getText()+"-"+dayField.getText());
 					vo.setType(VIPType.ORDINARYVIP);
@@ -105,8 +118,9 @@ public class RegisterPanel extends JPanel{
 				boolean k=controller.updateInfo(vo);
 				if(k)DialogCreator.successDialog("suceess");
 				else DialogCreator.failDialog("fail");
-
-
+				}
+				else
+					setHint("您已经是会员了");
 			}
 
 		}
@@ -138,4 +152,21 @@ public class RegisterPanel extends JPanel{
 		    g.drawImage(imageIcon.getImage(), 0, 0, this);
 		    super.paintComponents(g);
 		   }
+	public void setHint(String str){
+        hint.setText(str);
+    	new Thread(new Runnable(){
+			@Override
+			public void run() {
+				hint.setText(str);
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				hint.setText("");
+			}
+
+		}).start();
+
+    }
 }

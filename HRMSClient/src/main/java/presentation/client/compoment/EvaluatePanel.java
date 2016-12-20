@@ -9,12 +9,14 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Enum.OrderType;
+import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.EvaluatePanelController;
 import vo.orderVO.OrderVO;
 
@@ -31,9 +33,14 @@ public class EvaluatePanel extends JPanel{
 	private JPanel Panel;
 	private EvaluatePanelController controller;
 	private String id;
+	static JLabel hint;
 	public EvaluatePanel(JFrame frame,EvaluatePanelController controller,String id){
 		this.controller=controller;
 		this.id=id;
+		hint=new JLabel("");
+		hint.setBounds(5,0,300,30);
+		hint.setFont(new java.awt.Font("微软雅黑", 4,  15));
+		hint.setForeground(Color.WHITE);
 		Panel=new JPanel();
 		hlp=new HotelListPane(controller.findClientTypeOrderList(OrderType.NORMALEXEC,id));
 		hlp=new HotelListPane(new ArrayList<OrderVO>());
@@ -49,7 +56,7 @@ public class EvaluatePanel extends JPanel{
 	searchField.setFocusable(true);
 
 
-
+	this.add(hint);
 	this.add(searchButton);
 	this.add(searchField);
 	this.setVisible(false);
@@ -97,9 +104,52 @@ public class EvaluatePanel extends JPanel{
 		    			new OrderDetailFrame(order);
 		    		}
 		    		});
+		    	p.evaluateFrame.panel.okButton.addActionListener(new ActionListener(){
+		    		public void actionPerformed(ActionEvent e) {
+		    			p.evaluateFrame.dispose();
+		    			setHint("评价成功");
+		    		}
+		    		});
 		    	 Panel.add(p);
 		    }
 		    this.getVerticalScrollBar().setVisible(false);
 		}
+
+		public void change(ArrayList<OrderVO> list){
+			Panel.removeAll();
+			if(list!=null){
+				 Panel.setPreferredSize(new Dimension(600,list.size()*100));
+				 for(int i=0;i<list.size();i++){
+				    	OrderVO order=list.get(i);
+				    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order);
+				    	p.vb.addActionListener(new ActionListener(){
+				    		public void actionPerformed(ActionEvent e) {
+				    			new OrderDetailFrame(order);
+				    		}
+				    		});
+				    	 Panel.add(p);
+				    }
+				    this.getVerticalScrollBar().setVisible(false);
+				    this.repaint();
+		}
 	}
+	}
+
+	static void setHint(String str){
+        hint.setText(str);
+    	new Thread(new Runnable(){
+			@Override
+			public void run() {
+				hint.setText(str);
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				hint.setText("");
+			}
+
+		}).start();
+
+    }
 }

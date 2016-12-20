@@ -26,19 +26,19 @@ import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 
 public class ProcessHotelAccountManageView extends JPanel{
-	
+
 	private static final long serialVersionUID = 1L;
 	ProcessSitemanagerViewControllerService controller;
 	ProcessSitemanagerView view;
 	ResultMessage result;
 	Date date;
-	
+
 	HotelstaffVO addHotelstaffVO;
 	HotelstaffVO modifyHotelstaffVO;
 	HotelstaffVO hotelstaffVO;
 	HotelinfoVO hotelinfoVO;
 	SitemanagerAddVO sitemanagerAddVO;
-	
+
 	// 背景图片
 	private ImageIcon background;
 	// 左上角：添加酒店label及按钮
@@ -58,7 +58,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 	MyLabel nameLabelL;
 	MyLabel telLabelL;
 	MyLabel passwordLabelL;
-	
+
 	MyLabel idLabel;
 	MyTextField nameTextField;
 	MyTextField telTextField;
@@ -72,7 +72,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 	// 修改后的酒店工作人员电话、密码
 	String modifyTel;
 	String modifyPassword;
-	
+
 	public ProcessHotelAccountManageView(ProcessSitemanagerViewControllerService controller,ProcessSitemanagerView processSitemanagerView){
 		this.controller=controller;
 		this.view=processSitemanagerView;
@@ -103,7 +103,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		checkModifyButton=new CheckButton(610,270,65,65);
 		checkModifyButton.addMouseListener(new CheckModifyListener());
 		checkModifyButton.setEnabled(false);
-		
+
 		checkAddButton=new CheckButton(400,350,65,65);
 		checkAddButton.addMouseListener(new CheckAddListener());
 		checkAddButton.setVisible(false);
@@ -114,12 +114,12 @@ public class ProcessHotelAccountManageView extends JPanel{
 		nameLabelL=new MyLabel(300,230,100,25,"酒店名称：");
 		telLabelL=new MyLabel(300,280,100,25,"电话：");
 		passwordLabelL=new MyLabel(300,330,60,25,"密码:");
-		
+
 		idLabel=new MyLabel(400,180,180,25,"");
 		nameTextField=new MyTextField(400,230,180,25,"");
 		telTextField=new MyTextField(400,280,180,25,"");
 		passwordField=new MyTextField(400,330,180,25,"");
-		
+
 		this.add(hotelIconLabel);
 		this.add(addHotelButton);
 		this.add(addHotelLabel);
@@ -139,14 +139,17 @@ public class ProcessHotelAccountManageView extends JPanel{
 		background.setImage(background.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
 		background.paintIcon(this, g, 0, 0);
 	}
-	
+
 	// 添加酒店按钮的监听
 	class AddHotelButtonMouseListener implements MouseListener{
-		
+
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			nameTextField.setEditable(true);
+			nameTextField.setText("");
+			telTextField.setText("");
+			passwordField.setText("");
+			nameTextField.setText("");
 			telTextField.setEditable(true);
 			passwordField.setEditable(true);
 			checkAddButton.setVisible(true);
@@ -156,27 +159,27 @@ public class ProcessHotelAccountManageView extends JPanel{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	}
 	// 搜索酒店工作人员账户的监听
 	class SearchListener implements MouseListener{
@@ -207,27 +210,27 @@ public class ProcessHotelAccountManageView extends JPanel{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	}
 	// 确认修改的按钮
 	class CheckModifyListener implements MouseListener{
@@ -253,7 +256,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 				conditionLabel.setText("电话位数不对，请重新输入电话！");
 			}
 			else {
-				
+
 			modifyHotelstaffVO=new HotelstaffVO(idLabel.getText(),modifyPassword,modifyTel);
 			result=controller.HotelStaffAccountUpdate(modifyHotelstaffVO);
 			if(result==ResultMessage.SUCCESS){
@@ -268,34 +271,34 @@ public class ProcessHotelAccountManageView extends JPanel{
 			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionLabel.setText("数据库保存失败！");
 			}
-			
+
 			}
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	}
 	// 修改按钮
 	class ModifyListener implements MouseListener{
@@ -312,27 +315,27 @@ public class ProcessHotelAccountManageView extends JPanel{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	}
 	// 确认添加的按钮
 	class CheckAddListener implements MouseListener{
@@ -340,6 +343,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
+
 			addName=nameTextField.getText();
 			addTel=telTextField.getText();
 			addPassword=passwordField.getText();
@@ -377,39 +381,39 @@ public class ProcessHotelAccountManageView extends JPanel{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	}
 	void addLog(String info){
 		controller.addLog(info);
 	}
 	// 判断字符串是不是全为数字，如果全为数字，返回true
-	public boolean isNumeric(String str){ 
-		Pattern pattern = Pattern.compile("[0-9]*"); 
+	public boolean isNumeric(String str){
+		Pattern pattern = Pattern.compile("[0-9]*");
 	    Matcher isNum = pattern.matcher(str);
 	    if( !isNum.matches() ){
-		   return false; 
-		} 
-		return true; 
+		   return false;
+		}
+		return true;
 		}
 }
 

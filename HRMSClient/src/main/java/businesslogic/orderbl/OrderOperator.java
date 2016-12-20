@@ -1,11 +1,16 @@
 package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.clientbl.Client;
+import businesslogic.clientbl.ClientManage;
+import businesslogic.logbl.LogManage;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
@@ -21,7 +26,8 @@ public class OrderOperator implements OrderOperatorBLService{
 	boolean resultB;
 	ArrayList<OrderPO> orderPOList;
 	ArrayList<OrderVO> orderVOList;
-
+	LogManage logManage;
+	Date date;
 	RemoteHelper remote;
 
 
@@ -31,6 +37,7 @@ public class OrderOperator implements OrderOperatorBLService{
 		packageTrans=new PackageTransform();
 		orderPOList=new ArrayList<OrderPO>();
 		orderVOList=new ArrayList<OrderVO>();
+		logManage=new LogManage();
 	}
 	// 下订单
 	@Override
@@ -65,8 +72,11 @@ public class OrderOperator implements OrderOperatorBLService{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		if(resultB==true)
+		if(resultB==true){
+			date=new Date();
+			logManage.addLog(orderPO.getClientId()+" "+date.toString()+" 下"+validId+"订单");
 			return ResultMessage.SUCCESS;
+		}
 		else
 			return ResultMessage.DATEBASEFAIL;
 	}
@@ -194,6 +204,13 @@ public class OrderOperator implements OrderOperatorBLService{
 		if((preOrderPO.getOrderType()+"").equals(OrderType.CANCEL+"")){
 			return ResultMessage.CANCELANDCANNOTMODIFY;
 		}
+		if((orderVO.getOrderType()+"").equals(OrderType.ABNORMAL+"")){
+			ClientManage c=new ClientManage();
+			Date date=new Date();
+			DateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+			String nowTime=df.format(date);
+			c.setCredit(orderVO.getClientId(),(int)orderVO.getPrice()/2,nowTime,"超过24:00未入住，订单异常");
+		}
 		// 看当前订单的状态是否有改变，如果没改变（即没被修改），则返回相同（没有被修改）的提示信息
 		if((preOrderPO.getOrderType()+"").equals(orderVO.getOrderType()+"")){
 			return ResultMessage.SAMEINFO;
@@ -207,6 +224,7 @@ public class OrderOperator implements OrderOperatorBLService{
 			e.printStackTrace();
 		}
 		if(resultB==true){
+
 			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.DATEBASEFAIL;

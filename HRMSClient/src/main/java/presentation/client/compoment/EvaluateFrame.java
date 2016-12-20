@@ -48,7 +48,7 @@ class Panel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	JTextArea text;
-	private JButton okButton;
+	JButton okButton;
 	private ImageIcon imageIcon = null;
 	private Label hintLabel;
 	private checkbutton s1;

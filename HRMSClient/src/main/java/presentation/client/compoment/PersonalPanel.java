@@ -31,6 +31,7 @@ public class PersonalPanel extends JPanel{
 	private Label nameLabel;
 	private Label telLabel;
 	private Label vipLabel;
+	private Label hint;
 	private Label creditLabel;
 	private okButton ok;
 	private deleteButton delete;
@@ -67,6 +68,8 @@ public class PersonalPanel extends JPanel{
 		vipLabel.setBounds(120,320,400,30);
 		creditLabel=new Label("信用值："+vo.getCredit());
 		creditLabel.setBounds(120,370,150,30);
+		hint=new Label("");
+		hint.setBounds(5,5,300,30);
 		this.add(idLabel);
 		this.add(nameLabel);
 		this.add(nameField);
@@ -79,6 +82,7 @@ public class PersonalPanel extends JPanel{
 		this.add(delete);
 		this.add(editName);
 		this.add(editTel);
+		this.add(hint);
 		this.setVisible(false);
 	    this.setLayout(null);
 	    this.setSize(704, 502);
@@ -130,11 +134,16 @@ public class PersonalPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(nameField.getText()!=""&&telField.getText()!=""&&telField.getText().length()==11)
+				{
 				vo.setName(nameField.getText());
 				vo.setTel(telField.getText());
+
 				boolean k=controller.updateInfo(vo);
-				if(k)DialogCreator.successDialog("suceess");
-				else DialogCreator.failDialog("fail");
+				if(k)
+				setHint("个人信息修改成功！");
+				else
+				setHint("个人信息修改失败！");
 				nameField.setOpaque(false);
 				nameField.setFocusable(false);
 				nameField.setForeground(Color.WHITE);
@@ -142,6 +151,8 @@ public class PersonalPanel extends JPanel{
 				telField.setFocusable(false);
 				telField.setForeground(Color.WHITE);
 
+				}else
+					setHint("信息填写不完整！");
 			}
 
 		}
@@ -206,4 +217,21 @@ public class PersonalPanel extends JPanel{
 		    g.drawImage(imageIcon.getImage(), 0, 0, this);
 		    super.paintComponents(g);
 		   }
+	public void setHint(String str){
+        hint.setText(str);
+    	new Thread(new Runnable(){
+			@Override
+			public void run() {
+				hint.setText(str);
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				hint.setText("");
+			}
+
+		}).start();
+
+    }
 }

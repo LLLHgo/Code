@@ -110,7 +110,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 	            	  po.setName(count1.getString("name"));
 	            	  po.setTel(count1.getString("tel"));
 	            	  switch(count1.getString("type").charAt(0)){
-	            	  case 'N':po.setType(null);break;
+	            	  case 'N':po.setType(VIPType.NONVIP);break;
 	            	  case 'O':po.setType(VIPType.ORDINARYVIP);break;
 	            	  case 'E':po.setType(VIPType.ENTERPRISEVIP);break;
 	            	  default:po.setType(null);break;
