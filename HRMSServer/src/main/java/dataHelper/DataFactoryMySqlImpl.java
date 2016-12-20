@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import dataservice.clientdataservice.ClientDataService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.hotelstaffdataservice.HotelstaffDataService;
+import dataservice.logdataservice.LogDataService;
 import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
@@ -17,7 +18,7 @@ import impl.mysql.OrderDataServiceMySqlImpl;
 import impl.mysql.SitemanagerDataServiceMySqlImpl;
 import impl.mysql.StrategyDataServiceMySqlImpl;
 
-public class DataFactoryMySqlImpl extends AdapterSql implements DataFactory{
+public class DataFactoryMySqlImpl  implements DataFactory{
 	
 	ClientDataService clientDataService;
 	HotelstaffDataService hotelstaffDataService;
@@ -26,6 +27,7 @@ public class DataFactoryMySqlImpl extends AdapterSql implements DataFactory{
 	OrderDataService orderDataService;
 	SitemanagerDataService sitemanagerDataService;
 	StrategyDataService strategyDataService;
+	LogDataService logDataService;
 
 
 	public DataFactoryMySqlImpl() throws RemoteException {
@@ -92,6 +94,11 @@ public class DataFactoryMySqlImpl extends AdapterSql implements DataFactory{
 	public StrategyDataService getStrategyDataService() {
 		// TODO Auto-generated method stub
 		return strategyDataService;
+	}
+
+	public LogDataService getLogDataService() {
+		// TODO Auto-generated method stub
+		return logDataService;
 	}
 
 
