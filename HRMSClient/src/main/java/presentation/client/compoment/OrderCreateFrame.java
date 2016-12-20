@@ -108,7 +108,7 @@ public class OrderCreateFrame extends JFrame{
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
 			  int i=0;
-			  for(;;i++){
+			  for(;i<hdp.crlp.rooms.size();i++){
 				  if(hdp.crlp.rooms.get(i).numField.getText().charAt(0)!='<')
 					  break;
 			  }

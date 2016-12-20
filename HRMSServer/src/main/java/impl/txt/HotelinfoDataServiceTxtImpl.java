@@ -26,7 +26,7 @@ public class HotelinfoDataServiceTxtImpl{
 		String data = "";
 		String[] areas = null;
 		try {
-			br = new BufferedReader(new FileReader(new File("./src/main/resources/txt/Area.txt")));
+			br = new BufferedReader(new FileReader(new File("src/main/resources/txt/Area.txt")));
 			while((data = br.readLine())!=null)
 			{
 				areas = data.split(",");
@@ -57,7 +57,7 @@ public class HotelinfoDataServiceTxtImpl{
 		String data = "";
 		try {
 			bw = new BufferedWriter(new FileWriter(
-					new File("./src/main/resources/txt/Area.txt"),true));
+					new File("src/main/resources/txt/Area.txt"),true));
 			bw.write(","+area);	
 			bw.close();
 		} catch (FileNotFoundException e) {
@@ -75,7 +75,7 @@ public class HotelinfoDataServiceTxtImpl{
 		String data = "";
 		String[] roomtypes = null;
 		try {
-			br = new BufferedReader(new FileReader(new File("./src/main/resources/txt/RoomType.txt")));
+			br = new BufferedReader(new FileReader(new File("src/main/resources/txt/RoomType.txt")));
 			while((data = br.readLine())!=null)
 			{
 				roomtypes = data.split(",");
@@ -106,7 +106,7 @@ public class HotelinfoDataServiceTxtImpl{
 		BufferedWriter bw;
 		try {
 			bw = new BufferedWriter(new FileWriter(
-					new File("./src/main/resources/txt/RoomType.txt"),true));
+					new File("src/main/resources/txt/RoomType.txt"),true));
 			bw.write(","+type);	
 			bw.close();
 		} catch (FileNotFoundException e) {
