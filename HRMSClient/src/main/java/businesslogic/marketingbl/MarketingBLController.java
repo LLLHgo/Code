@@ -1,6 +1,7 @@
 package businesslogic.marketingbl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -42,7 +43,7 @@ public class MarketingBLController implements MarketingBLControllerService{
 	public ResultMessage updateLevel(List<LevelVO> vos) {
 		ResultMessage result=this.marketingBL.updateLevel(vos);//保存等级信息
 		if(result==ResultMessage.SUCCESS){//更新等级信息成功
-			if(this.clientBL.setAllClientLevel((LevelVO) vos.get(0))){//更新用户等级信息成功//这里要改接口的！！！
+			if(this.clientBL.setAllClientLevel((ArrayList<LevelVO>)vos)){//更新用户等级信息成功//这里要改接口的！！！
 				return ResultMessage.SUCCESS;
 			}else{//更新用户等级信息失败
 			    return ResultMessage.FAULT;
