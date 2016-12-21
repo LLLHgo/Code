@@ -21,7 +21,7 @@ public interface HotelstaffViewControllerService {
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public ArrayList<HotelinfoVO> getHotelBasicinfoList(String area);
+	public ArrayList<HotelinfoVO> getHotelBasicinfoList(String area,String hotelname,int star,String roomType);
 	/**
 	 * 持久化保存酒店信息
 	 * @param VO

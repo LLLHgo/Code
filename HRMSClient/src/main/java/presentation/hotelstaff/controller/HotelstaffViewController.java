@@ -62,8 +62,8 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	}
 
 	@Override
-	public ArrayList<HotelinfoVO> getHotelBasicinfoList(String area) {
-		return controller.getHotelBasicinfoList(area);
+	public ArrayList<HotelinfoVO> getHotelBasicinfoList(String area,String hotelname,int star,String roomType) {
+		return controller.getHotelBasicinfoList(area,hotelname,star,roomType);
 	}
 
 	@Override
@@ -387,6 +387,4 @@ public class HotelstaffViewController implements HotelstaffViewControllerService
 	public boolean refreshroomstate() {
 		return controller.refreshroomstate();
 	}
-
-
 }

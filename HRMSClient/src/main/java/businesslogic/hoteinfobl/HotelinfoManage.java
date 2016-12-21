@@ -2,13 +2,18 @@ package businesslogic.hoteinfobl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import Enum.HotelStrategy;
 import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
+import Enum.VIPType;
 import businesslogic.hotelstaffbl.HotelstaffManage;
+import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
+import businesslogicservice.strategyblservice.StrategyBLService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
 import po.HotelinfoPO;
 import rmi.RemoteHelper;
@@ -17,6 +22,7 @@ import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
+import vo.strategyVO.HotelStrategyVO;
 
 public class HotelinfoManage{
 
@@ -206,6 +212,32 @@ public class HotelinfoManage{
 		HotelstaffBLService hotelstaff = new HotelstaffManage();
 		hotelstaffVO.setHotelID(hotelID);
 		ResultMessage result  = hotelstaff.saveSitemanagerAdd(hotelstaffVO);
+		if(result==ResultMessage.SUCCESS){
+			Calendar c= Calendar.getInstance();
+			StrategyBLService strategy = new StrategyManage();
+			HotelStrategyVO vo = new HotelStrategyVO();
+			vo.setStartTime(c);
+			vo.setEndTime(c);
+			vo.setDiscount(1);
+			vo.setHotelID(hotelID);
+			vo.setName("生日特惠折扣");
+			vo.setType(HotelStrategy.BIRTHDAY);
+			vo.setViptype(VIPType.ORDINARYVIP);
+			strategy.updateHotelStrategy(vo);
+			vo.setName("合作企业客户折扣");
+			vo.setType(HotelStrategy.COMPANY);
+			vo.setViptype(VIPType.ENTERPRISEVIP);
+			strategy.updateHotelStrategy(vo);			
+			vo.setName("三间及以上预订特惠");
+			vo.setType(HotelStrategy.OVERTHREEROOMS);
+			vo.setViptype(VIPType.NONVIP);
+			vo.setMinRooms(3);
+			strategy.updateHotelStrategy(vo);
+			vo.setName("双十一活动折扣");
+			vo.setType(HotelStrategy.SPECIALDAY);
+			vo.setViptype(VIPType.NONVIP);
+			strategy.updateHotelStrategy(vo);
+		}
 		return result;
 	}
 

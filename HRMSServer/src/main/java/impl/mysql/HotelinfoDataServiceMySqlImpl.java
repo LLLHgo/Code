@@ -409,6 +409,14 @@ public class HotelinfoDataServiceMySqlImpl{
 			}
 			hotelID = "H"+hotelID;
 
+			sql = "select * from hotelinfo";
+			myRS = st.executeQuery(sql);
+			while(myRS.next()){
+				if(myRS.getObject("name").equals("hotelName")){
+					return "R";
+				}
+			}
+			
 			sql = "insert into hotelinfo (hotelID,name) values (?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
