@@ -68,8 +68,8 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	}
 
 	@Override
-	public ArrayList<HotelinfoVO> getHotelBasicinfoList(String area) {
-		return hotelinfo.getBasicinfoList(area);
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area,String hotelname,int hotelstar,String roomType) {
+		return hotelinfo.getBasicinfoList(area,hotelname,hotelstar,roomType);
 	}
 
 	@Override
@@ -239,4 +239,8 @@ public class HotelstaffBLController implements HotelstaffControllerBLService{
 	public boolean refreshroomstate() {
 		return orderCheck.checkTimeOperateAbnormal();
 	}
+
+
+
+
 }

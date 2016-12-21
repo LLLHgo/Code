@@ -95,6 +95,7 @@ public class LogManage implements LogBLService{
 		}
 		// S00000001 Fri Dec 09 20:23:48 CST 2016 修改网站管理人员账户
 		// arr数组中放logPO内logInfo以空格分开的字符串
+		if(listPO!=null){
 		String[] arr;
 		for(int i=0;i<listPO.size();i++){
 			logPO=listPO.get(i);
@@ -103,7 +104,10 @@ public class LogManage implements LogBLService{
 				listVO.add(new LogVO(logPO.getLogInfo()));
 			}
 		}
-		return listVO;
+			return listVO;
+		}
+		else
+			return null;
 	}
 	// 年份相符
 	boolean yearMatch(String arrYear,String year){

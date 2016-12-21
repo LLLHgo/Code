@@ -24,7 +24,7 @@ public interface HotelinfoBLService {
 	 * @param hotelID
 	 * @return
 	 */
-	public boolean setEvaluate(int star,String remark,String hotelID);
+	public boolean setEvaluate(int star,String remark,String clientID,String hotelID);
 	/**
 	 * 请求获得hotelID对应的酒店信息
 	 * @param hotelID
@@ -36,7 +36,8 @@ public interface HotelinfoBLService {
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public ArrayList<HotelinfoVO> getBasicinfoList(String area);
+	//public ArrayList<HotelinfoVO> getBasicinfoList(String area);
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area,String hotelname,int hotelstar,String roomType);
 	/**
 	 * 持久化保存酒店信息
 	 * @param VO
@@ -116,4 +117,13 @@ public interface HotelinfoBLService {
 	 * @return 布尔值
 	 */
 	boolean deleteroom(String hotelID,String roomID);
+	
+	/**
+	 * 根据酒店星级排序
+	 * @param list
+	* @return
+	*/
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list);
+	
+	
 }

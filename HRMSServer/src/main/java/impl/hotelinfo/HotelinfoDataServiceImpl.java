@@ -98,8 +98,8 @@ public  class HotelinfoDataServiceImpl extends UnicastRemoteObject implements Ho
 	}
 
 
-	public HotelinfoPO clientfindhotelinfo(String hotelname) throws RemoteException {
-		return mysql.clientfindhotelinfo(hotelname);
+	public ArrayList<HotelinfoPO> clientfindhotelinfo(String area,String hotelname,int hotelstar) throws RemoteException {
+		return mysql.clientfindhotelinfo(area, hotelname, hotelstar);
 	}
 
 }

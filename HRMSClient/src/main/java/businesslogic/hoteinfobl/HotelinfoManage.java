@@ -6,6 +6,7 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.RoomState;
+import Enum.Star;
 import businesslogic.hotelstaffbl.HotelstaffManage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
@@ -25,8 +26,8 @@ public class HotelinfoManage{
 	HotelinfoPO po;
 	HotelinfoVO vo;
 
-	public boolean SetEvaluate(int star,String str,String hotelID){
-		String remark = star+" "+str;
+	public boolean SetEvaluate(int star,String str,String clientID,String hotelID){
+		String remark = star+" "+str+" "+clientID;
 		try {
 			return data.clientUpdatehotelinfo(remark,hotelID);
 		} catch (RemoteException e) {
@@ -50,57 +51,13 @@ public class HotelinfoManage{
 		return vo;
 	}
 
-	public ArrayList<HotelinfoVO> getBasicinfoList(String area) {
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area,String hotelname,int hotelstar,String roomType) {
+		int roomtypeinflag = 0;
 		ArrayList<HotelinfoPO> listPO;
 		ArrayList<HotelinfoVO> listVO = new ArrayList<HotelinfoVO>();
 		RoominfoManage roominfoManage = new RoominfoManage();
 		try {
-			listPO = data.findHotelinfoList(area);
-			if(listPO == null){
-				try {
-					HotelinfoPO	newPO = data.clientfindhotelinfo(area);
-					//System.out.println(newPO.getHotelID()+"....................");
-					if(newPO!=null){
-						HotelinfoVO newVO = PO2VO(newPO);
-						ArrayList<RoominfoVO> roominfoList = roominfoManage.getRoominfoList(newPO.getHotelID());
-						String[] roomtype = roominfoManage.getRoomType();
-						int[] availablenum = new int[roomtype.length];
-						for(int m=0;m<availablenum.length;m++){
-							availablenum[m]=0;
-						}
-						if(roominfoList!=null){
-							ArrayList<RoominfoVO> selected = new ArrayList<RoominfoVO>();
-							for(int m=0;m<roomtype.length;m++){
-								for(int n=0;n<roominfoList.size();n++){
-									RoominfoVO roominfovo = roominfoList.get(n);
-									if(roominfovo.getType().equals(roomtype[m])&&
-										roominfovo.getRoomState()==RoomState.Usable){
-										availablenum[m]++;
-										if(availablenum[m]==1){
-											selected.add(roominfovo);
-										}
-									}
-								}
-							}
-							ArrayList<Integer> selectedArray = new ArrayList<Integer>();
-							for(int p=0;p<availablenum.length;p++){
-								int tempnum = availablenum[p];
-								if(tempnum>0){
-									selectedArray.add(tempnum);
-								}
-							}
-							newVO.setAvailableNum(selectedArray);
-							newVO.setRoominfoList(selected);
-						listVO.add(newVO);
-						return listVO;
-						}
-					}
-				} catch (RemoteException e) {
-					e.printStackTrace();
-					return null;
-				}
-				return null;
-			}
+			listPO = data.clientfindhotelinfo(area,hotelname,hotelstar);
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
 //				if(vo == null){
@@ -136,8 +93,20 @@ public class HotelinfoManage{
 					}
 					vo.setAvailableNum(selectedArray);
 					vo.setRoominfoList(selected);
+					//TODO 传null表示界面没有要求
+					if(roomType==null){
+						roomtypeinflag = 1;
+					}else{
+						for(int q=0;q<selected.size();q++){
+							if(roomType.equals(selected.get(q).getType())){
+								roomtypeinflag=1;
+							}
+						}
+					}
 				}
-				listVO.add(vo);
+				if(roomtypeinflag==1){
+					listVO.add(vo);
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -259,6 +228,64 @@ public class HotelinfoManage{
 		}
 	}
 
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list){
+		HotelinfoVO vo;
+		ArrayList<HotelinfoVO> newlist= new ArrayList<HotelinfoVO>();
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			int star;
+			Star[] starArray = {Star.ONE,Star.TWO,Star.THREE,Star.FOUR,Star.FIVE,Star.SIX,Star.SEVEN};
+			for(int j=0;j<starArray.length;j++){
+				if(starArray[j]==vo.getStar()){
+					vo.rankstar=j;
+				}
+			}
+		}
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			if(vo.rankstar==6){
+				newlist.add(vo);
+			}
+		}
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			if(vo.rankstar==5){
+				newlist.add(vo);
+			}
+		}
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			if(vo.rankstar==4){
+				newlist.add(vo);
+			}
+		}
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			if(vo.rankstar==3){
+				newlist.add(vo);
+			}
+		}
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			if(vo.rankstar==2){
+				newlist.add(vo);
+			}
+		}
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			if(vo.rankstar==1){
+				newlist.add(vo);
+			}
+		}
+		for(int i=0;i<list.size();i++){
+			vo = list.get(i);
+			if(vo.rankstar==0){
+				newlist.add(vo);
+			}
+		}
+		return newlist;
+	}
+	
 	public List<AreaVO> getAreaHotels() {
 		String[] areas = getArea();
 		ArrayList<HotelinfoPO> hotelinfoPOList = new ArrayList<HotelinfoPO>();

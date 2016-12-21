@@ -29,7 +29,7 @@ public class HotelinfoVO {
 	private ArrayList<String> company;
 	//每种类型对应的数量
 	private ArrayList<Integer> availableNum;
-	
+	public int rankstar;
 	public HotelinfoVO(){
 
 	}

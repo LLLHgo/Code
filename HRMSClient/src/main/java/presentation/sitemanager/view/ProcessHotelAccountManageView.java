@@ -2,6 +2,8 @@ package presentation.sitemanager.view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
@@ -90,12 +92,18 @@ public class ProcessHotelAccountManageView extends JPanel{
 		// 搜索框和搜索按钮
 		searchButton=new SearchButton(635,11,40,40);
 		searchText=new JTextField("输入酒店工作人员帐号");
+		searchText.addFocusListener(new FocusAdapter() {  
+            public void focusGained(FocusEvent arg0) {  
+            	searchText.setSelectionStart(0);  
+            }  
+        });
 		searchText.setBounds(400,17,275,40);
-		searchText.setFont(new java.awt.Font("微软雅黑",1,20));
+		searchText.setFont(new java.awt.Font("楷体",1,20));
 		searchText.setOpaque(false);
 		searchText.setForeground(Color.white);
 		searchText.setBorder(new EmptyBorder(0,0,0,0));
 		searchButton.addMouseListener(new SearchListener());
+
 		// 工具栏按钮（修改按钮和确认按钮）
 		modifyButton=new ModifyButton(618,180,50,50);
 		modifyButton.addMouseListener(new ModifyListener());

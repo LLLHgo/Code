@@ -205,5 +205,10 @@ public class HotelinfoDataService_Stub implements HotelinfoDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public ArrayList<HotelinfoPO> clientfindhotelinfo(String area, String hotelname, int hotelstar)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

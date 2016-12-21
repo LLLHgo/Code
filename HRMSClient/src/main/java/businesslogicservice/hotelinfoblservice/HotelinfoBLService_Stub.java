@@ -237,7 +237,7 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 	}
 
 	@Override
-	public boolean setEvaluate(int star, String remark, String hotelID) {
+	public boolean setEvaluate(int star, String remark, String clientID,String hotelID) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -259,6 +259,19 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area, String hotelname, int hotelstar, String roomType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 //	/**

@@ -24,9 +24,7 @@ abstract class AdapterTxt implements DataFactory{
 	public SitemanagerDataService getSitemanagerDataService(){
 		return null;
 	};
-	public LogDataService getLogDataService(){
-		return null;
-	};
+	public abstract LogDataService getLogDataService();
 	
 	public OrderDataService getLogDataservice(){
 		return null;

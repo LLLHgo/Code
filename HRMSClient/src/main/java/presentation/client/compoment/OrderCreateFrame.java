@@ -114,6 +114,7 @@ public class OrderCreateFrame extends JFrame{
 					  break;
 			  }
 			  int days=hdp.calTime(begin.getChooseDate(),end.getChooseDate());
+			  if(days<0)days=0;
 			  int num=Integer.parseInt(hdp.crlp.rooms.get(i).numField.getText());
 
 			  RoominfoVO room=hotelVO.getRoominfoList().get(i);

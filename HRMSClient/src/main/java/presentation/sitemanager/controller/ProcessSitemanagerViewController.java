@@ -229,8 +229,8 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 	@Override
 	public String getMarketingID() {
 		
-		//return marketingblservice.getMaketingID();
-		return null;
+		return marketingblservice.getMarketingID();
+		//return null;
 	}
 
 

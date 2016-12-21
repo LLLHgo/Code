@@ -283,8 +283,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			if((addTel==""||addTel.equals(""))&&(addPassword==""||addPassword.equals(""))&&(addName==""||addName.equals(""))){
 				conditionalText.setText("请将信息填写完整");
 			}
-			else if(!isNumeric(newTel)){
-				conditionalText.setText("电话请确认是否全为数字，重新输入电话");	
+			else if(!isNumeric(addTel)){
+				conditionalText.setText("电话请确认是否全为数字");	
 			}
 			else if(addTel.length()!=11){
 				conditionalText.setText("电话位数不对，请重新输入电话");
@@ -377,5 +377,6 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		   return false; 
 		} 
 		   return true; 
-		}
+	}
+	
 }

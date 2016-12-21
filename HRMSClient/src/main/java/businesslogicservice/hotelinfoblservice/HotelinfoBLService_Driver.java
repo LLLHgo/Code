@@ -47,10 +47,10 @@ public class HotelinfoBLService_Driver{
 		System.out.println("查找成功");
 		//System.out.println("名称： "+name);
 
-		//查找酒店信息列表
-		System.out.println("查找客户需要的酒店信息列表...");
-		List<HotelinfoVO> hotellist = hotelinfoBLService.getBasicinfoList("栖霞区商圈");
-		if(hotellist.size()>0)System.out.println("查找成功");
+//		//查找酒店信息列表
+//		System.out.println("查找客户需要的酒店信息列表...");
+//		List<HotelinfoVO> hotellist = hotelinfoBLService.getBasicinfoList("栖霞区商圈");
+//		if(hotellist.size()>0)System.out.println("查找成功");
 
 		//查找某酒店某类型的房间信息
 		System.out.println("查找ID为H00000000的酒店，类型为四人间的酒店房间信息...");

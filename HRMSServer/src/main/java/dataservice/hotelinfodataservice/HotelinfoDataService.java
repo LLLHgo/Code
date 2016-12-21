@@ -41,7 +41,7 @@ public interface HotelinfoDataService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public HotelinfoPO clientfindhotelinfo(String hotelname) throws RemoteException;
+	public ArrayList<HotelinfoPO> clientfindhotelinfo(String area,String hotelname,int hotelstar) throws RemoteException;
 	/**
 	 * 酒店工作人员更新酒店信息
 	 * @param po

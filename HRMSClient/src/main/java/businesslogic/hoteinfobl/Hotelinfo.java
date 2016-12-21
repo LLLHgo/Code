@@ -35,8 +35,8 @@ public class Hotelinfo implements HotelinfoBLService{
 	 * @param vo
 	 * @return 酒店信息列表
 	 */
-	public ArrayList<HotelinfoVO> getBasicinfoList(String area){
-		return hotel.getBasicinfoList(area);
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area,String hotelname,int hotelstar,String roomType){
+		return hotel.getBasicinfoList(area,hotelname,hotelstar,roomType);
 	};
 	/**
 	 * 持久化保存酒店信息
@@ -128,8 +128,8 @@ public class Hotelinfo implements HotelinfoBLService{
 		return room.getAvailableRooms(hotelID);
 	}
 	@Override
-	public boolean setEvaluate(int star, String remark, String hotelID) {
-		return hotel.SetEvaluate(star, remark, hotelID);
+	public boolean setEvaluate(int star, String remark, String clientID,String hotelID) {
+		return hotel.SetEvaluate(star, remark, clientID,hotelID);
 	}
 	@Override
 	public HotelinfoVO clientgetBasicinfo(String hotelID) {
@@ -142,6 +142,10 @@ public class Hotelinfo implements HotelinfoBLService{
 	@Override
 	public boolean deleteroom(String hotelID, String roomID) {
 		return room.deleteroom(hotelID,roomID);
+	}
+	@Override
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list) {
+		return hotel.rankHotelAccordingtoHotelStar(list);
 	}
 
 }

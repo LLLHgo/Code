@@ -134,9 +134,6 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 				date = new Date();
 				addLog("S00000001 "+date.toString()+" 修改网站管理人员账户");
 			}
-			else if(result==ResultMessage.SAMEINFO){
-				conditionalLabel.setText("信息并未发生修改，不再进行保存！");
-			}
 			else if(result==ResultMessage.VOIDINFO){
 				conditionalLabel.setText("电话和密码为空，请填写后再确认！");
 			}
