@@ -48,7 +48,7 @@ public ViewOrderPanel(JFrame frame,String clientID,ViewOrderPanelController cont
 	Panel=new JPanel();
 	olp=new OrderListPane(controller.findUserOrderList(clientID));
 	frame.add(olp);
-	imageIcon = new ImageIcon(this.getClass().getResource("image/searchPanel.png"));
+	imageIcon = new ImageIcon(this.getClass().getResource("image/searchOrder.png"));
 	ImageIcon icon=new ImageIcon(this.getClass().getResource("image/unfinButton.png"));
 	searchButton=new SearchButton();
 	searchButton.addActionListener(new searchButtonListener());

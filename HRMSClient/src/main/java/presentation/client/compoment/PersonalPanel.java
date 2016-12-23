@@ -67,7 +67,7 @@ public class PersonalPanel extends JPanel{
 		vipLabel=new Label("会员类型："+vo.getType());
 		vipLabel.setBounds(120,320,400,30);
 		creditLabel=new Label("信用值："+vo.getCredit());
-		creditLabel.setBounds(120,370,150,30);
+		creditLabel.setBounds(120,370,200,30);
 		hint=new Label("");
 		hint.setBounds(5,5,300,30);
 		this.add(idLabel);
@@ -126,7 +126,7 @@ public class PersonalPanel extends JPanel{
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
 		this.setFocusPainted(false);
-		this.setBounds(270,350,60,60);
+		this.setBounds(320,350,60,60);
 		}
 	}
 	 private class okButtonListener implements ActionListener{

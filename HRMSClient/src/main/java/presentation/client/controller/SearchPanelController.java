@@ -23,7 +23,7 @@ StrategyBLService strategy=new StrategyManage();
 	return hotelInfo.getBasicinfo(hotelID);
 }
 	public ArrayList<HotelinfoVO> getBasicinfoList(String str) {
-		return hotelInfo.getBasicinfoList(str);
+		return hotelInfo.getBasicinfoList(str,"",6,"");
 	}
 	public ResultMessage createOrderPO(OrderVO orderVO) {
 		return order.createOrderPO(orderVO);

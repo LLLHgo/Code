@@ -63,7 +63,7 @@ public class CreditFrame extends JFrame{
 		creditShowPanel.setBounds(0,0,300,380);
 
 		this.getContentPane().add(creditShowPanel);
-
+		this.setResizable(false);
 		this.setBounds(580, 250, 300, 380);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
