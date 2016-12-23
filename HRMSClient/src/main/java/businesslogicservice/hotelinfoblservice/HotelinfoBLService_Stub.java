@@ -1,11 +1,15 @@
 package businesslogicservice.hotelinfoblservice;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Enum.ResultMessage;
 import Enum.RoomState;
 import Enum.Star;
+import businesslogic.hoteinfobl.SortHotelStar;
+import businesslogic.hoteinfobl.SortMinPrice;
+import businesslogic.hoteinfobl.SortRemarkStar;
 import vo.areaVO.AreaVO;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -262,14 +266,43 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 
 	@Override
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Collections.sort(list,new SortHotelStar());
+		
+		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i).getHotelID());
+			
+		}
+		return list;
 	}
 
 	@Override
 	public ArrayList<HotelinfoVO> getBasicinfoList(String area, String hotelname, int hotelstar, String roomType) {
-		// TODO Auto-generated method stub
+		
 		return null;
+	}
+
+	@Override
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoRemarkStar(ArrayList<HotelinfoVO> list) {
+		// TODO Auto-generated method stub
+		Collections.sort(list,new SortRemarkStar());
+
+		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i).getHotelID());
+			
+		}
+		return list;
+	}
+
+	@Override
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list) {
+		Collections.sort(list,new SortMinPrice());
+		
+		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i).getHotelID());
+			
+		}
+		return list;
 	}
 
 

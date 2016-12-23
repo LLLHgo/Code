@@ -192,7 +192,7 @@ public class HotelinfoDataServiceMySqlImpl{
 					po.setFacility((String)myRS.getObject("facility"));
 					po.setRemark(remarkList);
 
-					if(star+1!=hotelstar){			
+					if(star+1==hotelstar){			
 						list.add(po);
 					}
 				}

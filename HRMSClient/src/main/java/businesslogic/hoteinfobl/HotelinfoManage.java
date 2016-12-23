@@ -3,6 +3,8 @@ package businesslogic.hoteinfobl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import Enum.HotelStrategy;
@@ -15,6 +17,7 @@ import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelstaffblservice.HotelstaffBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import dataservice.hotelinfodataservice.HotelinfoDataService;
+import dataservice.hotelinfodataservice.HotelinfoDataService_Stub;
 import po.HotelinfoPO;
 import rmi.RemoteHelper;
 import vo.areaVO.AreaVO;
@@ -260,63 +263,6 @@ public class HotelinfoManage{
 		}
 	}
 
-	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list){
-		HotelinfoVO vo;
-		ArrayList<HotelinfoVO> newlist= new ArrayList<HotelinfoVO>();
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			int star;
-			Star[] starArray = {Star.ONE,Star.TWO,Star.THREE,Star.FOUR,Star.FIVE,Star.SIX,Star.SEVEN};
-			for(int j=0;j<starArray.length;j++){
-				if(starArray[j]==vo.getStar()){
-					vo.rankstar=j;
-				}
-			}
-		}
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			if(vo.rankstar==6){
-				newlist.add(vo);
-			}
-		}
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			if(vo.rankstar==5){
-				newlist.add(vo);
-			}
-		}
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			if(vo.rankstar==4){
-				newlist.add(vo);
-			}
-		}
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			if(vo.rankstar==3){
-				newlist.add(vo);
-			}
-		}
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			if(vo.rankstar==2){
-				newlist.add(vo);
-			}
-		}
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			if(vo.rankstar==1){
-				newlist.add(vo);
-			}
-		}
-		for(int i=0;i<list.size();i++){
-			vo = list.get(i);
-			if(vo.rankstar==0){
-				newlist.add(vo);
-			}
-		}
-		return newlist;
-	}
 	
 	public List<AreaVO> getAreaHotels() {
 		String[] areas = getArea();
@@ -344,4 +290,20 @@ public class HotelinfoManage{
 		return areaVOList;
 	}
 
+	
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list){
+		Collections.sort(list,new SortHotelStar());
+		return list;
+	}
+
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoRemarkStar(ArrayList<HotelinfoVO> list) {
+		Collections.sort(list,new SortRemarkStar());
+		return list;
+	}
+	
+
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list) {
+		Collections.sort(list,new SortMinPrice());
+		return list;
+	}
 }

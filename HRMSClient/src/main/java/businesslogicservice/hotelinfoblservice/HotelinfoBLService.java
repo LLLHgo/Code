@@ -125,5 +125,18 @@ public interface HotelinfoBLService {
 	*/
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list);
 	
+	/**
+	 * 根据酒店星级排序
+	 * @param list
+	* @return
+	*/
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoRemarkStar(ArrayList<HotelinfoVO> list);
+	
+	/**
+	 * 根据酒店星级排序
+	 * @param list
+	* @return
+	*/
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list);
 	
 }

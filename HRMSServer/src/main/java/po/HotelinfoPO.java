@@ -29,8 +29,7 @@ public class HotelinfoPO implements Serializable{
 	private String facility;
 	//合作企业
 	private ArrayList<String> companyList;
-//	//酒店评价等级
-//	private int remarklevel;
+
 	
 	public HotelinfoPO(){
 
@@ -151,5 +150,6 @@ public class HotelinfoPO implements Serializable{
 	public void setCompanyList(ArrayList<String> companyList) {
 		this.companyList = companyList;
 	}
-
+	
+	
 }

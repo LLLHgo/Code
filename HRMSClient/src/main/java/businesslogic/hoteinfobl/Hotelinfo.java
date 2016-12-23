@@ -147,5 +147,13 @@ public class Hotelinfo implements HotelinfoBLService{
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list) {
 		return hotel.rankHotelAccordingtoHotelStar(list);
 	}
+	@Override
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoRemarkStar(ArrayList<HotelinfoVO> list) {
+		return hotel.rankHotelAccordingtoRemarkStar(list);
+	}
+	@Override
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list) {
+		return hotel.rankHotelAccordingtoMinPrice(list);
+	}
 
 }

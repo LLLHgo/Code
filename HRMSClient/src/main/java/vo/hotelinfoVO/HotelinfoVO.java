@@ -1,6 +1,7 @@
 package vo.hotelinfoVO;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import Enum.Star;
 
@@ -29,7 +30,12 @@ public class HotelinfoVO {
 	private ArrayList<String> company;
 	//每种类型对应的数量
 	private ArrayList<Integer> availableNum;
-	public int rankstar;
+	//用于实现排序的hotelstar
+	private int rankhotelstar;
+	//用于实现实现排序的评价star
+	private double remarkstar;
+	//用于实现排序的minprice
+	private double minprice;
 	public HotelinfoVO(){
 
 	}
@@ -154,5 +160,43 @@ public class HotelinfoVO {
 	}
 	public void setAvailableNum(ArrayList<Integer> availableNum) {
 		this.availableNum = availableNum;
+	}
+	
+	public int getRankhotelstar() {
+		return rankhotelstar;
+	}
+
+	public void setRankhotelstar(int rankhotelstar) {
+		this.rankhotelstar = rankhotelstar;
+	}
+
+	public double getRemarkstar() {
+			ArrayList<String> remarklist = getRemark();
+			ArrayList<Integer> starList = new ArrayList<Integer>();
+			for(int i=0;i<remarklist.size();i++){
+				String remark = remarklist.get(i);
+				String[] remarkArray = remark.split(" ");
+				int star = Integer.parseInt(remarkArray[0]);
+				starList.add(star);
+			}
+			double averagestar =0  ;
+			for(int i=0;i<starList.size();i++){
+				averagestar+=starList.get(i);
+			}
+			averagestar = averagestar/starList.size();
+			return averagestar;
+		
+	}
+
+	public void setRemarkstar(double remarkstar) {
+		this.remarkstar = remarkstar;
+	}
+
+	public double getMinprice() {
+		return minprice;
+	}
+
+	public void setMinprice(double minprice) {
+		this.minprice = minprice;
 	}
 }

@@ -149,5 +149,5 @@ public class HotelinfoPO implements Serializable{
 	public void setCompanyList(ArrayList<String> companyList) {
 		this.companyList = companyList;
 	}
-	
+
 }
