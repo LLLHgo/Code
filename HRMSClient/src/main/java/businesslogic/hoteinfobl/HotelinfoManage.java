@@ -67,12 +67,15 @@ public class HotelinfoManage{
 		RoominfoManage roominfoManage = new RoominfoManage();
 		try {
 			listPO = data.clientfindhotelinfo(area,hotelname,hotelstar);
+			if(listPO == null){
+				return null;
+			}
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
 //				if(vo == null){
 //					return null;
 //				}
-				
+
 				ArrayList<RoominfoVO> roominfoList = roominfoManage.getRoominfoList(listPO.get(i).getHotelID());
 				String[] roomtype = roominfoManage.getRoomType();
 				int[] availablenum = new int[roomtype.length];
@@ -120,8 +123,7 @@ public class HotelinfoManage{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
-		}	
-		
+		}
 		return listVO;
 	}
 
@@ -230,7 +232,7 @@ public class HotelinfoManage{
 			vo.setName("合作企业客户折扣");
 			vo.setType(HotelStrategy.COMPANY);
 			vo.setViptype(VIPType.ENTERPRISEVIP);
-			strategy.updateHotelStrategy(vo);			
+			strategy.updateHotelStrategy(vo);
 			vo.setName("三间及以上预订特惠");
 			vo.setType(HotelStrategy.OVERTHREEROOMS);
 			vo.setViptype(VIPType.NONVIP);
@@ -263,7 +265,7 @@ public class HotelinfoManage{
 		}
 	}
 
-	
+
 	public List<AreaVO> getAreaHotels() {
 		String[] areas = getArea();
 		ArrayList<HotelinfoPO> hotelinfoPOList = new ArrayList<HotelinfoPO>();
@@ -290,7 +292,7 @@ public class HotelinfoManage{
 		return areaVOList;
 	}
 
-	
+
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list){
 		Collections.sort(list,new SortHotelStar());
 		return list;
@@ -300,7 +302,7 @@ public class HotelinfoManage{
 		Collections.sort(list,new SortRemarkStar());
 		return list;
 	}
-	
+
 
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list) {
 		Collections.sort(list,new SortMinPrice());

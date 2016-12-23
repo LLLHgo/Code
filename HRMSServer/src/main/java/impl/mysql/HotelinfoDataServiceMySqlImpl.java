@@ -145,6 +145,12 @@ public class HotelinfoDataServiceMySqlImpl{
 			String sql = "select * from hotelinfo";
 			ResultSet myRS = st.executeQuery(sql);
 			while(myRS.next()){
+				if(area==null){
+					break;
+				}
+				if(hotelname!=null){
+					break;
+				}
 				if(area.equals((String)myRS.getObject("area"))){
 					po = new HotelinfoPO();
 					int star = (Integer)myRS.getObject("star");
@@ -159,24 +165,24 @@ public class HotelinfoDataServiceMySqlImpl{
 
 					ArrayList<String> companyList = new ArrayList<String>();
 					String company =(String)myRS.getObject("company");
-					
+
 					if(company!=null){
 						String[] companyArray = company.split("&");
 						for(int i=0;i<companyArray.length;i++){
 							companyList.add(companyArray[i]);
 						}
 					}
-					
+
 					ArrayList<String> remarkList = new ArrayList<String>();
 					String remark =(String)myRS.getObject("remark");
-					
+
 					if(remark!=null){
 						String[] remarkArray = remark.split("&");
 							for(int i=0;i<remarkArray.length;i++){
 								remarkList.add(remarkArray[i]);
 							}
 					}
-					
+
 					int id = (Integer)myRS.getObject("hotelID");
 					String hotelID = String.valueOf(id);
 					while(hotelID.length()<8){
@@ -196,7 +202,7 @@ public class HotelinfoDataServiceMySqlImpl{
 
 					if(hotelstar == 0){
 						list.add(po);
-					}else if(star+1 == hotelstar){			
+					}else if(star+1 == hotelstar){
 						list.add(po);
 					}
 				}
@@ -204,14 +210,17 @@ public class HotelinfoDataServiceMySqlImpl{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		//根据酒店名字查询
 		try {
 			Statement st = conn.createStatement();
 			String sql = "select * from hotelinfo";
 			ResultSet myRS = st.executeQuery(sql);
 			while(myRS.next()){
-				if(hotelname.equals((String)myRS.getObject("name"))){
+				if(hotelname==null||area == null){
+					break;
+				}
+				if(hotelname.equals((String)myRS.getObject("name"))&&area.equals((String)myRS.getObject("area"))){
 					po = new HotelinfoPO();
 					int star = (Integer)myRS.getObject("star");
 					Star[] starList = {Star.ONE,Star.TWO,Star.THREE,Star.FOUR,Star.FIVE,
@@ -259,7 +268,7 @@ public class HotelinfoDataServiceMySqlImpl{
 
 					if(hotelstar == 0){
 						list.add(po);
-					}else if(star+1 == hotelstar){			
+					}else if(star+1 == hotelstar){
 						list.add(po);
 					}
 				}
@@ -268,13 +277,13 @@ public class HotelinfoDataServiceMySqlImpl{
 			e.printStackTrace();
 		}
 
-	
+
 		if(!list.isEmpty()){
 			return list;
 		}
 		return null;
 	}
-	
+
 	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
 		int id = Integer.parseInt(po.getHotelID().substring(1));
 		try {
@@ -421,7 +430,7 @@ public class HotelinfoDataServiceMySqlImpl{
 					return "R";
 				}
 			}
-			
+
 			sql = "insert into hotelinfo (hotelID,name) values (?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -528,7 +537,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return list;
 		return null;
 	}
-	
+
 	public boolean deleteroom(String hotelID,String roomID) throws RemoteException{
 		Statement st;
 		try {
@@ -561,7 +570,7 @@ public class HotelinfoDataServiceMySqlImpl{
 			e.printStackTrace();
 		}
 		return areas;
-	}	
+	}
 
 
 	public boolean addArea(String area) {
@@ -609,12 +618,12 @@ public class HotelinfoDataServiceMySqlImpl{
 		}
 		return rooms;
 	}
-	
+
 	public boolean addRoomType(String type)throws RemoteException{
 		return true;
 	}
-	
-	
+
+
 	public void finish() throws RemoteException {
 		try {
 			conn.close();
