@@ -159,22 +159,24 @@ public class HotelinfoDataServiceMySqlImpl{
 
 					ArrayList<String> companyList = new ArrayList<String>();
 					String company =(String)myRS.getObject("company");
-					//TODO
+					
 					if(company!=null){
 						String[] companyArray = company.split("&");
 						for(int i=0;i<companyArray.length;i++){
 							companyList.add(companyArray[i]);
 						}
 					}
+					
 					ArrayList<String> remarkList = new ArrayList<String>();
 					String remark =(String)myRS.getObject("remark");
-			//		System.out.println(remark);
+					
 					if(remark!=null){
 						String[] remarkArray = remark.split("&");
 							for(int i=0;i<remarkArray.length;i++){
 								remarkList.add(remarkArray[i]);
 							}
 					}
+					
 					int id = (Integer)myRS.getObject("hotelID");
 					String hotelID = String.valueOf(id);
 					while(hotelID.length()<8){
@@ -192,7 +194,9 @@ public class HotelinfoDataServiceMySqlImpl{
 					po.setFacility((String)myRS.getObject("facility"));
 					po.setRemark(remarkList);
 
-					if(star+1==hotelstar){			
+					if(hotelstar == 0){
+						list.add(po);
+					}else if(star+1 == hotelstar){			
 						list.add(po);
 					}
 				}
@@ -230,7 +234,6 @@ public class HotelinfoDataServiceMySqlImpl{
 					}
 					ArrayList<String> remarkList = new ArrayList<String>();
 					String remark =(String)myRS.getObject("remark");
-			//		System.out.println(remark);
 					if(remark!=null){
 						String[] remarkArray = remark.split("&");
 							for(int i=0;i<remarkArray.length;i++){
@@ -254,7 +257,9 @@ public class HotelinfoDataServiceMySqlImpl{
 					po.setFacility((String)myRS.getObject("facility"));
 					po.setRemark(remarkList);
 
-					if(star+1!=hotelstar){
+					if(hotelstar == 0){
+						list.add(po);
+					}else if(star+1 == hotelstar){			
 						list.add(po);
 					}
 				}
