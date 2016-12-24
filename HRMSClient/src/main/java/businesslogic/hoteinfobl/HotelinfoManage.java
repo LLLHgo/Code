@@ -77,10 +77,6 @@ public class HotelinfoManage{
 //				if(vo == null){
 //					return null;
 //				}
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 				ArrayList<RoominfoVO> roominfoList = roominfoManage.getRoominfoList(listPO.get(i).getHotelID());
 				String[] roomtype = roominfoManage.getRoomType();
 				int[] availablenum = new int[roomtype.length];
