@@ -98,19 +98,19 @@ public class EvaluatePanel extends JPanel{
 		   this.setVisible(false);
 		    for(int i=0;i<list.size();i++){
 		    	OrderVO order=list.get(i);
-		    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order);
+		    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order,controller);
 		    	p.vb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
 		    			new OrderDetailFrame(order);
 		    		}
 		    		});
-		    	p.evaluateFrame.panel.okButton.addActionListener(new ActionListener(){
+		    	/*p.eb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
-		    			p.evaluateFrame.dispose();
-		    			setHint("评价成功");
+		    			new EvaluateFrame(order.getClientId(),order.getHotelId(),controller);
 		    		}
-		    		});
+		    		});*/
 		    	 Panel.add(p);
+
 		    }
 		    this.getVerticalScrollBar().setVisible(false);
 		}
@@ -121,7 +121,7 @@ public class EvaluatePanel extends JPanel{
 				 Panel.setPreferredSize(new Dimension(600,list.size()*100));
 				 for(int i=0;i<list.size();i++){
 				    	OrderVO order=list.get(i);
-				    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order);
+				    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order,controller);
 				    	p.vb.addActionListener(new ActionListener(){
 				    		public void actionPerformed(ActionEvent e) {
 				    			new OrderDetailFrame(order);
@@ -135,21 +135,5 @@ public class EvaluatePanel extends JPanel{
 	}
 	}
 
-	static void setHint(String str){
-        hint.setText(str);
-    	new Thread(new Runnable(){
-			@Override
-			public void run() {
-				hint.setText(str);
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				hint.setText("");
-			}
 
-		}).start();
-
-    }
 }

@@ -18,4 +18,7 @@ public class EvaluatePanelController {
 	public ArrayList<OrderVO> findClientTypeOrderList(OrderType type, String clientId){
 		return orderfind.findClientTypeOrderList(type, clientId);
 	}
+	public boolean setEvaluate(int star,String str,String clientID,String hotelID){
+		return hotelInfo.setEvaluate(star,str,clientID,hotelID);
+	}
 }

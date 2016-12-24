@@ -22,8 +22,8 @@ StrategyBLService strategy=new StrategyManage();
 	public HotelinfoVO getBasicinfo(String hotelID) {
 	return hotelInfo.getBasicinfo(hotelID);
 }
-	public ArrayList<HotelinfoVO> getBasicinfoList(String str) {
-		return hotelInfo.getBasicinfoList(str,"",6,"");
+	public ArrayList<HotelinfoVO> getBasicinfoList(String area,String hotelname,int hotelstar,String roomType) {
+		return hotelInfo.getBasicinfoList(area,hotelname,hotelstar,roomType);
 	}
 	public ResultMessage createOrderPO(OrderVO orderVO) {
 		return order.createOrderPO(orderVO);

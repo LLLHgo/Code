@@ -79,8 +79,8 @@ public class SearchPanel extends JPanel{
 
 		areabox=new JComboBox<String>();
 		areabox.addItem("全部商圈");
-		areabox.addItem("栖霞区");
-		areabox.addItem("新街口");
+		areabox.addItem("栖霞区商圈");
+		areabox.addItem("新街口商圈");
 		areabox.setBounds(100,15,110,20);
 		this.add(areabox);
 
@@ -93,7 +93,9 @@ public class SearchPanel extends JPanel{
 		this.add(roombox);
 		starbox=new JComboBox<String>();
 		starbox.addItem("全部星级");
-		starbox.addItem("三星级以下");
+		starbox.addItem("一星级");
+		starbox.addItem("二星级");
+		starbox.addItem("三星级");
 		starbox.addItem("四星级");
 		starbox.addItem("五星级");
 		starbox.addItem("六星级");
@@ -143,11 +145,18 @@ public class SearchPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			String info=searchField.getText();
+			String name=searchField.getText();
+			String area=(String)areabox.getSelectedItem();
+			if(area.equals("全部商圈"))
+				area="";
+			String type=(String)roombox.getSelectedItem();
+			if(type.equals("全部房间"))
+				type="";
+			int star=starbox.getSelectedIndex();
 			//ArrayList<HotelinfoVO>list=new ArrayList<HotelinfoVO>();
 			//list.add(HotelinfoDataTool.hotelinfoVO1);
 			//hslp.change(list);
-			hslp.change(controller.getBasicinfoList(info));
+			hslp.change(controller.getBasicinfoList(area,name,star,type));
 			hslp.setVisible(true);
 			hslp.repaint();
 			hslp.revalidate();
