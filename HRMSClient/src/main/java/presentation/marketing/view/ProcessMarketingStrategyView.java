@@ -236,6 +236,10 @@ public class ProcessMarketingStrategyView extends JPanel{
 	public void browseButtonClicked(){
 		hideGroup();
 		List<MarketingStrategyVO> strategys=controller.getMarketingStrategy();
+		if(strategys.size()==0){
+			 ((ProcessMarketingView)view).setHint("目前没有策略.");
+			 return;
+		}
 		JPanel panel=new MJPanel(0,0,200,200);
         panel.setPreferredSize(new Dimension(690,690));
 		browsePanel=new browsePanel(80,0,820,500,strategys,panel);
@@ -249,7 +253,7 @@ public class ProcessMarketingStrategyView extends JPanel{
                 List<String> delete=browsePanel.getDelete();
                 for(String s:delete){
                 	if(controller.deleteMarketingStrategy(s)==ResultMessage.SUCCESS){//删除策略成功
-                		//((ProcessMarketingView)view).setHint("删除策略成功.");
+                	    ((ProcessMarketingView)view).setHint("删除策略成功.");
                 	}else{//删除策略失败
                 		((ProcessMarketingView)view).setHint("删除策略失败.");
                 	}
