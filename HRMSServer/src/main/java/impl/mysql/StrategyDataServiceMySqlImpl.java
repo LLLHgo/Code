@@ -14,6 +14,7 @@ import java.util.List;
 
 import Enum.HotelStrategy;
 import Enum.MarketingStrategy;
+import Enum.ResultMessage;
 import Enum.VIPType;
 import dataservice.strategydataservice.StrategyDataService;
 import initial.DataBaseInit;
@@ -36,7 +37,7 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 
 	private static final long serialVersionUID = 1L;
 
-	public boolean addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
+	public ResultMessage addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
 		Connection conn=DataBaseInit.getConnection();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String start=sdf.format(po.getStartTime().getTime());
@@ -45,6 +46,13 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 		try{
 			stmt=conn.createStatement();
 			String sql="";
+
+			sql="SELECT * FROM MarketingStrategy WHERE name='" +po.getName()+ "'";
+			ResultSet re=stmt.executeQuery(sql);
+			while(re.next()){
+				return ResultMessage.DUPLICATESTRATEGY;
+			}
+
 			if(po.getMarketingStrategyType().equals(MarketingStrategy.PERIOD))
 				sql="INSERT INTO MarketingStrategy(name,type,starttime,endtime,discount)VALUES('"+po.getName()+"','"+po.getMarketingStrategyType()+"','"+start+"','"+end+"','"+((MarketingPeriodPO)po).getDiscount()+"')";
 			else if(po.getMarketingStrategyType().equals(MarketingStrategy.VIPSPECIAL)){
@@ -71,21 +79,21 @@ public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements
 				}
 				sql="INSERT INTO MarketingStrategy(name,type,starttime,endtime,discount,hotels,minSum,minRooms,minLevel,viptypes)VALUES('"+po.getName()+"','"+po.getMarketingStrategyType()+"','"+start+"','"+end+"','"+cp.getDiscount()+"','"+hotels+"','"+cp.getMinSum()+"','"+cp.getMinRooms()+"','"+cp.getLevels()+"','"+viptypes+"')";
 			}else
-				return false;
+				return ResultMessage.FAIL;
 			int rs = stmt.executeUpdate(sql);
 			if(rs>0)
-				return true;
+				return ResultMessage.SUCCESS;
 			else
-				return false;
+				return ResultMessage.FAIL;
 
 		}catch(SQLException se){
 			// 处理 JDBC 错误
 			se.printStackTrace();
-			return false;
+			return ResultMessage.SQLERROR;
 		}catch(Exception e){
 			// 处理 Class.forName 错误
 			e.printStackTrace();
-			return false;
+			return ResultMessage.CLASSFORNAME;
 		}
 	}
 

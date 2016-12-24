@@ -3,6 +3,7 @@ package dataservice.strategydataservice;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import Enum.ResultMessage;
 import datatool.StrategyPODataTool;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
@@ -15,11 +16,11 @@ public class StrategyDataService_Stub implements StrategyDataService{
      * @param po
      * @return 是否增加成功
      */
-    public boolean addMarketingStrategy(MarketingStrategyPO po) {
+    public ResultMessage addMarketingStrategy(MarketingStrategyPO po) {
     	if(po!=null)
-			return true;
+			return ResultMessage.SUCCESS;
 		else
-			return false;
+			return ResultMessage.FAIL;
 	}
 
    /**

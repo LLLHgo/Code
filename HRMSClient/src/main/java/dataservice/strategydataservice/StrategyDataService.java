@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import Enum.ResultMessage;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
@@ -16,7 +17,7 @@ public interface StrategyDataService extends Remote{
      * @param po
      * @return 是否增加成功
      */
-    public boolean addMarketingStrategy(MarketingStrategyPO po)throws RemoteException;
+    public ResultMessage addMarketingStrategy(MarketingStrategyPO po)throws RemoteException;
 
     /**
      * 返回网站营销人员指定的额策略列表

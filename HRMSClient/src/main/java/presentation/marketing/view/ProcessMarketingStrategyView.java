@@ -106,11 +106,8 @@ public class ProcessMarketingStrategyView extends JPanel{
               if(periodVO==null){//vo为空 说明信息还未填写完全
             	  ((ProcessMarketingView)view).setHint("请继续填写.");
               }else{
-            	  if(controller.addMarketingStrategy(periodVO)==ResultMessage.SUCCESS){//保存新增策略成功
-                	  ((ProcessMarketingView)view).setHint("保存新增策略成功.");
-                  }else {//保存新增策略失败
-                	  ((ProcessMarketingView)view).setHint("保存新增策略失败.");
-                  }
+            	  ResultMessage addResult=controller.addMarketingStrategy(periodVO);
+            	  addResultPrint(addResult);
               }
 			}
 
@@ -156,11 +153,8 @@ public class ProcessMarketingStrategyView extends JPanel{
 	            	  ((ProcessMarketingView)view).setHint("请继续填写.");
 	            	  return;
 	              }
-	              if(controller.addMarketingStrategy(specialVO)==ResultMessage.SUCCESS){//保存新增策略成功
-	            	  ((ProcessMarketingView)view).setHint("保存新增策略成功.");
-	              }else {//保存新增策略失败
-	            	  ((ProcessMarketingView)view).setHint("保存新增策略失败.");
-	              }
+				ResultMessage addResult=controller.addMarketingStrategy(specialVO);
+          	    addResultPrint(addResult);
 			}
 
         });
@@ -199,16 +193,13 @@ public class ProcessMarketingStrategyView extends JPanel{
         check.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-              MarketingStrategyVO cratedVO= newPanel.getCreatedVO();
-              if(cratedVO==null){//从newPanel处得到空的VO，说明有项目还未填写完全
+              MarketingStrategyVO createdVO= newPanel.getCreatedVO();
+              if(createdVO==null){//从newPanel处得到空的VO，说明有项目还未填写完全
             	  ((ProcessMarketingView)view).setHint("请继续填写.");
             	  return;
               }
-              if(controller.addMarketingStrategy(cratedVO)==ResultMessage.SUCCESS){//保存新增策略成功
-            	  ((ProcessMarketingView)view).setHint("保存新增策略成功.");
-              }else {//保存新增策略失败
-            	  ((ProcessMarketingView)view).setHint("保存新增策略失败.");
-              }
+              ResultMessage addResult=controller.addMarketingStrategy(createdVO);
+        	  addResultPrint(addResult);
 			}
 
         });
@@ -279,5 +270,18 @@ public class ProcessMarketingStrategyView extends JPanel{
 		groupPanel.setVisible(false);
 	}
 
+	private void addResultPrint(ResultMessage re){
+		if(re.equals(ResultMessage.SUCCESS)){//保存新增策略成功
+      	    ((ProcessMarketingView)view).setHint("保存新增策略成功.");
+        }else if(re.equals(ResultMessage.FAIL)){//保存新增策略失败
+        	((ProcessMarketingView)view).setHint("保存新增策略失败.");
+        }else if(re.equals(ResultMessage.SQLERROR)){//数据库有故障
+        	((ProcessMarketingView)view).setHint("数据库有故障.");
+        }else if(re.equals(ResultMessage.DUPLICATESTRATEGY)){//该策略已存在
+        	((ProcessMarketingView)view).setHint("该策略已存在.");
+        }else if(re.equals(ResultMessage.CLASSFORNAME)){//Class.forName()问题
+        	((ProcessMarketingView)view).setHint("Class.forName()问题.");
+        }
+	}
 
 }

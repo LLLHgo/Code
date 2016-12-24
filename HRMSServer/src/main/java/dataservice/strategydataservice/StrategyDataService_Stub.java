@@ -3,15 +3,16 @@ package dataservice.strategydataservice;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import Enum.ResultMessage;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
 
 public class StrategyDataService_Stub implements StrategyDataService{
 
-	public boolean addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
+	public ResultMessage addMarketingStrategy(MarketingStrategyPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		return ResultMessage.SUCCESS;
 	}
 
 	public List<StrategyPO> getMarketingStrategy() throws RemoteException {

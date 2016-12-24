@@ -46,13 +46,20 @@ public class StrategyManage implements StrategyBLService{
 	public ResultMessage addMarketingStrategy(MarketingStrategyVO vo) {
 		MarketingStrategyPO po=Mvo2po(vo);
 		try {
-			if(this.strategyDataService.addMarketingStrategy(po))
+			if(this.strategyDataService.addMarketingStrategy(po).equals(ResultMessage.SUCCESS))
 				return ResultMessage.SUCCESS;
-			else
+			else if(this.strategyDataService.addMarketingStrategy(po).equals(ResultMessage.FAIL))
 				return ResultMessage.FAIL;
+			else if(this.strategyDataService.addMarketingStrategy(po).equals(ResultMessage.DUPLICATESTRATEGY))
+				return ResultMessage.DUPLICATESTRATEGY;
+			else if(this.strategyDataService.addMarketingStrategy(po).equals(ResultMessage.SQLERROR))
+				return ResultMessage.SQLERROR;
+			else if(this.strategyDataService.addMarketingStrategy(po).equals(ResultMessage.CLASSFORNAME))
+				return ResultMessage.CLASSFORNAME;
 		} catch (RemoteException e) {
-			return ResultMessage.FAIL;
+			return ResultMessage.REMOTEEXCEPTION;
 		}
+		return  ResultMessage.FAIL;
 	}
 
 	@Override
