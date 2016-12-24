@@ -1,11 +1,14 @@
 package presentation.sitemanager.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -55,16 +58,16 @@ public class ProcessClientAccountManageView extends JPanel{
 	MyLabel creditLabelL;
 	MyLabel passwordLabelL;
 	
-	// 右边的显示具体网站管理人员的id  只改客户的密码
+	// 右边的显示具体网站管理人员的id  只改客户的电话
 	MyLabel clientIdLabel;
 	MyLabel nameText;
-	MyLabel telText;
+	MyTextField telText;
 	MyLabel viptypeLabel;
 	MyLabel vipgradeLabel;
 	MyLabel birthLabel;
 	MyLabel firmLabel;
 	MyLabel creditLabel;
-	MyTextField passwordText;
+	MyLabel passwordText;
 	
 	// 设置右边工具栏图标
 	ModifyButton modifyButton;
@@ -97,7 +100,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		// 搜索区域
 		searchText=new JTextField();
 		searchText.setBounds(210,17,275,40);
-		searchText.setFont(new java.awt.Font("微软雅黑",1,20));
+		searchText.setFont(new java.awt.Font("楷体",Font.ITALIC,25));
 		searchText.setOpaque(false);
 		searchText.setBorder(new EmptyBorder(0,0,0,0));
 		searchButton.addMouseListener(new SearchListener());		
@@ -129,13 +132,15 @@ public class ProcessClientAccountManageView extends JPanel{
 		
 		clientIdLabel=new MyLabel(400,130,180,25,"");
 		nameText=new MyLabel(400,160,180,25,"");
-		telText=new MyLabel(400,190,180,25,"");
+		telText=new MyTextField(400,190,160,25,"");
+		telText.setBorder(new EmptyBorder(0,0,0,0));
+		telText.setForeground(Color.white);
 		viptypeLabel=new MyLabel(400,220,180,25,"");
 		vipgradeLabel=new MyLabel(400,250,180,25,"");
 		birthLabel=new MyLabel(400,280,180,25,"");
 		firmLabel=new MyLabel(400,310,180,25,"");
 		creditLabel=new MyLabel(400,340,180,25,"");
-		passwordText=new MyTextField(400,370,180,25,"");
+		passwordText=new MyLabel(400,370,180,25,"");
 		
 		creditIconButton=new CreditButton(240,320);
 		creditIconButton.addMouseListener(new ShowCreditListener());
@@ -161,6 +166,7 @@ public class ProcessClientAccountManageView extends JPanel{
 		clientIdLabel.setText(clientVO.getID());
 		nameText.setText(clientVO.getName());
 		telText.setText(clientVO.getTel());
+		telText.setBorder(new EmptyBorder(0,0,0,0));
 		viptypeLabel.setText(clientVO.getType()+"");
 		vipgradeLabel.setText(clientVO.getLevel()+"");
 		if(clientVO.getFirm()!=null||!clientVO.getFirm().equals("")){
@@ -223,10 +229,11 @@ public class ProcessClientAccountManageView extends JPanel{
 			deleteButton.setEnabled(false);
 			checkButton.setEnabled(false);
 			modifyButton.setEnabled(false);
-			passwordText.setEditable(false);
+			telText.setEditable(false);
 			clientIdLabel.setText("");
 			nameText.setText("");
 			telText.setText("");
+			
 			vipgradeLabel.setText("");
 			viptypeLabel.setText("");
 			birthLabel.setText("");
@@ -285,7 +292,7 @@ public class ProcessClientAccountManageView extends JPanel{
 				deleteButton.setEnabled(false);
 				checkButton.setEnabled(false);
 				modifyButton.setEnabled(false);
-				passwordText.setEditable(false);
+				telText.setEditable(false);
 				clientIdLabel.setText("");
 				nameText.setText("");
 				telText.setText("");
@@ -330,24 +337,33 @@ public class ProcessClientAccountManageView extends JPanel{
 	}
 
 	class CheckButtonListener implements MouseListener{
-		String newPassword;
+		String telModify;
         ClientVO newClientVO;
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			newPassword=passwordText.getText();
-			if(newPassword.equals("")||(newPassword==null)){
-				conditionLabel.setText("密码为空，请输入密码！");
+			telModify=telText.getText();
+			if(telModify==""||telModify.equals("")){
+				conditionLabel.setText("电话为空，请输入电话");
+			}
+			else if(!isNumeric(telModify)){
+				conditionLabel.setText("电话请确认是否全为数字，重新输入电话");	
+			}
+			else if(telModify.length()!=11){
+				conditionLabel.setText("电话位数不对，请重新输入电话");
 			}
 			else{
 				
-			newClientVO=new ClientVO(clientVO.getID(),newPassword,clientVO.getName(),clientVO.getTel()
+			newClientVO=new ClientVO(clientVO.getID(),clientVO.getPassword(),clientVO.getName(),telModify
 					,clientVO.getType(),clientVO.getLevel(),clientVO.getBirth(),clientVO.getFirm(),
 					clientVO.getCredit(),clientVO.getCreditRecord());
 			result=controller.clientAccountUpdate(newClientVO);
 			if(result==ResultMessage.SUCCESS){
 				conditionLabel.setText("保存成功！");
-				passwordText.setEditable(false);
+				telText.setEditable(false);
+				telText.setBorder(new EmptyBorder(0,0,0,0));
+				telText.setForeground(Color.white);
+				telText.setOpaque(false);
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 修改"+clientVO.getID()+"账户");
 			}
@@ -390,7 +406,10 @@ public class ProcessClientAccountManageView extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			checkButton.setEnabled(true);
-			passwordText.setEditable(true);
+			telText.setEditable(true);
+			telText.setBorder(new EmptyBorder(3,3,3,3));
+			telText.setOpaque(true);
+			telText.setForeground(Color.DARK_GRAY);
 		}
 
 		@Override
@@ -426,5 +445,15 @@ public class ProcessClientAccountManageView extends JPanel{
 		background.setImage(background.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST));
 		background.paintIcon(this, g, 0, 0);
 	}
+	// 判断字符串是不是全为数字，如果全为数字，返回true
+		public boolean isNumeric(String str){ 
+			Pattern pattern = Pattern.compile("[0-9]*"); 
+		    Matcher isNum = pattern.matcher(str);
+		   if( !isNum.matches() ){
+			   return false; 
+			} 
+			   return true; 
+		}
+		
 }
 
