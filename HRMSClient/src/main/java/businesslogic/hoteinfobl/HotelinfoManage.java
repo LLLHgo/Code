@@ -69,10 +69,11 @@ public class HotelinfoManage{
 			listPO = data.clientfindhotelinfo(area,hotelname,hotelstar);
 			for(int i=0;i<listPO.size();i++){
 				vo = PO2VO(listPO.get(i));
+				//每次循环都先将Roomtypeinflag置为0
+				roomtypeinflag = 0;
 //				if(vo == null){
 //					return null;
 //				}
-				
 				ArrayList<RoominfoVO> roominfoList = roominfoManage.getRoominfoList(listPO.get(i).getHotelID());
 				String[] roomtype = roominfoManage.getRoomType();
 				int[] availablenum = new int[roomtype.length];
