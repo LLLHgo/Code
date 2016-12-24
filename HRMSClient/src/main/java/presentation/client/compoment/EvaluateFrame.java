@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+
+import presentation.client.controller.EvaluatePanelController;
 
 
 
@@ -25,24 +28,43 @@ public class EvaluateFrame extends JFrame{
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	Panel panel;
+	ePanel panel;
 	JFrame frame;
-
-public EvaluateFrame(){
-	panel=new Panel();
+	String clientID;
+	String hotelID;
+	Label hint;
+	private EvaluatePanelController controller;
+public EvaluateFrame(String clientID,String hotelID,EvaluatePanelController controller){
+	this.controller=controller;
+	this.clientID=clientID;
+	this.hotelID=hotelID;
+	panel=new ePanel();
 	frame=this;
+	hint=new Label("");
+	hint.setBounds(200,250,150,30);
+	this.add(hint);
 	this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	this.add(panel);
 	this.setLocationRelativeTo(null);
 	this.setLayout(null);
-	this.setVisible(false);
+	this.setVisible(true);
 	this.setResizable(false);
 	this.setSize(500, 309);
 	this.setLocation(500,200);
 
 
 }
-class Panel extends JPanel{
+class Label extends JLabel{
+	private static final long serialVersionUID = 1L;
+	public Label(String str){
+		super(str);
+		java.awt.Font f=new java.awt.Font("微软雅黑", 4,  20);
+		this.setFont(f);
+		this.setForeground(Color.WHITE);
+
+	}
+}
+class ePanel extends JPanel{
 	/**
 	 *
 	 */
@@ -58,7 +80,7 @@ class Panel extends JPanel{
 	private checkbutton s5;
 	private ButtonGroup box;
 	private boolean flag=true;
-	public Panel(){
+	public ePanel(){
 		okButton = new JButton();
 		okButton.setIcon(new ImageIcon(this.getClass().getResource("image/evaluateConfirm.png")));
 		okButton.setBounds(80,250,100,24);
@@ -68,10 +90,35 @@ class Panel extends JPanel{
 		okButton.setFocusPainted(false);
 		okButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-			}
 
-		});
+				int star=0;
+				if(s1.isSelected())
+					star=1;
+				if(s2.isSelected())
+					star=2;
+				if(s3.isSelected())
+					star=3;
+				if(s4.isSelected())
+					star=4;
+				if(s5.isSelected())
+					star=5;
+				boolean k=controller.setEvaluate(star,text.getText(),clientID,hotelID);
+				if(k)
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						hint.setText("评价成功");
+						try {
+							Thread.sleep(1500);
+							frame.dispose();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}).start();
+			else hint.setText("评价失败！");
+
+			}});
 		this.add(okButton);
 
 		text=new JTextArea("请写下自己对此行的评语：");

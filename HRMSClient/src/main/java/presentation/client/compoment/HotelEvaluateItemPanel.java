@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import presentation.client.controller.EvaluatePanelController;
 import vo.orderVO.OrderVO;
 
 
@@ -19,16 +20,17 @@ public class HotelEvaluateItemPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
-	private evaluateButton eb;
+	evaluateButton eb;
 	viewButton vb;
 	private Label hotelName;
 	private Label orderNum;
 	private Label money;
 	private OrderVO vo;
-	EvaluateFrame evaluateFrame;
-public HotelEvaluateItemPanel(int x,int y,OrderVO vo){
-	evaluateFrame=new EvaluateFrame();
-	
+
+	private EvaluatePanelController controller;
+public HotelEvaluateItemPanel(int x,int y,OrderVO vo,EvaluatePanelController controller){
+
+	this.controller=controller;
 	this.vo=vo;
 	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelEvaluatePanel.png"));
 	eb=new evaluateButton(510, 7);
@@ -55,7 +57,7 @@ private class evaluateButtonListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		evaluateFrame.setVisible(true);
+		new EvaluateFrame(vo.getClientId(),vo.getHotelId(),controller);
 	}
 
 }
