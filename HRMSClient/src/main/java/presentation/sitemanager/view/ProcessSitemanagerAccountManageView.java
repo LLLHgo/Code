@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.border.EmptyBorder;
 
 import Enum.ResultMessage;
 import presentation.common.SitemanagerIconLabel;
@@ -18,6 +20,7 @@ import presentation.sitemanager.component.AddButton;
 import presentation.sitemanager.component.CheckButton;
 import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
+import presentation.sitemanager.component.MyPasswordField;
 import presentation.sitemanager.component.MyTextField;
 import vo.sitemanager.SitemanagerVO;
 
@@ -35,7 +38,7 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 	MyLabel passwordLabel;
 	MyLabel idTextLabel;
 	MyTextField telField;
-	MyTextField passWordField;
+	JPasswordField passWordField;
 	ModifyButton modifyButton;
 	AddButton addButton;
 	CheckButton checkButton;
@@ -58,11 +61,15 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 		tel=sitemanagerVO.getSitemanagerPhoneNumber();
 		password=sitemanagerVO.getPassword();
 		idLabel=new MyLabel(300, 200, 60, 40,"帐号:");
-		telLabel=new MyLabel(300,240,60,40,"电话:");
-		passwordLabel=new MyLabel(300, 280, 100, 40,"密码:");
+		telLabel=new MyLabel(300,245,60,40,"电话:");
+		passwordLabel=new MyLabel(300, 290, 100, 40,"密码:");
 		idTextLabel=new MyLabel(350,200,150,40,id);
-		telField=new MyTextField(350,240,200,40,tel);
-		passWordField=new MyTextField(350,280,200,40,password);
+		telField=new MyTextField(350,245,200,40,tel);
+		telField.setBorder(new EmptyBorder(0,0,0,0));
+		telField.setForeground(Color.white);
+		passWordField=new MyPasswordField(350,290,200,40,password);
+		passWordField.setForeground(Color.white);
+		passWordField.setBorder(new EmptyBorder(0,0,0,0));
 		modifyButton=new ModifyButton(620,180,50,50);
 		checkButton=new CheckButton(618,280,55,55);
 		// 设置状态栏
@@ -99,9 +106,11 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 
 		public void mouseClicked(MouseEvent e) {
 			telField.setEditable(true);
+			telField.setOpaque(true);
+			telField.setForeground(Color.DARK_GRAY);
 			passWordField.setEditable(true);
-			//telField.setBorder(new EmptyBorder(1,1,1,1));
-			//passWordField.setBorder(new EmptyBorder(1,1,1,1));
+			passWordField.setOpaque(true);
+			passWordField.setForeground(Color.DARK_GRAY);
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}		
@@ -130,7 +139,11 @@ public class ProcessSitemanagerAccountManageView extends JPanel{
 			if(result==ResultMessage.SUCCESS){
 				conditionalLabel.setText("保存成功！");
 				telField.setEditable(false);
+				telField.setForeground(Color.white);
+				telField.setOpaque(false);
 				passWordField.setEditable(false);
+				passWordField.setForeground(Color.white);
+				passWordField.setOpaque(false);
 				date = new Date();
 				addLog("S00000001 "+date.toString()+" 修改网站管理人员账户");
 			}

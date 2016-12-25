@@ -1,5 +1,6 @@
 package presentation.sitemanager.view;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.FocusAdapter;
@@ -21,6 +22,7 @@ import presentation.sitemanager.component.AddButton;
 import presentation.sitemanager.component.CheckButton;
 import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
+import presentation.sitemanager.component.MyPasswordField;
 import presentation.sitemanager.component.MyTextField;
 import presentation.sitemanager.component.SearchButton;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -64,7 +66,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 	MyLabel idLabel;
 	MyTextField nameTextField;
 	MyTextField telTextField;
-	MyTextField passwordField;
+	MyPasswordField passwordField;
 	// 酒店工作人员头像区域
 	HotelIconLabel hotelIconLabel;
 	// 新增的酒店名称、酒店工作人员电话、酒店工作人员密码
@@ -87,7 +89,7 @@ public class ProcessHotelAccountManageView extends JPanel{
 		// 设置添加按钮
 		addHotelButton=new AddButton(210,5,65,65);
 		addHotelLabel=new MyLabel(100,15,100,40,"添加酒店");
-		addHotelLabel.setFont(new java.awt.Font("微软雅黑",1,25));
+		addHotelLabel.setFont(new java.awt.Font("微软雅黑",1,20));
 		addHotelButton.addMouseListener(new AddHotelButtonMouseListener());
 		// 搜索框和搜索按钮
 		searchButton=new SearchButton(635,11,40,40);
@@ -98,7 +100,7 @@ public class ProcessHotelAccountManageView extends JPanel{
             }  
         });
 		searchText.setBounds(400,17,275,40);
-		searchText.setFont(new java.awt.Font("楷体",1,20));
+		searchText.setFont(new java.awt.Font("楷体",Font.ITALIC,20));
 		searchText.setOpaque(false);
 		searchText.setForeground(Color.white);
 		searchText.setBorder(new EmptyBorder(0,0,0,0));
@@ -125,9 +127,17 @@ public class ProcessHotelAccountManageView extends JPanel{
 
 		idLabel=new MyLabel(400,180,180,25,"");
 		nameTextField=new MyTextField(400,230,180,25,"");
+		nameTextField.setBorder(new EmptyBorder(0,0,0,0));
+		nameTextField.setForeground(Color.white);
+		nameTextField.setOpaque(false);
 		telTextField=new MyTextField(400,280,180,25,"");
-		passwordField=new MyTextField(400,330,180,25,"");
-
+		telTextField.setBorder(new EmptyBorder(0,0,0,0));
+		telTextField.setForeground(Color.white);
+		passwordField=new MyPasswordField(400,330,180,25,"");
+		passwordField.setForeground(Color.white);
+		
+		passwordField.setBorder(new EmptyBorder(0,0,0,0));
+		
 		this.add(hotelIconLabel);
 		this.add(addHotelButton);
 		this.add(addHotelLabel);
@@ -155,40 +165,25 @@ public class ProcessHotelAccountManageView extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			nameTextField.setText("");
+			nameTextField.setOpaque(true);
+			nameTextField.setForeground(Color.DARK_GRAY);
 			telTextField.setText("");
+			telTextField.setOpaque(true);
+			telTextField.setForeground(Color.DARK_GRAY);
 			passwordField.setText("");
+			passwordField.setOpaque(true);
+			passwordField.setForeground(Color.DARK_GRAY);
 			idLabel.setText("");
-			nameTextField.setText("");
 			nameTextField.setEditable(true);;
 			telTextField.setEditable(true);
 			passwordField.setEditable(true);
 			checkAddButton.setVisible(true);
 			checkAddButton.setEnabled(true);
 		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
 
 	}
 	// 搜索酒店工作人员账户的监听
@@ -206,40 +201,27 @@ public class ProcessHotelAccountManageView extends JPanel{
 			else{
 				conditionLabel.setText("找到匹配账户");
 				nameTextField.setText(hotelinfoVO.getName());
+				nameTextField.setOpaque(false);
+				nameTextField.setForeground(Color.white);
 				idLabel.setText(hotelstaffVO.getHotelID());
 				telTextField.setText(hotelstaffVO.getTel());
 				passwordField.setText(hotelstaffVO.getPassword());
+				telTextField.setForeground(Color.white);
+				telTextField.setOpaque(false);
+				passwordField.setForeground(Color.white);
+				passwordField.setOpaque(false);
+				nameTextField.setForeground(Color.white);
 				telTextField.setEditable(false);
+				telTextField.setOpaque(false);
 				passwordField.setEditable(false);
-				//nameTextField.setText("");
 				modifyButton.setEnabled(true);
 				checkAddButton.setVisible(false);
 			}
 		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
 
 	}
 	// 确认修改的按钮
@@ -273,8 +255,12 @@ public class ProcessHotelAccountManageView extends JPanel{
 				conditionLabel.setText("修改成功！");
 				date=new Date();
 				telTextField.setEditable(false);
+				telTextField.setForeground(Color.white);
+				telTextField.setOpaque(false);
 				passwordField.setEditable(false);
+				passwordField.setForeground(Color.white);
 				nameTextField.setEditable(false);
+				nameTextField.setForeground(Color.white);
 				addLog("S00000001 "+date.toString()+" 修改"+idLabel.getText()+"账户");
 				checkModifyButton.setEnabled(true);
 			}
@@ -285,29 +271,10 @@ public class ProcessHotelAccountManageView extends JPanel{
 			}
 		}
 
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
 
 	}
 	// 修改按钮
@@ -320,31 +287,15 @@ public class ProcessHotelAccountManageView extends JPanel{
 			telTextField.setEditable(true);
 			passwordField.setEditable(true);
 			checkModifyButton.setEnabled(true);
+			
+			telTextField.setForeground(Color.DARK_GRAY);
+			telTextField.setOpaque(true);
 		}
 
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
 
 	}
 	// 确认添加的按钮
@@ -376,6 +327,14 @@ public class ProcessHotelAccountManageView extends JPanel{
 				nameTextField.setEditable(false);
 				telTextField.setEditable(false);
 				passwordField.setEditable(false);
+				
+				nameTextField.setForeground(Color.white);
+				nameTextField.setOpaque(false);
+				telTextField.setForeground(Color.white);
+				telTextField.setOpaque(false);
+				passwordField.setForeground(Color.white);
+				passwordField.setOpaque(false);
+				
 				date=new Date();
 				addLog("S00000001 "+date.toString()+" 添加酒店"+addName+"账户");
 				checkAddButton.setEnabled(false);
@@ -389,29 +348,11 @@ public class ProcessHotelAccountManageView extends JPanel{
 			}
 		}
 
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
 
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
 
 	}
 	void addLog(String info){

@@ -24,6 +24,7 @@ import presentation.sitemanager.component.CreditButton;
 import presentation.sitemanager.component.DeleteButton;
 import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
+import presentation.sitemanager.component.MyPasswordField;
 import presentation.sitemanager.component.MyTextField;
 import presentation.sitemanager.component.SearchButton;
 import vo.clientVO.ClientVO;
@@ -67,7 +68,7 @@ public class ProcessClientAccountManageView extends JPanel{
 	MyLabel birthLabel;
 	MyLabel firmLabel;
 	MyLabel creditLabel;
-	MyLabel passwordText;
+	MyPasswordField passwordText;
 	
 	// 设置右边工具栏图标
 	ModifyButton modifyButton;
@@ -140,7 +141,9 @@ public class ProcessClientAccountManageView extends JPanel{
 		birthLabel=new MyLabel(400,280,180,25,"");
 		firmLabel=new MyLabel(400,310,180,25,"");
 		creditLabel=new MyLabel(400,340,180,25,"");
-		passwordText=new MyLabel(400,370,180,25,"");
+		passwordText=new MyPasswordField(400,370,180,25,"");
+		passwordText.setBorder(new EmptyBorder(0,0,0,0));
+		passwordText.setForeground(Color.white);
 		
 		creditIconButton=new CreditButton(240,320);
 		creditIconButton.addMouseListener(new ShowCreditListener());

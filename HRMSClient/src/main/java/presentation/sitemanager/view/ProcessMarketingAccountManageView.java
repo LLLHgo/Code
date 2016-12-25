@@ -1,6 +1,7 @@
 package presentation.sitemanager.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -22,6 +23,7 @@ import presentation.sitemanager.component.CheckButton;
 import presentation.sitemanager.component.DeleteButton;
 import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
+import presentation.sitemanager.component.MyPasswordField;
 import presentation.sitemanager.component.MyTextField;
 import presentation.sitemanager.component.SearchButton;
 import vo.marketingVO.MarketingVO;
@@ -48,7 +50,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	MyLabel marketingIdLabel;
 	MyTextField marketingName;
 	MyTextField marketingTel;
-	MyTextField marketingPassword;
+	MyPasswordField marketingPassword;
 	// 搜索框
 	SearchButton searchButton;
 	JTextField searchBarText;
@@ -88,7 +90,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		// 搜索区域
 		searchBarText=new JTextField();
 		searchBarText.setBounds(210,17,275,40);
-		searchBarText.setFont(new java.awt.Font("微软雅黑",  1,  20));
+		searchBarText.setFont(new java.awt.Font("楷体",Font.ITALIC,25));
 		searchBarText.setOpaque(false);
 		searchBarText.setBorder(new EmptyBorder(0,0,0,0));
 		searchButton.addMouseListener(new SearchListener());
@@ -105,16 +107,22 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		checkAddButton=new CheckButton(400,340,55,55);
 		// 账户信息
 		idLabel=new MyLabel(300,160,60,40,"帐号：");
-		nameLabel=new MyLabel(300,200,60,40,"名字：");
-		telLabel=new MyLabel(300,240,60,40,"电话：");
-		passwordLabel=new MyLabel(300,280,60,40,"密码：");
+		nameLabel=new MyLabel(300,205,60,40,"名字：");
+		telLabel=new MyLabel(300,250,60,40,"电话：");
+		passwordLabel=new MyLabel(300,295,60,40,"密码：");
 		marketingIdLabel=new MyLabel(350,160,200,40,"");
-		marketingName=new MyTextField(350,200,200,40,"");
-		marketingName.setEnabled(true);
-		marketingTel=new MyTextField(350,240,200,40,"");
-		marketingTel.setEnabled(true);
-		marketingPassword=new MyTextField(350,280,200,40,"");
-		marketingPassword.setEnabled(true);
+		marketingName=new MyTextField(350,212,200,25,"");
+		marketingName.setBorder(new EmptyBorder(0,0,0,0));
+		marketingName.setOpaque(false);
+		marketingName.setForeground(Color.white);
+		marketingTel=new MyTextField(350,257,200,25,"");
+		marketingTel.setBorder(new EmptyBorder(0,0,0,0));
+		marketingTel.setOpaque(false);
+		marketingTel.setForeground(Color.white);
+		marketingPassword=new MyPasswordField(350,302,200,25,"");
+		marketingPassword.setOpaque(false);
+		marketingPassword.setBorder(new EmptyBorder(0,0,0,0));
+		marketingPassword.setForeground(Color.white);
 		// 网站营销人员头像区域
 		marketingIconLabel=new MarketingIconLabel(160,200);
 		// 工具栏
@@ -172,13 +180,21 @@ public class ProcessMarketingAccountManageView extends JPanel{
 		tel=marketingVO.getTelephone();
 		marketingIdLabel.setText(id);
 		marketingName.setText(name);
+		marketingName.setOpaque(false);
+		marketingName.setForeground(Color.white);
 		marketingTel.setText(tel);
+		marketingTel.setOpaque(false);
+		marketingTel.setForeground(Color.white);
 		marketingPassword.setText(password);
+		marketingPassword.setOpaque(false);
+		marketingPassword.setForeground(Color.white);
 
 		//checkButton.setEnabled(true);
 		modifyButton.setEnabled(true);
 		marketingTel.setEditable(false);
 		marketingPassword.setEditable(false);
+		checkModifyButton.setVisible(false);
+		checkAddButton.setVisible(false);
 	}
 	// 搜索按钮的监听
 	class SearchListener implements MouseListener{
@@ -187,6 +203,8 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			marketingName.setText("");
 			marketingPassword.setText("");
 			marketingTel.setText("");
+			checkModifyButton.setVisible(false);
+			checkAddButton.setVisible(false);
 			id=searchBarText.getText();
 			marketingVO=controller.MarketingAccountFind(id);
 			if(marketingVO==null){
@@ -210,8 +228,12 @@ public class ProcessMarketingAccountManageView extends JPanel{
 			checkModifyButton.setVisible(true);
 			checkAddButton.setVisible(false);
 			marketingName.setEditable(false);
+			marketingName.setOpaque(false);
 			marketingTel.setEditable(true);
-			marketingPassword.setEditable(true);
+			marketingTel.setOpaque(true);
+			marketingTel.setForeground(Color.DARK_GRAY);
+			marketingPassword.setOpaque(false);
+			//marketingPassword.setEditable(true);
 		}
 		public void mousePressed(MouseEvent e) {
 		}
@@ -227,6 +249,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	class MarketingModifyCheckListener implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
+			checkAddButton.setVisible(false);
 			ResultMessage result;
 			newTel=marketingTel.getText();
 			newPassword=marketingPassword.getText();
@@ -254,7 +277,9 @@ public class ProcessMarketingAccountManageView extends JPanel{
 				checkModifyButton.setVisible(false);
 				modifyButton.setEnabled(true);
 				marketingTel.setEditable(false);
-				marketingPassword.setEditable(false);
+				marketingTel.setOpaque(false);
+				marketingTel.setForeground(Color.white);
+				//marketingPassword.setEditable(false);
 			}else if(result==ResultMessage.DATEBASEFAIL){
 				conditionalText.setText("数据库保存失败！");
 			}
@@ -274,6 +299,7 @@ public class ProcessMarketingAccountManageView extends JPanel{
 
 
 		public void mouseClicked(MouseEvent e) {
+			checkModifyButton.setVisible(false);
 			addName=marketingName.getText();
 			addTel=marketingTel.getText();
 			addPassword=marketingPassword.getText();
@@ -298,6 +324,12 @@ public class ProcessMarketingAccountManageView extends JPanel{
 				addLog("S00000001 "+date.toString()+" 添加网站营销人员"+addName+"账户");
 				deleteButton.setEnabled(true);
 				checkAddButton.setVisible(false);
+				marketingName.setOpaque(false);
+				marketingTel.setOpaque(false);
+				marketingPassword.setOpaque(false);
+				marketingName.setForeground(Color.white);
+				marketingTel.setForeground(Color.white);
+				marketingPassword.setForeground(Color.white);
 			}
 			else if(result==ResultMessage.DATEBASEFAIL){
 				conditionalText.setText("数据库保存失败！");
@@ -313,14 +345,22 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	class MarketingAddListener implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
+			checkModifyButton.setVisible(false);
 			deleteButton.setEnabled(false);
 			marketingName.setEditable(true);
 			marketingIdLabel.setText("");
 			marketingName.setText("");
+			marketingName.setOpaque(true);
+			marketingName.setForeground(Color.DARK_GRAY);
+			//marketingName.setBorder(new EmptyBorder(3,3,3,3));
 			marketingTel.setText("");
 			marketingTel.setEditable(true);
+			marketingTel.setOpaque(true);
+			marketingTel.setForeground(Color.DARK_GRAY);
 			marketingPassword.setText("");
 			marketingPassword.setEditable(true);
+			marketingPassword.setOpaque(true);
+			marketingPassword.setForeground(Color.DARK_GRAY);
 			checkAddButton.setVisible(true);
 			checkModifyButton.setVisible(false);
 
@@ -341,13 +381,18 @@ public class ProcessMarketingAccountManageView extends JPanel{
 	// 删除账户按钮的监听
 	class MarketingDeleteListener implements MouseListener{
 		public void mouseClicked(MouseEvent e) {
+			checkModifyButton.setVisible(false);
+			checkAddButton.setVisible(false);
 			id=marketingIdLabel.getText();
 			result=controller.marketingAccountDelete(new MarketingVO("","",id,""));
 			if(result==ResultMessage.SUCCESS){
 				marketingIdLabel.setText("");
 				marketingName.setText("");
+				marketingName.setOpaque(false);
 				marketingPassword.setText("");
 				marketingTel.setText("");
+				marketingTel.setOpaque(false);
+				marketingPassword.setOpaque(false);
 				conditionalText.setText("删除成功");
 				modifyButton.setEnabled(false);
 				checkModifyButton.setEnabled(false);
