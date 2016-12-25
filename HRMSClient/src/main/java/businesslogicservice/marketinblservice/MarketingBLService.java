@@ -62,6 +62,10 @@ public interface MarketingBLService {
      */
     public MarketingVO init(String id);
 
+    /**
+     * 得到最后一个marketing的账号
+     * @return 返回一个账号
+     */
 	public String getMarketingID();
 
 }

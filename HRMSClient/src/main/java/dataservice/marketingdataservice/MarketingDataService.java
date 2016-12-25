@@ -64,5 +64,11 @@ public interface MarketingDataService extends Remote{
      * @throws RemoteException
      */
     public boolean MarketingAccountDelete(MarketingPO po) throws RemoteException;
-	public String getMarketingID() throws RemoteException;
+
+    /**
+     * 得到最近的一个账号
+     * @return 返回一个账号
+     * @throws RemoteException
+     */
+    public String getMarketingID() throws RemoteException;
 }
