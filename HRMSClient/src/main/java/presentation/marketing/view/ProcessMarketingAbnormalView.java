@@ -180,7 +180,10 @@ public class ProcessMarketingAbnormalView extends JPanel{
 			             if(convertionSuccess&&result>=0){//输入的日期合法
 
 					    	ArrayList<OrderVO> orders=(ArrayList<OrderVO>) controller.findAbnormalOrderList(formated);
-					    	showAbnormalOrders(orders);//调用显示abnormalOrder的方法
+					        if(orders.size()==0){
+					        	((ProcessMarketingView)view).setHint("当日没有异常订单。");
+					        }else
+					        	showAbnormalOrders(orders);//调用显示abnormalOrder的方法
 		    	         }else{//输入的日期不合法
 		    	        	 ((ProcessMarketingView)view).setHint("请重新输入日期。");
 		    	         }
