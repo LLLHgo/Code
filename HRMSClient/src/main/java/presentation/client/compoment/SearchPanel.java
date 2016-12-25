@@ -13,11 +13,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.SearchPanelController;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
@@ -36,16 +38,22 @@ public class SearchPanel extends JPanel{
 	private HotelSearchListPane hslp;
 	private JPanel Panel;
 	private JFrame frame;
+	private Label hint;
 	ClientVO client;
 	private SearchPanelController controller;
+	private ArrayList<HotelinfoVO> hotellist;
 	public SearchPanel(ClientVO client,JFrame frame,SearchPanelController controller){
 		this.client=client;
 		Panel=new JPanel();
 		this.frame=frame;
 		this.controller=controller;
-		ArrayList<HotelinfoVO>list=new ArrayList<HotelinfoVO>();
-		hslp=new HotelSearchListPane(frame,list);
+		hotellist=new ArrayList<HotelinfoVO>();
+		hslp=new HotelSearchListPane(frame,hotellist);
 		frame.add(hslp);
+
+		hint=new Label("");
+		hint.setBounds(5,5,200,20);
+		this.add(hint);
 
 		historyButton=new Button("image/history.png",10,25);
 		this.add(historyButton);
@@ -64,14 +72,37 @@ public class SearchPanel extends JPanel{
 			@Override
 		      public void itemStateChanged(final ItemEvent e) {
 		        int index = sortbox.getSelectedIndex();
-		        if (index != 0) { // ==0表示选中的事第一个
-		          String content = sortbox.getSelectedItem().toString();
-		          System.out.println("index222="
-		              + index + ", content=" + content);
+		        if(index==0){
+		        	hotellist=controller.rankHotelAccordingtoHotelStar(hotellist);
+		        	hslp.change(hotellist);
+		  			hslp.setVisible(true);
+		  			hslp.repaint();
+		  			hslp.revalidate();
+		  			frame.repaint();
+		  			frame.revalidate();
+		        }
+		        else if(index==1){
+		        	hotellist=controller.rankHotelAccordingtoRemarkStar(hotellist);
+		        	hslp.change(hotellist);
+		  			hslp.setVisible(true);
+		  			hslp.repaint();
+		  			hslp.revalidate();
+		  			frame.repaint();
+		  			frame.revalidate();
+		          }
+		          else if(index==2){
+		        	  hotellist=controller.rankHotelAccordingtoMinPrice(hotellist);
+			        	hslp.change(hotellist);
+			  			hslp.setVisible(true);
+			  			hslp.repaint();
+			  			hslp.revalidate();
+			  			frame.repaint();
+			  			frame.revalidate();
+		          }
 		          sortbox.setVisible(false);
 		          sortButton.setVisible(true);
 		          historyButton.setVisible(true);
-		        }
+
 		      }
 
 		    });
@@ -122,6 +153,33 @@ public class SearchPanel extends JPanel{
 	    this.setOpaque(false);
 
 	}
+	class Label extends JLabel{
+		private static final long serialVersionUID = 1L;
+		public Label(String str){
+			super(str);
+			java.awt.Font f=new java.awt.Font("微软雅黑", 4,  20);
+			this.setFont(f);
+			this.setForeground(Color.WHITE);
+
+		}
+	}
+	public void setHint(String str){
+        hint.setText(str);
+    	new Thread(new Runnable(){
+			@Override
+			public void run() {
+				hint.setText(str);
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				hint.setText("");
+			}
+
+		}).start();
+
+    }
 	public void setvisible(boolean flag){
 		this.setVisible(flag);
 		if(!flag)
@@ -137,6 +195,20 @@ public class SearchPanel extends JPanel{
 			sortbox.setVisible(true);
 			sortButton.setVisible(false);
 	        historyButton.setVisible(false);
+	        new Thread(new Runnable(){
+				@Override
+				public void run() {
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					sortbox.setVisible(false);
+					sortButton.setVisible(true);
+			        historyButton.setVisible(true);
+				}
+
+			}).start();
 		}
 
 	}
@@ -146,22 +218,26 @@ public class SearchPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			String name=searchField.getText();
+			if(name.equals(""))
+				name=null;
 			String area=(String)areabox.getSelectedItem();
-			if(area.equals("全部商圈"))
-				area="";
+			if(!area.equals("全部商圈")){
 			String type=(String)roombox.getSelectedItem();
 			if(type.equals("全部房间"))
-				type="";
+				type=null;
 			int star=starbox.getSelectedIndex();
 			//ArrayList<HotelinfoVO>list=new ArrayList<HotelinfoVO>();
 			//list.add(HotelinfoDataTool.hotelinfoVO1);
 			//hslp.change(list);
-			hslp.change(controller.getBasicinfoList(area,name,star,type));
+			System.out.println(area+"  "+name+"  "+star+"  "+type);
+			hotellist=controller.getBasicinfoList(area,name,star,type);
+			hslp.change(hotellist);
 			hslp.setVisible(true);
 			hslp.repaint();
 			hslp.revalidate();
 			frame.repaint();
 			frame.revalidate();
+			}else setHint("请选择商圈");
 		}
 
 	}
@@ -192,6 +268,11 @@ public class SearchPanel extends JPanel{
 		    			new HotelDetailFrame(client,controller,vo);
 		    		}
 		    		});
+		    	p.ob.addActionListener(new ActionListener(){
+		    		public void actionPerformed(ActionEvent e) {
+		    			new OrderCreateFrame(client,controller,vo);
+		    		}
+		    		});
 		    	 Panel.add(p);
 		    }
 		    this.getVerticalScrollBar().setVisible(false);
@@ -208,6 +289,11 @@ public class SearchPanel extends JPanel{
 			    	p.vb.addActionListener(new ActionListener(){
 			    		public void actionPerformed(ActionEvent e) {
 			    			new HotelDetailFrame(client,controller,vo);
+			    		}
+			    		});
+			    	p.ob.addActionListener(new ActionListener(){
+			    		public void actionPerformed(ActionEvent e) {
+			    			new OrderCreateFrame(client,controller,vo);
 			    		}
 			    		});
 			    	 Panel.add(p);

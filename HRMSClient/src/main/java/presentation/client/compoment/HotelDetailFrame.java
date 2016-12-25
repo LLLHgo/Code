@@ -2,9 +2,11 @@ package presentation.client.compoment;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,8 +19,11 @@ import javax.swing.border.EmptyBorder;
 
 import datatool.RoominfoDataTool;
 import presentation.client.controller.SearchPanelController;
+import presentation.common.CreditFrame;
+import presentation.common.remarkFrame;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.hotelinfoVO.RoominfoVO;
 
 
 public class HotelDetailFrame extends JFrame{
@@ -49,9 +54,9 @@ public class HotelDetailFrame extends JFrame{
 	    text.setLineWrap(true);
 	    text.setCaretColor(Color.WHITE);
 	    //此处应要根据hotelinfovo来增加 text
-	    text.append("标准间     ￥200\n");
-	    text.append("大床房     ￥300\n");
-	    text.append("商务间     ￥400\n");
+	    ArrayList<RoominfoVO> roomslist=vo.getRoominfoList();
+	    for(int i=0;i<roomslist.size();i++){
+	    	text.append(roomslist.get(i).getType()+"     ￥"+roomslist.get(i).getPrice()+"\n");}
         this.add(text);
 
 
@@ -78,28 +83,47 @@ public class HotelDetailFrame extends JFrame{
 		private ImageIcon imageIcon = null;
 		private Label hotelNameLabel;
 		private Label hotelLevelLabel;
+		private Label hotelRemarkLabel;
 		private Label hotelAddressLabel;
 		private Label hotelFacilityLabel;
 		private Label hotelTelLabel;
 		private orderButton order;
+		private ArrayList<String> remarklist;
+		private detailButton db;
 		public HotelDetailPanel(){
 		imageIcon = new ImageIcon(this.getClass().getResource("image/HotelDetailPanel.png"));
 
+		remarklist=new ArrayList<String>();
+       ArrayList<String>list=vo.getRemark();
+       for(int i=0;i<list.size();i++){
+    	   String str="评分：";
+    	   String str0[]=list.get(i).split(" ");
+    	   str+=str0[0];
+    	   str+=" 评论：";
+    	   str+=str0[1];
+    	   remarklist.add(str);
+       }
 
+       	db=new detailButton();
+       	db.addActionListener(new detailButtonListener());
+       	this.add(db);
 		order=new orderButton(470,280);
 		order.addActionListener(new orderButtonListener());
 		hotelNameLabel=new Label(vo.getName(),90,13,300,30);
-		hotelLevelLabel=new Label(vo.getStar().toString(),90,65,300,30);
+		hotelLevelLabel=new Label(vo.getStar().toString(),90,65,150,30);
+		hotelRemarkLabel=new Label(""+vo.getRemarkstar(),350,70,100,30);
 		hotelAddressLabel=new Label(vo.getAddress(),90,130,400,30);
 		hotelFacilityLabel=new Label(vo.getFacility(),140,182,300,30);
-		System.out.println(vo.getFacility());
 		hotelTelLabel=new Label(vo.getTel(),140,356,300,30);
 		this.add(hotelNameLabel);
 		this.add(hotelLevelLabel);
+		this.add(hotelRemarkLabel);
 		this.add(hotelAddressLabel);
 		this.add(hotelFacilityLabel);
 		this.add(hotelTelLabel);
 		this.add(order);
+
+
 
 		this.setVisible(true);
 	    this.setLayout(null);
@@ -107,6 +131,27 @@ public class HotelDetailFrame extends JFrame{
 	    this.setOpaque(false);
 	    this.setVisible(true);
 	    this.repaint();
+
+		}
+		class detailButton extends JButton{
+			 private static final long serialVersionUID = 1L;
+			ImageIcon icon;
+			public detailButton(){
+			icon=new ImageIcon(this.getClass().getResource("image/creditButton.png"));
+			this.setIcon(icon);
+			this.setOpaque(true);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+			this.setFocusPainted(false);
+			this.setBounds(400,55,60,60);
+			}
+		}
+		private class detailButtonListener implements ActionListener{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new remarkFrame(remarklist);
+			}
 
 		}
 		class Label extends JLabel{

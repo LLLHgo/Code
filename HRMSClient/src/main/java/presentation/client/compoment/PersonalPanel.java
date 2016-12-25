@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -33,10 +34,13 @@ public class PersonalPanel extends JPanel{
 	private Label vipLabel;
 	private Label hint;
 	private Label creditLabel;
+	private Label keyLabel;
+	private JPasswordField keyField;
 	private okButton ok;
 	private deleteButton delete;
 	private creditButton cb;
 	private editButton editName;
+	private editButton editKey;
 	private editButton editTel;
 	private PersonalPanelController controller;
 	private ArrayList<String> credits;
@@ -64,10 +68,21 @@ public class PersonalPanel extends JPanel{
 		telLabel.setBounds(120,270,100,30);
 		editTel=new editButton(420,270);
 		editTel.addActionListener(new editTelButtonListener());
+		editKey=new editButton(320,415);
+		editKey.addActionListener(new editKeyButtonListener());
 		vipLabel=new Label("会员类型："+vo.getType());
 		vipLabel.setBounds(120,320,400,30);
 		creditLabel=new Label("信用值："+vo.getCredit());
 		creditLabel.setBounds(120,370,200,30);
+		keyLabel=new Label("密码:");
+		keyLabel.setBounds(120,415,100,30);
+		keyField=new JPasswordField(vo.getPassword());
+		keyField.setBounds(200,415,100,30);
+		keyField.setBorder(new EmptyBorder(0,0,0,0));
+		keyField.setOpaque(false);
+		keyField.setFont(new java.awt.Font("微软雅黑", 4,  25));
+		keyField.setFocusable(false);
+
 		hint=new Label("");
 		hint.setBounds(5,5,300,30);
 		this.add(idLabel);
@@ -77,10 +92,13 @@ public class PersonalPanel extends JPanel{
 		this.add(telField);
 		this.add(vipLabel);
 		this.add(creditLabel);
+		this.add(keyLabel);
+		this.add(keyField);
 		this.add(cb);
 		this.add(ok);
 		this.add(delete);
 		this.add(editName);
+		this.add(editKey);
 		this.add(editTel);
 		this.add(hint);
 		this.setVisible(false);
@@ -134,11 +152,11 @@ public class PersonalPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(nameField.getText()!=""&&telField.getText()!=""&&telField.getText().length()==11)
+				if(nameField.getText()!=""&&telField.getText()!=""&&telField.getText().length()==11&&new String(keyField.getPassword())!="")
 				{
 				vo.setName(nameField.getText());
 				vo.setTel(telField.getText());
-
+				vo.setPassword(new String(keyField.getPassword()));
 				boolean k=controller.updateInfo(vo);
 				if(k)
 				setHint("个人信息修改成功！");
@@ -150,6 +168,8 @@ public class PersonalPanel extends JPanel{
 				telField.setOpaque(false);
 				telField.setFocusable(false);
 				telField.setForeground(Color.WHITE);
+				keyField.setOpaque(false);
+				keyField.setFocusable(false);
 
 				}else
 					setHint("信息填写不完整！");
@@ -163,13 +183,27 @@ public class PersonalPanel extends JPanel{
 				// TODO Auto-generated method stub
 				nameField.setText(vo.getName());
 				telField.setText(vo.getTel());
+				keyField.setText(vo.getPassword());
 				nameField.setOpaque(false);
 				nameField.setFocusable(false);
 				nameField.setForeground(Color.WHITE);
 				telField.setOpaque(false);
 				telField.setFocusable(false);
 				telField.setForeground(Color.WHITE);
+				keyField.setOpaque(false);
+				keyField.setFocusable(false);
 
+			}
+
+		}
+	 private class editKeyButtonListener implements ActionListener{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				keyField.setOpaque(true);
+				keyField.setForeground(Color.BLACK);
+				keyField.setFocusable(true);
 			}
 
 		}

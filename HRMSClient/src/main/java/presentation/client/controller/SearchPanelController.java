@@ -31,4 +31,15 @@ StrategyBLService strategy=new StrategyManage();
 	public PriceVO calculatePrice(ClientVO clientVO, RoominfoVO roomInfoVO, HotelinfoVO hotelInfoVO, int num,int days){
 		return strategy.calculatePrice(clientVO,roomInfoVO,hotelInfoVO,num,days);
 	}
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list) {
+		return hotelInfo.rankHotelAccordingtoHotelStar(list);
+	}
+
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoRemarkStar(ArrayList<HotelinfoVO> list) {
+		return hotelInfo.rankHotelAccordingtoRemarkStar(list);
+	}
+
+	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list) {
+		return hotelInfo.rankHotelAccordingtoMinPrice(list);
+	}
 }

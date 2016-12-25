@@ -19,13 +19,16 @@ public class HotelSearchItemPanel extends JPanel{
 	private Label hotelLevel;
 	private Label hotelAddress;
 	viewButton vb;
+	orderButton ob;
 	private HotelinfoVO vo;
 public HotelSearchItemPanel(int x,int y,HotelinfoVO vo){
 	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelSearchPanel.png"));
 	this.vo=vo;
 	vb=new viewButton(500, 30);
+	ob=new orderButton(540,30);
 	hotelName=new Label(vo.getName(),15,7,200,30,25);
-	hotelLevel=new Label(vo.getStar().toString(),380,12,100,30,25);
+	hotelLevel=new Label(vo.getStar().toString()+"("+vo.getRemarkstar()+")",380,12,120,30,25);
+	hotelLevel.setFont(new java.awt.Font("微软雅黑", 4,  20));
 	hotelAddress=new Label(vo.getAddress(),75,43,450,30,20);
 
 	this.add(hotelName);
@@ -35,6 +38,7 @@ public HotelSearchItemPanel(int x,int y,HotelinfoVO vo){
     this.setLayout(null);
 	this.setBounds(x,y,600,100);
 	this.add(vb);
+	this.add(ob);
 	this.setOpaque(false);
 	this.setVisible(true);
 }
