@@ -131,10 +131,10 @@ public class Hotelinfo implements HotelinfoBLService{
 	public boolean setEvaluate(int star, String remark, String clientID,String hotelID) {
 		return hotel.SetEvaluate(star, remark, clientID,hotelID);
 	}
-	@Override
-	public HotelinfoVO clientgetBasicinfo(String hotelID) {
-		return hotel.clientgetBasicinfo(hotelID);
-	}
+	//@Override
+	//public HotelinfoVO clientgetBasicinfo(String hotelID) {
+	//	return hotel.clientgetBasicinfo(hotelID);
+	//}
 	@Override
 	public boolean addroominfo(RoominfoVO vo) {
 		return room.addroominfo(vo);

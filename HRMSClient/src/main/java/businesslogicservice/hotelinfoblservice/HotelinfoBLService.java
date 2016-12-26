@@ -13,10 +13,11 @@ import vo.hotelstaffVO.HotelstaffVO;
 public interface HotelinfoBLService {
 	/**
 	 * 客户获取酒店信息，其中包括房间信息
+	 * 实际上。。。并没有用到
 	 * @param hotelID
 	 * @return
 	 */
-	public HotelinfoVO clientgetBasicinfo(String hotelID);
+	//public HotelinfoVO clientgetBasicinfo(String hotelID);
 	/**
 	 * 客户评价酒店
 	 * @param star

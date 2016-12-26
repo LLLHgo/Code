@@ -246,11 +246,6 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		return false;
 	}
 
-	@Override
-	public HotelinfoVO clientgetBasicinfo(String hotelID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public boolean addroominfo(RoominfoVO vo) {
