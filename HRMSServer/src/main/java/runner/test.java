@@ -74,7 +74,7 @@ public class test {
 			strategies.add("会员特惠");
 			OrderPO po=new OrderPO("000000003","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
 					OrderType.ABNORMAL,"冠军楼酒店","H00000010",340.28,strategies,"大床房",1,1,"2016-12-02 12:00:00",
-					"","2016-12-03 12:00:00");
+					"","2016-12-03 12:00:00",400.00,false);
 			boolean result=false;
 			try {
 				o=new OrderDataServiceMySqlImpl();
@@ -107,7 +107,7 @@ public class test {
 			strategies.add("会员特惠");
 			OrderPO po=new OrderPO("000000003","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
 					OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,strategies,"豪华套房",1,1,"2016-12-02 12:00:00",
-					"","2016-12-03 12:00:00");
+					"","2016-12-03 12:00:00",400.00,false);
 			try {
 				o=new OrderDataServiceMySqlImpl();
 				result=o.save(po);

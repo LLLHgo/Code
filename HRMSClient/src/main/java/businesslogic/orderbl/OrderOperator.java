@@ -25,7 +25,7 @@ public class OrderOperator implements OrderOperatorBLService{
 	ResultMessage result;
 	boolean resultB;
 	ArrayList<OrderPO> orderPOList;
-	ArrayList<OrderVO> orderVOList;
+	ArrayList<OrderPO> orderVOList;
 	LogManage logManage;
 	Date date;
 	RemoteHelper remote;
@@ -36,7 +36,7 @@ public class OrderOperator implements OrderOperatorBLService{
 		orderDateService=remote.getOrderDataService();
 		packageTrans=new PackageTransform();
 		orderPOList=new ArrayList<OrderPO>();
-		orderVOList=new ArrayList<OrderVO>();
+		orderVOList=new ArrayList<OrderPO>();
 		logManage=new LogManage();
 	}
 	// 下订单

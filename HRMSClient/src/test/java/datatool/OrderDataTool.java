@@ -52,11 +52,11 @@ public class OrderDataTool {
 
 	public OrderPO orderPOFindTester=new OrderPO("000000001","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
 			OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-19 12:00:00",
-			null,"2016-12-20 12:00:00");
+			null,"2016-12-20 12:00:00",400.00,false);
 	
 	public OrderPO orderPOFindTester2=new OrderPO("000000001","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
 			OrderType.ABNORMAL,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-02 12:00:00",
-			null,"2016-12-03 12:00:00");
+			null,"2016-12-03 12:00:00",400.00,false);
 	
 	static {
 		list1=new ArrayList<OrderVO>();

@@ -9,6 +9,7 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import datatool.LogDataTool;
 import datatool.OrderDataTool;
+import po.OrderPO;
 import vo.orderVO.OrderVO;
 
 public class MockOrderManage {
@@ -112,7 +113,7 @@ public class MockOrderManage {
 	 * @param userID
 	 * @return 某种用户(客户或酒店)的所有订单列表
 	 */
-	public List<OrderVO>  findUserOrderList (String userID){
+	public ArrayList<OrderVO>  findUserOrderList (String userID){
 		return OrderDataTool.list1;
 	}
 
@@ -140,7 +141,7 @@ public class MockOrderManage {
 	 * @param clientId
 	 * @return 客户某个种类（正常未执行、正常已执行、取消、异常）的订单列表
 	 */
-	public  List<OrderVO> findClientTypeOrder (OrderType type,String clientId){
+	public  ArrayList<OrderVO> findClientTypeOrder (OrderType type,String clientId){
 		return OrderDataTool.list1;
 	}
 
@@ -159,7 +160,7 @@ public class MockOrderManage {
 	 * @param date
 	 * @return 具体某天的所有订单列表
 	 */
-	public List<OrderVO> findAbnormalOrderList (Date date){
+	public ArrayList<OrderVO> findAbnormalOrderList (Date date){
 		return OrderDataTool.list3;
 	}
 

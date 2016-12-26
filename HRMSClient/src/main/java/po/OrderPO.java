@@ -1,12 +1,11 @@
 package po;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import Enum.OrderType;
 import Enum.VIPType;
 
 public class OrderPO implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	// 订单号
     public String orderId;
@@ -26,8 +25,12 @@ public class OrderPO implements Serializable{
 	private String hotelName;
 	// hotelId
 	private String hotelId;
-	// 订单价格
+	// 折扣完的订单价格
 	private double price;
+	// 订单原来的价格
+	private double prePrice;
+	// 订单是否被评价过
+	boolean eValuate;
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
 	//房间类型
@@ -43,14 +46,11 @@ public class OrderPO implements Serializable{
 	// 预计离开时间
 	private String anticipateLeaveTime; // 预计离开时间 如“2016-12-03 12:00:00”
 	
-	public OrderPO(){
-
-	}
-	// 完整的orderVO
+	// 完整的orderPO
 	public OrderPO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
 			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies,
 			String roomType,int roomNum,int days,String anticipateArrivedTime,String actualArrivedTime,
-			String anticipateLeaveTime){
+			String anticipateLeaveTime,double prePrice,boolean eValuate){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
@@ -68,9 +68,38 @@ public class OrderPO implements Serializable{
 		this.anticipateArrivedTime=anticipateArrivedTime;
 		this.actualArrivedTime=actualArrivedTime;
 		this.anticipateLeaveTime=anticipateLeaveTime;
+		this.prePrice=prePrice;
+		this.eValuate=eValuate;
+	}
+	// 旧orderPO
+	public OrderPO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
+			String orderDate,OrderType orderType,String hotelName,
+			String hotelId,double price,ArrayList <String> strategies){
+		this.orderId=orderId;
+		this.clientId=clientId;
+		this.clientName=clientName;
+		this.clientPhone=clientPhone;
+		this.vipType=vipType;
+		this.orderDate=orderDate;
+		this.orderType=orderType;
+		this.hotelName=hotelName;
+		this.hotelId=hotelId;
+		this.price=price;
+		this.strategies=strategies;
 	}
 
-	
+	public boolean iseValuate() {
+		return eValuate;
+	}
+	public void seteValuate(boolean eValuate) {
+		this.eValuate = eValuate;
+	}
+	public double getPrePrice() {
+		return prePrice;
+	}
+	public void setPrePrice(double prePrice) {
+		this.prePrice = prePrice;
+	}
 	public String getOrderId() {
 		return orderId;
 	}
@@ -186,4 +215,3 @@ public class OrderPO implements Serializable{
 		this.anticipateLeaveTime = anticipateLeaveTime;
 	}
 }
-

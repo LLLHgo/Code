@@ -24,8 +24,12 @@ public class OrderVO {
 	private String hotelName;
 	// hotelId
 	private String hotelId;
-	// 订单价格
+	// 折扣完的订单价格
 	private double price;
+	// 订单原来的价格
+	private double prePrice;
+	// 订单是否被评价过
+	boolean eValuate;
 	// 订单享受的优惠策略
 	private ArrayList <String> strategies;
 	//房间类型
@@ -48,7 +52,7 @@ public class OrderVO {
 	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
 			String orderDate,OrderType orderType,String hotelName,String hotelId,double price,ArrayList <String> strategies,
 			String roomType,int roomNum,int days,String anticipateArrivedTime,String actualArrivedTime,
-			String anticipateLeaveTime){
+			String anticipateLeaveTime,double prePrice,boolean eValuate){
 		this.orderId=orderId;
 		this.clientId=clientId;
 		this.clientName=clientName;
@@ -66,6 +70,8 @@ public class OrderVO {
 		this.anticipateArrivedTime=anticipateArrivedTime;
 		this.actualArrivedTime=actualArrivedTime;
 		this.anticipateLeaveTime=anticipateLeaveTime;
+		this.prePrice=prePrice;
+		this.eValuate=eValuate;
 	}
 	// 旧orderVO
 	public OrderVO (String orderId,String clientId,String clientName,String clientPhone,VIPType vipType,
@@ -84,7 +90,18 @@ public class OrderVO {
 		this.strategies=strategies;
 	}
 
-	
+	public boolean iseValuate() {
+		return eValuate;
+	}
+	public void seteValuate(boolean eValuate) {
+		this.eValuate = eValuate;
+	}
+	public double getPrePrice() {
+		return prePrice;
+	}
+	public void setPrePrice(double prePrice) {
+		this.prePrice = prePrice;
+	}
 	public String getOrderId() {
 		return orderId;
 	}

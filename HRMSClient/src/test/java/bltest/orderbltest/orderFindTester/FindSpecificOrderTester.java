@@ -18,7 +18,7 @@ public class FindSpecificOrderTester {
 	OrderFind orderFind;
 	OrderDataService orderDataService;
 	OrderDataTool findTester;
-	OrderVO orderVO;
+	OrderPO orderVO;
 	OrderPO orderPO;
 	public FindSpecificOrderTester(){
 		orderFind=new OrderFind();

@@ -49,7 +49,7 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 		for(int i=0;i<orderPO.getStrategies().size();i++){
 			strategy=strategy+orderPO.getStrategies().get(i)+" ";
 		}
-		String sql="INSERT INTO orders (order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time) VALUES ('"+orderPO.getOrderId()+"','"+orderPO.getClientId()+"','"+orderPO.getClientName()+"','"+orderPO.getClientPhone()+"','"+orderPO.getOrderType()+"','"+orderPO.getOrderDate()+"','"+orderPO.getOrderType()+"','"+orderPO.getHotelName()+"','"+orderPO.getHotelId()+"','"+orderPO.getPrice()+"','"+strategy+"','"+orderPO.getRoomType()+"','"+orderPO.getRoomNum()+"','"+orderPO.getDays()+"','"+orderPO.getAnticipateArrivedTime()+"','"+orderPO.getActualArrivedTime()+ "','"+orderPO.getAnticipateLeaveTime()+"')";
+		String sql="INSERT INTO orders (order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate) VALUES ('"+orderPO.getOrderId()+"','"+orderPO.getClientId()+"','"+orderPO.getClientName()+"','"+orderPO.getClientPhone()+"','"+orderPO.getOrderType()+"','"+orderPO.getOrderDate()+"','"+orderPO.getOrderType()+"','"+orderPO.getHotelName()+"','"+orderPO.getHotelId()+"','"+orderPO.getPrice()+"','"+strategy+"','"+orderPO.getRoomType()+"','"+orderPO.getRoomNum()+"','"+orderPO.getDays()+"','"+orderPO.getAnticipateArrivedTime()+"','"+orderPO.getActualArrivedTime()+ "','"+orderPO.getAnticipateLeaveTime()+"','"+orderPO.getPrePrice()+"','"+orderPO.iseValuate()+"')";
 		try {
 			stmt=conn.createStatement();
 			stmt.executeUpdate(sql);
@@ -67,7 +67,7 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 		for(int i=0;i<orderPO.getStrategies().size();i++){
 			strategy=strategy+orderPO.getStrategies().get(i)+" ";
 		}
-		String sql="UPDATE orders SET client_id='"+orderPO.getClientId()+"',client_name='"+orderPO.getClientName()+"',client_phone='"+orderPO.getClientPhone()+"',vip_type='"+orderPO.getVipType()+"',order_date='"+orderPO.getOrderDate()+"',order_type='"+orderPO.getOrderType()+"',hotel_name='"+orderPO.getHotelName()+"',hotel_id='"+orderPO.getHotelId()+"',price='"+orderPO.getPrice()+"',strategy='"+strategy+"',room_type='"+orderPO.getRoomType()+"',room_number='"+orderPO.getRoomNum()+"',days='"+orderPO.getDays()+"',anticipate_arrived_time='"+orderPO.getAnticipateArrivedTime()+"',actual_arrived_time='"+orderPO.getActualArrivedTime()+"',anticipate_leave_time='"+orderPO.getAnticipateLeaveTime()+"' WHERE order_id='"+orderPO.getOrderId()+"'";
+		String sql="UPDATE orders SET client_id='"+orderPO.getClientId()+"',client_name='"+orderPO.getClientName()+"',client_phone='"+orderPO.getClientPhone()+"',vip_type='"+orderPO.getVipType()+"',order_date='"+orderPO.getOrderDate()+"',order_type='"+orderPO.getOrderType()+"',hotel_name='"+orderPO.getHotelName()+"',hotel_id='"+orderPO.getHotelId()+"',price='"+orderPO.getPrice()+"',strategy='"+strategy+"',room_type='"+orderPO.getRoomType()+"',room_number='"+orderPO.getRoomNum()+"',days='"+orderPO.getDays()+"',anticipate_arrived_time='"+orderPO.getAnticipateArrivedTime()+"',actual_arrived_time='"+orderPO.getActualArrivedTime()+"',anticipate_leave_time='"+orderPO.getAnticipateLeaveTime()+"',pre_price='"+orderPO.getPrePrice()+"',eValuate='"+orderPO.iseValuate()+"' WHERE order_id='"+orderPO.getOrderId()+"'";
 		try {
 			stmt=conn.createStatement();
 			stmt.executeUpdate(sql);
@@ -93,7 +93,7 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 	
 	// 找到某用户的某一订单号的订单
 	public OrderPO findSpecificUserOrder(String orderId) throws RemoteException {
-		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE order_id='"+orderId+"'";
+		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE order_id='"+orderId+"'";
 		ResultSet rs;
 		OrderPO orderPO=null;
 		try {
@@ -110,42 +110,42 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 	}
 	// 查找具体某天的客户订单列表
 	public ArrayList<OrderPO> findSpecificDayClientOrderList(String clientId, String date) throws RemoteException {
-		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE client_id='"+clientId+"'AND anticipate_arrived_time='"+date+"'";
+		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE client_id='"+clientId+"'AND anticipate_arrived_time='"+date+"'";
 		return getCommandList(sql);
 	}
 	// 找到某用户（客户、酒店、网站营销人员的所有订单）
 	public ArrayList<OrderPO> findUserOrderList(String userId) throws RemoteException {
 		String sql="";
 		if(userId.charAt(0)=='C'){
-			sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE client_id='"+userId+"'";
+			sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE client_id='"+userId+"'";
 		}
 		else if(userId.charAt(0)=='H'){
-			sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE hotel_id='"+userId+"'";
+			sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE hotel_id='"+userId+"'";
 		}
 		else if(userId.charAt(0)=='M'){
-			sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE order_type='ABNORMAL'";
+			sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE order_type='ABNORMAL'";
 		}
 		return getCommandList(sql);
 	}
 	// 查找客户某一种类订单
 	public ArrayList<OrderPO> findClientTypeOrderList(OrderType orderType, String clientId) throws RemoteException {
 
-		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE client_id='"+clientId+"'AND order_type='"+orderType+"'";
+		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE client_id='"+clientId+"'AND order_type='"+orderType+"'";
 		return getCommandList(sql);
 	}
 	// 查找某酒店的某种类型订单
 	public ArrayList<OrderPO> findHotelTypeOrderList(OrderType orderType, String hotelId) throws RemoteException {
-		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE hotel_id='"+hotelId+"'AND order_type='"+orderType+"'";
+		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE hotel_id='"+hotelId+"'AND order_type='"+orderType+"'";
 		return getCommandList(sql);
 	}
 	// 查找某客户在某酒店的所有订单
 	public ArrayList<OrderPO> findClientInHotelAllOrderList(String clientId, String hotelId) throws RemoteException {
-		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE hotel_id='"+hotelId+"'AND client_id='"+clientId+"'";
+		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE hotel_id='"+hotelId+"'AND client_id='"+clientId+"'";
 		return getCommandList(sql);
 	}
 	// 找到指定时间下的当天所有异常订单
 	public ArrayList<OrderPO> findAbnormalOrderList(String date) throws RemoteException {
-		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE anticipate_arrived_time='"+date+"'AND order_type='ABNORMAL'";
+		String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE anticipate_arrived_time='"+date+"'AND order_type='ABNORMAL'";
 		return getCommandList(sql);
 	}
 	
@@ -197,7 +197,7 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
 			vipTypeEnum=VIPType.ENTERPRISEVIP;
 		// 生成po
 		try {
-			po=new OrderPO(rs.getString("order_id"),rs.getString("client_id"),rs.getString("client_name"),rs.getString("client_phone"),vipTypeEnum,rs.getString("order_date"),orderTypeEnum,rs.getString("hotel_name"),rs.getString("hotel_id"),rs.getDouble("price"),strategy,rs.getString("room_type"),rs.getInt("room_number"),rs.getInt("days"),rs.getString("anticipate_arrived_time"),actual_arrived_time,rs.getString("anticipate_leave_time"));
+			po=new OrderPO(rs.getString("order_id"),rs.getString("client_id"),rs.getString("client_name"),rs.getString("client_phone"),vipTypeEnum,rs.getString("order_date"),orderTypeEnum,rs.getString("hotel_name"),rs.getString("hotel_id"),rs.getDouble("price"),strategy,rs.getString("room_type"),rs.getInt("room_number"),rs.getInt("days"),rs.getString("anticipate_arrived_time"),actual_arrived_time,rs.getString("anticipate_leave_time"),rs.getDouble("pre_price"),rs.getBoolean("eValuate"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -229,7 +229,7 @@ public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements Or
         calendar.add(Calendar.DATE, -1);    //得到前一天
         String  yestedayDate= new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
         yestedayDate=yestedayDate+" 12:00:00";
-        String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time FROM orders WHERE anticipate_arrived_time='"+yestedayDate+"'";
+        String sql="SELECT order_id,client_id,client_name,client_phone,vip_type,order_date,order_type,hotel_name,hotel_id,price,strategy,room_type,room_number,days,anticipate_arrived_time,actual_arrived_time,anticipate_leave_time,pre_price,eValuate FROM orders WHERE anticipate_arrived_time='"+yestedayDate+"'";
 		ArrayList<OrderPO> list=getCommandList(sql);
 		for(int i=0;i<list.size();i++){
 			if(list.get(i).getOrderType()==OrderType.NORMALNONEXEC){

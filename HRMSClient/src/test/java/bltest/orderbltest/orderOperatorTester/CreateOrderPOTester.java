@@ -30,25 +30,25 @@ public class CreateOrderPOTester {
 		strategy.add("新年bonus！");
 		orderVO1=new OrderVO("","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
 			OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,strategy,"大床房",1,1,"2016-12-23 12:00:00",
-			null,"2016-12-24 12:00:00");
+			null,"2016-12-24 12:00:00",400.00,false);
 		orderVO2=new OrderVO("","C00000001","小螺丝","16679876372",VIPType.ORDINARYVIP,"2016-12-01 12:23:28",
 				OrderType.ABNORMAL,"lll","H00000010",340.28,strategy,"大床房",1,1,"2016-12-23 12:00:00",
-				null,"2016-12-24 12:00:00");
+				null,"2016-12-24 12:00:00",400.00,false);
 		orderVO3=new OrderVO("","C00000001","小螺丝","",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
 				OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,strategy,"大床房",1,1,"2016-12-23 12:00:00",
-				null,"2016-12-24 12:00:00");
+				null,"2016-12-24 12:00:00",400.00,false);
 		orderVO4=new OrderVO("","C00000001","小螺丝","",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
 				OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-23 12:00:00",
-				null,"2016-12-24 12:00:00");
+				null,"2016-12-24 12:00:00",400.00,false);
 		orderVO5=new OrderVO("","C00000001","小螺丝","",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
 				OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",0,1,"2016-12-23 12:00:00",
-				null,"2016-12-24 12:00:00");
+				null,"2016-12-24 12:00:00",400.00,false);
 		orderVO6=new OrderVO("","C00000001","小螺丝","",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
 				OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",1,0,"2016-12-23 12:00:00",
-				null,"2016-12-24 12:00:00");
+				null,"2016-12-24 12:00:00",400.00,false);
 		orderVO7=new OrderVO("","C00000001","小螺丝","",VIPType.ENTERPRISEVIP,"2016-12-01 12:23:28",
 				OrderType.NORMALNONEXEC,"冠军楼酒店","H00000010",340.28,null,"大床房",1,1,"2016-12-01 12:00:00",
-				null,"2016-12-03 12:00:00");
+				null,"2016-12-03 12:00:00",400.00,false);
 	}
 	// 完整订单
 	@Test

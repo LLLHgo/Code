@@ -5,12 +5,13 @@ import vo.orderVO.OrderVO;
 
 public class PackageTransform {
 	// 将orderVO解包，制作orderPO包
-		public OrderPO VOToPO(OrderVO vo){
+		public OrderPO VOToPO(OrderVO orderVO){
 
-			OrderPO po=new OrderPO(vo.getOrderId(),vo.getClientId(),vo.getClientName(),vo.getClientPhone(),
-					vo.getVipType(),vo.getOrderDate(),vo.getOrderType(),vo.getHotelName(),vo.getHotelId(),
-					vo.getPrice(),vo.getStrategies(),vo.getRoomType(),vo.getRoomNum(),vo.getDays(),
-					vo.getAnticipateArrivedTime(),vo.getActualArrivedTime(),vo.getAnticipateLeaveTime());
+			OrderPO po=new OrderPO(orderVO.getOrderId(),orderVO.getClientId(),orderVO.getClientName(),orderVO.getClientPhone(),
+					orderVO.getVipType(),orderVO.getOrderDate(),orderVO.getOrderType(),orderVO.getHotelName(),orderVO.getHotelId(),
+					orderVO.getPrice(),orderVO.getStrategies(),orderVO.getRoomType(),orderVO.getRoomNum(),orderVO.getDays(),
+					orderVO.getAnticipateArrivedTime(),orderVO.getActualArrivedTime(),orderVO.getAnticipateLeaveTime(),orderVO.getPrePrice()
+					,orderVO.iseValuate());
 			return po;
 		}
 		// 将orderPO解包，制作orderVO包
@@ -18,7 +19,8 @@ public class PackageTransform {
 				OrderVO vo=new OrderVO(po.getOrderId(),po.getClientId(),po.getClientName(),po.getClientPhone(),
 						po.getVipType(),po.getOrderDate(),po.getOrderType(),po.getHotelName(),po.getHotelId(),
 						po.getPrice(),po.getStrategies(),po.getRoomType(),po.getRoomNum(),po.getDays(),
-						po.getAnticipateArrivedTime(),po.getActualArrivedTime(),po.getAnticipateLeaveTime());
+						po.getAnticipateArrivedTime(),po.getActualArrivedTime(),po.getAnticipateLeaveTime()
+						,po.getPrePrice(),po.iseValuate());
 				return vo;
 		}
 
