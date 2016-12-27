@@ -21,8 +21,10 @@ import javax.swing.border.EmptyBorder;
 
 import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.SearchPanelController;
+import presentation.common.remarkFrame;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
+import vo.orderVO.OrderVO;
 
 public class SearchPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -56,6 +58,7 @@ public class SearchPanel extends JPanel{
 		this.add(hint);
 
 		historyButton=new Button("image/history.png",10,25);
+		historyButton.addActionListener(new historyButtonListener());
 		this.add(historyButton);
 		sortButton=new Button("image/sort.png",60,25);
 		sortButton.addActionListener(new sortButtonListener());
@@ -241,6 +244,29 @@ public class SearchPanel extends JPanel{
 		}
 
 	}
+	private class historyButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		if(hotellist!=null){
+			for(int i=0;i<hotellist.size();i++){
+				HotelinfoVO vo=hotellist.get(i);
+				if(controller.findSpecificHotelClientOrderList(client.getID(),vo.getHotelID()).size()==0){
+					hotellist.remove(i);
+					i--;
+				}
+			}
+			hslp.change(hotellist);
+			hslp.setVisible(true);
+			hslp.repaint();
+			hslp.revalidate();
+			frame.repaint();
+			frame.revalidate();
+		}
+		}
+
+	}
 	private class HotelSearchListPane extends JScrollPane{
 		private static final long serialVersionUID = 1L;
 
@@ -273,7 +299,24 @@ public class SearchPanel extends JPanel{
 		    			new OrderCreateFrame(client,controller,vo);
 		    		}
 		    		});
-		    	 Panel.add(p);
+		    	ArrayList<OrderVO> orders=controller.findSpecificHotelClientOrderList(client.getID(),vo.getHotelID());
+		    	 if(orders!=null){
+		    		 if(orders.size()!=0){
+			    		 System.out.println(orders.size());
+			    		 p.hotelorder.setVisible(true);
+			    		 p.hotelorder.addActionListener(new ActionListener(){
+					    		public void actionPerformed(ActionEvent e) {
+					    ArrayList<String>orderlist=new ArrayList<String>();
+			    		 for(int j=0;j<orders.size();j++){
+			    			 OrderVO ordervo=orders.get(j);
+			    			 orderlist.add(ordervo.getOrderDate()+" "+ordervo.getOrderType());
+			    		 }
+			    		 new remarkFrame(orderlist);
+					    		}
+					    		});
+			    	 }
+		    	 }
+		    	Panel.add(p);
 		    }
 		    this.getVerticalScrollBar().setVisible(false);
 
@@ -296,6 +339,21 @@ public class SearchPanel extends JPanel{
 			    			new OrderCreateFrame(client,controller,vo);
 			    		}
 			    		});
+			    	ArrayList<OrderVO> orders=controller.findSpecificHotelClientOrderList(client.getID(),vo.getHotelID());
+			    	 ArrayList<String>orderlist=new ArrayList<String>();
+			    		 for(int j=0;j<orders.size();j++){
+			    			 OrderVO ordervo=orders.get(j);
+			    			 orderlist.add(ordervo.getOrderDate().substring(0,11)+" "+ordervo.getOrderType());
+			    		 }
+			    		if(orders.size()!=0){
+			    		 p.hotelorder.setVisible(true);
+			    		 p.hotelorder.addActionListener(new ActionListener(){
+					    		public void actionPerformed(ActionEvent e) {
+			    		 new remarkFrame(orderlist);
+					    		}
+					    		});
+
+			    	}
 			    	 Panel.add(p);
 			    }
 			    this.getVerticalScrollBar().setVisible(false);

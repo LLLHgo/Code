@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import businesslogic.hoteinfobl.Hotelinfo;
+import businesslogic.orderbl.OrderFind;
 import businesslogic.orderbl.OrderOperator;
 import businesslogic.strategybl.StrategyManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
+import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import businesslogicservice.strategyblservice.StrategyBLService;
 import vo.clientVO.ClientVO;
@@ -17,6 +19,7 @@ import vo.priceVO.PriceVO;
 
 public class SearchPanelController {
 HotelinfoBLService hotelInfo=new Hotelinfo();
+OrderFindBLService orderfind=new OrderFind();
 OrderOperatorBLService order=new OrderOperator();
 StrategyBLService strategy=new StrategyManage();
 	public HotelinfoVO getBasicinfo(String hotelID) {
@@ -41,5 +44,8 @@ StrategyBLService strategy=new StrategyManage();
 
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list) {
 		return hotelInfo.rankHotelAccordingtoMinPrice(list);
+	}
+	public ArrayList<OrderVO> findSpecificHotelClientOrderList(String clientId, String hotelId) {
+		return orderfind.findSpecificHotelClientOrderList(clientId,hotelId);
 	}
 }

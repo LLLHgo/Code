@@ -204,8 +204,9 @@ public class OrderCreateFrame extends JFrame{
 				  int days=calTime(begin.getChooseDate(),end.getChooseDate());
 				  int num=Integer.parseInt(crlp.rooms.get(i).numField.getText());
 				  RoominfoVO room=hotelVO.getRoominfoList().get(i);
+				  double beforeprice=num*days*room.getPrice();
 				  pricevo=controller.calculatePrice(client,room,hotelVO,num,days);
-				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),pricevo.getStrategys(),room.getType(),num,days);
+				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),pricevo.getStrategys(),room.getType(),num,days,beforeprice);
 				ResultMessage rs=controller.createOrderPO(order);
 
 				frame.dispose();
@@ -214,7 +215,7 @@ public class OrderCreateFrame extends JFrame{
 			}
 
 		}
-		private OrderVO createOrderVO(String name,String time,double price,ArrayList<String> strategy,String roomType,int num,int days){
+		private OrderVO createOrderVO(String name,String time,double price,ArrayList<String> strategy,String roomType,int num,int days,double prePrice){
 			OrderVO order=new OrderVO();
 			order.setOrderId("");
 			order.setClientId(client.getID());
@@ -235,6 +236,8 @@ public class OrderCreateFrame extends JFrame{
 			order.setAnticipateLeaveTime(end.getChooseDate());
 			order.setActualArrivedTime("");
 			order.setDays(days);
+			order.seteValuate(false);
+			order.setPrePrice(prePrice);
 			return order;
 		}
 		private int calTime(String begin,String end){

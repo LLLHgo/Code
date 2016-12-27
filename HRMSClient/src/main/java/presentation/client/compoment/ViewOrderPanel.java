@@ -213,6 +213,7 @@ private class OrderListPane extends JScrollPane{
 		super(Panel);
 
 		Panel.setLayout(null);
+		if(list!=null)
 	    Panel.setPreferredSize(new Dimension(600,list.size()*100));
 	    Panel.setBounds(0,0,1000,4000);
 	    Panel.setOpaque(false);

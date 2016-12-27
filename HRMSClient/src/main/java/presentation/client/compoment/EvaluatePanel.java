@@ -85,6 +85,7 @@ public class EvaluatePanel extends JPanel{
 		public HotelListPane(ArrayList<OrderVO> list){
 			super(Panel);
 			Panel.setLayout(null);
+			if(list!=null)
 		    Panel.setPreferredSize(new Dimension(600,100*list.size()));
 		    Panel.setBounds(0,0,1000,4000);
 		    Panel.setOpaque(false);
@@ -96,6 +97,7 @@ public class EvaluatePanel extends JPanel{
 		   this.getVerticalScrollBar().setVisible(false);
 		   this.setBorder(new EmptyBorder(0,0,0,0));
 		   this.setVisible(false);
+		   if(list!=null)
 		    for(int i=0;i<list.size();i++){
 		    	OrderVO order=list.get(i);
 		    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order,controller);
