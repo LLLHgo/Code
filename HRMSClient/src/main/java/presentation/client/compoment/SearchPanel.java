@@ -115,6 +115,8 @@ public class SearchPanel extends JPanel{
 		areabox.addItem("全部商圈");
 		areabox.addItem("栖霞区商圈");
 		areabox.addItem("新街口商圈");
+		areabox.addItem("玄武区商圈");
+		areabox.addItem("鼓楼区商圈");
 		areabox.setBounds(100,15,110,20);
 		this.add(areabox);
 

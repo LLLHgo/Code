@@ -212,9 +212,9 @@ public class OrderOperator implements OrderOperatorBLService{
 			c.setCredit(orderVO.getClientId(),(int)orderVO.getPrice()/2,nowTime,"超过24:00未入住，订单异常");
 		}
 		// 看当前订单的状态是否有改变，如果没改变（即没被修改），则返回相同（没有被修改）的提示信息
-		if((preOrderPO.getOrderType()+"").equals(orderVO.getOrderType()+"")){
+		/*if((preOrderPO.getOrderType()+"").equals(orderVO.getOrderType()+"")){
 			return ResultMessage.SAMEINFO;
-		}
+		}*/
 
 		// 转换为po保存到数据库中
 		OrderPO orderPO=packageTrans.VOToPO(orderVO);

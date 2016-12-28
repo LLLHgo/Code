@@ -34,7 +34,7 @@ public HotelEvaluateItemPanel(int x,int y,OrderVO vo,EvaluatePanelController con
 	this.vo=vo;
 	imageIcon = new ImageIcon(this.getClass().getResource("image/hotelEvaluatePanel.png"));
 	eb=new evaluateButton(510, 7);
-	eb.addActionListener(new evaluateButtonListener());
+	//eb.addActionListener(new evaluateButtonListener());
 	vb=new viewButton(450, 30);
 
 	hotelName=new Label(vo.getHotelName(),10,5,200,30,25);

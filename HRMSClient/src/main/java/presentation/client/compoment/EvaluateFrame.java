@@ -33,6 +33,7 @@ public class EvaluateFrame extends JFrame{
 	String clientID;
 	String hotelID;
 	Label hint;
+	JButton okButton;
 	private EvaluatePanelController controller;
 public EvaluateFrame(String clientID,String hotelID,EvaluatePanelController controller){
 	this.controller=controller;
@@ -70,7 +71,7 @@ class ePanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	JTextArea text;
-	JButton okButton;
+
 	private ImageIcon imageIcon = null;
 	private Label hintLabel;
 	private checkbutton s1;

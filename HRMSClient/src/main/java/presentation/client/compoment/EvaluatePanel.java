@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Enum.OrderType;
+import Enum.ResultMessage;
 import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.EvaluatePanelController;
 import vo.orderVO.OrderVO;
@@ -34,6 +35,7 @@ public class EvaluatePanel extends JPanel{
 	private EvaluatePanelController controller;
 	private String id;
 	static JLabel hint;
+	private ArrayList<OrderVO> orderlist;
 	public EvaluatePanel(JFrame frame,EvaluatePanelController controller,String id){
 		this.controller=controller;
 		this.id=id;
@@ -43,7 +45,7 @@ public class EvaluatePanel extends JPanel{
 		hint.setForeground(Color.WHITE);
 		Panel=new JPanel();
 		hlp=new HotelListPane(controller.findClientTypeOrderList(OrderType.NORMALEXEC,id));
-		hlp=new HotelListPane(new ArrayList<OrderVO>());
+		//hlp=new HotelListPane(new ArrayList<OrderVO>());
 		frame.add(hlp);
 	imageIcon = new ImageIcon(this.getClass().getResource("image/searchOrder.png"));
 	searchField=new JTextField();
@@ -86,8 +88,15 @@ public class EvaluatePanel extends JPanel{
 			super(Panel);
 			Panel.setLayout(null);
 			if(list!=null)
+				for(int i=0;i<list.size();i++)
+					if(list.get(i).iseValuate()==true){
+						list.remove(i);
+						i--;
+					}
+			if(list!=null)
 		    Panel.setPreferredSize(new Dimension(600,100*list.size()));
-		    Panel.setBounds(0,0,1000,4000);
+		    orderlist=list;
+			Panel.setBounds(0,0,1000,4000);
 		    Panel.setOpaque(false);
 
 
@@ -106,11 +115,24 @@ public class EvaluatePanel extends JPanel{
 		    			new OrderDetailFrame(order);
 		    		}
 		    		});
-		    	/*p.eb.addActionListener(new ActionListener(){
+		    	p.eb.addActionListener(new ActionListener(){
 		    		public void actionPerformed(ActionEvent e) {
-		    			new EvaluateFrame(order.getClientId(),order.getHotelId(),controller);
+		    			EvaluateFrame ef=new EvaluateFrame(order.getClientId(),order.getHotelId(),controller);
+		    			ef.okButton.addActionListener(new ActionListener(){
+		    				public void actionPerformed(ActionEvent e) {
+		    					order.seteValuate(true);
+		    					if(controller.saveOrderPO(order)==ResultMessage.SUCCESS){
+		    						orderlist.remove(order);
+		    						hlp.change(orderlist);
+		    						hlp.repaint();
+					    			hlp.revalidate();
+
+		    					}
+
+		    				}
+		    			});
 		    		}
-		    		});*/
+		    		});
 		    	 Panel.add(p);
 
 		    }
@@ -121,12 +143,30 @@ public class EvaluatePanel extends JPanel{
 			Panel.removeAll();
 			if(list!=null){
 				 Panel.setPreferredSize(new Dimension(600,list.size()*100));
+				 orderlist=list;
 				 for(int i=0;i<list.size();i++){
 				    	OrderVO order=list.get(i);
 				    	HotelEvaluateItemPanel p=new HotelEvaluateItemPanel(0, i*100,order,controller);
 				    	p.vb.addActionListener(new ActionListener(){
 				    		public void actionPerformed(ActionEvent e) {
 				    			new OrderDetailFrame(order);
+				    		}
+				    		});
+				    	p.eb.addActionListener(new ActionListener(){
+				    		public void actionPerformed(ActionEvent e) {
+				    			EvaluateFrame ef=new EvaluateFrame(order.getClientId(),order.getHotelId(),controller);
+				    			ef.okButton.addActionListener(new ActionListener(){
+				    				public void actionPerformed(ActionEvent e) {
+				    					order.seteValuate(true);
+				    					if(controller.saveOrderPO(order)==ResultMessage.SUCCESS){
+				    						orderlist.remove(order);
+				    						hlp.change(orderlist);
+				    						hlp.repaint();
+							    			hlp.revalidate();
+
+				    					}
+				    				}
+				    			});
 				    		}
 				    		});
 				    	 Panel.add(p);
