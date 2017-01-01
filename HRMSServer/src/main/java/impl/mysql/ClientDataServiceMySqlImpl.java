@@ -201,12 +201,7 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 		System.out.println("OK!");
 		return false;
 	}
-	//先等弄清楚
-	public boolean setAllLevel() throws RemoteException {
-		// TODO Auto-generated method stub
 
-		return false;
-	}
 
 	public String createClient(ClientPO po) throws RemoteException {
 		// TODO Auto-generated method stub

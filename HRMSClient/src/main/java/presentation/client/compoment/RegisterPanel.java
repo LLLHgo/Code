@@ -35,8 +35,10 @@ public class RegisterPanel extends JPanel{
 	private JComboBox<String> combobox;
 	private RegisterPanelController controller;
 	private ClientVO vo;
+	private String clientID;
 	public RegisterPanel(String id,RegisterPanelController controller){
 		this.controller=controller;
+		this.clientID=id;
 		vo=controller.getclient(id);
 		imageIcon = new ImageIcon(this.getClass().getResource("image/registerPanel.png"));
 		ok=new okButton(500,120);
@@ -86,6 +88,12 @@ public class RegisterPanel extends JPanel{
 	    this.setLayout(null);
 	    this.setSize(704, 502);
 	    this.setOpaque(false);
+	}
+	public void refresh(){
+		vo=controller.getclient(clientID);
+		nameLabel.setText(vo.getName());
+		telLabel.setText(vo.getTel());
+
 	}
 	class Field extends JTextField{
 		private static final long serialVersionUID = 1L;

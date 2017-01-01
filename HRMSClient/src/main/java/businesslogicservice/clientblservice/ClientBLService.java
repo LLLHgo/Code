@@ -39,13 +39,7 @@ public interface ClientBLService {
 	 */
 
 	public boolean setCredit(String clientID,int recharge,String date,String reason);
-	/**
-	 * 根据新的会员等级制度修改所有客户的会员等级
-	 * @param vo
-	 * @return 修改会员等级成功与否
-	 */
-	public boolean setAllClientLevel(ArrayList<LevelVO>  vos);
-	/**
+		/**
 	 * 根据会员等级制度修改某一客户的会员等级
 	 * @param vo
 	 * @return 修改会员等级成功与否

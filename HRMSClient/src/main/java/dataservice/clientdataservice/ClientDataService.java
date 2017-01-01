@@ -45,12 +45,7 @@ public interface ClientDataService extends Remote{
 	 * @return 账户是否存在
 	 */
 	public boolean checkAccount(String client_id,String password)throws RemoteException;
-	/**
-	 * 设置所有客户会员等级
-	 * @param po
-	 * @return 是否设置成功
-	 */
-	public boolean setAllLevel()throws RemoteException;
+
 
 	/**
 	 * 创建新客户

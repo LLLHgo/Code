@@ -138,7 +138,7 @@ public class ProcessClientView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			rp.refresh();
 			pp.setVisible(false);
 			wp.setVisible(false);
 			vp.setvisible(false);
@@ -168,7 +168,7 @@ public class ProcessClientView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			pp.refresh();
 			wp.setVisible(false);
 			sp.setvisible(false);
 			vp.setvisible(false);

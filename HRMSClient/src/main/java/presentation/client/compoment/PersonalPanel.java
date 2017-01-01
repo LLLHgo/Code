@@ -45,10 +45,13 @@ public class PersonalPanel extends JPanel{
 	private PersonalPanelController controller;
 	private ArrayList<String> credits;
 	private ClientVO vo;
+	private String clientID;
 	public PersonalPanel(String clientID,PersonalPanelController controller){
 		this.controller=controller;
+		this.clientID=clientID;
 		vo=controller.getclient(clientID);
 
+		credits=vo.getCreditRecord();
 		cb=new creditButton();
 		cb.addActionListener(new creditButtonListener());
 		imageIcon = new ImageIcon(this.getClass().getResource("image/personalPanel.png"));
@@ -133,6 +136,14 @@ public class PersonalPanel extends JPanel{
 			this.setForeground(Color.WHITE);
 
 		}
+	}
+	public void refresh(){
+		vo=controller.getclient(clientID);
+		nameField.setText(vo.getName());
+		telField.setText(vo.getTel());
+		vipLabel.setText("会员类型："+vo.getType());
+		creditLabel.setText("信用值："+vo.getCredit());
+		credits=vo.getCreditRecord();
 	}
 	 class creditButton extends JButton{
 		 private static final long serialVersionUID = 1L;
@@ -236,10 +247,9 @@ public class PersonalPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(vo.getCreditRecord()!=null)
-					credits=vo.getCreditRecord();
-					else
-						credits=new ArrayList<String>();
+				if(credits!=null){}
+				else
+				credits=new ArrayList<String>();
 				new CreditFrame(credits);
 
 

@@ -110,18 +110,7 @@ public class ClientManage implements ClientBLService{
 		else return false;
 
 	}
-	//设置全部用户等级
-	@Override
-	public boolean setAllClientLevel(ArrayList<LevelVO>  vos) {
-		// TODO Auto-generated method stub
-		try{
-			boolean res=clientdata. setAllLevel();
-			return res;
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-		return false;
-	}
+
 
 //修改全部用户的等级
 	@Override

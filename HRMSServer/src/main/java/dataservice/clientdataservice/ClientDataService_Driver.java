@@ -16,10 +16,7 @@ public class ClientDataService_Driver {
 		//测试设置信用值
 		boolean sc=clientDataService.setCredit("000001", 2,"no","no");
 		if(sc)System.out.println("Update Credit!");
-		//测试设置会员等级
-		boolean sal=clientDataService.setAllLevel();
-		if(sal)System.out.println("Set Level!");
-		//测试修改个人基本信息
+			//测试修改个人基本信息
 		if(clientDataService.modifyPersonalInfo( po)==ResultMessage.SUCCESS)System.out.println("Update Info!");
 		//测试查看个人信用记录
 		ArrayList<String> cr=clientDataService.findCreditRecord("000001");
