@@ -64,11 +64,11 @@ public class RegisterPanel extends JPanel{
 		combobox.addItem("普通会员");
 		combobox.addItem("企业会员");
 		combobox.setBounds(260,260,150,40);
-		if(vo.getFirm()!="null")
+		if(vo.getType()==VIPType.ENTERPRISEVIP)
 		firmField=new Field(vo.getFirm(), 100,400, 300, 30,25);
 		else firmField=new Field("", 100,400, 300, 30,25);
 		firmField.setBounds(225,315,220,30);
-		if(vo.getBirth()!=null){
+		if(vo.getType()==VIPType.ORDINARYVIP){
 		yearField=new Field(vo.getBirth().substring(0,4),190,365,65,30,15);
 		monthField=new Field(vo.getBirth().substring(5,7),290,365,35,30,15);
 		dayField=new Field(vo.getBirth().substring(8,10),370,365,35,30,15);
@@ -119,18 +119,26 @@ public class RegisterPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+
 				if(vo.getType()==VIPType.NONVIP){
 				if((String)combobox.getSelectedItem()=="普通会员"){
+					if(yearField.getText().length()==4&&monthField.getText().length()==2&&dayField.getText().length()==2){
 					vo.setBirth(yearField.getText()+"-"+monthField.getText()+"-"+dayField.getText());
 					vo.setType(VIPType.ORDINARYVIP);
+					boolean k=controller.updateInfo(vo);
+					if(k)setHint("注册成功");
+					else setHint("注册失败");
+					}else setHint("请输入生日");
 				}
 				else {
+					if(firmField.getText()!=""){
 					vo.setFirm(firmField.getText());
 					vo.setType(VIPType.ENTERPRISEVIP);
+					boolean k=controller.updateInfo(vo);
+					if(k)setHint("注册成功");
+					else setHint("注册失败");
+					}else setHint("请输入公司名");
 				}
-				boolean k=controller.updateInfo(vo);
-				if(k)DialogCreator.successDialog("suceess");
-				else DialogCreator.failDialog("fail");
 				}
 				else
 					setHint("您已经是会员了");

@@ -52,4 +52,7 @@ StrategyBLService strategy=new StrategyManage();
 	public ArrayList<OrderVO> findSpecificHotelClientOrderList(String clientId, String hotelId) {
 		return orderfind.findSpecificHotelClientOrderList(clientId,hotelId);
 	}
+	public String[] getArea(){
+		return hotelInfo.getArea();
+	}
 }

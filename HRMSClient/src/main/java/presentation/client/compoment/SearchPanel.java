@@ -117,10 +117,9 @@ public class SearchPanel extends JPanel{
 
 		areabox=new JComboBox<String>();
 		areabox.addItem("全部商圈");
-		areabox.addItem("栖霞区商圈");
-		areabox.addItem("新街口商圈");
-		areabox.addItem("玄武区商圈");
-		areabox.addItem("鼓楼区商圈");
+		String[] area=controller.getArea();
+		for(int i=0;i<area.length;i++)
+		areabox.addItem(area[i]);
 		areabox.setBounds(100,15,110,20);
 		this.add(areabox);
 
@@ -311,7 +310,7 @@ public class SearchPanel extends JPanel{
 					    ArrayList<String>orderlist=new ArrayList<String>();
 			    		 for(int j=0;j<orders.size();j++){
 			    			 OrderVO ordervo=orders.get(j);
-			    			 orderlist.add(ordervo.getOrderDate()+" "+ordervo.getOrderType());
+			    			 orderlist.add("订单号："+ordervo.getOrderId()+"\n"+ordervo.getOrderDate()+" "+ordervo.getOrderType());
 			    		 }
 			    		 new remarkFrame(orderlist);
 					    		}

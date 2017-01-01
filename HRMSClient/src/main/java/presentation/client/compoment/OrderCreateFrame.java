@@ -173,9 +173,9 @@ public class OrderCreateFrame extends JFrame{
 		this.add(ok);
 
 		hint=new JLabel("请选择一种类型的房间");
-		hint.setFont(new java.awt.Font("微软雅黑", 4,  15));
+		hint.setFont(new java.awt.Font("微软雅黑", 4,  18));
 		hint.setForeground(Color.WHITE);
-		hint.setBounds(360,130,200,20);
+		hint.setBounds(360,130,250,20);
 		this.add(hint);
 
 		strategyArea=new JTextArea();
@@ -232,8 +232,30 @@ public class OrderCreateFrame extends JFrame{
 				  else{
 				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),pricevo.getStrategys(),room.getType(),num,days,beforeprice);
 				  ResultMessage rs=controller.createOrderPO(order);
-				frame.dispose();
-
+				  if(rs==ResultMessage.SUCCESS)new Thread(new Runnable(){
+						@Override
+						public void run() {
+							hint.setText("下单成功");
+							try {
+								Thread.sleep(1500);
+								frame.dispose();
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}).start();
+				  else new Thread(new Runnable(){
+						@Override
+						public void run() {
+							hint.setText("下单失败");
+							try {
+								Thread.sleep(1500);
+								frame.dispose();
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}).start();
 				  }
 			}
 

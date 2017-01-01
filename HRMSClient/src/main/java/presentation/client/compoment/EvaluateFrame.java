@@ -107,7 +107,10 @@ class ePanel extends JPanel{
 					star=4;
 				if(s5.isSelected())
 					star=5;
-				boolean k=controller.setEvaluate(star,text.getText(),clientID,hotelID);
+				String et=text.getText();
+				if(et.equals("")||et.equals("请为此次酒店入住体验打分～"))
+					et="无评价";
+				boolean k=controller.setEvaluate(star,et,clientID,hotelID);
 				if(k)
 				new Thread(new Runnable(){
 					@Override
