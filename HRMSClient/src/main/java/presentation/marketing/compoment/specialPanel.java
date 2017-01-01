@@ -45,6 +45,7 @@ public class specialPanel extends MJPanel{
 		this.add(startPanel);
     	this.add(endPanel);
     	this.add(districtPanel);
+
     	this.add(addLabel);
     	Apanel.setPreferredSize(new Dimension(200,60));
 

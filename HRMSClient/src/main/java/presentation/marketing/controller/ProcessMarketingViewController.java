@@ -100,7 +100,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public OrderVO findSpecificOrder(String orderID) {
-		return this.MarketingBLControllerService.findSpecificOrder(marketingID,orderID);//删掉List
+		return this.MarketingBLControllerService.findSpecificOrder(marketingID,orderID);
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 	}
 
 	@Override
-	public boolean setCredit(String clientID, int amount) {//改为double
+	public boolean setCredit(String clientID, int amount) {
 		String reason=" rechange";
 		return this.MarketingBLControllerService.setCredit(clientID, amount,reason);
 	}

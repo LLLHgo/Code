@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -15,6 +17,7 @@ import javax.swing.JScrollPane;
 
 import Enum.MarketingStrategy;
 import Enum.VIPType;
+import presentation.marketing.view.ProcessMarketingView;
 import vo.areaVO.AreaVO;
 import vo.strategyVO.MarketingStrategyVO;
 
@@ -46,6 +49,7 @@ public class newPanel extends MJPanel{
 		this.add(startPanel);
     	this.add(endPanel);
     	this.add(discountPanel);
+    	((InputPanel) discountPanel).setText("请输入0-1的小数");
     	this.add(hotelPanel);
     	this.add(typePanel);
     	this.add(levelPanel);

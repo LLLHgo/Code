@@ -35,6 +35,9 @@ public class InputPanel extends MJPanel{
 		valueField.setText(""+dis);
 	}
 
+	public void setText(String s){
+		valueField.setText(s);
+	}
 	public double getInput(){
 		double result=0;
 		try{

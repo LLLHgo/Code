@@ -23,6 +23,7 @@ public class periodPanel extends MJPanel{
 		this.add(startPanel);
     	this.add(endPanel);
     	this.add(discountPanel);
+    	((InputPanel) discountPanel).setText("请输入0-1的小数");
 
     	this.revalidate();
         this.repaint();
