@@ -11,13 +11,11 @@ import businesslogic.hoteinfobl.SortHotelStar;
 import businesslogic.hoteinfobl.SortMinPrice;
 import businesslogic.hoteinfobl.SortRemarkStar;
 import vo.areaVO.AreaVO;
-import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.strategyVO.HotelStrategyVO;
-import vo.strategyVO.MarketingStrategyVO;
 
 public class HotelinfoBLService_Stub implements HotelinfoBLService{
 
@@ -32,9 +30,9 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		ArrayList<String> remark = new ArrayList<String>();
 		remark.add("超级棒！");
 		remark.add("一个很温馨的地方，么么哒~");
-		String introduction = "一个可以让大家一起愉快地写大作业的地方哈哈哈哈";
+		String introduction = "Brief Introduction";
 		String hotelID = "H00000001";
-		hotelinfovo = new HotelinfoVO("LLLH酒店","仙林大道163号","栖霞区商圈","025-12345678",
+		hotelinfovo = new HotelinfoVO("HanTing","BeijingDongRode","山西路商圈","12345678",
 			roominfoList,Star.SEVEN,remark,introduction,hotelID);
 
 	}
@@ -48,16 +46,6 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		return hotelinfovo;
 	}
 
-	/**
-	 * 获得符合客户条件的酒店列表信息
-	 * @param vo
-	 * @return 酒店信息列表
-	 */
-	public ArrayList<HotelinfoVO> getBasicinfoList(String area) {
-		ArrayList<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
-		list.add(hotelinfovo);
-		return list;
-	}
 
 	/**
 	 * 持久化保存酒店信息
@@ -87,15 +75,6 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 		ArrayList<RoominfoVO> list = new ArrayList<RoominfoVO>();
 		list.add(roominfovo);
 		return list;
-	}
-
-	/**
-	 * 计算打折后的价格
-	 * @return 最终价格
-	 */
-	public double calculatePrice(ArrayList<HotelStrategyVO> hotelStrategyList,
-			ArrayList<MarketingStrategyVO> marketingStrategyList, ClientVO vo,String hotelID,RoominfoVO roomVO,int num){
-		return 666;
 	}
 
 	/**
@@ -184,19 +163,34 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 
 	@Override
 	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
-		// TODO Auto-generated method stub
+		if(sitemanagerAddVO.getName().equals("LLLH酒店")){
+			return ResultMessage.DUPLICATENAME;
+		}
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public String[] getArea() {
 		//TODO
-		String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈"};
+		String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈","栖霞区商圈"};
 		return areas;
 	}
 
 	@Override
 	public boolean addArea(String area) {
+		if(area==null||area.equals("")){
+			return false;
+		}
+		String[] areas={"新街口商圈","山西路商圈","珠江路商圈","江东门商圈","江北商圈","卡子门商圈","栖霞区商圈"};
+		int flag = 0;
+		for(int i=0;i<areas.length;i++){
+			if(area.equals(areas[i])){
+				flag = 1;
+			}
+		}
+		if(flag == 1){
+			return false;
+		}
 		return true;
 	}
 
@@ -249,13 +243,11 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 
 	@Override
 	public boolean addroominfo(RoominfoVO vo) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean deleteroom(String hotelID, String roomID) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -273,7 +265,17 @@ public class HotelinfoBLService_Stub implements HotelinfoBLService{
 
 	@Override
 	public ArrayList<HotelinfoVO> getBasicinfoList(String area, String hotelname, int hotelstar, String roomType) {
-		
+		if(!area.equals("山西路商圈")){
+			return null;
+		}else{
+			if(hotelname == null&&hotelstar==0&&roomType == null){
+				HotelinfoVO hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","山西路商圈","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
+						new ArrayList<String>(),"Brief Introduction","H00000001");
+				ArrayList<HotelinfoVO> list = new ArrayList<HotelinfoVO>();
+				list.add(hotelinfoVO1);
+				return list;
+			}
+		}
 		return null;
 	}
 
