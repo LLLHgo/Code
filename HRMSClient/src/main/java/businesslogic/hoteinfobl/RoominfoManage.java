@@ -1,3 +1,6 @@
+/**
+ *hotelinfo的逻辑层包 
+ */
 package businesslogic.hoteinfobl;
 
 import java.rmi.RemoteException;
@@ -7,14 +10,18 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import po.RoominfoPO;
 import rmi.RemoteHelper;
 import vo.hotelinfoVO.RoominfoVO;
-
+/**
+ * 房间管理信息类
+ * @author liuyu
+ *负责处理roominfodata层传来的信息，持久化保存信息到hoteldata层，将room的信息分发到其他模块
+ */
 public class RoominfoManage{
 
 	HotelinfoDataService data = RemoteHelper.getInstance().hotelinfoDataService();
 
 //		data = new HotelinfoDataService_Stub();
 
-
+	//获得房间信息
 	public RoominfoVO getroominfo(String hotelID, String roomID) {
 		RoominfoPO po = null;
 		try {
@@ -28,6 +35,7 @@ public class RoominfoManage{
 		return po2vo(po);
 	}
 
+	//新增房间
 	public boolean addroominfo(RoominfoVO vo){
 		RoominfoPO po = new RoominfoPO(vo.getHotelID(),
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
@@ -42,6 +50,7 @@ public class RoominfoManage{
 		return result;
 	}
 
+	//更新房间信息
 	public boolean updateroominfo(RoominfoVO vo,String hotelID) {
 		RoominfoPO po = new RoominfoPO(vo.getHotelID(),
 				vo.getType(),vo.getRoomNum(),vo.getPrice(),vo.getRoomState());
@@ -57,6 +66,7 @@ public class RoominfoManage{
 	}
 
 
+	//获得房间种类
 	public String[] getRoomType() {
 		try {
 			return data.getRoomType();
@@ -67,6 +77,7 @@ public class RoominfoManage{
 	}
 
 
+	//新增房间类型
 	public boolean addRoomType(String type) {
 		try {
 			return data.addRoomType(type);
@@ -77,7 +88,7 @@ public class RoominfoManage{
 	}
 
 
-
+	//获得房间信息列表
 	public ArrayList<RoominfoVO> getRoominfoList(String hotelID) {
 		ArrayList<RoominfoPO> listPO;
 		ArrayList<RoominfoVO> listVO = new ArrayList<RoominfoVO>();
@@ -96,7 +107,7 @@ public class RoominfoManage{
 		return listVO;
 	}
 
-
+	//房间信息的po包转vo包
 	private RoominfoVO po2vo(RoominfoPO po){
 		RoominfoVO vo;
 		try{
@@ -109,6 +120,7 @@ public class RoominfoManage{
 		return vo;
 	}
 
+	//删除房间信息
 	public boolean deleteroom(String hotelID,String roomID){
 		try {
 			return data.deleteroom(hotelID,roomID);
@@ -118,6 +130,7 @@ public class RoominfoManage{
 		}
 	}
 
+	//已合并到clientgetHotelinfo中，不排除以后会使用到这个方法
 	public  ArrayList<String> getAvailableRooms(String hotelID){
 //		try {
 //			ArrayList<RoominfoPO> list = (ArrayList<RoominfoPO>) data.findRoominfoList(hotelID);

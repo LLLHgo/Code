@@ -14,7 +14,11 @@ import Enum.Star;
 import initial.DataBaseInit;
 import po.HotelinfoPO;
 import po.RoominfoPO;
-
+/**
+ * hotelinfo的data层实现
+ * @author liuyu
+ *负责将数据持久化保存入数据库，从数据库获取持久化信息
+ */
 public class HotelinfoDataServiceMySqlImpl{
 
 	private static final long serialVersionUID = 1L;
@@ -83,6 +87,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return null;
 	}
 
+	//酒店工作人员和网站管理人员查
 	public HotelinfoPO findhotelinfo(String hotelID) throws RemoteException {
 		int id = Integer.parseInt(hotelID.substring(1));
 		HotelinfoPO po = null;
@@ -136,7 +141,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		}
 		return po;
 	}
-
+	//客户查询
 	public ArrayList<HotelinfoPO> clientfindhotelinfo(String area,String hotelname,int hotelstar) throws RemoteException {
 		HotelinfoPO po = null;
 		ArrayList<HotelinfoPO> list = new ArrayList<HotelinfoPO>();
@@ -284,6 +289,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return null;
 	}
 
+	//酒店工作人员改
 	public boolean hotelstaffUpdatehotelinfo(HotelinfoPO po) throws RemoteException {
 		int id = Integer.parseInt(po.getHotelID().substring(1));
 		try {
@@ -326,6 +332,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return false;
 	}
 
+	//客户改
 	public boolean clientupdatehotelinfo(String remark,String hotelID) throws RemoteException {
 		int id = Integer.parseInt(hotelID.substring(1));
 		try {
@@ -358,6 +365,7 @@ public class HotelinfoDataServiceMySqlImpl{
 	}
 
 
+	//改 
 	public boolean updateroominfo(RoominfoPO po) throws RemoteException {
 		try {
 			String sql = "update roominfo set "
@@ -384,6 +392,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return false;
 	}
 
+	//增
 	public boolean insertRoominfo(RoominfoPO po){
 		try {
 			String sql = "insert into roominfo (hotelID,type,roomID,price,roomState)values (?,?,?,?,?)";
@@ -408,6 +417,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return false;
 	}
 
+	//增
 	public String insertHotelinfo(String hotelName){
 		try {
 			Statement st = conn.createStatement();
@@ -445,6 +455,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return "";
 	}
 
+	//查
 	public RoominfoPO findroominfo(String hotelID,String roomID) throws RemoteException{
 		RoominfoPO po = null;
 		try {
@@ -472,6 +483,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return po;
 	}
 
+	//查询某一商圈的所有酒店信息
 	public ArrayList<HotelinfoPO> findHotelinfoList(String area) throws RemoteException{
 		HotelinfoPO po = null;
 		ArrayList<HotelinfoPO> list = new ArrayList<HotelinfoPO>();
@@ -538,6 +550,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return null;
 	}
 
+	//删除房间
 	public boolean deleteroom(String hotelID,String roomID) throws RemoteException{
 		Statement st;
 		try {
@@ -553,7 +566,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return false;
 	}
 
-
+	//获得所有商圈名
 	public String[] getArea() {
 		String data = "";
 		String[] areas = null;
@@ -572,7 +585,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return areas;
 	}
 
-
+	//新增商圈名
 	public boolean addArea(String area) {
 		if(area.equals("")||area==null){
 			return false;
@@ -600,7 +613,7 @@ public class HotelinfoDataServiceMySqlImpl{
 		return false;
 	}
 
-
+	//获得房间类型
 	public String[] getRoomType() {
 		String data = "";
 		String[] rooms = null;

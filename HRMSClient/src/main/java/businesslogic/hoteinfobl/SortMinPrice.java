@@ -1,3 +1,6 @@
+/**
+ *hotelinfo的逻辑层包 
+ */
 package businesslogic.hoteinfobl;
 
 import java.util.ArrayList;
@@ -5,7 +8,11 @@ import java.util.Comparator;
 
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-
+/**
+ * 根据最低房间价格排序
+ * @author liuyu
+ *
+ */
 public class SortMinPrice implements Comparator<HotelinfoVO>{
 
 	@Override

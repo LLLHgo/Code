@@ -1,3 +1,6 @@
+/**
+ *hotelinfo的逻辑层包 
+ */
 package businesslogic.hoteinfobl;
 
 import java.rmi.RemoteException;
@@ -26,7 +29,11 @@ import vo.hotelinfoVO.RoominfoVO;
 import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.strategyVO.HotelStrategyVO;
-
+/**
+ * 酒店信息管理类
+ * @author liuyu
+ *负责处理hotelinfodata层传来的信息,持久化保存信息到hoteldata层，将酒店的信息分发到其他模块
+ */
 public class HotelinfoManage{
 
 //	//桩测试
@@ -35,6 +42,7 @@ public class HotelinfoManage{
 	HotelinfoPO po;
 	HotelinfoVO vo;
 
+	//客户进行评价
 	public boolean SetEvaluate(int star,String str,String clientID,String hotelID){
 		String remark = star+" "+str+" "+clientID;
 		try {
@@ -45,6 +53,7 @@ public class HotelinfoManage{
 		}
 	}
 
+	//获得酒店信息
 	public HotelinfoVO getBasicinfo(String hotelID) {
 		try {
 			po = data.findhotelinfo(hotelID);
@@ -60,6 +69,7 @@ public class HotelinfoManage{
 		return vo;
 	}
 
+	//获得酒店信息列表
 	public ArrayList<HotelinfoVO> getBasicinfoList(String area,String hotelname,int hotelstar,String roomType) {
 		int roomtypeinflag = 0;
 		ArrayList<HotelinfoPO> listPO;
@@ -74,11 +84,10 @@ public class HotelinfoManage{
 				vo = PO2VO(listPO.get(i));
 				//每次循环都先将Roomtypeinflag置为0
 				roomtypeinflag = 0;
-//				if(vo == null){
-//					return null;
-//				}
+
 				ArrayList<RoominfoVO> roominfoList = roominfoManage.getRoominfoList(listPO.get(i).getHotelID());
 				String[] roomtype = roominfoManage.getRoomType();
+				//availablenum里存的是可用房间数
 				int[] availablenum = new int[roomtype.length];
 				for(int m=0;m<availablenum.length;m++){
 					availablenum[m]=0;
@@ -88,6 +97,7 @@ public class HotelinfoManage{
 					for(int m=0;m<roomtype.length;m++){
 						for(int n=0;n<roominfoList.size();n++){
 							RoominfoVO roominfovo = roominfoList.get(n);
+							//房间类型与所要的房间一致且房间状态是可用的
 							if(roominfovo.getType().equals(roomtype[m])&&
 								roominfovo.getRoomState()==RoomState.Usable){
 								availablenum[m]++;
@@ -106,7 +116,7 @@ public class HotelinfoManage{
 					}
 					vo.setAvailableNum(selectedArray);
 					vo.setRoominfoList(selected);
-					//TODO 传null表示界面没有要求
+					// 传null表示界面没有要求
 					if(roomType==null){
 						roomtypeinflag = 1;
 					}else{
@@ -129,6 +139,7 @@ public class HotelinfoManage{
 	}
 
 
+	//客户获得酒店基本信息（比getBasicinfo多传房间信息ArrayList）
 	public HotelinfoVO clientgetBasicinfo(String hotelID){
 		try {
 			po = data.findhotelinfo(hotelID);
@@ -152,6 +163,7 @@ public class HotelinfoManage{
 		return vo;
 	}
 
+	//将酒店信息的PO包转成VO包
 	private HotelinfoVO PO2VO(HotelinfoPO po){
 			HotelinfoVO vo = new HotelinfoVO(po.getName(),po.getAddress(),po.getArea(),
 			po.getTel(),null,po.getStar(),po.getRemark(),po.getIntroduction(),
@@ -169,11 +181,11 @@ public class HotelinfoManage{
 			return vo;
 	}
 //hotelstaff update hotelinfo
+	//更新酒店基本信息
 	public ResultMessage updateBassicinfo(HotelinfoVO VO) {
 		if(VO==null||VO.getAddress()==null||VO.getArea()==null||VO.getFacility()==null||
 		VO.getHotelID()==null||VO.getIntroduction()==null||VO.getStar()==null||
 		VO.getTel()==null){
-			System.out.println("null error");
 			return ResultMessage.VOIDINFO;
 		}
 
@@ -200,6 +212,7 @@ public class HotelinfoManage{
 
 	}
 
+	//保存网站管理人员新增酒店和酒店工作人员信息
 	public ResultMessage saveSitemanagerAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
 		String hotelname = sitemanagerAddVO.getName();
 		if(hotelname==null||hotelname.equals("")){
@@ -247,6 +260,7 @@ public class HotelinfoManage{
 		return result;
 	}
 
+	//获得商圈
 	public String[] getArea() {
 		try {
 			return data.getArea();
@@ -257,6 +271,7 @@ public class HotelinfoManage{
 	}
 
 
+	//增加商圈
 	public boolean addArea(String area) {
 		try {
 			return data.addArea(area);
@@ -267,6 +282,7 @@ public class HotelinfoManage{
 	}
 
 
+	//获得商圈中所有酒店名称信息
 	public List<AreaVO> getAreaHotels() {
 		String[] areas = getArea();
 		ArrayList<HotelinfoPO> hotelinfoPOList = new ArrayList<HotelinfoPO>();
@@ -294,17 +310,19 @@ public class HotelinfoManage{
 	}
 
 
+	//根据酒店星级对酒店进行排序，酒店星级高的在前
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoHotelStar(ArrayList<HotelinfoVO> list){
 		Collections.sort(list,new SortHotelStar());
 		return list;
 	}
 
+	//根据评价星级对酒店进行排序，评分星级高的在前
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoRemarkStar(ArrayList<HotelinfoVO> list) {
 		Collections.sort(list,new SortRemarkStar());
 		return list;
 	}
 
-
+	//根据酒店最低可用房间价格对酒店进行排序，最低房间价格低的在前
 	public ArrayList<HotelinfoVO> rankHotelAccordingtoMinPrice(ArrayList<HotelinfoVO> list) {
 		Collections.sort(list,new SortMinPrice());
 		return list;

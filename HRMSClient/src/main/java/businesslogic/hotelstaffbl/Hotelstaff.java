@@ -1,3 +1,6 @@
+/**
+ *hotelstaff的逻辑层包 
+ */
 package businesslogic.hotelstaffbl;
 
 public class Hotelstaff {

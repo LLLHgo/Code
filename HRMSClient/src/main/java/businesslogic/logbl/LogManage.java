@@ -1,3 +1,6 @@
+/**
+ * log的逻辑层
+ */
 package businesslogic.logbl;
 
 import java.rmi.RemoteException;

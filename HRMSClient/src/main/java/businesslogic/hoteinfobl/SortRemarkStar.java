@@ -1,9 +1,16 @@
+/**
+ *hotelinfo的逻辑层包 
+ */
 package businesslogic.hoteinfobl;
 
 import java.util.Comparator;
 
 import vo.hotelinfoVO.HotelinfoVO;
-
+/**
+ * 根据评分星级排序
+ * @author liuyu
+ *
+ */
 public class SortRemarkStar implements Comparator<HotelinfoVO>{
 
 	@Override

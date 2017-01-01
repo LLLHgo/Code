@@ -12,6 +12,11 @@ import dataservice.hotelstaffdataservice.HotelstaffDataService;
 import initial.DataBaseInit;
 import po.HotelstaffPO;
 
+/**
+* hotelstaff的data层实现
+* @author liuyu
+*负责将数据持久化保存入数据库，从数据库获取持久化信息
+*/
 public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implements HotelstaffDataService{
 
 	private static final long serialVersionUID = 1L;
