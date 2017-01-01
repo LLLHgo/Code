@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -96,6 +98,20 @@ public class BusinessStrategyPanel extends JPanel{
 		jftdiscount.setForeground(Color.white);
 		jftdiscount.setFont(new Font("微软雅黑",Font.BOLD,20));
 		this.add(jftdiscount);
+		jftdiscount.addFocusListener(new FocusListener(){
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				showMessage("输入折扣为0-1的小数");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				
+				
+			}
+			
+		});
 
 		tpStart = new TimePanel1(458,129,308,37);
 		tpEnd = new TimePanel1(458,182,308,37);
