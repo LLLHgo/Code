@@ -66,7 +66,8 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 			ps.setString(1, hotelID);
 			String passwordtoDataBase="";
 			for(int i=0;i<passwordfromUI.length();i++){
-				passwordtoDataBase += passwordfromUI.charAt(i)+1;
+				char c = (char) (passwordfromUI.charAt(i)+1);
+				passwordtoDataBase +=c;
 			}
 			ps.setString(2, passwordtoDataBase);
 			ps.setString(3, tel);
@@ -89,7 +90,8 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 			String passwordfromUI = po.getPassword();
 			String passwordtoDataBase="";
 			for(int i=0;i<passwordfromUI.length();i++){
-				passwordtoDataBase += passwordfromUI.charAt(i)+1;
+				char c = (char) (passwordfromUI.charAt(i)+1);
+				passwordtoDataBase +=c;
 			}
 			ps.setString(1, passwordtoDataBase);
 			ps.setString(2, po.getHotelID());
@@ -111,7 +113,8 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 			String passwordfromUI = po.getPassword();
 			String passwordtoDataBase="";
 			for(int i=0;i<passwordfromUI.length();i++){
-				passwordtoDataBase += passwordfromUI.charAt(i)+1;
+				char c = (char) (passwordfromUI.charAt(i)+1);
+				passwordtoDataBase +=c;
 			}
 			ps.setString(1, passwordtoDataBase);
 			ps.setString(2, po.getTel());
@@ -140,7 +143,8 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 					String passwordfromDataBase=(String)myRS.getObject("password");
 					String passwordtoUI = "";
 					for(int i=0;i<passwordfromDataBase.length();i++){
-						passwordtoUI += passwordfromDataBase.charAt(i)-1;
+						char c = (char) (passwordfromDataBase.charAt(i)-1);
+						passwordtoUI += c;
 					}
 					po.setPassword(passwordtoUI);
 					po.setTel((String)myRS.getObject("tel"));

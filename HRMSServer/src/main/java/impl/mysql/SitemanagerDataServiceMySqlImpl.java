@@ -13,17 +13,17 @@ import initial.DataBaseInit;
 import po.SitemanagerPO;
 
 public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject implements SitemanagerDataService{
-	
+
 	private static final long serialVersionUID = 1L;
 	//DataFactoryMySqlImpl mysql = new DataFactoryMySqlImpl();;
 	SitemanagerPO sitemanagerPO;
 	String sql;
 	ResultSet resultSet;
-	
+
 	String id;
 	String tel;
 	String password;
-	
+
 	Connection conn;
 	Statement stmt;
 	PreparedStatement preStatement;
@@ -32,11 +32,11 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 		super();
 		this.conn = DataBaseInit.getConnection();
 	}
-	
+
 
     public SitemanagerPO getAccount() throws RemoteException {
 		// TODO Auto-generated method stub
-    	
+
     	sql="SELECT id, tel, password FROM sitemanager_account";
     	try {
     		if(conn==null){
@@ -51,8 +51,11 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 				// 从数据库读取密码时，各char值-1得到密码明文
 				String passwordMing="";
 				for(int i=0;i<password.length();i++){
-					passwordMing=passwordMing+(password.charAt(i)-1);
+					char c=password.charAt(i);
+					c--;
+					passwordMing+=c;
 				}
+				System.out.println(passwordMing);
 				sitemanagerPO=new SitemanagerPO(id,tel,passwordMing);
 	    		return sitemanagerPO;
 			}
@@ -76,18 +79,20 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 			preStatement.setObject(1, sitemanagerPO.getSitemanagerPhoneNumber());
 			preStatement.setObject(2, sitemanagerPO.getSitemanagerId());
 			row1=preStatement.executeUpdate();
-			
+
 			preStatement = conn.prepareStatement(sql2);
 			// 将更新的密码存入数据库时+1
 			String passwordStoreToDataBase="";
 			String passwordInPO=sitemanagerPO.getPassword();
 			for(int i=0;i<passwordInPO.length();i++){
-				passwordStoreToDataBase=passwordStoreToDataBase+(passwordInPO.charAt(i)+1);
+				char c=passwordInPO.charAt(i);
+				c++;
+				passwordStoreToDataBase+=c;
 			}
 			preStatement.setObject(1, passwordStoreToDataBase);
 			preStatement.setObject(2, sitemanagerPO.getSitemanagerId());
 			row2=preStatement.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
