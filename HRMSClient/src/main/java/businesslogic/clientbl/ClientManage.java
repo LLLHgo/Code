@@ -1,3 +1,6 @@
+/**
+ * client逻辑层包
+ */
 package businesslogic.clientbl;
 
 import java.rmi.RemoteException;
