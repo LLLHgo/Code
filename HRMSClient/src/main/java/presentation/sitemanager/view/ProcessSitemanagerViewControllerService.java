@@ -65,12 +65,6 @@ public interface ProcessSitemanagerViewControllerService {
 	 */
 	public MarketingVO MarketingAccountFind (String findInfo);
 	
-	/**
-	 * 添加网站营销人员账户
-	 * @param hotelinfo
-	 * @return 添加网站营销人员账户成功或失败的ResultMessage的enum值
-	 */
-	public ResultMessage MarketingAccountAdd (HotelinfoVO hotelinfo);
 	
 	/**
 	 * 添加酒店
@@ -113,13 +107,6 @@ public interface ProcessSitemanagerViewControllerService {
 	 */
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO);
 	
-	
-	/**
-	 * 检查登录的网站管理人员账户密码是否正确
-	 * @param account
-	 * @return 登录帐号或密码正确（true）或错误（false）的布尔值
-	 */
-	public ResultMessage checkAccount (SitemanagerVO accountVO);
 	/**
 	 * 得到最新添加的网站营销人员帐号
 	 * @return 帐号

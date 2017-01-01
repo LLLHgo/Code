@@ -117,10 +117,6 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		return marketingblservice.MarketingAccountFind(findInfo);
 	}
 
-	public ResultMessage MarketingAccountAdd(HotelinfoVO hotelinfo) {
-		return ResultMessage.SUCCESS;
-	}
-
 	@Override
 	public ResultMessage HotelAccountAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
 		return hotelblservice.saveSitemanagerAdd(sitemanagerAddVO,hotelstaffVO);
@@ -146,14 +142,9 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 	@Override
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO) {
-		System.out.println("In processSitemanagerView:"+accountVO.getPassword());
 		return sitemanagerblservice.sitemanagerAccountUpdatePO(accountVO);
 	}
 
-	@Override
-	public ResultMessage checkAccount(SitemanagerVO accountVO) {
-		return ResultMessage.SUCCESS;
-	}
 
 	@Override
 	public ArrayList<LogVO> findLog(String year,String month,String day) {
