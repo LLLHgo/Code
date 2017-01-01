@@ -17,7 +17,11 @@ import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.compoment.levelPanel;
 import presentation.marketing.controller.ProcessMarketingViewController;
 import vo.levelVO.LevelVO;
-
+/**
+ * 处理设置会员等级的业务的panel
+ * @author huangpiao
+ *
+ */
 public class ProcessMarketingVIPView extends JPanel{
 
 	private static final long serialVersionUID = 1L;

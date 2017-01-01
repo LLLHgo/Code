@@ -29,7 +29,11 @@ import po.StrategyPO.MarketingPeriodPO;
 import po.StrategyPO.MarketingSpecialPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
-
+/**
+ * 有关策略业务的数据库实现代码
+ * @author huangpiao
+ *
+ */
 public class StrategyDataServiceMySqlImpl extends UnicastRemoteObject implements StrategyDataService{
 	public StrategyDataServiceMySqlImpl() throws RemoteException {
 		super();

@@ -14,7 +14,11 @@ import Enum.VIPType;
 import businesslogic.marketingbl.MarketingManage;
 import businesslogic.strategybl.StrategyManage;
 import vo.strategyVO.MarketingStrategyVO;
-
+/**
+ * 测试增加网站营销人员制定的策略的测试代码
+ * @author huangpiao
+ *
+ */
 public class addMarketingStrategyTester {
 	private StrategyManage Smanage=new StrategyManage();
 

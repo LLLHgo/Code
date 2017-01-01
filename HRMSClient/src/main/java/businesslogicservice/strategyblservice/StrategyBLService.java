@@ -9,7 +9,11 @@ import vo.hotelinfoVO.RoominfoVO;
 import vo.priceVO.PriceVO;
 import vo.strategyVO.HotelStrategyVO;
 import vo.strategyVO.MarketingStrategyVO;
-
+/**
+ * interface StrategyBLService的接口
+ * @author huangpiao
+ *
+ */
 public interface StrategyBLService {
 	/**
 	 * 增加网站营销人员所制定的策略

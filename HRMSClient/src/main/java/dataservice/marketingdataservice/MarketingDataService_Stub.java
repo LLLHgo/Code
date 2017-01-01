@@ -6,7 +6,11 @@ import java.util.List;
 
 import po.LevelPO;
 import po.MarketingPO;
-
+/**
+ *
+ * @author huangpiao
+ *
+ */
 public class MarketingDataService_Stub implements MarketingDataService{
 
 
@@ -89,7 +93,9 @@ public class MarketingDataService_Stub implements MarketingDataService{
 		    return false;
 	}
 
-	@Override
+	/**
+	 *  检查账号和密码是否匹配
+	 */
 	public boolean checkAccount(String ID, String password) throws RemoteException {
 		if(ID.equals("M00000001")&&password.equals("password"))
 			return true;
@@ -99,7 +105,9 @@ public class MarketingDataService_Stub implements MarketingDataService{
 		 return false;
 	}
 
-	@Override
+	/**
+	 * 更新等级信息
+	 */
 	public boolean updateLevel(List<LevelPO> pos) throws RemoteException {
 		if(pos!=null&&pos.size()>0)
 			return true;
@@ -108,9 +116,10 @@ public class MarketingDataService_Stub implements MarketingDataService{
 		}
 	}
 
-	@Override
+	/**
+	 * 得到最近新增的网站营销人员的账号
+	 */
 	public String getMarketingID() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

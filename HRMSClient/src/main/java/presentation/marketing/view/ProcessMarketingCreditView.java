@@ -16,7 +16,11 @@ import presentation.marketing.compoment.MJPanel;
 import presentation.marketing.compoment.MJTextField;
 import presentation.marketing.controller.ProcessMarketingViewController;
 import vo.clientVO.ClientVO;
-
+/**
+ * 处理信用值充值的业务的panel
+ * @author huangpiao
+ *
+ */
 public class ProcessMarketingCreditView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ProcessMarketingViewController controller;

@@ -11,7 +11,11 @@ import org.junit.Test;
 import Enum.ResultMessage;
 import businesslogic.marketingbl.MarketingManage;
 import vo.levelVO.LevelVO;
-
+/**
+ * 获得等级信息的测试代码
+ * @author huangpiao
+ *
+ */
 public class LevelTester {
 	private MarketingManage manage=new MarketingManage();
 	@Test

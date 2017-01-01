@@ -13,7 +13,11 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogic.strategybl.StrategyManage;
 import vo.strategyVO.HotelStrategyVO;
-
+/**
+ * 有关HotelStrategyUpdate的测试代码
+ * @author huangpiao
+ *
+ */
 public class HotelStrategyUpdateTester {
 	private StrategyManage manage=new StrategyManage();
 

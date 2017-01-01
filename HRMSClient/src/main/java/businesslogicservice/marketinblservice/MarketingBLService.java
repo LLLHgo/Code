@@ -5,7 +5,11 @@ import java.util.List;
 import Enum.ResultMessage;
 import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
-
+/**
+ * interface MarketingBLService的接口
+ * @author huangpiao
+ *
+ */
 public interface MarketingBLService {
     /**
      * 增加等级信息

@@ -6,7 +6,11 @@ import java.util.List;
 
 import po.LevelPO;
 import po.MarketingPO;
-
+/**
+ *
+ * @author huangpiao
+ *
+ */
 public class MarketingDataService_Stub implements MarketingDataService{
 
     /**

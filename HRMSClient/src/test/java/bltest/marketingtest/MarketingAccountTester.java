@@ -7,7 +7,11 @@ import org.junit.Test;
 import Enum.ResultMessage;
 import businesslogic.marketingbl.MarketingManage;
 import vo.marketingVO.MarketingVO;
-
+/**
+ * marketing账户的测试代码
+ * @author huangpiao
+ *
+ */
 public class MarketingAccountTester {
 	private MarketingManage manage=new MarketingManage();
 

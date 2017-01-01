@@ -4,7 +4,11 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import po.StrategyPO.StrategyPO;
-
+/**
+ *
+ * @author huangpiao
+ *
+ */
 public class StrategyDataService_Driver {
     public void drive(StrategyDataService strategyDataService) throws RemoteException{
 

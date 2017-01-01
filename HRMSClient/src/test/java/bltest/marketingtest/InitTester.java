@@ -6,7 +6,11 @@ import org.junit.Test;
 
 import businesslogic.marketingbl.MarketingManage;
 import vo.marketingVO.MarketingVO;
-
+/**
+ * 获得个人信息的测试代码
+ * @author huangpiao
+ *
+ */
 public class InitTester {
 	private MarketingManage manage=new MarketingManage();
 

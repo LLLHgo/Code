@@ -8,7 +8,11 @@ import Enum.ResultMessage;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
-
+/**
+ * interface StrategyDataService的接口
+ * @author huangpiao
+ *
+ */
 public interface StrategyDataService extends Remote{
 
 

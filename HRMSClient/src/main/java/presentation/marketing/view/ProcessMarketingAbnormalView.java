@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.ButtonGroup;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,11 +30,12 @@ import presentation.marketing.compoment.MJRadioButton;
 import presentation.marketing.compoment.MJScrollPane;
 import presentation.marketing.compoment.MJTextField;
 import vo.orderVO.OrderVO;
-
+/**
+ * class ProcessMarketingAbnormalView 处理异常订单业务的panel
+ * @author huangpiao
+ *
+ */
 public class ProcessMarketingAbnormalView extends JPanel{
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 	private ProcessMarketingViewControllerService controller;
 	private Font font=new Font("微软雅黑",Font.HANGING_BASELINE,22);

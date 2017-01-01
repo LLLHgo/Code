@@ -10,7 +10,11 @@ import vo.levelVO.LevelVO;
 import vo.marketingVO.MarketingVO;
 import vo.orderVO.OrderVO;
 import vo.strategyVO.MarketingStrategyVO;
-
+/**
+ * interface ProcessMarketingViewControllerService的接口
+ * @author huangpiao
+ *
+ */
 public interface ProcessMarketingViewControllerService {
     /**
      *

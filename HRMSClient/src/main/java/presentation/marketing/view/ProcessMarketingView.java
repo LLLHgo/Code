@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 
 import presentation.common.GuideBoardButton;
 import presentation.marketing.compoment.MJLabel;
-
-
-
+/**
+ * marketing总界面的panel
+ * @author huangpiao
+ *
+ */
 public class ProcessMarketingView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private String MarketingID;

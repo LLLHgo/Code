@@ -13,7 +13,11 @@ import businesslogic.strategybl.StrategyManage;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
-
+/**
+ * 计算价格的测试代码
+ * @author huangpiao
+ *
+ */
 public class CalculatePriceTester {
 	private StrategyManage manage=new StrategyManage();
 	private ClientVO clientvo=new ClientVO("C00000001","justfun","ErgouWang","13747474741",

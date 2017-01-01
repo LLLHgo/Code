@@ -15,7 +15,11 @@ import presentation.marketing.compoment.MJLabel;
 import presentation.marketing.compoment.MJPasswordField;
 import presentation.marketing.compoment.MJTextField;
 import vo.marketingVO.MarketingVO;
-
+/**
+ * 处理个人信息业务的panel
+ * @author huangpiao
+ *
+ */
 public class ProcessMarketingProfileView extends JPanel{
 
 	private static final long serialVersionUID = 1L;

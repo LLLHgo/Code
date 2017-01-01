@@ -1,7 +1,11 @@
 package dataservice.marketingdataservice;
 
 import java.rmi.RemoteException;
-
+/**
+ *
+ * @author huangpiao
+ *
+ */
 public class MarketingDataService_Driver {
     public void drive(MarketingDataService marketingDataService) throws RemoteException{
     	/*//在数据库中增加一个Level等级信息

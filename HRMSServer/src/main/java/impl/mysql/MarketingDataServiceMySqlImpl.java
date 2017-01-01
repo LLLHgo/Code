@@ -14,8 +14,8 @@ import initial.DataBaseInit;
 import po.LevelPO;
 import po.MarketingPO;
 /**
- * 浏览订单界面类
- * @author ClaraLee
+ * 有关网站营销人员操作的数据库实现
+ * @author huangpiao
  *
  */
 public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implements MarketingDataService{

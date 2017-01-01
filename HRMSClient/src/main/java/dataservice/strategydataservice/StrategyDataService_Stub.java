@@ -8,7 +8,11 @@ import datatool.StrategyPODataTool;
 import po.StrategyPO.HotelStrategyPO;
 import po.StrategyPO.MarketingStrategyPO;
 import po.StrategyPO.StrategyPO;
-
+/**
+ * 
+ * @author huangpiao
+ *
+ */
 public class StrategyDataService_Stub implements StrategyDataService{
 
 	/**

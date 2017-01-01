@@ -6,7 +6,11 @@ import java.util.List;
 
 import po.LevelPO;
 import po.MarketingPO;
-
+/**
+ * interface MarketingDataService的接口
+ * @author huangpiao
+ *
+ */
 public interface MarketingDataService extends Remote{
 
 

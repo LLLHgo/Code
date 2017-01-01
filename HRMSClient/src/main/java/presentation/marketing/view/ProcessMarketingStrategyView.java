@@ -22,7 +22,11 @@ import presentation.marketing.compoment.periodPanel;
 import presentation.marketing.compoment.specialPanel;
 import vo.areaVO.AreaVO;
 import vo.strategyVO.MarketingStrategyVO;;
-
+/**
+ * 处理策略业务的panel
+ * @author huangpiao
+ *
+ */
 public class ProcessMarketingStrategyView extends JPanel{
 
 	private static final long serialVersionUID = 1L;

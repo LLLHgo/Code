@@ -5,7 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import businesslogic.marketingbl.MarketingManage;
-
+/**
+ * 测试网站营销人员的账号信息的测试代码
+ * @author huangpiao
+ *
+ */
 public class CheckAccountTest {
 	private MarketingManage manage=new MarketingManage();
 
