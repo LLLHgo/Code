@@ -61,10 +61,14 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 			String sql = "insert into hotelstaff values(?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			String hotelID = po.getHotelID();
-			String password = po.getPassword();
+			String passwordfromUI = po.getPassword();
 			String tel = po.getTel();
 			ps.setString(1, hotelID);
-			ps.setString(2, password);
+			String passwordtoDataBase="";
+			for(int i=0;i<passwordfromUI.length();i++){
+				passwordtoDataBase += passwordfromUI.charAt(i)+1;
+			}
+			ps.setString(2, passwordtoDataBase);
 			ps.setString(3, tel);
 			int result = ps.executeUpdate();
 			if(result>0){
@@ -82,7 +86,12 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		try {
 			String sql = "update hotelstaff set password=? where hotelID=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, po.getPassword());
+			String passwordfromUI = po.getPassword();
+			String passwordtoDataBase="";
+			for(int i=0;i<passwordfromUI.length();i++){
+				passwordtoDataBase += passwordfromUI.charAt(i)+1;
+			}
+			ps.setString(1, passwordtoDataBase);
 			ps.setString(2, po.getHotelID());
 			int result = ps.executeUpdate();
 			if(result>0){
@@ -99,7 +108,12 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 		try {
 			String sql = "update hotelstaff set password=? , tel=? where hotelID=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, po.getPassword());
+			String passwordfromUI = po.getPassword();
+			String passwordtoDataBase="";
+			for(int i=0;i<passwordfromUI.length();i++){
+				passwordtoDataBase += passwordfromUI.charAt(i)+1;
+			}
+			ps.setString(1, passwordtoDataBase);
 			ps.setString(2, po.getTel());
 			ps.setString(3, po.getHotelID());
 			int result = ps.executeUpdate();
@@ -123,7 +137,12 @@ public class HotelstaffDataServiceMySqlImpl extends UnicastRemoteObject implemen
 				if(hotelStaffID.equals((String)myRS.getObject("hotelID"))){
 					po = new HotelstaffPO();
 					po.setHotelID(hotelStaffID);
-					po.setPassword((String)myRS.getObject("password"));
+					String passwordfromDataBase=(String)myRS.getObject("password");
+					String passwordtoUI = "";
+					for(int i=0;i<passwordfromDataBase.length();i++){
+						passwordtoUI += passwordfromDataBase.charAt(i)-1;
+					}
+					po.setPassword(passwordtoUI);
 					po.setTel((String)myRS.getObject("tel"));
 				}
 			}
