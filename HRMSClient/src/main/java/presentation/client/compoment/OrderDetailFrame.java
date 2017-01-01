@@ -15,7 +15,7 @@ import vo.orderVO.OrderVO;
 
 public class OrderDetailFrame extends JFrame{
 	/**
-	 *
+	 *订单详情frame
 	 */
 	private static final long serialVersionUID = 1L;
 	OrderDetailPanel hdp;

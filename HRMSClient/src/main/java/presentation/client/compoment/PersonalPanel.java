@@ -22,7 +22,7 @@ import vo.clientVO.ClientVO;
 
 public class PersonalPanel extends JPanel{
 	/**
-	 *
+	 *个人信息界面
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
@@ -251,6 +251,7 @@ public class PersonalPanel extends JPanel{
 		    g.drawImage(imageIcon.getImage(), 0, 0, this);
 		    super.paintComponents(g);
 		   }
+	//设置定时提示信息
 	public void setHint(String str){
         hint.setText(str);
     	new Thread(new Runnable(){

@@ -54,7 +54,7 @@ public class SearchPanel extends JPanel{
 		frame.add(hslp);
 
 		hint=new Label("");
-		hint.setBounds(5,5,200,20);
+		hint.setBounds(5,5,400,20);
 		this.add(hint);
 
 		historyButton=new Button("image/history.png",10,25);
@@ -231,10 +231,6 @@ public class SearchPanel extends JPanel{
 			if(type.equals("全部房间"))
 				type=null;
 			int star=starbox.getSelectedIndex();
-			//ArrayList<HotelinfoVO>list=new ArrayList<HotelinfoVO>();
-			//list.add(HotelinfoDataTool.hotelinfoVO1);
-			//hslp.change(list);
-			System.out.println(area+"  "+name+"  "+star+"  "+type);
 			hotellist=controller.getBasicinfoList(area,name,star,type);
 			hslp.change(hotellist);
 			hslp.setVisible(true);
@@ -326,11 +322,12 @@ public class SearchPanel extends JPanel{
 		}
 	public void change(ArrayList<HotelinfoVO> list){
 		Panel.removeAll();
-		if(list!=null)
+		if(list!=null){
+			Panel.setPreferredSize(new Dimension(600,list.size()*100));
 			 for(int i=0;i<list.size();i++){
+
 			    	HotelinfoVO vo=list.get(i);
 			    	HotelSearchItemPanel p=new HotelSearchItemPanel(0, i*100,vo);
-			    	 //p.setBounds(0,i*100,600,100);
 			    	p.vb.addActionListener(new ActionListener(){
 			    		public void actionPerformed(ActionEvent e) {
 			    			new HotelDetailFrame(client,controller,vo);
@@ -357,9 +354,8 @@ public class SearchPanel extends JPanel{
 
 			    	}
 			    	 Panel.add(p);
-			    }
+			    }}
 			    this.getVerticalScrollBar().setVisible(false);
-
 			    this.repaint();
 	}
 	}

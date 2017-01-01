@@ -35,7 +35,7 @@ import vo.priceVO.PriceVO;
 
 public class OrderCreateFrame extends JFrame{
 	/**
-	 *
+	 *生成订单的frame
 	 */
 	private static final long serialVersionUID = 1L;
 	OrderCreatePanel hdp;
@@ -108,6 +108,7 @@ public class OrderCreateFrame extends JFrame{
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
+			//对订单信息的检查
 			  int i=0;
 			  for(;i<hdp.crlp.rooms.size();i++){
 				  if(hdp.crlp.rooms.get(i).numField.getText().charAt(0)!='<')
@@ -147,6 +148,7 @@ public class OrderCreateFrame extends JFrame{
 		private Field nameField;
 		private chooseRoomListPane crlp;
 		private deleteButton delete;
+		private JLabel hint;
 		okButton ok;
 
 		public OrderCreatePanel(JFrame frame){
@@ -165,6 +167,12 @@ public class OrderCreateFrame extends JFrame{
 		ok.addActionListener(new okButtonListener());
 		this.add(delete);
 		this.add(ok);
+
+		hint=new JLabel("请选择一种类型的房间");
+		hint.setFont(new java.awt.Font("微软雅黑", 4,  15));
+		hint.setForeground(Color.WHITE);
+		hint.setBounds(360,130,200,20);
+		this.add(hint);
 
 		strategyArea=new JTextArea();
 		strategyArea.setBounds(40,280,300,150);
@@ -198,23 +206,35 @@ public class OrderCreateFrame extends JFrame{
 				  String time=format.format(date);
 				  int i=0;
 				  for(;;i++){
-					  if(crlp.rooms.get(i).numField.getText().charAt(0)!='<')
+					  if(crlp.rooms.get(i).numField.getText().charAt(0)!='<'&&crlp.rooms.get(i).numField.getText().charAt(0)>'0'&&crlp.rooms.get(i).numField.getText().charAt(0)<='9')
 						  break;
 				  }
-				  int days=calTime(begin.getChooseDate(),end.getChooseDate());
+
+				  String begindate=begin.getChooseDate();
+				  String enddate=end.getChooseDate();
+				  int days=calTime(begindate,enddate);
+				  int begin=calTime(time,begindate);
 				  int num=Integer.parseInt(crlp.rooms.get(i).numField.getText());
 				  RoominfoVO room=hotelVO.getRoominfoList().get(i);
 				  double beforeprice=num*days*room.getPrice();
 				  pricevo=controller.calculatePrice(client,room,hotelVO,num,days);
+				  if(client.getCredit()<0)
+					  hint.setText("您的信用值不足，请尽快充值");
+				  else if(days<=0||begin<0){
+					  hint.setText("请输入正确的日期");
+				  }
+				  else if(nameField.getText().equals(""))
+					  hint.setText("请输入入住人姓名");
+				  else{
 				  OrderVO order=createOrderVO(nameField.getText(),time,pricevo.getPrice(),pricevo.getStrategys(),room.getType(),num,days,beforeprice);
-				ResultMessage rs=controller.createOrderPO(order);
-
+				  ResultMessage rs=controller.createOrderPO(order);
 				frame.dispose();
 
-
+				  }
 			}
 
 		}
+		//根据界面信息形成订单vo
 		private OrderVO createOrderVO(String name,String time,double price,ArrayList<String> strategy,String roomType,int num,int days,double prePrice){
 			OrderVO order=new OrderVO();
 			order.setOrderId("");

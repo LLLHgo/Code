@@ -25,7 +25,7 @@ import presentation.client.controller.EvaluatePanelController;
 
 public class EvaluateFrame extends JFrame{
 	/**
-	 *
+	 *评价frame弹窗
 	 */
 	private static final long serialVersionUID = 1L;
 	ePanel panel;

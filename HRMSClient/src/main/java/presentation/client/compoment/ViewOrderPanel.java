@@ -23,7 +23,7 @@ import vo.orderVO.OrderVO;
 
 public class ViewOrderPanel extends JPanel{
 	/**
-	 *
+	 *浏览订单界面
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

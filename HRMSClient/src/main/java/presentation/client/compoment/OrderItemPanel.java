@@ -12,7 +12,7 @@ import vo.orderVO.OrderVO;
 
 public class OrderItemPanel extends JPanel{
 	/**
-	 *
+	 *订单信息的列表项
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

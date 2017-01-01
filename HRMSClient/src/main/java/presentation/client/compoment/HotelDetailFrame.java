@@ -28,7 +28,7 @@ import vo.hotelinfoVO.RoominfoVO;
 
 public class HotelDetailFrame extends JFrame{
 	/**
-	 *
+	 *酒店详细信息frame
 	 */
 	private static final long serialVersionUID = 1L;
 	HotelDetailPanel hdp;
@@ -53,7 +53,7 @@ public class HotelDetailFrame extends JFrame{
 	    text.setFont(new java.awt.Font("微软雅黑", 4,  20));
 	    text.setLineWrap(true);
 	    text.setCaretColor(Color.WHITE);
-	    //此处应要根据hotelinfovo来增加 text
+	    //此处根据hotelinfovo来增加 text
 	    ArrayList<RoominfoVO> roomslist=vo.getRoominfoList();
 	    for(int i=0;i<roomslist.size();i++){
 	    	text.append(roomslist.get(i).getType()+"     ￥"+roomslist.get(i).getPrice()+"\n");}

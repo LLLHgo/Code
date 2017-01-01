@@ -18,6 +18,7 @@ import vo.levelVO.LevelVO;
 public class ClientManage implements ClientBLService{
 	static ClientDataService clientdata;
 	MarketingBLService marketing=new MarketingManage();
+	//调用数据层得到客户信息
 	@Override
 	public ClientVO getclient(String clientID) {
 		if(clientID.equals("")||clientID==null)
@@ -37,7 +38,7 @@ public class ClientManage implements ClientBLService{
 	return null;
 
 	}
-
+	//调用数据层创建新客户
 	@Override
 	public String  createClient(ClientVO vo) {
 
@@ -59,7 +60,7 @@ public class ClientManage implements ClientBLService{
 		return "FAIL";
 
 	}
-
+//调用数据层删除客户
 	@Override
 	public ResultMessage saveSitemanagerDelete(String clientId) {
 		// TODO Auto-generated method stub
@@ -76,7 +77,7 @@ public class ClientManage implements ClientBLService{
 		return ResultMessage.FAIL;
 
 	}
-
+//调用数据层修改客户的信用值并根据信用值调整客户等级
 	@Override
 	public boolean setCredit(String clientID, int recharge,String date,String reason) {
 		// TODO Auto-generated method stub
@@ -99,6 +100,7 @@ public class ClientManage implements ClientBLService{
 			}
 			 return false;
 	}
+	//设置用户等级
 	@Override
 	public boolean setClientLevel(String clientID,int level) {
 		ClientVO client=getclient(clientID);
@@ -108,6 +110,7 @@ public class ClientManage implements ClientBLService{
 		else return false;
 
 	}
+	//设置全部用户等级
 	@Override
 	public boolean setAllClientLevel(ArrayList<LevelVO>  vos) {
 		// TODO Auto-generated method stub
@@ -120,7 +123,7 @@ public class ClientManage implements ClientBLService{
 		return false;
 	}
 
-
+//修改全部用户的等级
 	@Override
 	public ResultMessage updateInfo(ClientVO vo) {
 		// TODO Auto-generated method stub
@@ -136,7 +139,7 @@ public class ClientManage implements ClientBLService{
 	}
 
 
-
+//调用数据层得到客户的信用记录
 	@Override
 	public ArrayList<String> getCreditRecord(String clientID) {
 		// TODO Auto-generated method stub
@@ -153,7 +156,7 @@ public class ClientManage implements ClientBLService{
 		}
 		return null;
 	}
-
+//调用数据层来验证用户登录
 	@Override
 	public boolean checkAccount(String clientID, String password)  {
 		// TODO Auto-generated method stub

@@ -16,7 +16,7 @@ import vo.orderVO.OrderVO;
 
 public class HotelEvaluateItemPanel extends JPanel{
 	/**
-	 *
+	 *酒店评价小panel
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
+//选择房间类型和数量的小panel
 public class chooseRoomPanel extends JPanel{
 	/**
 	 *

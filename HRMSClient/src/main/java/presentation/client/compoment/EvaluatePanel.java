@@ -30,7 +30,7 @@ public class EvaluatePanel extends JPanel{
 	private ImageIcon imageIcon = null;
 	private SearchButton searchButton;
 	private JTextField searchField;
-	private HotelListPane hlp;
+	private HotelListPane hlp;//酒店信息列表
 	private JPanel Panel;
 	private EvaluatePanelController controller;
 	private String id;
@@ -77,6 +77,7 @@ public class EvaluatePanel extends JPanel{
 		    g.drawImage(imageIcon.getImage(), 0, 0, this);
 		    super.paintComponents(g);
 		   }
+	//酒店列表类，显示单个酒店订单信息
 	class HotelListPane extends JScrollPane{
 
 		/**
