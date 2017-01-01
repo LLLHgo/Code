@@ -63,7 +63,12 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 			while(rs.next()){
 				// 展开结果集数据库
 				String name=rs.getString("name");
-				String password  = rs.getString("password");
+				String passwordfromDatabase = rs.getString("password");
+				String password  = "";
+				for(int i=0;i<passwordfromDatabase.length();i++){
+					char c = (char) (passwordfromDatabase.charAt(i)-1);
+					password+=c;
+				}
 				String tel=rs.getString("tel");
 				po=new MarketingPO(name,password,id,tel);
 				return po;
@@ -94,8 +99,13 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 
 			while(rs.next()){
 				// 展开结果集数据库
-				String passwordInDataBase  = rs.getString("password");
-				if(passwordInDataBase.equals(password))
+				String passwordfromDatabase = rs.getString("password");
+				String newpassword  = "";
+				for(int i=0;i<passwordfromDatabase.length();i++){
+					char c = (char) (passwordfromDatabase.charAt(i)-1);
+					newpassword+=c;
+				}
+				if(newpassword.equals(password))
 					res=true;
 			}
 		}catch(SQLException se){
@@ -143,7 +153,13 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 		try{
 			stmt=conn.createStatement();
 			String sql;
-			sql="UPDATE MarketingProfile SET name='"+po.getName()+"',password='"+po.getPassword()+"',tel='"+po.getTelephone()+"' WHERE MarketingID='"+po.getMarketingID()+"'";
+			String passwrodfromUI = po.getPassword();
+			String passwordtoDatabase = "";
+			for(int i=0;i<passwrodfromUI.length();i++){
+				char c = (char) (passwrodfromUI.charAt(i)+1);
+				passwordtoDatabase+=c;
+			}
+			sql="UPDATE MarketingProfile SET name='"+po.getName()+"',password='"+passwordtoDatabase+"',tel='"+po.getTelephone()+"' WHERE MarketingID='"+po.getMarketingID()+"'";
 			int rs=stmt.executeUpdate(sql);
 			if(rs>0)
 				return true;
@@ -176,7 +192,13 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 			}
 			max++;
 			String MarketingID="M"+String.format("%08d", max);
-			sql="INSERT INTO MarketingProfile (id,name,MarketingID,password,tel)VALUES ('"+max+"','"+po.getName()+"','"+MarketingID+"','"+po.getPassword()+"','"+po.getTelephone()+"')";
+			String passwrodfromUI = po.getPassword();
+			String passwordtoDatabase = "";
+			for(int i=0;i<passwrodfromUI.length();i++){
+				char c = (char) (passwrodfromUI.charAt(i)+1);
+				passwordtoDatabase+=c;
+			}
+			sql="INSERT INTO MarketingProfile (id,name,MarketingID,password,tel)VALUES ('"+max+"','"+po.getName()+"','"+MarketingID+"','"+passwordtoDatabase+"','"+po.getTelephone()+"')";
 			stmt.executeUpdate(sql);
 
 		}catch(SQLException se){
