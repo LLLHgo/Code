@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 import Enum.OrderType;
 import Enum.ResultMessage;
+import businesslogic.clientbl.ClientManage;
 import businesslogic.orderbl.OrderFind;
 import businesslogic.orderbl.OrderOperator;
+import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import vo.orderVO.OrderVO;
 
 public class ViewOrderPanelController {
+	ClientBLService client=new ClientManage();
 	OrderOperatorBLService orderOp=new OrderOperator();
 	OrderFindBLService orderFind=new OrderFind();
 	public ArrayList<OrderVO> findUserOrderList(String userID) {
@@ -27,5 +30,8 @@ public class ViewOrderPanelController {
 	}
 	public ResultMessage cancelOrderPO(String orderId) {
 		return orderOp.cancelOrderPO(orderId);
+	}
+	public boolean setCredit(String clientID, int recharge,String date,String reason){
+		return client.setCredit(clientID,recharge,date,reason);
 	}
 }

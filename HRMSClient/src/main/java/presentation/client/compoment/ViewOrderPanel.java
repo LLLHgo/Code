@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -238,14 +241,25 @@ private class OrderListPane extends JScrollPane{
 	    		}
 	    		});
 	    	if(order.getOrderStatus().equals(OrderType.NORMALNONEXEC))
-	    	p.db.addActionListener(new ActionListener(){
+	    	//撤销订单监听
+	    		p.db.addActionListener(new ActionListener(){
 	    		public void actionPerformed(ActionEvent e) {
 	    			confirmdelete.setVisible(true);
 	    			nodelete.setVisible(true);
 	    			confirmdelete.addActionListener(new ActionListener(){
 	    	    		public void actionPerformed(ActionEvent e) {
-	    	    			if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS)
-	    	    				setHint("撤销成功");
+	    	    			Date date=new Date();
+	    					  DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    					  String time=format.format(date);
+	    					if(time.substring(0,10).equals(order.getAnticipateArrivedTime().substring(0,10))&&Integer.parseInt(time.substring(11,13))>=6){
+	    						int creditminus=(int)order.getPrice()/2;
+	    	    			if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS&&controller.setCredit(clientID, (-1)*creditminus,time.substring(0,10),"Cancel Late"))
+	    	    				setHint("撤销成功,扣除信用值"+creditminus);
+
+	    					}else{
+	    						if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS)
+		    	    				setHint("撤销成功");
+	    					}
 	    	    			confirmdelete.setVisible(false);
 	    	    			nodelete.setVisible(false);
 	    	    			olp.change(controller.findClientTypeOrderList(OrderType.NORMALNONEXEC,clientID));
@@ -291,8 +305,18 @@ private class OrderListPane extends JScrollPane{
 				    			nodelete.setVisible(true);
 				    			confirmdelete.addActionListener(new ActionListener(){
 				    	    		public void actionPerformed(ActionEvent e) {
-				    	    			if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS)
-				    	    				setHint("撤销成功");
+				    	    			Date date=new Date();
+				    					  DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				    					  String time=format.format(date);
+				    	    			if(time.substring(0,10).equals(order.getAnticipateArrivedTime().substring(0,10))&&Integer.parseInt(time.substring(11,13))>=6){
+				    						int creditminus=(int)order.getPrice()/2;
+				    	    			if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS&&controller.setCredit(clientID, (-1)*creditminus,time.substring(0,10),"Cancel Late"))
+				    	    				setHint("撤销成功,扣除信用值"+creditminus);
+
+				    					}else{
+				    						if(controller.cancelOrderPO(order.getOrderId())==ResultMessage.SUCCESS)
+					    	    				setHint("撤销成功");
+				    					}
 				    	    			confirmdelete.setVisible(false);
 				    	    			nodelete.setVisible(false);
 				    	    			olp.change(controller.findClientTypeOrderList(OrderType.NORMALNONEXEC,clientID));
