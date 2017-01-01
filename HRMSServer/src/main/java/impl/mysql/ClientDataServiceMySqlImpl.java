@@ -106,7 +106,14 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 	            	  ClientPO po=new ClientPO();
 	                //    取出该用户名对应的信息
 	            	  po.setID(count1.getString("clientID"));
-	            	  po.setPassword(count1.getString("password"));
+	            	  String passbefore=count1.getString("password");
+	            	  String pass="";
+	            	  for(int i=0;i<passbefore.length();i++){
+	            		  char c= passbefore.charAt(i);
+	            		 c--;
+	            		 pass+=c;
+	            	  }
+	            	  po.setPassword(pass);
 	            	  po.setName(count1.getString("name"));
 	            	  po.setTel(count1.getString("tel"));
 	            	  switch(count1.getString("type").charAt(0)){
@@ -148,7 +155,14 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 
 	              //如果用户名存在,开始进行信息修改
 	              if(count1.next()){
-	            	  int i= stat.executeUpdate("UPDATE `HRMS`.`client` SET `name`='"+po.getName()+"', `tel`='"+po.getTel()+"', `level`='"+po.getLevel()+"', `type`='"+po.getType().toString()+"', `birth`='"+po.getBirth()+"', `password`='"+po.getPassword()+"', `credit`='"+po.getCredit()+"', `firm`='"+po.getFirm()+"' WHERE `clientID`='"+po.getID()+"'" );
+	            	  String passbefore=po.getPassword();
+	            	  String pass="";
+	            	  for(int i=0;i<passbefore.length();i++){
+	            		  char c= passbefore.charAt(i);
+	            		 c++;
+	            		 pass+=c;
+	            	  }
+	            	  int i= stat.executeUpdate("UPDATE `HRMS`.`client` SET `name`='"+po.getName()+"', `tel`='"+po.getTel()+"', `level`='"+po.getLevel()+"', `type`='"+po.getType().toString()+"', `birth`='"+po.getBirth()+"', `password`='"+pass+"', `credit`='"+po.getCredit()+"', `firm`='"+po.getFirm()+"' WHERE `clientID`='"+po.getID()+"'" );
 
                  if(i==1){
                  //如果该更新操作成功，返回true
@@ -184,7 +198,14 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
 
                  if(count2.next()){
                  //如果该用户对应的密码与输入的密码相等，说明验证通过
-                  if(count2.getString("password").equals(password)){
+                	 String passbefore=password;
+	            	  String pass="";
+	            	  for(int i=0;i<passbefore.length();i++){
+	            		  char c= passbefore.charAt(i);
+	            		 c++;
+	            		 pass+=c;
+	            	  }
+                  if(count2.getString("password").equals(pass)){
                 	  	return true;
                    }
 
@@ -211,7 +232,14 @@ public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements C
             ResultSet count= stat.executeQuery("select clientID from client  where  tel='"+po.getTel()+"'");
             //用户没重名就注册
             if(!count.next()){
-            int ress = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`tel`, `password`,`type`) VALUES ('"+po.getTel()+"', '"+po.getPassword()+"', '"+"NONVIP"+"')");
+            	String passbefore=po.getPassword();
+          	  String pass="";
+          	  for(int i=0;i<passbefore.length();i++){
+          		  char c= passbefore.charAt(i);
+          		 c++;
+          		 pass+=c;
+          	  }
+            int ress = stat.executeUpdate("INSERT INTO `HRMS`.`client` (`tel`, `password`,`type`) VALUES ('"+po.getTel()+"', '"+pass+"', '"+"NONVIP"+"')");
             int id=0;
             ResultSet count1= stat.executeQuery("select * from client  where  tel='"+po.getTel()+"'");
             if(count1.next())
