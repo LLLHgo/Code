@@ -3,7 +3,11 @@ package vo.clientVO;
 import java.util.ArrayList;
 
 import Enum.VIPType;
-
+/**
+ * client的vo类
+ * @author ClaraLee
+ *
+ */
 public class ClientVO {
 		//用户编号
 			public String client_id;

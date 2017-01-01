@@ -13,7 +13,11 @@ import Enum.VIPType;
 import dataservice.clientdataservice.ClientDataService;
 import initial.DataBaseInit;
 import po.ClientPO;
-
+/**
+ * 客户的数据操作的实现
+ * @author ClaraLee
+ *
+ */
 public class ClientDataServiceMySqlImpl extends UnicastRemoteObject implements ClientDataService{
 
 	private static final long serialVersionUID = 1L;

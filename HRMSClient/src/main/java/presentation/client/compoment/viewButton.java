@@ -2,7 +2,11 @@ package presentation.client.compoment;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+/**
+ * 查看详情按钮
+ * @author ClaraLee
+ *
+ */
 public class viewButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	ImageIcon icon;

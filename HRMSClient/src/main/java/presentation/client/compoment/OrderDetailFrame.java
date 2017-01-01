@@ -11,11 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import vo.orderVO.OrderVO;
-
-
+/**
+ * 订单详情frame类，显示订单详情
+ * @author ClaraLee
+ *
+ */
 public class OrderDetailFrame extends JFrame{
 	/**
-	 *订单详情frame
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	OrderDetailPanel hdp;

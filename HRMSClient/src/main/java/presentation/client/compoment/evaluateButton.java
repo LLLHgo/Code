@@ -5,7 +5,7 @@ import javax.swing.JButton;
 
 public class evaluateButton extends JButton{
 	/**
-	 *
+	 *评价按钮
 	 */
 	private static final long serialVersionUID = 1L;
 	ImageIcon icon;

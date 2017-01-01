@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import Enum.VIPType;
-
+/**
+ * 客户 po
+ * @author ClaraLee
+ *
+ */
 public class ClientPO implements Serializable{
 	/**
 	 *

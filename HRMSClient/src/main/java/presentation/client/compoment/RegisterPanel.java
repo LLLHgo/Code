@@ -17,7 +17,12 @@ import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.RegisterPanelController;
 import presentation.login.view.DialogCreator;
 import vo.clientVO.ClientVO;
-//注册会员界面
+/**
+ * 注册会员界面类，显示注册会员的相关信息并进行注册会员的相关操作
+ * @author ClaraLee
+ *
+ */
+//
 public class RegisterPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

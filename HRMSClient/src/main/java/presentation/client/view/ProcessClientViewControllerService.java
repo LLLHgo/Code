@@ -10,7 +10,11 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
-
+/**
+ * 客户的界面的总的controller的接口
+ * @author ClaraLee
+ *
+ */
 public interface ProcessClientViewControllerService {
 	public boolean checkAccount (String clientID,String password);
 	/**

@@ -21,7 +21,11 @@ import presentation.client.compoment.PersonalPanel.Label;
 import presentation.client.controller.EvaluatePanelController;
 import vo.orderVO.OrderVO;
 
-
+/**
+ * 酒店评价主界面，显示待评价酒店列表
+ * @author ClaraLee
+ *
+ */
 public class EvaluatePanel extends JPanel{
 	/**
 	 *

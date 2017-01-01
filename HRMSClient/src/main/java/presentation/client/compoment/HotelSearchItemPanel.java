@@ -8,7 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import vo.hotelinfoVO.HotelinfoVO;
-
+/**
+ * 搜索酒店结果列表项类，显示搜索的酒店的列表项
+ * @author ClaraLee
+ *
+ */
 public class HotelSearchItemPanel extends JPanel{
 	/**
 	 *

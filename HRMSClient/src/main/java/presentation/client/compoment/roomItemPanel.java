@@ -8,7 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import vo.hotelinfoVO.RoominfoVO;
-
+/**
+ * 房间类型列表项panel类
+ * @author ClaraLee
+ *
+ */
 public class roomItemPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

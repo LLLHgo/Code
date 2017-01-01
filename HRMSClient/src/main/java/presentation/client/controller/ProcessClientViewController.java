@@ -13,7 +13,11 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.levelVO.LevelVO;
 import vo.orderVO.OrderVO;
-
+/**
+ * 客户总界面界面控制器
+ * @author ClaraLee
+ *
+ */
 public class ProcessClientViewController implements ProcessClientViewControllerService {
 	public boolean checkAccount (String clientID,String password){
 

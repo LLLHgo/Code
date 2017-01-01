@@ -11,7 +11,11 @@ import businesslogicservice.clientblservice.ClientBLService;
 import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import vo.orderVO.OrderVO;
-
+/**
+ * 浏览订单界面控制器
+ * @author ClaraLee
+ *
+ */
 public class ViewOrderPanelController {
 	ClientBLService client=new ClientManage();
 	OrderOperatorBLService orderOp=new OrderOperator();

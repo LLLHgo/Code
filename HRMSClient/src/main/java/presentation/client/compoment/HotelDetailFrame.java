@@ -25,10 +25,14 @@ import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 
-
+/**
+ * 酒店详细信息frame类，显示酒店详情信息
+ * @author ClaraLee
+ *
+ */
 public class HotelDetailFrame extends JFrame{
 	/**
-	 *酒店详细信息frame
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	HotelDetailPanel hdp;

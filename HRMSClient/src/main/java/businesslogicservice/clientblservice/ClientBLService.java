@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import Enum.ResultMessage;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
-
+/**
+ * 客户相关逻辑操作的接口
+ * @author ClaraLee
+ *
+ */
 public interface ClientBLService {
 	/**
 	 *通过客户ID看是否能验证通过

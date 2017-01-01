@@ -2,7 +2,11 @@ package presentation.client.compoment;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+/**
+ * 确认按钮
+ * @author ClaraLee
+ *
+ */
 public class okButton extends JButton{
 	/**
 	 *

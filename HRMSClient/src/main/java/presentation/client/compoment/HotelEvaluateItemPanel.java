@@ -12,11 +12,15 @@ import javax.swing.JPanel;
 import presentation.client.controller.EvaluatePanelController;
 import vo.orderVO.OrderVO;
 
-
+/**
+ * 酒店评价小panel类，负责显示酒店评价的列表项
+ * @author ClaraLee
+ *
+ */
 
 public class HotelEvaluateItemPanel extends JPanel{
 	/**
-	 *酒店评价小panel
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

@@ -2,7 +2,11 @@ package presentation.client.compoment;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+/**
+ * 小型的删除按钮
+ * @author ClaraLee
+ *
+ */
 public class minideleteButton extends JButton{
 	/**
 	 *

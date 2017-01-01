@@ -6,7 +6,11 @@ import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import po.ClientPO;
-
+/**
+ * 客户的数据操作的接口
+ * @author ClaraLee
+ *
+ */
 public interface ClientDataService extends Remote{
 	/**
 	 * 初始化持久化数据库

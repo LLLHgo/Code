@@ -13,7 +13,11 @@ import dataservice.marketingdataservice.MarketingDataService;
 import initial.DataBaseInit;
 import po.LevelPO;
 import po.MarketingPO;
-
+/**
+ * 浏览订单界面类
+ * @author ClaraLee
+ *
+ */
 public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implements MarketingDataService{
 
 	private static final long serialVersionUID = 1L;
@@ -94,19 +98,17 @@ public class MarketingDataServiceMySqlImpl extends UnicastRemoteObject implement
 			stmt=conn.createStatement();
 			String sql;
 
-			sql = "SELECT * FROM MarketingProfile WHERE MarketingID='"+ID+"' AND password='"+password+"'";
+			String newpassword  = "";
+			for(int i=0;i<password.length();i++){
+				char c = (char) (password.charAt(i)+1);
+				newpassword+=c;
+			}
+			sql = "SELECT * FROM MarketingProfile WHERE MarketingID='"+ID+"' AND password='"+newpassword+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while(rs.next()){
 				// 展开结果集数据库
-				String passwordfromDatabase = rs.getString("password");
-				String newpassword  = "";
-				for(int i=0;i<passwordfromDatabase.length();i++){
-					char c = (char) (passwordfromDatabase.charAt(i)-1);
-					newpassword+=c;
-				}
-				if(newpassword.equals(password))
-					res=true;
+					return true;
 			}
 		}catch(SQLException se){
 			// 处理 JDBC 错误

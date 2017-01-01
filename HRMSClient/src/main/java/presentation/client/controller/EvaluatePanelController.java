@@ -11,7 +11,11 @@ import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.orderblservice.OrderFindBLService;
 import businesslogicservice.orderblservice.OrderOperatorBLService;
 import vo.orderVO.OrderVO;
-
+/**
+ * 评价界面控制器
+ * @author ClaraLee
+ *
+ */
 public class EvaluatePanelController {
 	HotelinfoBLService hotelInfo=new Hotelinfo();
 	OrderFindBLService orderfind=new OrderFind();

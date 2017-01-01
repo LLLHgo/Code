@@ -21,11 +21,15 @@ import presentation.client.controller.EvaluatePanelController;
 
 
 
-
+/**
+ * 评价frame类，显示评价酒店的界面，提供评价酒店的操作
+ * @author ClaraLee
+ *
+ */
 
 public class EvaluateFrame extends JFrame{
 	/**
-	 *评价frame弹窗
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	ePanel panel;

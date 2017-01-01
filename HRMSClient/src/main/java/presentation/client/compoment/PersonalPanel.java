@@ -19,10 +19,14 @@ import presentation.common.CreditFrame;
 import presentation.login.view.DialogCreator;
 import vo.clientVO.ClientVO;
 
-
+/**
+ * 个人信息界面类，显示个人基本信息
+ * @author ClaraLee
+ *
+ */
 public class PersonalPanel extends JPanel{
 	/**
-	 *个人信息界面
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

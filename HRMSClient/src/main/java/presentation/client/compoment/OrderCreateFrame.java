@@ -32,10 +32,14 @@ import vo.priceVO.PriceVO;
 
 
 
-
+/**
+ * 生成订单的frame类，显示订单详情界面
+ * @author ClaraLee
+ *
+ */
 public class OrderCreateFrame extends JFrame{
 	/**
-	 *生成订单的frame
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	OrderCreatePanel hdp;

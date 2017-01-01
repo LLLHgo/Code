@@ -9,10 +9,14 @@ import javax.swing.JPanel;
 
 import Enum.OrderType;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单信息的列表项界面类
+ * @author ClaraLee
+ *
+ */
 public class OrderItemPanel extends JPanel{
 	/**
-	 *订单信息的列表项
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

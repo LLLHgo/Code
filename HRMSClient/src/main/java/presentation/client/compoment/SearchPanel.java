@@ -25,7 +25,11 @@ import presentation.common.remarkFrame;
 import vo.clientVO.ClientVO;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.orderVO.OrderVO;
-
+/**
+ * 查询酒店界面类，实现查询酒店的功能
+ * @author ClaraLee
+ *
+ */
 public class SearchPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;

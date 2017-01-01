@@ -14,7 +14,11 @@ import rmi.RemoteHelper;
 import vo.clientVO.ClientVO;
 import vo.levelVO.LevelVO;
 
-
+/**
+ * 客户操作类
+ * @author ClaraLee
+ *功能：查询账户，获取客户信息，修改客户信息等
+ */
 public class ClientManage implements ClientBLService{
 	static ClientDataService clientdata;
 	MarketingBLService marketing=new MarketingManage();

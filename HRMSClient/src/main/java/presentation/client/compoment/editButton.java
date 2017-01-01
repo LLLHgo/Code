@@ -5,7 +5,7 @@ import javax.swing.JButton;
 
 public class editButton extends JButton{
 	/**
-	 *
+	 *编辑按钮
 	 */
 	private static final long serialVersionUID = 1L;
 	ImageIcon icon;

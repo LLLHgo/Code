@@ -16,7 +16,11 @@ import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 import vo.orderVO.OrderVO;
 import vo.priceVO.PriceVO;
-
+/**
+ * 查询界面控制器
+ * @author ClaraLee
+ *
+ */
 public class SearchPanelController {
 HotelinfoBLService hotelInfo=new Hotelinfo();
 OrderFindBLService orderfind=new OrderFind();

@@ -4,7 +4,11 @@ import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+/**
+ * 初始欢迎界面类
+ * @author ClaraLee
+ *
+ */
 public class WelPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imageIcon = null;
