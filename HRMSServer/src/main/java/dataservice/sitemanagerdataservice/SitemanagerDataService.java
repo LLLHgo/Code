@@ -4,6 +4,11 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import po.SitemanagerPO;
+/**
+ * sitemanager的数据层接口
+ * @author yilu
+ *
+ */
 public interface SitemanagerDataService extends Remote{
 	/**
 	 * 从数据库中得到网站管理人员账户信息

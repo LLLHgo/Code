@@ -3,7 +3,11 @@ package initial;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ * 数据库初始化
+ * @author yilu
+ *
+ */
 public class DataBaseInit {
 	// JDBC 驱动名及数据库 URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";

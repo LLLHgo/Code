@@ -1,5 +1,9 @@
 package Enum;
-
+/**
+ * 带原因的返回值
+ * @author yilu
+ *
+ */
 public enum ResultMessage {
     SUCCESS,
     FAIL,

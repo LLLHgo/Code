@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import vo.logVO.LogVO;
-
+/**
+ * 日志模块的bl层桩
+ * @author yilu
+ *
+ */
 public class LogBLService_Stub implements LogBLService {
 	String logInfo;
 	ArrayList<LogVO> logs;

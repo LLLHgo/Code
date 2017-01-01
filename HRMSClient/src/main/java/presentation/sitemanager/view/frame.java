@@ -3,7 +3,7 @@ package presentation.sitemanager.view;
 import javax.swing.JFrame;
 
 import presentation.sitemanager.controller.ProcessSitemanagerViewController;
-
+// sitemanager模块界面测试frame
 /*
 public class frame {
 

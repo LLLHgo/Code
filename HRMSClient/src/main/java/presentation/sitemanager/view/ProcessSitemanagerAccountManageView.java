@@ -22,7 +22,7 @@ import presentation.sitemanager.component.ModifyButton;
 import presentation.sitemanager.component.MyLabel;
 import presentation.sitemanager.component.MyPasswordField;
 import presentation.sitemanager.component.MyTextField;
-import vo.sitemanager.SitemanagerVO;
+import vo.sitemanagerVO.SitemanagerVO;
 
 public class ProcessSitemanagerAccountManageView extends JPanel{
 	private static final long serialVersionUID = 1L;

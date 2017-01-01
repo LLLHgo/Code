@@ -7,8 +7,12 @@ import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import po.SitemanagerPO;
 import rmi.RemoteHelper;
-import vo.sitemanager.SitemanagerVO;
-
+import vo.sitemanagerVO.SitemanagerVO;
+/**
+ * 网站管理人员管理类
+ * @author yilu
+ *
+ */
 public class SitemanagerManage implements SitemanagerBLService {
 	RemoteHelper remote;
 	SitemanagerDataService sitemanagerDataService;

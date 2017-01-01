@@ -5,7 +5,11 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.LogPO;
-
+/**
+ * 日志模块的客户端数据接口
+ * @author yilu
+ *
+ */
 public interface LogDataService extends Remote{
 	
 	/**

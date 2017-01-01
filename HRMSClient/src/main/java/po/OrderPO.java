@@ -3,7 +3,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import Enum.OrderType;
 import Enum.VIPType;
-
+/**
+ * 订单po包
+ * @author yilu
+ *
+ */
 public class OrderPO implements Serializable{
 
 	private static final long serialVersionUID = 1L;

@@ -4,7 +4,11 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.LogPO;
-
+/**
+ * 日志模块的客户端数据接口的桩
+ * @author yilu
+ *
+ */
 public class LogDataService_Stub implements LogDataService {
 	LogPO logPO;
 	ArrayList<LogPO> logPOList;

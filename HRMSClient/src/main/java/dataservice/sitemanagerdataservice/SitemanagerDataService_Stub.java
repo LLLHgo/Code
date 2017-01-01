@@ -3,7 +3,11 @@ package dataservice.sitemanagerdataservice;
 import java.rmi.RemoteException;
 
 import po.SitemanagerPO;
-
+/**
+ * 网站管理人员模块客户端的dataservice的桩
+ * @author yilu
+ *
+ */
 public class SitemanagerDataService_Stub implements SitemanagerDataService{
 	
 	SitemanagerPO sitemanagerPO;

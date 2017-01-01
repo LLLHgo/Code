@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import Enum.ResultMessage;
 import vo.logVO.LogVO;
-
+/**
+ * 日志模块的bl层的接口
+ * @author yilu
+ *
+ */
 public interface LogBLService {
 	/**
 	 * 界面得到日志列表

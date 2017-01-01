@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import dataservice.logdataservice.LogDataService;
 import initial.DataBaseInit;
 import po.LogPO;
-
+/*
+ * 日志的数据库实现
+ */
 public class LogDataServiceMySqlImpl extends UnicastRemoteObject  implements LogDataService{
 	private static final long serialVersionUID = 1L;
 	Statement stmt;

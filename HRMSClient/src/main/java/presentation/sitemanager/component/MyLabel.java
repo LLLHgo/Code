@@ -4,7 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-
+/**
+ * 公用label类
+ * @author yilu
+ *
+ */
 public class MyLabel extends JLabel{
 
 	int x;

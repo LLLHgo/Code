@@ -1,6 +1,10 @@
 package businesslogicservice.orderblservice;
 
-
+/**
+ * 订单模块的OrderCheckTime类的bl层接口
+ * @author yilu
+ *
+ */
 public interface OrderCheckTimeBLService {
 	/**
 	 * 检查时间，判断是否将订单置为异常

@@ -6,8 +6,12 @@ import org.junit.Test;
 
 import Enum.ResultMessage;
 import businesslogic.sitemanagerbl.SitemanagerManage;
-import vo.sitemanager.SitemanagerVO;
-
+import vo.sitemanagerVO.SitemanagerVO;
+/**
+ * sitemanager bl层的updateAccount方法的测试
+ * @author yilu
+ *
+ */
 public class UpdateAccountTester {
 	SitemanagerManage sManage;
 	private SitemanagerVO updateVO1;

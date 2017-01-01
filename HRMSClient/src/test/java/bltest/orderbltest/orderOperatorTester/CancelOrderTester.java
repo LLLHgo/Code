@@ -11,7 +11,11 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogic.orderbl.OrderOperator;
 import vo.orderVO.OrderVO;
-
+/**
+ * order模块bl层的cancelOrder方法的测试
+ * @author yilu
+ *
+ */
 public class CancelOrderTester {
 
 	OrderOperator operator;

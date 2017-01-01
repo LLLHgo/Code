@@ -1,5 +1,9 @@
 package businesslogic.sitemanagerbl;
-
+/**
+ * 网站管理人员类
+ * @author yilu
+ *
+ */
 public class Sitemanager {
 	 // 网站管理人员帐号
 	private String sitemanagerId;

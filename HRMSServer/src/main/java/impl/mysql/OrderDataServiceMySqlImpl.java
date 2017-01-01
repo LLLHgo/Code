@@ -15,7 +15,11 @@ import Enum.VIPType;
 import dataservice.orderdataservice.OrderDataService;
 import initial.DataBaseInit;
 import po.OrderPO;
-
+/**
+ * 订单的数据库实现
+ * @author yilu
+ *
+ */
 public class OrderDataServiceMySqlImpl extends UnicastRemoteObject implements OrderDataService{
 
 	private static final long serialVersionUID = 1L;

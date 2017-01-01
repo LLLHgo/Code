@@ -3,7 +3,11 @@ package presentation.sitemanager.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+/**
+ * 搜索框类
+ * @author yilu
+ *
+ */
 public class SearchBar extends JLabel{
 	int x;
 	int y;

@@ -1,7 +1,11 @@
 package businesslogicservice.orderblservice;
 import Enum.ResultMessage;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单模块的操作订单类OrderOperator的bl层接口
+ * @author yilu
+ *
+ */
 public interface OrderOperatorBLService {
 	/**
 	 * 下订单

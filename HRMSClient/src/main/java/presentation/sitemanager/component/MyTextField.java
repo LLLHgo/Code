@@ -4,7 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JTextField;
-
+/**
+ * 公用MyTextField类
+ * @author yilu
+ *
+ */
 public class MyTextField extends JTextField{
 
 	private static final long serialVersionUID = 1L;

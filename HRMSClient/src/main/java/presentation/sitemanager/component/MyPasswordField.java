@@ -3,6 +3,11 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JPasswordField;
+/**
+ * 公用密码JPasswordField类
+ * @author yilu
+ *
+ */
 public class MyPasswordField extends JPasswordField{
 
 		private static final long serialVersionUID = 1L;

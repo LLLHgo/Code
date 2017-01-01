@@ -8,7 +8,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
+/**
+ * 导航栏按钮
+ * @author yilu
+ *
+ */
 public class GuideBoardButton extends JButton{
 
 	private static final long serialVersionUID = 1L;

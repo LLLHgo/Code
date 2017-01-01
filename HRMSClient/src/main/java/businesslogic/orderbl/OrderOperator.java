@@ -16,7 +16,11 @@ import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.orderVO.OrderVO;
-
+/**
+ * 操作日志类，行为有添加订单、保存订单、将订单置为撤销状态
+ * @author yilu
+ *
+ */
 public class OrderOperator implements OrderOperatorBLService{
 	OrderDataService orderDateService;
 	PackageTransform packageTrans;

@@ -5,7 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import businesslogic.orderbl.OrderOperator;
-
+/**
+ * order模块的bl层lookUpId方法的测试
+ * @author yilu
+ *
+ */
 public class LookUpIdTester {
 	
 	OrderOperator orderOperator;

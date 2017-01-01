@@ -6,7 +6,11 @@ import Enum.OrderType;
 import Enum.ResultMessage;
 import Enum.VIPType;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单模块的bl层桩
+ * @author yilu
+ *
+ */
 public class OrderBLService_Stub implements OrderOperatorBLService,OrderCheckTimeBLService,OrderFindBLService{
 	    
 	OrderVO orderVO;

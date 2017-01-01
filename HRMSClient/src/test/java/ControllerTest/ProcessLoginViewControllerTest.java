@@ -9,7 +9,7 @@ import Mock.MockLoginManage;
 import Mock.MockSitemanagerManage;
 import datatool.SitemanagerDataTool;
 import vo.clientVO.ClientVO;
-import vo.sitemanager.SitemanagerVO;
+import vo.sitemanagerVO.SitemanagerVO;
 public class ProcessLoginViewControllerTest {
 
 	/**

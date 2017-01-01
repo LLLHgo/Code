@@ -6,7 +6,11 @@ import java.util.Iterator;
 
 import Enum.OrderType;
 import po.OrderPO;
-
+/**
+ * order数据层的驱动
+ * @author yilu
+ *
+ */
 public class OrderDataService_Driver {
 	public void driver( OrderDataService orderDataService) throws RemoteException{
 		boolean result;

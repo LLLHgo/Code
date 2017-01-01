@@ -2,7 +2,11 @@ package presentation.sitemanager.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+/**
+ * 刷新按钮
+ * @author yilu
+ *
+ */
 public class RefreshButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;

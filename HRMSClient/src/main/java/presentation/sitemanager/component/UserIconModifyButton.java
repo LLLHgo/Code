@@ -2,7 +2,11 @@ package presentation.sitemanager.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+/**
+ * 修改用户头像按钮
+ * @author yilu
+ *
+ */
 public class UserIconModifyButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;

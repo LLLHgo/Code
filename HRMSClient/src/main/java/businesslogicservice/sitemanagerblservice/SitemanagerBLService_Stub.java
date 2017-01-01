@@ -6,8 +6,12 @@ import javax.swing.ImageIcon;
 
 import Enum.ResultMessage;
 import vo.logVO.LogVO;
-import vo.sitemanager.SitemanagerVO;
-
+import vo.sitemanagerVO.SitemanagerVO;
+/**
+ * 网站管理人员模块bl层的桩
+ * @author yilu
+ *
+ */
 public class SitemanagerBLService_Stub implements SitemanagerBLService{
 	
 	SitemanagerVO sitemanagerVO;

@@ -1,7 +1,11 @@
 package po;
 
 import java.io.Serializable;
-
+/**
+ * 日志的po包
+ * @author yilu
+ *
+ */
 public class LogPO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	// 日志信息

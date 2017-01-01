@@ -12,7 +12,11 @@ import dataservice.logdataservice.LogDataService;
 import dataservice.logdataservice.LogDataService_Stub;
 import po.LogPO;
 import vo.logVO.LogVO;
-
+/**
+ * getLogList方法的测试
+ * @author yilu
+ *
+ */
 public class GetLogListTester {
 	LogManage logManage;
 	LogDataService dataservice;

@@ -11,7 +11,11 @@ import java.sql.Statement;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import initial.DataBaseInit;
 import po.SitemanagerPO;
-
+/**
+ * sitamanger的数据库实现
+ * @author yilu
+ *
+ */
 public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject implements SitemanagerDataService{
 
 	private static final long serialVersionUID = 1L;

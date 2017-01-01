@@ -1,7 +1,11 @@
 package businesslogicservice.sitemanagerblservice;
 import Enum.ResultMessage;
-import vo.sitemanager.SitemanagerVO;
-
+import vo.sitemanagerVO.SitemanagerVO;
+/**
+ * 网站管理人员模块的bl层接口
+ * @author yilu
+ *
+ */
 public interface SitemanagerBLService {
 	/**
 	 * 管理界面得到网站管理人员账户信息

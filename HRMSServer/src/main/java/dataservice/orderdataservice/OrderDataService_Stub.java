@@ -8,7 +8,11 @@ import java.util.List;
 import Enum.OrderType;
 import Enum.UserType;
 import po.OrderPO;
-
+/**
+ * order数据层的桩
+ * @author yilu
+ *
+ */
 public class OrderDataService_Stub implements OrderDataService{
 	OrderPO orderPO;
 	ArrayList<OrderPO> orderPOList;

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import Enum.OrderType;
 import Enum.VIPType;
-
+/**
+ * 订单类
+ * @author yilu
+ *
+ */
 public class Order {
 	 // 订单号
     private String orderId;

@@ -15,7 +15,11 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import presentation.sitemanager.component.CheckButton;
-
+/**
+ * 信用frame
+ * @author yilu
+ *
+ */
 public class CreditFrame extends JFrame{
 
 	private static final long serialVersionUID = 1L;

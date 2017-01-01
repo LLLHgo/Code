@@ -3,7 +3,11 @@ package dataservice.sitemanagerdataservice;
 import java.rmi.RemoteException;
 
 import po.SitemanagerPO;
-
+/**
+ * sitemanager接口的数据层驱动
+ * @author yilu
+ *
+ */
 public class SitemanagerDataService_Driver {
 	public void driver(SitemanagerDataService sitemanagerDataService)throws RemoteException{
 		SitemanagerPO sitemanagerPO;

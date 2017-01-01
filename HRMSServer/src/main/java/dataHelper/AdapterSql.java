@@ -8,7 +8,11 @@ import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
-
+/**
+ * 数据库实现的适配器
+ * @author yilu
+ *
+ */
 abstract class AdapterSql {
 	public abstract ClientDataService getClientDatabase();
 	public abstract HotelinfoDataService getHotelinfoDataBase();

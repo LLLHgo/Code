@@ -12,7 +12,11 @@ import dataservice.orderdataservice.OrderDataService;
 import presentation.MainFrame;
 import rmi.RemoteHelper;
 import vo.orderVO.OrderVO;
-
+/**
+ * 客户端的main
+ * @author yilu
+ *
+ */
 public class ClientRunner {
 	private RemoteHelper remoteHelper;
 

@@ -6,7 +6,11 @@ import java.util.ArrayList;
 
 import Enum.OrderType;
 import po.OrderPO;
-
+/**
+ * order的数据层接口
+ * @author yilu
+ *
+ */
 public interface OrderDataService extends Remote{
 	/**
 	 * 在数据库中查看当前可用的新id号

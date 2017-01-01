@@ -2,7 +2,11 @@ package presentation.common;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+/**
+ * 修改按钮
+ * @author yilu
+ *
+ */
 public class ModifyButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;

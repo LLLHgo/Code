@@ -11,7 +11,11 @@ import Enum.ResultMessage;
 import Enum.VIPType;
 import businesslogic.orderbl.OrderOperator;
 import vo.orderVO.OrderVO;
-
+/**
+ *order模块的bl层creatOrderPO方法的测试
+ * @author yilu
+ *
+ */
 public class CreateOrderPOTester {
 	
 	OrderOperator operator;

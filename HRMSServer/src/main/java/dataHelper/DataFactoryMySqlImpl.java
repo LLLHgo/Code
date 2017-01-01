@@ -18,7 +18,11 @@ import impl.mysql.MarketingDataServiceMySqlImpl;
 import impl.mysql.OrderDataServiceMySqlImpl;
 import impl.mysql.SitemanagerDataServiceMySqlImpl;
 import impl.mysql.StrategyDataServiceMySqlImpl;
-
+/**
+ * 数据工厂的实现
+ * @author yilu
+ *
+ */
 public class DataFactoryMySqlImpl  implements DataFactory{
 	
 	ClientDataService clientDataService;

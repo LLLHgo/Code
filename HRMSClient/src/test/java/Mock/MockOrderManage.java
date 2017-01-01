@@ -11,7 +11,11 @@ import datatool.LogDataTool;
 import datatool.OrderDataTool;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
-
+/**
+ * order的mock
+ * @author yilu
+ *
+ */
 public class MockOrderManage {
 	// 订单号
    private String orderId;

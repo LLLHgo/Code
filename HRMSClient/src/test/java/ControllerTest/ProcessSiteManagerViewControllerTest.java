@@ -25,7 +25,13 @@ import vo.clientVO.ClientVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
-import vo.sitemanager.SitemanagerVO;
+import vo.sitemanagerVO.SitemanagerVO;
+
+/**
+ * sitemanager的controller类的测试
+ * @author yilu
+ *
+ */
 /*
 public class ProcessSiteManagerViewControllerTest {
 	MockSitemanagerManage ms;
@@ -210,4 +216,5 @@ public class ProcessSiteManagerViewControllerTest {
 	}
 	
 
-}*/
+}
+*/

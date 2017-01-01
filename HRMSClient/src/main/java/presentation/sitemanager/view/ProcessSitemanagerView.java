@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import presentation.common.GuideBoardButton;
 import presentation.common.SitemanagerIconLabel;
 import presentation.sitemanager.component.MyLabel;
-import vo.sitemanager.SitemanagerVO;
+import vo.sitemanagerVO.SitemanagerVO;
 
 public class ProcessSitemanagerView extends JPanel{
 

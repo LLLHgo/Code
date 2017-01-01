@@ -6,7 +6,11 @@ import org.junit.Test;
 
 import Enum.ResultMessage;
 import businesslogic.logbl.LogManage;
-
+/**
+ * addLog方法的测试
+ * @author yilu
+ *
+ */
 public class AddLogTester {
 	LogManage logManage;
 	String logInfo1;

@@ -2,8 +2,12 @@ package Mock;
 
 import Enum.ResultMessage;
 import datatool.SitemanagerDataTool;
-import vo.sitemanager.SitemanagerVO;
-
+import vo.sitemanagerVO.SitemanagerVO;
+/**
+ * sitamanager的mock
+ * @author yilu
+ *
+ */
 public class MockSitemanagerManage {
 	 // 网站管理人员帐号
 	private String sitemanagerId;

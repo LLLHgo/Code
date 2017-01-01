@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import Enum.OrderType;
 import datatool.OrderDataTool;
 import po.OrderPO;
+/**
+ * 日志模块的客户端dataservice的桩
+ * @author yilu
+ *
+ */
 
 public class OrderDataService_Stub implements OrderDataService{
 	OrderPO orderPO;

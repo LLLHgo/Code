@@ -6,7 +6,11 @@ import dataservice.hotelinfodataservice.HotelinfoDataService;
 import dataservice.logdataservice.LogDataService;
 import impl.hotelinfo.HotelinfoDataServiceImpl;
 import impl.txt.LogDataServiceTxtImpl;
-
+/**
+ * txt工厂的实现
+ * @author yilu
+ *
+ */
 public class DataFactoryTxtImpl extends AdapterTxt implements DataFactory{
 
 	HotelinfoDataService hotelinfoDataService;

@@ -9,6 +9,11 @@ import org.junit.Test;
 
 import dataservice.orderdataservice.OrderDataService;
 import rmi.RemoteHelper;
+/**
+ * order模块bl层的checkTimeToAbnormal方法的测试
+ * @author yilu
+ *
+ */
 /*
 public class checkTimeTester {
 	RemoteHelper remote;

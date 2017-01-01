@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import Enum.ResultMessage;
 import datatool.LogDataTool;
 import vo.logVO.LogVO;
-
+/**
+ * log的mock
+ * @author yilu
+ *
+ */
 public class MockLogManage {
 	
 	LogVO logVO=new LogVO();

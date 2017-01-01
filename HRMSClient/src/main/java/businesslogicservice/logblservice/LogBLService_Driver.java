@@ -5,7 +5,11 @@ import java.util.List;
 
 import Enum.ResultMessage;
 import vo.logVO.LogVO;
-
+/**
+ * 日志模块的的bl层驱动
+ * @author yilu
+ *
+ */
 public class LogBLService_Driver {
 	public void drive(LogBLService logBLService){
 		List<LogVO> logVOList; 

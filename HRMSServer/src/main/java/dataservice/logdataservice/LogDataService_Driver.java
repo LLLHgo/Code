@@ -5,7 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import po.LogPO;
-
+/**
+ * 日志数据层的驱动
+ * @author yilu
+ *
+ */
 public class LogDataService_Driver {
 	public void driver(LogDataService logDataService)throws RemoteException{
 		LogPO logPO = null;

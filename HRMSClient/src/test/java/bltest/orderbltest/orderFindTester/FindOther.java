@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderFind;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单模块的OrderFind类的测试1
+ * @author yilu
+ *
+ */
 public class FindOther {
 	public void test1(){
 		ArrayList<OrderVO>list=new ArrayList<OrderVO>();

@@ -1,5 +1,9 @@
 package vo.logVO;
-
+/**
+ * logVO包
+ * @author yilu
+ *
+ */
 public class LogVO {
      // 日志信息
     private String logInfo;

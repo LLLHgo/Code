@@ -1,7 +1,11 @@
 package po;
 
 import java.io.Serializable;
-
+/**
+ * 网站管理人员的po包
+ * @author yilu
+ *
+ */
 public class SitemanagerPO implements Serializable{
 	private static final long serialVersionUID = 1L;
 		// 网站管理人员帐号

@@ -8,7 +8,11 @@ import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
-
+/**
+ * datafactory的接口
+ * @author yilu
+ *
+ */
 public interface DataFactory {
 	public ClientDataService getClientDatabase();
 	public HotelinfoDataService getHotelinfoDataBase();

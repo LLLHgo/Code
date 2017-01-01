@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import po.LogPO;
-
+/**
+ * 日志的数据层接口的桩
+ * @author yilu
+ *
+ */
 public class LogDataService_Stub implements LogDataService {
 	LogPO logPO;
 	ArrayList<LogPO> logPOList;

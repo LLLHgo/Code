@@ -7,8 +7,11 @@ import org.junit.Test;
 
 import Enum.ResultMessage;
 import Mock.MockLogManage;
-
-
+/**
+ *订单界面的controller测试（后来没有该controller）
+ * @author yilu
+ *
+ */
 
 public class ProcessOrderViewControllerTest {
 	ResultMessage result;

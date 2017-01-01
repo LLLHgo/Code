@@ -10,7 +10,11 @@ import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import rmi.RemoteHelper;
 import vo.orderVO.OrderVO;
-
+/**
+ * 查找订单类
+ * @author yilu
+ *
+ */
 public class OrderFind implements OrderFindBLService{
 	OrderDataService orderDateService;
 	PackageTransform packageTrans;

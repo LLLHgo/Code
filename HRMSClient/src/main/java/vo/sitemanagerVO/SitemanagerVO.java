@@ -1,5 +1,9 @@
-package vo.sitemanager;
-
+package vo.sitemanagerVO;
+/**
+ * sitemanaerVO包
+ * @author yilu
+ *
+ */
 public class SitemanagerVO {
 	    // 网站管理人员帐号
 		private String sitemanagerId;

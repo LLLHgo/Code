@@ -10,8 +10,12 @@ import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
-import vo.sitemanager.SitemanagerVO;
-
+import vo.sitemanagerVO.SitemanagerVO;
+/**
+ * 网站管理人员模块bl层的驱动
+ * @author yilu
+ *
+ */
 public class SitemanagerBLService_Driver {
 	public void drive(SitemanagerBLService sitemanagerBLService){
 		ResultMessage result;

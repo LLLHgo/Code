@@ -9,7 +9,11 @@ import dataservice.logdataservice.LogDataService;
 import po.LogPO;
 import rmi.RemoteHelper;
 import vo.logVO.LogVO;
-
+/**
+ * 日志管理类
+ * @author yilu
+ *
+ */
 public class LogManage implements LogBLService{
 	
 	RemoteHelper remote;

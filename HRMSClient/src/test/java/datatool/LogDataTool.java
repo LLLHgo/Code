@@ -3,7 +3,11 @@ package datatool;
 import java.util.ArrayList;
 
 import vo.logVO.LogVO;
-
+/**
+ * 日志数据工具
+ * @author yilu
+ *
+ */
 public class LogDataTool {
      //List<LogPO> getLogList():logList
 

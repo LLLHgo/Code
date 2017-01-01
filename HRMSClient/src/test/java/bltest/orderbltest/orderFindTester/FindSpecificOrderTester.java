@@ -12,7 +12,11 @@ import dataservice.orderdataservice.OrderDataService_Stub;
 import datatool.OrderDataTool;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单模块的orderFind的测试2
+ * @author yilu
+ *
+ */
 public class FindSpecificOrderTester {
 
 	OrderFind orderFind;

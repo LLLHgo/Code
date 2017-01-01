@@ -2,7 +2,11 @@ package businesslogic.orderbl;
 
 import po.OrderPO;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单vo包和po包之间的转化
+ * @author yilu
+ *
+ */
 public class PackageTransform {
 	// 将orderVO解包，制作orderPO包
 		public OrderPO VOToPO(OrderVO orderVO){

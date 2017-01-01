@@ -9,7 +9,7 @@ import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
-import vo.sitemanager.SitemanagerVO;
+import vo.sitemanagerVO.SitemanagerVO;
 
 public interface ProcessSitemanagerViewControllerService {
 	
@@ -125,16 +125,29 @@ public interface ProcessSitemanagerViewControllerService {
 	 */
 	public ResultMessage addLog(String logInfo);
 	
+	/**
+	 * 进入网站管理人员账户管理
+	 */
 	public void jbSitemanagerManageButtonClicked();
-	
+	/**
+	 * 进入网站营销人员账户管理
+	 */
 	public void jbMarketingManageButtonClicked();
-	
+	/**
+	 * 进入客户账户管理
+	 */
 	public void jbClientManageButtonClicked();
-	
+	/**
+	 * 退出当前账号
+	 */
 	public void jbExitButtonClicked();
-	
+	/**
+	 * 进入酒店账户管理
+	 */
 	public void jbHotelManageButtonClicked();
-	
+	/**
+	 * 进入查看日志界面
+	 */
 	public void jbShowLogButtonClicked();
 	/**
 	 * 管理界面得到日志列表

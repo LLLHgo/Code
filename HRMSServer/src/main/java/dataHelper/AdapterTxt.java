@@ -8,7 +8,11 @@ import dataservice.marketingdataservice.MarketingDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
-
+/**
+ * txt实现的适配器
+ * @author yilu
+ *
+ */
 abstract class AdapterTxt implements DataFactory{
 	public ClientDataService getClientDatabase(){
 		return null;

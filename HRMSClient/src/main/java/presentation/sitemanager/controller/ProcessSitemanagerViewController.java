@@ -28,8 +28,12 @@ import vo.hotelinfoVO.SitemanagerAddVO;
 import vo.hotelstaffVO.HotelstaffVO;
 import vo.logVO.LogVO;
 import vo.marketingVO.MarketingVO;
-import vo.sitemanager.SitemanagerVO;
-
+import vo.sitemanagerVO.SitemanagerVO;
+/**
+ * sitemanager模块的controller
+ * @author yilu
+ *
+ */
 public class ProcessSitemanagerViewController implements ProcessSitemanagerViewControllerService {
 
 	String sitemanagerId;
@@ -81,81 +85,88 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		showLogView=new ProcessShowLogView(this,processSitemanagerView);
 		showLogView.setVisible(false);
 	}
-
+    // 初始化sitemanager界面类
 	public SitemanagerVO init() {
 		sitemanagerVO= sitemanagerblservice.sitemanagerAcountShow();
 		return sitemanagerVO;
 	}
-
+	// 更新客户账户
+	@Override
 	public ResultMessage clientAccountUpdate(ClientVO clientVO) {
 		return clientblservice.updateInfo(clientVO);
 	}
-
+	// 删除客户账户
+	@Override
 	public ResultMessage clientAccountDelete(String userId) {
 		return clientblservice.saveSitemanagerDelete(userId);
 	}
+	// 删除网站营销人员账户
+	@Override
 	public ResultMessage marketingAccountDelete(MarketingVO vo){
 		return marketingblservice.MarketingAccountDelete(vo);
 	}
-
-
+	// 查找客户账户
+	@Override
 	public ClientVO clientAccountFind(String id) {
 		return clientblservice.getclient(id);
 	}
-
-
+	// 添加网站营销人员账户
+	@Override
 	public ResultMessage MarketingAccountAdd(MarketingVO marketingVO) {
 		return marketingblservice.MarketingAccountAdd(marketingVO);
 	}
-
-
+	// 更新网站营销人员账户
+	@Override
 	public ResultMessage MarketingAccountUpdate(MarketingVO marketingVO) {
 		return marketingblservice.MarketingAccountUpdate(marketingVO);
 	}
-
+	// 查找网站营销人员账户
+	@Override
 	public MarketingVO MarketingAccountFind(String findInfo) {
 		return marketingblservice.MarketingAccountFind(findInfo);
 	}
-
+    // 添加酒店账户
 	@Override
 	public ResultMessage HotelAccountAdd(SitemanagerAddVO sitemanagerAddVO, HotelstaffVO hotelstaffVO) {
 		return hotelblservice.saveSitemanagerAdd(sitemanagerAddVO,hotelstaffVO);
 	}
-
+	// 查找酒店工作人员账户
 	@Override
 	public HotelstaffVO HotelStaffAccountFind(String id) {
 		return hotelstaffblservice.returnSitemanagerAccount(id);
 	}
+	// 查找酒店账户
 	@Override
 	public HotelinfoVO HotelinfoAccountFind(String hotelId){
 		return hotelblservice.getBasicinfo(hotelId);
 	}
+	// 更新酒店工作人员账户
 	@Override
 	public ResultMessage HotelStaffAccountUpdate(HotelstaffVO hotelstaffVO) {
 		return hotelstaffblservice.saveSitemanagerUpdate(hotelstaffVO);
 	}
-
+    // 显示网站管理人员账户
 	@Override
 	public SitemanagerVO sitemanagerAcountShow() {
 		return sitemanagerblservice.sitemanagerAcountShow();
 	}
-
+	// 更新网站管理人员账户
 	@Override
 	public ResultMessage sitemanagerAccountUpdate(SitemanagerVO accountVO) {
 		return sitemanagerblservice.sitemanagerAccountUpdatePO(accountVO);
 	}
 
-
+	// 查找具体日期的日志
 	@Override
 	public ArrayList<LogVO> findLog(String year,String month,String day) {
 		return logblservice.getLog(year,month,day);
 	}
-
+	// 添加日志
 	@Override
 	public ResultMessage addLog(String logInfo) {
 		return logblservice.addLog(logInfo);
 	}
-
+	// 进入网站管理人员账户管理
 	@Override
 	public void jbSitemanagerManageButtonClicked(){
 		processSitemanagerView.hideWelcome();
@@ -166,7 +177,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		sitemanagerAccountManageView.setVisible(true);
 	}
 
-
+	// 进入网站营销人员账户管理
 	@Override
 	public void jbMarketingManageButtonClicked() {
 		processSitemanagerView.hideWelcome();
@@ -177,7 +188,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		marketingAccountManageView.setVisible(true);
 
 	}
-
+	// 进入客户账户管理
 	public void jbClientManageButtonClicked(){
 		processSitemanagerView.hideWelcome();
 		sitemanagerAccountManageView.setVisible(false);
@@ -187,12 +198,13 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		clientAccountManageView.setVisible(true);
 	}
 
-
+	// 退出当前账户
+	@Override
 	public void jbExitButtonClicked() {
 		System.exit(0);
 	}
 
-
+	// 进入酒店账户管理
 	@Override
 	public void jbHotelManageButtonClicked() {
 		processSitemanagerView.hideWelcome();
@@ -204,7 +216,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 	}
 
-
+	// 进入查看日志界面
 	@Override
 	public void jbShowLogButtonClicked() {
 		processSitemanagerView.hideWelcome();
@@ -218,8 +230,7 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 
 
 	@Override
-	public String getMarketingID() {
-		
+	public String getMarketingID() {	
 		return marketingblservice.getMarketingID();
 		//return null;
 	}
@@ -230,7 +241,5 @@ public class ProcessSitemanagerViewController implements ProcessSitemanagerViewC
 		// TODO Auto-generated method stub
 		return hotelstaffblservice.getNewAddHotelID();
 	}
-
-
 
 }

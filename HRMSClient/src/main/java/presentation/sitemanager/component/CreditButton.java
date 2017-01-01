@@ -2,7 +2,11 @@ package presentation.sitemanager.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+/**
+ * 信用值按钮
+ * @author yilu
+ *
+ */
 public class CreditButton extends JLabel{
 	private static final long serialVersionUID = 1L;
 	int x;

@@ -6,7 +6,11 @@ import Enum.OrderType;
 import Enum.VIPType;
 import po.OrderPO;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单日志工具
+ * @author yilu
+ *
+ */
 public class OrderDataTool {
 	// findSpecificOrderList(20161015085702):orderVO1
 	// findUserOrderList(C00000002):list1

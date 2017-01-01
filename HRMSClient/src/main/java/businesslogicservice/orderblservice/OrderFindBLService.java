@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import Enum.OrderType;
 import vo.orderVO.OrderVO;
-
+/**
+ * 订单模块的查找订单类的bl接口
+ * @author yilu
+ *
+ */
 public interface OrderFindBLService {
 	/**
 	 * 查找某种用户(客户或酒店)的所有订单

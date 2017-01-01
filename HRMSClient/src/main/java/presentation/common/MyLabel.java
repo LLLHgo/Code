@@ -3,7 +3,11 @@ package presentation.common;
 import java.awt.Color;
 
 import javax.swing.JLabel;
-
+/**
+ * 公共标签类
+ * @author yilu
+ *
+ */
 public class MyLabel extends JLabel{
 	
 	int x;

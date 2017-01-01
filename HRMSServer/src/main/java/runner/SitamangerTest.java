@@ -12,8 +12,12 @@ import impl.txt.LogDataServiceTxtImpl;
 import po.LogPO;
 import po.OrderPO;
 import po.SitemanagerPO;
-
-public class test {
+/**
+ * sitemanager数据层的test
+ * @author yilu
+ *
+ */
+public class SitamangerTest {
 	// SitemanagerDataServiceMySqlImpl  getAccount
 		void test1(){
 			SitemanagerDataServiceMySqlImpl si;

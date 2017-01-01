@@ -2,7 +2,11 @@ package presentation.sitemanager.component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+/**
+ * 确认按钮
+ * @author yilu
+ *
+ */
 public class CheckButton extends JButton{
 	private static final long serialVersionUID = 1L;
 	int x;

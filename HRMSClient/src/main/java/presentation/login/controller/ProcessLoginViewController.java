@@ -12,7 +12,7 @@ import businesslogicservice.marketinblservice.MarketingBLService;
 import businesslogicservice.sitemanagerblservice.SitemanagerBLService;
 import presentation.login.view.ProcessLoginControllerService;
 import vo.clientVO.ClientVO;
-import vo.sitemanager.SitemanagerVO;
+import vo.sitemanagerVO.SitemanagerVO;
 
 public class ProcessLoginViewController implements ProcessLoginControllerService{
 	/**

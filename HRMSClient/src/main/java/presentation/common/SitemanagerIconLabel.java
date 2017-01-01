@@ -2,7 +2,11 @@ package presentation.common;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+/**
+ * 网站管理人员头像
+ * @author yilu
+ *
+ */
 public class SitemanagerIconLabel extends JLabel{
 	private static final long serialVersionUID = 1L;
 	int x;
