@@ -110,7 +110,7 @@ public class ProcessMarketingViewController implements ProcessMarketingViewContr
 
 	@Override
 	public boolean setCredit(String clientID, int amount) {//改为double
-		String reason=marketingID+" modified";
+		String reason=" rechange";
 		return this.MarketingBLControllerService.setCredit(clientID, amount,reason);
 	}
 
