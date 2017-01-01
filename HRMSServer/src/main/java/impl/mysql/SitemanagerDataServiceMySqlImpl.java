@@ -48,7 +48,12 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 				id  = resultSet.getString("id");
 				tel = resultSet.getString("tel");
 				password = resultSet.getString("password");
-				sitemanagerPO=new SitemanagerPO(id,tel,password);
+				// 从数据库读取密码时，各char值-1得到密码明文
+				String passwordMing="";
+				for(int i=0;i<password.length();i++){
+					passwordMing=passwordMing+(password.charAt(i)-1);
+				}
+				sitemanagerPO=new SitemanagerPO(id,tel,passwordMing);
 	    		return sitemanagerPO;
 			}
 		} catch (SQLException e) {
@@ -66,14 +71,20 @@ public class SitemanagerDataServiceMySqlImpl extends UnicastRemoteObject impleme
 		int row2=0;
 		 try {
 			 if(conn==null)
-				 System.out.println("!");
+				 System.out.println("null!");
 			preStatement = conn.prepareStatement(sql1);
 			preStatement.setObject(1, sitemanagerPO.getSitemanagerPhoneNumber());
 			preStatement.setObject(2, sitemanagerPO.getSitemanagerId());
 			row1=preStatement.executeUpdate();
 			
 			preStatement = conn.prepareStatement(sql2);
-			preStatement.setObject(1, sitemanagerPO.getPassword());
+			// 将更新的密码存入数据库时+1
+			String passwordStoreToDataBase="";
+			String passwordInPO=sitemanagerPO.getPassword();
+			for(int i=0;i<passwordInPO.length();i++){
+				passwordStoreToDataBase=passwordStoreToDataBase+(passwordInPO.charAt(i)+1);
+			}
+			preStatement.setObject(1, passwordStoreToDataBase);
 			preStatement.setObject(2, sitemanagerPO.getSitemanagerId());
 			row2=preStatement.executeUpdate();
 			
