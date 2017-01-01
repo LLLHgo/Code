@@ -426,7 +426,7 @@ public class HotelinfoDataServiceMySqlImpl{
 			sql = "select * from hotelinfo";
 			myRS = st.executeQuery(sql);
 			while(myRS.next()){
-				if(myRS.getObject("name").equals("hotelName")){
+				if(myRS.getObject("name").equals(hotelName)){
 					return "R";
 				}
 			}
