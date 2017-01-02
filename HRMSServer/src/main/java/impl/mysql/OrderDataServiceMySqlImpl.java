@@ -1,3 +1,6 @@
+/**
+ * data层的数据库实现
+ */
 package impl.mysql;
 
 import java.rmi.RemoteException;
