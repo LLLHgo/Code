@@ -23,6 +23,11 @@ import impl.mysql.SitemanagerDataServiceMySqlImpl;
 import impl.mysql.StrategyDataServiceMySqlImpl;
 import impl.txt.LogDataServiceTxtImpl;
 
+/**
+ * data层rmi的连接
+ * @author liuyu
+ *
+ */
 public class RemoteHelper {
 	static final String host = "rmi://localhost:8888/";
 	public RemoteHelper(){

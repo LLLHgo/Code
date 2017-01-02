@@ -14,6 +14,11 @@ import dataservice.orderdataservice.OrderDataService;
 import dataservice.sitemanagerdataservice.SitemanagerDataService;
 import dataservice.strategydataservice.StrategyDataService;
 
+/**
+ * client层的rmi连接
+ * @author liuyu
+ *
+ */
 public class RemoteHelper {
 //	private Remote remote;
 	private static RemoteHelper remoteHelper = new RemoteHelper();
