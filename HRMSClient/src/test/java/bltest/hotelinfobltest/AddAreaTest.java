@@ -2,14 +2,17 @@ package bltest.hotelinfobltest;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
-import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
+import businesslogic.hoteinfobl.HotelinfoManage;
+
+
+@Ignore("hotelinfomanage已经调用真实dataservice，不需要桩")
 
 public class AddAreaTest {
 
-	HotelinfoBLService hotelinfo = new HotelinfoBLService_Stub();
+	HotelinfoManage hotelinfo = new HotelinfoManage();
 
 	@Test
 	public void test1(){

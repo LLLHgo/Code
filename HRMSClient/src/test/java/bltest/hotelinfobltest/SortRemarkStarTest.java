@@ -5,23 +5,27 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Enum.RoomState;
 import Enum.Star;
+import businesslogic.hoteinfobl.HotelinfoManage;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService;
 import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 
+
+@Ignore("hotelinfomanage已经调用真实dataservice，不需要桩")
 public class SortRemarkStarTest {
 
-	HotelinfoBLService hotel;
+	HotelinfoManage hotel;
 	ArrayList<HotelinfoVO> beforelist;
 	
 	public SortRemarkStarTest(){
 		
-	hotel = new HotelinfoBLService_Stub();
+	hotel = new HotelinfoManage();
 	HotelinfoVO vo1 = new HotelinfoVO();
 	
 	RoominfoVO roominfo11 = new RoominfoVO("H00000001","标准间","8304",200, RoomState.Usable);

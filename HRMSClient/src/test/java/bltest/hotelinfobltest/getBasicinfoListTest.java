@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Enum.Star;
@@ -13,8 +14,11 @@ import businesslogicservice.hotelinfoblservice.HotelinfoBLService_Stub;
 import vo.hotelinfoVO.HotelinfoVO;
 import vo.hotelinfoVO.RoominfoVO;
 
+
+@Ignore("hotelinfomanage已经调用真实dataservice，不需要桩")
+
 public class getBasicinfoListTest {
-	HotelinfoBLService hotelinfo = new HotelinfoBLService_Stub();
+	HotelinfoManage hotelinfo = new HotelinfoManage();
 	HotelinfoVO hotelinfoVO1 = new HotelinfoVO("HanTing","BeijingDongRode","山西路商圈","12345678",new ArrayList<RoominfoVO>(),Star.FOUR,
 			new ArrayList<String>(),"Brief Introduction","H00000001");
 	String area = "山西路商圈";
