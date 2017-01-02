@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Enum.RoomState;
@@ -18,6 +19,7 @@ import vo.hotelinfoVO.RoominfoVO;
  * @author huangpiao
  *
  */
+@Ignore("strategymanage已经调用真实dataservice，不需要桩")
 public class CalculatePriceTester {
 	private StrategyManage manage=new StrategyManage();
 	private ClientVO clientvo=new ClientVO("C00000001","justfun","ErgouWang","13747474741",
@@ -33,6 +35,6 @@ public class CalculatePriceTester {
 		hotelinfoVO1.setCompany(l);
 		System.out.println(((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2,3)).getStrategys().size()));
 		System.out.println(((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2,3)).getStrategys().get(0)));
-		//assertEquals(40.04,((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2)).getPrice()),0.000001);
+		assertEquals(40.04,((manage.calculatePrice(clientvo, roominfo1, hotelinfoVO1,2,3)).getPrice()),0.000001);
 	}
 }

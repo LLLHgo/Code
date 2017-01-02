@@ -1,7 +1,18 @@
 package bltest.clientbltest;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+import Enum.ResultMessage;
+import businesslogic.clientbl.ClientManage;
+import datatool.ClientDataTool;
+import vo.clientVO.ClientVO;
+
+@Ignore("clientmanage已经调用真实dataservice，不需要桩")
 public class CreateClientTest {
-	/*ClientManage Manage = new ClientManage();
+	ClientManage Manage = new ClientManage();
 	@Test
 	public void test1(){
 		//账号格式错误
@@ -25,5 +36,5 @@ public class CreateClientTest {
 	public void test4(){
 		//账号格式正确且有密码
 		assertEquals(ResultMessage.SUCCESS,Manage.createClient(new ClientVO("C00000009","hi~")));
-	}*/
+	}
 }

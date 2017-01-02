@@ -1,7 +1,17 @@
 package bltest.clientbltest;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+import businesslogic.clientbl.ClientManage;
+
+@Ignore("clientmanage已经调用真实dataservice，不需要桩")
 public class GetCreditRecordTest {
-	/*ClientManage Manage = new ClientManage();
+	ClientManage Manage = new ClientManage();
 	@Test
 	public void test1() {
 		//传入账号为空
@@ -25,6 +35,6 @@ public class GetCreditRecordTest {
 		//传入账号正确
 		ArrayList<String> recordlist=new ArrayList<String>(){{add("2016-12-8 finish order 100"); add("2016-12-9 finish order 200");}};
 		assertEquals(recordlist,Manage.getCreditRecord("C00000001"));
-	}*/
+	}
 
 }

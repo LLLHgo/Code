@@ -2,6 +2,7 @@ package bltest.logbltest;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Enum.ResultMessage;
@@ -11,6 +12,7 @@ import businesslogic.logbl.LogManage;
  * @author yilu
  *
  */
+@Ignore("logmanage已经调用真实dataservice，不需要桩")
 public class AddLogTester {
 	LogManage logManage;
 	String logInfo1;

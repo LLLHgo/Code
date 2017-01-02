@@ -2,6 +2,7 @@ package bltest.marketingtest;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Enum.ResultMessage;
@@ -12,10 +13,11 @@ import vo.marketingVO.MarketingVO;
  * @author huangpiao
  *
  */
+@Ignore("marketingmanage已经调用真实dataservice，不需要桩")
 public class MarketingAccountTester {
 	private MarketingManage manage=new MarketingManage();
 
-	/*@Test
+	@Test
 	public void test1(){
 		MarketingVO vo=new MarketingVO("网站营销人员","marketingpassword","","13477778888");
 		assertEquals(ResultMessage.SUCCESS,manage.MarketingAccountAdd(vo));
@@ -24,7 +26,7 @@ public class MarketingAccountTester {
 	public void test2(){
 		MarketingVO vo = null;
 		assertEquals(ResultMessage.FAIL,manage.MarketingAccountAdd(vo));
-	}*/
+	}
 
 	@Test
 	public void test3(){
@@ -32,9 +34,9 @@ public class MarketingAccountTester {
 		assertEquals(ResultMessage.SUCCESS,manage.MarketingAccountUpdate(vo));
 	}
 
-/*	@Test
+@Test
 	public void test4(){
 		MarketingVO vo=new MarketingVO("beauty","yes","M00000004","32");
 		assertEquals(ResultMessage.SUCCESS,manage.MarketingAccountDelete(vo));
-	}*/
+	}
 }

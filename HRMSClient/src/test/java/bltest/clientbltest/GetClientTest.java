@@ -1,22 +1,30 @@
 package bltest.clientbltest;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+import businesslogic.clientbl.ClientManage;
+import datatool.ClientDataTool;
+
+@Ignore("clientmanage已经调用真实dataservice，不需要桩")
 public class GetClientTest {
-	/*ClientManage Manage = new ClientManage();
+	ClientManage Manage = new ClientManage();
 	@Test
 	public void test1() {
 		//传入账号为空
-
 		assertEquals(null,Manage.getclient(""));
 
 	}
 
-	/*@Test
+	@Test
 	public void test2() {
 		//传入账号为null值
 		assertEquals(null,Manage.getclient(null));
 
-	}*/
-	/*@Test
+	}
+	@Test
 	public void test3() {
 		//传入账号不属于客户
 		assertEquals(null,Manage.getclient("H00000001"));
@@ -34,5 +42,4 @@ public class GetClientTest {
 	assertEquals(ClientDataTool.clientVO1.getTel(),Manage.getclient("C00000001").getTel());
 	assertEquals(ClientDataTool.clientVO1.getCredit(),Manage.getclient("C00000001").getCredit());
 	}
-	*/
 }

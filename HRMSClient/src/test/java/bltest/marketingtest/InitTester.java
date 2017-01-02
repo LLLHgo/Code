@@ -2,6 +2,7 @@ package bltest.marketingtest;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import businesslogic.marketingbl.MarketingManage;
@@ -11,6 +12,7 @@ import vo.marketingVO.MarketingVO;
  * @author huangpiao
  *
  */
+@Ignore("marketingmanage已经调用真实dataservice，不需要桩")
 public class InitTester {
 	private MarketingManage manage=new MarketingManage();
 
@@ -44,7 +46,7 @@ public class InitTester {
 		assertEquals(vo.getTelephone(),voFromBase.getTelephone());
 	}
 
-	/*@Test
+	@Test
 	public void test5(){
 		MarketingVO vo=new MarketingVO("beauty","yes","M00000004","32");
 		MarketingVO voFromBase=manage.init("M00000004");
@@ -52,7 +54,7 @@ public class InitTester {
 		assertEquals(vo.getPassword(),voFromBase.getPassword());
 		assertEquals(vo.getMarketingID(),voFromBase.getMarketingID());
 		assertEquals(vo.getTelephone(),voFromBase.getTelephone());
-	}*/
+	}
 
 	@Test
 	public void test6(){
