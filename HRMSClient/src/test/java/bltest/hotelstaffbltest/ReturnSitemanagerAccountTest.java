@@ -11,7 +11,7 @@ import businesslogicservice.hotelstaffblservice.HotelstaffBLService_Stub;
 import vo.hotelstaffVO.HotelstaffVO;
 
 @Ignore("hotelstaffmanage已经调用真实dataservice，不需要桩")
-public class SaveSitemanagerAddTest {
+public class ReturnSitemanagerAccountTest {
 	HotelstaffBLService hManage = new HotelstaffBLService_Stub();
 //
 //	public GetBasicinfoTest(){
@@ -20,14 +20,11 @@ public class SaveSitemanagerAddTest {
 
 	@Test
 	public void test1(){
-		//获得正确的密码
 		HotelstaffVO vo = new HotelstaffVO();
 		vo.setHotelID("H00000002");
 		vo.setTel("12345678");
 		vo.setPassword("111111");
-		assertEquals(ResultMessage.SUCCESS,hManage.saveSitemanagerAdd(vo));
-		vo.setHotelID("H00000001");
-		assertEquals(ResultMessage.FAIL,hManage.saveSitemanagerAdd(vo));
+		assertEquals("111111",hManage.returnSitemanagerAccount("H00000002").getPassword());
 		
 	}
 }

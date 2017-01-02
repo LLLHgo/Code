@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Enum.HotelStrategy;
@@ -17,6 +18,7 @@ import vo.strategyVO.HotelStrategyVO;
  * @author huangpiao
  *
  */
+@Ignore("strategymanage已经调用真实dataservice，不需要桩")
 public class HotelStrategyGetTester {
 	private StrategyManage manage=new StrategyManage();
 	@Test
